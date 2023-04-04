@@ -1,9 +1,14 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Image from 'next/image';
 import { Inter } from 'next/font/google'
 import Banner from '@/components/Banner/Banner';
-import Introduce from '@/views/home/Introduce';
-import style from '@/views/home/style.module.scss';
+import styles from '@/components/Home/style.module.scss';
+import classNames from 'classnames/bind';
+import Section from '@/components/Section/Section';
+import Bnimg from '@/public/banner/bn.jpg';
+import ListCourse from '@/components/Home/ListCourse';
+
+const cx = classNames.bind(styles);
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,8 +22,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main >
-        <Banner/>
-        <Introduce/>
+        <Section>
+        <Banner img={Bnimg} title='Học trực tuyến một cách tiện lợi và hiệu quả nhất !' text='Bắt đầu tham gia ngay hôm nay để nâng cao kiến thức và kỹ năng của bạn.'/>
+        <ListCourse/>
+        </Section>
+  
       </main>
     </>
   )

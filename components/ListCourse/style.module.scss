@@ -1,0 +1,43 @@
+//list
+.list{
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+//card
+.course-card{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    // width: 100%;
+
+    img{
+        width: 100%;
+        height: auto;
+        margin-bottom: 5px;
+    }
+    span{
+        color: gray;
+    }
+    p{
+        padding: 5px 0;
+    }
+    .rate{
+        color: orangered;
+        display: flex;
+        align-items: center;
+        span{
+            margin-left: 10px;
+        }
+    }
+    .price{
+        font-weight: bolder;
+    }
+    .best{
+        padding: 5px 10px;
+        background-color: rgb(126, 161, 64);
+        color: white;
+        width: fit-content;
+    }
+}
