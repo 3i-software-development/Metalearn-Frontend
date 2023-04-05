@@ -62,7 +62,7 @@ const ListCourses = () => {
 
         <Slide slidesToScroll={1} slidesToShow={5} indicators={true}>
         {ListHotCourse.map((item,index)=>            
-      <CourseCard data={item}/>
+      <CourseCard data={item} key={index}/>
       )}
             </Slide>
     </div>
