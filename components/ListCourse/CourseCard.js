@@ -13,7 +13,7 @@ const CourseCard = ({data}) => {
         <h4>{data.title}</h4>
         <span>{data.author}</span>
         <p className={cx('rate')}>{data.rate} <AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/> <span>(99,999)</span></p>
-        <p className={cx('price')}>{data.price.toLocaleString()} vnd</p>
+        <p className={cx('price')}>{data.price.toLocaleString()}<span>{(data.price*2).toLocaleString()}</span> vnd</p>
         <p className={cx('best')}>Best Seller</p>
     </div>
   )

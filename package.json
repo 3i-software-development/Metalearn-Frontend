@@ -21,6 +21,7 @@
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
     "react-query": "^3.39.3",
+    "react-slideshow-image": "^4.2.1",
     "sass": "^1.60.0",
     "scss": "^0.2.4",
     "swiper": "^9.2.0"

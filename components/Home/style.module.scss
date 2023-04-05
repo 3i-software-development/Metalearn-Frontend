@@ -32,3 +32,30 @@
         font-weight: bolder;
     }
 }
+
+//most-views
+.most-view{
+    padding: 5% 0;
+}
+
+//top
+.top-category{
+    padding: 5% 0;
+    .list-top-cate{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .item-top-cate{
+            width: 23%;
+            margin-bottom: 20px;
+            img{
+                width: 100% !important;
+                height: auto !important;
+            }
+            p{
+                font-weight: 700;
+            }
+        }
+    }
+}

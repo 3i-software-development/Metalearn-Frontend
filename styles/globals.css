@@ -1,4 +1,6 @@
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -71,12 +73,14 @@
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
   }
-}
+} */
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
 }
 
 html,
@@ -98,9 +102,25 @@ a {
 .section{
   padding: 0 15%;
 }
+span{
+  font-size: 0.9rem;
+  font-weight: 400;
+}
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+} */
+
+.swiper-button-prev{
+  color: white !important;
+  background-color: black !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.indicators{
+  display: none !important;
 }
