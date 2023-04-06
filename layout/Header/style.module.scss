@@ -1,5 +1,6 @@
 .header {
     position: sticky;
+    top: 0;
     width: 100%;
     display: flex;
     padding: 12px 2.5%;
@@ -7,7 +8,8 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    z-index: 1;
+    background-color: white;
+    z-index: 2;
 }
 
 .logo-container {
@@ -15,6 +17,8 @@
     font-size: 25px;
 
     span {
+        font-size: 25px;
+        font-weight: bold;
         color: purple;
     }
 }
@@ -52,6 +56,7 @@
 .user {
     display: flex;
     gap: 10px;
+
     .login-btn {
         padding: 10px 15px;
         border: 1px solid black;
@@ -66,6 +71,65 @@
 }
 
 .change-language {
-    padding: 6px 10px;
+    width: 46px;
+    height: 46px;
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-ss {
+    display: flex;
+    gap: 20px;
+}
+
+.icon-mobile,
+.icon-search-mobile {
+    display: none;
+}
+
+//mobile
+.menu-mobile {
+    position: fixed;
+    top:63px;
+    width: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 100vh;
+    
+    .mb-user {
+        display: flex;
+        flex-direction: column;
+        padding: 2.5%;
+        border-bottom: 0.5px rgb(226, 224, 224) solid;
+    }
+
+    .mb-list {
+        display: flex;
+        flex-direction: column;
+        padding: 2.5%;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .head-link {
+        display: none;
+    }
+
+    .user {
+        display: none;
+    }
+
+    .search-container {
+        display: none;
+    }
+
+    .icon-mobile,
+    .icon-search-mobile {
+        display: block;
+    }
 }

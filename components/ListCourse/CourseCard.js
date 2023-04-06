@@ -4,6 +4,7 @@ import styles from './style.module.scss';
 import Image from 'next/image';
 import {AiFillStar} from 'react-icons/ai';
 
+
 const cx = classNames.bind(styles);
 
 const CourseCard = ({data}) => {

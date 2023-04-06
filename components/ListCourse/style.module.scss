@@ -3,6 +3,7 @@
     // display: flex;
     // gap: 15px;
     margin: 20px 0;
+    position: relative;
 }
 
 //card
@@ -21,9 +22,9 @@
     span{
         color: gray;
     }
-    p{
-        padding: 5px 0;
-    }
+    // p{
+    //     padding: 5px 0;
+    // }
     .rate{
         color: orangered;
         display: flex;
@@ -49,6 +50,18 @@
 }
 
 //slide
-.hot-slide{
-position: relative;
+// .hot-slide{
+// position: relative;
+// }
+.btn-nav{
+    font-size: 50px;
+    z-index: 2;
+    position: absolute;
+    top:45%;
+}
+.prev-button{  
+    left: -25px; 
+}
+.next-button{
+    right: -25px;
 }

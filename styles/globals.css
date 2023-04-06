@@ -86,7 +86,9 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+}
+.body{
+  position: relative;
 }
 
 button{
@@ -100,7 +102,9 @@ a {
 }
 
 .section{
-  padding: 0 15%;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 span{
   font-size: 0.9rem;
@@ -113,14 +117,30 @@ span{
   }
 } */
 
-.swiper-button-prev{
+.default-nav {
+  border:1px solid black !important;
+}
+.indicators{
+  display: none !important;
+}
+.swiper-button-next ,.swiper-button-prev{
+  overflow: hidden;
   color: white !important;
   background-color: black !important;
   width: 40px !important;
   height: 40px !important;
-  border-radius: 20px;
-  overflow: hidden;
+  padding: 20px !important;
+  border-radius: 50%;
+  font-size: 20px !important;
 }
-.indicators{
-  display: none !important;
+
+@media only screen and (max-width: 1500px) {
+  h1,h2{
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  h1,h2{
+    font-size: 1.1rem;
+  }
 }

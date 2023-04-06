@@ -2,16 +2,18 @@
 .list-course-container{
     width: 100%;
     padding: 2% 0;
-    p{
+    .text-p{
         padding: 15px 0;
     }
 }
 .list-btn{
     display: flex;
-    gap: 50px;
+    flex-wrap: wrap;
+    gap: 3%;
     button{
         font-weight: bolder;
         color: gray;
+        white-space: nowrap;
     }
     .active{
         color: black;
@@ -22,7 +24,8 @@
     padding: 2%;
     margin: 2% 0;
     p{
-        width: 70%;
+        width: 100%;
+        max-width: 800px;
     }
     .explore{
         display: block;
@@ -49,13 +52,34 @@
         .item-top-cate{
             width: 23%;
             margin-bottom: 20px;
+            
             img{
                 width: 100% !important;
                 height: auto !important;
+                transition: 0.4s;
             }
             p{
                 font-weight: 700;
             }
         }
+        .item-top-cate:hover{
+            img {
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            }
+        }
+    }
+}
+
+//res
+@media only screen and (max-width: 750px) {
+    .list-main {
+        h2,p,a{
+        display: none !important;
+    }
+}
+}
+@media only screen and (max-width: 600px) {
+    .item-top-cate{
+        width: 48% !important;
     }
 }

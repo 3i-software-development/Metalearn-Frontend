@@ -1,0 +1,39 @@
+.container {    
+    padding: 20px 20px;
+    h1 {
+        text-align: center;
+        padding: 20px 20px;
+        font-size: 35px;
+        flex-wrap: wrap;
+    }
+    .ul li{
+        font-size: large;
+        
+    }
+    .flex{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .lileft {
+        padding: 30px;
+        position: absolute;
+        top:10%;
+        left: 0;
+        right: 50%;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .ul li{
+        padding: 5px 20px;
+        font-size: 25px;
+        margin-left: 5%;
+    }
+    
+
+   
+}

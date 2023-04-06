@@ -20,6 +20,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
+    "react-imgix": "^9.7.0",
     "react-query": "^3.39.3",
     "react-slideshow-image": "^4.2.1",
     "sass": "^1.60.0",
