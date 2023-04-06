@@ -16,7 +16,9 @@ import {IoMdArrowDroprightCircle,IoMdArrowDropleftCircle} from 'react-icons/io';
 
 const cx = classNames.bind(styles);
 
-const ListCourses = () => {
+const ListCourses = ({data}) => {
+
+  console.log(data, 123);
 
   const swiperRef = useRef(null);
 
@@ -36,10 +38,7 @@ const ListCourses = () => {
 
   return (
     <div className={cx('list')}>
-      {/* 
-      {ListHotCourse.slice(0,5).map((item,index)=>
-      <CourseCard data={item}/>
-      )} */}
+     
 
       <Swiper
         className={cx('hot-slide')}
@@ -71,7 +70,7 @@ const ListCourses = () => {
         navigation={false}
         ref={swiperRef}
       >
-        {ListHotCourse.map((item, index) =>
+        {data?.map((item, index) =>
           <SwiperSlide key={index} className={cx('item-slide')}>
 
             <CourseCard data={item} />

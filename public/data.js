@@ -78,3 +78,13 @@ export const ListIntro = [
         img:'/banner/it3.jpg'
     }
 ]
+
+export const ListSubject = [
+    'Lập trình',
+    'Tiếng Anh',
+    'Toán',
+    'Marketing',
+    'Môn học đại cương',
+    'Luật',
+    'Tài chính - Ngân hàng'
+]

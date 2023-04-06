@@ -5,7 +5,7 @@ import Banner from '@/components/Banner/Banner';
 import styles from '@/components/Home/style.module.scss';
 import classNames from 'classnames/bind';
 import Section from '@/components/Section/Section';
-import Bnimg from '@/public/banner/bn.jpg';
+import Bnimg from '@/public/banner/bn0.png';
 import ListCourse from '@/components/Home/ListCourse';
 import Intro1 from '@/components/Intro/Intro1';
 import MostView from '@/components/Home/MostView';
@@ -29,7 +29,7 @@ export default function Home() {
       </Head>
       <main >
         <Section>
-        <Banner img={Bnimg} title='Học trực tuyến một cách tiện lợi và hiệu quả nhất !' text='Bắt đầu tham gia ngay hôm nay để nâng cao kiến thức và kỹ năng của bạn.'/>
+        <Banner img={Bnimg} title='Học trực tuyến một cách tiện lợi và hiệu quả nhất !' text='Bắt đầu ngay để nâng cao kiến thức và kỹ năng với hơn 590,000 câu hỏi và 20,500 đề thi.'/>
         <ListCourse/>
         </Section>
         <Intro1/>
