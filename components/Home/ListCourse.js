@@ -37,11 +37,11 @@ const ListCourse = () => {
             <p className={cx('text-p')}>Với sự phát triển của nền kinh tế toàn cầu và sự liên kết giữa các quốc gia, tiếng Anh đã trở thành ngôn ngữ chính thức của giao tiếp quốc tế. Việc thành thạo tiếng Anh giúp bạn có thể tham gia vào các cuộc họp, đối thoại và thương lượng với đối tác nước ngoài một cách hiệu quả. Điều này sẽ giúp bạn tạo được niềm tin và đánh giá cao trong mắt các đồng nghiệp và cấp quản lý, từ đó tạo ra cơ hội thăng tiến trong công việc. </p>
             <Link href='/subjects' className={cx('explore')}>Xem thêm</Link>
             <h3>Danh sách đề thi</h3>
-            {ListExam.data && <ListCourses data={ListExam.data.query}/>}
+            {ListExam.data && <ListCourses data={ListExam.data.query} exam/>}
             {/* <h3>Danh sách lớp hoc</h3>
-            {ListClass.data && <ListCourses data={ListClass.data}/>}
+            {ListClass.data && <ListCourses data={ListClass.data}/>} */}
             <h3>Danh sách tài liệu</h3>
-            {ListDoc.data && <ListCourses data={ListDoc.data}/>} */}
+            {ListDoc.data && <ListCourses data={ListDoc.data.Object.data1} doc/>}
 
         </div>
     </div>

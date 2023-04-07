@@ -3,7 +3,8 @@ import classNames from 'classnames/bind';
 import styles from './style.module.scss';
 import Image from 'next/image';
 import { ListHotCourse } from '@/public/data';
-import CourseCard from './CourseCard';
+import ExamCard from './ExamCard';
+import DocCard from './DocCard';
 import { SwiperSlide, Swiper } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
@@ -16,7 +17,7 @@ import {IoMdArrowDroprightCircle,IoMdArrowDropleftCircle} from 'react-icons/io';
 
 const cx = classNames.bind(styles);
 
-const ListCourses = ({data}) => {
+const ListCourses = ({data,clas,doc,exam}) => {
 
   console.log(data, 123);
 
@@ -73,7 +74,9 @@ const ListCourses = ({data}) => {
         {data?.map((item, index) =>
           <SwiperSlide key={index} className={cx('item-slide')}>
 
-            <CourseCard data={item} />
+            {clas && <ExamCard data={item} />}
+            {exam && <ExamCard data={item} />}
+            {doc && <DocCard data={item} />}
           </SwiperSlide>
         )}
       </Swiper>

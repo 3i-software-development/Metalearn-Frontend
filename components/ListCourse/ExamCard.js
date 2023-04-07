@@ -7,7 +7,7 @@ import {AiFillStar} from 'react-icons/ai';
 
 const cx = classNames.bind(styles);
 
-const CourseCard = ({data}) => {
+const ExamCard = ({data}) => {
   return (
     <div className={cx('course-card')}>
         <Image src={data.ImageCover} alt='course' width='500' height='400'/>
@@ -22,4 +22,4 @@ const CourseCard = ({data}) => {
   )
 }
 
-export default CourseCard
+export default ExamCard
