@@ -168,3 +168,18 @@
 .next-button{ 
     right: 0;
 }
+// .item-slide{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100%;
+// }
+.banner2{
+    justify-content: center !important;
+    padding: 2% ;
+    flex-direction: column !important;
+    h2{
+        text-align: center;
+        color: purple;
+    }
+}

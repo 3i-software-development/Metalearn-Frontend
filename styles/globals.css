@@ -66,12 +66,21 @@ span{
   }
 }
 
-canvas{
+/* canvas{
   width: 100px !important;
   height: 100px !important;
   display: flex;
   justify-content: center;
   align-items: center;
+} */
+canvas{
+  width: 80% !important;
+  height: 80% !important;
+  min-height: 200px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
 }
 .green{
   color: green;
