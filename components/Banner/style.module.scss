@@ -95,107 +95,85 @@
   }
 }
 
-// @media only screen and (max-width: 1200px) {
-//     .text p{
-//         display: none;
-//     }
-// }
-
-@media only screen and (max-width: 700px) {
-  .banner {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    .text {
-      position: relative !important;
-      padding: 0;
-      box-shadow: none !important;
-      // top:0;
-      transform: none;
-      width: 100%;
-      overflow: hidden;
-
-      left: 0;
-    }
-    .bn2 {
-      display: none;
-    }
-
-    .text-dia {
-      width: 100% !important;
-      position: relative !important;
-      padding: 20px 0 !important;
-      box-shadow: none !important;
-      transform: none !important;
-      left: 0 !important;
-
-      p {
-        font-size: 12px !important;
-      }
-    }
-    .num-quest {
-      gap: 15px !important;
-      justify-content: center !important;
-    }
-  }
-}
-
-@media only screen and (max-width:1200px){
+@media only screen and (max-width:930px) {
   .banner1 {
-    top: 8rem;
+    top: 6.5rem;
+    margin-left: 20px;
     .banner1H1 {
-      font-size: 35px;
+      font-size: 15px!important;
       color: green;
     }
     .banner1H12 {
-      font-size: 35px;
+      font-size: 15px!important;
       color: orange;
     }
     .circular {
-      font-size: 15px;
+      font-size: 5px!important;
+      --CircularProgress-size: 50px!important;
+      --CircularProgress-trackThickness: 8px!important;
+      --CircularProgress-progressThickness: 8px!important;
     }
-    //dashboard
     .div1 {
-      width: 140px !important;
-      height: 140px !important;
-      .h11 {      
-        top: 0;
-        left: 0;
+      width: 65px!important;
+      height: 65px!important;
+      .h11 {
         color: rgb(104, 33, 9);
-        font-size: 15px!important;
+        font-size: 5px!important;
         span {
-          font-size: 10px;
+          font-size: 2px!important;
           color: rgb(80, 83, 235);
         }
       }
-      .h12 {
-        bottom: 0;
-        right: 0;
-        font-size: 15px!important;
+  
+      .h12 { 
+        font-size: 5px!important;
         color: rgb(20, 20, 47);
         span {
-          color: rgb(80, 83, 235);
+          font-size: 2px!important;
+          color: rgb(80, 3, 235);
         }
       }
-    }
-    .css-1vj335z-JoyCircularProgress-root{
-      font-size:120px;
-    }
-  }
+      .div1:after {
+        content: "";
+        background-color: black;
+        position: absolute;
+        height: 1px!important;
+        width: 80%;
+        top: 50%;
+        left: 0;
+        transform: rotate(-45deg);
+        z-index: 0;
+      }
+    }}
+
 }
 @media only screen and (max-width: 1300px) {
   .banner1 {
+    .banner1H1 {
+      font-size: 30px;
+      color: green;
+    }
+    .banner1H12 {
+      font-size: 30px;
+      color: orange;
+    }
+    .circular {
+      font-size: 10px;
+      --CircularProgress-size: 100px;
+      --CircularProgress-trackThickness: 19px;
+      --CircularProgress-progressThickness: 19px;
+    }
     .div1 {
-      width: 170px;
-      height: 170px;
+      width: 130px;
+      height: 130px;
       .h11 {
         top: 0;
         left: 0;
         
         color: rgb(104, 33, 9);
-        font-size: 30px;
+        font-size: 15px;
         span {
-          font-size: 10px;
+          font-size: 8px;
           color: rgb(80, 83, 235);
         }
       }
@@ -204,10 +182,10 @@
         bottom: 0;
         right: 0;
       
-        font-size: 30px;
+        font-size: 15px;
         color: rgb(20, 20, 47);
         span {
-          font-size: 10px;
+          font-size: 8px;
           color: rgb(80, 83, 235);
         }
       }
