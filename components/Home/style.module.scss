@@ -78,15 +78,15 @@
 }
 
 //res
-@media only screen and (max-width: 750px) {
-  .list-main {
-    h2,
-    p,
-    a {
-      display: none !important;
-    }
-  }
-}
+// @media only screen and (max-width: 750px) {
+//   .list-main {
+//     h2,
+//     p,
+//     a {
+//       display: none !important;
+//     }
+//   }
+// }
 @media only screen and (max-width: 600px) {
   .item-top-cate {
     width: 48% !important;
