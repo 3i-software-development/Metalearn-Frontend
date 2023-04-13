@@ -8,7 +8,7 @@ import Section from '@/components/Section/Section';
 import Bnimg from '@/public/banner/bn0.png';
 import ListCourse from '@/components/Home/ListCourse';
 import Intro1 from '@/components/Intro/Intro1';
-import MostView from '@/components/Home/MostView';
+// import MostView from '@/components/Home/MostView';
 import TopCategories from '@/components/Home/TopCategories';
 import Intro2 from '@/components/Intro/Intro2';
 import Team from '@/components/Intro/Team';
@@ -34,7 +34,7 @@ export default function Home() {
         </Section>
         <Intro1/>
         <Section>
-          <MostView/>
+          {/* <MostView/> */}
           <TopCategories/>
           <Intro2 data={ListIntro[0]}/>
         </Section>
