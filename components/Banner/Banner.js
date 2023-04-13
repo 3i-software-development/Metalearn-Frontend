@@ -132,8 +132,8 @@ const Banner = () => {
                   className={styles.circular}
                   determinate
                   value={66.67}
-                  color="neutral"
-                  variant="soft"
+                  color="danger"
+                  variant="outlined"
                 >
                   <div>
                     <h5> Làm Đúng</h5>
@@ -168,8 +168,8 @@ const Banner = () => {
                   size="lg"
                   determinate
                   value={80.67}
-                  color="neutral"
-                  variant="soft"
+                  color="success"
+                  variant="outlined"
                 >
                   <div>
                     <h5>Đã Làm </h5>
