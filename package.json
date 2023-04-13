@@ -12,25 +12,23 @@
     "@devexpress/dx-react-chart": "^4.0.3",
     "@devexpress/dx-react-chart-material-ui": "^4.0.3",
     "@devexpress/dx-react-core": "^4.0.3",
-<<<<<<< HEAD
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@mui/joy": "^5.0.0-alpha.75",
     "@mui/material": "^5.12.0",
-=======
->>>>>>> 201bc1626bf36f8a7eecd5af37a251611063ed5b
+    "@mui/styled-engine-sc": "^5.12.0",
     "antd": "^5.4.0",
     "axios": "^1.3.4",
     "chart.js": "^4.2.1",
     "classnames": "^2.3.2",
+    "countup.js": "^2.6.0",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
     "qs": "^6.11.1",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
-<<<<<<< HEAD
     "react-countup": "^6.4.2",
-=======
->>>>>>> 201bc1626bf36f8a7eecd5af37a251611063ed5b
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
@@ -39,6 +37,7 @@
     "react-slideshow-image": "^4.2.1",
     "sass": "^1.60.0",
     "scss": "^0.2.4",
+    "styled-components": "^5.3.9",
     "swiper": "^9.2.0"
   }
 }
