@@ -11,12 +11,11 @@ const queryClient = new QueryClient();
 export default function App({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
-<Layout><Component {...pageProps} /></Layout>
-</QueryClientProvider>
-  
-      
-
-  )
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </QueryClientProvider>
+  );
 }
 
 // export function useApppContext() {
