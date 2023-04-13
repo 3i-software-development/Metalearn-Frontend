@@ -2,18 +2,15 @@ import React from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import Image from "next/image";
-import { AiFillStar } from "react-icons/ai";
-import { grey } from "@mui/material/colors";
 
 const cx = classNames.bind(styles);
 
 const CourseCard = ({ data, clas, doc, exam }) => {
-  console.log(data);
   const examCard = () => {
     return (
       <div className={cx("course-card")}>
-        <Image src={data.ImageCover} alt="course" width="500" height="400" />
-        <span className={cx("titleDoc")}>{data.LectName}</span>
+        <Image src={data.ImageCover} alt="exam" width="500" height="400" />
+        <p className={cx("titleDoc")}>{data.LectName}</p>
       </div>
     );
   };
@@ -23,11 +20,11 @@ const CourseCard = ({ data, clas, doc, exam }) => {
       <div className={cx("course-card")}>
         <Image
           src="https://dieuhanh.vatco.vn//uploads/repository/SUBJECT/download5.jpg"
-          alt="course"
+          alt="document"
           width="500"
           height="400"
         />
-        <span className={cx("titleDoc")}>{data.FileName}</span>
+        <p className={cx("titleDoc")}>{data.FileName}</p>
       </div>
     );
   };
@@ -35,47 +32,47 @@ const CourseCard = ({ data, clas, doc, exam }) => {
   const clasCard = () => {
     return (
       <div className={cx("course-card")}>
-        <Image src={data.ImageCover} alt="course" width="500" height="400" />
-        <div className={cx("title")}>
+        <Image src={data.ImageCover} alt="class" width="500" height="400" />
+        <p className={cx("title")}>
           <strong>
             <i className="fa-solid fa-square" style={{ color: "yellow" }}></i>{" "}
-            Phap A
+            Phap A :
           </strong>
           <span>[A][A]</span>
-        </div>
+        </p>
         <br />
-        <div className={cx("title")}>
+        <p className={cx("title")}>
           <span>
             <i className="fa-solid fa-circle " style={{ color: "red" }}></i> Môn
             học :
           </span>
           <span> Lập trình</span>
-        </div>
-        <div className={cx("title")}>
+        </p>
+        <p className={cx("title")}>
           <span>
             <i className="fa-solid fa-circle " style={{ color: "brown" }}></i>{" "}
             Bắt đầu :
           </span>
           <span> Lập trình</span>
-        </div>
-        <div className={cx("footer-card")}>
-          <div>
+        </p>
+        <p className={cx("footer-card")}>
+          <p>
             <i class="fa-solid fa-mobile-screen-button"></i>
-          </div>
-          <div className={cx("arrow-icon")}>
-            <div className={cx("rectangle")}>
-              <p>Đăng kí</p>
-              <p>1 coin</p>
-            </div>
-            <div className={cx("arrow-right")}></div>
-          </div>
-        </div>
+          </p>
+          <p className={cx("arrow-icon")}>
+            <p className={cx("rectangle")}>
+              <span>Đăng kí</span> <br />
+              <span>1 coin</span>
+            </p>
+            <p className={cx("arrow-right")}></p>
+          </p>
+        </p>
       </div>
     );
   };
 
   return (
-    <div>
+    <div style={{ height: "100%" }}>
       {clas && clasCard()}
       {exam && examCard()}
       {doc && docCard()}

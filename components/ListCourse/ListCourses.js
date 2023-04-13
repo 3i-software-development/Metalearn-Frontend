@@ -32,55 +32,8 @@ const ListCourses = ({ data, clas, doc, exam }) => {
 
   return (
     <div className={cx("list")}>
-      {/* <Swiper
-        className={cx("hot-slide")}
-        modules={[Autoplay, Navigation]}
-        grabCursor={true}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        slidesPerView="auto"
-        breakpoints={{
-          0: {
-            slidesPerView: 1,
-          },
-          500: {
-            slidesPerView: 2,
-          },
-          800: {
-            slidesPerView: 3,
-          },
-          1200: {
-            slidesPerView: 4,
-          },
-          1600: {
-            slidesPerView: 5,
-          },
-        }}
-        navigation={false}
-        // ref={swiperRef}
-      >
-        {data?.map((item, index) => (
-          <SwiperSlide key={index} className={cx("item-slide")}>
-            {clas && <CourseCard data={item} clas />}
-            {exam && <CourseCard data={item} exam />}
-            {doc && <CourseCard data={item} doc />}
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <IoMdArrowDropleftCircle
-        className={cx("prev-button", "btn-nav")}
-        onClick={handlePrev}
-      />
-
-      <IoMdArrowDroprightCircle
-        className={cx("next-button", "btn-nav")}
-        onClick={handleNext}
-      /> */}
       {data?.map((item, index) => (
-        <div key={index}>
+        <div key={index} className={cx("card")}>
           {clas && <CourseCard data={item} clas />}
           {exam && <CourseCard data={item} exam />}
           {doc && <CourseCard data={item} doc />}
