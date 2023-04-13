@@ -1,19 +1,13 @@
 import React, { useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
-import Image from 'next/image';
-import { ListHotCourse } from '@/public/data';
 import ExamCard from './ExamCard';
 import DocCard from './DocCard';
 import { SwiperSlide, Swiper } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/scss/navigation';
-import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css';
 import {IoMdArrowDroprightCircle,IoMdArrowDropleftCircle} from 'react-icons/io';
-
-
 
 const cx = classNames.bind(styles);
 
