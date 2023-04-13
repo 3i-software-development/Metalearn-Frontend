@@ -1,67 +1,149 @@
 //list
-.list{
-    // display: flex;
-    // gap: 15px;
-    margin: 20px 0;
-    position: relative;
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 15px;
+  margin: 20px 0;
+  position: relative;
 }
 
 //card
-.course-card{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+.course-card {
+  height: 460px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+  flex: 1;
+  width: 100%;
+  .titleDoc {
+    margin-top: 20px !important;
+  }
+  .title {
     padding: 5px;
-    // width: 100%;
+    display: flex;
+    align-items: center;
+    .name {
+      color: rgb(233, 185, 11);
+    }
+    .sub {
+      color: red;
+    }
+    .brown {
+      color: brown;
+    }
+  }
 
-    img{
-        width: 100%;
-        height: auto;
-        margin-bottom: 5px;
+  img {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
+    margin: 0;
+    padding: 0;
+  }
+  span {
+    color: gray;
+    text-align: center;
+  }
+  i {
+    font-size: 12px;
+  }
+
+  .footer-card {
+    padding: 5px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    i {
+      font-size: 25px;
+      color: gray;
     }
-    span{
-        color: gray;
-    }
-    // p{
-    //     padding: 5px 0;
-    // }
-    .rate{
-        color: orangered;
-        display: flex;
-        align-items: center;
-        span{
-            margin-left: 10px;
-        }
-    }
-    .price{
-        font-weight: bolder;
-        display: flex;
-        span{
-            margin:0 5px;
-            text-decoration: line-through;
-        }
-    }
-    .best{
-        padding: 5px 10px;
-        background-color: rgb(126, 161, 64);
+    .arrow-icon {
+      display: flex;
+      .arrow-right {
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid green;
+      }
+      .rectangle {
+        width: 100px;
+        height: 28px;
+        background: green;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid white;
         color: white;
-        width: fit-content;
+        p:first-child {
+          margin-top: -13px;
+          padding: 0;
+          margin-left: 20px;
+          font-size: 10px;
+        }
+        p:last-child {
+          margin-top: -5px;
+          padding: 0;
+          margin-left: 23px;
+          font-size: 10px;
+        }
+      }
     }
+  }
+  // p{
+  //     padding: 5px 0;
+  // }
+  .rate {
+    color: orangered;
+    display: flex;
+    align-items: center;
+    span {
+      margin-left: 10px;
+    }
+  }
+  .price {
+    font-weight: bolder;
+    display: flex;
+    span {
+      margin: 0 5px;
+      text-decoration: line-through;
+    }
+  }
+  .best {
+    padding: 5px 10px;
+    background-color: rgb(126, 161, 64);
+    color: white;
+    width: fit-content;
+  }
 }
 
 //slide
 // .hot-slide{
 // position: relative;
 // }
-.btn-nav{
-    font-size: 50px;
-    z-index: 2;
-    position: absolute;
-    top:45%;
+.btn-nav {
+  font-size: 50px;
+  z-index: 2;
+  position: absolute;
+  top: 45%;
 }
-.prev-button{  
-    left: -25px; 
+.prev-button {
+  left: -25px;
 }
-.next-button{
-    right: -25px;
+.next-button {
+  right: -25px;
+}
+
+@media only screen and (max-width: 930px) {
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    font-size: 15px !important;
+    margin: 20px 0;
+    position: relative;
+  }
 }
