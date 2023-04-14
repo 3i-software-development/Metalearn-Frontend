@@ -45,7 +45,6 @@ export default function Home() {
         </Section>
         <Intro1 />
         <Section>
-          {/* <MostView/> */}
           <TopCategories />
           <Intro2 data={ListIntro[0]} />
         </Section>

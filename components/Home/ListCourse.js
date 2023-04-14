@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
-import Image from "next/image";
-import Link from "next/link";
 import ListCourses from "../ListCourse/ListCourses";
 import { ListSubject } from "@/public/data";
 import { GetListExam, GetListClass, GetListDoc } from "@/pages/api/CallAPI";
@@ -15,8 +13,7 @@ const ListCourse = () => {
   const ListDoc = GetListDoc();
 
   const [btnact, setBtnact] = useState(0);
-
-  // console.log(ListDoc.data.Object.data1);
+  console.log(ListExam);
 
   return (
     <div className={cx("list-course-container")}>
