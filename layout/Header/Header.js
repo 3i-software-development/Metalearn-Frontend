@@ -6,11 +6,113 @@ import { BsSearch } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
 import { BiWorld } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
+import { Dropdown, Space } from "antd";
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
   const [showMobile, setShowmobile] = useState(false);
+
+  const items = [
+    {
+      key: "1",
+      label: "Lập trình",
+    },
+    {
+      key: "2",
+      label: "Toán",
+      children: [
+        {
+          key: "2-1",
+          label: "Toán 10",
+        },
+        {
+          key: "2-2",
+          label: "Toán 11",
+          children: [
+            {
+              key: "2-2-1",
+              label: "Toán hình 11",
+            },
+            {
+              key: "2-2-1",
+              label: "Đại số 11",
+            },
+          ],
+        },
+        {
+          key: "2-3",
+          label: "Toán Cao Cấp",
+        },
+      ],
+    },
+    {
+      key: "3",
+      label: "Văn học",
+    },
+    {
+      key: "4",
+      label: "Địa lý",
+      children: [
+        {
+          key: "2-1",
+          label: "Địa lý 10",
+        },
+        {
+          key: "2-2",
+          label: "Địa lý 11",
+        },
+        {
+          key: "2-3",
+          label: "Địa lý 12",
+        },
+      ],
+    },
+    {
+      key: "5",
+      label: "Ngoại ngữ",
+      children: [
+        {
+          key: "6-1",
+          label: "tiếng Anh",
+        },
+        {
+          key: "6-2",
+          label: "tiếng Pháp",
+        },
+        {
+          key: "6-3",
+          label: "tiếng Đức",
+        },
+        {
+          key: "6-3",
+          label: "tiếng Nhật",
+        },
+        {
+          key: "6-3",
+          label: "tiếng Hàn",
+        },
+      ],
+    },
+    {
+      key: "6",
+      label: "Lịch sử",
+      children: [
+        {
+          key: "6-1",
+          label: "Lịch sử 10",
+        },
+        {
+          key: "6-2",
+          label: "Lịch sử 11",
+        },
+        {
+          key: "6-3",
+          label: "Lịch sử 12",
+        },
+      ],
+    },
+  ];
 
   return (
     <div className={cx("header")}>
@@ -19,12 +121,18 @@ const Header = () => {
         onClick={() => setShowmobile(!showMobile)}
       />
       {showMobile && <MenuMobile />}
-      <div className={cx("logo-container")}>
+      <Link href="/" className={cx("logo-container")}>
         Meta<span>Learn</span>
-      </div>
+      </Link>
 
       <Link href="/subjects" className={cx("head-link")}>
-        Môn học
+        <Dropdown
+          menu={{
+            items,
+          }}
+        >
+          <Space className={cx("head-link")}>Môn học</Space>
+        </Dropdown>
       </Link>
 
       <div className={cx("search-container")}>
@@ -39,7 +147,7 @@ const Header = () => {
       <Link href="/news" className={cx("head-link")}>
         Tin tức
       </Link>
-      <Link href="/news" className={cx("head-link")}>
+      <Link href="/my-class" className={cx("head-link")}>
         Lớp học trực tuyến
       </Link>
       <Link href="/documents" className={cx("head-link")}>
