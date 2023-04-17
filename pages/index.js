@@ -13,12 +13,15 @@ import TopCategories from "@/components/Home/TopCategories";
 import Intro2 from "@/components/Intro/Intro2";
 import Team from "@/components/Intro/Team";
 import { ListIntro } from "@/public/data";
+import useTrans from "@/hooks/useTrans";
 
 const cx = classNames.bind(styles);
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const trans = useTrans();
+
   return (
     <>
       <Head>
@@ -38,8 +41,8 @@ export default function Home() {
         <Section>
           <Banner
             img={Bnimg}
-            title="Học trực tuyến một cách tiện lợi và hiệu quả nhất !"
-            text="Bắt đầu ngay để nâng cao kiến thức và kỹ năng với hơn 590,000 câu hỏi và 20,500 đề thi."
+            title={trans.banner.title}
+            text={trans.banner.text}
           />
           <ListCourse />
         </Section>

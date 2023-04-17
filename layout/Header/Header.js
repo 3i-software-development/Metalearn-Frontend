@@ -4,14 +4,17 @@ import styles from "./style.module.scss";
 import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
-import { BiWorld } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Dropdown, Space } from "antd";
+import ModalLang from "@/components/ModalLang/ModalLang";
+import useTrans from "@/hooks/useTrans";
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
   const [showMobile, setShowmobile] = useState(false);
+
+  const trans = useTrans();
 
   const items = [
     {
@@ -35,7 +38,7 @@ const Header = () => {
               label: "Toán hình 11",
             },
             {
-              key: "2-2-1",
+              key: "2-2-2",
               label: "Đại số 11",
             },
           ],
@@ -131,30 +134,30 @@ const Header = () => {
             items,
           }}
         >
-          <Space className={cx("head-link")}>Môn học</Space>
+          <Space className={cx("head-link")}>{trans.header.subject}</Space>
         </Dropdown>
       </Link>
 
       <div className={cx("search-container")}>
         <input
           type="text"
-          placeholder="Tìm kiếm"
+          placeholder={trans.header.search}
           className={cx("search-input")}
         />
         <BsSearch />
       </div>
 
       <Link href="/news" className={cx("head-link")}>
-        Tin tức
+        {trans.header.new}
       </Link>
       <Link href="/my-class" className={cx("head-link")}>
-        Lớp học trực tuyến
+        {trans.header.class}
       </Link>
       <Link href="/documents" className={cx("head-link")}>
-        Tài liệu
+        {trans.header.document}
       </Link>
       <Link href="/exam" className={cx("head-link")}>
-        Đề thi
+        {trans.header.exam}
       </Link>
 
       <div className={cx("icon-ss")}>
@@ -164,13 +167,13 @@ const Header = () => {
 
       <div className={cx("user")}>
         <Link href="/account/login" className={cx("login-btn")}>
-          Log in
+          {trans.header.login}
         </Link>
         <Link href="/account/login" className={cx("signup-btn")}>
-          Sign up
+          {trans.header.signup}
         </Link>
         <div className={cx("change-language")}>
-          <BiWorld className={cx("icon")} />
+          <ModalLang />
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
-import ListCourses from "../ListCourse/ListCourses";
 import { GetListClass } from "@/pages/api/CallAPI";
+import ClassCard from "./ClassCard";
 
 const cx = classNames.bind(styles);
 
@@ -20,8 +20,13 @@ const ListClass = () => {
 
   return (
     <div className={cx("list-course-container")}>
-      {ListClass.data && <ListCourses data={ListClass.data.Object} clas />}
-
+      <div className={cx("list")}>
+        {ListClass?.data?.Object?.map((item, index) => (
+          <div key={index} className={cx("card")}>
+            <ClassCard data={item} />
+          </div>
+        ))}
+      </div>
       {loadMore()}
     </div>
   );

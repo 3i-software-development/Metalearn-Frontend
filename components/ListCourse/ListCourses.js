@@ -14,22 +14,6 @@ import {
 const cx = classNames.bind(styles);
 
 const ListCourses = ({ data, clas, doc, exam }) => {
-  const swiperRef = useRef(null);
-
-  // Hàm xử lý sự kiện điều hướng Swiper sang trang trước
-  const handlePrev = () => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slidePrev();
-    }
-  };
-
-  // Hàm xử lý sự kiện điều hướng Swiper sang trang sau
-  const handleNext = () => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slideNext();
-    }
-  };
-
   return (
     <div className={cx("list")}>
       {data?.map((item, index) => (

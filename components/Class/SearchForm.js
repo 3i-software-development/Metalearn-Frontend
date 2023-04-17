@@ -2,11 +2,25 @@ import React from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { BsSearch } from "react-icons/bs";
-import { Select } from "antd";
+import { DatePicker, Select } from "antd";
 
 const cx = classNames.bind(styles);
 
 const SearchForm = () => {
+  const [openSort, setOpenSort] = React.useState(false);
+  const [openFilter, setOpenFilter] = React.useState(false);
+
+  const handleDropDown = (id) => {
+    switch (id) {
+      case "sort":
+        setOpenSort((pre) => !pre);
+        break;
+      case "filter":
+        setOpenFilter((pre) => !pre);
+        break;
+    }
+  };
+
   const options = [
     {
       value: "Tên lớp học",
@@ -22,6 +36,8 @@ const SearchForm = () => {
     },
   ];
 
+  const dateFormat = "DD-MM-YYYY";
+
   return (
     <div className={cx("list-course-container")}>
       <div className={cx("search-container")}>
@@ -34,48 +50,60 @@ const SearchForm = () => {
       </div>
 
       <div className={cx("sort-container")}>
-        <div className={cx("title-sort-container")}>
+        <div
+          className={cx("title-sort-container")}
+          onClick={() => handleDropDown("sort")}
+        >
           <h2>Sắp xếp</h2>
-          <i class="fa-solid fa-chevron-right"></i>
+          <i className="fa-solid fa-chevron-right"></i>
         </div>
-        <div className={cx("content-sort-container")}>
-          <p>Sắp xếp theo</p>
-          <Select
-            className={cx("select-container")}
-            defaultValue="Tên lớp học"
-            options={options}
-          />
-        </div>
+        {openSort && (
+          <div className={cx("content-sort-container")}>
+            <p>Sắp xếp theo</p>
+            <Select
+              className={cx("select-container")}
+              defaultValue="Tên lớp học"
+              options={options}
+            />
+          </div>
+        )}
       </div>
 
       <div className={cx("sort-container")}>
-        <div className={cx("title-sort-container")}>
+        <div
+          className={cx("title-sort-container")}
+          onClick={() => handleDropDown("filter")}
+        >
           <h2>Lọc</h2>
-          <i class="fa-solid fa-chevron-right"></i>
+          <i className="fa-solid fa-chevron-right"></i>
         </div>
-        <div className={cx("content-sort-container")}>
-          <p>Môn học</p>
-          <Select
-            className={cx("select-container")}
-            defaultValue="Tên lớp học"
-            options={options}
-          />
-        </div>
-        <div className={cx("content-sort-container")}>
-          <p>Thời gian bắt đầu</p>
-          <span>Từ</span>
-          <Select
-            className={cx("select-container")}
-            defaultValue="Tên lớp học"
-            options={options}
-          />
-          <span>Đến</span>
-          <Select
-            className={cx("select-container")}
-            defaultValue="Tên lớp học"
-            options={options}
-          />
-        </div>
+        {openFilter && (
+          <>
+            <div className={cx("content-sort-container")}>
+              <p>Môn học</p>
+              <Select
+                className={cx("select-container")}
+                defaultValue="Tên lớp học"
+                options={options}
+              />
+            </div>
+            <div className={cx("content-sort-container")}>
+              <p>Thời gian bắt đầu</p>
+              <span>Từ</span>
+              <DatePicker
+                format={dateFormat}
+                className={cx("select-container")}
+                placeholder="Ngày bắt đầu"
+              />
+              <span>Đến</span>
+              <DatePicker
+                format={dateFormat}
+                className={cx("select-container")}
+                placeholder="Ngày kết thúc"
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
