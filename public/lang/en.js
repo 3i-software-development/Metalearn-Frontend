@@ -2,6 +2,15 @@ export const en = {
   banner: {
     title: "Learn online in the most convenient and effective way !",
     text: "Start now to improve your knowledge and skills with over 590,000 questions and 20,500 exam questions.",
+    trackingDo: "Question done",
+    trackingDonot: "Question do right",
+    labelBanner1: "Track and capture your own progress",
+    totalQues: "Total questions",
+    totalExam: "Total exam",
+    do: "Done",
+    doright: "Do right",
+    totalTime: "Total hour",
+    time: "Time(hour)",
   },
 
   modalLang: {

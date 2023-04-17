@@ -44,16 +44,16 @@ const data = {
     {
       label: "Câu hỏi đã làm",
       data: [70, 78, 120, 100, 119, 54, 211, 60],
-      backgroundColor: "rgba(75, 192, 192, 0.2)", // Màu nền cho dữ liệu
-      borderColor: "rgba(75, 192, 192, 1)", // Màu viền cho dữ liệu
-      borderWidth: 1, // Độ dày viền cho dữ liệu
+      backgroundColor: "rgba(75, 192, 192, 0.2)",
+      borderColor: "rgba(75, 192, 192, 1)",
+      borderWidth: 1,
     },
     {
       label: "Câu làm đúng",
       data: [12, 30, 65, 80, 76, 53, 188, 30],
-      backgroundColor: "red", // Màu nền cho dữ liệu
-      borderColor: "red", // Màu viền cho dữ liệu
-      borderWidth: 1, // Độ dày viền cho dữ liệu
+      backgroundColor: "red",
+      borderColor: "red",
+      borderWidth: 1,
     },
   ],
 };
@@ -106,8 +106,7 @@ const Banner = () => {
         ref={swiperRef}
       >
         <SwiperSlide>
-          <div className={cx('')}>
-          
+          <div className={cx("")}>
             <Grid
               className={styles.banner1}
               container
@@ -115,13 +114,15 @@ const Banner = () => {
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
               <Grid item xs={4}>
-               
-                <CountUp start={0} end={549811} duration={2.5} className={styles.banner1H1}/>
+                <CountUp
+                  start={0}
+                  end={549811}
+                  duration={2.5}
+                  className={styles.banner1H1}
+                />
                 <h4>Tổng Câu Hỏi</h4>
               </Grid>
               <Grid item xs={4}>
-               
-               
                 <CircularProgress
                   sx={{
                     "--CircularProgress-size": `145px`,
@@ -140,8 +141,6 @@ const Banner = () => {
                     <h6>66.67% </h6>
                   </div>
                 </CircularProgress>
-          
-                
               </Grid>
               <Grid item xs={4} className="">
                 <div className={styles.div1}>
@@ -154,7 +153,7 @@ const Banner = () => {
                 </div>
               </Grid>
               <Grid item xs={4}>
-                <CountUp start={0} end={20528} className={styles.banner1H12}/>
+                <CountUp start={0} end={20528} className={styles.banner1H12} />
                 <h4>Tổng Đề Thi</h4>
               </Grid>
               <Grid item xs={4}>
@@ -164,7 +163,7 @@ const Banner = () => {
                     "--CircularProgress-trackThickness": "24px",
                     "--CircularProgress-progressThickness": "24px",
                   }}
-                 className={styles.circular}
+                  className={styles.circular}
                   size="lg"
                   determinate
                   value={80.67}
