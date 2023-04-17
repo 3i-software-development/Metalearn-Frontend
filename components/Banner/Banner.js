@@ -200,6 +200,7 @@ const Banner = () => {
         className={cx("prev-button", "btn-nav")}
         onClick={handlePrev}
       />
+      <p>dhwuhdihiw</p>
       <IoMdArrowDroprightCircle
         className={cx("next-button", "btn-nav")}
         onClick={handleNext}
