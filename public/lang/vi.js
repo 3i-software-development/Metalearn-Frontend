@@ -2,6 +2,15 @@ export const vi = {
   banner: {
     title: "Học trực tuyến một cách tiện lợi và hiệu quả nhất !",
     text: "Bắt đầu ngay để nâng cao kiến thức và kỹ năng với hơn 590,000 câu hỏi và 20,500 đề thi.",
+    trackingDo: "Câu hỏi đã làm",
+    trackingDonot: "Câu làm đúng",
+    labelBanner1: "Theo dõi và nắm bắt sự tiến bộ của bản thân",
+    totalQues: "Tổng câu hỏi",
+    totalExam: "Tổng đề thi",
+    do: "Đã làm",
+    doright: "Làm đúng",
+    totalTime: "Tổng số giờ làm",
+    time: "Thời gian(giờ)",
   },
 
   modalLang: {
