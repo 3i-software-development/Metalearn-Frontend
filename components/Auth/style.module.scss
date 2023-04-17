@@ -1,0 +1,44 @@
+.container_formSignup {
+    justify-content: center;
+    display: grid;
+    margin-bottom: 50px;
+    grid-template-columns: 1fr 1fr;
+    font-size: 12px !important;
+    .inputForm {
+      margin: 10px;
+      .inputFormnputSignup {
+        margin-top: 10px;
+      }
+    }
+  }
+  .titleSignup {
+    padding: 10px;
+  }
+  .input{
+      width: 100%;
+  }
+  .btn-signup button{
+      margin: 10px;
+      border-radius: 8px;
+      padding: 8px 56px;
+      background-color: black;
+      color: white;
+  }
+  @media only screen and (max-width: 930px) {
+      .container_formSignup {
+          justify-content: center;
+          display: grid;
+          margin-bottom: 50px;
+          grid-template-columns: 1fr;
+          font-size: 12px !important;
+          .inputForm {
+            margin: 10px;
+            .inputFormnputSignup {
+              margin-top: 10px;
+            }
+          }
+        }
+  }
+  @media only screen and (max-width: 1300px) {
+  }
+  
