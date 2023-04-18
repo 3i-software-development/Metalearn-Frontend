@@ -23,11 +23,13 @@ const ExamItem = () => {
             </b>
           </span>
           <span className={cx("stat")}>
-            <p><i class="fa-solid fa-book fa-2xl"></i></p>
+            <p>
+              <i class="fa-solid fa-book fa-2xl"></i>
+            </p>
           </span>
         </div>
       </li>
-      <li data-rank="1" className={cx("lilist")}>
+      <li data-rank="2" className={cx("lilist")}>
         <div className={cx("thumb")}>
           <span className={cx("img")} data-name="BluewaveSwift"></span>
           <span className={cx("name")}>
@@ -45,11 +47,13 @@ const ExamItem = () => {
             </b>
           </span>
           <span className={cx("stat")}>
-            <p><i class="fa-solid fa-book fa-2xl"></i></p>
+            <p>
+              <i class="fa-solid fa-book fa-2xl"></i>
+            </p>
           </span>
         </div>
       </li>
-      <li data-rank="1" className={cx("lilist")}>
+      <li data-rank="3" className={cx("lilist")}>
         <div className={cx("thumb")}>
           <span className={cx("img")} data-name="BluewaveSwift"></span>
           <span className={cx("name")}>
@@ -67,11 +71,13 @@ const ExamItem = () => {
             </b>
           </span>
           <span className={cx("stat")}>
-            <p><i class="fa-solid fa-book fa-2xl"></i></p>
+            <p>
+              <i class="fa-solid fa-book fa-2xl"></i>
+            </p>
           </span>
         </div>
       </li>
-      <li data-rank="1" className={cx("lilist")}>
+      <li data-rank="4" className={cx("lilist")}>
         <div className={cx("thumb")}>
           <span className={cx("img")} data-name="BluewaveSwift"></span>
           <span className={cx("name")}>
@@ -89,11 +95,13 @@ const ExamItem = () => {
             </b>
           </span>
           <span className={cx("stat")}>
-            <p><i class="fa-solid fa-book fa-2xl"></i></p>
+            <p>
+              <i class="fa-solid fa-book fa-2xl"></i>
+            </p>
           </span>
         </div>
       </li>
-      <li data-rank="1" className={cx("lilist")}>
+      <li data-rank="5" className={cx("lilist")}>
         <div className={cx("thumb")}>
           <span className={cx("img")} data-name="BluewaveSwift"></span>
           <span className={cx("name")}>
@@ -111,11 +119,37 @@ const ExamItem = () => {
             </b>
           </span>
           <span className={cx("stat")}>
-            <p><i class="fa-solid fa-book fa-2xl"></i></p>
+            <p>
+              <i class="fa-solid fa-book fa-2xl"></i>
+            </p>
           </span>
         </div>
       </li>
-      <li data-rank="1" className={cx("lilist")}>
+      <li data-rank="6" className={cx("lilist")}>
+        <div className={cx("thumb")}>
+          <span className={cx("img")} data-name="BluewaveSwift"></span> 
+          <span className={cx("name")}>
+            <h4>Naths</h4>
+            <p>15 munites</p>
+          </span>
+        </div>
+        <div className={cx("more")}>
+          {" "}
+          <span className={cx("stat")}>
+            <b>
+              0 / 10
+              <br />
+              Point
+            </b>
+          </span>
+          <span className={cx("stat")}>
+            <p>
+              <i class="fa-solid fa-book fa-2xl"></i>
+            </p>
+          </span>
+        </div>
+      </li>
+      <li data-rank="7" className={cx("lilist")}>
         <div className={cx("thumb")}>
           <span className={cx("img")} data-name="BluewaveSwift"></span>
           <span className={cx("name")}>
@@ -133,11 +167,13 @@ const ExamItem = () => {
             </b>
           </span>
           <span className={cx("stat")}>
-            <p><i class="fa-solid fa-book fa-2xl"></i></p>
+            <p>
+              <i class="fa-solid fa-book fa-2xl"></i>
+            </p>
           </span>
         </div>
       </li>
-      <li data-rank="1" className={cx("lilist")}>
+      <li data-rank="8" className={cx("lilist")}>
         <div className={cx("thumb")}>
           <span className={cx("img")} data-name="BluewaveSwift"></span>
           <span className={cx("name")}>
@@ -155,29 +191,9 @@ const ExamItem = () => {
             </b>
           </span>
           <span className={cx("stat")}>
-            <p><i class="fa-solid fa-book fa-2xl"></i></p>
-          </span>
-        </div>
-      </li>
-      <li data-rank="1" className={cx("lilist")}>
-        <div className={cx("thumb")}>
-          <span className={cx("img")} data-name="BluewaveSwift"></span>
-          <span className={cx("name")}>
-            <h4>Naths</h4>
-            <p>15 munites</p>
-          </span>
-        </div>
-        <div className={cx("more")}>
-          {" "}
-          <span className={cx("stat")}>
-            <b>
-              0 / 10
-              <br />
-              Point
-            </b>
-          </span>
-          <span className={cx("stat")}>
-            <p><i class="fa-solid fa-book fa-2xl"></i></p>
+            <p>
+              <i class="fa-solid fa-book fa-2xl"></i>
+            </p>
           </span>
         </div>
       </li>
