@@ -46,13 +46,29 @@ export default function TabItem() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  const [isSSR, setIsSSR] = useState(true);
+  useEffect(() => {
+    setIsSSR(false);
+  }, []);
   return (
     <Box
       sx={{
-        padding:" 0px 24px",
+        padding: " 0px 24px",
         "& .MuiTabs-flexContainer": {
-          borderBottom: "2px solid #e38705",
+          marginTop: "20px",
+          borderBottom: "2px solid #ff9500",
+          color: "#333 !important",
+        },
+        "& .MuiTabs-scroller": {
+          padding: "0 20px",
+        },
+        "& .MuiButtonBase-root": {
+          fontWeight: "bold",
+          color: "#333 !important",
+        },
+        "& .css-1aquho2-MuiTabs-indicator": {
+          backgroundColor: "#ff9500",
+          height: "5px",
         },
       }}
     >
