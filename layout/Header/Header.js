@@ -169,7 +169,7 @@ const Header = () => {
         <Link href="/auth/login" className={cx("login-btn")}>
           {trans.header.login}
         </Link>
-        <Link href="/auth/login" className={cx("signup-btn")}>
+        <Link href="/auth/signup" className={cx("signup-btn")}>
           {trans.header.signup}
         </Link>
         <div className={cx("change-language")}>
@@ -189,7 +189,7 @@ const MenuMobile = () => {
         <Link href="/auth/login" className={cx("mb-login")}>
           Log in
         </Link>
-        <Link href="/auth/login" className={cx("mb-signup")}>
+        <Link href="/auth/signup" className={cx("mb-signup")}>
           Sign up
         </Link>
       </div>

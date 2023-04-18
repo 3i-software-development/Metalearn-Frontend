@@ -1,8 +1,9 @@
+import AddForm from '@/components/Quiz/AddForm'
 import React from 'react'
 
 const Index = () => {
   return (
-    <div>index</div>
+    <div><AddForm/></div>
   )
 }
 
