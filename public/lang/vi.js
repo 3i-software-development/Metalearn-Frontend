@@ -19,10 +19,7 @@ export const vi = {
   },
 
   header: {
-    subject: "Môn học",
-    search: "Tìm kiếm",
     new: "Tin tức",
-    class: "Lớp học trực tuyến",
     document: "Tài liệu",
     exam: "Đề thi",
     login: "Đăng nhập",
@@ -30,8 +27,6 @@ export const vi = {
   },
 
   footer: {
-    subject: "Môn học của tôi",
-    class: "Lớp của tôi",
     practice: "Rèn luyện",
     connection: "Quản lý kết nối",
     exam: "Ngân hàng đề thi",
@@ -41,7 +36,6 @@ export const vi = {
     online_exam: "Thi trực tuyến",
     course: "Khóa học",
     statistical: "Thống kê",
-    search: "Tìm kiếm",
   },
 
   listSubject: ["Đề thi", "Lớp học", "Tài liệu"],
@@ -51,4 +45,37 @@ export const vi = {
     class: "Danh sách lớp học",
     document: "Danh sách tài liệu",
   },
+
+  class: {
+    class: "Lớp học trực tuyến",
+    myClass: "Lớp của tôi",
+    time: "Bắt đầu",
+    register: "Đăng kí",
+  },
+
+  subject: {
+    subject: "Môn học",
+    mySubject: "Môn học của tôi",
+  },
+
+  search: {
+    search: "Tìm kiếm",
+    searchClass: "Tìm kiếm lớp của tôi",
+    sort: "Sắp xếp",
+    filter: "Lọc",
+    sortFollow: "Sắp xếp theo",
+  },
+
+  time: {
+    timeStart: "Thời gian bắt đầu",
+    from: "từ",
+    to: "đến",
+    startDate: "Ngày bắt đầu",
+    endDate: "Ngày kết thúc",
+  },
+
+  loadMore: {
+    title1: "Xem thêm",
+    title2: "Tất cả",
+  }
 };

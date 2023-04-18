@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { GetListClass } from "@/pages/api/CallAPI";
 import ClassCard from "./ClassCard";
+import useTrans from "@/hooks/useTrans";
 
 const cx = classNames.bind(styles);
 
@@ -11,10 +12,12 @@ const ListClass = () => {
   const [initLoading, setInitLoading] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const trans = useTrans();
+
   const loadMore = () =>
     !initLoading && !loading ? (
       <div className={cx("load-more")}>
-        <p>Xem thêm</p>
+        <p>{trans.loadMore.title1}</p>
       </div>
     ) : null;
 

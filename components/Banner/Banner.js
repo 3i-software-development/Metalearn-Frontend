@@ -27,6 +27,7 @@ import { Grid } from "@mui/material";
 import CircularProgress from "@mui/joy/CircularProgress";
 import Box from "@mui/material";
 import CountUp from "react-countup";
+import useTrans from "@/hooks/useTrans";
 
 ChartJS.register(
   CategoryScale,
@@ -37,26 +38,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-// Dữ liệu cho biểu đồ
-const data = {
-  labels: ["28/3", "29/3", "30/3", "1/4", "2/4", "3/4", "4/4", "5/4"],
-  datasets: [
-    {
-      label: "Câu hỏi đã làm",
-      data: [70, 78, 120, 100, 119, 54, 211, 60],
-      backgroundColor: "rgba(75, 192, 192, 0.2)",
-      borderColor: "rgba(75, 192, 192, 1)",
-      borderWidth: 1,
-    },
-    {
-      label: "Câu làm đúng",
-      data: [12, 30, 65, 80, 76, 53, 188, 30],
-      backgroundColor: "red",
-      borderColor: "red",
-      borderWidth: 1,
-    },
-  ],
-};
 
 // Tùy chọn cho biểu đồ
 const options = {
@@ -71,7 +52,28 @@ const options = {
 const cx = classNames.bind(styles);
 
 const Banner = () => {
+  const trans = useTrans();
   const swiperRef = useRef(null);
+
+  const data = {
+    labels: ["28/3", "29/3", "30/3", "1/4", "2/4", "3/4", "4/4", "5/4"],
+    datasets: [
+      {
+        label: trans.banner.trackingDo,
+        data: [70, 78, 120, 100, 119, 54, 211, 60],
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: "rgba(75, 192, 192, 1)",
+        borderWidth: 1,
+      },
+      {
+        label: trans.banner.trackingDonot,
+        data: [12, 30, 65, 80, 76, 53, 188, 30],
+        backgroundColor: "red",
+        borderColor: "red",
+        borderWidth: 1,
+      },
+    ],
+  };
 
   // Hàm xử lý sự kiện điều hướng Swiper sang trang trước
   const handlePrev = () => {
@@ -86,6 +88,7 @@ const Banner = () => {
       swiperRef.current.swiper.slideNext();
     }
   };
+
   // responsive circular progress
   return (
     <div className={cx("banner-slide")}>
@@ -120,7 +123,7 @@ const Banner = () => {
                   duration={2.5}
                   className={styles.banner1H1}
                 />
-                <h4>Tổng Câu Hỏi</h4>
+                <h4>{trans.banner.totalQues}</h4>
               </Grid>
               <Grid item xs={4}>
                 <CircularProgress
@@ -137,7 +140,7 @@ const Banner = () => {
                   variant="outlined"
                 >
                   <div>
-                    <h5> Làm Đúng</h5>
+                    <h5> {trans.banner.doright}</h5>
                     <h6>66.67% </h6>
                   </div>
                 </CircularProgress>
@@ -145,16 +148,16 @@ const Banner = () => {
               <Grid item xs={4} className="">
                 <div className={styles.div1}>
                   <h1 className={styles.h11}>
-                    0 <br /> <span>Đã làm</span>
+                    0 <br /> <span>{trans.banner.do}</span>
                   </h1>
                   <h1 className={styles.h12}>
-                    0 <br /> <span>Tổng số giờ làm</span>
+                    0 <br /> <span>{trans.banner.totalTime}</span>
                   </h1>
                 </div>
               </Grid>
               <Grid item xs={4}>
                 <CountUp start={0} end={20528} className={styles.banner1H12} />
-                <h4>Tổng Đề Thi</h4>
+                <h4>{trans.banner.totalExam}</h4>
               </Grid>
               <Grid item xs={4}>
                 <CircularProgress
@@ -171,7 +174,7 @@ const Banner = () => {
                   variant="outlined"
                 >
                   <div>
-                    <h5>Đã Làm </h5>
+                    <h5>{trans.banner.do} </h5>
                     <h6>80.67% </h6>
                   </div>
                 </CircularProgress>
@@ -179,10 +182,10 @@ const Banner = () => {
               <Grid item xs={4}>
                 <div className={styles.div1}>
                   <h1 className={styles.h11}>
-                    0 <br /> <span>Đã làm</span>
+                    0 <br /> <span>{trans.banner.do}</span>
                   </h1>
                   <h1 className={styles.h12}>
-                    0 <br /> <span>Thời gian (Giờ)</span>
+                    0 <br /> <span>{trans.banner.time}</span>
                   </h1>
                 </div>
               </Grid>
@@ -192,7 +195,7 @@ const Banner = () => {
         <SwiperSlide className={cx("item-slide")}>
           <div className={cx("banner", "banner2")}>
             <Line data={data} options={options} />
-            <h2>Theo dõi và nắm bắt sự tiến bộ của bản thân</h2>
+            <h2>{trans.banner.labelBanner1}</h2>
           </div>
         </SwiperSlide>
       </Swiper>

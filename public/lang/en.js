@@ -20,9 +20,7 @@ export const en = {
 
   header: {
     subject: "Subject",
-    search: "Search",
     new: "News",
-    class: "My class",
     document: "Document",
     exam: "Exam",
     login: "Log in",
@@ -30,8 +28,6 @@ export const en = {
   },
 
   footer: {
-    subject: "My subject",
-    class: "My class",
     practice: "Practice",
     connection: "Connection management",
     exam: "Exam bank",
@@ -41,7 +37,6 @@ export const en = {
     online_exam: "Online exam",
     course: "Course",
     statistical: "Statistical",
-    search: "Search",
   },
 
   listSubject: ["Exam", "Class", "Document"],
@@ -51,4 +46,37 @@ export const en = {
     class: "List class",
     document: "List document",
   },
+
+  class: {
+    class: "My Class",
+    myClass: "My Class",
+    time: "Start",
+    register: "Register",
+  },
+
+  subject: {
+    subject: "Subject",
+    mySubject: "My subject",
+  },
+
+  search: {
+    search: "Search",
+    searchClass: "Search class",
+    sort: "Sort",
+    filter: "Filter",
+    sortFollow: "Sort Follow",
+  },
+
+  time: {
+    timeStart: "Time Start",
+    from: "From",
+    to: "To",
+    startDate: "Start Date",
+    endDate: "End Date",
+  },
+
+  loadMore: {
+    title1: "Load more",
+    title2: "View all",
+  }
 };

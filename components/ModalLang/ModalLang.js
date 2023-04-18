@@ -23,7 +23,7 @@ const ModalLang = () => {
   };
 
   const changeLang = (lang) => {
-    router.push("/", "/", { locale: lang });
+    router.push("/" + router.pathname, "/" + router.asPath, { locale: lang });
     setOpen(false);
   };
 
