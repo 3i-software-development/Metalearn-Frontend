@@ -141,7 +141,7 @@ const Header = () => {
       <div className={cx("search-container")}>
         <input
           type="text"
-          placeholder={trans.header.search}
+          placeholder={trans.search.search}
           className={cx("search-input")}
         />
         <BsSearch />
@@ -151,7 +151,7 @@ const Header = () => {
         {trans.header.new}
       </Link>
       <Link href="/my-class" className={cx("head-link")}>
-        {trans.header.class}
+        {trans.class.class}
       </Link>
       <Link href="/documents" className={cx("head-link")}>
         {trans.header.document}
@@ -166,7 +166,7 @@ const Header = () => {
       </div>
 
       <div className={cx("user")}>
-        <Link href="/account/login" className={cx("login-btn")}>
+        <Link href="/auth/login" className={cx("login-btn")}>
           {trans.header.login}
         </Link>
         <Link href="/auth/signup" className={cx("signup-btn")}>
@@ -186,7 +186,7 @@ const MenuMobile = () => {
   return (
     <div className={cx("menu-mobile")}>
       <div className={cx("mb-user")}>
-        <Link href="/account/login" className={cx("mb-login")}>
+        <Link href="/auth/login" className={cx("mb-login")}>
           Log in
         </Link>
         <Link href="/auth/signup" className={cx("mb-signup")}>
@@ -200,7 +200,7 @@ const MenuMobile = () => {
         <Link href="/news" className={cx("mb-link")}>
           Tin tức
         </Link>
-        <Link href="/news" className={cx("mb-link")}>
+        <Link href="/my-class" className={cx("mb-link")}>
           Lớp học trực tuyến
         </Link>
         <Link href="/documents" className={cx("mb-link")}>

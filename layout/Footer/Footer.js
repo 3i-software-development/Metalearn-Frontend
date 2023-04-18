@@ -15,8 +15,8 @@ const Footer = () => {
       <div className={cx("footer")}>
         <div className={cx("links", "footer-item")}>
           <div className={cx("link-group")}>
-            <Link href="/">{trans.footer.subject}</Link>
-            <Link href="/my-class">{trans.footer.class}</Link>
+            <Link href="/">{trans.subject.mySubject}</Link>
+            <Link href="/my-class">{trans.class.myClass}</Link>
             <Link href="/">{trans.footer.practice}</Link>
             <Link href="/">{trans.footer.connection}</Link>
           </div>
@@ -30,7 +30,7 @@ const Footer = () => {
             <Link href="/">{trans.footer.online_exam}</Link>
             <Link href="/">{trans.footer.course}</Link>
             <Link href="/">{trans.footer.statistical}</Link>
-            <Link href="/">{trans.footer.search}</Link>
+            <Link href="/">{trans.search.search}</Link>
           </div>
         </div>
         <div className={cx("language-select", "footer-item")}>

@@ -3,10 +3,13 @@ import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { BsSearch } from "react-icons/bs";
 import { DatePicker, Select } from "antd";
+import useTrans from "@/hooks/useTrans";
 
 const cx = classNames.bind(styles);
 
 const SearchForm = () => {
+
+  const trans = useTrans();
   const [openSort, setOpenSort] = React.useState(false);
   const [openFilter, setOpenFilter] = React.useState(false);
 
@@ -43,7 +46,7 @@ const SearchForm = () => {
       <div className={cx("search-container")}>
         <input
           type="text"
-          placeholder="Tìm kiếm lớp của tôi"
+          placeholder={trans.search.searchClass}
           className={cx("search-input")}
         />
         <BsSearch />
@@ -54,12 +57,12 @@ const SearchForm = () => {
           className={cx("title-sort-container")}
           onClick={() => handleDropDown("sort")}
         >
-          <h2>Sắp xếp</h2>
+          <h2>{trans.search.sort}</h2>
           <i className="fa-solid fa-chevron-right"></i>
         </div>
         {openSort && (
           <div className={cx("content-sort-container")}>
-            <p>Sắp xếp theo</p>
+            <p>{trans.search.sortFollow}</p>
             <Select
               className={cx("select-container")}
               defaultValue="Tên lớp học"
@@ -74,13 +77,13 @@ const SearchForm = () => {
           className={cx("title-sort-container")}
           onClick={() => handleDropDown("filter")}
         >
-          <h2>Lọc</h2>
+          <h2>{trans.search.filter}</h2>
           <i className="fa-solid fa-chevron-right"></i>
         </div>
         {openFilter && (
           <>
             <div className={cx("content-sort-container")}>
-              <p>Môn học</p>
+              <p>{trans.subject.subject}</p>
               <Select
                 className={cx("select-container")}
                 defaultValue="Tên lớp học"
@@ -88,18 +91,18 @@ const SearchForm = () => {
               />
             </div>
             <div className={cx("content-sort-container")}>
-              <p>Thời gian bắt đầu</p>
-              <span>Từ</span>
+              <p>{trans.time.timeStart}</p>
+              <span>{trans.time.from}</span>
               <DatePicker
                 format={dateFormat}
                 className={cx("select-container")}
-                placeholder="Ngày bắt đầu"
+                placeholder={trans.time.startDate}
               />
-              <span>Đến</span>
+              <span>{trans.time.to}</span>
               <DatePicker
                 format={dateFormat}
                 className={cx("select-container")}
-                placeholder="Ngày kết thúc"
+                placeholder={trans.time.endDate}
               />
             </div>
           </>

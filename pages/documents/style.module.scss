@@ -1,0 +1,12 @@
+.document-content{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-top: 10px;
+
+    .document-search-list{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

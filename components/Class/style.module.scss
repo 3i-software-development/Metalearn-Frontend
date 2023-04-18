@@ -146,40 +146,7 @@
     i {
       font-size: 25px;
       color: black;
-    }
-    .arrow-icon {
-      display: flex;
-      .arrow-right {
-        width: 0;
-        height: 0;
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-left: 15px solid green;
-      }
-      .rectangle {
-        width: 100px;
-        height: 28px;
-        background: green;
-        border-top: 15px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-left: 15px solid white;
-        span:first-child {
-          position: relative;
-          top: -20px;
-          padding: 0;
-          margin-left: 20px;
-          font-size: 10px;
-          color: white;
-        }
-        span:last-child {
-          position: relative;
-          top: -33px;
-          padding: 0;
-          margin-left: 23px;
-          font-size: 10px;
-          color: white;
-        }
-      }
+      cursor: pointer;
     }
   }
 }
