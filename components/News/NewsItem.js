@@ -81,7 +81,7 @@ const NewsItem = () => {
                 <div>
                   <i className="fa-solid fa-clock"></i><span className={cx("dateTime")}> {item.date}</span>
                 </div>
-                <p className={cx("userNew")}>Người tạo : <strong>{item.userNew}</strong></p>
+                <div><p className={cx("userNew")}>Người tạo : <strong>{item.userNew}</strong></p></div>
               </div>
             </div>
           </div>
