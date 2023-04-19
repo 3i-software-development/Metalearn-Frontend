@@ -1,5 +1,4 @@
 import axios from "axios";
-import qs from "qs";
 import { useMutation, useQuery } from "react-query";
 
 export const GetListExam = () => {
@@ -27,4 +26,17 @@ export const GetListDoc = () => {
     );
     return response.data;
   });
+};
+
+export const UserLogin = async ({ username, password }) => {
+  const bodyFormData = new FormData();
+  bodyFormData.append('Username', username);
+  bodyFormData.append('Password', password);
+
+  const response = await axios({
+    url: 'https://admin.metalearn.vn/MobileLogin/LoginNoCheckOnline',
+    method: 'POST',
+    data: bodyFormData
+  });
+  return response
 };
