@@ -44,18 +44,24 @@
     top: 26%;
 }
 
-.answer {
-    padding: 10px;
+
+
+.quizz-left p{
+    margin: 20px 0;
+    // transition: 0.5s;
+}
+.quizz-left span{
+    font-size: 20px;
+    font-weight: 500;
+}
+.isActive{
+    background-color: rgb(60, 198, 60);
+    color: white;
+    font-weight: 500;
+    width: 70%;
 }
 
-.answer p {
-    margin-bottom: 10px;
 
-}
-
-.answer p span {
-    padding: 10px;
-}
 
 .recommend {
     width: 50%;
@@ -77,7 +83,6 @@
 .number ul {
     display: flex;
     flex-wrap: wrap;
-    background-color: red;
 }
 
 .number ul li {
@@ -113,17 +118,12 @@
 .quiz-detail {
 
     border-bottom: 1px solid #d9534f;
-    padding: 15% 0 50px 0;
+    padding: 10% 0 50px 0;
     display: flex;
     justify-content: space-between;
 }
 
-.quiz-detail:first-child {
-    border-bottom: 1px solid #d9534f;
-    padding: 10% 0;
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .quizz-left {
     flex: 1;
@@ -134,6 +134,7 @@
     width: 20%;
     font-size: 23px;
     font-weight: 500;
+    border-right: 1px groove;
 }
 
 .tempQ {
@@ -250,12 +251,15 @@
         padding: 20% 0;
     }
     
-    .quiz{
-        height: 90vh;
-        overflow: hidden;
-        // background-color: red;
-    }
+    // .quiz{
+    //     height: 90vh;
+    //     overflow: hidden;
+    //     // background-color: red;
+    // }
     .quizz-left p {
         margin-top: 50px;
     }
+}
+.done{
+    background-color: rgb(71, 224, 71) !important;
 }
