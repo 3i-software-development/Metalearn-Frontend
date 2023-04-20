@@ -137,9 +137,11 @@
     .more {
         display: flex;
         align-items: center;
-        :first-child{
+
+        :first-child {
             background-color: transparent !important;
         }
+
         :last-child {
             height: 100%;
             width: 80px;
@@ -212,6 +214,7 @@
 }
 
 #leaderboards .toplist li .thumb {
+    display: flex;
     padding: 20px 20px 19px;
     font-weight: bold;
     color: #000000;
@@ -245,15 +248,18 @@
     text-transform: uppercase;
     text-align: center;
     font-size: 10px;
-   :hover{
-    background: #000;
-   }
+
+    :hover {
+        background: #000;
+    }
 }
+
 #leaderboards .toplist li .thumb .stat b {
     display: block;
     font-size: 20px;
     margin: 0;
 }
+
 #leaderboards .pagination {
     background: rgb(0, 0, 0);
     border-radius: 6px;

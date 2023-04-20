@@ -12,16 +12,16 @@ const cx = classNames.bind(styles);
 export default function Login() {
     const { register, handleSubmit } = useForm();
 
-    const { data, isLoading, isSuccess, isError, error, mutate } = useMutation(UserLogin, {
-        onSuccess: () => {
-            console.log('success')
-        }
-    });
+    const { mutate } = UserLogin();
 
     const onSubmit = (value) => {
         const { username, password } = value
-        mutate({ username, password })
+        const bodyFormData = new FormData();
+        bodyFormData.append('Username', username);
+        bodyFormData.append('Password', password);
+        mutate(bodyFormData)
     }
+
     return (
         <div className={cx("background")}>
 
