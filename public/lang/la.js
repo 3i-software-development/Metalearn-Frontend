@@ -19,7 +19,6 @@ export const la = {
     },
 
     header: {
-        subject: "Subject",
         new: "News",
         document: "Document",
         exam: "Exam",

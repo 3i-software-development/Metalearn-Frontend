@@ -28,34 +28,24 @@ export const GetListDoc = () => {
   });
 };
 
-export const UserLogin = async ({ username, password }) => {
-  const bodyFormData = new FormData();
-  bodyFormData.append("Username", username);
-  bodyFormData.append("Password", password);
-
-  const response = await axios({
-    url: "https://admin.metalearn.vn/MobileLogin/LoginNoCheckOnline",
-    method: "POST",
-    data: bodyFormData,
+export const UserLogin = () => {
+  return useMutation(['login'], async (bodyFormData) => {
+    const response = await axios({
+      url: 'https://admin.metalearn.vn/MobileLogin/LoginNoCheckOnline',
+      method: 'POST',
+      data: bodyFormData
+    });
+    return response
   });
-
-  if (!response.data.Error) {
-    localStorage.setItem("user", username);
-  }
-  return response;
 };
 
-export const GetUser = () => {
-  return useMutation(["getUser"], async () => {
-    const bodyFormData = new FormData();
-    bodyFormData.append("Username", username);
-    bodyFormData.append("Password", password);
-
+export const GetListMyExam = (query) => {
+  return useQuery(['myExam'], async () => {
     const response = await axios({
-      url: "https://admin.metalearn.vn/MobileLogin/LoginNoCheckOnline",
-      method: "POST",
-      data: bodyFormData,
+      url: 'https://admin.metalearn.vn/MobileLogin/GetListLmsTestBody',
+      method: 'POST',
+      data: query
     });
-    console.log(response);
+    return response.data
   });
 };
