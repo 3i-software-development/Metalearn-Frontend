@@ -30,17 +30,16 @@ export default function Login() {
     formState: { errors },
   } = useForm();
   const Router = useRouter();
-  const { data, isLoading, isSuccess, isError, error, mutate } = useMutation(
-    UserLogin,
-    {
-      onSuccess: () => {},
+  const { mutate } = UserLogin();
+
+    const onSubmit = (value) => {
+        const { username, password } = value
+        const bodyFormData = new FormData();
+        bodyFormData.append('Username', username);
+        bodyFormData.append('Password', password);
+        localStorage.setItem('user',username)
+        mutate(bodyFormData)
     }
-  );
-  const onSubmit = (value) => {
-    const { username, password } = value;
-    mutate({ username, password });
-    
-  };
   return (
     <div className={cx("background")}>
       {contextHolder}

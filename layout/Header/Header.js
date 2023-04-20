@@ -14,13 +14,10 @@ import {
   ListItemButton,
   ListItemText,
   Menu,
-  MenuItem,
   Tooltip,
-  Typography,
 } from "@mui/material";
 import useAuth from "@/hooks/useAuth";
-import { GetUser } from "@/pages/api/CallAPI";
-
+import { UserLogin } from "@/pages/api/CallAPI";
 const cx = classNames.bind(styles);
 
 const Header = () => {
@@ -134,12 +131,8 @@ const Header = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
-  // if (typeof window !== 'undefined') {
-  //   // Perform localStorage action
-  //     const userLocal = localStorage.getItem('user').slice(0,1).toUpperCase()
-  //     setUser(userLocal)
-  // }
+  const data = UserLogin()
+  console.log(data)
   return (
     <div className={cx("header")}>
       <AiOutlineMenu
