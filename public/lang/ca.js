@@ -19,7 +19,6 @@ export const ca = {
     },
 
     header: {
-        subject: "Subject",
         new: "News",
         document: "Document",
         exam: "Exam",
@@ -77,6 +76,6 @@ export const ca = {
 
     loadMore: {
         title1: "Load more",
-        title2: "View all",
+        title2: "មើលទាំងអស់។",
     }
 };

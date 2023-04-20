@@ -2,22 +2,46 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import style from "./style.module.scss";
 import Section from "../Section/Section";
-import ExamItem from "./ExamItem";
-import NavbarExam from "./NavbarExam";
 import { ArrayData } from "@/data";
 import useDebounce from "@/hooks/useDebounce";
 import Pagination from "../Pagination/Pagination";
+import { GetListMyExam } from "@/pages/api/CallAPI";
+
 const cx = classNames.bind(style);
+
 const Exam = () => {
+
+  const [query, setQuery] = useState({
+    "testName": "",
+    "userName": "admin",
+    "subjectCode": "",
+    "content": "",
+    "latex": "",
+    "level": "",
+    "ratingMin": -1,
+    "ratingMax": -1,
+    "fromDatePara": "",
+    "toDatePara": "",
+    "createdBy": "",
+    "onlyAssignment": false,
+    "onlyShared": false,
+    "pageLength": 30,
+    "pageNum": 1
+  })
+
   const [arrData, setArrayData] = useState(ArrayData);
   const [valueInputSeacrch, setValueInputSeacrch] = useState();
   const [resultSearch, setResultSearch] = useState(ArrayData);
-  const [valueCheckedSearch, setValueCheckedSearch] = useState(); 
-  console.log(valueCheckedSearch)
+  const [valueCheckedSearch, setValueCheckedSearch] = useState();
+
+  const data = GetListMyExam(query)
+
+  console.log(data)
   useEffect(() => {
-    if (valueInputSeacrch ) {
+    // refetch()
+    if (valueInputSeacrch) {
       const temp = arrData.filter((item) =>
-      item.subject.toLowerCase().includes(valueInputSeacrch)
+        item.subject.toLowerCase().includes(valueInputSeacrch)
       );
       setResultSearch(temp);
     } else {
@@ -69,209 +93,43 @@ const Exam = () => {
           <Pagination />
         </div>
         <ul className={cx("toplist")}>
-          {resultSearch &&
-            resultSearch?.map((item) => {
-              return (
-                <li data-rank="1" className={cx("lilist")} key={item.id}>
-                  <div className={cx("thumb")}>
-                    <span
-                      className={cx("img")}
-                      data-name="BluewaveSwift"
-                    ></span>
-                    <span className={cx("name")}>
-                      <h4>{item.subject}</h4>
-                      <p>{item.munites}</p>
-                    </span>
-                  </div>
-                  <div className={cx("more")}>
-                    {" "}
-                    <span className={cx("stat")}>
-                      <b>
-                        {item.point} / 10
-                        <br />
-                        Point
-                      </b>
-                    </span>
-                    <span className={cx("stat")}>
-                      <p>
-                        <i class="fa-solid fa-book fa-2xl"></i>
-                      </p>
-                    </span>
-                  </div>
-                </li>
-              );
-            })}
-
-          {/* <li data-rank="2" className={cx("lilist")}>
-            <div className={cx("thumb")}>
-              <span className={cx("img")} data-name="BluewaveSwift"></span>
-              <span className={cx("name")}>
-                <h4>Naths</h4>
-                <p>15 munites</p>
-              </span>
-            </div>
-            <div className={cx("more")}>
-              {" "}
-              <span className={cx("stat")}>
-                <b>
-                  0 / 10
-                  <br />
-                  Point
-                </b>
-              </span>
-              <span className={cx("stat")}>
-                <p>
-                  <i class="fa-solid fa-book fa-2xl"></i>
-                </p>
-              </span>
-            </div>
-          </li>
-          <li data-rank="3" className={cx("lilist")}>
-            <div className={cx("thumb")}>
-              <span className={cx("img")} data-name="BluewaveSwift"></span>
-              <span className={cx("name")}>
-                <h4>Naths</h4>
-                <p>15 munites</p>
-              </span>
-            </div>
-            <div className={cx("more")}>
-              {" "}
-              <span className={cx("stat")}>
-                <b>
-                  0 / 10
-                  <br />
-                  Point
-                </b>
-              </span>
-              <span className={cx("stat")}>
-                <p>
-                  <i class="fa-solid fa-book fa-2xl"></i>
-                </p>
-              </span>
-            </div>
-          </li>
-          <li data-rank="4" className={cx("lilist")}>
-            <div className={cx("thumb")}>
-              <span className={cx("img")} data-name="BluewaveSwift"></span>
-              <span className={cx("name")}>
-                <h4>Naths</h4>
-                <p>15 munites</p>
-              </span>
-            </div>
-            <div className={cx("more")}>
-              {" "}
-              <span className={cx("stat")}>
-                <b>
-                  0 / 10
-                  <br />
-                  Point
-                </b>
-              </span>
-              <span className={cx("stat")}>
-                <p>
-                  <i class="fa-solid fa-book fa-2xl"></i>
-                </p>
-              </span>
-            </div>
-          </li>
-          <li data-rank="5" className={cx("lilist")}>
-            <div className={cx("thumb")}>
-              <span className={cx("img")} data-name="BluewaveSwift"></span>
-              <span className={cx("name")}>
-                <h4>Naths</h4>
-                <p>15 munites</p>
-              </span>
-            </div>
-            <div className={cx("more")}>
-              {" "}
-              <span className={cx("stat")}>
-                <b>
-                  0 / 10
-                  <br />
-                  Point
-                </b>
-              </span>
-              <span className={cx("stat")}>
-                <p>
-                  <i class="fa-solid fa-book fa-2xl"></i>
-                </p>
-              </span>
-            </div>
-          </li>
-          <li data-rank="6" className={cx("lilist")}>
-            <div className={cx("thumb")}>
-              <span className={cx("img")} data-name="BluewaveSwift"></span>
-              <span className={cx("name")}>
-                <h4>Naths</h4>
-                <p>15 munites</p>
-              </span>
-            </div>
-            <div className={cx("more")}>
-              {" "}
-              <span className={cx("stat")}>
-                <b>
-                  0 / 10
-                  <br />
-                  Point
-                </b>
-              </span>
-              <span className={cx("stat")}>
-                <p>
-                  <i class="fa-solid fa-book fa-2xl"></i>
-                </p>
-              </span>
-            </div>
-          </li>
-          <li data-rank="7" className={cx("lilist")}>
-            <div className={cx("thumb")}>
-              <span className={cx("img")} data-name="BluewaveSwift"></span>
-              <span className={cx("name")}>
-                <h4>Naths</h4>
-                <p>15 munites</p>
-              </span>
-            </div>
-            <div className={cx("more")}>
-              {" "}
-              <span className={cx("stat")}>
-                <b>
-                  0 / 10
-                  <br />
-                  Point
-                </b>
-              </span>
-              <span className={cx("stat")}>
-                <p>
-                  <i class="fa-solid fa-book fa-2xl"></i>
-                </p>
-              </span>
-            </div>
-          </li>
-          <li data-rank="8" className={cx("lilist")}>
-            <div className={cx("thumb")}>
-              <span className={cx("img")} data-name="BluewaveSwift"></span>
-              <span className={cx("name")}>
-                <h4>Naths</h4>
-                <p>15 munites</p>
-              </span>
-            </div>
-            <div className={cx("more")}>
-              {" "}
-              <span className={cx("stat")}>
-                <b>
-                  0 / 10
-                  <br />
-                  Point
-                </b>
-              </span>
-              <span className={cx("stat")}>
-                <p>
-                  <i class="fa-solid fa-book fa-2xl"></i>
-                </p>
-              </span>
-            </div>
-          </li> */}
+          {data?.data?.query?.map((item) => {
+            return (
+              <li data-rank="1" className={cx("lilist")} key={item.id}>
+                <div className={cx("thumb")}>
+                  <span
+                    className={cx("img")}
+                    data-name="BluewaveSwift"
+                  ></span>
+                  <span className={cx("name")}>
+                    <h4>{item.PracticeTestTitle}</h4>
+                    <p>{item.Duration} {item.Unit}</p>
+                    <p>{item.Rating}</p>
+                    <p>Tác giả: {item.CreatedBy}</p>
+                    <p>Giá: {item.Price}</p>
+                    <p>Môn học: {item.ExamSubject}</p>
+                    <p>{item.QuizCount}</p>
+                    <p></p>
+                  </span>
+                </div>
+                <div className={cx("more")}>
+                  <span className={cx("stat")}>
+                    <b>
+                      {item.point} / 10
+                      <br />
+                      Point
+                    </b>
+                  </span>
+                  <span className={cx("stat")}>
+                    <p>
+                      <i class="fa-solid fa-book fa-2xl"></i>
+                    </p>
+                  </span>
+                </div>
+              </li>
+            );
+          })}
         </ul>
-        {/* <Pagination/> */}
       </div>
     </Section>
   );
