@@ -76,23 +76,23 @@ const Header = () => {
       label: "Ngoại ngữ",
       children: [
         {
-          key: "6-1",
+          key: "5-1",
           label: "tiếng Anh",
         },
         {
-          key: "6-2",
+          key: "5-2",
           label: "tiếng Pháp",
         },
         {
-          key: "6-3",
+          key: "5-3",
           label: "tiếng Đức",
         },
         {
-          key: "6-3",
+          key: "5-5",
           label: "tiếng Nhật",
         },
         {
-          key: "6-3",
+          key: "5-4",
           label: "tiếng Hàn",
         },
       ],
@@ -134,14 +134,14 @@ const Header = () => {
             items,
           }}
         >
-          <Space className={cx("head-link")}>{trans.header.subject}</Space>
+          <Space className={cx("head-link")}>{trans.subject.subject}</Space>
         </Dropdown>
       </Link>
 
       <div className={cx("search-container")}>
         <input
           type="text"
-          placeholder={trans.header.search}
+          placeholder={trans.search.search}
           className={cx("search-input")}
         />
         <BsSearch />
@@ -151,7 +151,7 @@ const Header = () => {
         {trans.header.new}
       </Link>
       <Link href="/my-class" className={cx("head-link")}>
-        {trans.header.class}
+        {trans.class.class}
       </Link>
       <Link href="/documents" className={cx("head-link")}>
         {trans.header.document}
@@ -166,7 +166,7 @@ const Header = () => {
       </div>
 
       <div className={cx("user")}>
-        <Link href="/account/login" className={cx("login-btn")}>
+        <Link href="/auth/login" className={cx("login-btn")}>
           {trans.header.login}
         </Link>
         <Link href="/auth/signup" className={cx("signup-btn")}>
@@ -186,28 +186,28 @@ const MenuMobile = () => {
   return (
     <div className={cx("menu-mobile")}>
       <div className={cx("mb-user")}>
-        <Link href="/account/login" className={cx("mb-login")}>
-          Log in
+        <Link href="/auth/login" className={cx("mb-login")}>
+          {trans.header.login}
         </Link>
         <Link href="/auth/signup" className={cx("mb-signup")}>
-          Sign up
+          {trans.header.signup}
         </Link>
       </div>
       <div className={cx("mb-list")}>
         <Link href="/subjects" className={cx("mb-link")}>
-          Môn học
+          {trans.subject.subject}
         </Link>
         <Link href="/news" className={cx("mb-link")}>
-          Tin tức
+          {trans.header.new}
         </Link>
-        <Link href="/news" className={cx("mb-link")}>
-          Lớp học trực tuyến
+        <Link href="/my-class" className={cx("mb-link")}>
+          {trans.class.class}
         </Link>
         <Link href="/documents" className={cx("mb-link")}>
-          Tài liệu
+          {trans.header.document}
         </Link>
         <Link href="/exam" className={cx("mb-link")}>
-          Đề thi
+          {trans.header.exam}
         </Link>
       </div>
     </div>
