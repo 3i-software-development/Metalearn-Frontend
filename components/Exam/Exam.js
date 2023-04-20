@@ -13,17 +13,23 @@ const Exam = () => {
   const [valueInputSeacrch, setValueInputSeacrch] = useState();
   const [resultSearch, setResultSearch] = useState(ArrayData);
   const [valueCheckedSearch, setValueCheckedSearch] = useState(); 
+  const debounced = useDebounce(valueInputSeacrch,500)
   console.log(valueCheckedSearch)
   useEffect(() => {
-    if (valueInputSeacrch ) {
+    console.log(debounced)
+    if (debounced ) {
       const temp = arrData.filter((item) =>
-      item.subject.toLowerCase().includes(valueInputSeacrch)
+      item.subject.toLowerCase().includes(debounced)
       );
       setResultSearch(temp);
     } else {
       setResultSearch(arrData);
     }
-  }, [valueInputSeacrch]);
+    if(valueCheckedSearch){
+      const valueChecked = arrData.filter((item)=>item.subject.toLowerCase().includes(valueCheckedSearch))
+      console.log(valueChecked)
+    }
+  }, [debounced]);
 
   return (
     <Section>

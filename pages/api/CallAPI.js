@@ -30,13 +30,32 @@ export const GetListDoc = () => {
 
 export const UserLogin = async ({ username, password }) => {
   const bodyFormData = new FormData();
-  bodyFormData.append('Username', username);
-  bodyFormData.append('Password', password);
+  bodyFormData.append("Username", username);
+  bodyFormData.append("Password", password);
 
   const response = await axios({
-    url: 'https://admin.metalearn.vn/MobileLogin/LoginNoCheckOnline',
-    method: 'POST',
-    data: bodyFormData
+    url: "https://admin.metalearn.vn/MobileLogin/LoginNoCheckOnline",
+    method: "POST",
+    data: bodyFormData,
   });
-  return response
+
+  if (!response.data.Error) {
+    localStorage.setItem("user", username);
+  }
+  return response;
+};
+
+export const GetUser = () => {
+  return useMutation(["getUser"], async () => {
+    const bodyFormData = new FormData();
+    bodyFormData.append("Username", username);
+    bodyFormData.append("Password", password);
+
+    const response = await axios({
+      url: "https://admin.metalearn.vn/MobileLogin/LoginNoCheckOnline",
+      method: "POST",
+      data: bodyFormData,
+    });
+    console.log(response);
+  });
 };

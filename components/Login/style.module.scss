@@ -8,23 +8,24 @@
     background-color: white;
     color: black;
     padding: 10% 5%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     border-radius: 20px;
     position: relative;
 }
 .qr-code{
-    width: 30%;
+    width: 100%;
     align-items: center;
     display: flex;
-    justify-content: right;
+    justify-content: center;
 }
 .qr-code img{
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
 }
 .mem-log{
     // background-color: red;
-    width: 70%;
+    width: 100%;
     text-align: center;
 }
 .mem-log input{
@@ -32,16 +33,19 @@
     border: none;
     background-color: transparent;
 }
+.mem-log form p{
+    color: red;
+}
 .mem-log form div{
     border: 1px solid;
-    width: 40%;
-    margin-left:30%;
+    width: 70%;
     margin-bottom: 10px;
     display: flex;
     padding: 10px;
     border-radius: 10px;
     position: relative;    
 }
+
 .mem-log form div i{
     width: 33.33%;
 
@@ -53,6 +57,10 @@
 .fa-eye {
     position: absolute;
     
+}
+.logins{
+    border: none !important;
+    width: 100%;
 }
 .remember{
     border: unset !important;
@@ -66,32 +74,29 @@
 }
 .mem-log form button{
     background-color: green;
-    width: 30%;
-    // margin-left: 5%;
-    padding: 5px 0;
+    width: 100%;
+    border:none;
+    padding: 5px 10px;
     border-radius: 10px;
     color: white;
 }
 .forgot-pw{
     display: flex;
-    width: 40%;
-    margin-left: 30%;
+    width: 70%;
     justify-content: space-between;
     margin-top: 10px;
     text-decoration: underline;
 }
 .option-login{
-    width: 45%;
-    margin-left: 26%;
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
 }
 .option-login a{
     width: 100%;
-    margin-left: 5%;
     border-radius: 10px;
     margin-top: 10px;
-    text-align: left;
+    text-align: center;
     padding: 6px 12px;
     color: white;
     font-size: 14px;
@@ -109,7 +114,10 @@
 .option-login a:last-child{
     background-color: red;
 }
-@media screen and (max-width:800px) {
+.messageErrors p{
+color: red;
+}
+@media screen and (max-width:930px) {
     .login {
         width: 100%;
         padding: 10% 2%;
