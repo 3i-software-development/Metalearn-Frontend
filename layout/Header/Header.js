@@ -134,7 +134,6 @@ const Header = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  GetUser();
 
   // if (typeof window !== 'undefined') {
   //   // Perform localStorage action
