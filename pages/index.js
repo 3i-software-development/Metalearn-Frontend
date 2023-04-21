@@ -37,24 +37,24 @@ export default function Home() {
         />
       </Head>
       <main>
-        <Section>
-          <Banner
-            img={Bnimg}
-            title={trans.banner.title}
-            text={trans.banner.text}
-          />
-          <ListCourse />
-        </Section>
-        <Intro1 />
-        <Section>
-          <TopCategories />
-          <Intro2 data={ListIntro[0]} />
-        </Section>
-        <Team />
-        <Section>
-          <Intro2 data={ListIntro[1]} rev />
-          <Intro2 data={ListIntro[2]} />
-        </Section>
+          <Section>
+            <Banner
+              img={Bnimg}
+              title={trans.banner.title}
+              text={trans.banner.text}
+            />
+            <ListCourse />
+          </Section>
+          <Intro1 />
+          <Section>
+            <TopCategories />
+            <Intro2 data={ListIntro[0]} />
+          </Section>
+          <Team />
+          <Section>
+            <Intro2 data={ListIntro[1]} rev />
+            <Intro2 data={ListIntro[2]} />
+          </Section>
       </main>
     </>
   );

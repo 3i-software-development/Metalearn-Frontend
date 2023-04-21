@@ -5,16 +5,27 @@ import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Dropdown, Space } from "antd";
+import { Avatar, Dropdown, Space } from "antd";
 import ModalLang from "@/components/ModalLang/ModalLang";
 import useTrans from "@/hooks/useTrans";
+import {
+  Box,
+  IconButton,
+  ListItemButton,
+  ListItemText,
+  Menu,
+  Tooltip,
+} from "@mui/material";
+import useAuth from "@/hooks/useAuth";
+import { useLoginMutation } from "@/lib/Midleware/LoginQuery";
+import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
   const [showMobile, setShowmobile] = useState(false);
-
   const trans = useTrans();
+  const state = useAuth();
 
   const items = [
     {
@@ -117,6 +128,16 @@ const Header = () => {
     },
   ];
 
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const user = useSelector((state) => state.login)
+  console.log(user?.currentUser)
   return (
     <div className={cx("header")}>
       <AiOutlineMenu
@@ -127,7 +148,6 @@ const Header = () => {
       <Link href="/" className={cx("logo-container")}>
         Meta<span>Learn</span>
       </Link>
-
       <Link href="/subjects" className={cx("head-link")}>
         <Dropdown
           menu={{
@@ -164,18 +184,89 @@ const Header = () => {
         <BsSearch className={cx("icon-search-mobile")} />
         <TiShoppingCart className={cx("icon")} />
       </div>
+      {state && (
+        <Box sx={{ flexGrow: 0 }}>
+          <Tooltip title="Open settings">
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar alt="avatar" src={user?.currentUser?.Object?.Picture} />
+            </IconButton>
+          </Tooltip>
+          <Menu
+            sx={{ mt: "45px" }}
+            id="menu-appbar"
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+          >
+            {/* <MenuItem onClick={handleCloseUserMenu}> */}
+            <ListItemButton component="a" className={cx("listSettingss")}>
+              <div className={cx("listSettings")}>
+                <div>
+                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                </div>
+                <div>
+                  <ListItemText primary="Spam" />
+                </div>
+              </div>
+            </ListItemButton>
+            <ListItemButton component="a" className={cx("listSettingss")}>
+              <div className={cx("listSettings")}>
+                <div>
+                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                </div>
+                <div>
+                  <ListItemText primary="Spam" />
+                </div>
+              </div>
+            </ListItemButton>
 
-      <div className={cx("user")}>
-        <Link href="/auth/login" className={cx("login-btn")}>
-          {trans.header.login}
-        </Link>
-        <Link href="/auth/signup" className={cx("signup-btn")}>
-          {trans.header.signup}
-        </Link>
-        <div className={cx("change-language")}>
-          <ModalLang />
+            <ListItemButton component="a" className={cx("listSettingss")}>
+              <div className={cx("listSettings")}>
+                <div>
+                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                </div>
+                <div>
+                  <ListItemText primary="Spam" />
+                </div>
+              </div>
+            </ListItemButton>
+            <ListItemButton component="a" className={cx("listSettingss")}>
+              <div className={cx("listSettings")}>
+                <div>
+                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                </div>
+                <div>
+                  <ListItemText primary="Spam" />
+                </div>
+              </div>
+            </ListItemButton>
+            {/* </MenuItem> */}
+          </Menu>
+        </Box>
+      )}
+
+      {!state && (
+        <div className={cx("user")}>
+          <Link href="/auth/login" className={cx("login-btn")}>
+            {trans.header.login}
+          </Link>
+          <Link href="/auth/signup" className={cx("signup-btn")}>
+            {trans.header.signup}
+          </Link>
+          <div className={cx("change-language")}>
+            <ModalLang />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

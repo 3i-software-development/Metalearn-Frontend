@@ -6,6 +6,7 @@ import useDebounce from "@/hooks/useDebounce";
 import Pagination from "../Pagination/Pagination";
 import { GetListMyExam } from "@/pages/api/CallAPI";
 import NavbarExam from "./NavbarExam";
+import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 
 const cx = classNames.bind(style);
 
@@ -29,20 +30,21 @@ const Exam = () => {
     "pageNum": 1
   })
 
-  const data = GetListMyExam(query)
+  const { data, isFetching, isLoading } = useGetListExamQuery(query)
+  // const data = GetListMyExam(query)
 
   const handleQuery = (newQuery) => {
     setQuery({ ...newQuery })
   }
 
-  console.log(data.data)
+  console.log(data)
 
   return (
     <Section>
       <div id={cx("leaderboards")}>
-        <NavbarExam query={query} handleQuery={handleQuery} totalAssigment={data.data?.countAssignment} totalShared={data.data?.countSharing} />
+        <NavbarExam query={query} handleQuery={handleQuery} />
         <div className={cx("toplist")}>
-          {data?.data?.query?.map((item) => {
+          {data?.query?.map((item) => {
             return (
               <li data-rank="1" className={cx("lilist")} key={item.id}>
                 <div className={cx("thumb")}>
