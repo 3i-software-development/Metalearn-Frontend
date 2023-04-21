@@ -36,7 +36,8 @@ export default function Login() {
 
     if (data && !data?.Error) {
         if (typeof window !== 'undefined') {
-            localStorage.setItem('user', data?.Object);
+            localStorage.setItem('user', data?.Object.UserName);
+            console.log(data)
             router.push('/')
         }
 

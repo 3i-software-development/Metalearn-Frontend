@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import styles from "./style.module.scss";
 import classNames from "classnames/bind";
+import { useGetListQuizQuery } from "@/lib/Midleware/QuizQuery";
 const cx = classNames.bind(styles);
 
 export default function AddForm() {
@@ -90,7 +91,6 @@ export default function AddForm() {
     }));
   }
   const [selectedAnswers, setSelectedAnswers] = useState([]);
-  console.log(selectedAnswers);
   const [question, setQuestion] = useState(questions);
   const handleNext = () => {
     setTempQuestion(tempQuestion + 1);
@@ -133,7 +133,31 @@ export default function AddForm() {
       }
     }
   };
-  console.log(checkAnswer);
+  const [state, setState] = useState({
+    subjectCode: "HH-12",
+    lectureCode: "",
+    content: "",
+    latex: "",
+    level: "",
+    ratingMin: -1,
+    ratingMax: -1,
+    fromDatePara: "",
+    toDatePara: "",
+    createdBy: "",
+    userName: "admin",
+    isTutor888: false,
+    groupBySubject: false,
+    onlyAssignment: false,
+    onlyShared: true,
+    pageLength: 30,
+    pageNum: 1,
+  });
+  const { data } = useGetListQuizQuery(state);
+
+  function htmlDecode(input) {
+    var doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.innerText;
+  }
   return (
     <div className={cx("background")}>
       <div className={cx("tittle")}>
@@ -142,54 +166,31 @@ export default function AddForm() {
       <div className={cx("containers")}>
         <div className={cx("quiz")}>
           <div className={cx("list-questions")}>
-            {question.map((value) => (
+            {data?.Object?.Data.map((value, index) => (
               <>
-                <div id={value.id} className={cx("quiz-detail")}>
-                  <div className={cx("numOf")}>
+                <div id={index+1} className={cx("quiz-detail")} key={index}>
+                <div className={cx("numOf")}>
                     <p>
-                      <span>Question</span>. {value.id}
+                      <span>Question</span>. {index+1}
                     </p>
                   </div>
                   <div className={cx("quizz-left")}>
-                    <h3>{value.text}</h3>
-                    {value.answers.map((answer) => {
+                    <h3>{htmlDecode(`${value.Content}`)}</h3>
+
+                    {JSON.parse(value.JsonData).map((item, index) => {
                       return (
-                        <p
-                          key={answer.id}
-                          className={
-                            selectedAnswers[value.id] === answer.id
-                              ? cx("isActive")
-                              : ""
-                          }
-                          data-question-id={value.id}
-                          data-answer-id={answer.id}
-                          onClick={handleAnswerClick}
-                        >
-                          {answer.text}
-                        </p>
+                        <>
+                          <input type="radio" /> {item.Answer}
+                        </>
                       );
                     })}
-                    {checkAnswer.includes(value.id) &&
-                    Object.keys(selectedAnswers).includes(
-                      value.id.toString()
-                    ) ? (
-                      <> True </>
-                    ) : Object.keys(selectedAnswers).includes(
-                        value.id.toString()
-                      ) ? (
-                      <>False</>
-                    ) : (
-                      <></>
-                    )}
                     <div className={cx("recommend")}>
                       <a>
-                        <i class="fa-brands fa-react fa-beat"></i>
+                        <i className="fa-brands fa-react fa-beat"></i>
                       </a>
-                      <button onClick={() => handleTest(value.id)}>
-                        Kiểm tra
-                      </button>
+                      <button>Kiểm tra</button>
                       <a>
-                        <i class="fa-solid fa-flower"></i>GPT
+                        <i className="fa-solid fa-flower"></i>GPT
                       </a>
                       <button>OK</button>
                     </div>
@@ -204,36 +205,41 @@ export default function AddForm() {
           <h3>Number of question</h3>
           <div>
             <ul>
-              {numberQuestions.map((value) => {
-                if (value === tempQuestion) {
-                  return (
-                    <li className={cx("tempQ")}>
-                      <a href={`#${value}`} onClick={() => handleSelect(value)}>
-                        {value}
-                      </a>
-                    </li>
-                  );
-                } else {
-                  if (Object.keys(selectedAnswers).includes(value.toString())) {
-                    return (
-                      <li className={cx("done")}>
-                        <a
-                          href={`#${value}`}
-                          onClick={() => handleSelect(value)}
-                        >
-                          {value}
-                        </a>
-                      </li>
-                    );
-                  }
-                  return (
-                    <li>
-                      <a href={`#${value}`} onClick={() => handleSelect(value)}>
-                        {value}
-                      </a>
-                    </li>
-                  );
-                }
+              {data?.Object?.Data.map((value, index) => {
+                // if (value === tempQuestion) {
+                //   return (
+                //     <li className={cx("tempQ")} key={index}>
+                //       <a href={`#${value}`} onClick={() => handleSelect(value)}>
+                //         {value}
+                //       </a>
+                //     </li>
+                //   );
+                // } else {
+                //   if (Object.keys(selectedAnswers).includes(value.toString())) {
+                //     return (
+                //       <li className={cx("done")}  key={index}>
+                //         <a
+                //           href={`#${value}`}
+                //           onClick={() => handleSelect(value)}
+                //         >
+                //           {value}
+                //         </a>
+                //       </li>
+                //     );
+                //   }
+                //   return (
+                //     <li  key={index}>
+                //       <a href={`#${value}`} onClick={() => handleSelect(value)}>
+                //         {value}
+                //       </a>
+                //     </li>
+                //   );
+                // }
+                return (
+                  <li key={index}>
+                    <a href={`#${index+1}`} onClick={() => handleSelect(index)}>{index + 1}</a>
+                  </li>
+                );
               })}
             </ul>
           </div>
@@ -245,9 +251,9 @@ export default function AddForm() {
           </div>
         </div>
       </div>
-      <div id="open-modal" class={cx("modal-window")}>
+      <div id="open-modal" className={cx("modal-window")}>
         <div>
-          <a href="#" title="Close" class={cx("modal-close")}>
+          <a href="#" title="Close" className={cx("modal-close")}>
             Close
           </a>
           <h1>You really want to finish ?</h1>
