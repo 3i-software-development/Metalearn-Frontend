@@ -1,21 +1,38 @@
 import React from "react";
 import classNames from "classnames/bind";
 import style from "../Exam/style.module.scss";
-const cx = classNames.bind(style);
-const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
-  const pageCount = items / pageSize;
-  if (Math.ceil(pageCount) === 1) return null;
-  //   const pages = _.range(1, pageCount + 1);
+import { Pagination as PaginationAntd, Select } from 'antd'
 
+const cx = classNames.bind(style);
+
+const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
   return (
     <div className={cx("pagination")}>
-      <div >
-        <button disabled className={cx("prev")}></button>
-        <span onClick={() => onPageChange(page)}>
-          Page <b>1</b> of 300
-        </span>
-        <button className={cx("next")}></button>
-      </div>
+      <PaginationAntd size="small" simple total={5000} showSizeChanger />
+      <Select
+        defaultValue="10/Page"
+        style={{
+          width: 110,
+        }}
+        options={[
+          {
+            value: '10',
+            label: '10/Page',
+          },
+          {
+            value: '20',
+            label: '20/Page',
+          },
+          {
+            value: '50',
+            label: '50/Page',
+          },
+          {
+            value: '100',
+            label: '100/Page',
+          },
+        ]}
+      />
     </div>
   );
 };

@@ -3,8 +3,6 @@ import classNames from "classnames/bind";
 import style from "./style.module.scss";
 import Section from "../Section/Section";
 import useDebounce from "@/hooks/useDebounce";
-import Pagination from "../Pagination/Pagination";
-import { GetListMyExam } from "@/pages/api/CallAPI";
 import NavbarExam from "./NavbarExam";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 
@@ -31,18 +29,15 @@ const Exam = () => {
   })
 
   const { data, isFetching, isLoading } = useGetListExamQuery(query)
-  // const data = GetListMyExam(query)
 
   const handleQuery = (newQuery) => {
     setQuery({ ...newQuery })
   }
 
-  console.log(data)
-
   return (
     <Section>
       <div id={cx("leaderboards")}>
-        <NavbarExam query={query} handleQuery={handleQuery} />
+        <NavbarExam query={query} handleQuery={handleQuery} totalAssigment={data?.countAssignment} totalShared={data?.countSharing} />
         <div className={cx("toplist")}>
           {data?.query?.map((item) => {
             return (

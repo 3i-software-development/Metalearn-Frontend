@@ -91,8 +91,17 @@
 
 .tabTitles {
     margin-bottom: 10px;
-    // display: inline;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // justify-content: space-between;
+    align-items: center;
+
+    .bedwars {
+        flex: 1
+    }
 }
+
 
 .content-sort-container {
     margin-bottom: 10px;
@@ -128,7 +137,6 @@
 #leaderboards .options .sort .tabTitles>.active {
     color: rgb(0, 0, 0);
     background: white;
-    pointer-events: none;
     cursor: default;
     box-shadow: 0 5px #000000;
 }
@@ -280,76 +288,17 @@
 }
 
 #leaderboards .pagination {
-    background: rgb(0, 0, 0);
+    background: white;
     border-radius: 6px;
     margin-top: 14px;
     padding: 20px;
-    box-shadow: 0 4px rgb(238, 238, 238);
-    color: rgb(255, 255, 255);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: black;
     height: 72px;
     box-sizing: border-box;
     position: relative;
-}
-
-#leaderboards .pagination button {
-    border-top-left-radius: 3px;
-    border-bottom-left-raidus: 3px;
-    background: transparent;
-    border: none;
-    outline: none;
-    text-transform: uppercase;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    line-height: 30px;
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 72px;
-    height: 72px;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.25s;
-}
-
-#leaderboards .pagination .next {
-    border-radius: 0;
-    border-top-right-radius: 3px;
-    border-bottom-right-raidus: 3px;
-    left: auto;
-    right: 0;
-}
-
-#leaderboards .pagination button:hover {
-    background: rgba(0, 0, 0, 0.05);
-    box-shadow: 0 4px rgba(0, 0, 0, 0.05);
-}
-
-#leaderboards .pagination button:before {
-    font-family: FontAwesome;
-}
-
-#leaderboards .pagination .prev:before {
-    content: "\f104";
-}
-
-#leaderboards .pagination .next:before {
-    content: "\f105";
-}
-
-#leaderboards .pagination button[disabled] {
-    color: #ffffff;
-    cursor: not-allowed;
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-#leaderboards .pagination span {
-    text-align: center;
-    display: block;
-    text-transform: uppercase;
-    line-height: 36px;
-    color: rgb(255, 255, 255);
-    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e3e3e3
 }

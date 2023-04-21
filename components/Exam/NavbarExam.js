@@ -2,36 +2,89 @@ import React from "react";
 import classNames from "classnames/bind";
 import style from "./style.module.scss";
 import Pagination from "../Pagination/Pagination";
-import { DatePicker, Select } from "antd";
+import { DatePicker, Input, Select, Slider } from "antd";
+import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 
 const cx = classNames.bind(style);
 
-
-const options = [
-  {
-    value: "HH-12",
-    label: "Hóa Học 12",
-  },
-  {
-    value: "Ngày bắt đầu",
-    label: "Ngày bắt đầu",
-  },
-  {
-    value: "Tên giáo viên",
-    label: "Tên giáo viên",
-  },
-];
-
-const dateFormat = "DD-MM-YYYY";
+const dateFormat = "DD/MM/YYYY";
 
 const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
+
+  const marks = {
+    0: '0',
+    20: '1',
+    40: '2',
+    60: '3',
+    80: '4',
+    100: {
+      style: {
+        color: '#f50',
+      },
+      label: <strong>5</strong>,
+    },
+  };
+
+  const options = [
+    {
+      value: "admin",
+      label: "admin",
+    },
+  ];
+
+  const optionsLevel = [
+    {
+      value: "Tất cả",
+      label: "Tất cả",
+    },
+    {
+      value: "Dễ",
+      label: "Dễ",
+    },
+    {
+      value: "Trung bình",
+      label: "Trung bình",
+    },
+    {
+      value: "Khó",
+      label: "Khó",
+    },
+  ];
+
+  const { data, isFetching, isLoading } = useGetListSubjectQuery()
+
+  const optionsSubject = [{
+    value: "",
+    label: "Tất cả"
+  }]
+
+  data?.map((e) => {
+    optionsSubject.push({
+      value: e.Code,
+      label: e.Name
+    })
+  })
 
   const handleChangeSearch = (e) => {
     handleQuery({ ...query, content: e.target.value })
   }
 
+  const handleChangeSubject = (e) => {
+    handleQuery({ ...query, subjectCode: e })
+  }
+
   const handleChangeType = (type) => {
     type === 'assigment' ? handleQuery({ ...query, onlyAssignment: true, onlyShared: false }) : handleQuery({ ...query, onlyAssignment: false, onlyShared: true })
+  }
+
+  const handleChangeStartDate = (e) => {
+    const date = e.format(dateFormat);
+    handleQuery({ ...query, fromDatePara: date })
+  }
+
+  const handleChangeEndDate = (e) => {
+    const date = e.format(dateFormat);
+    handleQuery({ ...query, toDatePara: date })
   }
 
   return (
@@ -47,21 +100,29 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
         <h2>Filter Exam</h2>
         <div className={cx("tabTitles")}>
           {query.onlyAssignment ?
-            <span id={cx("bedwars")} className={cx("active")}>
-              Được giao [{totalAssigment}]
+            <span className={cx("bedwars", "active")}>
+              Được giao
+              <p>
+                [ {totalAssigment} ]
+              </p>
             </span>
             :
-            <span id={cx("bedwars")} onClick={() => handleChangeType('assigment')}>
-              Được giao [{totalAssigment}]
+            <span className={cx("bedwars")} onClick={() => handleChangeType('assigment')}>
+              Được giao
+              <p>
+                [ {totalAssigment} ]
+              </p>
             </span>
           }
           {query.onlyShared ?
-            <span id={cx("ffa")} className={cx("active")}>
-              Tự luyện [{totalShared}]
+            <span className={cx("bedwars", "active")}>
+              Tự luyện
+              <p>[ {totalShared} ]</p>
             </span>
             :
-            <span id={cx("ffa")} onClick={() => handleChangeType('share')}>
-              Tự luyện [{totalShared}]
+            <span id={cx("bedwars")} onClick={() => handleChangeType('share')}>
+              Tự luyện
+              <p>[ {totalShared} ]</p>
             </span>
           }
         </div>
@@ -69,28 +130,28 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
           <p>Môn học</p>
           <Select
             className={cx("select-container")}
-            defaultValue="Tên lớp học"
-            options={options}
+            defaultValue={query.subjectCode}
+            options={optionsSubject}
+            onChange={(e) => handleChangeSubject(e)}
           />
         </div>
         <div className={cx("content-sort-container")}>
           <p>Nội dung</p>
-          <Select
+          <Input
             className={cx("select-container")}
-            defaultValue="Tên lớp học"
-            options={options}
+            placeholder="Nội dung"
           />
         </div>
         <div className={cx("content-sort-container")}>
           <p>Người tạo</p>
           <Select
             className={cx("select-container")}
-            defaultValue="Tên lớp học"
+            defaultValue="admin"
             options={options}
           />
         </div>
 
-        <div className={cx("content-sort-container-timeStart")}>
+        <div className={cx("content-sort-container")}>
           <p>Thời gian</p>
           <div className={cx("content-timestart")}>
             <div>
@@ -98,6 +159,7 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
               <DatePicker
                 format={dateFormat}
                 className={cx("select-container")}
+                onChange={(e) => handleChangeStartDate(e)}
               // placeholder={trans.time.startDate}
               />
             </div>
@@ -106,25 +168,24 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
               <DatePicker
                 format={dateFormat}
                 className={cx("select-container")}
+                onChange={(e) => handleChangeEndDate(e)}
               // placeholder={trans.time.endDate}
               />
             </div>
           </div>
         </div>
+
         <div className={cx("content-sort-container")}>
           <p>Đánh giá </p>
-          <Select
-            className={cx("select-container")}
-            defaultValue="Tên lớp học"
-            options={options}
-          />
+          <Slider range marks={marks} step={20} defaultValue={[0, 100]} />
         </div>
+
         <div className={cx("content-sort-container")}>
           <p>Độ khó</p>
           <Select
             className={cx("select-container")}
-            defaultValue="Tên lớp học"
-            options={options}
+            defaultValue="Tất cả"
+            options={optionsLevel}
           />
         </div>
       </div>
