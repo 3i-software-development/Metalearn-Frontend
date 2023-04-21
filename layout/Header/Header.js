@@ -136,8 +136,7 @@ const Header = () => {
     setAnchorElUser(null);
   };
 
-  const user = useSelector((state) => state.login)
-  console.log(user?.currentUser)
+  const user = useSelector((state) => state.login);
   return (
     <div className={cx("header")}>
       <AiOutlineMenu
@@ -187,8 +186,11 @@ const Header = () => {
       {state && (
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="avatar" src={user?.currentUser?.Object?.Picture} />
+            <IconButton onClick={handleOpenUserMenu} sx={{ padding: "10px" }}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png "
+                style={{ width: "20px", height: "20px" }}
+              />
             </IconButton>
           </Tooltip>
           <Menu
