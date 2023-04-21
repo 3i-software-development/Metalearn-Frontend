@@ -33,10 +33,7 @@ const Exam = () => {
   const [valueInputSeacrch, setValueInputSeacrch] = useState();
   const [resultSearch, setResultSearch] = useState(ArrayData);
   const [valueCheckedSearch, setValueCheckedSearch] = useState();
-
   const data = GetListMyExam(query)
-
-  console.log(data)
   useEffect(() => {
     // refetch()
     if (valueInputSeacrch) {
@@ -46,6 +43,9 @@ const Exam = () => {
       setResultSearch(temp);
     } else {
       setResultSearch(arrData);
+    }
+    if(valueCheckedSearch){
+      const valueChecked = arrData.filter((item)=>item.subject.toLowerCase().includes(valueCheckedSearch))
     }
   }, [valueInputSeacrch]);
 
