@@ -1,101 +1,135 @@
 import React from "react";
 import classNames from "classnames/bind";
 import style from "./style.module.scss";
+import Pagination from "../Pagination/Pagination";
+import { DatePicker, Select } from "antd";
 
 const cx = classNames.bind(style);
-const NavbarExam = () => {
+
+
+const options = [
+  {
+    value: "HH-12",
+    label: "Hóa Học 12",
+  },
+  {
+    value: "Ngày bắt đầu",
+    label: "Ngày bắt đầu",
+  },
+  {
+    value: "Tên giáo viên",
+    label: "Tên giáo viên",
+  },
+];
+
+const dateFormat = "DD-MM-YYYY";
+
+const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
+
+  const handleChangeSearch = (e) => {
+    handleQuery({ ...query, content: e.target.value })
+  }
+
+  const handleChangeType = (type) => {
+    type === 'assigment' ? handleQuery({ ...query, onlyAssignment: true, onlyShared: false }) : handleQuery({ ...query, onlyAssignment: false, onlyShared: true })
+  }
+
   return (
     <div className={cx("options")}>
       <input
         type="text"
         className={cx("search")}
         placeholder="Search for exam..."
+        onChange={(e) => handleChangeSearch(e)}
       />
       <i></i>
       <div className={cx("sort")}>
-        <h2>Sort By Exam</h2>
+        <h2>Filter Exam</h2>
         <div className={cx("tabTitles")}>
-          <span id={cx("bedwars")} className={cx("active")}>
-            Exam
-          </span>
-          <span id={cx("ffa")}>Free-For-All</span>
+          {query.onlyAssignment ?
+            <span id={cx("bedwars")} className={cx("active")}>
+              Được giao [{totalAssigment}]
+            </span>
+            :
+            <span id={cx("bedwars")} onClick={() => handleChangeType('assigment')}>
+              Được giao [{totalAssigment}]
+            </span>
+          }
+          {query.onlyShared ?
+            <span id={cx("ffa")} className={cx("active")}>
+              Tự luyện [{totalShared}]
+            </span>
+            :
+            <span id={cx("ffa")} onClick={() => handleChangeType('share')}>
+              Tự luyện [{totalShared}]
+            </span>
+          }
         </div>
-        <form className={cx("tabContents")}>
-          <li className={cx("tab bedwars active")}>
+        <div className={cx("content-sort-container")}>
+          <p>Môn học</p>
+          <Select
+            className={cx("select-container")}
+            defaultValue="Tên lớp học"
+            options={options}
+          />
+        </div>
+        <div className={cx("content-sort-container")}>
+          <p>Nội dung</p>
+          <Select
+            className={cx("select-container")}
+            defaultValue="Tên lớp học"
+            options={options}
+          />
+        </div>
+        <div className={cx("content-sort-container")}>
+          <p>Người tạo</p>
+          <Select
+            className={cx("select-container")}
+            defaultValue="Tên lớp học"
+            options={options}
+          />
+        </div>
+
+        <div className={cx("content-sort-container-timeStart")}>
+          <p>Thời gian</p>
+          <div className={cx("content-timestart")}>
             <div>
-              <input
-                checked
-                name="sort"
-                id={cx("q")}
-                type="radio"
-                value="bedwars_wins"
+              <p>Từ</p>
+              <DatePicker
+                format={dateFormat}
+                className={cx("select-container")}
+              // placeholder={trans.time.startDate}
               />
-              <span for="q">Maths</span>
             </div>
             <div>
-              {" "}
-              <input
-                name="sort"
-                id={cx("w")}
-                type="radio"
-                value="bedwars_games"
+              <p>Đến</p>
+              <DatePicker
+                format={dateFormat}
+                className={cx("select-container")}
+              // placeholder={trans.time.endDate}
               />
-              <span for="w">Literature</span>
             </div>
-            <div>
-              {" "}
-              <input
-                name="sort"
-                id={cx("e")}
-                type="radio"
-                value="bedwars_destroyed"
-              />
-              <span for="e">Physics</span>
-            </div>
-            <div>
-              {" "}
-              <input
-                name="sort"
-                id={cx("r")}
-                type="radio"
-                value="bedwars_kills"
-              />
-              <span for="r">Chemistry</span>
-            </div>
-            <div>
-              <input
-                name="sort"
-                id={cx("t")}
-                type="radio"
-                value="bedwars_deaths"
-              />
-              <span for="t">History</span>
-            </div>
-          </li>
-          <li className={cx("tab ffa")}>
-            <div>
-              <input name="sort" id={cx("y")} type="radio" value="ffa_wins" />
-              <span for="y">Geography</span>
-            </div>
-            <div>
-              <input name="sort" id={cx("u")} type="radio" value="ffa_kills" />
-              <span for="u">English</span>
-            </div>
-            <div>
-              <input name="sort" id={cx("i")} type="radio" value="ffa_deaths" />
-              <span for="i">Information Technology</span>
-            </div>
-          </li>
-        </form>
+          </div>
+        </div>
+        <div className={cx("content-sort-container")}>
+          <p>Đánh giá </p>
+          <Select
+            className={cx("select-container")}
+            defaultValue="Tên lớp học"
+            options={options}
+          />
+        </div>
+        <div className={cx("content-sort-container")}>
+          <p>Độ khó</p>
+          <Select
+            className={cx("select-container")}
+            defaultValue="Tên lớp học"
+            options={options}
+          />
+        </div>
       </div>
-      <div className={cx("pagination")}>
-        <button disabled className={cx("prev")}></button>
-        <span>
-          Page <b>1</b> of 300
-        </span>
-        <button className={cx("next")}></button>
-      </div>
-    </div>
+      <Pagination />
+    </div >
   );
 };
 

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import style from "./style.module.scss";
 import Section from "../Section/Section";
-import { ArrayData } from "@/data";
 import useDebounce from "@/hooks/useDebounce";
 import Pagination from "../Pagination/Pagination";
 import { GetListMyExam } from "@/pages/api/CallAPI";
+import NavbarExam from "./NavbarExam";
+import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 
 const cx = classNames.bind(style);
 
@@ -24,83 +25,29 @@ const Exam = () => {
     "toDatePara": "",
     "createdBy": "",
     "onlyAssignment": false,
-    "onlyShared": false,
+    "onlyShared": true,
     "pageLength": 30,
     "pageNum": 1
   })
 
-  const [arrData, setArrayData] = useState(ArrayData);
-  const [valueInputSeacrch, setValueInputSeacrch] = useState();
-  const [resultSearch, setResultSearch] = useState(ArrayData);
-  const [valueCheckedSearch, setValueCheckedSearch] = useState();
-  const data = GetListMyExam(query)
-  useEffect(() => {
-    // refetch()
-    if (valueInputSeacrch) {
-      const temp = arrData.filter((item) =>
-        item.subject.toLowerCase().includes(valueInputSeacrch)
-      );
-      setResultSearch(temp);
-    } else {
-      setResultSearch(arrData);
-    }
-    if(valueCheckedSearch){
-      const valueChecked = arrData.filter((item)=>item.subject.toLowerCase().includes(valueCheckedSearch))
-    }
-  }, [valueInputSeacrch]);
+  const { data, isFetching, isLoading } = useGetListExamQuery(query)
+  // const data = GetListMyExam(query)
+
+  const handleQuery = (newQuery) => {
+    setQuery({ ...newQuery })
+  }
+
+  console.log(data)
 
   return (
     <Section>
       <div id={cx("leaderboards")}>
-        <div className={cx("options")}>
-          <input
-            type="text"
-            className={cx("search")}
-            placeholder="Search for exam..."
-            onChange={(e) => setValueInputSeacrch(e.target.value)}
-          />
-          <i></i>
-          <div className={cx("sort")}>
-            s<h2>Sort By Exam</h2>
-            <div className={cx("tabTitles")}>
-              <span id={cx("bedwars")} className={cx("active")}>
-                Exam
-              </span>
-              <span id={cx("ffa")}>Free-For-All</span>
-            </div>
-            <form className={cx("tabContents")}>
-              <li className={cx("tab bedwars")}>
-                {arrData &&
-                  arrData?.map((item) => {
-                    return (
-                      <div key={item.id}>
-                        <input
-                          name="sort"
-                          type="radio"
-                          value={item.subject}
-                          onChange={(e) =>
-                            setValueCheckedSearch(e.target.value)
-                          }
-                        />
-                        <span for="q">{item.subject}</span>
-                      </div>
-                    );
-                  })}
-              </li>
-            </form>
-          </div>
-          {/* <Pagination items={arrData.length} currentPage={currentPage} pageSize={pageSize} onPageChange={handleOnPageChange}/> */}
-          <Pagination />
-        </div>
-        <ul className={cx("toplist")}>
-          {data?.data?.query?.map((item) => {
+        <NavbarExam query={query} handleQuery={handleQuery} />
+        <div className={cx("toplist")}>
+          {data?.query?.map((item) => {
             return (
               <li data-rank="1" className={cx("lilist")} key={item.id}>
                 <div className={cx("thumb")}>
-                  <span
-                    className={cx("img")}
-                    data-name="BluewaveSwift"
-                  ></span>
                   <span className={cx("name")}>
                     <h4>{item.PracticeTestTitle}</h4>
                     <p>{item.Duration} {item.Unit}</p>
@@ -122,14 +69,14 @@ const Exam = () => {
                   </span>
                   <span className={cx("stat")}>
                     <p>
-                      <i class="fa-solid fa-book fa-2xl"></i>
+                      <i className="fa-solid fa-book fa-2xl"></i>
                     </p>
                   </span>
                 </div>
               </li>
             );
           })}
-        </ul>
+        </div>
       </div>
     </Section>
   );

@@ -17,7 +17,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import useAuth from "@/hooks/useAuth";
-import { useLoginMutation } from "@/lib/Midleware/RTKQuery";
+import { useLoginMutation } from "@/lib/Midleware/LoginQuery";
 import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);
@@ -188,7 +188,7 @@ const Header = () => {
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="avatar" src={user?.currentUser?.Object?.Picture}/>
+              <Avatar alt="avatar" src={user?.currentUser?.Object?.Picture} />
             </IconButton>
           </Tooltip>
           <Menu

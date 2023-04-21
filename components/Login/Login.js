@@ -6,116 +6,116 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { Button, message } from "antd";
-import { useLoginMutation } from "@/lib/Midleware/RTKQuery";
+import { useLoginMutation } from "@/lib/Midleware/LoginQuery";
 
 const cx = classNames.bind(styles);
 
 export default function Login() {
-  const [messageApi, contextHolder] = message.useMessage();
-  const key = "updatable";
+    const [messageApi, contextHolder] = message.useMessage();
+    const key = "updatable";
 
-  const info = () => {
-    messageApi.open({
-      key: key,
-      content: "Đăng nhập thành công ",
-    });
-    message.config({
-      backGroundColor: "red",
-    });
-  };
+    const info = () => {
+        messageApi.open({
+            key: key,
+            content: "Đăng nhập thành công ",
+        });
+        message.config({
+            backGroundColor: "red",
+        });
+    };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
-  const router = useRouter();
-  const [login,{data}] = useLoginMutation()
+    const router = useRouter();
+    const [login, { data }] = useLoginMutation()
 
 
-  if(data && !data?.Error){
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('user',data?.Object);
-      router.push('/')
+    if (data && !data?.Error) {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('user', data?.Object);
+            router.push('/')
+        }
+
     }
-   
-  }
-  const onSubmit = (value) => {
-    const { username, password } = value;
-    const bodyFormData = new FormData();
-    bodyFormData.append("Username", username);
-    bodyFormData.append("Password", password);
-    login(bodyFormData);
-  };
+    const onSubmit = (value) => {
+        const { username, password } = value;
+        const bodyFormData = new FormData();
+        bodyFormData.append("Username", username);
+        bodyFormData.append("Password", password);
+        login(bodyFormData);
+    };
 
-  return (
-    <div className={cx("background")}>
-      {contextHolder}
-      <div className={cx("login")}>
-        <div className={cx("qr-code")}>
-          <Image src={QrCode.src} alt="#" width="200" height="200"></Image>
+    return (
+        <div className={cx("background")}>
+            {contextHolder}
+            <div className={cx("login")}>
+                <div className={cx("qr-code")}>
+                    <Image src={QrCode.src} alt="#" width="200" height="200"></Image>
+                </div>
+
+                <div className={cx("mem-log")}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div>
+                            <i className="fa-solid fa-user"></i>
+                            <input
+                                type="text"
+                                placeholder="Tên đăng nhập"
+                                {...register("username", { required: true, minLength: 5 })}
+                            />
+                        </div>
+                        {errors.username && errors.username.type == "required" && (
+                            <p>Vui lòng nhập username</p>
+                        )}
+                        {errors.username && errors.username.type == "minLength" && (
+                            <p>UserName phải tối hiểu 5 kí tự</p>
+                        )}
+                        <div>
+                            <i className="fa-solid fa-lock"></i>
+                            <input
+                                type="password"
+                                placeholder="Mật khẩu"
+                                {...register("password", { required: true, maxLength: 20 })}
+                            />
+                        </div>
+                        {errors.username && errors.username.type == "required" && (
+                            <p>Vui lòng nhập password</p>
+                        )}
+                        <div className={cx("remember")}>
+                            <input type="radio"></input>
+                            <h4>Nhớ mật khẩu</h4>
+                        </div>
+                        <div className={cx("logins")}>
+                            <button type="submit" onClick={info}>
+                                Đăng nhập
+                            </button>
+                        </div>
+                    </form>
+
+                    <div className={cx("forgot-pw")}>
+                        <div>
+                            <a>Quên mật khẩu</a>
+                        </div>
+                        <div>
+                            <a>Đăng ký</a>
+                        </div>
+                    </div>
+                    <div className={cx("option-login")}>
+                        <a>
+                            <i className="fa-brands fa-facebook"></i>Đăng nhập bằng Facebook
+                        </a>
+                        <a>
+                            <i className="fa-brands fa-apple"></i>Đăng nhập bằng Apple
+                        </a>
+                        <a>
+                            <i className="fa-brands fa-google"></i>Đăng nhập bằng Google
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div className={cx("mem-log")}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <i className="fa-solid fa-user"></i>
-              <input
-                type="text"
-                placeholder="Tên đăng nhập"
-                {...register("username", { required: true, minLength: 5 })}
-              />
-            </div>
-            {errors.username && errors.username.type == "required" && (
-              <p>Vui lòng nhập username</p>
-            )}
-            {errors.username && errors.username.type == "minLength" && (
-              <p>UserName phải tối hiểu 5 kí tự</p>
-            )}
-            <div>
-              <i className="fa-solid fa-lock"></i>
-              <input
-                type="password"
-                placeholder="Mật khẩu"
-                {...register("password", { required: true, maxLength: 20 })}
-              />
-            </div>
-            {errors.username && errors.username.type == "required" && (
-              <p>Vui lòng nhập password</p>
-            )}
-            <div className={cx("remember")}>
-              <input type="radio"></input>
-              <h4>Nhớ mật khẩu</h4>
-            </div>
-            <div className={cx("logins")}>
-              <button type="submit" onClick={info}>
-                Đăng nhập
-              </button>
-            </div>
-          </form>
-
-          <div className={cx("forgot-pw")}>
-            <div>
-              <a>Quên mật khẩu</a>
-            </div>
-            <div>
-              <a>Đăng ký</a>
-            </div>
-          </div>
-          <div className={cx("option-login")}>
-            <a>
-              <i className="fa-brands fa-facebook"></i>Đăng nhập bằng Facebook
-            </a>
-            <a>
-              <i className="fa-brands fa-apple"></i>Đăng nhập bằng Apple
-            </a>
-            <a>
-              <i className="fa-brands fa-google"></i>Đăng nhập bằng Google
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
