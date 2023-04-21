@@ -6,7 +6,6 @@ function useAuth() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   function checkUserIsAuthenticated() {
     const user = localStorage.getItem("user");
-    console.log(user);
     if (user) {
       return true;
     } else {

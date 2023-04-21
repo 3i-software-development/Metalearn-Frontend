@@ -49,3 +49,14 @@ export const GetListMyExam = (query) => {
     return response.data
   });
 };
+
+
+export const GetListQuizzes = ()=>{
+  return useQuery(['quizzes'], async () => {
+    const response = await axios({
+      url: 'https://admin.metalearn.vn/MobileLogin/GetSubjectQuizBody',
+      method: 'POST',
+    });
+    return response.data
+  });
+}

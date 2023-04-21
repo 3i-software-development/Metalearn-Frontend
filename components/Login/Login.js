@@ -4,42 +4,51 @@ import styles from "./style.module.scss";
 import QrCode from "./qrCode.png";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { UserLogin } from "@/pages/api/CallAPI";
-import { useMutation } from "react-query";
 import { useRouter } from "next/router";
-import { Button, message } from 'antd';
+import { Button, message } from "antd";
+import { useLoginMutation } from "@/lib/Midleware/RTKQuery";
 
 const cx = classNames.bind(styles);
 
 export default function Login() {
   const [messageApi, contextHolder] = message.useMessage();
-  
-  const key = 'updatable';
+  const key = "updatable";
+
   const info = () => {
     messageApi.open({
       key: key,
-      content: 'Đăng nhập thành công ',
+      content: "Đăng nhập thành công ",
     });
     message.config({
-      backGroundColor:"red"
-    })
+      backGroundColor: "red",
+    });
   };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const Router = useRouter();
-  const { mutate } = UserLogin();
 
-    const onSubmit = (value) => {
-        const { username, password } = value
-        const bodyFormData = new FormData();
-        bodyFormData.append('Username', username);
-        bodyFormData.append('Password', password);
-        localStorage.setItem('user',username)
-        mutate(bodyFormData)
+  const router = useRouter();
+  const [login,{data}] = useLoginMutation()
+
+
+  if(data && !data?.Error){
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('user',data?.Object);
+      router.push('/')
     }
+   
+  }
+  const onSubmit = (value) => {
+    const { username, password } = value;
+    const bodyFormData = new FormData();
+    bodyFormData.append("Username", username);
+    bodyFormData.append("Password", password);
+    login(bodyFormData);
+  };
+
   return (
     <div className={cx("background")}>
       {contextHolder}
@@ -80,7 +89,9 @@ export default function Login() {
               <h4>Nhớ mật khẩu</h4>
             </div>
             <div className={cx("logins")}>
-              <button type="submit" onClick={info}>Đăng nhập</button>
+              <button type="submit" onClick={info}>
+                Đăng nhập
+              </button>
             </div>
           </form>
 

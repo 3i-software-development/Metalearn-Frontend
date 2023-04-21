@@ -17,13 +17,16 @@ import {
   Tooltip,
 } from "@mui/material";
 import useAuth from "@/hooks/useAuth";
-import { UserLogin } from "@/pages/api/CallAPI";
+import { useLoginMutation } from "@/lib/Midleware/RTKQuery";
+import { useSelector } from "react-redux";
+
 const cx = classNames.bind(styles);
 
 const Header = () => {
   const [showMobile, setShowmobile] = useState(false);
   const trans = useTrans();
   const state = useAuth();
+
   const items = [
     {
       key: "1",
@@ -124,6 +127,7 @@ const Header = () => {
       ],
     },
   ];
+
   const [anchorElUser, setAnchorElUser] = useState(null);
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -131,8 +135,9 @@ const Header = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const data = UserLogin()
-  console.log(data)
+
+  const user = useSelector((state) => state.login)
+  console.log(user?.currentUser)
   return (
     <div className={cx("header")}>
       <AiOutlineMenu
@@ -143,7 +148,6 @@ const Header = () => {
       <Link href="/" className={cx("logo-container")}>
         Meta<span>Learn</span>
       </Link>
-
       <Link href="/subjects" className={cx("head-link")}>
         <Dropdown
           menu={{
@@ -184,7 +188,7 @@ const Header = () => {
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar />
+              <Avatar alt="avatar" src={user?.currentUser?.Object?.Picture}/>
             </IconButton>
           </Tooltip>
           <Menu
