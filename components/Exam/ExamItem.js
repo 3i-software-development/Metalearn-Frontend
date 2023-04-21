@@ -127,7 +127,7 @@ const ExamItem = () => {
       </li>
       <li data-rank="6" className={cx("lilist")}>
         <div className={cx("thumb")}>
-          <span className={cx("img")} data-name="BluewaveSwift"></span> 
+          <span className={cx("img")} data-name="BluewaveSwift"></span>
           <span className={cx("name")}>
             <h4>Naths</h4>
             <p>15 munites</p>

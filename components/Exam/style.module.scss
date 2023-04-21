@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 2fr 4fr;
     margin: 50px 0;
+    // position: relative;
 
     p {
         font-size: 12px;
@@ -40,22 +41,21 @@
 }
 
 .tabContents span {
-    color: white;
+    color: rgb(0, 0, 0);
     margin-left: 10px;
 }
 
 #leaderboards .options .search {
-    background: #000000;
+    background: white;
     display: block;
     width: 100%;
     padding: 20px 20px 20px 53px;
     box-sizing: border-box;
     outline: none;
-    border: none;
-    border-radius: 6px;
-    color: white;
+    border: 1px solid #e3e3e3;
+    border-radius: 24px;
+    color: rgb(165, 164, 164);
     font-weight: bold;
-    // position: relative;
     font-family: "Roboto", sans-serif;
 }
 
@@ -67,56 +67,75 @@
     top: 17px;
     left: 20px;
     font-size: 18px;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 #leaderboards .options .sort {
+    border: 1px solid #e3e3e3;
     padding: 20px;
-    background: #000000;
+    background: white;
     border-radius: 6px;
     margin-top: 14px;
     cursor: default;
-    box-shadow: 0 4px #000000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 #leaderboards .options .sort h2 {
     text-align: center;
     margin: 10px 0 25px;
     text-transform: uppercase;
-    color: white;
+    color: black;
     text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.15);
     font-size: 16px;
 }
 
+.tabTitles {
+    margin-bottom: 10px;
+    // display: inline;
+}
+
+.content-sort-container {
+    margin-bottom: 10px;
+}
+
+.content-timestart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.select-container {
+    width: 100.5%;
+}
+
 #leaderboards .options .sort .tabTitles>span {
     text-transform: uppercase;
-    padding: 10px 20px;
+    padding: 10px 15px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     display: inline-block;
     font-weight: bold;
-    color: rgba(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 12px;
     cursor: pointer;
     transition: 0.25s;
 }
 
 #leaderboards .options .sort .tabTitles>span:hover {
-    color: rgba(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 #leaderboards .options .sort .tabTitles>.active {
-    color: white !important;
-    background: #000000;
+    color: rgb(0, 0, 0);
+    background: white;
     pointer-events: none;
     cursor: default;
     box-shadow: 0 5px #000000;
 }
 
 #leaderboards .options .sort .tabContents {
-    background: #000000;
+    background: white;
     padding: 20px;
-    border-radius: 6px;
     list-style: none;
     position: relative;
 }
@@ -164,13 +183,13 @@
     // display: block;
     font-weight: bold;
     margin-bottom: 7px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     cursor: pointer;
     transition: 0.25s;
 }
 
 .tab label {
-    color: white !important;
+    color: rgb(0, 0, 0) !important;
 }
 
 #leaderboards .options .sort .tabContents .tab>label:before {
@@ -181,7 +200,7 @@
 }
 
 #leaderboards .options .sort .tabContents .tab>input:checked+label {
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 #leaderboards .options .sort .tabContents .tab>input:checked+label:before {
@@ -197,7 +216,7 @@
 }
 
 #leaderboards .options .search::-webkit-input-placeholder {
-    color: rgba(255, 255, 255);
+    color: rgb(165, 164, 164)
 }
 
 #leaderboards .toplist {

@@ -40,11 +40,21 @@ export const UserLogin = () => {
 };
 
 export const GetListMyExam = (query) => {
-  return useQuery(['myExam'], async () => {
+  return useQuery(['myExam', query], async () => {
     const response = await axios({
       url: 'https://admin.metalearn.vn/MobileLogin/GetListLmsTestBody',
       method: 'POST',
       data: query
+    });
+    return response.data
+  });
+};
+
+export const GetListMySubject = () => {
+  return useQuery(['mySubject'], async () => {
+    const response = await axios({
+      url: 'https://admin.metalearn.vn/MobileLogin/GetListUserSubject?userName=admin&isTutor888=false',
+      method: 'POST',
     });
     return response.data
   });

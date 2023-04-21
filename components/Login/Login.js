@@ -5,7 +5,6 @@ import QrCode from "./qrCode.png";
 import Image from 'next/image';
 import { useForm } from "react-hook-form";
 import { UserLogin } from '@/pages/api/CallAPI';
-import { useMutation } from 'react-query';
 
 const cx = classNames.bind(styles);
 
@@ -24,9 +23,7 @@ export default function Login() {
 
     return (
         <div className={cx("background")}>
-
             <div className={cx("login")}>
-
                 <div className={cx("qr-code")}>
                     <Image src={QrCode.src} alt="#" width='200' height='200'></Image>
                 </div>
