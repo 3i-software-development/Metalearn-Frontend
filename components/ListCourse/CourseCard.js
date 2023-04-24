@@ -12,7 +12,8 @@ const CourseCard = ({ data, clas, doc, exam }) => {
   const examCard = () => {
     return (
       <div className={cx("course-card")}>
-        <Image src={data.ImageCover} alt="exam" width="500" height="400" />
+        
+        <Image src={data.ImageCover ? data.ImageCover : 'https://www.thaibinhtv.vn/assets/images/imgstd.jpg'} alt="exam" width="500" height="400" />
         <p className={cx("titleDoc")}>{data.LectName}</p>
       </div>
     );
