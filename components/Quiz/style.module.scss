@@ -25,7 +25,7 @@
 
 .quiz h3 {
     // background-color: white;
-    width: 80%;
+    width: 100%;
     margin-bottom: 10px;
 }
 
@@ -44,7 +44,9 @@
     top: 26%;
 }
 
-
+.quizz-left{
+    margin-bottom: 10px;
+}
 
 .quizz-left p{
     margin: 20px 0;
@@ -89,12 +91,21 @@
     background-color: white;
     text-decoration: none;
     list-style: none;
+    // width: 10%;
+    text-align: center;
+    cursor: pointer;
+    // margin: 5px;
+}
+.number ul a{
+    background-color: #fd647a;
+    text-decoration: none;
+    list-style: none;
     width: 10%;
     text-align: center;
     margin: 5px;
     border: 1px groove green;
-}
 
+}
 .next-questions a {
     background-color: #fd647a;
     padding: 6px 12px;
@@ -118,24 +129,14 @@
 .quiz-detail {
 
     border-bottom: 1px solid #d9534f;
-    padding: 10% 0 50px 0;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
 }
-
-
-
-.quizz-left {
-    flex: 1;
-}
-
 .numOf {
-    width: 20%;
+    width: 100%;
     font-size: 23px;
     font-weight: 500;
-    border-right: 1px groove;
 }
-
 .tempQ {
     background-color: #d9534f !important;
 }

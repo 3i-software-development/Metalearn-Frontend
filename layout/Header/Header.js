@@ -17,7 +17,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import useAuth from "@/hooks/useAuth";
-import { useLoginMutation } from "@/lib/Midleware/LoginQuery";
+import { useLoginMutation } from "@/lib/Midleware/AuthQuery";
 import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);

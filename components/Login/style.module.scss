@@ -27,6 +27,7 @@
     // background-color: red;
     width: 100%;
     text-align: center;
+
 }
 .mem-log input{
     outline: none;
@@ -34,6 +35,8 @@
     background-color: transparent;
 }
 .mem-log form p{
+    text-align: left;
+    margin-bottom: 5px;
     color: red;
 }
 .mem-log form div{
