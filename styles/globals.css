@@ -55,6 +55,35 @@ span{
   font-size: 20px !important;
 }
 
+
+#google_translate_element {
+    width: fit-content;
+    background: none;
+    top: 140px;
+    right: 5px;
+}
+.goog-te-gadget {
+    height: 38px;
+    overflow: hidden;
+}
+.goog-te-gadget span {
+    display: none;
+}
+.goog-te-combo {
+    padding: 5px;
+    color: #514631;
+    background-color: rgb(246, 248, 246);
+    outline: none;
+}
+body{
+  top: 0px !important; 
+  position: static !important; 
+}
+
+.skiptranslate iframe{
+display:none !important
+}
+
 @media only screen and (max-width: 1500px) {
   h1,h2{
     font-size: 1.2rem;
@@ -96,4 +125,30 @@ canvas{
 }
 .purple{
   color:purple;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  /* Tăng độ mờ cho overlay */
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9998; /*Lớp Z chú ý là cao hơn google-translate-element*/
+}
+
+/* Khung container của modal */
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  z-index: 9999; /*Lớp Z để hiển thị trên overlay*/
 }

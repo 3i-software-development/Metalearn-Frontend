@@ -7,7 +7,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar, Dropdown, Space } from "antd";
 import ModalLang from "@/components/ModalLang/ModalLang";
-import useTrans from "@/hooks/useTrans";
+
 import {
   Box,
   IconButton,
@@ -17,14 +17,12 @@ import {
   Tooltip,
 } from "@mui/material";
 import useAuth from "@/hooks/useAuth";
-import { useLoginMutation } from "@/lib/Midleware/LoginQuery";
 import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
   const [showMobile, setShowmobile] = useState(false);
-  const trans = useTrans();
   const state = useAuth();
 
   const items = [
@@ -154,31 +152,36 @@ const Header = () => {
             items,
           }}
         >
-          <Space className={cx("head-link")}>{trans.subject.subject}</Space>
+          <Space className={cx("head-link")}>Môn học</Space>
         </Dropdown>
       </Link>
 
       <div className={cx("search-container")}>
         <input
           type="text"
-          placeholder={trans.search.search}
+          placeholder="Tìm kiếm"
           className={cx("search-input")}
         />
         <BsSearch />
       </div>
 
       <Link href="/news" className={cx("head-link")}>
-        {trans.header.new}
+        Tin tức
       </Link>
       <Link href="/my-class" className={cx("head-link")}>
-        {trans.class.class}
+        Lớp học trực tuyến
       </Link>
       <Link href="/documents" className={cx("head-link")}>
-        {trans.header.document}
+        Tài liệu
       </Link>
       <Link href="/exam" className={cx("head-link")}>
-        {trans.header.exam}
+        Đề thi
       </Link>
+      <div class="overlay">
+        <div class="modal">
+          <div id="google_translate_element"></div>
+        </div>
+      </div>
 
       <div className={cx("icon-ss")}>
         <BsSearch className={cx("icon-search-mobile")} />
@@ -257,10 +260,10 @@ const Header = () => {
       {!state && (
         <div className={cx("user")}>
           <Link href="/auth/login" className={cx("login-btn")}>
-            {trans.header.login}
+            Đăng nhập
           </Link>
           <Link href="/auth/signup" className={cx("signup-btn")}>
-            {trans.header.signup}
+            Đăng kí
           </Link>
           <div className={cx("change-language")}>
             <ModalLang />
@@ -278,27 +281,27 @@ const MenuMobile = () => {
     <div className={cx("menu-mobile")}>
       <div className={cx("mb-user")}>
         <Link href="/auth/login" className={cx("mb-login")}>
-          {trans.header.login}
+          Đăng nhập
         </Link>
         <Link href="/auth/signup" className={cx("mb-signup")}>
-          {trans.header.signup}
+          Đăng kí
         </Link>
       </div>
       <div className={cx("mb-list")}>
         <Link href="/subjects" className={cx("mb-link")}>
-          {trans.subject.subject}
+          Subject
         </Link>
         <Link href="/news" className={cx("mb-link")}>
-          {trans.header.new}
+          Tin tức
         </Link>
         <Link href="/my-class" className={cx("mb-link")}>
-          {trans.class.class}
+          Lớp học trực tuyến
         </Link>
         <Link href="/documents" className={cx("mb-link")}>
-          {trans.header.document}
+          Tài liệu
         </Link>
         <Link href="/exam" className={cx("mb-link")}>
-          {trans.header.exam}
+          Đề thi
         </Link>
       </div>
     </div>

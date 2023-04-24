@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
 import style from "../Exam/style.module.scss";
 import { Pagination as PaginationAntd, Select } from 'antd'
+import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 
 const cx = classNames.bind(style);
 
-const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
+const Pagination = ({ total, handleQuery, query }) => {
+
+  const handlePageChange = (e) => {
+    handleQuery({ ...query, pageNum: e })
+  }
+
+  const handlePageLengthChange = (e) => {
+    handleQuery({ ...query, pageLength: e })
+  }
+
   return (
     <div className={cx("pagination")}>
-      <PaginationAntd size="small" simple total={5000} showSizeChanger />
+      <PaginationAntd size="small" simple current={query.pageNum} total={total} onChange={handlePageChange} />
       <Select
         defaultValue="10/Page"
         style={{
@@ -32,6 +42,7 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
             label: '100/Page',
           },
         ]}
+        onChange={handlePageLengthChange}
       />
     </div>
   );

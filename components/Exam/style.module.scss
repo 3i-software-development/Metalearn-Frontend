@@ -94,14 +94,9 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    // justify-content: space-between;
+    justify-items: center;
     align-items: center;
-
-    .bedwars {
-        flex: 1
-    }
 }
-
 
 .content-sort-container {
     margin-bottom: 10px;
@@ -115,6 +110,17 @@
 
 .select-container {
     width: 100.5%;
+}
+
+
+
+.down i {
+    color: rgb(9, 199, 9);
+    font-size: 20px;
+}
+
+.rating li {
+    box-shadow: none !important;
 }
 
 #leaderboards .options .sort .tabTitles>span {
@@ -157,29 +163,31 @@
     transition: 0.25s;
 }
 
-.lilist {
+.flex_icon {
     display: flex;
+
+    .icon {
+        width: 70px !important;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+
+    }
+}
+
+.lilist {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
     justify-content: space-between;
 
     .more {
         display: flex;
         align-items: center;
-
-        :first-child {
-            background-color: transparent !important;
-        }
-
-        :last-child {
-            height: 100%;
-            width: 80px;
-            background-color: #c2c2c2;
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
     }
+}
+
+.rating .ant-rate {
+    box-shadow: none !important;
 }
 
 #leaderboards .options .sort .tabContents .tab.active {
@@ -240,19 +248,27 @@
     cursor: pointer;
 }
 
+.content_exxam {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #leaderboards .toplist li .thumb {
     display: flex;
-    padding: 20px 20px 19px;
+    justify-content: center;
+    padding: 20px 0px 19px;
     font-weight: bold;
-    color: #000000;
+    color: #000;
     font-size: 0;
     line-height: 36px;
-    position: relative;
+    // position: relative;
 }
 
 #leaderboards .toplist li .thumb span {
-    display: inline-block;
-    vertical-align: middle;
+    // display: inline-block;
+    // vertical-align: middle;
     font-size: 15px;
 }
 

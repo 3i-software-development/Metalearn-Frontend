@@ -2,12 +2,10 @@ import React from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import Image from "next/image";
-import useTrans from "@/hooks/useTrans";
 
 const cx = classNames.bind(styles);
 
 const ClassCard = ({ data }) => {
-  const trans = useTrans();
 
   return (
     <div style={{ height: "100%" }}>
@@ -32,13 +30,13 @@ const ClassCard = ({ data }) => {
         <br />
         <div className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "red" }}></i> {trans.subject.subject}:
+            <i className="fa-solid fa-circle " style={{ color: "red" }}></i> Subject:
           </span>
           <span> &nbsp; Lập trình</span>
         </div>
         <div className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i> {trans.class.time}:
+            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i> Bắt đầu:
           </span>
           <span>&nbsp; Lập trình</span>
         </div>

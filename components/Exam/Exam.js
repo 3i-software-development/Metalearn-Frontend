@@ -5,6 +5,7 @@ import Section from "../Section/Section";
 import useDebounce from "@/hooks/useDebounce";
 import NavbarExam from "./NavbarExam";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
+import ExamItem from "./ExamItem";
 
 const cx = classNames.bind(style);
 
@@ -22,9 +23,9 @@ const Exam = () => {
     "fromDatePara": "",
     "toDatePara": "",
     "createdBy": "",
-    "onlyAssignment": false,
-    "onlyShared": true,
-    "pageLength": 30,
+    "onlyAssignment": true,
+    "onlyShared": false,
+    "pageLength": 10,
     "pageNum": 1
   })
 
@@ -38,40 +39,13 @@ const Exam = () => {
     <Section>
       <div id={cx("leaderboards")}>
         <NavbarExam query={query} handleQuery={handleQuery} totalAssigment={data?.countAssignment} totalShared={data?.countSharing} />
-        <div className={cx("toplist")}>
+        <ul className={cx("toplist")}>
           {data?.query?.map((item) => {
             return (
-              <li data-rank="1" className={cx("lilist")} key={item.id}>
-                <div className={cx("thumb")}>
-                  <span className={cx("name")}>
-                    <h4>{item.PracticeTestTitle}</h4>
-                    <p>{item.Duration} {item.Unit}</p>
-                    <p>{item.Rating}</p>
-                    <p>Tác giả: {item.CreatedBy}</p>
-                    <p>Giá: {item.Price}</p>
-                    <p>Môn học: {item.ExamSubject}</p>
-                    <p>{item.QuizCount}</p>
-                    <p></p>
-                  </span>
-                </div>
-                <div className={cx("more")}>
-                  <span className={cx("stat")}>
-                    <b>
-                      {item.point} / 10
-                      <br />
-                      Point
-                    </b>
-                  </span>
-                  <span className={cx("stat")}>
-                    <p>
-                      <i className="fa-solid fa-book fa-2xl"></i>
-                    </p>
-                  </span>
-                </div>
-              </li>
+              <ExamItem key={item.id} data={item} />
             );
           })}
-        </div>
+        </ul>
       </div>
     </Section>
   );

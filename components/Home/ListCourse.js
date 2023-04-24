@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import ListCourses from "../ListCourse/ListCourses";
-import { ListSubject } from "@/public/data";
 import { GetListExam, GetListClass, GetListDoc } from "@/pages/api/CallAPI";
-import useTrans from "@/hooks/useTrans";
 
 const cx = classNames.bind(styles);
 
@@ -13,10 +11,10 @@ const ListCourse = () => {
   const ListClass = GetListClass();
   const ListDoc = GetListDoc();
 
-  const trans = useTrans();
-
   const [btnact, setBtnact] = useState(0);
 
+
+  const listSubject = ["Đề thi", "Lớp học", "Tài liệu"]
   return (
     <div className={cx("list-course-container")}>
       {/* <h1 className={cx("h1")}>
@@ -27,7 +25,7 @@ const ListCourse = () => {
         cập nhật hàng ngày
       </p> */}
       <div className={cx("list-btn")}>
-        {trans.listSubject.map((item, index) => (
+        {listSubject.map((item, index) => (
           <button
             className={cx(btnact == index && "active")}
             key={index}
@@ -39,9 +37,9 @@ const ListCourse = () => {
         ))}
       </div>
       <div className={cx("list-main")}>
-        {btnact === 0 && <h3>{trans.listCourse.exam}</h3>}
-        {btnact === 1 && <h3>{trans.listCourse.class}</h3>}
-        {btnact === 2 && <h3>{trans.listCourse.document}</h3>}
+        {btnact === 0 && <h3>Danh sách đề thi</h3>}
+        {btnact === 1 && <h3>Danh sách lớp học</h3>}
+        {btnact === 2 && <h3>Danh sách tài liệu</h3>}
         {btnact === 0 && ListExam.data && (
           <ListCourses data={ListExam.data.query} exam />
         )}

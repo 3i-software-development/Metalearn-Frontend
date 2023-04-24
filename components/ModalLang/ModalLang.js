@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { BiWorld } from "react-icons/bi";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
-import useTrans from "@/hooks/useTrans";
 import { useRouter } from "next/router";
 
 const cx = classNames.bind(styles);
@@ -11,7 +10,6 @@ const cx = classNames.bind(styles);
 const ModalLang = () => {
   const [open, setOpen] = useState(false);
 
-  const trans = useTrans();
   const router = useRouter();
 
   const showModal = () => {
@@ -32,12 +30,12 @@ const ModalLang = () => {
       <BiWorld className={cx("icon")} onClick={showModal} />
       <Modal
         open={open}
-        title={trans.modalLang.title}
+        title="Chọn ngôn ngữ"
         onCancel={handleCancel}
         centered
         footer={null}
       >
-        <div className={cx("lang-list")}>
+        <div className={cx("lang-list")} id="google_translate_element">
           <p className={cx("lang-member")} onClick={() => changeLang("vi")}>
             Tiếng Việt
           </p>

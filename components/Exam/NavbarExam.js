@@ -17,12 +17,7 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
     40: '2',
     60: '3',
     80: '4',
-    100: {
-      style: {
-        color: '#f50',
-      },
-      label: <strong>5</strong>,
-    },
+    100: '5',
   };
 
   const options = [
@@ -160,7 +155,7 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
                 format={dateFormat}
                 className={cx("select-container")}
                 onChange={(e) => handleChangeStartDate(e)}
-              // placeholder={trans.time.startDate}
+              // placeholder="Ngày bắt đầu"
               />
             </div>
             <div>
@@ -169,7 +164,7 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
                 format={dateFormat}
                 className={cx("select-container")}
                 onChange={(e) => handleChangeEndDate(e)}
-              // placeholder={trans.time.endDate}
+              // placeholder="Ngày kết thúc"
               />
             </div>
           </div>
@@ -189,7 +184,8 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
           />
         </div>
       </div>
-      <Pagination />
+      {query.onlyAssignment && <Pagination total={totalAssigment} handleQuery={handleQuery} query={query} currentPage={query.pageNum} />}
+      {query.onlyShared && <Pagination total={totalShared} handleQuery={handleQuery} query={query} currentPage={query.pageNum} />}
     </div >
   );
 };
