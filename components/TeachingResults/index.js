@@ -10,9 +10,10 @@ import {
   CategoryScale,
   Tooltip,
   Legend,
+  registerables,
 } from "chart.js";
 
-ChartJS.register(BarElement, CategoryScale, Tooltip, Legend);
+ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
 export default function TeachingResults() {
   const [hide, setHide] = useState(false);
   const cx = classNames.bind(styles);
@@ -22,19 +23,33 @@ export default function TeachingResults() {
   };
 
   const data = {
-    labels: ["25/4/2022"],
+    labels: ["00","02"],
     datasets: [
       {
-        labels: "369",
-        data: [3, 6, 9],
+        label: "Học sinh",
+        data: [3, 6, 9, 2, 1],
         backgroundColor: "aqua",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+      {
+        label: "Giờ học",
+        data: [1,2,3,4,5,6,7,8,9],
+        backgroundColor: "black",
         borderColor: "black",
         borderWidth: 1,
       },
     ],
   };
 
-  const options = {};
+  const options = {
+    responsive: true,
+    scales: {
+      x: {
+        beginAtZero: true,
+      },
+    },
+  };
 
   return (
     <div className={cx("TeachingResults_wrapper")}>
@@ -42,7 +57,7 @@ export default function TeachingResults() {
         <div className={cx("TeachingResults_all_item")}>
           <div className={cx("TeachingResults_Item")}>
             <CgShapeRhombus />
-            <div>Câu Hỏi [1]</div>
+            <div>Câu Hỏi [ 1 ]</div>
           </div>
           <div onClick={handleSetHide}>
             {hide ? (
@@ -58,7 +73,13 @@ export default function TeachingResults() {
               <IoIosSquare />
               <span>Số câu hỏi: 0</span>
             </div>
-            <Bar style={{ width: "100%" }} data={data} options={options} />
+
+            <Bar
+              className={cx("content_item_chart")}
+              data={data}
+              options={options}
+              height={'100%'}
+            />
           </div>
         )}
       </div>

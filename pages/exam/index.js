@@ -7,9 +7,9 @@ import TeachingResults from "@/components/TeachingResults";
 const Index = () => {
   return (
     <div>
-      {/* <SearchAndAddSubjects/>
-      <Document_Cart />
-      <CartItem /> */}
+      {/* <SearchAndAddSubjects/> */}
+      {/* <Document_Cart /> */}
+      {/* <CartItem /> */}
       <TeachingResults/>
       <Exam />
     </div>
