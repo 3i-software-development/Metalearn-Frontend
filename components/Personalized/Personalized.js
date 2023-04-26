@@ -47,22 +47,32 @@ const Personalized = () => {
   });
 
   const { data: subjectCode } = useGetListExamQuery({
-    "testName": "",
-    "userName": "admin",
-    // "subjectCode": "",
-    // "content": "",
-    // "latex": "",
-    // "level": "",
-    "ratingMin": -1,
-    "ratingMax": -1,
-    // "fromDatePara": "",
-    // "toDatePara": "",
-    // "createdBy": "",
-    "onlyAssignment": false,
-    "onlyShared": true,
-    "pageLength": 30,
-    "pageNum": 1
-  })
+    testName: "",
+    userName: "admin",
+    ratingMin: -1,
+    ratingMax: -1,
+    onlyAssignment: false,
+    onlyShared: true,
+    pageLength: 30,
+    pageNum: 1,
+  });
+
+  const { data: fileCwQuery } = useGetListFileCwQuery({
+    CatCode: "",
+    SubjectCode: "",
+    ObjectType: "",
+    ObjectCode: "",
+    FromDate: "",
+    ToDate: "",
+    FileName: "",
+    FileType: "",
+    Content: "",
+    UserUpload: "admin",
+    KeySearch: "",
+    Count: "",
+    CurrentPageView: 1,
+    Length: 10,
+  });
 
   const [openKeys, setOpenKeys] = useState('sub1');
 
