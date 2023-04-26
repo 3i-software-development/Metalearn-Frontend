@@ -4,6 +4,7 @@ import CartItem from "@/components/CartItem";
 import Document_Cart from "@/components/Document_Cart";
 import SearchAndAddSubjects from "@/components/SearchAndAddSubjects";
 import TeachingResults from "@/components/TeachingResults";
+
 const Index = () => {
   return (
     <div>

@@ -5,7 +5,7 @@ function useAuth() {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   function checkUserIsAuthenticated() {
-    const user = localStorage.getItem("user");
+    const user = sessionStorage.getItem("user");
     if (user) {
       return true;
     } else {
