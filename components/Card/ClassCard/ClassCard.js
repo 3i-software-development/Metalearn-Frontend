@@ -32,7 +32,7 @@ const ClassCard = () => {
                     return (
                         <div key={element.Id} className={cx("card")}>
                             <Image
-                                src="https://dieuhanh.vatco.vn//uploads/repository/SUBJECT/download5.jpg"
+                                src="https://cdn.shopify.com/s/files/1/0879/0542/products/pc6741.jpg?v=1569974144"
                                 alt="document"
                                 width="150"
                                 height="180"
@@ -65,7 +65,7 @@ const ClassCard = () => {
                                     {/* <i className="fa-solid fa-mobile-screen-button"></i>
                                     <i className="fa-solid fa-file-video"></i>
                                     <i className="fa-solid fa-video"></i> */}
-                                    <i class="fa-regular fa-pen-to-square"></i>
+                                    <i className="fa-regular fa-pen-to-square"></i>
                                 </div>
                             </div>
                         </div>
