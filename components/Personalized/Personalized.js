@@ -15,6 +15,7 @@ import CourseCard from "../Card/CourseCard/CourseCard";
 import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 import { useGetTotalPractiveQuery } from "@/lib/Midleware/PractiveQuery";
+import ClassCard from "../Card/ClassCard/ClassCard";
 
 const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
 const Personalized = () => {
@@ -104,6 +105,7 @@ const Personalized = () => {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
     }
   };
+
   return (
     <div className={cx("person")}>
       <div className={cx("navbar")}>
@@ -122,7 +124,8 @@ const Personalized = () => {
       <div className={cx("content")}>
         {/* <CourseCard data={scheduleQuery} /> */}
         {/* <CourseCard/> */}
-        <PractiseCard total={practiveQuery?.Object?.cardSum} />
+        <ClassCard />
+        {/* <PractiseCard total={practiveQuery?.Object?.cardSum} /> */}
         {/* <SelftrainingCard /> */}
         {/* {courseCard && } */}
         {/* {classList && <ClassCard/>} */}
