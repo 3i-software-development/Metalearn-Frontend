@@ -1,0 +1,14 @@
+.person {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin: 50px 0;
+    min-height: 555px
+}
+
+.navbar {
+    position: relative;
+}
+
+.content {
+    // height: auto;
+}

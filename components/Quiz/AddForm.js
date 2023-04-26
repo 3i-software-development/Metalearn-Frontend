@@ -40,7 +40,6 @@ export default function AddForm() {
     setSelectedAnswers({
       ...selectedAnswers, [value]: true
     })
-    console.log(selectedAnswers)
   }
 
   const { data } = useGetListQuizQuery(state);

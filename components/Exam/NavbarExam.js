@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames/bind";
 import style from "./style.module.scss";
-import Pagination from "../Pagination/Pagination";
+import SimplePagination from "../Pagination/SimplePagination";
 import { DatePicker, Input, Select, Slider } from "antd";
 import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 
@@ -184,8 +184,8 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
           />
         </div>
       </div>
-      {query.onlyAssignment && <Pagination total={totalAssigment} handleQuery={handleQuery} query={query} currentPage={query.pageNum} />}
-      {query.onlyShared && <Pagination total={totalShared} handleQuery={handleQuery} query={query} currentPage={query.pageNum} />}
+      {query.onlyAssignment && <SimplePagination total={totalAssigment} handleQuery={handleQuery} query={query} currentPage={query.pageNum} />}
+      {query.onlyShared && <SimplePagination total={totalShared} handleQuery={handleQuery} query={query} currentPage={query.pageNum} />}
     </div >
   );
 };

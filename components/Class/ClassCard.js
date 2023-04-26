@@ -10,7 +10,7 @@ const ClassCard = ({ data }) => {
   return (
     <div style={{ height: "100%" }}>
       <div className={cx("course-card")}>
-        {data.ImageCover ? (
+        {/* {data.ImageCover ? (
           <Image src={data.ImageCover} alt="class" width="500" height="400" />
         ) : (
           <Image
@@ -19,7 +19,7 @@ const ClassCard = ({ data }) => {
             width="500"
             height="400"
           />
-        )}
+        )} */}
         <div className={cx("title")}>
           <strong>
             <i className="fa-solid fa-square" style={{ color: "yellow" }}></i>{" "}

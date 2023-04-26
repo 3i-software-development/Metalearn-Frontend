@@ -17,8 +17,8 @@ import {
   Tooltip,
 } from "@mui/material";
 import useAuth from "@/hooks/useAuth";
-import { useLoginMutation } from "@/lib/Midleware/AuthQuery";
 import { useSelector } from "react-redux";
+import { BiWorld } from "react-icons/bi";
 
 const cx = classNames.bind(styles);
 
@@ -136,6 +136,8 @@ const Header = () => {
   };
 
   const user = useSelector((state) => state.login);
+  console.log(state)
+  const [show, setShow] = useState(false)
   return (
     <div className={cx("header")}>
       <AiOutlineMenu
@@ -177,15 +179,15 @@ const Header = () => {
       <Link href="/exam" className={cx("head-link")}>
         Đề thi
       </Link>
-      {/* <div class="overlay">
-        <div class="modal">
-          <div id="google_translate_element"></div>
-        </div>
-      </div> */}
-      <div id="google_translate_element"></div>
       <div className={cx("icon-ss")}>
         <BsSearch className={cx("icon-search-mobile")} />
         <TiShoppingCart className={cx("icon")} />
+      </div>
+      <div className={cx("change-language")}>
+        <BiWorld className={cx("icon")} onClick={() => setShow(!show)} />
+        {
+          show && <div id="google_translate_element"></div>
+        }
       </div>
       {state && (
         <Box sx={{ flexGrow: 0 }}>
@@ -268,9 +270,6 @@ const Header = () => {
           <Link href="/auth/signup" className={cx("signup-btn")}>
             Đăng kí
           </Link>
-          <div className={cx("change-language")}>
-            <ModalLang />
-          </div>
         </div>
       )}
     </div>
