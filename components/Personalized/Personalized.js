@@ -14,13 +14,29 @@ import SelftrainingCard from "../Card/SelftrainingCard/SelftrainingCard";
 import CourseCard from "../Card/CourseCard/CourseCard";
 import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
+import { useGetTotalPractiveQuery } from "@/lib/Midleware/PractiveQuery";
 
 const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
 const Personalized = () => {
+
+  const { data: practiveQuery } = useGetTotalPractiveQuery({
+    "CurrentPageList": 1,
+    "Length": 1000,
+    "FromDate": "",
+    "ToDate": "",
+    "UserName": "admin",
+    "UserId": "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    "Status": "",
+    "Object": "",
+    "ObjType": "",
+    "CardName": ""
+  })
+
   const { data: scheduleQuery } = useGetListScheduleQuery({
     userName: "admin",
     userFilter: "admin",
   });
+
   const { data: classList } = useGetListLmsClassQuery({
     FromDate: "",
     ToDate: "",
@@ -29,7 +45,8 @@ const Personalized = () => {
     pageSize: "10",
     pageNo: "1",
   });
-  const {data:subjectCode} = useGetListExamQuery({
+
+  const { data: subjectCode } = useGetListExamQuery({
     "testName": "",
     "userName": "admin",
     // "subjectCode": "",
@@ -46,7 +63,9 @@ const Personalized = () => {
     "pageLength": 30,
     "pageNum": 1
   })
+
   const [openKeys, setOpenKeys] = useState([]);
+
   const getItem = (label, key, icon, children, type) => {
     return {
       key,
@@ -57,7 +76,7 @@ const Personalized = () => {
     };
   };
   const items = [
-    getItem(`Rèn luyện `, "sub1", <MailOutlined />),
+    getItem(`Rèn luyện [ ${practiveQuery?.Object?.cardSum} | ${practiveQuery?.Object?.cardExpire} | ${practiveQuery?.Object?.cardDone} ]`, "sub1", <MailOutlined />),
     getItem(
       `Buổi học [ ${scheduleQuery?.Object?.length} ]`,
       "sub2",
@@ -101,10 +120,10 @@ const Personalized = () => {
         />
       </div>
       <div className={cx("content")}>
-      {/* <CourseCard data={scheduleQuery} /> */}
-      {/* <CourseCard/> */}
-          {/* <PractiseCard/> */}
-      <SelftrainingCard/>
+        {/* <CourseCard data={scheduleQuery} /> */}
+        {/* <CourseCard/> */}
+        <PractiseCard total={practiveQuery?.Object?.cardSum} />
+        {/* <SelftrainingCard /> */}
         {/* {courseCard && } */}
         {/* {classList && <ClassCard/>} */}
         {/* {sefttraining && <SelftrainingCard/>} */}

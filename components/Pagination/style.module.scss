@@ -1,0 +1,14 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+
+    a {
+        margin-top: 4px
+    }
+
+    li a div span {
+        margin-top: 4px !important
+    }
+}

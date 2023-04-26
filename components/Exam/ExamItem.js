@@ -1,203 +1,42 @@
 import React from "react";
 import classNames from "classnames/bind";
 import style from "./style.module.scss";
+import { Rate } from "antd";
 const cx = classNames.bind(style);
-const ExamItem = () => {
+const ExamItem = ({ data, key }) => {
   return (
-    <ul className={cx("toplist")}>
-      <li data-rank="1" className={cx("lilist")}>
+    <li data-rank="1" className={cx("lilist")} key={key}>
+      <div className={cx("flex_icon")}>
+        <div className={cx("icon")}>
+          <p className={cx("stat")}>
+            <i className="fa-solid fa-book fa-2xl"></i>
+          </p>
+        </div>
         <div className={cx("thumb")}>
-          <span className={cx("img")} data-name="BluewaveSwift"></span>
           <span className={cx("name")}>
-            <h4>Naths</h4>
-            <p>15 munites</p>
+            <h4>{data.PracticeTestTitle}</h4>
+            <div className={cx("content_exxam")}>
+              <div>
+                <p>{data.Duration} {data.Unit}</p><p>Tác giả: {data.CreatedBy}</p>
+                <p>{data.Rating}</p>
+                <p className={cx("rating")}><Rate /></p>
+              </div>
+            </div>
           </span>
         </div>
-        <div className={cx("more")}>
-          {" "}
-          <span className={cx("stat")}>
-            <b>
-              0 / 10
-              <br />
-              Point
-            </b>
-          </span>
-          <span className={cx("stat")}>
-            <p>
-              <i class="fa-solid fa-book fa-2xl"></i>
+      </div>
+      <div className={cx("more")}>
+        <span className={cx("stat")}>
+          <p>Giá: {data.Price}</p>
+          <p>Môn học: {data.ExamSubject}</p>
+          <div className={cx("down")}>
+            <p>{data.QuizCount}</p><p>
+              <i class="fa-solid fa-download"></i>
             </p>
-          </span>
-        </div>
-      </li>
-      <li data-rank="2" className={cx("lilist")}>
-        <div className={cx("thumb")}>
-          <span className={cx("img")} data-name="BluewaveSwift"></span>
-          <span className={cx("name")}>
-            <h4>Naths</h4>
-            <p>15 munites</p>
-          </span>
-        </div>
-        <div className={cx("more")}>
-          {" "}
-          <span className={cx("stat")}>
-            <b>
-              0 / 10
-              <br />
-              Point
-            </b>
-          </span>
-          <span className={cx("stat")}>
-            <p>
-              <i class="fa-solid fa-book fa-2xl"></i>
-            </p>
-          </span>
-        </div>
-      </li>
-      <li data-rank="3" className={cx("lilist")}>
-        <div className={cx("thumb")}>
-          <span className={cx("img")} data-name="BluewaveSwift"></span>
-          <span className={cx("name")}>
-            <h4>Naths</h4>
-            <p>15 munites</p>
-          </span>
-        </div>
-        <div className={cx("more")}>
-          {" "}
-          <span className={cx("stat")}>
-            <b>
-              0 / 10
-              <br />
-              Point
-            </b>
-          </span>
-          <span className={cx("stat")}>
-            <p>
-              <i class="fa-solid fa-book fa-2xl"></i>
-            </p>
-          </span>
-        </div>
-      </li>
-      <li data-rank="4" className={cx("lilist")}>
-        <div className={cx("thumb")}>
-          <span className={cx("img")} data-name="BluewaveSwift"></span>
-          <span className={cx("name")}>
-            <h4>Naths</h4>
-            <p>15 munites</p>
-          </span>
-        </div>
-        <div className={cx("more")}>
-          {" "}
-          <span className={cx("stat")}>
-            <b>
-              0 / 10
-              <br />
-              Point
-            </b>
-          </span>
-          <span className={cx("stat")}>
-            <p>
-              <i class="fa-solid fa-book fa-2xl"></i>
-            </p>
-          </span>
-        </div>
-      </li>
-      <li data-rank="5" className={cx("lilist")}>
-        <div className={cx("thumb")}>
-          <span className={cx("img")} data-name="BluewaveSwift"></span>
-          <span className={cx("name")}>
-            <h4>Naths</h4>
-            <p>15 munites</p>
-          </span>
-        </div>
-        <div className={cx("more")}>
-          {" "}
-          <span className={cx("stat")}>
-            <b>
-              0 / 10
-              <br />
-              Point
-            </b>
-          </span>
-          <span className={cx("stat")}>
-            <p>
-              <i class="fa-solid fa-book fa-2xl"></i>
-            </p>
-          </span>
-        </div>
-      </li>
-      <li data-rank="6" className={cx("lilist")}>
-        <div className={cx("thumb")}>
-          <span className={cx("img")} data-name="BluewaveSwift"></span>
-          <span className={cx("name")}>
-            <h4>Naths</h4>
-            <p>15 munites</p>
-          </span>
-        </div>
-        <div className={cx("more")}>
-          {" "}
-          <span className={cx("stat")}>
-            <b>
-              0 / 10
-              <br />
-              Point
-            </b>
-          </span>
-          <span className={cx("stat")}>
-            <p>
-              <i class="fa-solid fa-book fa-2xl"></i>
-            </p>
-          </span>
-        </div>
-      </li>
-      <li data-rank="7" className={cx("lilist")}>
-        <div className={cx("thumb")}>
-          <span className={cx("img")} data-name="BluewaveSwift"></span>
-          <span className={cx("name")}>
-            <h4>Naths</h4>
-            <p>15 munites</p>
-          </span>
-        </div>
-        <div className={cx("more")}>
-          {" "}
-          <span className={cx("stat")}>
-            <b>
-              0 / 10
-              <br />
-              Point
-            </b>
-          </span>
-          <span className={cx("stat")}>
-            <p>
-              <i class="fa-solid fa-book fa-2xl"></i>
-            </p>
-          </span>
-        </div>
-      </li>
-      <li data-rank="8" className={cx("lilist")}>
-        <div className={cx("thumb")}>
-          <span className={cx("img")} data-name="BluewaveSwift"></span>
-          <span className={cx("name")}>
-            <h4>Naths</h4>
-            <p>15 munites</p>
-          </span>
-        </div>
-        <div className={cx("more")}>
-          {" "}
-          <span className={cx("stat")}>
-            <b>
-              0 / 10
-              <br />
-              Point
-            </b>
-          </span>
-          <span className={cx("stat")}>
-            <p>
-              <i class="fa-solid fa-book fa-2xl"></i>
-            </p>
-          </span>
-        </div>
-      </li>
-    </ul>
+          </div>
+        </span>
+      </div>
+    </li>
   );
 };
 

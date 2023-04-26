@@ -1,23 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
-import style from "../Exam/style.module.scss";
-const cx = classNames.bind(style);
-const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
-  const pageCount = items / pageSize;
-  if (Math.ceil(pageCount) === 1) return null;
-  //   const pages = _.range(1, pageCount + 1);
+import style from "./style.module.scss";
+import { Pagination as PaginationAntd } from 'antd'
 
-  return (
-    <div className={cx("pagination")}>
-      <div >
-        <button disabled className={cx("prev")}></button>
-        <span onClick={() => onPageChange(page)}>
-          Page <b>1</b> of 300
-        </span>
-        <button className={cx("next")}></button>
-      </div>
-    </div>
-  );
+const cx = classNames.bind(style);
+
+const Pagination = ({ total, handleQueryPage, current }) => {
+
+    const handlePageChange = (current, pageSize) => {
+        handleQueryPage(current, pageSize)
+    }
+
+    return (
+        <div className={cx("pagination")}>
+            <PaginationAntd showQuickJumper current={current} total={total} onChange={handlePageChange} />
+        </div>
+    );
 };
 
 export default Pagination;
