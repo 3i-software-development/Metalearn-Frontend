@@ -18,7 +18,6 @@ export const GetListClass = () => {
     return response.data;
   });
 };
-
 export const GetListDoc = () => {
   return useQuery(["getlistdoc"], async () => {
     const response = await axios.post(

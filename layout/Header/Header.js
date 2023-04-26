@@ -17,7 +17,6 @@ import {
   Tooltip,
 } from "@mui/material";
 import useAuth from "@/hooks/useAuth";
-import { useLoginMutation } from "@/lib/Midleware/AuthQuery";
 import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);
@@ -137,6 +136,7 @@ const Header = () => {
   };
 
   const user = useSelector((state) => state.login);
+  console.log(state)
   return (
     <div className={cx("header")}>
       <AiOutlineMenu

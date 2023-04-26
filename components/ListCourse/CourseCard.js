@@ -12,8 +12,16 @@ const CourseCard = ({ data, clas, doc, exam }) => {
   const examCard = () => {
     return (
       <div className={cx("course-card")}>
-        
-        <Image src={data.ImageCover ? data.ImageCover : 'https://www.thaibinhtv.vn/assets/images/imgstd.jpg'} alt="exam" width="500" height="400" />
+        <Image
+          src={
+            data.ImageCover
+              ? data.ImageCover
+              : "https://www.thaibinhtv.vn/assets/images/imgstd.jpg"
+          }
+          alt="exam"
+          width="500"
+          height="400"
+        />
         <p className={cx("titleDoc")}>{data.LectName}</p>
       </div>
     );
@@ -56,13 +64,15 @@ const CourseCard = ({ data, clas, doc, exam }) => {
         <br />
         <p className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "red" }}></i> {trans.subject.subject}:
+            <i className="fa-solid fa-circle " style={{ color: "red" }}></i>{" "}
+            {trans.subject.subject}:
           </span>
           <span>&nbsp; Lập trình</span>
         </p>
         <p className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i> {trans.class.time}:
+            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i>{" "}
+            {trans.class.time}:
           </span>
           <span>&nbsp; Lập trình</span>
         </p>
