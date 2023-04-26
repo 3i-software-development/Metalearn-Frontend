@@ -1,0 +1,41 @@
+.selftrainingTitle{
+    display: flex;
+    justify-content: space-between;
+}
+.selftrainingContent{
+    margin: 10px 0;
+    p{
+    margin: 5px 0;
+
+        span{
+            color: rgb(9, 167, 59);
+            font-weight: 600;
+        }
+    }
+}
+.timeSub{
+    span{
+        color: black;
+    }
+}
+.time-level,.icon{
+    display: flex;
+    justify-content: space-between;
+    p{
+        margin-bottom: 10px;
+        span{
+            color: rgb(9, 167, 59);
+            font-weight: 600;
+        }
+
+    }
+    i{
+        color:gray;
+        font-size: 20px;
+    }
+}
+.selftraining-card{
+    width: 400px;
+    border-bottom: 2px solid gray;
+    padding-bottom: 10px;
+}

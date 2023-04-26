@@ -1,37 +1,82 @@
-import { MailOutlined, SettingOutlined,AppstoreOutlined } from '@ant-design/icons';
-import { Menu } from 'antd';
-import { useState } from 'react';
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
-const items = [
-  getItem('Navigation One', 'sub1', <MailOutlined />, [
-    getItem('Option 1', '1'),
-    getItem('Option 2', '2'),
-    getItem('Option 3', '3'),
-    getItem('Option 4', '4'),
-  ]),
-  getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
-    getItem('Option 5', '5'),
-    getItem('Option 6', '6'),
-    getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
-  ]),
-  getItem('Navigation Three', 'sub4', <SettingOutlined />, [
-    getItem('Option 9', '9'),
-    getItem('Option 10', '10'),
-    getItem('Option 11', '11'),
-    getItem('Option 12', '12'),
-  ]),
-];
-const rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
+import {
+  MailOutlined,
+  SettingOutlined,
+  AppstoreOutlined,
+} from "@ant-design/icons";
+import { Menu } from "antd";
+import { useState } from "react";
+import classNames from "classnames/bind";
+import styles from "./style.module.scss";
+const cx = classNames.bind(styles);
+import { useGetListScheduleQuery } from "@/lib/Midleware/ScheduleQuery";
+import PractiseCard from "../Card/PractiseCard/PractiseCard";
+import SelftrainingCard from "../Card/SelftrainingCard/SelftrainingCard";
+import CourseCard from "../Card/CourseCard/CourseCard";
+import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
+import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
+
+const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
 const Personalized = () => {
-  const [openKeys, setOpenKeys] = useState(['sub1']);
+  const { data: scheduleQuery } = useGetListScheduleQuery({
+    userName: "admin",
+    userFilter: "admin",
+  });
+  const { data: classList } = useGetListLmsClassQuery({
+    FromDate: "",
+    ToDate: "",
+    Teacher: "admin",
+    Student: "",
+    pageSize: "10",
+    pageNo: "1",
+  });
+  const {data:subjectCode} = useGetListExamQuery({
+    "testName": "",
+    "userName": "admin",
+    // "subjectCode": "",
+    // "content": "",
+    // "latex": "",
+    // "level": "",
+    "ratingMin": -1,
+    "ratingMax": -1,
+    // "fromDatePara": "",
+    // "toDatePara": "",
+    // "createdBy": "",
+    "onlyAssignment": false,
+    "onlyShared": true,
+    "pageLength": 30,
+    "pageNum": 1
+  })
+  const [openKeys, setOpenKeys] = useState([]);
+  const getItem = (label, key, icon, children, type) => {
+    return {
+      key,
+      icon,
+      children,
+      label,
+      type,
+    };
+  };
+  const items = [
+    getItem(`Rèn luyện `, "sub1", <MailOutlined />),
+    getItem(
+      `Buổi học [ ${scheduleQuery?.Object?.length} ]`,
+      "sub2",
+      <AppstoreOutlined />
+    ),
+    getItem(
+      `Lớp tham gia [ ${classList?.count} ]`,
+      "sub4",
+      <SettingOutlined />
+    ),
+    getItem(`Đề thi [ ${subjectCode?.query.length} ]`, `sub3`, <SettingOutlined />),
+    getItem("Quiz", "sub6", <SettingOutlined />),
+    getItem("Tài liệu", "sub7", <SettingOutlined />),
+    getItem("Khóa học", "sub8", <SettingOutlined />),
+    getItem("Môn học của tôi", "sub9", <SettingOutlined />),
+    getItem("Kết quả học tập", "sub10", <SettingOutlined />),
+    getItem("Kết quả giảng dạy", "sub11", <SettingOutlined />),
+    getItem("Bộ sưu tập", "sub12", <SettingOutlined />),
+  ];
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
@@ -41,17 +86,30 @@ const Personalized = () => {
     }
   };
   return (
-    <Menu
-      mode="inline"
-      openKeys={openKeys}
-      onOpenChange={onOpenChange}
-      style={{
-        width: 256,
-        margin:"50px 0",
-        backgroundColor:""
-      }}
-      items={items}
-    />
+    <div className={cx("person")}>
+      <div className={cx("navbar")}>
+        <Menu
+          mode="inline"
+          openKeys={openKeys}
+          onOpenChange={onOpenChange}
+          style={{
+            width: 276,
+            backgroundColor: "",
+            position: "fixed",
+          }}
+          items={items}
+        />
+      </div>
+      <div className={cx("content")}>
+      {/* <CourseCard data={scheduleQuery} /> */}
+      {/* <CourseCard/> */}
+          {/* <PractiseCard/> */}
+      <SelftrainingCard/>
+        {/* {courseCard && } */}
+        {/* {classList && <ClassCard/>} */}
+        {/* {sefttraining && <SelftrainingCard/>} */}
+      </div>
+    </div>
   );
 };
 export default Personalized;
