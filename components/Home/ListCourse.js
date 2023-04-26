@@ -17,13 +17,6 @@ const ListCourse = () => {
   const listSubject = ["Đề thi", "Lớp học", "Tài liệu"]
   return (
     <div className={cx("list-course-container")}>
-      {/* <h1 className={cx("h1")}>
-        Vô vàn khóa học , tài liệu , đề thi để lựa chọn
-      </h1>
-      <p className={cx("text-p")}>
-        Chọn lựa từ hàng trăm nghìn câu hỏi ,tài liệu ,lớp học chất lượng được
-        cập nhật hàng ngày
-      </p> */}
       <div className={cx("list-btn")}>
         {listSubject.map((item, index) => (
           <button

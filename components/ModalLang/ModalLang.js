@@ -35,7 +35,7 @@ const ModalLang = () => {
         centered
         footer={null}
       >
-        <div className={cx("lang-list")} id="google_translate_element">
+        <div className={cx("lang-list")} >
           <p className={cx("lang-member")} onClick={() => changeLang("vi")}>
             Tiếng Việt
           </p>

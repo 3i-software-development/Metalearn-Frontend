@@ -44,7 +44,7 @@ export default function App({ Component, pageProps }) {
     }
 
 
-    // isFallback || addScript()
+    isFallback || addScript()
 
     events.on('routeChangeStart', removeScript)
     events.on('routeChangeComplete', addScript)
