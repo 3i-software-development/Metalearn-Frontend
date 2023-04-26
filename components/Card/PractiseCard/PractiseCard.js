@@ -70,7 +70,7 @@ const PractiseCard = ({ total }) => {
           )
         })}
       </div>
-      <Pagination total={total} handleQueryPage={handleQueryPage} query={query} current={query.CurrentPageList} />
+      <Pagination total={total} handleQueryPage={handleQueryPage} current={query.CurrentPageList} />
     </Section>
   );
 };
