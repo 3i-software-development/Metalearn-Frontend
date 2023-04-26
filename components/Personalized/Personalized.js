@@ -14,6 +14,10 @@ import SelftrainingCard from "../Card/SelftrainingCard/SelftrainingCard";
 import CourseCard from "../Card/CourseCard/CourseCard";
 import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
+import { useGetTotalPractiveQuery } from "@/lib/Midleware/PractiveQuery";
+import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
+import Document_Cart from "../Card/SubjectCard";
+import ChartSubject from "../Chart/ChartSubject";
 
 
 const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
@@ -72,23 +76,7 @@ const Personalized = () => {
     CurrentPageView: 1,
     Length: 10,
   });
-  const { data: subjectCode } = useGetListExamQuery({
-    "testName": "",
-    "userName": "admin",
-    // "subjectCode": "",
-    // "content": "",
-    // "latex": "",
-    // "level": "",
-    "ratingMin": -1,
-    "ratingMax": -1,
-    // "fromDatePara": "",
-    // "toDatePara": "",
-    // "createdBy": "",
-    "onlyAssignment": false,
-    "onlyShared": true,
-    "pageLength": 30,
-    "pageNum": 1
-  })
+
 
   const [openKeys, setOpenKeys] = useState([]);
 
@@ -151,18 +139,15 @@ const Personalized = () => {
       </div>
       <div className={cx("content")}>
         {/* <CourseCard data={scheduleQuery} /> */}
-
-        {/* <ChartSubject/> */}
+        <ChartSubject/>
         {/* <CartItem/> */}
-        <Document_Cart />
+        {/* <Document_Cart /> */}
         {/* <CourseCard/> */}
         {/* <PractiseCard/> */}
         {/* <SelftrainingCard/> */}
-
         {/* <CourseCard/> */}
-        <PractiseCard total={practiveQuery?.Object?.cardSum} />
+        {/* <PractiseCard total={practiveQuery?.Object?.cardSum} /> */}
         {/* <SelftrainingCard /> */}
-
         {/* {courseCard && } */}
         {/* {classList && <ClassCard/>} */}
         {/* {sefttraining && <SelftrainingCard/>} */}
