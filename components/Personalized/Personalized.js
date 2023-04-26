@@ -14,17 +14,29 @@ import SelftrainingCard from "../Card/SelftrainingCard/SelftrainingCard";
 import CourseCard from "../Card/CourseCard/CourseCard";
 import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
-import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
-import ChartSubject from "../Chart/ChartSubject";
-import CartItem from "../Card/DocumentCart";
-import Document_Cart from "../Card/SubjectCard";
+
 
 const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
 const Personalized = () => {
+
+  const { data: practiveQuery } = useGetTotalPractiveQuery({
+    "CurrentPageList": 1,
+    "Length": 1000,
+    "FromDate": "",
+    "ToDate": "",
+    "UserName": "admin",
+    "UserId": "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    "Status": "",
+    "Object": "",
+    "ObjType": "",
+    "CardName": ""
+  })
+
   const { data: scheduleQuery } = useGetListScheduleQuery({
     userName: "admin",
     userFilter: "admin",
   });
+
   const { data: classList } = useGetListLmsClassQuery({
     FromDate: "",
     ToDate: "",
@@ -33,6 +45,7 @@ const Personalized = () => {
     pageSize: "10",
     pageNo: "1",
   });
+
   const { data: subjectCode } = useGetListExamQuery({
     testName: "",
     userName: "admin",
@@ -59,7 +72,26 @@ const Personalized = () => {
     CurrentPageView: 1,
     Length: 10,
   });
+  const { data: subjectCode } = useGetListExamQuery({
+    "testName": "",
+    "userName": "admin",
+    // "subjectCode": "",
+    // "content": "",
+    // "latex": "",
+    // "level": "",
+    "ratingMin": -1,
+    "ratingMax": -1,
+    // "fromDatePara": "",
+    // "toDatePara": "",
+    // "createdBy": "",
+    "onlyAssignment": false,
+    "onlyShared": true,
+    "pageLength": 30,
+    "pageNum": 1
+  })
+
   const [openKeys, setOpenKeys] = useState([]);
+
   const getItem = (label, key, icon, children, type) => {
     return {
       key,
@@ -70,7 +102,7 @@ const Personalized = () => {
     };
   };
   const items = [
-    getItem(`Rèn luyện `, "sub1", <MailOutlined />),
+    getItem(`Rèn luyện [ ${practiveQuery?.Object?.cardSum} | ${practiveQuery?.Object?.cardExpire} | ${practiveQuery?.Object?.cardDone} ]`, "sub1", <MailOutlined />),
     getItem(
       `Buổi học [ ${scheduleQuery?.Object?.length} ]`,
       "sub2",
@@ -119,12 +151,18 @@ const Personalized = () => {
       </div>
       <div className={cx("content")}>
         {/* <CourseCard data={scheduleQuery} /> */}
+
         {/* <ChartSubject/> */}
         {/* <CartItem/> */}
         <Document_Cart />
         {/* <CourseCard/> */}
         {/* <PractiseCard/> */}
         {/* <SelftrainingCard/> */}
+
+        {/* <CourseCard/> */}
+        <PractiseCard total={practiveQuery?.Object?.cardSum} />
+        {/* <SelftrainingCard /> */}
+
         {/* {courseCard && } */}
         {/* {classList && <ClassCard/>} */}
         {/* {sefttraining && <SelftrainingCard/>} */}

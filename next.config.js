@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
-const { i18n } = require("./i18n.config");
 
 const nextConfig = {
-  reactStrictMode: false,
-  i18n,
+  reactStrictMode: true,
   images: {
     domains: ["admin.metalearn.vn"],
     remotePatterns: [

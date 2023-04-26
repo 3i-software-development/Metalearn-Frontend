@@ -1,25 +1,16 @@
-.person{
+.person {
     display: grid;
     grid-template-columns: 1fr 4fr;
     margin: 50px 0;
+    min-height: 555px
 }
-.navbar{
+
+.navbar {
     position: relative;
 }
+
 .content{
     min-height: 555px;
     margin-left: 70px;
-    // height: auto;
 }
-// @media only screen and (max-width: 930px) {
-//     .person{
-//         display: grid;
-//         grid-template-columns: 1fr;
-//         margin: 50px 0;
-//     }
-//     .navbar{
-//         // position: relative;
-//     }
-// }
-// @media only screen and (max-width: 1300px) {
-// }
+

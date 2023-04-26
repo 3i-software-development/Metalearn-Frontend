@@ -1,50 +1,88 @@
-.card{
-    width: 300px;
-    border-bottom: 2px dashed gray;
+.practice {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 10px;
 }
-.titleCard{
+
+.card {
+    width: 100%;
+    padding: 10px 30px;
+    // border-bottom: 2px dashed gray;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: self-end;
+
+    .card-body {
+        width: 100%;
+    }
+
+    .card-footer {
+        width: 100%;
+    }
+}
+
+.titleCard {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    i{
+
+    i {
         font-weight: bold;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 }
-.status{
-    display: flex;
-    padding: 7px 0;
 
-    span{
-        background-color: rgb(3, 174, 3);
-        padding: 3px 6px;margin-right: 5px;
-        border-radius: 12px;
-        font-size: 12px;
-        box-shadow: rgba(135, 135, 138, 0.2) 0px 7px 29px 0px;
-   
+.card-time {
+    display: flex;
+    justify-content: space-between;
+
+    .status {
+        display: flex;
+        padding: 7px 0;
+
+        span {
+            background-color: rgb(3, 174, 3);
+            padding: 3px 6px;
+            margin-right: 5px;
+            border-radius: 12px;
+            font-size: 14px;
+            box-shadow: rgba(135, 135, 138, 0.2) 0px 7px 29px 0px;
+
+        }
+    }
+
+    .timeStart {
+        display: flex;
+        color: rgb(3, 140, 140);
+        font-weight: bold;
+        padding: 7px 0;
+
+        span {
+            font-size: 14px;
+        }
     }
 }
-.timeStart{
-    display: flex;
-    color: rgb(3, 140, 140);
-    font-weight: bold;
-    padding: 7px 0;
-}
-.listIcon{
+
+.listIcon {
     display: flex;
     justify-content: center;
     padding: 10px 0;
 }
-.listIcon span{
+
+.listIcon span {
     display: inline-flex;
     justify-content: center;
     width: 100%;
     align-items: center;
-    i{
+    cursor: pointer;
+
+    i {
         color: gray;
         font-size: 20px;
     }
 }
+
 // .listIcon li i{
 //     list-style: none;
 //     justify-content: center;

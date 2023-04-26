@@ -2,12 +2,10 @@ import React from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import Image from "next/image";
-import useTrans from "@/hooks/useTrans";
 
 const cx = classNames.bind(styles);
 
 const CourseCard = ({ data, clas, doc, exam }) => {
-  const trans = useTrans();
 
   const examCard = () => {
     return (
@@ -64,15 +62,13 @@ const CourseCard = ({ data, clas, doc, exam }) => {
         <br />
         <p className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "red" }}></i>{" "}
-            {trans.subject.subject}:
+            <i className="fa-solid fa-circle " style={{ color: "red" }}></i> Subject:
           </span>
           <span>&nbsp; Lập trình</span>
         </p>
         <p className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i>{" "}
-            {trans.class.time}:
+            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i> Bắt đầu:
           </span>
           <span>&nbsp; Lập trình</span>
         </p>
@@ -82,7 +78,7 @@ const CourseCard = ({ data, clas, doc, exam }) => {
           </p>
           <p className={cx("arrow-icon")}>
             <p className={cx("rectangle")}>
-              <span>{trans.class.register}</span> <br />
+              <span>Đăng kí</span> <br />
               <span>1 coin</span>
             </p>
             <p className={cx("arrow-right")}></p>
