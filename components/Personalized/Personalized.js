@@ -16,6 +16,8 @@ import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 import { useGetTotalPractiveQuery } from "@/lib/Midleware/PractiveQuery";
 import ClassCard from "../Card/ClassCard/ClassCard";
+import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
+import ExamCard from "../Card/ExamCard";
 
 const Personalized = () => {
 
@@ -74,6 +76,18 @@ const Personalized = () => {
     Length: 10,
   });
 
+  const { data: examQuery } = useGetListExamQuery({
+    "testName": "",
+    "ratingMin": 1,
+    "ratingMax": -1,
+    "userFilter": "admin",
+    "userName": "admin",
+    "onlyAssignment": false,
+    "onlyShared": true,
+    "pageLength": "10",
+    "pageNum": "1"
+  });
+
   const [openKeys, setOpenKeys] = useState('sub1');
 
   const getItem = (label, key, icon, children, type) => {
@@ -90,7 +104,7 @@ const Personalized = () => {
     getItem(
       `Rèn luyện [ ${practiveQuery?.Object?.cardSum} | ${practiveQuery?.Object?.cardExpire} | ${practiveQuery?.Object?.cardDone} ]`,
       "sub1",
-      <MailOutlined />
+      <MailOutlined />,
     ),
     getItem(
       `Buổi học [ ${scheduleQuery?.Object?.length} ]`,
@@ -102,7 +116,12 @@ const Personalized = () => {
       "sub3",
       <SettingOutlined />
     ),
-    getItem(`Đề thi [ ${subjectCode?.query.length} ]`, `sub4`, <SettingOutlined />),
+    getItem(`Đề thi [ ${examQuery?.countAssignment + examQuery?.countSharing} ]`, `sub4`, <SettingOutlined />,
+      [
+        getItem(`Được giao [ ${examQuery?.countAssignment} ]`, 'sub4-1', null),
+        getItem(`Tự luyện [ ${examQuery?.countSharing} ]`, 'sub4-2', null),
+      ]
+    ),
     getItem("Quiz", "sub5", <SettingOutlined />),
     getItem("Tài liệu", "sub6", <SettingOutlined />),
     getItem("Khóa học", "sub7", <SettingOutlined />),
@@ -121,7 +140,8 @@ const Personalized = () => {
       case 'sub1': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
       case 'sub2': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
       case 'sub3': return <ClassCard />
-      case 'sub4': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
+      case 'sub4-1': return <ExamCard onlyAssignment={true} />
+      case 'sub4-2': return <ExamCard onlyShared={true} />
       case 'sub5': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
       case 'sub6': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
       case 'sub7': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
