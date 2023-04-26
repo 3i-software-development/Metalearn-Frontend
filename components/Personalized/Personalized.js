@@ -17,6 +17,7 @@ import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 import { useGetTotalPractiveQuery } from "@/lib/Midleware/PractiveQuery";
 import ClassCard from "../Card/ClassCard/ClassCard";
 
+
 const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
 const Personalized = () => {
 
@@ -47,6 +48,32 @@ const Personalized = () => {
     pageNo: "1",
   });
 
+  const { data: subjectCode } = useGetListExamQuery({
+    testName: "",
+    userName: "admin",
+    ratingMin: -1,
+    ratingMax: -1,
+    onlyAssignment: false,
+    onlyShared: true,
+    pageLength: 30,
+    pageNum: 1,
+  });
+  const { data: fileCwQuery } = useGetListFileCwQuery({
+    CatCode: "",
+    SubjectCode: "",
+    ObjectType: "",
+    ObjectCode: "",
+    FromDate: "",
+    ToDate: "",
+    FileName: "",
+    FileType: "",
+    Content: "",
+    UserUpload: "admin",
+    KeySearch: "",
+    Count: "",
+    CurrentPageView: 1,
+    Length: 10,
+  });
   const { data: subjectCode } = useGetListExamQuery({
     "testName": "",
     "userName": "admin",
@@ -88,9 +115,13 @@ const Personalized = () => {
       "sub4",
       <SettingOutlined />
     ),
-    getItem(`Đề thi [ ${subjectCode?.query.length} ]`, `sub3`, <SettingOutlined />),
+    getItem(
+      `Đề thi [ ${subjectCode?.query.length} ]`,
+      `sub3`,
+      <SettingOutlined />
+    ),
     getItem("Quiz", "sub6", <SettingOutlined />),
-    getItem("Tài liệu", "sub7", <SettingOutlined />),
+    getItem(`Tài liệu [ ${fileCwQuery?.Object?.count} ]`, "sub7", <SettingOutlined />),
     getItem("Khóa học", "sub8", <SettingOutlined />),
     getItem("Môn học của tôi", "sub9", <SettingOutlined />),
     getItem("Kết quả học tập", "sub10", <SettingOutlined />),
@@ -123,10 +154,19 @@ const Personalized = () => {
       </div>
       <div className={cx("content")}>
         {/* <CourseCard data={scheduleQuery} /> */}
+
+        {/* <ChartSubject/> */}
+        {/* <CartItem/> */}
+        <Document_Cart />
+        {/* <CourseCard/> */}
+        {/* <PractiseCard/> */}
+        {/* <SelftrainingCard/> */}
+
         {/* <CourseCard/> */}
         <ClassCard />
         {/* <PractiseCard total={practiveQuery?.Object?.cardSum} /> */}
         {/* <SelftrainingCard /> */}
+
         {/* {courseCard && } */}
         {/* {classList && <ClassCard/>} */}
         {/* {sefttraining && <SelftrainingCard/>} */}
