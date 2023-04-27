@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { GrDocumentTxt } from "react-icons/gr";
@@ -9,12 +9,13 @@ import { BiHash } from "react-icons/bi";
 import { BsFillPinFill } from "react-icons/bs";
 import moment from "moment";
 import Item_file from "./Item_file";
-import { Rate } from "antd";
+import {  Rate } from "antd";
 import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
+import Pagination from "@/components/Pagination/Pagination";
 
 export default function Document_Cart(data) {
   const cx = classNames.bind(styles);
-  const { data: fileCwQuery } = useGetListFileCwQuery({
+  const [query,setQuery] = useState({
     CatCode: "",
     SubjectCode: "",
     ObjectType: "",
@@ -29,10 +30,16 @@ export default function Document_Cart(data) {
     Count: "",
     CurrentPageView: 1,
     Length: 10,
-  });
+  })
+  const { data: fileCwQuery } = useGetListFileCwQuery(query);
+
+  const handleQueryPage = (current, pageSize) => {
+    setQuery({ ...query, CurrentPageView: current, Length: pageSize })
+  }
+  const total = fileCwQuery?.Object?.count
   return (
     <div className={cx("Document_Cart_Wrap")}>
-      {data?.data?.Object?.data1.map((item, index) => {
+      {fileCwQuery?.Object?.data1.map((item, index) => {
         return (
           <div className={cx("Document_Cart_All")} key={index}>
             <div className={cx("Document_Cart_Icon")}>
@@ -75,6 +82,7 @@ export default function Document_Cart(data) {
           </div>
         );
       })}
+      <Pagination total={total} handleQueryPage={handleQueryPage} current={query.CurrentPageView}/>
     </div>
   );
 }

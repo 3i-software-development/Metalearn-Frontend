@@ -8,10 +8,11 @@ import moment from 'moment';
 const cx = classNames.bind(styles);
 
 const CourseCard = (data) => {
+  console.log(data)
   return (
     <Section>
       <div className={cx("layout")}>
-        {data?.data?.Object.map((item, index) => {
+        {data?.data?.Object?.map((item, index) => {
           return (
             <div className={cx("course-card")} key={index}>
               <div className={cx("content")}>
@@ -25,10 +26,10 @@ const CourseCard = (data) => {
                   <p className={cx("role")}>Admin</p>
                   <Rate defaultValue={2} />
                   <p>
-                    Bắt đầu : <span>{moment(item.StartTime).format('DD/MM/YYYY HH:MM:SS')}</span>
+                    Bắt đầu : <span>{moment(item.StartTime).format('DD/MM/YYYY HH:MM:SS')} </span>
                   </p>
                   <p>
-                    Kết thúc : <span>{moment(item.EndTime).format('DD/MM/YYYY HH:MM:SS')}</span>
+                    Kết thúc : <span>{moment(item.EndTime).format('DD/MM/YYYY HH:MM:SS')} </span>
                   </p>
                   <p>
                     <i class="fa-solid fa-coins"></i> Gía : <span>{item.Price ? item.Price : '0'}</span>
@@ -41,11 +42,11 @@ const CourseCard = (data) => {
               <div className={cx("footerCard")}>
                 <div>
                   <p>
-                    <i class="fa-solid fa-coins"></i> Môn học :{" "}
+                    <i class="fa-solid fa-coins"></i> Môn học :
                     <span>{item.SubjectName}</span>
                   </p>
                   <p>
-                    <i class="fa-solid fa-coins"></i> Bài giảng tương tác :{" "}
+                    <i class="fa-solid fa-coins"></i>  Bài giảng tương tác :
                     <span>Không</span>
                   </p>
                 </div>
