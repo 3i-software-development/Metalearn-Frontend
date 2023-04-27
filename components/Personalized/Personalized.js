@@ -3,7 +3,7 @@ import {
   SettingOutlined,
   AppstoreOutlined,
 } from "@ant-design/icons";
-import { Menu } from "antd";
+import { Breadcrumb, Menu } from "antd";
 import { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
@@ -22,7 +22,8 @@ import ChartSubject from "../Chart/ChartSubject";
 import { useGetCountQuizBodyQuery } from "@/lib/Midleware/QuizQuery";
 import ExamCard from "../Card/ExamCard";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
-
+import SearchAndAddSubjects from "../SearchAndAddSubjects";
+import { AiOutlineSearch } from "react-icons/ai";
 const Personalized = () => {
   const { data: practiveQuery } = useGetTotalPractiveQuery({
     CurrentPageList: 1,
@@ -89,7 +90,7 @@ const Personalized = () => {
     onlyAssignment: true,
     onlyShared: false,
     pageLength: "10",
-    pageNum: "1"
+    pageNum: "1",
   });
 
   const { data: lectureQuery } = useGetListLectureQuery({
@@ -103,11 +104,9 @@ const Personalized = () => {
     pageLength: 10,
     pageNum: 1,
     ratingMin: -1,
-    ratingMax: -1
+    ratingMax: -1,
   });
-
-  const [openKeys, setOpenKeys] = useState('sub1');
-
+  const [openKeys, setOpenKeys] = useState("sub1");
   const getItem = (label, key, icon, children, type) => {
     return {
       key,
@@ -121,7 +120,7 @@ const Personalized = () => {
     getItem(
       `Rèn luyện [ ${practiveQuery?.Object?.cardSum} | ${practiveQuery?.Object?.cardExpire} | ${practiveQuery?.Object?.cardDone} ]`,
       "sub1",
-      <MailOutlined />,
+      <MailOutlined />
     ),
     getItem(
       `Buổi học [ ${scheduleQuery?.Object?.length} ]`,
@@ -136,14 +135,29 @@ const Personalized = () => {
     getItem(
       `Đề thi [ ${examQuery?.countAssignment + examQuery?.countSharing} ]`,
       `sub4`,
-      <SettingOutlined />
-    ,
+      <SettingOutlined />,
       [
-        getItem(`Được giao [ ${examQuery?.countAssignment} ]`, 'sub4-1', null),
-        getItem(`Tự luyện [ ${examQuery?.countSharing} ]`, 'sub4-2', null),
+        getItem(`Được giao [ ${examQuery?.countAssignment} ]`, "sub4-1", null),
+        getItem(`Tự luyện [ ${examQuery?.countSharing} ]`, "sub4-2", null),
       ]
     ),
-    getItem(`Quiz [ ${countQuiz?.Object?.countAssignment} ]`, "sub5", <SettingOutlined />),
+    getItem(
+      `Quiz [ ${countQuiz?.Object?.countAssignment} | ${countQuiz?.Object?.countVoluntary} ]`,
+      "sub5",
+      <SettingOutlined />,
+      [
+        getItem(
+          `Được giao [ ${countQuiz?.Object?.countAssignment} ]`,
+          "sub5-1",
+          null
+        ),
+        getItem(
+          `Tự luyện [ ${countQuiz?.Object?.countVoluntary} ]`,
+          "sub5-2",
+          null
+        ),
+      ]
+    ),
     getItem(
       `Tài liệu [ ${fileCwQuery?.Object.count} ]`,
       "sub6",
@@ -165,39 +179,74 @@ const Personalized = () => {
       case "sub1":
         return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
       case "sub2":
-        return  <ClassCard role={"lesson"} data={scheduleQuery}/>;
+        return <ClassCard role={"lesson"} data={scheduleQuery} />;
       case "sub3":
         return <ClassCard />;
-      case 'sub4-1': return <ExamCard onlyAssignment={true} />
-      case 'sub4-2': return <ExamCard onlyAssignment={false} />
-      case "sub5":
-        return <SelftrainingCard />;
+      case "sub4-1":
+        return <ExamCard onlyAssignment={true} />;
+      case "sub4-2":
+        return <ExamCard onlyAssignment={false} />;
+      case "sub5-1":
+        return <SelftrainingCard onlyAssignment={true} />;
+      case "sub5-2":
+        return <SelftrainingCard onlyAssignment={false} />;
       case "sub6":
         return <Document_Cart total={fileCwQuery} />;
-      case 'sub7': return <CourseCard />
-      case 'sub8': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
-      case 'sub9': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
-      case 'sub10': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
-      case 'sub11': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
+      case "sub7":
+        return <CourseCard />;
+      case "sub8":
+        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+      case "sub9":
+        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+      case "sub10":
+        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+      case "sub11":
+        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
     }
   };
   return (
-    <div className={cx("person")}>
-      <div className={cx("navbar")}>
-        <Menu
-          mode="inline"
-          defaultSelectedKeys="sub1"
-          onClick={onOpenChange}
-          style={{
-            width: 276,
-            backgroundColor: "",
-            position: "fixed",
-          }}
-          items={items}
-        />
-      </div>
-      <div className={cx("content")}>
-        {displayContent()}
+    <div>
+      <div className={cx("person")}>
+        <div className={cx("navbar")}>
+          <Menu
+            mode="inline"
+            defaultSelectedKeys="sub1"
+            onClick={onOpenChange}
+            style={{
+              width: 300,
+              backgroundColor: "",
+              position: "fixed",
+            }}
+            items={items}
+          />
+        </div>
+        <div className={cx("content")}>
+          <div className={cx("SearchAndAddSubjects_ItemAll")}>
+            <div>
+            <Breadcrumb
+              items={[
+                {
+                  title: "Home",
+                },
+                {
+                  title: <a href="">Application Center</a>,
+                },
+                {
+                  title: <a href="">Application List</a>,
+                },
+                {
+                  title: "An Application",
+                },
+              ]}
+            />
+            </div>
+           <div>
+           <AiOutlineSearch />
+            <i class="fa-solid fa-file-export"></i>
+          </div>
+           </div>
+          {displayContent()}
+        </div>
       </div>
     </div>
   );

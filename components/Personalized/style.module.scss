@@ -11,6 +11,22 @@
 
 .content{
     min-height: 555px;
-    margin-left: 70px;
+    // margin-left: 70px;
 }
 
+.SearchAndAddSubjects_ItemAll{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: 30px;
+    align-items: center;
+    
+    i{
+        font-size: 30px;
+        margin-left: 20px;
+        cursor: pointer;
+        :hover{
+            color: greenyellow;
+        }
+    }
+}

@@ -34,7 +34,7 @@
 }
 
 .number {
-    width: 30%;
+    width: 20%;
     height: 60%;
     border-left: 1.5px groove #c1c1c1;
     padding: 5% 20px;
@@ -204,62 +204,62 @@
     color: white;
 }
 
-@media screen and (max-width:800px) {
-    .containers {
-        display: flex;
-        flex-direction: column-reverse;
-    }
+// @media screen and (max-width:800px) {
+//     .containers {
+//         display: flex;
+//         flex-direction: column-reverse;
+//     }
 
-    .number,
-    .quiz {
-        width: 100%;
-    }
+//     .number,
+//     .quiz {
+//         width: 100%;
+//     }
 
-    .number {
-        position: relative;
-    }
+//     .number {
+//         position: relative;
+//     }
 
-    .numOf {
-        width: 100%;
+//     .numOf {
+//         width: 100%;
         
-    }
+//     }
 
-    .recommend {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 30px;
-        text-align: center;
-    }
+//     .recommend {
+//         width: 100%;
+//         display: flex;
+//         justify-content: space-between;
+//         margin-top: 30px;
+//         text-align: center;
+//     }
 
-    .recommend a,
-    .recommend button {
-        width: 25%;
-        margin-right: 5px;
-    }
+//     .recommend a,
+//     .recommend button {
+//         width: 25%;
+//         margin-right: 5px;
+//     }
 
-    .quizz-left h3 {
-        width: 100%;
-        margin-top: unset !important;
-        padding: unset !important;
+//     .quizz-left h3 {
+//         width: 100%;
+//         margin-top: unset !important;
+//         padding: unset !important;
 
-    }
+//     }
 
-    .quiz-detail {
-        flex-wrap: wrap;
-        height: 100%;
-        padding: 20% 0;
-    }
+//     .quiz-detail {
+//         flex-wrap: wrap;
+//         height: 100%;
+//         padding: 20% 0;
+//     }
     
-    // .quiz{
-    //     height: 90vh;
-    //     overflow: hidden;
-    //     // background-color: red;
-    // }
-    .quizz-left p {
-        margin-top: 50px;
-    }
-}
-.done{
-    background-color: rgb(71, 224, 71) !important;
-}
+//     // .quiz{
+//     //     height: 90vh;
+//     //     overflow: hidden;
+//     //     // background-color: red;
+//     // }
+//     .quizz-left p {
+//         margin-top: 50px;
+//     }
+// }
+// .done{
+//     background-color: rgb(71, 224, 71) !important;
+// }
