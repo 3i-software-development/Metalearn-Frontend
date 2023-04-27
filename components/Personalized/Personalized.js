@@ -11,16 +11,17 @@ const cx = classNames.bind(styles);
 import { useGetListScheduleQuery } from "@/lib/Midleware/ScheduleQuery";
 import PractiseCard from "../Card/PractiseCard/PractiseCard";
 import SelftrainingCard from "../Card/SelftrainingCard/SelftrainingCard";
-import CourseCard from "../Card/ScheduleQuery/CourseCard";
+import CourseCard from "../Card/CourseCard/CourseCard";
 import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 import { useGetTotalPractiveQuery } from "@/lib/Midleware/PractiveQuery";
 import ClassCard from "../Card/ClassCard/ClassCard";
 import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
-import CartItem from "../Card/DocumentCart";
 import Document_Cart from "../Card/SubjectCard";
 import ChartSubject from "../Chart/ChartSubject";
 import { useGetCountQuizBodyQuery } from "@/lib/Midleware/QuizQuery";
+import ExamCard from "../Card/ExamCard";
+import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
 
 const Personalized = () => {
   const { data: practiveQuery } = useGetTotalPractiveQuery({
@@ -50,16 +51,6 @@ const Personalized = () => {
     pageNo: "1",
   });
 
-  const { data: subjectCode } = useGetListExamQuery({
-    testName: "",
-    userName: "admin",
-    ratingMin: -1,
-    ratingMax: -1,
-    onlyAssignment: false,
-    onlyShared: true,
-    pageLength: 30,
-    pageNum: 1,
-  });
   const { data: countQuiz } = useGetCountQuizBodyQuery({
     subjectCode: "",
     lectureCode: "",
@@ -88,7 +79,35 @@ const Personalized = () => {
     CurrentPageView: 1,
     Length: 10,
   });
-  const [openKeys, setOpenKeys] = useState("sub1");
+
+  const { data: examQuery } = useGetListExamQuery({
+    testName: "",
+    ratingMin: 1,
+    ratingMax: -1,
+    userFilter: "admin",
+    userName: "admin",
+    onlyAssignment: true,
+    onlyShared: false,
+    pageLength: "10",
+    pageNum: "1"
+  });
+
+  const { data: lectureQuery } = useGetListLectureQuery({
+    lectureName: "",
+    subjectCode: "",
+    courseCode: "",
+    userFilter: "admin",
+    userName: "admin",
+    onlyAssignment: false,
+    onlyShared: true,
+    pageLength: 10,
+    pageNum: 1,
+    ratingMin: -1,
+    ratingMax: -1
+  });
+
+  const [openKeys, setOpenKeys] = useState('sub1');
+
   const getItem = (label, key, icon, children, type) => {
     return {
       key,
@@ -102,7 +121,7 @@ const Personalized = () => {
     getItem(
       `Rèn luyện [ ${practiveQuery?.Object?.cardSum} | ${practiveQuery?.Object?.cardExpire} | ${practiveQuery?.Object?.cardDone} ]`,
       "sub1",
-      <MailOutlined />
+      <MailOutlined />,
     ),
     getItem(
       `Buổi học [ ${scheduleQuery?.Object?.length} ]`,
@@ -115,9 +134,14 @@ const Personalized = () => {
       <SettingOutlined />
     ),
     getItem(
-      `Đề thi [ ${subjectCode?.query.length} ]`,
+      `Đề thi [ ${examQuery?.countAssignment + examQuery?.countSharing} ]`,
       `sub4`,
       <SettingOutlined />
+    ,
+      [
+        getItem(`Được giao [ ${examQuery?.countAssignment} ]`, 'sub4-1', null),
+        getItem(`Tự luyện [ ${examQuery?.countSharing} ]`, 'sub4-2', null),
+      ]
     ),
     getItem(`Quiz [ ${countQuiz?.Object?.countAssignment} ]`, "sub5", <SettingOutlined />),
     getItem(
@@ -125,7 +149,7 @@ const Personalized = () => {
       "sub6",
       <SettingOutlined />
     ),
-    getItem("Khóa học", "sub7", <SettingOutlined />),
+    getItem(`Khóa học [ ${lectureQuery?.count} ]`, "sub7", <SettingOutlined />),
     getItem("Môn học của tôi", "sub8", <SettingOutlined />),
     getItem("Kết quả học tập", "sub9", <SettingOutlined />),
     getItem("Kết quả giảng dạy", "sub10", <SettingOutlined />),
@@ -144,22 +168,17 @@ const Personalized = () => {
         return  <ClassCard role={"lesson"} data={scheduleQuery}/>;
       case "sub3":
         return <ClassCard />;
-      case "sub4":
-        return <CourseCard data={scheduleQuery} />;
+      case 'sub4-1': return <ExamCard onlyAssignment={true} />
+      case 'sub4-2': return <ExamCard onlyAssignment={false} />
       case "sub5":
         return <SelftrainingCard />;
       case "sub6":
         return <Document_Cart total={fileCwQuery} />;
-      case "sub7":
-        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
-      case "sub8":
-        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
-      case "sub9":
-        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
-      case "sub10":
-        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
-      case "sub11":
-        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+      case 'sub7': return <CourseCard />
+      case 'sub8': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
+      case 'sub9': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
+      case 'sub10': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
+      case 'sub11': return <PractiseCard total={practiveQuery?.Object?.cardSum} />
     }
   };
   return (

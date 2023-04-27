@@ -197,9 +197,9 @@ const Header = () => {
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png "
                 style={{ width: "20px", height: "20px" }}
               />
-              
+
             </IconButton>
-            
+
           </Tooltip>
           <Menu
             sx={{ mt: "45px" }}
@@ -259,12 +259,12 @@ const Header = () => {
                 </div>
               </div>
             </ListItemButton>
-            
+
             {/* </MenuItem> */}
           </Menu>
         </Box>
       )}
-      
+
 
       {!state && (
         <div className={cx("user")}>

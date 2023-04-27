@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames/bind";
 import style from "./style.module.scss";
 import { Pagination as PaginationAntd } from 'antd'
