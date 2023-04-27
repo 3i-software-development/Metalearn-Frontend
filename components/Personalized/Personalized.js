@@ -25,6 +25,7 @@ import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 import SearchAndAddSubjects from "../SearchAndAddSubjects";
+import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
 
 const Personalized = () => {
   const { data: practiveQuery } = useGetTotalPractiveQuery({
@@ -254,7 +255,7 @@ const Personalized = () => {
             style={{
               width: 300,
               backgroundColor: "",
-              position: "fixed",
+              // position: "fixed",
             }}
             items={items}
           />
@@ -262,28 +263,28 @@ const Personalized = () => {
         <div className={cx("content")}>
           <div className={cx("SearchAndAddSubjects_ItemAll")}>
             <div>
-            <Breadcrumb
-              items={[
-                {
-                  title: "Home",
-                },
-                {
-                  title: <a href="">Application Center</a>,
-                },
-                {
-                  title: <a href="">Application List</a>,
-                },
-                {
-                  title: "An Application",
-                },
-              ]}
-            />
+              <Breadcrumb
+                items={[
+                  {
+                    title: "Home",
+                  },
+                  {
+                    title: <a href="">Application Center</a>,
+                  },
+                  {
+                    title: <a href="">Application List</a>,
+                  },
+                  {
+                    title: "An Application",
+                  },
+                ]}
+              />
             </div>
-           <div>
-           <AiOutlineSearch />
-            <i class="fa-solid fa-file-export"></i>
+            <div>
+              <ModalSearchFilter />
+              <i className="fa-solid fa-file-export"></i>
+            </div>
           </div>
-           </div>
           {displayContent()}
         </div>
       </div>

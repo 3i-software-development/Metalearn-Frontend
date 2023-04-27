@@ -14,18 +14,19 @@
     // margin-left: 70px;
 }
 
-.SearchAndAddSubjects_ItemAll{
+.SearchAndAddSubjects_ItemAll {
     display: flex;
     justify-content: space-between;
     padding: 5px;
     font-size: 30px;
-    align-items: center;
-    
-    i{
+    align-items: flex-start;
+
+    i {
         font-size: 30px;
         margin-left: 20px;
         cursor: pointer;
-        :hover{
+
+        :hover {
             color: greenyellow;
         }
     }

@@ -6,7 +6,6 @@ import { BsSearch } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar, Dropdown, Space } from "antd";
-import ModalLang from "@/components/ModalLang/ModalLang";
 
 import {
   Box,
