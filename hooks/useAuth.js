@@ -17,7 +17,7 @@ function useAuth() {
     const userIsAuthenticated = checkUserIsAuthenticated();
     if (!userIsAuthenticated) {
       // Nếu người dùng chưa đăng nhập, redirect tới trang đăng nhập
-      router.push("/auth/login");
+      // router.push("/auth/login");
     } else {
       setIsAuthenticated(true);
     }

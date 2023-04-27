@@ -136,7 +136,7 @@ const Header = () => {
   };
 
   const user = useSelector((state) => state.login);
-  console.log(state)
+
   const [show, setShow] = useState(false)
   return (
     <div className={cx("header")}>
@@ -145,7 +145,7 @@ const Header = () => {
         onClick={() => setShowmobile(!showMobile)}
       />
       {showMobile && <MenuMobile />}
-      <Link href="/" className={cx("logo-container")}>
+      <Link href={state ? "/personalized" : "/"} className={cx("logo-container")}>
         Meta<span>Learn</span>
       </Link>
       <Link href="/subjects" className={cx("head-link")}>

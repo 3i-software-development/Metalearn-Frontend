@@ -22,8 +22,10 @@ import ChartSubject from "../Chart/ChartSubject";
 import { useGetCountQuizBodyQuery } from "@/lib/Midleware/QuizQuery";
 import ExamCard from "../Card/ExamCard";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
-import SearchAndAddSubjects from "../SearchAndAddSubjects";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
+import SearchAndAddSubjects from "../SearchAndAddSubjects";
+
 const Personalized = () => {
   const { data: practiveQuery } = useGetTotalPractiveQuery({
     CurrentPageList: 1,
@@ -106,7 +108,11 @@ const Personalized = () => {
     ratingMin: -1,
     ratingMax: -1,
   });
-  const [openKeys, setOpenKeys] = useState("sub1");
+
+  const { data: subjectQuery } = useGetListSubjectQuery({ username: "admin", isTutor888: false })
+
+  const [openKeys, setOpenKeys] = useState('sub1');
+
   const getItem = (label, key, icon, children, type) => {
     return {
       key,
@@ -122,16 +128,19 @@ const Personalized = () => {
       "sub1",
       <MailOutlined />
     ),
+
     getItem(
       `Buổi học [ ${scheduleQuery?.Object?.length} ]`,
       "sub2",
       <AppstoreOutlined />
     ),
+
     getItem(
       `Lớp tham gia [ ${classList?.count} ]`,
       "sub3",
       <SettingOutlined />
     ),
+
     getItem(
       `Đề thi [ ${examQuery?.countAssignment + examQuery?.countSharing} ]`,
       `sub4`,
@@ -163,10 +172,40 @@ const Personalized = () => {
       "sub6",
       <SettingOutlined />
     ),
+
     getItem(`Khóa học [ ${lectureQuery?.count} ]`, "sub7", <SettingOutlined />),
-    getItem("Môn học của tôi", "sub8", <SettingOutlined />),
-    getItem("Kết quả học tập", "sub9", <SettingOutlined />),
-    getItem("Kết quả giảng dạy", "sub10", <SettingOutlined />),
+
+    getItem(`Môn học của tôi [ ${subjectQuery?.length} ]`, "sub8", <SettingOutlined />),
+
+    getItem("Kết quả học tập", "sub9", <SettingOutlined />,
+      [
+        getItem(`Câu hỏi tự luyện`, 'sub9-1', null),
+        getItem(`Câu hỏi được giao`, 'sub9-2', null),
+        getItem(`Bài giảng tự luyện`, 'sub9-3', null),
+        getItem(`Bài giảng được giao`, 'sub9-4', null),
+        getItem(`Đề thi tự luyện`, 'sub9-5', null),
+        getItem(`Đề thi được giao`, 'sub9-6', null),
+        getItem(`Kỳ thi tham dự`, 'sub9-7', null),
+        getItem(`Học online`, 'sub9-8', null),
+        getItem(`Số môn học`, 'sub9-9', null),
+        getItem(`Số tài liệu xem`, 'sub9-10', null),
+      ]
+    ),
+
+    getItem("Kết quả giảng dạy", "sub10", <SettingOutlined />,
+      [
+        getItem(`Câu hỏi`, 'sub10-1', null),
+        getItem(`Bài giảng`, 'sub10-2', null),
+        getItem(`Đề luyện thi`, 'sub10-3', null),
+        getItem(`Tổng số đã tạo`, 'sub10-4', null),
+        getItem(`Số lớp`, 'sub10-5', null),
+        getItem(`Số môn học`, 'sub10-6', null),
+        getItem(`Số học viên`, 'sub10-7', null),
+        getItem(`Số việc đã giao`, 'sub10-8', null),
+        getItem(`Số tài liệu upload lên`, 'sub10-9', null),
+      ]
+    ),
+
     getItem("Bộ sưu tập", "sub11", <SettingOutlined />),
   ];
 
