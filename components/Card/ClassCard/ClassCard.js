@@ -15,8 +15,8 @@ const ClassCard = () => {
         ToDate: "",
         Teacher: "admin",
         Student: "",
-        pageSize: "10",
-        pageNo: "1",
+        pageSize: 10,
+        pageNo: 1,
     })
 
     const { data } = useGetListLmsClassQuery(query);

@@ -9,9 +9,10 @@
         align-items: center;
         display: flex;
         justify-content: center;
+
         img {
-            width: 60%;
-            height: 60%;
+            width: 80%;
+            height: 80%;
         }
     }
 
@@ -20,14 +21,16 @@
     }
 }
 
-.course-card{
+.course-card {
     border: 1px solid rgb(225, 224, 224);
+    border-radius: 6px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     cursor: pointer;
-    width: 420px;
+    width: 100%;
     padding: 10px;
     font-weight: 600;
     font-size: 15px;
+
     p {
         color: rgb(3, 174, 3);
 
@@ -45,15 +48,28 @@
 .footerCard {
     width: 100%;
     display: flex;
+    padding: 0 25px;
     align-items: center;
-    .down{
-       i{
-        margin-left: 40px;
-        color: gray;
-       }
+    justify-content: space-between;
+
+    .down {
+        i {
+            font-size: 25px;
+            margin-left: 40px;
+            color: gray;
+        }
+    }
+
+    .down:hover {
+        i {
+            font-size: 30px;
+            margin-left: 40px;
+            color: blue;
+        }
     }
 }
-.layout{
+
+.layout {
     display: flex;
     flex-wrap: wrap;
     grid-gap: 10px;

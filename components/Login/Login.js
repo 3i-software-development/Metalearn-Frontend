@@ -30,6 +30,7 @@ export default function Login() {
       router.push("/");
     }
   }
+
   if (data && data?.Error) {
     messageApi.open({
       type: "error",
