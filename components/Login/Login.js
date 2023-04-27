@@ -27,7 +27,7 @@ export default function Login() {
   if (data && !data?.Error) {
     if (typeof window !== "undefined") {
       sessionStorage.setItem("user", data?.Object.UserName);
-      router.push("/");
+      router.push("/personalized");
     }
   }
 
