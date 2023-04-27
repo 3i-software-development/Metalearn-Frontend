@@ -44,7 +44,6 @@ const PractiseCard = ({ total }) => {
               <div className={cx("card-body")}>
                 <div className={cx("titleCard")}>
                   <h4>#{element.LmsTaskCode} : {element.LmsTaskName}</h4>
-                  {/* <i class="fa-solid fa-minus"></i> */}
                 </div>
                 <div className={cx("card-time")}>
                   <div className={cx("status")}>
