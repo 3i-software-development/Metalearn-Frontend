@@ -11,31 +11,30 @@ const cx = classNames.bind(styles);
 import { useGetListScheduleQuery } from "@/lib/Midleware/ScheduleQuery";
 import PractiseCard from "../Card/PractiseCard/PractiseCard";
 import SelftrainingCard from "../Card/SelftrainingCard/SelftrainingCard";
-import CourseCard from "../Card/CourseCard/CourseCard";
+import CourseCard from "../Card/ScheduleQuery/CourseCard";
 import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
-import ClassCard from "../Card/ClassCard/ClassCard";
 import { useGetTotalPractiveQuery } from "@/lib/Midleware/PractiveQuery";
+import ClassCard from "../Card/ClassCard/ClassCard";
 import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
+import CartItem from "../Card/DocumentCart";
 import Document_Cart from "../Card/SubjectCard";
 import ChartSubject from "../Chart/ChartSubject";
+import { useGetCountQuizBodyQuery } from "@/lib/Midleware/QuizQuery";
 
-
-const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
 const Personalized = () => {
-
   const { data: practiveQuery } = useGetTotalPractiveQuery({
-    "CurrentPageList": 1,
-    "Length": 1000,
-    "FromDate": "",
-    "ToDate": "",
-    "UserName": "admin",
-    "UserId": "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
-    "Status": "",
-    "Object": "",
-    "ObjType": "",
-    "CardName": ""
-  })
+    CurrentPageList: 1,
+    Length: 1000,
+    FromDate: "",
+    ToDate: "",
+    UserName: "admin",
+    UserId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    Status: "",
+    Object: "",
+    ObjType: "",
+    CardName: "",
+  });
 
   const { data: scheduleQuery } = useGetListScheduleQuery({
     userName: "admin",
@@ -61,6 +60,18 @@ const Personalized = () => {
     pageLength: 30,
     pageNum: 1,
   });
+  const { data: countQuiz } = useGetCountQuizBodyQuery({
+    subjectCode: "",
+    lectureCode: "",
+    level: "",
+    ratingMin: -1,
+    ratingMax: -1,
+    isTutor888: false,
+    fromDatePara: "",
+    toDatePara: "",
+    createdBy: "",
+    userName: "admin",
+  });
   const { data: fileCwQuery } = useGetListFileCwQuery({
     CatCode: "",
     SubjectCode: "",
@@ -77,10 +88,7 @@ const Personalized = () => {
     CurrentPageView: 1,
     Length: 10,
   });
-
-
-  const [openKeys, setOpenKeys] = useState([]);
-
+  const [openKeys, setOpenKeys] = useState("sub1");
   const getItem = (label, key, icon, children, type) => {
     return {
       key,
@@ -91,7 +99,11 @@ const Personalized = () => {
     };
   };
   const items = [
-    getItem(`Rèn luyện [ ${practiveQuery?.Object?.cardSum} | ${practiveQuery?.Object?.cardExpire} | ${practiveQuery?.Object?.cardDone} ]`, "sub1", <MailOutlined />),
+    getItem(
+      `Rèn luyện [ ${practiveQuery?.Object?.cardSum} | ${practiveQuery?.Object?.cardExpire} | ${practiveQuery?.Object?.cardDone} ]`,
+      "sub1",
+      <MailOutlined />
+    ),
     getItem(
       `Buổi học [ ${scheduleQuery?.Object?.length} ]`,
       "sub2",
@@ -99,38 +111,64 @@ const Personalized = () => {
     ),
     getItem(
       `Lớp tham gia [ ${classList?.count} ]`,
-      "sub4",
+      "sub3",
       <SettingOutlined />
     ),
     getItem(
       `Đề thi [ ${subjectCode?.query.length} ]`,
-      `sub3`,
+      `sub4`,
       <SettingOutlined />
     ),
-    getItem("Quiz", "sub6", <SettingOutlined />),
-    getItem(`Tài liệu [ ${fileCwQuery?.Object?.count} ]`, "sub7", <SettingOutlined />),
-    getItem("Khóa học", "sub8", <SettingOutlined />),
-    getItem("Môn học của tôi", "sub9", <SettingOutlined />),
-    getItem("Kết quả học tập", "sub10", <SettingOutlined />),
-    getItem("Kết quả giảng dạy", "sub11", <SettingOutlined />),
-    getItem("Bộ sưu tập", "sub12", <SettingOutlined />),
+    getItem(`Quiz [ ${countQuiz?.Object?.countAssignment} ]`, "sub5", <SettingOutlined />),
+    getItem(
+      `Tài liệu [ ${fileCwQuery?.Object.count} ]`,
+      "sub6",
+      <SettingOutlined />
+    ),
+    getItem("Khóa học", "sub7", <SettingOutlined />),
+    getItem("Môn học của tôi", "sub8", <SettingOutlined />),
+    getItem("Kết quả học tập", "sub9", <SettingOutlined />),
+    getItem("Kết quả giảng dạy", "sub10", <SettingOutlined />),
+    getItem("Bộ sưu tập", "sub11", <SettingOutlined />),
   ];
+
   const onOpenChange = (keys) => {
-    const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
-    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-      setOpenKeys(keys);
-    } else {
-      setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
-    }
+    setOpenKeys(keys.key);
   };
 
+  const displayContent = () => {
+    switch (openKeys) {
+      case "sub1":
+        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+      case "sub2":
+        return  <ClassCard role={"lesson"} data={scheduleQuery}/>;
+      case "sub3":
+        return <ClassCard />;
+      case "sub4":
+        return <CourseCard data={scheduleQuery} />;
+      case "sub5":
+        return <SelftrainingCard />;
+      case "sub6":
+        return <Document_Cart total={fileCwQuery} />;
+      case "sub7":
+        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+      case "sub8":
+        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+      case "sub9":
+        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+      case "sub10":
+        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+      case "sub11":
+        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+    }
+  };
   return (
     <div className={cx("person")}>
       <div className={cx("navbar")}>
         <Menu
           mode="inline"
-          openKeys={openKeys}
-          onOpenChange={onOpenChange}
+          defaultSelectedKeys="sub1"
+          onClick={onOpenChange}
           style={{
             width: 276,
             backgroundColor: "",
@@ -140,21 +178,7 @@ const Personalized = () => {
         />
       </div>
       <div className={cx("content")}>
-        {/* <CourseCard data={scheduleQuery} /> */}
-        {/* <ChartSubject/> */}
-        {/* <CartItem/> */}
-        {/* <Document_Cart /> */}
-        {/* <CourseCard/> */}
-        {/* <PractiseCard/> */}
-        {/* <SelftrainingCard/> */}
-        {/* <CourseCard/> */}
-        {/* <PractiseCard total={practiveQuery?.Object?.cardSum} /> */}
-        <ClassCard />
-        {/* <PractiseCard total={practiveQuery?.Object?.cardSum} /> */}
-        {/* <SelftrainingCard /> */}
-        {/* {courseCard && } */}
-        {/* {classList && <ClassCard/>} */}
-        {/* {sefttraining && <SelftrainingCard/>} */}
+        {displayContent()}
       </div>
     </div>
   );
