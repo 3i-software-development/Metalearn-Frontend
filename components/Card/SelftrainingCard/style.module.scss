@@ -17,7 +17,7 @@
 }
 .contaiberQuiz{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 10px;
 }
 .timeSub{
@@ -51,4 +51,5 @@
     width: 100%;
     border-bottom: 2px solid gray;
     padding-bottom: 10px;
+    padding: 10px;
 }

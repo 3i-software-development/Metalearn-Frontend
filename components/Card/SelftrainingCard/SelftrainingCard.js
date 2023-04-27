@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import Section from "@/components/Section/Section";
 import { useGetListQuizQuery } from "@/lib/Midleware/QuizQuery";
 import moment from "moment";
+import Pagination from "@/components/Pagination/Pagination";
 const cx = classNames.bind(styles);
-const SelftrainingCard = () => {
+const SelftrainingCard = ({onlyAssignment}) => {
   const [query, setQuery] = useState({
     subjectCode: "",
     lectureCode: "",
@@ -22,8 +23,8 @@ const SelftrainingCard = () => {
     isTutor888: false,
     groupBySubject: false,
     onlyAssignment: true,
-    onlyShared: true,
-    pageLength: 30,
+    onlyShared: false,
+    pageLength: 10,
     pageNum: 1,
   });
   const { data: quiz } = useGetListQuizQuery(query);
@@ -31,6 +32,11 @@ const SelftrainingCard = () => {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.innerText;
   }
+  useEffect(() => {
+    onlyAssignment
+      ? setQuery({ ...query, onlyAssignment: true, onlyShared: false })
+      : setQuery({ ...query, onlyAssignment: false, onlyShared: true });
+  }, [onlyAssignment]);
   return (
     <Section>
       <div className={cx("contaiberQuiz")}>
@@ -39,8 +45,13 @@ const SelftrainingCard = () => {
             <div className={cx("selftraining-card")} key={index}>
               <div className={cx("selftrainingTitle")}>
                 <h4>
-                  {/* {htmlDecode(`${item.TestName}`)} */}
-                 {htmlDecode(`${item.Content.length > 700 ? item.Content.slice(0,400) +' ...' : item.Content}`)}
+                  {htmlDecode(
+                    `${
+                      item.Content.length > 700
+                        ? item.Content.slice(0, 400) + " ..."
+                        : item.Content
+                    }`
+                  )}
                 </h4>
                 <i class="fa-solid fa-ellipsis"></i>
               </div>
@@ -87,6 +98,7 @@ const SelftrainingCard = () => {
           );
         })}
       </div>
+      {/* <Pagination total={onlyAssignment ? data?.countAssignment : data?.countSharing} handleQueryPage={handleQueryPage} current={query.pageNum} /> */}
     </Section>
   );
 };
