@@ -5,16 +5,25 @@ import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Dropdown, Space } from "antd";
-import ModalLang from "@/components/ModalLang/ModalLang";
-import useTrans from "@/hooks/useTrans";
+import { Avatar, Dropdown, Space } from "antd";
+
+import {
+  Box,
+  IconButton,
+  ListItemButton,
+  ListItemText,
+  Menu,
+  Tooltip,
+} from "@mui/material";
+import useAuth from "@/hooks/useAuth";
+import { useSelector } from "react-redux";
+import { BiWorld } from "react-icons/bi";
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
   const [showMobile, setShowmobile] = useState(false);
-
-  const trans = useTrans();
+  const state = useAuth();
 
   const items = [
     {
@@ -76,23 +85,23 @@ const Header = () => {
       label: "Ngoại ngữ",
       children: [
         {
-          key: "6-1",
+          key: "5-1",
           label: "tiếng Anh",
         },
         {
-          key: "6-2",
+          key: "5-2",
           label: "tiếng Pháp",
         },
         {
-          key: "6-3",
+          key: "5-3",
           label: "tiếng Đức",
         },
         {
-          key: "6-3",
+          key: "5-5",
           label: "tiếng Nhật",
         },
         {
-          key: "6-3",
+          key: "5-4",
           label: "tiếng Hàn",
         },
       ],
@@ -117,6 +126,17 @@ const Header = () => {
     },
   ];
 
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const user = useSelector((state) => state.login);
+
+  const [show, setShow] = useState(false)
   return (
     <div className={cx("header")}>
       <AiOutlineMenu
@@ -124,58 +144,137 @@ const Header = () => {
         onClick={() => setShowmobile(!showMobile)}
       />
       {showMobile && <MenuMobile />}
-      <Link href="/" className={cx("logo-container")}>
+      <Link href={state ? "/personalized" : "/"} className={cx("logo-container")}>
         Meta<span>Learn</span>
       </Link>
-
       <Link href="/subjects" className={cx("head-link")}>
         <Dropdown
           menu={{
             items,
           }}
         >
-          <Space className={cx("head-link")}>{trans.header.subject}</Space>
+          <Space className={cx("head-link")}>Môn học</Space>
         </Dropdown>
       </Link>
 
       <div className={cx("search-container")}>
         <input
           type="text"
-          placeholder={trans.header.search}
+          placeholder="Tìm kiếm"
           className={cx("search-input")}
         />
         <BsSearch />
       </div>
 
       <Link href="/news" className={cx("head-link")}>
-        {trans.header.new}
+        Tin tức
       </Link>
       <Link href="/my-class" className={cx("head-link")}>
-        {trans.header.class}
+        Lớp học trực tuyến
       </Link>
       <Link href="/documents" className={cx("head-link")}>
-        {trans.header.document}
+        Tài liệu
       </Link>
       <Link href="/exam" className={cx("head-link")}>
-        {trans.header.exam}
+        Đề thi
       </Link>
-
       <div className={cx("icon-ss")}>
         <BsSearch className={cx("icon-search-mobile")} />
         <TiShoppingCart className={cx("icon")} />
       </div>
-
-      <div className={cx("user")}>
-        <Link href="/account/login" className={cx("login-btn")}>
-          {trans.header.login}
-        </Link>
-        <Link href="/account/login" className={cx("signup-btn")}>
-          {trans.header.signup}
-        </Link>
-        <div className={cx("change-language")}>
-          <ModalLang />
-        </div>
+      <div className={cx("change-language")}>
+        <BiWorld className={cx("icon")} onClick={() => setShow(!show)} />
+        {
+          show && <div id="google_translate_element"></div>
+        }
       </div>
+      {state && (
+        <Box sx={{ flexGrow: 0 }}>
+          <Tooltip title="Open settings">
+            <IconButton onClick={handleOpenUserMenu} sx={{ padding: "10px" }}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png "
+                style={{ width: "20px", height: "20px" }}
+              />
+
+            </IconButton>
+
+          </Tooltip>
+          <Menu
+            sx={{ mt: "45px" }}
+            id="menu-appbar"
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+          >
+            {/* <MenuItem onClick={handleCloseUserMenu}> */}
+            <ListItemButton component="a" className={cx("listSettingss")}>
+              <div className={cx("listSettings")}>
+                <div>
+                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                </div>
+                <div>
+                  <ListItemText primary="Spam" />
+                </div>
+              </div>
+            </ListItemButton>
+            <ListItemButton component="a" className={cx("listSettingss")}>
+              <div className={cx("listSettings")}>
+                <div>
+                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                </div>
+                <div>
+                  <ListItemText primary="Spam" />
+                </div>
+              </div>
+            </ListItemButton>
+
+            <ListItemButton component="a" className={cx("listSettingss")}>
+              <div className={cx("listSettings")}>
+                <div>
+                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                </div>
+                <div>
+                  <ListItemText primary="Spam" />
+                </div>
+              </div>
+            </ListItemButton>
+            <ListItemButton component="a" className={cx("listSettingss")}>
+              <div className={cx("listSettings")}>
+                <div>
+                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                </div>
+                <div>
+                  <ListItemText primary="Spam" />
+                </div>
+              </div>
+            </ListItemButton>
+
+            {/* </MenuItem> */}
+          </Menu>
+        </Box>
+      )}
+
+
+      {!state && (
+        <div className={cx("user")}>
+          <Link href="/auth/login" className={cx("login-btn")}>
+            Đăng nhập
+          </Link>
+          <Link href="/auth/signup" className={cx("signup-btn")}>
+            Đăng kí
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
@@ -186,21 +285,21 @@ const MenuMobile = () => {
   return (
     <div className={cx("menu-mobile")}>
       <div className={cx("mb-user")}>
-        <Link href="/account/login" className={cx("mb-login")}>
-          Log in
+        <Link href="/auth/login" className={cx("mb-login")}>
+          Đăng nhập
         </Link>
-        <Link href="/account/login" className={cx("mb-signup")}>
-          Sign up
+        <Link href="/auth/signup" className={cx("mb-signup")}>
+          Đăng kí
         </Link>
       </div>
       <div className={cx("mb-list")}>
         <Link href="/subjects" className={cx("mb-link")}>
-          Môn học
+          Subject
         </Link>
         <Link href="/news" className={cx("mb-link")}>
           Tin tức
         </Link>
-        <Link href="/news" className={cx("mb-link")}>
+        <Link href="/my-class" className={cx("mb-link")}>
           Lớp học trực tuyến
         </Link>
         <Link href="/documents" className={cx("mb-link")}>

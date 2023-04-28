@@ -1,9 +1,12 @@
-import React from 'react'
+import Exam from "@/components/Exam/Exam";
+import React from "react";
 
 const Index = () => {
   return (
-    <div></div>
-  )
-}
+    <div>
+      <Exam />
+    </div>
+  );
+};
 
-export default Index
+export default Index;

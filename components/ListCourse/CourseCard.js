@@ -6,10 +6,20 @@ import Image from "next/image";
 const cx = classNames.bind(styles);
 
 const CourseCard = ({ data, clas, doc, exam }) => {
+
   const examCard = () => {
     return (
       <div className={cx("course-card")}>
-        <Image src={data.ImageCover} alt="exam" width="500" height="400" />
+        <Image
+          src={
+            data.ImageCover
+              ? data.ImageCover
+              : "https://www.thaibinhtv.vn/assets/images/imgstd.jpg"
+          }
+          alt="exam"
+          width="500"
+          height="400"
+        />
         <p className={cx("titleDoc")}>{data.LectName}</p>
       </div>
     );
@@ -52,17 +62,15 @@ const CourseCard = ({ data, clas, doc, exam }) => {
         <br />
         <p className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "red" }}></i> Môn
-            học :
+            <i className="fa-solid fa-circle " style={{ color: "red" }}></i> Subject:
           </span>
-          <span> Lập trình</span>
+          <span>&nbsp; Lập trình</span>
         </p>
         <p className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i>{" "}
-            Bắt đầu :
+            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i> Bắt đầu:
           </span>
-          <span> Lập trình</span>
+          <span>&nbsp; Lập trình</span>
         </p>
         <p className={cx("footer-card")}>
           <p>

@@ -7,6 +7,7 @@ import { DatePicker, Select } from "antd";
 const cx = classNames.bind(styles);
 
 const SearchForm = () => {
+
   const [openSort, setOpenSort] = React.useState(false);
   const [openFilter, setOpenFilter] = React.useState(false);
 
@@ -80,7 +81,7 @@ const SearchForm = () => {
         {openFilter && (
           <>
             <div className={cx("content-sort-container")}>
-              <p>Môn học</p>
+              <p>Subject</p>
               <Select
                 className={cx("select-container")}
                 defaultValue="Tên lớp học"

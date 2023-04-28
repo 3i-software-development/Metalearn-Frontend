@@ -1,0 +1,53 @@
+.container {
+  width: 100%;
+}
+
+.container-Item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  border-bottom: 2px dashed gray;
+  margin-bottom: 15px;
+}
+
+.Icon_Book {
+  width: 20px;
+  height: 20px;
+}
+
+.Icon_Book_One {
+  font-size: 60px;
+  margin-top: 4px;
+}
+
+.item_course h3 {
+  font-size: 15px;
+}
+
+.item_course {
+  width: 90%;
+}
+
+.icon_Start svg {
+  color: #ffaa56;
+}
+
+.Title_all {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Title_Item {
+  font-size: 15px;
+  color: #808080;
+}
+
+.Title_Item_color {
+  color: #7f007f;
+}
+
+.Title_all_inStall {
+  color: green;
+  font-size: 20px;
+}

@@ -6,6 +6,7 @@ import Image from "next/image";
 const cx = classNames.bind(styles);
 
 const ClassCard = ({ data }) => {
+
   return (
     <div style={{ height: "100%" }}>
       <div className={cx("course-card")}>
@@ -19,29 +20,27 @@ const ClassCard = ({ data }) => {
             height="400"
           />
         )}
-        <p className={cx("title")}>
+        <div className={cx("title")}>
           <strong>
             <i className="fa-solid fa-square" style={{ color: "yellow" }}></i>{" "}
             Phap A :
           </strong>
           <span>[A][A]</span>
-        </p>
+        </div>
         <br />
-        <p className={cx("title")}>
+        <div className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "red" }}></i> Môn
-            học :
+            <i className="fa-solid fa-circle " style={{ color: "red" }}></i> Subject:
           </span>
-          <span> Lập trình</span>
-        </p>
-        <p className={cx("title")}>
+          <span> &nbsp; Lập trình</span>
+        </div>
+        <div className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i>{" "}
-            Bắt đầu :
+            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i> Bắt đầu:
           </span>
-          <span> Lập trình</span>
-        </p>
-        <p className={cx("footer-card")}>
+          <span>&nbsp; Lập trình</span>
+        </div>
+        <div className={cx("footer-card")}>
           <p>
             <i className="fa-solid fa-mobile-screen-button"></i>
           </p>
@@ -51,7 +50,7 @@ const ClassCard = ({ data }) => {
           <p>
             <i className="fa-solid fa-video"></i>
           </p>
-        </p>
+        </div>
       </div>
     </div>
   );

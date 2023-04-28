@@ -1,0 +1,67 @@
+.selftrainingTitle {
+    display: flex;
+    justify-content: space-between;
+
+    h4 {
+        font-weight: 700;
+
+
+        span {
+            font-weight: 700;
+            font-size: 20px;
+        }
+    }
+}
+
+.selftrainingContent {
+    margin: 10px 0;
+
+    p {
+        margin: 5px 0;
+
+        span {
+            color: rgb(9, 167, 59);
+            font-weight: 600;
+        }
+    }
+}
+
+.contaiberQuiz {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}
+
+.timeSub {
+    span {
+        color: black;
+    }
+}
+
+.time-level,
+.icon {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+        margin-bottom: 10px;
+
+        span {
+            color: rgb(9, 167, 59);
+            font-weight: 600;
+        }
+
+    }
+
+    i {
+        color: gray;
+        font-size: 20px;
+    }
+}
+
+.selftraining-card {
+    width: 100%;
+    border-bottom: 2px solid gray;
+    padding-bottom: 10px;
+    padding: 10px;
+}

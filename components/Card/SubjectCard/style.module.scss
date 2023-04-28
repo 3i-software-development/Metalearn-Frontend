@@ -1,0 +1,64 @@
+.Document_Cart_Wrap {
+  width: 100%;
+}
+.Document_Cart_All {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: dashed #808080
+}
+.Document_Cart_Icon {
+  display: flex;
+  justify-content: center;
+  width: 15%;
+}
+
+.Document_Cart_Icon svg {
+  font-size: 40px;
+}
+
+.Document_contact_all {
+  text-align: left;
+  width: 85%;
+}
+
+.Document_file_Title {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  border-bottom: 1px solid #000;
+}
+.Document_contact_all{
+  padding:10px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+.Document_content_Number {
+  font-size: 12px;
+  color: #808080;
+}
+
+.Document_Icon {
+  color: #ffaa56;
+}
+
+.Document_Link_Wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.Document_Link_Icon{
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    :hover{
+      color: rgb(1, 180, 37);
+    }
+}
+
+
