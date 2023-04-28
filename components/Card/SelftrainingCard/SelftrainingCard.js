@@ -5,9 +5,27 @@ import Section from "@/components/Section/Section";
 import { useGetListQuizQuery } from "@/lib/Midleware/QuizQuery";
 import moment from "moment";
 import Pagination from "@/components/Pagination/Pagination";
-import { MathJax, MathJaxContext } from "better-react-mathjax";
-import { MathComponent } from "mathjax-react";
+import { MathJaxProvider, Tex2SVG } from "react-hook-mathjax";
 const cx = classNames.bind(styles);
+
+const mathJaxOptions = {
+  svg: {
+    scale: 1,                      // global scaling factor for all expressions
+    minScale: .5,                  // smallest scaling factor to use
+    mtextInheritFont: false,       // true to make mtext elements use surrounding font
+    merrorInheritFont: true,       // true to make merror text use surrounding font
+    mathmlSpacing: false,          // true for MathML spacing rules, false for TeX rules
+    skipAttributes: {},            // RFDa and other attributes NOT to copy to the output
+    exFactor: .5,                  // default size of ex in em units
+    displayAlign: 'center',        // default for indentalign when set to 'auto'
+    displayIndent: '0',            // default for indentshift when set to 'auto'
+    fontCache: 'local',            // or 'global' or 'none'
+    localID: null,                 // ID to use for local font cache (for single equation processing)
+    internalSpeechTitles: true,    // insert <title> tags with speech content
+    titleID: 0                     // initial id number to use for aria-labeledby titles
+  }
+}
+
 const SelftrainingCard = ({ onlyAssignment }) => {
   const [query, setQuery] = useState({
     subjectCode: "",
@@ -39,25 +57,32 @@ const SelftrainingCard = ({ onlyAssignment }) => {
       ? setQuery({ ...query, onlyAssignment: true, onlyShared: false })
       : setQuery({ ...query, onlyAssignment: false, onlyShared: true });
   }, [onlyAssignment]);
+
+  const textFomart = (value) => {
+    const html = htmlDecode(`${value.length > 700
+      ? value.slice(0, 400) + " ..."
+      : value
+      }`)
+
+    const arrStr = html.split(/[$$]/);
+    return arrStr;
+  }
+
   return (
-    <MathJaxContext>
-      <Section>
+    <Section>
+      <MathJaxProvider options={mathJaxOptions}>
         <div className={cx("contaiberQuiz")}>
           {quiz?.Object?.Data.map((item, index) => {
             return (
               <div className={cx("selftraining-card")} key={index}>
                 <div className={cx("selftrainingTitle")}>
-                  {/* <MathJax> */}
-                  <MathJax> {"$0, 05 \\mathrm{~mol} \\mathrm{CuSO}_4$"}</MathJax>
                   <h4>
-                    {htmlDecode(
-                      `${item.Content.length > 700
-                        ? item.Content.slice(0, 400) + " ..."
-                        : item.Content
-                      }`
-                    )}
+                    {textFomart(item.Content).map((element, index) => {
+                      if (index % 2 === 0) {
+                        return (<span key={-index}>{element}</span>)
+                      } else return (<Tex2SVG display="inline" latex={element} />)
+                    })}
                   </h4>
-                  {/* </MathJax> */}
                   <i class="fa-solid fa-ellipsis"></i>
                 </div>
                 <div className={cx("selftrainingContent")}>
@@ -103,9 +128,9 @@ const SelftrainingCard = ({ onlyAssignment }) => {
             );
           })}
         </div>
-        {/* <Pagination total={onlyAssignment ? data?.countAssignment : data?.countSharing} handleQueryPage={handleQueryPage} current={query.pageNum} /> */}
-      </Section>
-    </MathJaxContext>
+      </MathJaxProvider>
+      {/* <Pagination total={onlyAssignment ? data?.countAssignment : data?.countSharing} handleQueryPage={handleQueryPage} current={query.pageNum} /> */}
+    </Section>
   );
 };
 

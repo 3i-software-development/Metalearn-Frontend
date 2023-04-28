@@ -35,6 +35,7 @@
     "react-countup": "^6.4.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-hook-mathjax": "^2.0.5",
     "react-icons": "^4.8.0",
     "react-imgix": "^9.7.0",
     "react-query": "^3.39.3",
