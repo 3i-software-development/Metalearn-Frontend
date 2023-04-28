@@ -67,8 +67,8 @@ export default function AddForm() {
                     <h3>{htmlDecode(`${value.Content}`)}</h3>
                     {JSON.parse(value.JsonData).map((item, i) => {
                       return (
-                        <div className={cx("checkBox")}>
-                          <input type="radio"  name={value.Content}  value="pk"  onChange={()=>handleAnswer(index)}/>
+                        <div key={i} className={cx("checkBox")}>
+                          <input type="radio" name={value.Content} value="pk" onChange={() => handleAnswer(index)} />
                           {htmlDecode(`${item.Answer}`)}
                         </div>
                       );
@@ -106,18 +106,18 @@ export default function AddForm() {
                     </a>
                   );
                 }
-                  if (Object.keys(selectedAnswers).includes(index.toString())) {
-                    return (
-                      <a
-                        key={index}
-                        href={`#${index}`}
-                        onClick={() => handleSelect(index)}
-                      >
-                        <li className={cx("done")}>{index + 1}</li>{" "}
-                      </a>
-                    );
-                  }
-                
+                if (Object.keys(selectedAnswers).includes(index.toString())) {
+                  return (
+                    <a
+                      key={index}
+                      href={`#${index}`}
+                      onClick={() => handleSelect(index)}
+                    >
+                      <li className={cx("done")}>{index + 1}</li>{" "}
+                    </a>
+                  );
+                }
+
                 return (
                   <a key={index}>
                     {" "}

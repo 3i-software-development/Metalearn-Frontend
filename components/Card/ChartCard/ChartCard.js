@@ -4,7 +4,7 @@ import React from 'react'
 const ChartCard = () => {
   return (
     <div>
-        <GetItem key="test" icon={"ftft"} children={['okd']}/>
+      <GetItem key="test" icon={"ftft"} />
     </div>
   )
 }

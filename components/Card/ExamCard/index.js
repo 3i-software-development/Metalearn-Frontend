@@ -22,6 +22,7 @@ export default function ExamCard({ onlyAssignment }) {
 
   useEffect(() => {
     onlyAssignment ? setQuery({ ...query, onlyAssignment: true, onlyShared: false }) : setQuery({ ...query, onlyAssignment: false, onlyShared: true })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onlyAssignment])
 
 

@@ -60,7 +60,7 @@ const SelftrainingCard = ({ onlyAssignment }) => {
   //       ? value.slice(0, 400) + " ..."
   //       : value
   //   }`)
-  
+
   //   var arrStr =html.split(/[$$]/);
   //   let result = "";
   //   arrStr.map((item,index)=>{
@@ -69,11 +69,12 @@ const SelftrainingCard = ({ onlyAssignment }) => {
   //     }
   //   })
   // }
-  
+
   useEffect(() => {
     onlyAssignment
       ? setQuery({ ...query, onlyAssignment: true, onlyShared: false })
       : setQuery({ ...query, onlyAssignment: false, onlyShared: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onlyAssignment]);
 
   const textFomart = (value) => {

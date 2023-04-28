@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
@@ -18,6 +19,7 @@ import {
 import useAuth from "@/hooks/useAuth";
 import { useSelector } from "react-redux";
 import { BiWorld } from "react-icons/bi";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
@@ -192,9 +194,9 @@ const Header = () => {
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ padding: "10px" }}>
-              <img
+              <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png "
-                style={{ width: "20px", height: "20px" }}
+                width={20} height={20}
               />
 
             </IconButton>
@@ -220,7 +222,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -230,7 +232,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -241,7 +243,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -251,7 +253,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
