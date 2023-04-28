@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
@@ -6,7 +7,6 @@ import { BsSearch } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar, Dropdown, Space } from "antd";
-import ModalLang from "@/components/ModalLang/ModalLang";
 
 import {
   Box,
@@ -19,6 +19,7 @@ import {
 import useAuth from "@/hooks/useAuth";
 import { useSelector } from "react-redux";
 import { BiWorld } from "react-icons/bi";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
@@ -136,7 +137,7 @@ const Header = () => {
   };
 
   const user = useSelector((state) => state.login);
-  console.log(state)
+
   const [show, setShow] = useState(false)
   return (
     <div className={cx("header")}>
@@ -145,7 +146,7 @@ const Header = () => {
         onClick={() => setShowmobile(!showMobile)}
       />
       {showMobile && <MenuMobile />}
-      <Link href="/" className={cx("logo-container")}>
+      <Link href={state ? "/personalized" : "/"} className={cx("logo-container")}>
         Meta<span>Learn</span>
       </Link>
       <Link href="/subjects" className={cx("head-link")}>
@@ -193,9 +194,9 @@ const Header = () => {
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ padding: "10px" }}>
-              <img
+              <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png "
-                style={{ width: "20px", height: "20px" }}
+                width={20} height={20}
               />
 
             </IconButton>
@@ -221,7 +222,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -231,7 +232,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -242,7 +243,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -252,7 +253,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <img src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />

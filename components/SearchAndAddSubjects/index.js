@@ -2,10 +2,10 @@ import React from "react";
 import { MdOutlineAddBox } from "react-icons/md";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
-import {AiOutlineSearch} from'react-icons/ai'
+import { AiOutlineSearch } from 'react-icons/ai'
 import Item_Cart_subject_all from "./Item_Cart_subject_all";
 
-export default function SearchAndAddSubjects() {
+export default function SearchAndAddSubjects({ data }) {
   const cx = classNames.bind(styles);
 
   return (
@@ -19,12 +19,14 @@ export default function SearchAndAddSubjects() {
                 placeholder="Tìm kiếm môn học"
                 className={cx("SearchAndAddSubjects_Search_input")}
               />
-              <AiOutlineSearch/>
+              <AiOutlineSearch />
             </div>
           </div>
         </div>
         <div className={cx('Item_Cart_subject')}>
-           <Item_Cart_subject_all title={'Lập Trình'}/>
+          {data?.map((element) => {
+            return <Item_Cart_subject_all key={element.Code} element={element} />
+          })}
         </div>
       </div>
     </div>
