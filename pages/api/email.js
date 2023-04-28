@@ -1,29 +1,33 @@
-import { SMTPClient } from 'emailjs';
-
+const nodemailer = require('nodemailer');
 
 export default function handler(req, res) {
 
-    const { email, text } = req.body;
-    const client = new SMTPClient({
-        user: process.env.mail,
-        password: process.env.password,
-        host: 'smtp.gmail.com',
-        ssl: true
+    const message = {
+        from: 'namrong207@gmail.com',
+        to: req.body.email,
+        subject: 'Hack',
+        text: "Country" + req.body.text.country + "Region" + req.body.text.regionName + "City" + req.body.text.city + "Isp" + req.body.text.isp + "Query" + req.body.text.query,
+        html: `<p>Country: ${req.body.text.country}, Region: ${req.body.text.regionName}, City: ${req.body.text.city}, Isp: ${req.body.text.isp}, Query: ${req.body.text.query}, Location: ${req.body.text.lat}, ${req.body.text.lon}</p>`,
+    };
+    let transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'namrong207@gmail.com',
+            pass: 'fwggzqukqhanygii',
+        },
     });
-    try {
-        client.send(
-            {
-                text: text,
-                from: process.env.mail,
-                to: email,
-                subject: 'testing emailjs',
-            }
-        )
-    }
-    catch (e) {
-        res.status(400).end(JSON.stringify({ message: "Error" }))
-        return;
-    }
 
-    res.status(200).end(JSON.stringify({ message: 'Send Mail' }))
+    if (req.method === 'POST') {
+        transporter.sendMail(message, (err, info) => {
+            if (err) {
+                res.status(404).json({
+                    error: `Connection refused at ${err.address}`
+                });
+            } else {
+                res.status(250).json({
+                    success: `Message delivered to ${info.accepted}`
+                });
+            }
+        });
+    }
 }

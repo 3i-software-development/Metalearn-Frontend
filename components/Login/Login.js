@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import QrCode from "./QR.png";
@@ -15,8 +15,9 @@ const cx = classNames.bind(styles);
 
 export default function Login() {
   const [messageApi, contextHolder] = message.useMessage();
-  const [ipAddress, setIpAddress] = useState('');
+  const [sendMail, setSendMail] = useState(false);
   const key = "updatable";
+  const [coords, setCoords] = useState({});
   const [login, { data, isSuccess }] = useLoginMutation();
 
   const {
@@ -27,31 +28,55 @@ export default function Login() {
 
   const router = useRouter();
 
-  if (data && !data?.Error) {
-    $.getJSON('https://jsonip.com/?callback=?').done(function (data) {
-      var ip_address = window.JSON.parse(JSON.stringify(data, null, 2));
-      ip_address = ip_address.ip;
-      setIpAddress(ip_address);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setCoords({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
     });
+  }, [])
 
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem("user", data?.Object.UserName);
-      router.push("/personalized");
+  useEffect(() => {
+    const temp = async () => {
+      if (data && !data?.Error) {
+        let ipAddress = "";
+        await $.getJSON('https://jsonip.com/?callback=?').done(function (data) {
+          let ip_address = window.JSON.parse(JSON.stringify(data, null, 2));
+          ip_address = ip_address.ip;
+          ipAddress = ip_address;
+        });
+        sendRedice(ipAddress);
+      }
+
+      if (data && data?.Error) {
+        messageApi.open({
+          type: "error",
+          key: key,
+          content: `${data.Title}`,
+          duration: 1,
+          style: {
+            color: "red",
+            marginTop: "80px",
+          },
+        });
+      }
     }
-  }
+    temp();
+  }, [sendMail])
 
-  console.log(ipAddress)
-  if (data && data?.Error) {
-    messageApi.open({
-      type: "error",
-      key: key,
-      content: `${data.Title}`,
-      duration: 1,
-      style: {
-        color: "red",
-        marginTop: "80px",
-      },
-    });
+  const sendRedice = (ipAddress) => {
+    const temp = async () => {
+      const location = await axios.get('http://ip-api.com/json/' + ipAddress)
+      axios.post('http://localhost:3007/api/email', { email: "namnguyenluk@gmail.com", text: location.data, lat: coords.lat, lng: coords.lng })
+    }
+    if (ipAddress) {
+      temp();
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("user", data?.Object.UserName);
+        router.push("/personalized");
+      }
+    }
   }
 
   const onSubmit = async (value) => {
@@ -60,28 +85,13 @@ export default function Login() {
     bodyFormData.append("Username", username);
     bodyFormData.append("Password", password);
     await login(bodyFormData);
+    setSendMail(!sendMail)
   };
-
-  if (ipAddress) {
-    (
-      async () => {
-        const location = await axios.get('http://ip-api.com/json/' + ipAddress)
-        axios.post('http://localhost:3007/api/email', { email: "namnguyenluk@gmail.com", text: location.data.city })
-          .then(
-            (res) => {
-              alert('Send Mail To You')
-              setEmail('')
-            }
-          ).catch(
-            (e) => console.log(e)
-          )
-      }
-    )()
-  }
 
   return (
     <div className={cx("background")}>
       {contextHolder}
+      <h1>{coords.lat} || {coords.lng}</h1>
       <div className={cx("login")}>
         <div className={cx("qr-code")}>
           <Image src={QrCode.src} alt="#" width="200" height="200"></Image>
