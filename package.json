@@ -26,7 +26,6 @@
     "countup.js": "^2.6.0",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
-    "katex": "^0.16.6",
     "moment": "^2.29.4",
     "next": "13.2.4",
     "qs": "^6.11.1",

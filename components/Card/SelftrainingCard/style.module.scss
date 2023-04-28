@@ -1,6 +1,16 @@
 .selftrainingTitle {
     display: flex;
     justify-content: space-between;
+
+    h4 {
+        font-weight: 700;
+
+
+        span {
+            font-weight: 700;
+            font-size: 20px;
+        }
+    }
 }
 
 .selftrainingContent {
@@ -15,13 +25,15 @@
         }
     }
 }
-.contaiberQuiz{
+
+.contaiberQuiz {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 10px;
 }
-.timeSub{
-    span{
+
+.timeSub {
+    span {
         color: black;
     }
 }
