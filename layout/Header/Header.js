@@ -222,7 +222,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <Image src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -232,7 +232,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <Image src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -243,7 +243,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <Image src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -253,7 +253,7 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <Image src="https://usehooks.com/images/bytes-logo.png" />
+                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
