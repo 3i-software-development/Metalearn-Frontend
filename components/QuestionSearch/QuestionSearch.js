@@ -102,14 +102,8 @@ const QuestionSearch = () => {
 
                         )
                     })}
-
-
-
                 </div>
-
-
             </div>
-
         </div >
 
     )

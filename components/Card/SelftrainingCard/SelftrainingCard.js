@@ -6,8 +6,8 @@ import { useGetListQuizQuery } from "@/lib/Midleware/QuizQuery";
 import moment from "moment";
 import Pagination from "@/components/Pagination/Pagination";
 import { MathJaxProvider, Tex2SVG } from "react-hook-mathjax";
-const cx = classNames.bind(styles);
 
+const cx = classNames.bind(styles);
 const mathJaxOptions = {
   svg: {
     scale: 1,                      // global scaling factor for all expressions
@@ -52,6 +52,24 @@ const SelftrainingCard = ({ onlyAssignment }) => {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.innerText;
   }
+
+  // const textFomart = (value)=>{
+
+  //   const html =  htmlDecode(`${
+  //     value > 700
+  //       ? value.slice(0, 400) + " ..."
+  //       : value
+  //   }`)
+  
+  //   var arrStr =html.split(/[$$]/);
+  //   let result = "";
+  //   arrStr.map((item,index)=>{
+  //     if(index %2 !== 0){
+  //       <span></span>
+  //     }
+  //   })
+  // }
+  
   useEffect(() => {
     onlyAssignment
       ? setQuery({ ...query, onlyAssignment: true, onlyShared: false })
