@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import style from './style.module.scss';
 import { BsSearch } from 'react-icons/bs';
 import { AiFillCaretDown, AiOutlineDownload } from 'react-icons/ai';
-import { Title } from 'chart.js';
 import { BiGitMerge } from 'react-icons/bi';
 const cx = classNames.bind(style);
 const dataFake = [
@@ -85,7 +84,7 @@ const QuestionSearch = () => {
                 <div >
                     {dataFake.map((data, index) => {
                         return (
-                            <div className={cx("result-list")}>
+                            <div key={index} className={cx("result-list")}>
                                 <h1>{data.title}</h1>
                                 <div className={cx("subject")}>Môn học: {" "}<span> {data.subject}</span></div>
                                 <div className={cx("exam")}>Đề thi: {" "} <span>{data.exam}</span></div>
