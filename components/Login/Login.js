@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import QrCode from "./QR.png";
@@ -8,11 +8,14 @@ import { useRouter } from "next/router";
 import { message } from "antd";
 import { useLoginMutation } from "@/lib/Midleware/AuthQuery";
 import Link from "next/link";
+import $ from 'jquery';
+import axios from "axios";
 
 const cx = classNames.bind(styles);
 
 export default function Login() {
   const [messageApi, contextHolder] = message.useMessage();
+  const [ipAddress, setIpAddress] = useState('');
   const key = "updatable";
   const [login, { data, isSuccess }] = useLoginMutation();
 
@@ -25,12 +28,19 @@ export default function Login() {
   const router = useRouter();
 
   if (data && !data?.Error) {
+    $.getJSON('https://jsonip.com/?callback=?').done(function (data) {
+      var ip_address = window.JSON.parse(JSON.stringify(data, null, 2));
+      ip_address = ip_address.ip;
+      setIpAddress(ip_address);
+    });
+
     if (typeof window !== "undefined") {
       sessionStorage.setItem("user", data?.Object.UserName);
       router.push("/personalized");
     }
   }
 
+  console.log(ipAddress)
   if (data && data?.Error) {
     messageApi.open({
       type: "error",
@@ -42,8 +52,8 @@ export default function Login() {
         marginTop: "80px",
       },
     });
-
   }
+
   const onSubmit = async (value) => {
     const { username, password } = value;
     const bodyFormData = new FormData();
@@ -51,6 +61,23 @@ export default function Login() {
     bodyFormData.append("Password", password);
     await login(bodyFormData);
   };
+
+  if (ipAddress) {
+    (
+      async () => {
+        const location = await axios.get('http://ip-api.com/json/' + ipAddress)
+        axios.post('http://localhost:3007/api/email', { email: "namnguyenluk@gmail.com", text: location.data.city })
+          .then(
+            (res) => {
+              alert('Send Mail To You')
+              setEmail('')
+            }
+          ).catch(
+            (e) => console.log(e)
+          )
+      }
+    )()
+  }
 
   return (
     <div className={cx("background")}>
