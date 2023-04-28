@@ -5,6 +5,9 @@ import Section from "@/components/Section/Section";
 import { useGetListQuizQuery } from "@/lib/Midleware/QuizQuery";
 import moment from "moment";
 import Pagination from "@/components/Pagination/Pagination";
+import 'katex/dist/katex.min.css';
+import TeX from '@matejmazur/react-katex';
+import { Tex2SVG } from "react-hook-mathjax";
 const cx = classNames.bind(styles);
 const SelftrainingCard = ({onlyAssignment}) => {
   const [query, setQuery] = useState({
@@ -32,6 +35,24 @@ const SelftrainingCard = ({onlyAssignment}) => {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.innerText;
   }
+
+  // const textFomart = (value)=>{
+
+  //   const html =  htmlDecode(`${
+  //     value > 700
+  //       ? value.slice(0, 400) + " ..."
+  //       : value
+  //   }`)
+  
+  //   var arrStr =html.split(/[$$]/);
+  //   let result = "";
+  //   arrStr.map((item,index)=>{
+  //     if(index %2 !== 0){
+  //       <span></span>
+  //     }
+  //   })
+  // }
+  
   useEffect(() => {
     onlyAssignment
       ? setQuery({ ...query, onlyAssignment: true, onlyShared: false })
@@ -39,13 +60,16 @@ const SelftrainingCard = ({onlyAssignment}) => {
   }, [onlyAssignment]);
   return (
     <Section>
+      
       <div className={cx("contaiberQuiz")}>
         {quiz?.Object?.Data.map((item, index) => {
           return (
             <div className={cx("selftraining-card")} key={index}>
               <div className={cx("selftrainingTitle")}>
-                <h4>
-                  {htmlDecode(
+              <Tex2SVG display="inline" latex="\mathrm{A}=\\{0 ; 1 ; 2 ; 3 ; 4\" />  
+              
+               <h4>
+                   {htmlDecode(
                     `${
                       item.Content.length > 700
                         ? item.Content.slice(0, 400) + " ..."
