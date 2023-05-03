@@ -74,6 +74,7 @@ export default function Login() {
       temp();
       if (typeof window !== "undefined") {
         sessionStorage.setItem("user", data?.Object.UserName);
+        sessionStorage.setItem("userId", data?.Object.UserName);
         router.push("/personalized");
       }
     }
