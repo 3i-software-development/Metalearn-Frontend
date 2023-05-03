@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
-import { IoIosRemove, IoMdAdd, IoIosSquare } from "react-icons/io";
-import { CgShapeRhombus } from "react-icons/cg";
+import { IoIosSquare } from "react-icons/io";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -14,69 +13,173 @@ import {
 } from "chart.js";
 
 ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
-export default function TeachingResults({role,dataCountQuizAssignment}) {
-  const [hide, setHide] = useState(false);
+export default function TeachingResults({ value, type }) {
   const cx = classNames.bind(styles);
-  console.log()
-  const handleSetHide = () => {
-    setHide((pre) => !pre);
-  };
-  const total = JSON.parse(dataCountQuizAssignment?.QuizAssignment)?.Total
-  const done = JSON.parse(dataCountQuizAssignment?.QuizAssignment)?.Done
-  const correct = JSON.parse(dataCountQuizAssignment?.QuizAssignment)?.Correct
-  const hour = JSON.parse(dataCountQuizAssignment?.QuizAssignment)?.TotalHour
 
-  console.log(done)
-  let data = {}
- if(role){
-  data =  {
-    labels: [`Đã xong : ${done}`,`Tổng : ${total}`,`Chính xác : ${correct}`,`Tổng số giờ  : ${hour}`],
-    datasets: [ 
+  const dataHoa = {
+    labels: [`Đã xong : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Done : 0}`, `Tổng : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Total : 0}`,
+    `Chính xác : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Correct : 0}`, `Tổng số giờ  : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.TotalHour : 0}`],
+    datasets: [
       {
-        data: [done,total,correct,hour],
+        data: [value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Done : 0,
+        value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Total : 0,
+        value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Correct : 0,
+        value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.TotalHour : 0],
         backgroundColor: "aqua",
         borderColor: "black",
         borderWidth: 1,
       },
     ],
-  };
- }else{
-  data =  {
-    labels: ["00","02"],
+  }
+
+  const dataQuestion = {
+    labels: [""],
     datasets: [
       {
-        label: "Học sinh",
-        data: [3, 6, 9, 2, 1],
+        label: "Câu hỏi",
+        data: [value.QuizTeacher ? JSON.parse(value?.QuizTeacher).Total : 0],
         backgroundColor: "aqua",
         borderColor: "black",
         borderWidth: 1,
       },
       {
-        label: "Giờ học",
-        data: [1,2,3,4,5,6,7,8,9],
+        label: "Bài giảng",
+        data: [value.LectureTeacher ? JSON.parse(value?.LectureTeacher).Total : 0],
         backgroundColor: "black",
         borderColor: "black",
         borderWidth: 1,
       },
+      {
+        label: "Đề luyện thi",
+        data: [value.TestTeacher ? JSON.parse(value?.TestTeacher).Total : 0],
+        backgroundColor: "#5fbf00",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+      {
+        label: "Kỳ thi",
+        data: [value.ExamTeacher ? JSON.parse(value?.ExamTeacher).Total : 0],
+        backgroundColor: "yellow",
+        borderColor: "black",
+        borderWidth: 1,
+      },
     ],
-  };
- }
+  }
+
+  const dataClass = {
+    labels: [""],
+    datasets: [
+      {
+        label: "Số lớp",
+        data: [value.ClassTeacher ? JSON.parse(value?.ClassTeacher).Total : 0],
+        backgroundColor: "aqua",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+      {
+        label: "Số môn học",
+        data: [value.SubjectTeacher ? JSON.parse(value?.SubjectTeacher).Total : 0],
+        backgroundColor: "black",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+      {
+        label: "Số học viên",
+        data: [value.StudentTeacher ? JSON.parse(value?.StudentTeacher).Total : 0],
+        backgroundColor: "#5fbf00",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+      {
+        label: "Số tài liệu upload lên",
+        data: [value.FileTeacher ? JSON.parse(value?.FileTeacher).Total : 0],
+        backgroundColor: "yellow",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+      {
+        label: "Số thể việc đã giao",
+        data: [value.TaskTeacher ? JSON.parse(value?.TaskTeacher).Total : 0],
+        backgroundColor: "blue",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+    ],
+  }
+
+  let data = {}
+
   const options = {
     responsive: true,
     scales: {
       x: {
         beginAtZero: true,
       },
+      xAxes: [{
+        barPercentage: 0.4
+      }]
     },
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Biểu đồ'
+      }
+    }
   };
+
+  const displayNumber = () => {
+    switch (type) {
+      case 'question':
+        data = dataQuestion;
+        return <span>Số câu hỏi: {value ? JSON.parse(value?.QuizTeacher).Total : 0}</span>;
+      case 'lecture':
+        data = dataQuestion;
+        return <span>Tổng số bài giảng: {value ? JSON.parse(value?.LectureTeacher).Total : 0}</span>;
+      case 'test':
+        data = dataQuestion;
+        return <span>Đề luyện thi: {value ? JSON.parse(value?.TestTeacher).Total : 0}</span>;
+      case 'exam':
+        data = dataQuestion;
+        return <span>Tổng số đã tạo: {value ? JSON.parse(value?.ExamTeacher).Total : 0}</span>;
+      case 'class':
+        data = dataClass;
+        return <span>Tổng số đã quản lý: {value ? JSON.parse(value?.QuizTeacher).Total : 0}</span>;
+      case 'subject':
+        data = dataClass;
+        return <span>Tổng số đã phụ trách: {value ? JSON.parse(value?.LectureTeacher).Total : 0}</span>;
+      case 'student':
+        data = dataClass;
+        return <span>Đề luyện thi: {value ? JSON.parse(value?.TestTeacher).Total : 0}</span>;
+      case 'task':
+        data = dataClass;
+        return <span>Tổng số đã giao: {value ? JSON.parse(value?.ExamTeacher).Total : 0}</span>;
+      case 'file':
+        data = dataClass;
+        return <span>Số câu hỏi: {value ? JSON.parse(value?.QuizTeacher).Total : 0}</span>;
+      case 'QuizVoluntary':
+        data = dataHoa;
+    }
+  }
   return (
     <div className={cx("TeachingResults_wrapper")}>
-            <Bar
-              className={cx("content_item_chart")}
-              data={data}
-              options={options}
-              height={'100%'}
-            />
+      <div className={cx("TeachingResults_all")}>
+        <div className={cx("content_all")}>
+          <div className={cx("content_item")}>
+            <IoIosSquare />
+            {displayNumber()}
+          </div>
+
+          <Bar
+            className={cx("content_item_chart")}
+            data={data}
+            options={options}
+            height={'100%'}
+          />
+        </div>
+      </div>
     </div>
   );
 }

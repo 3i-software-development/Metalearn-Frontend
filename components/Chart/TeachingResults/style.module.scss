@@ -11,6 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     svg {
       color: #ff7f00;
     }
@@ -35,14 +36,13 @@
 .content_item {
   display: flex;
   align-items: center;
+
   svg {
     color: #ff7f00;
   }
 }
-.content_item_chart{
+
+.content_item_chart {
   width: 100% !important;
   margin: auto;
 }
-
-
-
