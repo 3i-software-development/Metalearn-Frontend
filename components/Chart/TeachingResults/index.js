@@ -14,15 +14,34 @@ import {
 } from "chart.js";
 
 ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
-export default function TeachingResults() {
+export default function TeachingResults({role,dataCountQuizAssignment}) {
   const [hide, setHide] = useState(false);
   const cx = classNames.bind(styles);
-
+  console.log()
   const handleSetHide = () => {
     setHide((pre) => !pre);
   };
+  const total = JSON.parse(dataCountQuizAssignment?.QuizAssignment)?.Total
+  const done = JSON.parse(dataCountQuizAssignment?.QuizAssignment)?.Done
+  const correct = JSON.parse(dataCountQuizAssignment?.QuizAssignment)?.Correct
+  const hour = JSON.parse(dataCountQuizAssignment?.QuizAssignment)?.TotalHour
 
-  const data = {
+  console.log(done)
+  let data = {}
+ if(role){
+  data =  {
+    labels: [`Đã xong : ${done}`,`Tổng : ${total}`,`Chính xác : ${correct}`,`Tổng số giờ  : ${hour}`],
+    datasets: [ 
+      {
+        data: [done,total,correct,hour],
+        backgroundColor: "aqua",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+    ],
+  };
+ }else{
+  data =  {
     labels: ["00","02"],
     datasets: [
       {
@@ -41,7 +60,7 @@ export default function TeachingResults() {
       },
     ],
   };
-
+ }
   const options = {
     responsive: true,
     scales: {
@@ -50,39 +69,14 @@ export default function TeachingResults() {
       },
     },
   };
-
   return (
     <div className={cx("TeachingResults_wrapper")}>
-      <div className={cx("TeachingResults_all")}>
-        <div className={cx("TeachingResults_all_item")}>
-          <div className={cx("TeachingResults_Item")}>
-            <CgShapeRhombus />
-            <div>Câu Hỏi [ 1 ]</div>
-          </div>
-          <div onClick={handleSetHide}>
-            {hide ? (
-              <IoIosRemove className={cx("Icon_Remove")} />
-            ) : (
-              <IoMdAdd className={cx("Icon_Remove")} />
-            )}
-          </div>
-        </div>
-        {hide && (
-          <div className={cx("content_all")}>
-            <div className={cx("content_item")}>
-              <IoIosSquare />
-              <span>Số câu hỏi: 0</span>
-            </div>
-
             <Bar
               className={cx("content_item_chart")}
               data={data}
               options={options}
               height={'100%'}
             />
-          </div>
-        )}
-      </div>
     </div>
   );
 }

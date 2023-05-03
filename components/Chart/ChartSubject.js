@@ -1,41 +1,46 @@
-import React from "react";
-import { Bar } from "react-chartjs-2";
-import Chart from "chart.js/auto";
-const ChartSubject = () => {
-  const labels= [
-        "Số lớp",
-    "Số học viên",
-    "Số thẻ việc đã giao",
-    "Số môn học",
-    "Số tài liệu upload lên",
-    ]
-  const data = {
-    type: 'bar',
-    labels:labels,
-    datasets: [
-      {
-        label:"",
-        data: [65, 59, 80, 81, 56],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-          "rgba(255, 205, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-        ],
-        borderColor: [
-          "rgb(255, 99, 132)",
-          "rgb(255, 159, 64)",
-          "rgb(255, 205, 86)",
-          "rgb(75, 192, 192)",
-          "rgb(54, 162, 235)",
-        ],
-        borderWidth: 1,
-       
-      },
-    ],
-  };
-  return <Bar data={data} labels={labels} style={{marginLeft:"100px"}}/>;
-};
+// import React from "react";
+//  // javascipt plugin for creating charts
+//  import Chart from "chart.js";
+//  // react plugin used to create charts
+//  import { Line, Bar, Doughnut, Pie } from "react-chartjs-2";
+//  // reactstrap components
+//  import { Card, CardHeader, CardBody } from "reactstrap";
+//  // core components
+//  import {
+//    // global options for the charts
+//    chartOptions,
+//    // function that adds the global options to our charts
+//    parseOptions,
+//    chartExample2
+//  } from "variables/charts.js";
 
-export default ChartSubject;
+//  class Charts extends React.Component {
+//    componentWillMount() {
+//      if (window.Chart) {
+//        parseOptions(Chart, chartOptions());
+//      }
+//    }
+//    render() {
+//      return (
+//        <>
+//          <Card>
+//            <CardHeader>
+//              <h5 className="h3 mb-0">Bars chart</h5>
+//            </CardHeader>
+//            <CardBody>
+//              <div className="chart">
+//                <Bar
+//                  data={chartExample2.data}
+//                  options={chartExample2.options}
+//                  className="chart-canvas"
+//                  id="chart-bars"
+//                />
+//              </div>
+//            </CardBody>
+//          </Card>
+//        </>
+//      );
+//    }
+//  }
+
+//  export default Charts;

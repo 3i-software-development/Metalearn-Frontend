@@ -19,13 +19,27 @@ import ClassCard from "../Card/ClassCard/ClassCard";
 import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
 import Document_Cart from "../Card/SubjectCard";
 import ChartSubject from "../Chart/ChartSubject";
-import { useGetCountQuizBodyQuery } from "@/lib/Midleware/QuizQuery";
 import ExamCard from "../Card/ExamCard";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 import SearchAndAddSubjects from "../SearchAndAddSubjects";
 import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
+import TeachingResults from "../Chart/TeachingResults";
+import {
+  useGetCountExamStudentQuery,
+  useGetCountFileStudentQuery,
+  useGetCountLectureAssignmentQuery,
+  useGetCountLectureVoluntaryQuery,
+  useGetCountQuizAssignmentQuery,
+  useGetCountQuizVoluntaryQuery,
+  useGetCountSubjectStudentQuery,
+  useGetCountTestAssignmentQuery,
+  useGetCountTestVoluntaryQuery,
+  useGetCountTutorStudentQuery,
+} from "@/lib/Midleware/CountNumberStudy";
+import { useGetCountQuizBodyQuery } from "@/lib/Midleware/QuizQuery";
+import CircleChart from "../Chart/CircleChart/CircleChart";
 
 const Personalized = () => {
   const { data: practiveQuery } = useGetTotalPractiveQuery({
@@ -110,9 +124,52 @@ const Personalized = () => {
     ratingMax: -1,
   });
 
-  const { data: subjectQuery } = useGetListSubjectQuery({ username: "admin", isTutor888: false })
+  const { data: subjectQuery } = useGetListSubjectQuery({
+    username: "admin",
+    isTutor888: false,
+  });
 
-  const [openKeys, setOpenKeys] = useState('sub1');
+  const { data: countQuizAssignment } = useGetCountQuizAssignmentQuery({
+    userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    type: "QuizAssignment",
+  });
+  const { data: countQuizVoluntary } = useGetCountQuizVoluntaryQuery({
+    userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    type: "QuizVoluntary",
+  });
+  const { data: countLectureVoluntary } = useGetCountLectureVoluntaryQuery({
+    userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    type: "LectureVoluntary",
+  });
+  const { data: countLectureAssignment } = useGetCountLectureAssignmentQuery({
+    userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    type: "LectureAssignment",
+  });
+  const { data: countTestVoluntary } = useGetCountTestVoluntaryQuery({
+    userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    type: "TestVoluntary",
+  });
+  const { data: countTestAssignment } = useGetCountTestAssignmentQuery({
+    userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    type: "TestAssignment",
+  });
+  const { data: countExamStudent } = useGetCountExamStudentQuery({
+    userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    type: "ExamStudent",
+  });
+  const { data: countTutorStudent } = useGetCountTutorStudentQuery({
+    userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    type: "TutorStudent",
+  });
+  const { data: countSubjectStudent } = useGetCountSubjectStudentQuery({
+    userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    type: "SubjectStudent",
+  });
+  const { data: countFileStudent } = useGetCountFileStudentQuery({
+    userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
+    type: "FileStudent",
+  });
+  const [openKeys, setOpenKeys] = useState("sub1");
 
   const getItem = (label, key, icon, children, type) => {
     return {
@@ -176,36 +233,106 @@ const Personalized = () => {
 
     getItem(`Khóa học [ ${lectureQuery?.count} ]`, "sub7", <SettingOutlined />),
 
-    getItem(`Môn học của tôi [ ${subjectQuery?.length} ]`, "sub8", <SettingOutlined />),
-
-    getItem("Kết quả học tập", "sub9", <SettingOutlined />,
-      [
-        getItem(`Câu hỏi tự luyện`, 'sub9-1', null),
-        getItem(`Câu hỏi được giao`, 'sub9-2', null),
-        getItem(`Bài giảng tự luyện`, 'sub9-3', null),
-        getItem(`Bài giảng được giao`, 'sub9-4', null),
-        getItem(`Đề thi tự luyện`, 'sub9-5', null),
-        getItem(`Đề thi được giao`, 'sub9-6', null),
-        getItem(`Kỳ thi tham dự`, 'sub9-7', null),
-        getItem(`Học online`, 'sub9-8', null),
-        getItem(`Số môn học`, 'sub9-9', null),
-        getItem(`Số tài liệu xem`, 'sub9-10', null),
-      ]
+    getItem(
+      `Môn học của tôi [ ${subjectQuery?.length} ]`,
+      "sub8",
+      <SettingOutlined />
     ),
 
-    getItem("Kết quả giảng dạy", "sub10", <SettingOutlined />,
-      [
-        getItem(`Câu hỏi`, 'sub10-1', null),
-        getItem(`Bài giảng`, 'sub10-2', null),
-        getItem(`Đề luyện thi`, 'sub10-3', null),
-        getItem(`Tổng số đã tạo`, 'sub10-4', null),
-        getItem(`Số lớp`, 'sub10-5', null),
-        getItem(`Số môn học`, 'sub10-6', null),
-        getItem(`Số học viên`, 'sub10-7', null),
-        getItem(`Số việc đã giao`, 'sub10-8', null),
-        getItem(`Số tài liệu upload lên`, 'sub10-9', null),
-      ]
-    ),
+    getItem("Kết quả học tập", "sub9", <SettingOutlined />, [
+      getItem(
+        `Câu hỏi tự luyện [ ${
+          countQuizVoluntary
+            ? JSON.parse(countQuizVoluntary?.QuizVoluntary)?.Total
+            : "0"
+        } ]`,
+        "sub9-1",
+        null
+      ),
+      getItem(
+        `Câu hỏi được giao [ ${
+          countQuizAssignment
+            ? JSON.parse(countQuizAssignment?.QuizAssignment)?.Total
+            : "0"
+        } ]`,
+        "sub9-2",
+        null
+      ),
+      getItem(
+        `Bài giảng tự luyện  [ ${
+          countLectureVoluntary
+            ? JSON.parse(countLectureVoluntary?.LectureVoluntary)?.Total
+            : "0"
+        } ]`,
+        "sub9-3",
+        null
+      ),
+      getItem(
+        `Bài giảng được giao  [ ${
+          countLectureAssignment
+            ? JSON.parse(countLectureAssignment?.LectureAssignment)?.Total
+            : "0"
+        } ]`,
+        "sub9-4",
+        null
+      ),
+      getItem(
+        `Đề thi tự luyện [ ${
+          countTestVoluntary
+            ? JSON.parse(countTestVoluntary?.TestVoluntary)?.Total
+            : "0"
+        } ]`,
+        "sub9-5",
+        null
+      ),
+      getItem(
+        `Đề thi được giao [ ${
+          countTestAssignment
+            ? JSON.parse(countTestAssignment?.TestAssignment)?.Total
+            : "0"
+        } ]`,
+        "sub9-6",
+        null
+      ),
+      getItem(
+        `Kỳ thi tham dự [ ${
+          countExamStudent
+            ? JSON.parse(countExamStudent?.ExamStudent)?.Total
+            : "0"
+        } ]`,
+        "sub9-7",
+        null
+      ),
+      getItem(
+        `Học online [ ${
+          countTutorStudent
+            ? JSON.parse(countTutorStudent?.TutorStudent)?.Total
+            : "0"
+        } ]`,
+        "sub9-8",
+        null
+      ),
+      getItem(
+        `Số môn học [ ${
+          countSubjectStudent
+            ? JSON.parse(countSubjectStudent?.SubjectStudent)?.Total
+            : "0"
+        } ]`,
+        "sub9-9",
+        null
+      ),
+    ]),
+    getItem("Kết quả giảng dạy", "sub10", <SettingOutlined />, [
+      getItem(`Câu hỏi`, "sub10-1", null),
+      getItem(`Bài giảng`, "sub10-2", null),
+      getItem(`Đề luyện thi`, "sub10-3", null),
+      getItem(`Tổng số đã tạo`, "sub10-4", null),
+      getItem(`Số lớp`, "sub10-5", null),
+      getItem(`Số môn học`, "sub10-6", null),
+      getItem(`Số học viên`, "sub10-7", null),
+      getItem(`Số việc đã giao`, "sub10-8", null),
+      getItem(`Số tài liệu upload lên`, "sub10-9", null),
+    ]),
 
     getItem("Bộ sưu tập", "sub11", <SettingOutlined />),
   ];
@@ -236,8 +363,57 @@ const Personalized = () => {
         return <CourseCard />;
       case "sub8":
         return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
-      case "sub9":
-        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+      case "sub9-1":
+        return (
+          <TeachingResults
+            role={"hoctap"}
+            dataCountQuizAssignment={countQuizAssignment}
+          />
+        );
+      case "sub9-2":
+        return (
+          <CircleChart role={"QuizAssignment"} value={countQuizAssignment.QuizAssignment} />
+        );
+      case "sub9-3":
+        return (
+          <TeachingResults
+            role={"hoctap"}
+            dataCountQuizAssignment={countQuizAssignment}
+          />
+        );
+      case "sub9-4":
+        return (
+          <CircleChart role={"LectureAssignment"} value={countLectureAssignment.LectureAssignment} />
+        );
+      case "sub9-5":
+        return (
+          <TeachingResults
+            role={"hoctap"}
+            dataCountQuizAssignment={countQuizAssignment}
+          />
+        );
+      case "sub9-6":
+        return (
+          <CircleChart role={"TestAssignment"} value={countTestAssignment.TestAssignment} />
+        );
+      case "sub9-7":
+        return (
+          <TeachingResults
+            role={"hoctap"}
+            dataCountQuizAssignment={countQuizAssignment}
+          />
+        );
+      case "sub9-8":
+        return (
+          <CircleChart role={"TutorStudent"} value={countTutorStudent.TutorStudent} />
+        );
+      case "sub9-9":
+        return (
+          <TeachingResults
+            role={"hoctap"}
+            dataCountQuizAssignment={countQuizAssignment}
+          />
+        );
       case "sub10":
         return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
       case "sub11":

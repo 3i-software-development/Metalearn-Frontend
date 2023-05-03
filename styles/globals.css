@@ -54,7 +54,15 @@ span{
   border-radius: 50%;
   font-size: 20px !important;
 }
+.containerChart{
+  display: flex;
+  justify-content: center;
 
+}
+.containerChart canvas{
+  width: 700px !important;
+  height: 700px !important;
+}
 
 #google_translate_element {
     width: fit-content;
