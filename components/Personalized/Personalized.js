@@ -258,7 +258,7 @@ const Personalized = () => {
             onClick={onOpenChange}
             style={{
               width: 300,
-              backgroundColor: "",
+              // backgroundColor: "",
               // position: "fixed",
             }}
             items={items}

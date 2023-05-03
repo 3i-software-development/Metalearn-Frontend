@@ -4,6 +4,7 @@
     grid-gap: 10px;
 }
 .card {
+    cursor: pointer;
     width: 100%;
     display: flex;
     align-items: center;
@@ -26,7 +27,7 @@
         display: inline-block;
         margin-left: 10px;
         img{
-            width: 250px;
+            width: 1200px;
             height: 250px;
             border-radius: 10px;
         }
