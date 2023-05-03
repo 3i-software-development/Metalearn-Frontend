@@ -25,6 +25,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 import SearchAndAddSubjects from "../SearchAndAddSubjects";
 import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
+import { AbumCart } from "../Card/AbumCard/AbumCard";
 import TeachingResults from "../Chart/TeachingResults";
 import {
   useGetCountExamStudentQuery,
@@ -130,6 +131,7 @@ const Personalized = () => {
     isTutor888: false,
   });
 
+
   const { data: chartTeacherQuery } = useGetTotalTeacherQuery({ userId: '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06' })
 
   const { data: countQuizAssignment } = useGetCountQuizAssignmentQuery({
@@ -172,6 +174,7 @@ const Personalized = () => {
     userId: "0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06",
     type: "FileStudent",
   });
+
   const [openKeys, setOpenKeys] = useState("sub1");
 
   const getItem = (label, key, icon, children, type) => {
@@ -431,7 +434,7 @@ const Personalized = () => {
       case "sub10-9":
         return <TeachingResults value={chartTeacherQuery} type="file" />;
       case "sub11":
-        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
+        return <AbumCart />;
     }
   };
   return (
@@ -444,7 +447,7 @@ const Personalized = () => {
             onClick={onOpenChange}
             style={{
               width: 300,
-              backgroundColor: "",
+              // backgroundColor: "",
               // position: "fixed",
             }}
             items={items}

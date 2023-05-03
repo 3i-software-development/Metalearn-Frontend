@@ -39,8 +39,8 @@ const Signup = () => {
         marginTop: "80px",
       },
     });
-  }  
-  if(data && !data?.Error)  {
+  }
+  if (data && !data?.Error) {
     messageApi.open({
       type: "success",
       key: key,
@@ -53,9 +53,9 @@ const Signup = () => {
     });
     setTimeout(() => {
       router.push("/auth/login");
-    },1000)
+    }, 1000);
   }
-  const onSubmit = (value) => { 
+  const onSubmit = (value) => {
     const formData = new FormData();
     formData.append("Username", value.username);
     formData.append("Password", value.password);

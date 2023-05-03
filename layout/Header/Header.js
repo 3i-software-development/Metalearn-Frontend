@@ -138,7 +138,7 @@ const Header = () => {
 
   const user = useSelector((state) => state.login);
 
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
   return (
     <div className={cx("header")}>
       <AiOutlineMenu
@@ -146,7 +146,10 @@ const Header = () => {
         onClick={() => setShowmobile(!showMobile)}
       />
       {showMobile && <MenuMobile />}
-      <Link href={state ? "/personalized" : "/"} className={cx("logo-container")}>
+      <Link
+        href={state ? "/personalized" : "/"}
+        className={cx("logo-container")}
+      >
         Meta<span>Learn</span>
       </Link>
       <Link href="/subjects" className={cx("head-link")}>
@@ -186,9 +189,7 @@ const Header = () => {
       </div>
       <div className={cx("change-language")}>
         <BiWorld className={cx("icon")} onClick={() => setShow(!show)} />
-        {
-          show && <div id="google_translate_element"></div>
-        }
+        {show && <div id="google_translate_element"></div>}
       </div>
       {state && (
         <Box sx={{ flexGrow: 0 }}>
@@ -196,11 +197,11 @@ const Header = () => {
             <IconButton onClick={handleOpenUserMenu} sx={{ padding: "10px" }}>
               <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png "
-                width={20} height={20}
+                width={20}
+                height={20}
+                alt=""
               />
-
             </IconButton>
-
           </Tooltip>
           <Menu
             sx={{ mt: "45px" }}
@@ -222,7 +223,12 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
+                  <Image
+                    src="https://usehooks.com/images/bytes-logo.png"
+                    width={20}
+                    height={20}
+                    alt=""
+                  />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -232,7 +238,12 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
+                  <Image
+                    src="https://usehooks.com/images/bytes-logo.png"
+                    width={20}
+                    height={20}
+                    alt=""
+                  />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -243,7 +254,12 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
+                  <Image
+                    src="https://usehooks.com/images/bytes-logo.png"
+                    width={20}
+                    height={20}
+                    alt=""
+                  />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -253,7 +269,12 @@ const Header = () => {
             <ListItemButton component="a" className={cx("listSettingss")}>
               <div className={cx("listSettings")}>
                 <div>
-                  <Image src="https://usehooks.com/images/bytes-logo.png" width={20} height={20} />
+                  <Image
+                    src="https://usehooks.com/images/bytes-logo.png"
+                    width={20}
+                    height={20}
+                    alt=""
+                  />
                 </div>
                 <div>
                   <ListItemText primary="Spam" />
@@ -265,7 +286,6 @@ const Header = () => {
           </Menu>
         </Box>
       )}
-
 
       {!state && (
         <div className={cx("user")}>

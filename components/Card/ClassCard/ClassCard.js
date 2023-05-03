@@ -21,6 +21,7 @@ const ClassCard = ({ role }) => {
 
   const { data: LmsClass } = useGetListLmsClassQuery(query);
   const { data: Lesson } = useGetListSubjectQuery();
+
   const handleQueryPage = (current, pageSize) => {
     setQuery({ ...query, pageNo: current, pageSize: pageSize });
   };
@@ -42,7 +43,7 @@ const ClassCard = ({ role }) => {
                     : "https://cdn.shopify.com/s/files/1/0879/0542/products/pc6741.jpg?v=1569974144"
                 }
                 alt="document"
-                width="150"
+                width={150}
                 height="180"
                 className={cx("image")}
               />
@@ -67,7 +68,12 @@ const ClassCard = ({ role }) => {
                       className="fa-solid fa-diamond"
                       style={{ color: "orange" }}
                     ></i>
-                    <strong>&nbsp; {role ? 'Số đề thi '+`${element.CountExam}` : element.ClassName}</strong>
+                    <strong>
+                      &nbsp;{" "}
+                      {role
+                        ? "Số đề thi " + `${element.CountExam}`
+                        : element.ClassName}
+                    </strong>
                   </div>
                   <div className={cx("title")}>
                     <i
@@ -75,7 +81,7 @@ const ClassCard = ({ role }) => {
                       style={{ color: "orange" }}
                     ></i>
                     {role ? (
-                     "Mô tả : " + htmlDecode(`${element.Description}`)
+                      "Mô tả : " + htmlDecode(`${element.Description}`)
                     ) : (
                       <>
                         <span>&nbsp; Số học sinh:</span>
@@ -100,13 +106,15 @@ const ClassCard = ({ role }) => {
           );
         })}
       </div>
-    {
-        role ? '' :   <Pagination
-        total={LmsClass?.count}
-        handleQueryPage={handleQueryPage}
-        current={query.pageNo}
-      />
-    }
+      {role ? (
+        ""
+      ) : (
+        <Pagination
+          total={LmsClass?.count}
+          handleQueryPage={handleQueryPage}
+          current={query.pageNo}
+        />
+      )}
     </Section>
   );
 };

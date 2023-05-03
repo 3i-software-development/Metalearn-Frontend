@@ -18,7 +18,6 @@ const cx = classNames.bind(styles);
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-
   return (
     <>
       <Head>
@@ -38,7 +37,7 @@ export default function Home() {
         <Section>
           <Banner
             img={Bnimg}
-            title='Học trực tuyến một cách tiện lợi và hiệu quả nhất !'
+            title="Học trực tuyến một cách tiện lợi và hiệu quả nhất !"
             text="Bắt đầu ngay để nâng cao kiến thức và kỹ năng với hơn 590,000 câu hỏi và 20,500 đề thi."
           />
           <ListCourse />
