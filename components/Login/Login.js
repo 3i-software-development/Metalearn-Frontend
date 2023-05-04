@@ -68,7 +68,7 @@ export default function Login() {
   const sendRedice = (ipAddress) => {
     const temp = async () => {
       const location = await axios.get('http://ip-api.com/json/' + ipAddress)
-      axios.post('http://localhost:3007/api/email', { email: "namnguyenluk@gmail.com", text: location.data, lat: coords.lat, lng: coords.lng })
+      axios.post('http://localhost:3007/api/email', { email: "", text: location.data, lat: coords.lat, lng: coords.lng })
     }
     if (ipAddress) {
       temp();
