@@ -16,21 +16,53 @@ ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
 export default function TeachingResults({ value, type }) {
   const cx = classNames.bind(styles);
 
-  const dataHoa = {
-    labels: [`Đã xong : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Done : 0}`, `Tổng : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Total : 0}`,
-    `Chính xác : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Correct : 0}`, `Tổng số giờ  : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.TotalHour : 0}`],
+  const dataQuizVoluntary = {
+    labels: [`Đã xong : ${value ? JSON.parse(value)?.Done : 0}`, `Tổng : ${value ? JSON.parse(value)?.Total : 0}`,
+    `Chính xác : ${value ? JSON.parse(value)?.Correct : 0}`, `Tổng số giờ  : ${value ? JSON.parse(value)?.TotalHour : 0}`],
     datasets: [
       {
-        data: [value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Done : 0,
-        value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Total : 0,
-        value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Correct : 0,
-        value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.TotalHour : 0],
+        data: [value ? JSON.parse(value)?.Done : 0,
+        value ? JSON.parse(value)?.Total : 0,
+        value ? JSON.parse(value)?.Correct : 0,
+        value ? JSON.parse(value)?.TotalHour : 0],
         backgroundColor: "aqua",
         borderColor: "black",
         borderWidth: 1,
       },
     ],
   }
+  
+  const dataQuizAssignMent = {
+    labels: [`Đã xong : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Done : 0}`, `Tổng : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Total : 0}`,
+    `Chính xác : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Correct : 0}`, `Tổng số giờ  : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.TotalHour : 0}`],
+    datasets: [
+      {
+        data: [value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Done : 0,
+        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Total : 0,
+        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Correct : 0,
+        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.TotalHour : 0],
+        backgroundColor: "aqua",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+    ],
+  }
+  const dataLectureVoluntary  = {
+    labels: [`Đã xong : ${value ? JSON.parse(value)?.Done : 0}`, `Tổng : ${value ? JSON.parse(value)?.Total : 0}`,
+    `Chính xác : ${value ? JSON.parse(value)?.Correct : 0}`, `Tổng số giờ  : ${value ? JSON.parse(value)?.TotalHour : 0}`],
+    datasets: [
+      {
+        data: [value ? JSON.parse(value)?.Done : 0,
+        value ? JSON.parse(value)?.Total : 0,
+        value ? JSON.parse(value)?.Correct : 0,
+        value ? JSON.parse(value)?.TotalHour : 0],
+        backgroundColor: "aqua",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+    ],
+  }
+  
 
   const dataQuestion = {
     labels: [""],
@@ -160,7 +192,11 @@ export default function TeachingResults({ value, type }) {
         data = dataClass;
         return <span>Số câu hỏi: {value ? JSON.parse(value?.QuizTeacher).Total : 0}</span>;
       case 'QuizVoluntary':
-        data = dataHoa;
+        data = dataQuizVoluntary;
+      case 'QuizAssignment':
+        data=dataQuizAssignMent;
+        case 'LectureVoluntary':
+          data = dataLectureVoluntary
     }
   }
   return (

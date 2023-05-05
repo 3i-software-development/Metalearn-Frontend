@@ -105,6 +105,31 @@ const ClassCard = ({ role }) => {
             </div>
           );
         })}
+        <table classNames={cx("class-list")}>
+          <thead className={cx("table-head")}>
+            <tr>
+              <th className={cx("titleCard")}>
+                <i className="fa fa-paper-plane"></i>
+                Ảnh lớp học
+              </th>
+              <th className={cx("card-status")}>
+                <i class="fa fa-newspaper"></i>
+                Mã lớp học
+              </th>
+              <th className={cx("card-time")}>
+                <i className="fa fa-calendar"></i>
+                Tên lớp học
+              </th>
+              <th  className={cx("card-actions")}>
+                <i className="fa fa-recycle"></i>
+                Thao tác
+              </th>
+            </tr>
+          </thead>
+          <tbody className={cx("table-body")}>
+            
+          </tbody>
+        </table>
       </div>
       {role ? (
         ""

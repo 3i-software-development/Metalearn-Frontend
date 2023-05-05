@@ -1,62 +1,81 @@
 .practice {
-    display: flex;
-    flex-wrap: wrap;
-    grid-gap: 10px;
+    table{
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 5px;
+    }
+}
+
+.table-head{
+    th{
+        text-align: initial;
+        font-size: 14px;
+        text-decoration: underline;
+
+        i{
+            margin-right: 5px;
+            color: gray;
+        }
+    }
 }
 
 .card {
     width: 100%;
-    padding: 10px 30px;
-    // border-bottom: 2px dashed gray;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: self-end;
-
-    .card-body {
-        width: 100%;
+    // box-shadow: 0 3px 3px #bebeea;
+    // background-color: #ebebef;
+    
+    td{
+        border-width: 1px 0 0;
+        border-style: solid;
+        border-color: #e7ecf1;
+        padding: 8px 10px;
     }
 
-    .card-footer {
-        width: 100%;
+    &:hover{
+        background-color: #f3f4f6;
     }
 }
 
 .titleCard {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    vertical-align: middle;
+    background-color: white;
 
     i {
         font-weight: bold;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
+
+    h4{
+        font-size: 14px;
+    }
 }
 
-.card-time {
-    display: flex;
-    justify-content: space-between;
-
+.card-status {
     .status {
         display: flex;
-        padding: 7px 0;
 
         span {
-            background-color: rgb(3, 174, 3);
+            color: white;
+            background-color: #ff6b81;
             padding: 3px 6px;
             margin-right: 5px;
-            border-radius: 12px;
-            font-size: 14px;
+            border-radius: 3px;
+            font-size: 10px;
             box-shadow: rgba(135, 135, 138, 0.2) 0px 7px 29px 0px;
+            
+            &.label{
+                background-color: #61bd4f;
+            }
 
         }
     }
+}
 
+.card-time {
     .timeStart {
         display: flex;
         color: rgb(3, 140, 140);
         font-weight: bold;
-        padding: 7px 0;
 
         span {
             font-size: 14px;
@@ -79,6 +98,6 @@
 
     i {
         color: gray;
-        font-size: 20px;
+        font-size: 16px;
     }
 }

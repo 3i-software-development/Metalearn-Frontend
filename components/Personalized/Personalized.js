@@ -337,7 +337,7 @@ const Personalized = () => {
     getItem("Bộ sưu tập", "sub11", <SettingOutlined />),
   ];
 
-  console.log(chartTeacherQuery?.QuizTeacher)
+  console.log(countLectureVoluntary)
   const onOpenChange = (keys) => {
     setOpenKeys(keys.key);
   };
@@ -368,7 +368,7 @@ const Personalized = () => {
         return (
           <TeachingResults
             type={"QuizVoluntary"}
-            value={countQuizVoluntary}
+            value={countQuizVoluntary.QuizVoluntary}
           />
         );
       case "sub9-2":
@@ -378,8 +378,8 @@ const Personalized = () => {
       case "sub9-3":
         return (
           <TeachingResults
-            role={"hoctap"}
-            dataCountQuizAssignment={countQuizAssignment}
+            role={"LectureVoluntary"}
+            value ={countLectureVoluntary.LectureVoluntary}
           />
         );
       case "sub9-4":

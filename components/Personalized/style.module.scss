@@ -17,12 +17,12 @@
 .SearchAndAddSubjects_ItemAll {
     display: flex;
     justify-content: space-between;
-    padding: 5px;
+    padding: 10px 0;
     font-size: 30px;
-    align-items: flex-start;
+    align-items: baseline;
 
     i {
-        font-size: 30px;
+        font-size: 20px;
         margin-left: 20px;
         cursor: pointer;
 
