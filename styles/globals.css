@@ -162,6 +162,17 @@ img{
   display: none;
 }
 
+.text-center{
+  text-align: center;
+  margin: 20px 0;
+}
+
+.form-control,
+.form-select{
+  height: 35px;
+  width: 100%;
+}
+
 .overlay {
   position: fixed;
   top: 0;

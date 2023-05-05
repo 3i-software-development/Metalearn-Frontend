@@ -61,54 +61,52 @@ const PractiseCard = ({ total }) => {
           <tbody className={cx("table-body")}>
             {practiveQuery?.Object?.data.map((element) => {
               return (
-                <>
-                  <tr key={element.LmsTaskCode} className={cx("card")}>
-                    <td className={cx("titleCard")}>
-                      <h4>
-                        #{element.LmsTaskCode} : {element.LmsTaskName}
-                      </h4>
-                    </td>
-                    <td className={cx("card-status")}>
-                      <div className={cx("status")}>
-                        <span className={cx("label")}>{element.Status}</span>
+                <tr key={element.LmsTaskCode} className={cx("card")}>
+                  <td className={cx("titleCard")}>
+                    <h4>
+                      #{element.LmsTaskCode} : {element.LmsTaskName}
+                    </h4>
+                  </td>
+                  <td className={cx("card-status")}>
+                    <div className={cx("status")}>
+                      <span className={cx("label")}>{element.Status}</span>
+                      <span>
+                        {diffMoment(element.BeginTime, element.EndTime)}
+                      </span>
+                    </div>
+                  </td>
+                  <td className={cx("card-time")}>
+                    <div className={cx("timeStart")}>
+                      <span>
+                        [{moment(element.BeginTime).format("DD : MM : YYYY")}]
+                      </span>
+                      {element.EndTime && (
                         <span>
-                          {diffMoment(element.BeginTime, element.EndTime)}
+                          [{moment(element.EndTime).format("DD : MM : YYYY")}]
                         </span>
-                      </div>
-                    </td>
-                    <td className={cx("card-time")}>
-                      <div className={cx("timeStart")}>
-                        <span>
-                          [{moment(element.BeginTime).format("DD : MM : YYYY")}]
-                        </span>
-                        {element.EndTime && (
-                          <span>
-                            [{moment(element.EndTime).format("DD : MM : YYYY")}]
-                          </span>
-                        )}
-                      </div>
-                    </td>
-                    <td className={cx("card-actions")}>
-                      <div className={cx("listIcon")}>
-                        <span title="Sửa">
-                          <i className="fa-solid fa-pen"></i>
-                        </span>
-                        <span title="Căn chỉnh">
-                          <i className="fa-solid fa-align-center"></i>
-                        </span>
-                        <span title="Trò chuyện">
-                          <i className="fa-solid fa-comment-dots"></i>
-                        </span>
-                        <span title="Thông báo">
-                          <i className="fa-solid fa-bell"></i>
-                        </span>
-                        <span title="File">
-                          <i className="fa-solid fa-file"></i>
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                </>
+                      )}
+                    </div>
+                  </td>
+                  <td className={cx("card-actions")}>
+                    <div className={cx("listIcon")}>
+                      <span title="Sửa">
+                        <i className="fa-solid fa-pen"></i>
+                      </span>
+                      <span title="Căn chỉnh">
+                        <i className="fa-solid fa-align-center"></i>
+                      </span>
+                      <span title="Trò chuyện">
+                        <i className="fa-solid fa-comment-dots"></i>
+                      </span>
+                      <span title="Thông báo">
+                        <i className="fa-solid fa-bell"></i>
+                      </span>
+                      <span title="File">
+                        <i className="fa-solid fa-file"></i>
+                      </span>
+                    </div>
+                  </td>
+                </tr>
               );
             })}
           </tbody>

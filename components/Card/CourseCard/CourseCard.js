@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classNames from "classnames/bind";
+import className from "classnames/bind";
 import styles from "./style.module.scss";
 import Section from "@/components/Section/Section";
 import { Rate } from "antd";
@@ -8,7 +8,7 @@ import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
 import Image from "next/image";
 import Pagination from "@/components/Pagination/Pagination";
 
-const cx = classNames.bind(styles);
+const cx = className.bind(styles);
 
 const CourseCard = () => {
   const [query, setQuery] = useState({
@@ -51,6 +51,8 @@ const CourseCard = () => {
                   ></Image>
                 </div>
                 <div className={cx("item-detail")}>
+                  <Rate defaultValue={item.Rating ? item.Rating : 0} disabled />
+
                   <ul className={cx("info")}>
                     <li className={cx("role")}>
                       <span className={cx("label")}>
@@ -82,34 +84,38 @@ const CourseCard = () => {
                       </span>
                     </li>
                   </ul>
+
                   <h4 className={cx("title")}>
                     <i className="fa-solid fa-computer"></i> {item.LectName}
                   </h4>
-
-                  <Rate defaultValue={item.Rating ? item.Rating : 0} disabled />
-                  <div classNames={cx("price")}>
-                    <span classNames={cx("label")}>
-                      <i className="fa-solid fa-coins"></i> Giá :{" "}
+                  
+                  <div className={cx("lessions")}>
+                    <span className={cx("label")}>
+                      {item.CourseName ? "Bài giảng:" : ""}{" "}
                     </span>
-                    <span classNames={cx("value")}>
+                    <span className={cx("value")}>
+                      {item.CourseName ? item.CourseName : ""}
+                    </span>
+                    :{" "}
+                    <span>{item.CourseName ? item.CourseName : "Không"}</span>
+                  </div>
+
+                  <div className={cx("price")}>
+                    <span className={cx("label")}>
+                      Giá :{" "}
+                    </span>
+                    <span className={cx("value")}>
                       {item.Price ? item.Price : "0"}
                     </span>
                   </div>
-                </div>
-                <div className={cx("footerCard")}>
-                  <div>
-                    <p>
-                      <i className="fa-solid fa-shapes"></i> Môn học :{" "}
-                      <span>{item.SubjectName}</span>
-                    </p>
-                    <p>
-                      <i className="fa-solid fa-laptop"></i>Bài giảng tương tác
-                      :{" "}
-                      <span>{item.CourseName ? item.CourseName : "Không"}</span>
-                    </p>
+                  <div className={cx("subject")}>
+                    <span className={cx("label")}>Môn học :{" "}</span>
+                    <span className={cx("value")}>{item.SubjectName}</span>
                   </div>
-                  <div className={cx("down")}>
-                    <i className="fa-solid fa-cloud-arrow-down"></i>
+                  <div className={cx("actions")}>
+                    <span className="edit"><i class="fa-solid fa-pen-to-square"></i></span>
+                    <span className="down"><i className="fa-solid fa-cloud-arrow-down"></i></span>
+                    <span className="share"><i class="fa-solid fa-share-nodes"></i></span>
                   </div>
                 </div>
               </div>
