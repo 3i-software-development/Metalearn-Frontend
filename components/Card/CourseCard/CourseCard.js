@@ -36,9 +36,9 @@ const CourseCard = () => {
       <div className={cx("layout")}>
         {data?.query.map((item) => {
           return (
-            <div className={cx("course-card")} key={item.Id}>
-              <div className={cx("content")}>
-                <div className={cx("images")}>
+            <div className={cx("item")} key={item.Id}>
+              <div className={cx("inner-item")}>
+                <div className={cx("item-media")}>
                   <Image
                     src={
                       item.ImageCover
@@ -50,43 +50,67 @@ const CourseCard = () => {
                     height={200}
                   ></Image>
                 </div>
-                <div>
-                  <h4>
+                <div className={cx("item-detail")}>
+                  <ul className={cx("info")}>
+                    <li className={cx("role")}>
+                      <span className={cx("label")}>
+                        <i className="fa-solid fa-user"></i>
+                      </span>
+                      &nbsp;
+                      <span className={cx("value")}>{item.Teacher}</span>
+                    </li>
+
+                    <li className={cx("view")}>
+                      <span className={cx("label")}>
+                        <i className="fa fa-eye"></i>
+                      </span>
+                      &nbsp;
+                      <span className={cx("value")}>
+                        {item.TryTime ? item.TryTime : "0"}
+                      </span>
+                    </li>
+
+                    <li className={cx("time")}>
+                      <span className={cx("label")}>
+                        <i className="fa-solid fa-clock"></i>
+                      </span>
+                      &nbsp;
+                      <span className={cx("value")}>
+                        {item.Duration
+                          ? item.Duration + " " + item.Unit
+                          : "Không giới hạn"}
+                      </span>
+                    </li>
+                  </ul>
+                  <h4 className={cx("title")}>
                     <i className="fa-solid fa-computer"></i> {item.LectName}
                   </h4>
-                  <p className={cx("role")}>{item.Teacher}</p>
+
                   <Rate defaultValue={item.Rating ? item.Rating : 0} disabled />
-                  <p>
-                    Thời lượng :{" "}
-                    <span>
-                      {item.Duration
-                        ? item.Duration + " " + item.Unit
-                        : "Không giới hạn"}
+                  <div classNames={cx("price")}>
+                    <span classNames={cx("label")}>
+                      <i className="fa-solid fa-coins"></i> Giá :{" "}
                     </span>
-                  </p>
-                  <p>
-                    <i className="fa-solid fa-coins"></i> Giá :{" "}
-                    <span>{item.Price ? item.Price : "0"}</span>
-                  </p>
-                  <p>
-                    <i className="fa-solid fa-medal"></i> Số lần xem :{" "}
-                    <span>{item.TryTime ? item.TryTime : "0"}</span>
-                  </p>
+                    <span classNames={cx("value")}>
+                      {item.Price ? item.Price : "0"}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className={cx("footerCard")}>
-                <div>
-                  <p>
-                    <i className="fa-solid fa-shapes"></i> Môn học :{" "}
-                    <span>{item.SubjectName}</span>
-                  </p>
-                  <p>
-                    <i className="fa-solid fa-laptop"></i> Bài giảng tương tác :{" "}
-                    <span>{item.CourseName ? item.CourseName : "Không"}</span>
-                  </p>
-                </div>
-                <div className={cx("down")}>
-                  <i className="fa-solid fa-cloud-arrow-down"></i>
+                <div className={cx("footerCard")}>
+                  <div>
+                    <p>
+                      <i className="fa-solid fa-shapes"></i> Môn học :{" "}
+                      <span>{item.SubjectName}</span>
+                    </p>
+                    <p>
+                      <i className="fa-solid fa-laptop"></i>Bài giảng tương tác
+                      :{" "}
+                      <span>{item.CourseName ? item.CourseName : "Không"}</span>
+                    </p>
+                  </div>
+                  <div className={cx("down")}>
+                    <i className="fa-solid fa-cloud-arrow-down"></i>
+                  </div>
                 </div>
               </div>
             </div>

@@ -6,7 +6,6 @@ import Image from "next/image";
 const cx = classNames.bind(styles);
 
 const ClassCard = ({ data }) => {
-
   return (
     <div style={{ height: "100%" }}>
       <div className={cx("course-card")}>
@@ -22,21 +21,23 @@ const ClassCard = ({ data }) => {
         )}
         <div className={cx("title")}>
           <strong>
-            <i className="fa-solid fa-square" style={{ color: "yellow" }}></i>{" "}
-            Phap A :
+            <i className="fa-solid fa-circle" style={{ color: "red" }}></i> Phap
+            A :
           </strong>
           <span>[A][A]</span>
         </div>
         <br />
         <div className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "red" }}></i> Subject:
+            <i className="fa-solid fa-book " style={{ color: "grey" }}></i>{" "}
+            Subject:
           </span>
           <span> &nbsp; Lập trình</span>
         </div>
         <div className={cx("title")}>
           <span>
-            <i className="fa-solid fa-circle " style={{ color: "brown" }}></i> Bắt đầu:
+            <i className="fa-solid fa-clock " style={{ color: "grey" }}></i> Bắt
+            đầu:
           </span>
           <span>&nbsp; Lập trình</span>
         </div>

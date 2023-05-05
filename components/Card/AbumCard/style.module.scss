@@ -5,7 +5,6 @@
 }
 .card {
     cursor: pointer;
-    width: 100%;
     display: flex;
     align-items: center;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -14,7 +13,7 @@
     }
     
     .card-body {
-        width: 80%;
+        width: 100%;
         padding: 10px 20px;
         justify-content: space-between;
         .title{
@@ -33,5 +32,29 @@
         }
     }
     
+}
+
+@media screen and (max-width: 1920px){
+    .card{
+        width: 24%;
+    }
+}
+
+@media screen and (max-width: 1479px){
+    .card{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .card{
+        width: 47%;
+    }
+}
+
+@media screen and (max-width: 413px){
+    .card{
+        width: 95%;
+    }
 }
 

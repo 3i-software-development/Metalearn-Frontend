@@ -61,7 +61,7 @@ export const AbumCart = () => {
                         <Image
                           width={300}
                           height={300}
-                          src="https://blog.testlodge.com/wp-content/uploads/2018/02/qa-career.png"
+                          src="https://media.istockphoto.com/id/1357394932/vi/vec-to/bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-bi%E1%BB%83u-ng%E1%BB%AF-q-a-theo-phong-c%C3%A1ch-ph%E1%BA%B3ng-c%C3%A2u-h%E1%BB%8Fi-v%C3%A0-tr%E1%BA%A3-l%E1%BB%9Di-minh-h%E1%BB%8Da-vector-tr%C3%AAn-n%E1%BB%81n-b%E1%BB%8B.jpg?s=612x612&w=0&k=20&c=VwsxdTb7e30MciudXqILWqp_0JY8ZfwwfnuAhe5x2Rk="
                           alt="qa"
                         />
                       </Link>

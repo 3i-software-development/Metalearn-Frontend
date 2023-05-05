@@ -90,62 +90,86 @@ const SelftrainingCard = ({ onlyAssignment }) => {
     <Section>
       <MathJaxProvider options={mathJaxOptions}>
         <div className={cx("contaiberQuiz")}>
-          {quiz?.Object?.Data.map((item, index) => {
-            return (
-              <div className={cx("selftraining-card")} key={index}>
-                <div className={cx("selftrainingTitle")}>
-                  <h4>
-                    {textFomart(item.Content).map((element, index) => {
-                      if (index % 2 === 0) {
-                        return <span key={-index}>{element}</span>;
-                      } else
-                        return <Tex2SVG display="inline" latex={element} />;
-                    })}
-                  </h4>
-                  <i class="fa-solid fa-ellipsis"></i>
-                </div>
-                <div className={cx("selftrainingContent")}>
-                  <p>
-                    <span>Môn học : </span> {item.SubjectName}
-                  </p>
-                  <p>
-                    <span>Bài giảng : </span>Bài 6 : Đơn chất và hợp chất - Phân
-                  </p>
-                  <p>
-                    <span>Giá : </span>{" "}
+          <table className={cx("list-table")}>
+            <tr className={cx("list-head")}>
+              <th className={cx("question")}>
+                <i className="fa fa-paper-plane"></i>
+                Câu hỏi
+              </th>
+              <th className={cx("subject")}>
+                <i className="fa-solid fa-person-chalkboard"></i>
+                Môn học
+              </th>
+              <th className={cx("lession")}>
+                <i className="fa fa-newspaper"></i>
+                Bài giảng
+              </th>
+              <th className={cx("price")}>
+                <i className="fa-solid fa-tag"></i>
+                Giá
+              </th>
+              <th className={cx("author")}>
+                <i className="fa-solid fa-user"></i>
+                Tác giả
+              </th>
+              <th className={cx("time")}>
+                <i className="fa-solid fa-clock"></i>
+                Thời lượng
+              </th>
+              <th className={cx("actions")}>
+                <i className="fa fa-recycle"></i>
+                Thao tác
+              </th>
+            </tr>
+            {quiz?.Object?.Data.map((item, index) => {
+              return (
+                <tr className={cx("item")} key={index}>
+                  <td className={cx("question")}>
+                    <h4>
+                      {textFomart(item.Content).map((element, index) => {
+                        if (index % 2 === 0) {
+                          return <span key={-index}>{element}</span>;
+                        } else
+                          return <Tex2SVG display="inline" latex={element} />;
+                      })}
+                    </h4>
+                  </td>
+                  <td className={cx("subject")}>{item.SubjectName}</td>
+                  <td className={cx("lession")}>
+                    Bài 6 : Đơn chất và hợp chất - Phân
+                  </td>
+                  <td clasName={cx("price")}>
                     {item.Price === 0
-                      ? item.Price + "[" + " Được chia sẻ " + "]"
+                      ? item.Price + " [" + " Được chia sẻ " + "]"
                       : item.Price + " Coin"}
-                  </p>
-                  <p className={cx("timeSub")}>
-                    <span>
-                      <i class="fa-solid fa-code-branch"></i>
-                    </span>{" "}
-                    <span>{item.CreatedBy}</span>{" "}
-                    <span>
-                      {moment(item.CreatedTime).format("DD : MM : YYYY")}
-                    </span>
-                  </p>
-                </div>
-                <div className={cx("time-level")}>
-                  <p>
-                    <span>Thời lượng : </span>
-                    {item.DurationMinute === 0
-                      ? ""
-                      : item.DurationMinute + " phút"}
-                  </p>
-                  <p>
-                    <span>Độ khó : </span>
+                  </td>
+                  <td className={cx("author")}>
+                    <p>
+                      <i className="fa-solid fa-code-branch"></i>{" "}
+                      <span>{item.CreatedBy}</span>{" "}
+                    </p>
+                    <p>{moment(item.CreatedTime).format("DD : MM : YYYY")}</p>
+                    <i>
+                      {item.DurationMinute === 0
+                        ? ""
+                        : item.DurationMinute + " phút"}
+                    </i>
+                  </td>
+                  <td className={cx("time")}>
                     {item.Level === null ? "0" : item.Level}
-                  </p>
-                </div>
-                <div className={cx("icon")}>
-                  <i class="fa-solid fa-cloud-arrow-down"></i>
-                  <i class="fa-solid fa-thumbtack"></i>
-                </div>
-              </div>
-            );
-          })}
+                  </td>
+                  <td className={cx("actions")}>
+                    <span clasNames={cx("download")}>
+                      <i className="fa-solid fa-cloud-arrow-down"></i>
+                    </span>
+                    <span clasNames={cx("thumbtack")}>
+                      <i className="fa-solid fa-thumbtack"></i>
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
+          </table>
         </div>
       </MathJaxProvider>
       {/* <Pagination total={onlyAssignment ? data?.countAssignment : data?.countSharing} handleQueryPage={handleQueryPage} current={query.pageNum} /> */}

@@ -1,67 +1,67 @@
-.selftrainingTitle {
-    display: flex;
-    justify-content: space-between;
+.list-table{
+    border-spacing: 0 5px;
 
-    h4 {
-        font-weight: 700;
+    .question{
+        max-width: 500px;
+    }
 
+    th, 
+    td{
+        text-align: initial;
+        min-width: 150px;
 
-        span {
-            font-weight: 700;
-            font-size: 20px;
+        &.price,
+        &.author,
+        &.time,
+        &.actions{
+            text-align: center;
         }
     }
-}
 
-.selftrainingContent {
-    margin: 10px 0;
-
-    p {
-        margin: 5px 0;
-
-        span {
-            color: rgb(9, 167, 59);
-            font-weight: 600;
-        }
-    }
-}
-
-.contaiberQuiz {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 10px;
-}
-
-.timeSub {
-    span {
-        color: black;
-    }
-}
-
-.time-level,
-.icon {
-    display: flex;
-    justify-content: space-between;
-
-    p {
-        margin-bottom: 10px;
-
-        span {
-            color: rgb(9, 167, 59);
-            font-weight: 600;
-        }
-
-    }
-
-    i {
+    i{
         color: gray;
-        font-size: 20px;
+    }
+
+    .actions{
+        span{
+            margin-right: 20px;
+            cursor: pointer;
+            
+            &:last-child{
+                margin-right: 0;
+            }
+        }
     }
 }
 
-.selftraining-card {
-    width: 100%;
-    border-bottom: 2px solid gray;
-    padding-bottom: 10px;
-    padding: 10px;
+.list-head{
+    th{
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: underline;
+        padding: 10px 10px 30px;
+
+        i{
+            margin-right: 5px;
+        }
+    }
+}
+
+.item{
+    td{
+        border-width: 1px 0 0;
+        border-style: solid;
+        border-color: #e7ecf1;
+        padding: 8px 10px;
+
+        &.question{
+            span{
+                font-weight: 600;
+            }
+        }
+    }
+
+    &:hover{
+        background-color: #f3f4f6;
+    }
 }

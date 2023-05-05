@@ -1,8 +1,4 @@
 .content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-gap: 5px;
-
     .images {
         width: 100%;
         height: 100%;
@@ -21,7 +17,7 @@
     }
 }
 
-.course-card {
+.inner-item {
     border: 1px solid rgb(225, 224, 224);
     border-radius: 6px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -30,41 +26,27 @@
     padding: 10px;
     font-weight: 600;
     font-size: 15px;
-
-    p {
-        color: rgb(3, 174, 3);
-
-        span {
-            color: black;
-        }
-
-        i {
-            color: gray;
-        }
-    }
-
+    min-height: 430px;
 }
 
 .footerCard {
-    width: 100%;
+    // width: 100%;
     display: flex;
-    padding: 0 25px;
     align-items: center;
     justify-content: space-between;
 
     .down {
         i {
+            margin-top: 40px;
             font-size: 25px;
-            margin-left: 40px;
+            margin-left: 25px;
             color: gray;
         }
     }
 
     .down:hover {
         i {
-            font-size: 30px;
-            margin-left: 40px;
-            color: blue;
+            color: black;
         }
     }
 }
@@ -72,5 +54,84 @@
 .layout {
     display: flex;
     flex-wrap: wrap;
-    grid-gap: 10px;
+    margin-left: -15px;
+    margin-right: -15px;
+
+    .item{
+        width: 25%;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 30px;
+    }
+}
+
+.item-media{
+    position: relative;
+    padding-top: 65%;
+    margin-bottom: 15px;
+
+    img{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.item-detail{
+    .label {
+        font-weight: 600;
+    }
+    
+    .info{
+        margin-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        list-style: none;
+
+        li{
+            margin-right: 15px;
+
+            span{
+                font-size: 12px;
+            }
+
+            .label{
+                color: gray;
+                font-weight: initial;
+            }
+
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1920px){
+    .item{
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 1479px){
+    .item{
+        width: calc(100% / 3);
+    }
+}
+
+@media screen and (max-width: 991px){
+    .item{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 413px){
+    .item{
+        width: 100%;
+    }
 }
