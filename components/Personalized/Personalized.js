@@ -432,6 +432,11 @@ const Personalized = () => {
 
     getItem("Bộ sưu tập", "sub11", <SettingOutlined />),
   ];
+<<<<<<< HEAD
+=======
+
+  console.log(countLectureVoluntary)
+>>>>>>> 0ca965c (change application grid design)
   const onOpenChange = (keys) => {
     setOpenKeys(keys.key);
   };
