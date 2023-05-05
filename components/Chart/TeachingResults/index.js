@@ -16,21 +16,80 @@ ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
 export default function TeachingResults({ value, type }) {
   const cx = classNames.bind(styles);
 
-  const dataHoa = {
-    labels: [`Đã xong : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Done : 0}`, `Tổng : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Total : 0}`,
-    `Chính xác : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Correct : 0}`, `Tổng số giờ  : ${value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.TotalHour : 0}`],
+  const dataQuizVoluntary = {
+    labels: [
+      `Đã xong : ${value ? JSON.parse(value)?.Done : 0}`,
+      `Tổng : ${value ? JSON.parse(value)?.Total : 0}`,
+      `Chính xác : ${value ? JSON.parse(value)?.Correct : 0}`,
+      `Tổng số giờ  : ${value ? JSON.parse(value)?.TotalHour : 0}`,
+    ],
     datasets: [
       {
-        data: [value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Done : 0,
-        value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Total : 0,
-        value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.Correct : 0,
-        value.QuizVoluntary ? JSON.parse(value?.QuizVoluntary)?.TotalHour : 0],
+        data: [
+          value ? JSON.parse(value)?.Done : 0,
+          value ? JSON.parse(value)?.Total : 0,
+          value ? JSON.parse(value)?.Correct : 0,
+          value ? JSON.parse(value)?.TotalHour : 0,
+        ],
         backgroundColor: "aqua",
         borderColor: "black",
         borderWidth: 1,
       },
     ],
-  }
+  };
+
+  const dataQuizAssignMent = {
+    labels: [
+      `Đã xong : ${
+        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Done : 0
+      }`,
+      `Tổng : ${
+        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Total : 0
+      }`,
+      `Chính xác : ${
+        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Correct : 0
+      }`,
+      `Tổng số giờ  : ${
+        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.TotalHour : 0
+      }`,
+    ],
+    datasets: [
+      {
+        data: [
+          value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Done : 0,
+          value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Total : 0,
+          value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Correct : 0,
+          value.QuizAssignment
+            ? JSON.parse(value?.QuizAssignment)?.TotalHour
+            : 0,
+        ],
+        backgroundColor: "aqua",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+    ],
+  };
+  const dataLectureVoluntary = {
+    labels: [
+      `Đã xong : ${value ? JSON.parse(value)?.Done : 0}`,
+      `Tổng : ${value ? JSON.parse(value)?.Total : 0}`,
+      `Chính xác : ${value ? JSON.parse(value)?.Correct : 0}`,
+      `Tổng số giờ  : ${value ? JSON.parse(value)?.TotalHour : 0}`,
+    ],
+    datasets: [
+      {
+        data: [
+          value ? JSON.parse(value)?.Done : 0,
+          value ? JSON.parse(value)?.Total : 0,
+          value ? JSON.parse(value)?.Correct : 0,
+          value ? JSON.parse(value)?.TotalHour : 0,
+        ],
+        backgroundColor: "aqua",
+        borderColor: "black",
+        borderWidth: 1,
+      },
+    ],
+  };
 
   const dataQuestion = {
     labels: [""],
@@ -44,7 +103,9 @@ export default function TeachingResults({ value, type }) {
       },
       {
         label: "Bài giảng",
-        data: [value.LectureTeacher ? JSON.parse(value?.LectureTeacher).Total : 0],
+        data: [
+          value.LectureTeacher ? JSON.parse(value?.LectureTeacher).Total : 0,
+        ],
         backgroundColor: "black",
         borderColor: "black",
         borderWidth: 1,
@@ -64,7 +125,7 @@ export default function TeachingResults({ value, type }) {
         borderWidth: 1,
       },
     ],
-  }
+  };
 
   const dataClass = {
     labels: [""],
@@ -78,14 +139,18 @@ export default function TeachingResults({ value, type }) {
       },
       {
         label: "Số môn học",
-        data: [value.SubjectTeacher ? JSON.parse(value?.SubjectTeacher).Total : 0],
+        data: [
+          value.SubjectTeacher ? JSON.parse(value?.SubjectTeacher).Total : 0,
+        ],
         backgroundColor: "black",
         borderColor: "black",
         borderWidth: 1,
       },
       {
         label: "Số học viên",
-        data: [value.StudentTeacher ? JSON.parse(value?.StudentTeacher).Total : 0],
+        data: [
+          value.StudentTeacher ? JSON.parse(value?.StudentTeacher).Total : 0,
+        ],
         backgroundColor: "#5fbf00",
         borderColor: "black",
         borderWidth: 1,
@@ -105,9 +170,9 @@ export default function TeachingResults({ value, type }) {
         borderWidth: 1,
       },
     ],
-  }
+  };
 
-  let data = {}
+  let data = {};
 
   const options = {
     responsive: true,
@@ -115,54 +180,99 @@ export default function TeachingResults({ value, type }) {
       x: {
         beginAtZero: true,
       },
-      xAxes: [{
-        barPercentage: 0.4
-      }]
+      xAxes: [
+        {
+          barPercentage: 0.4,
+        },
+      ],
     },
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
       },
       title: {
         display: true,
-        text: 'Biểu đồ'
-      }
-    }
+        text: "Biểu đồ",
+      },
+    },
   };
 
   const displayNumber = () => {
     switch (type) {
-      case 'question':
+      case "question":
         data = dataQuestion;
-        return <span>Số câu hỏi: {value ? JSON.parse(value?.QuizTeacher).Total : 0}</span>;
-      case 'lecture':
+        return (
+          <span>
+            Số câu hỏi: {value ? JSON.parse(value?.QuizTeacher).Total : 0}
+          </span>
+        );
+      case "lecture":
         data = dataQuestion;
-        return <span>Tổng số bài giảng: {value ? JSON.parse(value?.LectureTeacher).Total : 0}</span>;
-      case 'test':
+        return (
+          <span>
+            Tổng số bài giảng:{" "}
+            {value ? JSON.parse(value?.LectureTeacher).Total : 0}
+          </span>
+        );
+      case "test":
         data = dataQuestion;
-        return <span>Đề luyện thi: {value ? JSON.parse(value?.TestTeacher).Total : 0}</span>;
-      case 'exam':
+        return (
+          <span>
+            Đề luyện thi: {value ? JSON.parse(value?.TestTeacher).Total : 0}
+          </span>
+        );
+      case "exam":
         data = dataQuestion;
-        return <span>Tổng số đã tạo: {value ? JSON.parse(value?.ExamTeacher).Total : 0}</span>;
-      case 'class':
+        return (
+          <span>
+            Tổng số đã tạo: {value ? JSON.parse(value?.ExamTeacher).Total : 0}
+          </span>
+        );
+      case "class":
         data = dataClass;
-        return <span>Tổng số đã quản lý: {value ? JSON.parse(value?.QuizTeacher).Total : 0}</span>;
-      case 'subject':
+        return (
+          <span>
+            Tổng số đã quản lý:{" "}
+            {value ? JSON.parse(value?.QuizTeacher).Total : 0}
+          </span>
+        );
+      case "subject":
         data = dataClass;
-        return <span>Tổng số đã phụ trách: {value ? JSON.parse(value?.LectureTeacher).Total : 0}</span>;
-      case 'student':
+        return (
+          <span>
+            Tổng số đã phụ trách:{" "}
+            {value ? JSON.parse(value?.LectureTeacher).Total : 0}
+          </span>
+        );
+      case "student":
         data = dataClass;
-        return <span>Đề luyện thi: {value ? JSON.parse(value?.TestTeacher).Total : 0}</span>;
-      case 'task':
+        return (
+          <span>
+            Đề luyện thi: {value ? JSON.parse(value?.TestTeacher).Total : 0}
+          </span>
+        );
+      case "task":
         data = dataClass;
-        return <span>Tổng số đã giao: {value ? JSON.parse(value?.ExamTeacher).Total : 0}</span>;
-      case 'file':
+        return (
+          <span>
+            Tổng số đã giao: {value ? JSON.parse(value?.ExamTeacher).Total : 0}
+          </span>
+        );
+      case "file":
         data = dataClass;
-        return <span>Số câu hỏi: {value ? JSON.parse(value?.QuizTeacher).Total : 0}</span>;
-      case 'QuizVoluntary':
-        data = dataHoa;
+        return (
+          <span>
+            Số câu hỏi: {value ? JSON.parse(value?.QuizTeacher).Total : 0}
+          </span>
+        );
+      case "QuizVoluntary":
+        data = dataQuizVoluntary;
+      case "QuizAssignment":
+        data = dataQuizAssignMent;
+      case "LectureVoluntary":
+        data = dataLectureVoluntary;
     }
-  }
+  };
   return (
     <div className={cx("TeachingResults_wrapper")}>
       <div className={cx("TeachingResults_all")}>
@@ -176,7 +286,7 @@ export default function TeachingResults({ value, type }) {
             className={cx("content_item_chart")}
             data={data}
             options={options}
-            height={'100%'}
+            height={"100%"}
           />
         </div>
       </div>

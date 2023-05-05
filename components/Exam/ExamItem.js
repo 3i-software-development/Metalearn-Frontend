@@ -17,11 +17,16 @@ const ExamItem = ({ data, key }) => {
           <div className={cx("thumb")}>
             <span className={cx("name")}>
               <h4>{data.PracticeTestTitle}</h4>
-              <div className={cx("content_exxam")}>
+              <div className={cx("content_exam")}>
                 <div>
-                  <p>{data.Duration} {data.Unit}</p><p>Tác giả: {data.CreatedBy}</p>
+                  <p>
+                    {data.Duration} {data.Unit}
+                  </p>
+                  <p>Tác giả: {data.CreatedBy}</p>
                   <p>{data.Rating}</p>
-                  <p className={cx("rating")}><Rate /></p>
+                  <p className={cx("rating")}>
+                    <Rate />
+                  </p>
                 </div>
               </div>
             </span>
@@ -29,14 +34,13 @@ const ExamItem = ({ data, key }) => {
         </div>
         <div className={cx("more")}>
           <span className={cx("stat")}>
-            <p>Giá: {data.Price}</p>
+            <p>Giá: {data.Price} coin</p>
             <p>Môn học: {data.ExamSubject}</p>
-            <div className={cx("down")}>
-              <p>{data.QuizCount}</p><p>
-                <i class="fa-solid fa-download"></i>
-              </p>
-            </div>
+            <p className={cx("question")}>{data.QuizCount} câu hỏi</p>
           </span>
+        </div>
+        <div className={cx("down")}>
+          <i className="icon fa-solid fa-download"></i>
         </div>
       </li>
     </Link>

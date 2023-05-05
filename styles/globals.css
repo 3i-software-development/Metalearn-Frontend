@@ -28,14 +28,21 @@ a {
   text-decoration: none !important;
 }
 
-.section{
-  width: 100%;
-  max-width: 1700px;
-  margin: 0 auto;
+@media screen and (min-width: 1700px){
+  main .section{
+    width: 100%;
+    max-width: 1700px;
+    margin: 0 auto;
+  }
 }
+
 span{
   font-size: 0.9rem;
   font-weight: 400;
+}
+
+table{
+  width: 100%;
 }
 
 .default-nav {
@@ -88,6 +95,10 @@ body{
   position: static !important; 
 }
 
+body * {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
   display: none !important;
 }
@@ -123,6 +134,12 @@ canvas{
   align-items: center;
   align-self: center;
 }
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
 .green{
   color: green;
 }
@@ -139,19 +156,63 @@ canvas{
   color:purple;
 }
 
+.hidden {
+  display: none;
+}
+
+.text-center{
+  text-align: center;
+  margin: 20px 0;
+}
+
+.form-control,
+.form-select{
+  height: 35px;
+  width: 100%;
+}
+
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-
-  /* Tăng độ mờ cho overlay */
   background-color: rgba(0,0,0,0.5);
-  z-index: 9998; /*Lớp Z chú ý là cao hơn google-translate-element*/
+  z-index: 9998;
 }
 
-/* Khung container của modal */
+/* breadcrumb */
+.ant-breadcrumb{
+  flex: 1;
+  max-width: calc(100% - 65px);
+}
+
+.ant-breadcrumb li:last-child{
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.tool-items .tool-item{
+  margin-left: 20px;
+  cursor: pointer;
+  color: gray;
+}
+
+.tool-items .tool-item:first-child{
+  margin-left: 0;
+}
+
+.tool-items .tool-item:hover{
+  color: black;
+}
+
+.tool-items .tool-item i{
+  font-size: 20px;
+}
+
+/* Modal */
 .modal {
   position: absolute;
   top: 50%;
@@ -163,4 +224,24 @@ canvas{
   border-radius: 10px;
   background-color: #fff;
   z-index: 9999; /*Lớp Z để hiển thị trên overlay*/
+}
+
+/* responsive */
+/* @media screen and (min-width: 1921px){
+  .section{
+    max-width: 100%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+  }
+} */
+
+@media screen and (max-width: 767px){
+  .nav-toggle{
+    display: block;
+    background-color: #e6f4ff;
+    color: #1677ff;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
 }

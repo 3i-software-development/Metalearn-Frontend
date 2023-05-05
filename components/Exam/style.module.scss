@@ -4,7 +4,6 @@
     grid-template-columns: 2fr 4fr;
     margin: 50px 0;
     // position: relative;
-
     p {
         font-size: 12px;
     }
@@ -94,8 +93,15 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    align-items: center;
+    // justify-items: center;
+    // align-items: center;
+    .bedwars {
+        width: 100%;
+        p {
+            align-items: center;
+            justify-content: center;
+        }
+    }
 }
 
 .content-sort-container {
@@ -112,11 +118,10 @@
     width: 100.5%;
 }
 
-
-
 .down i {
     color: rgb(9, 199, 9);
     font-size: 20px;
+
 }
 
 .rating li {
@@ -165,7 +170,6 @@
 
 .flex_icon {
     display: flex;
-
     .icon {
         width: 70px !important;
         align-items: center;
@@ -175,14 +179,28 @@
     }
 }
 
-.lilist {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    justify-content: space-between;
+.question {
+    font-style: italic;
+}
 
+.lilist {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .thumb {
+        flex: 1;
+    }
     .more {
         display: flex;
-        align-items: center;
+        width: 180px;
+        padding: 0 20px;
+        margin: 0 20px;
+        border-width: 0 1px 0 0;
+        border-style: solid;
+        border-color: #e7ecf1;
+    }
+    .down {
+        flex: 1;
     }
 }
 
@@ -248,7 +266,7 @@
     cursor: pointer;
 }
 
-.content_exxam {
+.content_exam {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -257,18 +275,14 @@
 
 #leaderboards .toplist li .thumb {
     display: flex;
-    justify-content: center;
     padding: 20px 0px 19px;
     font-weight: bold;
     color: #000;
     font-size: 0;
     line-height: 36px;
-    // position: relative;
 }
 
 #leaderboards .toplist li .thumb span {
-    // display: inline-block;
-    // vertical-align: middle;
     font-size: 15px;
 }
 
@@ -316,5 +330,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #e3e3e3
+    border: 1px solid #e3e3e3;
 }
+
+@media screen and (max-width: 1920px){
+    .thumb{
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 1479px){
+    .thumb{
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 991px) and (min-width: 500px){
+    .thumb{ 
+        width: 150px;
+    }
+}
+
+

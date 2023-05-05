@@ -5,20 +5,28 @@
 .container-Item {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
   text-align: left;
-  border-bottom: 2px dashed gray;
-  margin-bottom: 15px;
+  border-bottom: 1px dashed #e7ecf1;
+  padding: 20px 10px;
+
+  &:hover{
+    background-color: #f3f4f6;
+  }
+
+  .label {
+    font-weight: 600;
+  }
 }
 
 .Icon_Book {
-  width: 20px;
-  height: 20px;
-}
+  width: 50px;
 
-.Icon_Book_One {
-  font-size: 60px;
-  margin-top: 4px;
+  svg {
+    width: 100%;
+    font-size: 40px;
+  }
 }
 
 .item_course h3 {
@@ -26,7 +34,24 @@
 }
 
 .item_course {
-  width: 90%;
+  flex: 1;
+  padding-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .main-content {
+    flex: 1;
+  }
+  
+  .extra-content{
+    padding: 0 20px;
+    margin: 0 20px;
+    border-width: 0 1px 0 0;
+    border-style: solid;
+    border-color: #e7ecf1;
+    width: 180px;
+  }
 }
 
 .icon_Start svg {
@@ -38,16 +63,18 @@
   justify-content: space-between;
 }
 
-.Title_Item {
-  font-size: 15px;
+.question {
   color: #808080;
 }
 
-.Title_Item_color {
-  color: #7f007f;
+.subject{
+  .value{
+    color: #7f007f;
+  }
 }
 
 .Title_all_inStall {
   color: green;
-  font-size: 20px;
+  font-size: 25px;
+  cursor: pointer;
 }
