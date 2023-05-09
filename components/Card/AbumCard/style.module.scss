@@ -24,7 +24,9 @@
     }
     .card-image{
         display: inline-block;
-        margin-left: 10px;
+        margin-left: 5px;
+        margin-top: 5px;
+        object-fit: cover;
         img{
             width: 1200px;
             height: 250px;
@@ -42,19 +44,30 @@
 
 @media screen and (max-width: 1479px){
     .card{
-        width: 30%;
+        width: 40%;
     }
 }
 
-@media screen and (max-width: 991px){
+@media screen and (max-width: 995px){
     .card{
         width: 47%;
     }
 }
 
-@media screen and (max-width: 413px){
-    .card{
-        width: 95%;
+@media screen and (max-width: 630px) {
+    .card {
+        width: 56%;
     }
 }
 
+@media screen and (max-width: 430px){
+    .card{
+        width: 100%;
+    }
+}
+
+// @media screen and (max-width: 364px) {
+//     .card{
+//         width: 100%;
+//     }
+// }
