@@ -46,6 +46,7 @@ const PractiseCard = ({ total }) => {
               </th>
               <th className={cx("card-status")}>
                 <i className="fa fa-newspaper"></i>
+
                 Trạng thái
               </th>
               <th className={cx("card-time")}>
