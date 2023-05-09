@@ -1,0 +1,157 @@
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    padding: 12px 2.5%;
+    gap: 2%;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+    z-index: 2;
+}
+
+.head-link{
+   font-size: 16px
+}
+
+.logo-container {
+    font-weight: bold;
+    font-size: 25px;
+
+    span {
+        font-size: 25px;
+        font-weight: bold;
+        color: purple;
+    }
+}
+.listSettingss{
+    border-bottom: 1px solid rgb(220, 220, 220);
+    padding:  5px 0;
+}
+.listSettings{
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    justify-content: space-between;
+    img{
+        width: 30px;
+        height: 30px;
+
+    }
+}
+.search-container {
+    position: relative;
+    flex: 1;
+
+    input {
+        padding: 15px 20px 15px 50px;
+        border-radius: 24px;
+        border: 1px solid black;
+        outline: none;
+        width: 100%;
+        color: rgb(165, 164, 164);
+        background-color: rgb(244, 247, 247);
+    }
+
+    .search-input::placeholder {
+        color: rgb(170, 169, 169);
+    }
+
+    svg {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        color: gray;
+    }
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.user {
+    display: flex;
+    gap: 10px;
+
+    .login-btn {
+        padding: 10px 15px;
+        background-color: #1877f2;
+        color: #fff;
+        border-radius: 4px;
+    }
+
+    .signup-btn {
+        padding: 10px 15px;
+        background-color: #36a420;
+        color: white;
+        border-radius: 4px;
+    }
+}
+
+.change-language {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon-ss {
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.icon-mobile,
+.icon-search-mobile {
+    display: none;
+}
+
+//mobile
+.menu-mobile {
+    position: fixed;
+    top:63px;
+    width: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 100vh;
+    
+    .mb-user {
+        display: flex;
+        flex-direction: column;
+        padding: 2.5%;
+        border-bottom: 0.5px rgb(226, 224, 224) solid;
+    }
+
+    .mb-list {
+        display: flex;
+        flex-direction: column;
+        padding: 2.5%;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .head-link {
+        display: none;
+    }
+
+    .user {
+        display: none;
+    }
+
+    .search-container {
+        display: none;
+    }
+
+    .icon-mobile,
+    .icon-search-mobile {
+        display: block;
+    }
+}

@@ -1,0 +1,155 @@
+.list-table{
+    border-spacing: 0 5px;
+
+    // .question{
+    //     max-width: 500px;
+    // }
+
+    th, 
+    td{
+        text-align: initial;
+        // min-width: 150px;
+
+        &.price,
+        &.author,
+        &.time,
+        &.actions{
+            text-align: center;
+        }
+    }
+
+    i{
+        color: gray;
+    }
+
+    .actions{
+        span{
+            margin-right: 20px;
+            cursor: pointer;
+            
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.author {
+    flex-wrap: wrap;
+}
+
+.list-head{
+    th{
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: underline;
+        padding: 10px 10px 30px;
+
+        i{
+            margin-right: 5px;
+        }
+    }
+}
+
+.item{
+    td{
+        border-width: 1px 0 0;
+        border-style: solid;
+        border-color: #e7ecf1;
+        padding: 8px 10px;
+
+        &.question{
+            span{
+                font-weight: 600;
+            }
+        }
+    }
+
+    &:hover{
+        background-color: #f3f4f6;
+    }
+}
+
+@media screen and (max-width: 1920px) {
+    .question {
+        max-width: 500px;
+    }
+
+    .subject {
+        min-width: 10%;
+    }
+
+    .actions {
+        min-width: 100px;
+    }
+}
+
+@media screen and (max-width: 1479px) {
+    .question {
+        max-width: 250px;
+    }
+
+    .subject {
+        min-width: 100px;
+    }
+
+    .actions {
+        min-width: 90px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .question {
+        max-width: 150px;
+        flex: 1;
+    }
+
+    .subject {
+        min-width: 80px;
+    }
+
+    .actions {
+        max-width: 50px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .question {
+        max-width: 70px;
+        flex: 1;
+    }
+
+    .subject {
+        min-width: 20px;
+        max-width: 40px;
+        flex: 1;
+    }
+
+    .card-time {
+        min-width: 80px;
+        flex: 1;
+    }
+
+    .price {
+        width: 60px;
+    }
+
+    .author {
+        max-width: 40px;
+        flex: 1;
+    }
+
+    .lesson {
+        width: 60px;
+        flex: 1;
+    }
+
+    .time {
+        max-width: 60px;
+    }
+
+    .actions {
+        min-width: 30px;
+        flex: 1;
+    }
+}

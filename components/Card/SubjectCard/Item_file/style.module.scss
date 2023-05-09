@@ -1,0 +1,24 @@
+.Document_file_wrap {
+  width: 25%;
+
+  p {
+    font-size: 10px;
+    line-height: 1.3em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: black;
+  }
+  svg {
+    width: 100%;
+    height: 25px;
+  }
+}
+
+.Document_file_content {
+  text-align: center;
+  // border-bottom: 0.5px solid #1f2667;
+}
+
+.Document_file_icon {
+  color: gray;
+}

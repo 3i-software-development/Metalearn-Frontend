@@ -1,0 +1,16 @@
+.document-content {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding: 2% 0;
+
+    .document-search-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.title {
+    margin-top: 10px;
+}

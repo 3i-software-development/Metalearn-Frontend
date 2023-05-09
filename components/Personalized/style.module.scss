@@ -1,0 +1,30 @@
+.person {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin: 50px 0;
+    column-gap: 2%;
+}
+
+.content {
+    min-height: 555px;
+}
+
+.SearchAndAddSubjects_ItemAll {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 30px;
+    align-items: baseline;
+}
+
+
+@media screen and (max-width: 991px){
+    .person{
+        display: block;
+
+        ul{
+            display: none;
+        }
+    }
+}

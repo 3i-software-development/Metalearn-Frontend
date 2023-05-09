@@ -1,0 +1,129 @@
+.intro-container {
+    padding: 40px 0;
+    width: 100%;
+    background-color: rgb(247, 245, 245);
+
+    .intro-main {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .intro-item {
+            width: 28%;
+            display: flex;
+            gap: 20px;
+
+            div {
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                background-color: rgb(179, 178, 178);
+            }
+
+            svg {
+                font-size: 25px;
+            }
+
+            p {
+                width: 50%;
+                flex: 1;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+//intro2
+.intro2 {
+    padding: 3%;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    align-items: center;
+
+    img {
+        width: 20vw !important;
+        min-width: 300px;
+        height: auto !important;
+    }
+
+    .intro-text {
+        width: 50%;
+        max-width: 350px;
+
+        p {
+            padding: 15px 0;
+        }
+
+        a {
+            display: block;
+            width: fit-content;
+            color: white !important;
+            background-color: black;
+            padding: 10px 20px;
+            font-weight: 700;
+        }
+    }
+
+}
+
+.rev {
+    flex-direction: row-reverse;
+}
+
+//team
+.team {
+    padding: 40px 0;
+    text-align: center;
+
+    p {
+        padding: 10px 0;
+    }
+
+
+    background-color: rgb(247, 245, 245);
+
+    .list-team {
+        display: flex;
+        padding: 20px 0;
+        justify-content: space-between;
+
+        img {
+            width: auto !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .intro-main {
+        flex-direction: column;
+        .intro-item {
+            width: 100% !important;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+    }
+    .list-team {
+        flex-wrap: wrap;
+        img {
+            max-width: 30% !important;
+            min-width: 25% !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .intro2 {
+        flex-direction: column;
+        .intro-text {
+            width: 100%;
+            text-align: center;
+            a{
+                width: 100%;
+            }
+        }
+    }
+}

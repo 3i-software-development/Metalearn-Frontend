@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+.body{
+  position: relative;
+}
+
+button{
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none !important;
+}
+
+@media screen and (min-width: 1700px){
+  main .section{
+    width: 100%;
+    max-width: 1700px;
+    margin: 0 auto;
+  }
+}
+
+span{
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+table{
+  width: 100%;
+}
+
+.default-nav {
+  border:1px solid black !important;
+}
+.indicators{
+  display: none !important;
+}
+.swiper-button-next ,.swiper-button-prev{
+  overflow: hidden;
+  color: white !important;
+  background-color: black !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 20px !important;
+  border-radius: 50%;
+  font-size: 20px !important;
+}
+.containerChart{
+  display: flex;
+  justify-content: center;
+
+}
+.containerChart canvas{
+  width: 700px !important;
+  height: 700px !important;
+}
+
+#google_translate_element {
+    width: fit-content;
+    background: none;
+    top: 140px;
+    right: 5px;
+}
+.goog-te-gadget {
+    height: 38px;
+    overflow: hidden;
+}
+.goog-te-gadget span {
+    display: none;
+}
+.goog-te-combo {
+    padding: 5px;
+    color: #514631;
+    background-color: rgb(246, 248, 246);
+    outline: none;
+}
+body{
+  top: 0px !important; 
+  position: static !important; 
+}
+
+body * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+  display: none !important;
+}
+
+.skiptranslate iframe{
+display:none !important
+}
+
+@media only screen and (max-width: 1500px) {
+  h1,h2{
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  h1,h2{
+    font-size: 1.1rem;
+  }
+}
+
+/* canvas{
+  width: 100px !important;
+  height: 100px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+canvas{
+  width: 80% !important;
+  height: 80% !important;
+  min-height: 200px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+.green{
+  color: green;
+}
+.orange{
+  color: orange;
+}
+.red{
+  color: red;
+}
+.blue{
+  color:blue;
+}
+.purple{
+  color:purple;
+}
+
+.hidden {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9998;
+}
+
+/* breadcrumb */
+.ant-breadcrumb{
+  flex: 1;
+  max-width: calc(100% - 65px);
+}
+
+.ant-breadcrumb li:last-child{
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.tool-items .tool-item{
+  margin-left: 20px;
+  cursor: pointer;
+  color: gray;
+}
+
+.tool-items .tool-item:first-child{
+  margin-left: 0;
+}
+
+.tool-items .tool-item:hover{
+  color: black;
+}
+
+.tool-items .tool-item i{
+  font-size: 20px;
+}
+
+/* Modal */
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  z-index: 9999; /*Lớp Z để hiển thị trên overlay*/
+}
+
+/* responsive */
+/* @media screen and (min-width: 1921px){
+  .section{
+    max-width: 100%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+  }
+} */
+
+@media screen and (max-width: 767px){
+  .nav-toggle{
+    display: block;
+    background-color: #e6f4ff;
+    color: #1677ff;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
