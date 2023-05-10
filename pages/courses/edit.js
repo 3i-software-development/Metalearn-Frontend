@@ -1,53 +1,208 @@
-import React from 'react';
+import React, { useState, useEffect  } from 'react';
 import Section from "@/components/Section/Section";
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom';
+import moment from "moment";
+import { useQuery } from "react-query";
+import DatePicker, { registerLocale, setDefaultLocale } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import vi from 'date-fns/locale/vi';
+import { useRouter } from 'next/router';
+import className from "classnames/bind";
+import styles from "./style.module.scss";
+import { useStartCourseUpdateQuery, useEndUpdateCourseQuery } from "@/lib/Midleware/CourseQuery";
 
-import './style.module.scss';
+const cx = className.bind(styles);
+registerLocale('vi', vi)
 
-const Course = () => {
+const CourseEdit = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const [startDate, setStartDate] = useState(new Date());
+  
+  const { data: courseQuery } = useStartCourseUpdateQuery({Id: router.query.Id});
+  const courseItem = courseQuery?.Object;
+  const [updateCourse, resultUpdateCourse] = useState({
+    CourseCode: "",
+    CourseName: "",
+    CourseNote: "",
+    CreatedBy: "",
+    CreatedTime: "",
+    Duration: "",
+    EndTime: "",
+    FileBase: "",
+    ImgCover: "",
+    ListSubject: "",
+    ListVideo: "",
+    Price: "",
+    StartTime: "",
+    Status: "",
+    Tags: "",
+    Unit: "",
+    VideoPresent: ""
+  });  
+
+  // const formatStartDate = moment(courseItem?.StartTime,'mm/dd/yyyy');
+  // const courseStatus = courseItem.Status ? courseItem.Status : "NONE";
+  console.log(">>> check data: ", courseItem);
+
+  const selectStatus = [
+    { label: "NONE",
+      value: ""
+    },
+    { label: "CREATED",
+      value: "Mới tạo"
+    },
+    { label: "ACTIVE",
+      value: "Đã kích hoạt"
+    }, 
+    { label: "DEACTIVE",
+      value: "Ngừng kích hoạt"
+    }, 
+    { label: "COMPLETE",
+      value: "Hoàn thành"
+    }
+  ];
+
+  console.log(">>> check update: ", updateCourse);
+
+  useEffect(() => {
+    if (courseItem) {
+      resultUpdateCourse(courseItem)
+    }
+  }, [courseItem])
+  
+  const handleChangeInput=(e, name)=>{
+    const {value} = e.target;
+    resultUpdateCourse({
+      [name]:value
+    })
+  }
+
+
+  const handleSubmitUpdateCourse = () => {
+    console.log("submit");
+  }
+
+  const handleCancelEditCourse = () => {
+    router.push('/personalized');
+  }
+  
   return (
     <Section>
-      <h1 className="page-title text-center">Quản lý khóa học</h1>
-      <div className="course-view">
+      <h1 className={cx("page-title text-center")}>Quản lý khóa học</h1>
+      <div className={cx("course-view")}>
         <form>
-          <div className="form-group">
-            <div className="form-item course-code">
-              <label className="form-label">Mã khóa học</label>
-              <input type="text" className="form-control" id="course-code"/>
-            </div>
-            <div className="form-item course-name">
-              <label className="form-label">Tên khóa học</label>
-              <input type="text" className="form-control" id="course-name"/>
-            </div>
-            <div className="form-item course-price">
-              <label className="form-label">Giá</label>
-              <input type="text" className="form-control" id="course-price"/>
-            </div>
-            <div className="form-item course-status">
-              <label className="form-label">Trạng thái</label>
-              <select className="form-select" id="floatingSelect" aria-label="Floating label select example">
-                <option value="0"></option>
-                <option value="1">Mới tạo</option>
-                <option value="2">Kích hoạt</option>
-                <option value="3">Ngừng kích hoạt</option>
-                <option value="4">Hoan thành</option>
-              </select>
-            </div>
-            <div className="form-item course-image">
-              <label className="form-label">Ảnh đại diện</label>
-              <input type="text" className="form-control" id="course-image" hidden/>
-              <div>image</div>
+          <div className={cx("form-group")}>
+            <h2 className={cx("form-group-title")}>Thông tin khóa học:</h2>
+            <div className={cx("course-code")}>
+              <label className={cx("form-label")}>Mã khóa học</label>
+              <input type="text" className={cx("form-control")} value={updateCourse?.CourseCode} disable={"true"} />
             </div>
 
-            <div className="form-item course-image">
-              <label className="form-label">Môn học</label>
-              <input type="text" className="form-control" id="course-image"/>
+            <div className={cx("course-name")}>
+              <label className={cx("form-label")}>Tên khóa học</label>
+              <input type="text"  className={cx("form-control")} value={updateCourse?.CourseName} onChange={(e)=>handleChangeInput(e, "CourseName")} />
+            </div>
+
+            <div className={cx("course-image")}>
+              <label className={cx("form-label")}>Môn học</label>
+              <input type="text" className={cx("form-control")} />
+            </div>
+
+            <div className={cx("course-tag")}>
+              <label className={cx("form-label")}>Thẻ</label>
+              <input type="text" className={cx("form-control")}/>
+            </div>
+
+            <div className={cx("course-price")}>
+              <label className={cx("form-label")}>Giá</label>
+              <input type="text" className={cx("form-control")} name="Price" value={courseItem?.Price ? courseItem?.Price : "0"} onChange={handleChangeInput} />
+            </div>
+
+            <div className={cx("course-status")}>
+              <label className={cx("form-label")}>Trạng thái</label>
+              <select className={cx("form-select")} >
+                { selectStatus && selectStatus.map((item, index) => {
+                  return (
+                    <option key={index} value={item.label}>{item.value}</option>
+                  )
+                })}
+              </select>
             </div>
           </div>
-          <button type="submit" className="btn btn-primary">Save</button>
+
+          <div className={cx("group-time")}>
+            <div className={cx("form-group")}>
+              <h2 className={cx("form-group-title")}>Thời gian:</h2>
+              <div className={cx("course-start-time")}>
+                <label className={cx("form-label")}>Ngày bắt đầu</label>
+                <DatePicker className={cx("form-control")} selected={startDate} onChange={(date) => setStartDate(date)} locale="vi" />
+              </div>
+
+              <div className={cx("course-end-time")}>
+                <label className={cx("form-label")}>Ngày kết thúc</label>
+                <DatePicker className={cx("form-control")} selected={startDate} onChange={(date) => setStartDate(date)} />
+              </div>
+            </div>
+          </div>
+
+          <div className={cx("group-media")}>
+            <div className={cx("form-group")}>
+              <h2 className={cx("form-group-title")}>Hình ảnh và video :</h2>
+              <div className={cx("course-image")}>
+                <label className={cx("form-label")}>Ảnh đại diện</label>
+                <input type="file" id="avatar" className={cx("form-control")} hidden/>
+                <label className={cx("avatar-label")} htmlFor="avatar" style={{backgroundImage: `url(${courseItem?.ImgCover})`}}></label>
+              </div>
+
+              <div className={cx("course-video")}>
+                <label className={cx("form-label")}>Link video giới thiệu bài giảng</label>
+                <input type="text" className={cx("form-control")} />
+                <label className={cx("choose-video-label")} htmlFor="choose-video">Chọn video</label>
+                <input type="file" id="choose-video" className={cx("form-control")} hidden />
+                <div className={cx("video-selected")}>{courseItem?.VideoPresent ? courseItem?.VideoPresent : "Không có video giới thiệu"}</div>
+              </div>
+            </div>
+          </div>
+
+          <div className={cx("form-group")}>
+            <h2 className={cx("form-group-title")}>File:</h2>
+            <div className={cx("course-categoy")}>
+              <label className={cx("form-label")}>Danh mục lưu trữ</label>
+              <input type="text" className={cx("form-control")}/>
+            </div>
+
+            <div className={cx("course-folder")}>
+              <label className={cx("form-label")}>Thư mục máy chủ</label>
+              <input type="text" className={cx("form-control")}/>
+            </div>
+
+            <div className={cx("course-file")}>
+              <label className={cx("form-label")}>Chọn file</label>
+              <input type="text" className={cx("form-control")}/>
+            </div>
+          </div>
+
+          <div className={cx("course-descriptiion")}>
+            <h2 className={cx("form-group-title")}>Mô tả khóa học</h2>
+            <textarea className={cx("form-control")} />
+          </div>
+
+          <div className={cx("course-list-lesson")}>
+            <h2 className={cx("form-group-title")}>Danh sách bài giảng <span className={cx("action")}>Thêm mới</span></h2>
+            <ul className={cx("course-items")}>
+              <li className={cx("course-item")}>{courseItem?.ListSubject ? courseItem?.ListSubject : "Không có bài giảng"}</li>
+            </ul>
+          </div>
+          <div className={cx("actions")}>
+            <button type="submit" className={cx("btn-primary")} onClick={() => handleSubmitUpdateCourse()}>Save</button>
+            <button className={cx("btn-cancel")} onClick={() => handleCancelEditCourse()}>Cancel</button>
+          </div>
         </form>
       </div>
     </Section>
   )
 }
 
-export default Course
+export default CourseEdit

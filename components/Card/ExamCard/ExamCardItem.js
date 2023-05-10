@@ -9,7 +9,6 @@ import { Rate } from "antd";
 const cx = classNames.bind(styles);
 
 const ExamCardItem = ({ element }) => {
-  console.log(">>> check data: ", element);
   return (
     <div key={element.Id} className={cx("container-Item")}>
       <div className={cx("Icon_Book")}>
