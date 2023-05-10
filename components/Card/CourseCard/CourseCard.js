@@ -6,11 +6,16 @@ import { Rate } from "antd";
 import moment from "moment";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
 import Image from "next/image";
+import { useRouter } from 'next/router';
 import Pagination from "@/components/Pagination/Pagination";
+import { useDispatch, useSelector } from "react-redux";
 
 const cx = className.bind(styles);
 
 const CourseCard = () => {
+  const router = useRouter();
+  const dispatch = useDispatch()
+
   const [query, setQuery] = useState({
     lectureName: "",
     subjectCode: "",
@@ -31,10 +36,17 @@ const CourseCard = () => {
 
   const { data } = useGetListLectureQuery(query);
 
+  const handleEditCourse = (courseId) => {
+    router.push(`/courses/edit?Id=${courseId}`);
+  }
+
+  console.log("check list course:", data);
+
   return (
     <Section>
       <div className={cx("layout")}>
-        {data?.query.map((item) => {
+        {data?.Object.map((item) => {
+          const durationUnit = item.Unit ? item.Unit : "";
           return (
             <div className={cx("item")} key={item.Id}>
               <div className={cx("inner-item")}>
@@ -79,17 +91,17 @@ const CourseCard = () => {
                       &nbsp;
                       <span className={cx("value")}>
                         {item.Duration
-                          ? item.Duration + " " + item.Unit
+                          ? item.Duration + " " + durationUnit
                           : "Không giới hạn"}
                       </span>
                     </li>
                   </ul>
 
                   <h4 className={cx("title")}>
-                    <i className="fa-solid fa-computer"></i> {item.LectName}
+                    <i className="fa-solid fa-computer"></i> {item.CourseName }
                   </h4>
                   
-                  <div className={cx("lessions")}>
+                  {/* <div className={cx("lessions")}>
                     <span className={cx("label")}>
                       {item.CourseName ? "Bài giảng:" : ""}{" "}
                     </span>
@@ -98,7 +110,7 @@ const CourseCard = () => {
                     </span>
                     :{" "}
                     <span>{item.CourseName ? item.CourseName : "Không"}</span>
-                  </div>
+                  </div> */}
 
                   <div className={cx("price")}>
                     <span className={cx("label")}>
@@ -109,13 +121,13 @@ const CourseCard = () => {
                     </span>
                   </div>
                   <div className={cx("subject")}>
-                    <span className={cx("label")}>Môn học :{" "}</span>
-                    <span className={cx("value")}>{item.SubjectName}</span>
+                    <span className={cx("label")}>{item.SubjectName ? "Môn học :" : ""}{" "}</span>
+                    <span className={cx("value")}>{item.SubjectName ? item.SubjectName : ""}</span>
                   </div>
                   <div className={cx("actions")}>
-                    <span className="edit"><i class="fa-solid fa-pen-to-square"></i></span>
+                    <span className="edit" onClick={() => handleEditCourse(item.Id)}><i className="fa-solid fa-pen-to-square"></i></span>
                     <span className="down"><i className="fa-solid fa-cloud-arrow-down"></i></span>
-                    <span className="share"><i class="fa-solid fa-share-nodes"></i></span>
+                    <span className="share"><i className="fa-solid fa-share-nodes"></i></span>
                   </div>
                 </div>
               </div>

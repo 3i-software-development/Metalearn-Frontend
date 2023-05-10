@@ -31,9 +31,7 @@ export default function App({ Component, pageProps }) {
       );
       s.setAttribute("id", id);
       const q = document.getElementById(id);
-      console.log(q);
       if (!q) {
-        console.log(1);
         document.body.appendChild(s);
         window.googleTranslateElementInit = googleTranslateElementInit;
       }

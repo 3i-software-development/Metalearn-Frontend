@@ -30,10 +30,15 @@ a {
   text-decoration: none !important;
 }
 
+main >.section{
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
 @media screen and (min-width: 1700px){
-  main .section{
+  main >.section{
     width: 100%;
-    max-width: 1700px;
+    max-width: calc(1700px + 5%);
     margin: 0 auto;
   }
 }
@@ -111,12 +116,12 @@ display:none !important
 
 @media only screen and (max-width: 1500px) {
   h1,h2{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
 @media only screen and (max-width: 1200px) {
   h1,h2{
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -167,10 +172,17 @@ img{
   margin: 20px 0;
 }
 
+.form-label{
+  color: gray;
+}
+
 .form-control,
-.form-select{
-  height: 35px;
+.form-select {
+  margin-bottom: 20px;
+  padding: 10px;
   width: 100%;
+  height: auto;
+  min-height: 35px;
 }
 
 .overlay {
