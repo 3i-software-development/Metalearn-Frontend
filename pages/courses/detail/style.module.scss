@@ -1,0 +1,22 @@
+.header-detail{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+  .title {
+    font-size: 32px;
+  }
+}
+
+.background {
+  height: 19rem;
+  background-color: black;
+}
+
+.content {
+  .content-layout {
+    display: flex;
+  }
+  h1 {
+    font-size: 32px;
+  }
+}
