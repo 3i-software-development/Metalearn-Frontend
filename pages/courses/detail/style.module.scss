@@ -1,23 +1,34 @@
 .header-detail{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   padding: 10px 5px;
   .title {
     font-size: 32px;
   }
 }
 
-.background {
-  height: 19rem;
-  background-color: black;
+.layout-content {
+  display: flex;
+  gap: 1rem;
+  .layout-menu {
+    flex-basis: 20%;
+  }
+
+.layout-video {
+  flex-basis: 60%;
+  width: 100%;
+  .video-wrapper {
+    width: 100%;
+    height: 34rem;
+  }
 }
 
 .content {
-  height: 18rem;
-  .content-layout {
-    // display: flex;
-  }
+  flex-basis: 20%;
   h1 {
     font-size: 32px;
+    text-align: center;
   }
+}
 }

@@ -1,19 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styles from './style.module.scss'
 import Section from "@/components/Section/Section";
-import {Tabs} from 'antd'
+import { Tabs, Menu } from 'antd'
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
-import { BsFillCameraVideoOffFill } from "react-icons/bs";
-import {AiOutlineLeft} from 'react-icons/ai'
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
+import Tab from '@/components/Courses/Detail/Tab'
+import Content from '@/components/Courses/Detail/Content'
+import SliderBar from '@/components/Menu';
 
 const items = [
   {
     label: 'Danh sách'
-  },
-  {
-    label: 'Nội dung'
   },
   {
     label: 'Bài tập'
@@ -23,37 +22,44 @@ const items = [
   }
 ]
 
-const Content = ({label}) => {
-  return (
-    <div className={cx('content-layout')}>
-      <h1>{label}</h1>
-    </div>
-  )
-}
-
 const Detail = () => {
   return (
-    <Section>
+    <div className={cx('layout')}>
       <div className={cx('header-detail')}>
-        <AiOutlineLeft size={30} />
         <h2 className={cx('title')}>Khoa hoc lap trinh</h2>
-        <BsFillCameraVideoOffFill size={30} />
       </div>
-      <div className={cx('background')}></div>
-      <div className={cx('content')}>
-        <Tabs
-        defaultActiveKey='1'
-        centered
-        items={items.map((_, i) => {
-          const id = String(i + 1)
-          return {
-            label: _.label,
-            key: id,
-            children: <Content label={_.label} />
-          }
-        })} />
+      <div className={cx('layout-content')}>
+        <div className={cx('layout-menu')}>
+          <SliderBar />
+        </div>
+        <div className={cx('layout-video')}>
+          <div className={cx('video-wrapper')}>
+            <ReactPlayer 
+              width="100%"
+              height="100%"
+              controls={true}
+              url='https://www.youtube.com/watch?v=wWgIAphfn2U&ab_channel=GeeksforGeeks' />
+          </div>
+          {/* <video className={cx('video')} src='https://www.bigbuckbunny.org/' controls={true} /> */}
+          <Tabs
+            defaultActiveKey='1'
+            tabBarStyle={{ color: 'chocolate' }}
+            centered
+            items={items.map((_, i) => {
+              const id = String(i + 1)
+              return {
+                label: _.label,
+                key: id,
+                children: <Tab label={_.label} />
+              }
+            })} />
+        </div>
+        <div className={cx('content')}>
+          <h1>Nội dung</h1>
+          <Content />
+        </div>
       </div>
-    </Section>
+    </div>
   )
 }
 

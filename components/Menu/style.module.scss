@@ -1,0 +1,27 @@
+.person {
+    width: 100%;
+}
+
+.content {
+    min-height: 555px;
+}
+
+.SearchAndAddSubjects_ItemAll {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 30px;
+    align-items: baseline;
+}
+
+
+@media screen and (max-width: 767px){
+    .person{
+        display: block;
+
+        ul{
+            display: none;
+        }
+    }
+}
