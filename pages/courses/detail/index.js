@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styles from './style.module.scss'
 import Section from "@/components/Section/Section";
-import { Tabs, Menu } from 'antd'
+import { Tabs } from 'antd'
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 import dynamic from 'next/dynamic';
@@ -51,7 +51,11 @@ const Detail = () => {
             items={items.map((_, i) => {
               const id = String(i + 1)
               return {
-                label: _.label,
+                label: (
+                  <span style={{fontSize: '1.5rem'}}>
+                    {_.label}
+                  </span>
+                ),
                 key: id,
               }
             })} 

@@ -236,3 +236,7 @@ img{
     cursor: pointer;
   }
 }
+
+.ant-menu-title-content {
+  font-size: 1rem;
+}
