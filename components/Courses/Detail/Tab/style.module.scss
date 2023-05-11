@@ -1,0 +1,27 @@
+.tab-title-text {
+  line-height: 2;
+  color: #808080;
+  font-size: 1.4rem;
+}
+
+.tab-title-text:last-child hr {
+  display: none;
+}
+
+.tab-text-exercise {
+  padding: 4px;
+  font-size: 1.4rem;
+}
+
+
+.tab-text-extend {
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+
+}
+
+.hr {
+  color: #808080;
+  height: 0.4px;
+}

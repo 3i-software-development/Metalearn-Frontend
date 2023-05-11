@@ -46,18 +46,21 @@ const Content = () => {
   return (
     <div className={cx('content-layout')}>
       <Menu
-      onClick={onClick}
-      style={{
-        width: '100%',
-      }}
-      >
-        <Menu.Item icon={<MailOutlined />}>
-          Dashboard
-        </Menu.Item>
-        <Menu.Item key="/dashboard" icon={<MailOutlined />}>
-          Dashboard
-        </Menu.Item>
-      </Menu>
+        mode="inline"
+        style={{width: '100%'}}>
+        <Menu.SubMenu key="1" title="Phần 1 = Giới thiệu">
+          <Menu.Item>Item 1</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.Divider />
+        <Menu.SubMenu key="2" title="Phần 2">
+          <Menu.Item>Item 2</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.Divider />
+        <Menu.SubMenu key="3" title="Phần 3">
+          <Menu.Item>Item 3</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.Divider />
+    </Menu>
     </div>
   );
 }

@@ -23,11 +23,12 @@ const items = [
 ]
 
 const Detail = () => {
+  const [idTab, setIdTab] = useState(1)
   return (
     <div className={cx('layout')}>
       <div className={cx('header-detail')}>
         <h2 className={cx('left')}></h2>
-        <h2 className={cx('center')}>Khoa hoc lap trinh</h2>
+        <h2 className={cx('center')}>01 - Khoa hoc lap trinh HTML- lap trinh</h2>
         <h2 className={cx('right')}>Danh sách</h2>
       </div>
       <div className={cx('layout-content')}>
@@ -52,9 +53,10 @@ const Detail = () => {
               return {
                 label: _.label,
                 key: id,
-                children: <Tab label={_.label} />
               }
-            })} />
+            })} 
+            onChange={e => setIdTab(e)} />
+            <Tab id={idTab} />
         </div>
         <div className={cx('content')}>
           <Content />
