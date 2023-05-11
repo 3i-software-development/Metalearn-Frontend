@@ -12,7 +12,7 @@ import SliderBar from '@/components/Menu';
 
 const items = [
   {
-    label: 'Danh sách'
+    label: 'Nội dung'
   },
   {
     label: 'Bài tập'
@@ -26,7 +26,9 @@ const Detail = () => {
   return (
     <div className={cx('layout')}>
       <div className={cx('header-detail')}>
-        <h2 className={cx('title')}>Khoa hoc lap trinh</h2>
+        <h2 className={cx('left')}></h2>
+        <h2 className={cx('center')}>Khoa hoc lap trinh</h2>
+        <h2 className={cx('right')}>Danh sách</h2>
       </div>
       <div className={cx('layout-content')}>
         <div className={cx('layout-menu')}>
@@ -55,7 +57,6 @@ const Detail = () => {
             })} />
         </div>
         <div className={cx('content')}>
-          <h1>Nội dung</h1>
           <Content />
         </div>
       </div>

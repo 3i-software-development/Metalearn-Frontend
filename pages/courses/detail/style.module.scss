@@ -1,10 +1,19 @@
 .header-detail{
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   padding: 10px 5px;
-  .title {
-    font-size: 32px;
+  font-size: 24px;
+  .left {
+    flex-basis: 20%;
+  }
+  .center {
+    flex-basis: 60%;
+    text-align: center;
+  }
+  .right {
+    flex-basis: 20%;
+    text-align: center;
   }
 }
 
