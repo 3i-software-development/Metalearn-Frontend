@@ -27,8 +27,10 @@ const Detail = () => {
   return (
     <div className={cx('layout')}>
       <div className={cx('header-detail')}>
-        <h2 className={cx('left')}></h2>
-        <h2 className={cx('center')}>01 - Khoa hoc lap trinh HTML- lap trinh</h2>
+        <div className={cx('left')}></div>
+        <div className={cx('center')}>
+          <h1 className='page-title'>01 - Khoa hoc lap trinh HTML- lap trinh</h1>
+        </div>
         <h2 className={cx('right')}>Danh sách</h2>
       </div>
       <div className={cx('layout-wrapper-content')}>
