@@ -25,3 +25,10 @@
   color: #808080;
   height: 0.4px;
 }
+
+@media screen and (max-width: 880px) {
+  .tab-title-text {
+    font-size: 1rem;
+    padding: 0 4px;
+  }
+}

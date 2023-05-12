@@ -31,7 +31,7 @@ const Detail = () => {
         <h2 className={cx('center')}>01 - Khoa hoc lap trinh HTML- lap trinh</h2>
         <h2 className={cx('right')}>Danh sách</h2>
       </div>
-      <div className={cx('layout-content')}>
+      <div className={cx('layout-wrapper-content')}>
         <div className={cx('layout-menu')}>
           <SliderBar />
         </div>
@@ -52,7 +52,7 @@ const Detail = () => {
               const id = String(i + 1)
               return {
                 label: (
-                  <span style={{fontSize: '1.5rem'}}>
+                  <span className={cx('tab-label')}>
                     {_.label}
                   </span>
                 ),
@@ -62,7 +62,7 @@ const Detail = () => {
             onChange={e => setIdTab(e)} />
             <Tab id={idTab} />
         </div>
-        <div className={cx('content')}>
+        <div className={cx('layout-content')}>
           <Content />
         </div>
       </div>
