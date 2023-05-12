@@ -1,7 +1,8 @@
 .tab-title-text {
   line-height: 2;
-  color: #808080;
-  font-size: 1.4rem;
+  color: var(--body-color);
+  font-size: 1rem;
+  margin: 4px 0;
 }
 
 .tab-title-text:last-child hr {
@@ -22,7 +23,7 @@
 }
 
 .hr {
-  color: #808080;
+  color: var(--body-color);
   height: 0.4px;
 }
 

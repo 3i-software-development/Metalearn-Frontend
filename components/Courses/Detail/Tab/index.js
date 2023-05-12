@@ -7,13 +7,13 @@ import {AiOutlineMenu, AiTwotoneContainer} from 'react-icons/ai'
 
 const Content = () => {
   return (
-      <h2 className={cx('tab-title-text')}>Góp phần hình thành và phát triển năng lực toán học với yêu cầu cần đạt: thực hiện được các thao tác tính toán ở mức độ
+      <p className={cx('tab-title-text')}>Góp phần hình thành và phát triển năng lực toán học với yêu cầu cần đạt: thực hiện được các thao tác tính toán ở mức độ
     đơn giản; nêu và trả lời được câu hỏi khi lập luận, giải quyết vấn đề đơn giản và thiết thực nhất trong cuộc sống; lựa chọn được
     các phép toán và công thức số học để trình bày, diễn đạt (nói hoặc viết) được các nội dung, ý tưởng, cách thức giải quyết vấn đề;
     sử dụng được ngôn ngữ toán học kết hợp với ngôn ngữ thông thường, động tác hình thể để biểu đạt các nội dung toán học ở
     những tình huống đơn giản; sử dụng được các công cụ, phương tiện học toán đơn giản để thực hiện các nhiệm vụ học tập toán
     đơn giản
-      </h2>
+      </p>
   )
 }
 
