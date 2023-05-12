@@ -294,6 +294,10 @@ img{
     border-radius: 8px;
     cursor: pointer;
   }
+
+  .page-main {
+    grid-template-columns: 1fr;
+  }
 }
 
 .ant-menu-title-content {
@@ -321,4 +325,5 @@ img{
   h1 {
     padding-bottom: 20px;
   }
+
 }
