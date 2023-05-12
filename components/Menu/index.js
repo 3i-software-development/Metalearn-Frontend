@@ -251,7 +251,7 @@ const SliderBar = () => {
     ),
 
     getItem(
-      `Khóa học [ ${lectureQuery?.count.toLocaleString()} ]`,
+      `Khóa học [ ${lectureQuery?.Object.length.toLocaleString()} ]`,
       "sub7",
       <SettingOutlined />
     ),
