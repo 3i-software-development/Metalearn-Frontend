@@ -1,7 +1,3 @@
-.course-view{
-    margin-bottom: 30px;
-}
-
 .form-group{
     display: flex;
     flex-wrap: wrap;
@@ -31,7 +27,7 @@
 }
 
 .form-label{
-    color: gray;
+    color: var(--label-color);
 }
 
 .form-control,
@@ -50,7 +46,7 @@
     &:hover,
     &.active,
     &:focus-visible{
-        border-color: #1677ff;
+        border-color: var(--hover-color);
         outline: none;
     }
 
@@ -114,14 +110,14 @@
     }
 
     .action{
-        color: #1677ff;
+        color: var(--hover-color);
         text-decoration: underline;
         cursor: pointer;
     }
 }
 
 .choose-video-label{
-    color: #1677ff;
+    color: var(--hover-color);
     text-decoration: underline;
     cursor: pointer;
     font-size: 14px;

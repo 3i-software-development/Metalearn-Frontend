@@ -9,6 +9,7 @@ import className from "classnames/bind";
 import styles from "./style.module.scss";
 import { selectStatus, initialCourseItem } from "../../../data";
 import { useStartCourseUpdateQuery, useEndUpdateCourseQuery } from "@/lib/Midleware/CourseQuery";
+import SliderBar from "@/components/Menu";
 
 const cx = className.bind(styles);
 
@@ -34,48 +35,53 @@ const CourseEdit = () => {
 
     return (
         <Section>
-            <h1 className={cx("page-title text-center")}>Tạo bài giảng</h1>
-            <div className={cx("course-view")}>
-                <div className={cx("inner-course-view")}>
-                    <form>
-                    <div className={cx("form-group")}>
-                        <div className={cx("course-code")}>
-                        <label className={cx("form-label")}>Mã bài giảng</label>
-                        <input type="text" className={cx("form-control")} value={Lesson?.LessonCode} onChange={(e)=>handleChangeInput(e, "LessonCode")} />
-                        </div>
-
-                        <div className={cx("course-name")}>
-                        <label className={cx("form-label")}>Tên bài giảng</label>
-                        <input type="text"  className={cx("form-control")} value={Lesson?.LessonName} onChange={(e)=>handleChangeInput(e, "LessonName")} />
-                        </div>
-
-                        <div className={cx("course-status")}>
-                        <label className={cx("form-label")}>Trạng thái</label>
-                        <select className={cx("form-select")} >
-                            { selectStatus && selectStatus.map((item, index) => {
-                            return (
-                                <option key={index} value={item.label}>{item.value}</option>
-                            )
-                            })}
-                        </select>
-                        </div>
+            <div className={cx("add-lesson")}>
+                <div className={cx("page-main")}>
+                    <div className="sidebar-left">
+                        <SliderBar />
                     </div>
-
-                    <div className={cx("group-media")}>
+                    <div className="content">
+                        <h1 className={cx("page-title text-center")}>Tạo bài giảng</h1>
+                        <form>
                         <div className={cx("form-group")}>
-                        <div className={cx("course-image")}>
-                            <label className={cx("form-label")}>Ảnh đại diện</label>
-                            <input type="file" id="avatar" className={cx("form-control")} hidden/>
-                            <label className={cx("avatar-label")} htmlFor="avatar" style={{backgroundImage: `url(${Lesson?.ImgCover})`}}></label>
-                        </div>
-                        </div>
-                    </div>
+                            <div className={cx("course-code")}>
+                            <label className={cx("form-label")}>Mã bài giảng</label>
+                            <input type="text" className={cx("form-control")} value={Lesson?.LessonCode} onChange={(e)=>handleChangeInput(e, "LessonCode")} />
+                            </div>
 
-                    <div className={cx("actions")}>
-                        <button type="submit" className={cx("btn-primary")} onClick={() => handleSubmitLesson()}>Create</button>
-                        <button className={cx("btn-cancel")} onClick={() => handleCancelEditCourse()}>Cancel</button>
+                            <div className={cx("course-name")}>
+                            <label className={cx("form-label")}>Tên bài giảng</label>
+                            <input type="text"  className={cx("form-control")} value={Lesson?.LessonName} onChange={(e)=>handleChangeInput(e, "LessonName")} />
+                            </div>
+
+                            <div className={cx("course-status")}>
+                            <label className={cx("form-label")}>Trạng thái</label>
+                            <select className={cx("form-select")} >
+                                { selectStatus && selectStatus.map((item, index) => {
+                                return (
+                                    <option key={index} value={item.label}>{item.value}</option>
+                                )
+                                })}
+                            </select>
+                            </div>
+                        </div>
+
+                        <div className={cx("group-media")}>
+                            <div className={cx("form-group")}>
+                            <div className={cx("course-image")}>
+                                <label className={cx("form-label")}>Ảnh đại diện</label>
+                                <input type="file" id="avatar" className={cx("form-control")} hidden/>
+                                <label className={cx("avatar-label")} htmlFor="avatar" style={{backgroundImage: `url(${Lesson?.ImgCover})`}}></label>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div className={cx("actions")}>
+                            <button type="submit" className={cx("btn-primary")} onClick={() => handleSubmitLesson()}>Create</button>
+                            <button className={cx("btn-cancel")} onClick={() => handleCancelEditCourse()}>Cancel</button>
+                        </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
         </Section>
