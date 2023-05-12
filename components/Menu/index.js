@@ -564,26 +564,6 @@ const SliderBar = () => {
             items={items}
           />
         </div>
-        {/* <div className={cx("content")}>
-          <div className={cx("SearchAndAddSubjects_ItemAll")}>
-            <Breadcrumb
-              items={[
-                {
-                  title: "Home",
-                },
-                {
-                  title: <a href="">Application Center</a>,
-                },
-                {
-                  title: <a href="">Application List</a>,
-                },
-                {
-                  title: "An Application",
-                },
-              ]}
-            />
-          </div>
-        </div> */}
       </div>
   );
 };

@@ -116,9 +116,21 @@
     margin-top: 20px;
     text-align: right;
 
-    .down:hover {
-        i {
-            color: black;
+    .down{
+        &:hover {
+            i {
+                color: black;
+            }
+        }
+    }
+
+    span{
+        margin-right: 15px;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:last-child{
+            margin-right: 0;
         }
     }
 }

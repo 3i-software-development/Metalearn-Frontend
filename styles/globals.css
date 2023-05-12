@@ -250,7 +250,16 @@ img{
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
-  z-index: 9999; /*Lớp Z để hiển thị trên overlay*/
+  z-index: 9999;
+}
+
+/* Layout */
+.page-main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin: 50px 0;
+  grid-column-gap: 2%;
+  column-gap: 2%;
 }
 
 /* responsive */

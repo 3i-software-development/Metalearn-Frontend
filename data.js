@@ -54,12 +54,47 @@ export const selectStatus = [
 ];
 
 export const initialCourseItem = {
+    CourseCode: "",
+    CourseName: "",
+    CourseNote: "",
+    CreatedBy: "",
+    CreatedTime: "",
+    Duration: "",
+    EndTime: "",
+    FileBase: "",
+    ImgCover: "",
+    ListSubject: "",
+    ListVideo: "",
+    Price: "",
+    StartTime: "",
+    Status: "",
+    Tags: "",
+    Unit: "",
+    VideoPresent: ""
+}
+
+export const initialLessonItem = {
     LessonCode: "",
     LessonName: "",
     Status: "",
     Image: ""
 }
 
-export const initialLessonItem = {
-
-}
+export const Users = [
+    {
+        id: "1",
+        name: ""
+    },
+    {
+        id: "2",
+        name: "Tất cả"
+    },
+    {
+        id: "3",
+        name: "Quản trị viên"
+    },
+    {
+        id: "4",
+        name: "Phạm Trang"
+    }
+]

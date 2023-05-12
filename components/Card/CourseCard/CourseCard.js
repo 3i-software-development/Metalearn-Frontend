@@ -6,15 +6,18 @@ import { Rate } from "antd";
 import moment from "moment";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
 import Image from "next/image";
+import { Modal } from 'antd';
 import { useRouter } from 'next/router';
 import Pagination from "@/components/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
+import { Users } from "../../../data";
 
 const cx = className.bind(styles);
 
 const CourseCard = () => {
   const router = useRouter();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
 
   const [query, setQuery] = useState({
     lectureName: "",
@@ -36,9 +39,23 @@ const CourseCard = () => {
 
   const { data } = useGetListLectureQuery(query);
 
-  const handleEditCourse = (courseId) => {
-    router.push(`/courses/edit?Id=${courseId}`);
+  const handleActionCourse = (courseId, action) => {
+    if(action === "edit") {
+      router.push(`/courses/edit?Id=${courseId}`);
+    }
+
+    if(action === "share") {
+      router.push(`/courses/share?Id=${courseId}`);
+    }
   }
+
+  const showModal = () => {
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   console.log("check list course:", data);
 
@@ -125,12 +142,30 @@ const CourseCard = () => {
                     <span className={cx("value")}>{item.SubjectName ? item.SubjectName : ""}</span>
                   </div>
                   <div className={cx("actions")}>
-                    <span className="edit" onClick={() => handleEditCourse(item.Id)}><i className="fa-solid fa-pen-to-square"></i></span>
+                    <span className="edit" onClick={() => handleActionCourse(item.Id, "edit")}><i className="fa-solid fa-pen-to-square"></i></span>
                     <span className="down"><i className="fa-solid fa-cloud-arrow-down"></i></span>
-                    <span className="share"><i className="fa-solid fa-share-nodes"></i></span>
+                    <span className="share" onClick={showModal}><i className="fa-solid fa-share-nodes"></i></span>
                   </div>
                 </div>
               </div>
+              <Modal
+                open={open}
+                title="Chia sẻ khóa học"
+                onCancel={handleCancel}
+                centered
+              >
+                <div className={cx("modal-body")}>
+                  <div className={cx("share-for")}>
+                    <select className={cx("form-select")} value={"1"} >
+                      { Users && Users.map((item, index) => {
+                          return (
+                              <option key={index} value={item.id}>{item.name}</option>
+                          )
+                      })}
+                    </select>
+                  </div>
+                </div>
+              </Modal>
             </div>
           );
         })}
