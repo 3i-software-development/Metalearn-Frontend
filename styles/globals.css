@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
 
+:root {
+  --body-color: #000000;
+  --label-color: gray;
+  --hover-color: #e7ecf1;
+  --border-color: #e7ecf1
+}
 
 * {
   box-sizing: border-box;
@@ -114,13 +120,17 @@ body * {
 display:none !important
 }
 
+h1 {
+  font-size: 2.25rem;
+}
+
 @media only screen and (max-width: 1500px) {
-  h1,h2{
+  h1{
     font-size: 1.5rem;
   }
 }
 @media only screen and (max-width: 1200px) {
-  h1,h2{
+  h1{
     font-size: 1.3rem;
   }
 }
@@ -169,6 +179,9 @@ img{
 
 .text-center{
   text-align: center;
+}
+
+.page-title {
   margin: 20px 0;
 }
 
