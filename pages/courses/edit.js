@@ -10,6 +10,7 @@ import vi from 'date-fns/locale/vi';
 import { useRouter } from 'next/router';
 import className from "classnames/bind";
 import styles from "./style.module.scss";
+import { selectStatus, initialCourseItem } from "../../data";
 import { useStartCourseUpdateQuery, useEndUpdateCourseQuery } from "@/lib/Midleware/CourseQuery";
 
 const cx = className.bind(styles);
@@ -22,63 +23,23 @@ const CourseEdit = () => {
   
   const { data: courseQuery } = useStartCourseUpdateQuery({Id: router.query.Id});
   const courseItem = courseQuery?.Object;
-  const [updateCourse, resultUpdateCourse] = useState({
-    CourseCode: "",
-    CourseName: "",
-    CourseNote: "",
-    CreatedBy: "",
-    CreatedTime: "",
-    Duration: "",
-    EndTime: "",
-    FileBase: "",
-    ImgCover: "",
-    ListSubject: "",
-    ListVideo: "",
-    Price: "",
-    StartTime: "",
-    Status: "",
-    Tags: "",
-    Unit: "",
-    VideoPresent: ""
-  });  
-
-  // const formatStartDate = moment(courseItem?.StartTime,'mm/dd/yyyy');
-  // const courseStatus = courseItem.Status ? courseItem.Status : "NONE";
+  const [updateCourse, setUpdateCourse] = useState(initialCourseItem);  
   console.log(">>> check data: ", courseItem);
-
-  const selectStatus = [
-    { label: "NONE",
-      value: ""
-    },
-    { label: "CREATED",
-      value: "Mới tạo"
-    },
-    { label: "ACTIVE",
-      value: "Đã kích hoạt"
-    }, 
-    { label: "DEACTIVE",
-      value: "Ngừng kích hoạt"
-    }, 
-    { label: "COMPLETE",
-      value: "Hoàn thành"
-    }
-  ];
 
   console.log(">>> check update: ", updateCourse);
 
   useEffect(() => {
     if (courseItem) {
-      resultUpdateCourse(courseItem)
+      setUpdateCourse(courseItem)
     }
   }, [courseItem])
   
   const handleChangeInput=(e, name)=>{
     const {value} = e.target;
-    resultUpdateCourse({
+    setUpdateCourse({
       [name]:value
     })
   }
-
 
   const handleSubmitUpdateCourse = () => {
     console.log("submit");
@@ -97,7 +58,7 @@ const CourseEdit = () => {
             <h2 className={cx("form-group-title")}>Thông tin khóa học:</h2>
             <div className={cx("course-code")}>
               <label className={cx("form-label")}>Mã khóa học</label>
-              <input type="text" className={cx("form-control")} value={updateCourse?.CourseCode} disable={"true"} />
+              <input type="text" className={cx("form-control")} value={updateCourse?.CourseCode} />
             </div>
 
             <div className={cx("course-name")}>
@@ -107,17 +68,17 @@ const CourseEdit = () => {
 
             <div className={cx("course-image")}>
               <label className={cx("form-label")}>Môn học</label>
-              <input type="text" className={cx("form-control")} />
+              <input type="text" className={cx("form-control")} value={updateCourse?.ListSubject} onChange={(e)=>handleChangeInput(e, "ListSubject")} />
             </div>
 
             <div className={cx("course-tag")}>
               <label className={cx("form-label")}>Thẻ</label>
-              <input type="text" className={cx("form-control")}/>
+              <input type="text" className={cx("form-control")} value={updateCourse?.Tags} onChange={(e)=>handleChangeInput(e, "Tags")}/>
             </div>
 
             <div className={cx("course-price")}>
               <label className={cx("form-label")}>Giá</label>
-              <input type="text" className={cx("form-control")} name="Price" value={courseItem?.Price ? courseItem?.Price : "0"} onChange={handleChangeInput} />
+              <input type="text" className={cx("form-control")} name="Price" value={updateCourse?.Price} onChange={handleChangeInput} />
             </div>
 
             <div className={cx("course-status")}>
