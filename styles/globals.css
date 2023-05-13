@@ -197,6 +197,11 @@ img {
   color: gray;
 }
 
+[disable="true"]{
+  pointer-events: none;
+  color: rgba(0, 0, 0, .5);
+}
+
 [class*="form-group"] [class*="label"]{
   display: inline-block;
   margin-bottom: 5px;
@@ -212,6 +217,7 @@ img {
   border-width: 1px;
   border-style: solid;
   border-color: var(--border-color);
+  border-radius: var(--button-radius);
 }
 
 [class*="form-control"]:hover,
@@ -228,6 +234,11 @@ img {
   background-repeat: no-repeat;
   background-position: 95% 50%;
   background-size: 10px;
+}
+
+[class*="form-control"][type="file"]{
+  border-width: 0;
+  padding: 0;
 }
 
 .overlay {

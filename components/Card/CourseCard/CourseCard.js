@@ -61,8 +61,6 @@ const CourseCard = () => {
     setOpen(false);
   };
 
-  console.log("check list course:", data);
-
   return (
     <Section>
       <div className={cx("layout")}>

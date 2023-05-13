@@ -4,9 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import moment from "moment";
 import { useQuery } from "react-query";
-import DatePicker, { registerLocale, setDefaultLocale } from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import vi from 'date-fns/locale/vi';
+import { DatePicker } from 'antd';
+import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import className from "classnames/bind";
 import styles from "./style.module.scss";
@@ -15,19 +14,15 @@ import { useStartCourseUpdateQuery, useEndUpdateCourseQuery } from "@/lib/Midlew
 import SliderBar from "@/components/Menu";
 
 const cx = className.bind(styles);
-registerLocale('vi', vi)
 
 const CourseEdit = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [startDate, setStartDate] = useState(new Date());
+  const { RangePicker } = DatePicker;
   
-  const { data: courseQuery } = useStartCourseUpdateQuery({Id: router.query.Id});
+  const { data: courseQuery } = useStartCourseUpdateQuery({Id: router.query.id});
   const courseItem = courseQuery?.Object;
-  const [updateCourse, setUpdateCourse] = useState(initialCourseItem);  
-  console.log(">>> check data: ", courseItem);
-
-  console.log(">>> check update: ", updateCourse);
+  const [updateCourse, setUpdateCourse] = useState(initialCourseItem);
 
   useEffect(() => {
     if (courseItem) {
@@ -36,11 +31,21 @@ const CourseEdit = () => {
   }, [courseItem])
   
   const handleChangeInput=(e, name)=>{
-    const {value} = e.target;
     setUpdateCourse({
-      [name]:value
+      [name]: e.target.value
     })
   }
+
+  const onChangeDateStart = (date, dateStringStart) => { 
+    console.log(date, dateStringStart)
+  };
+
+  const onChangeDateEnd = (date, dateStringEnd) => {
+    console.log("end: ", dateStringEnd)
+    // setUpdateCourse({
+    //   EndTime: dateStringEnd
+    // })
+  };
 
   const handleActionRouter = (action) => {
     if(action === "cancel") {
@@ -52,8 +57,8 @@ const CourseEdit = () => {
     }
   }
 
-  const handleSubmitUpdateCourse = () => {
-    console.log("submit");
+  function handleSubmitUpdateCourse() {
+      console.log("update data: ", updateCourse);
   }
   
   return (
@@ -64,13 +69,13 @@ const CourseEdit = () => {
               <SliderBar />
           </div>
           <div className="content">
-            <h1 className={cx("page-title text-center")}>Quản lý khóa học</h1>
+            <h1 className={cx("page-title text-center")}>Sửa thông tin khóa học</h1>
             <form>
               <div className={cx("form-group")}>
                 <h2 className={cx("form-group-title")}>Thông tin khóa học:</h2>
                 <div className={cx("course-code")}>
                   <label className={cx("form-label")}>Mã khóa học</label>
-                  <input type="text" className={cx("form-control")} value={updateCourse?.CourseCode} />
+                  <input type="text" className={cx("form-control")} value={updateCourse?.CourseCode} disable="true" />
                 </div>
 
                 <div className={cx("course-name")}>
@@ -85,17 +90,17 @@ const CourseEdit = () => {
 
                 <div className={cx("course-tag")}>
                   <label className={cx("form-label")}>Thẻ</label>
-                  <input type="text" className={cx("form-control")} value={updateCourse?.Tags} onChange={(e)=>handleChangeInput(e, "Tags")}/>
+                  <input type="text" className={cx("form-control")} value={updateCourse?.Tags && updateCourse?.Tags !== "null" ? updateCourse?.Tags : ""} onChange={(e)=>handleChangeInput(e, "Tags")}/>
                 </div>
 
                 <div className={cx("course-price")}>
                   <label className={cx("form-label")}>Giá</label>
-                  <input type="text" className={cx("form-control")} name="Price" value={updateCourse?.Price} onChange={handleChangeInput} />
+                  <input type="text" className={cx("form-control")} name="Price" value={updateCourse?.Price} onChange={(e)=>handleChangeInput(e, "Price")} />
                 </div>
 
                 <div className={cx("course-status")}>
                   <label className={cx("form-label")}>Trạng thái</label>
-                  <select className={cx("form-select")} >
+                  <select className={cx("form-select")} value={updateCourse?.Status}>
                     { selectStatus && selectStatus.map((item, index) => {
                       return (
                         <option key={index} value={item.label}>{item.value}</option>
@@ -108,15 +113,11 @@ const CourseEdit = () => {
               <div className={cx("group-time")}>
                 <div className={cx("form-group")}>
                   <h2 className={cx("form-group-title")}>Thời gian:</h2>
-                  <div className={cx("course-start-time")}>
-                    <label className={cx("form-label")}>Ngày bắt đầu</label>
-                    <DatePicker className={cx("form-control")} selected={startDate} onChange={(date) => setStartDate(date)} locale="vi" />
-                  </div>
-
-                  <div className={cx("course-end-time")}>
-                    <label className={cx("form-label")}>Ngày kết thúc</label>
-                    <DatePicker className={cx("form-control")} selected={startDate} onChange={(date) => setStartDate(date)} />
-                  </div>
+                  <RangePicker
+                      value={[dayjs(`${updateCourse?.StartTime}`, 'DD/MM/YYYY'), dayjs(`${updateCourse?.EndTime}`, 'DD/MM/YYYY')]}
+                      format={'DD/MM/YYYY'}
+                      style={{ width: '100%',  minHeight: "44px", borderRadius: "var(--button-radius)" }}
+                    />
                 </div>
               </div>
 
@@ -125,7 +126,7 @@ const CourseEdit = () => {
                   <h2 className={cx("form-group-title")}>Hình ảnh và video :</h2>
                   <div className={cx("course-image")}>
                     <label className={cx("form-label")}>Ảnh đại diện</label>
-                    <input type="file" id="avatar" className={cx("form-control")} hidden/>
+                    <input type="file" id="avatar" className={cx("form-control")} onClick={(e)=>handleChangeInput(e, "ImgCover")} hidden/>
                     <label className={cx("avatar-label")} htmlFor="avatar" style={{backgroundImage: `url(${courseItem?.ImgCover})`}}></label>
                   </div>
 
@@ -172,8 +173,8 @@ const CourseEdit = () => {
                 </ul>
               </div>
               <div className={cx("actions")}>
-                <button type="submit" className={cx("btn-primary")} onClick={() => handleSubmitUpdateCourse()}>Save</button>
-                <button className={cx("btn-cancel")} onClick={() => handleActionRouter("cancel")}>Cancel</button>
+                <span className={cx("btn-primary")} onClick={handleSubmitUpdateCourse}>Save</span>
+                <span className={cx("btn-cancel")} onClick={() => handleActionRouter("cancel")}>Cancel</span>
               </div>
             </form>
           </div>
