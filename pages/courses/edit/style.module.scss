@@ -131,14 +131,10 @@
 
 @media screen and (max-width: 991px){
     .form-group-title{
-        font-size: 15px;
         margin-top: 20px;
     }
 
-    .form-group{    
-        .form-label{
-            font-size: 13px;
-        }
+    .form-group{
 
         >*{
             width: calc(50% - 20px);

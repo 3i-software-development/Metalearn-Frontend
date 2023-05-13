@@ -42,12 +42,18 @@ const CourseEdit = () => {
     })
   }
 
-  const handleSubmitUpdateCourse = () => {
-    console.log("submit");
+  const handleActionRouter = (action) => {
+    if(action === "cancel") {
+      router.push(`/personalized`);
+    }
+
+    if(action === "addLesson") {
+      router.push(`/courses/lessons`);
+    }
   }
 
-  const handleCancelEditCourse = () => {
-    router.push('/personalized');
+  const handleSubmitUpdateCourse = () => {
+    console.log("submit");
   }
   
   return (
@@ -147,7 +153,7 @@ const CourseEdit = () => {
 
                 <div className={cx("course-file")}>
                   <label className={cx("form-label")}>Chọn file</label>
-                  <input type="text" className={cx("form-control")}/>
+                  <input type="file" className={cx("form-control")}/>
                 </div>
               </div>
 
@@ -157,14 +163,17 @@ const CourseEdit = () => {
               </div>
 
               <div className={cx("course-list-lesson")}>
-                <h2 className={cx("form-group-title")}>Danh sách bài giảng <span className={cx("action")}>Thêm mới</span></h2>
+                <h2 className={cx("form-group-title")}>
+                  Danh sách bài giảng 
+                  <span className={cx("action")} onClick={() => handleActionRouter("addLesson")}>Thêm mới</span>
+                </h2>
                 <ul className={cx("course-items")}>
                   <li className={cx("course-item")}>{courseItem?.ListSubject ? courseItem?.ListSubject : "Không có bài giảng"}</li>
                 </ul>
               </div>
               <div className={cx("actions")}>
                 <button type="submit" className={cx("btn-primary")} onClick={() => handleSubmitUpdateCourse()}>Save</button>
-                <button className={cx("btn-cancel")} onClick={() => handleCancelEditCourse()}>Cancel</button>
+                <button className={cx("btn-cancel")} onClick={() => handleActionRouter("cancel")}>Cancel</button>
               </div>
             </form>
           </div>

@@ -1,4 +1,4 @@
-.course-view{
+.lesson-view{
     margin-bottom: 30px;
 }
 
@@ -13,12 +13,15 @@
 
 }
 
-.group-time, 
+.lesson-intro{
+    .lesson-description{
+        width: calc(100% / 3 * 2 - 20px);
+    }
+}
+
 .group-media{
-    .form-group{
-        >*{
-            width: calc(50% - 20px);
-        }
+    .lesson-video{
+        width: calc(100% / 3 * 2 - 20px);
     }
 }
 
@@ -68,8 +71,9 @@
     button{
         font-size: 14px;
         padding: 10px 30px;
-        background-color: black;
-        color: white;
+        background-color: var(--button-background);
+        color: var(--button-color);
+        border-radius: var(--button-radius);
         margin-right: 15px;
 
         &:last-child{
@@ -77,17 +81,18 @@
         }
 
         &:hover{
-            opacity: .8
+            background-color: var(--button-hover-background);
+            color: var(--button-hover-color);
         }
     }
 }
 
-.course-items{
+.lesson-items{
     list-style: none;
     margin-bottom: 20px;
 }
 
-.course-image{
+.lesson-image{
     margin-bottom: 20px;
     
     .avatar-label {
@@ -105,7 +110,7 @@
     }
 }
 
-.course-list-lesson{
+.lesson-list-doit{
     .form-group-title{
         display: flex;
         flex-wrap: wrap;
@@ -133,15 +138,10 @@
 
 @media screen and (max-width: 991px){
     .form-group-title{
-        font-size: 15px;
         margin-top: 20px;
     }
 
-    .form-group{    
-        .form-label{
-            font-size: 13px;
-        }
-
+    .form-group{  
         >*{
             width: calc(50% - 20px);
         }

@@ -8,7 +8,7 @@
 
   --button-color: #1677ff;
   --button-background: #e6f4ff;
-  --button-radius: 30px;
+  --button-radius: 3px;
   --button-hover-color: #1677ff;
   --button-hover-background: #d0e7f9;
 
@@ -205,6 +205,11 @@ img{
   color: gray;
 }
 
+[class*="form-group"] [class*="label"]{
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
 [class*="form-control"],
 [class*="form-select"] {
   margin-bottom: 20px;
@@ -319,18 +324,44 @@ img{
   }
 } */
 
-@media screen and (max-width: 767px){
-  .nav-toggle{
+@media screen and (max-width: 991px){
+  .navbar{
+    position: relative;
+  }
+
+  .navbar .nav-toggle{
     display: block;
     background-color: #e6f4ff;
     color: #1677ff;
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
+    margin-top: 30px;
+  }
+
+  .navbar .ant-menu{
+    border-width: 0!important;
+    position: absolute;
+    top: calc(100% + 20px);
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all ease .3s;
+    z-index: 10;
+    box-shadow: 0px 8px 20px rgba(61,110,168,.1);
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .navbar[aria-hidden="true"] .ant-menu{
+    top: calc(100% + 10px);
+    opacity: 1;
+    visibility: visible;
   }
 
   .page-main {
-    grid-template-columns: 1fr;
+    display: initial;
   }
 }
 
@@ -350,6 +381,10 @@ img{
   .sidebar-left {
     padding-bottom: 30px;
   }
+  
+  .page-title {
+    margin-top: 0;
+  }
 
   .page-3-columns.page-main {
     display: flex;
@@ -357,7 +392,7 @@ img{
   }
 
   h1 {
-    padding-bottom: 20px;
+    margin-bottom: 20px;
   }
 
 }

@@ -543,10 +543,16 @@ const SliderBar = () => {
         return <AbumCart />;
     }
   };
+
+  const [openNav, setOpenNav] = useState(false);
+  const showNav = () => {
+    setOpenNav(!openNav);
+  };
+
   return (
       <div className={cx("person")}>
-        <div className={cx("navbar")}>
-          <span className="hidden nav-toggle">
+        <div className={cx("navbar")} aria-hidden={openNav}>
+          <span className="hidden nav-toggle" onClick={showNav}>
             <i className="fa fa-bars" aria-hidden="true"></i>&nbsp; Navigation
           </span>
           <Menu
