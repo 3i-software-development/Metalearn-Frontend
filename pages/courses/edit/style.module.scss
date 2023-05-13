@@ -64,16 +64,18 @@
     button{
         font-size: 14px;
         padding: 10px 30px;
-        background-color: black;
-        color: white;
+        background-color: var(--button-background);
+        color: var(--button-color);
         margin-right: 15px;
+        border-radius: var(--button-radius);
 
         &:last-child{
             margin-right: 0;
         }
 
         &:hover{
-            opacity: .8
+            background-color: var(--button-hover-background);
+            color: var(--button-hover-color)
         }
     }
 }

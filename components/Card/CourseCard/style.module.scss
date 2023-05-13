@@ -25,7 +25,7 @@
     padding: 10px;
     font-weight: 600;
     font-size: 15px;
-    min-height: 430px;
+    min-height: 400px;
 }
 
 .layout {
@@ -193,6 +193,12 @@
                 margin-right: 0;
             }
         }
+    }
+}
+
+.share-for {
+    .form-select{
+        border-radius: 30px;
     }
 }
 

@@ -6,7 +6,7 @@ import { Rate } from "antd";
 import moment from "moment";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
 import Image from "next/image";
-import { Modal } from 'antd';
+import { Modal, Button } from 'antd';
 import { useRouter } from 'next/router';
 import Pagination from "@/components/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,6 +49,10 @@ const CourseCard = () => {
     }
   }
 
+  const handleViewCourse = (courseId) => {
+    router.push(`/courses/detail?Id=${courseId}`);
+  }
+
   const showModal = () => {
     setOpen(true);
   };
@@ -68,7 +72,8 @@ const CourseCard = () => {
             <div className={cx("item")} key={item.Id}>
               <div className={cx("inner-item")}>
                 <div className={cx("item-media")}>
-                  <Image
+                  <Image 
+                    onClick={() => handleViewCourse(item.Id)}
                     src={
                       item.ImageCover
                         ? item.ImageCover
@@ -114,7 +119,7 @@ const CourseCard = () => {
                     </li>
                   </ul>
 
-                  <h4 className={cx("title")}>
+                  <h4 className={cx("title")} onClick={() => handleViewCourse(item.Id)}>
                     <i className="fa-solid fa-computer"></i> {item.CourseName }
                   </h4>
                   
@@ -148,28 +153,36 @@ const CourseCard = () => {
                   </div>
                 </div>
               </div>
-              <Modal
-                open={open}
-                title="Chia sẻ khóa học"
-                onCancel={handleCancel}
-                centered
-              >
-                <div className={cx("modal-body")}>
-                  <div className={cx("share-for")}>
-                    <select className={cx("form-select")} value={"1"} >
-                      { Users && Users.map((item, index) => {
-                          return (
-                              <option key={index} value={item.id}>{item.name}</option>
-                          )
-                      })}
-                    </select>
-                  </div>
-                </div>
-              </Modal>
             </div>
           );
         })}
       </div>
+      <Modal
+        open={open}
+        title="Chia sẻ khóa học"
+        centered
+        onCancel={handleCancel}
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Hủy bỏ
+          </Button>,
+          <Button key="submit" type="primary">
+            Chia sẻ
+          </Button>,
+        ]}
+      >
+        <div className={cx("modal-body")}>
+          <div className={cx("share-for")}>
+            <select className={cx("form-select")} value={"1"} >
+              { Users && Users.map((item, index) => {
+                  return (
+                      <option key={index} value={item.id}>{item.name}</option>
+                  )
+              })}
+            </select>
+          </div>
+        </div>
+      </Modal>
       <Pagination
         total={data?.count}
         handleQueryPage={handleQueryPage}
