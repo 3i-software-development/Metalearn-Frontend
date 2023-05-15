@@ -126,11 +126,16 @@
 
     span{
         margin-right: 15px;
-        font-size: 1rem;
+        font-size: 1.2rem;
         cursor: pointer;
+        color: var(--icon-color);
 
         &:last-child{
             margin-right: 0;
+        }
+
+        &:hover{
+            color: var(--hover-color);
         }
     }
 }

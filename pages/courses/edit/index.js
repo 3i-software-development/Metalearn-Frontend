@@ -173,8 +173,8 @@ const CourseEdit = () => {
                 </ul>
               </div>
               <div className={cx("actions")}>
-                <span className={cx("btn-primary")} onClick={handleSubmitUpdateCourse}>Save</span>
-                <span className={cx("btn-cancel")} onClick={() => handleActionRouter("cancel")}>Cancel</span>
+                <span className={cx("btn-primary")} onClick={handleSubmitUpdateCourse}>Lưu chỉnh sửa</span>
+                <span className={cx("btn-cancel")} onClick={() => handleActionRouter("cancel")}>Hủy bỏ</span>
               </div>
             </form>
           </div>

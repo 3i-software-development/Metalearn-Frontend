@@ -5,10 +5,13 @@
   --label-color: gray;
   --hover-color: #1677ff;
   --border-color: #e7ecf1;
+
   --button-background: #e6f4ff;
   --button-radius: 3px;
   --button-hover-color: #1677ff;
   --button-hover-background: #d0e7f9;
+
+  --icon-color: gray;
 }
 
 * {

@@ -4,7 +4,7 @@ import {
   AppstoreOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Menu } from "antd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 const cx = classNames.bind(styles);
@@ -27,6 +27,7 @@ import SearchAndAddSubjects from "../SearchAndAddSubjects";
 import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
 import { AbumCart } from "../Card/AbumCard/AbumCard";
 import TeachingResults from "../Chart/TeachingResults";
+import { useRouter } from 'next/router';
 import {
   useGetCountExamStudentQuery,
   useGetCountFileStudentQuery,
@@ -176,7 +177,14 @@ const Personalized = () => {
     type: "FileStudent",
   });
 
-  const [openKeys, setOpenKeys] = useState("sub1");
+  const router = useRouter();
+  const [openKeys, setOpenKeys] = useState(`${router.query.key ? router.query.key : "practive"}`);
+
+  useEffect(() => {
+    if (router.query.key) {
+      setOpenKeys(router.query.key)
+    }
+  }, [router.query.key])
 
   const getItem = (label, key, icon, children, type) => {
     return {
@@ -187,10 +195,11 @@ const Personalized = () => {
       type,
     };
   };
+
   const items = [
     getItem(
       `Rèn luyện [ ${practiveQuery?.Object?.cardSum.toLocaleString()} | ${practiveQuery?.Object?.cardExpire.toLocaleString()} | ${practiveQuery?.Object?.cardDone.toLocaleString()} ]`,
-      "sub1",
+      "practive",
       <MailOutlined />
     ),
 
@@ -252,7 +261,7 @@ const Personalized = () => {
 
     getItem(
       `Khóa học [ ${lectureQuery?.Object.length.toLocaleString()} ]`,
-      "sub7",
+      "courses",
       <SettingOutlined />
     ),
 
@@ -432,13 +441,15 @@ const Personalized = () => {
 
     getItem("Bộ sưu tập", "sub11", <SettingOutlined />),
   ];
+
   const onOpenChange = (keys) => {
     setOpenKeys(keys.key);
+    router.push(`${router.pathname}?key=${keys.key}`);
   };
 
   const displayContent = () => {
     switch (openKeys) {
-      case "sub1":
+      case "practive":
         return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
       case "sub2":
         return <ClassCard role={"lesson"} data={scheduleQuery} />;
@@ -454,7 +465,7 @@ const Personalized = () => {
         return <SelftrainingCard onlyAssignment={false} />;
       case "sub6":
         return <Document_Cart total={fileCwQuery} />;
-      case "sub7":
+      case "courses":
         return <CourseCard />;
       case "sub8":
         return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
@@ -552,7 +563,7 @@ const Personalized = () => {
           </span>
           <Menu
             mode="inline"
-            defaultSelectedKeys="sub1"
+            defaultSelectedKeys={openKeys}
             onClick={onOpenChange}
             style={
               {
