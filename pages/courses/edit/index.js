@@ -105,7 +105,7 @@ const CourseEdit = () => {
 
                 <div className={cx("course-status")}>
                   <label className={cx("form-label")}>Trạng thái</label>
-                  <select className={cx("form-select")} value={updateCourse?.Status}>
+                  <select className={cx("form-select")} value={updateCourse?.Status} onChange={(e)=>handleChangeInput(e, "Status")}>
                     { selectStatus && selectStatus.map((item, index) => {
                       return (
                         <option key={index} value={item.label}>{item.value}</option>
