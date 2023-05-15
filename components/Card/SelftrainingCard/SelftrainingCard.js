@@ -5,7 +5,8 @@ import Section from "@/components/Section/Section";
 import { useGetListQuizQuery } from "@/lib/Midleware/QuizQuery";
 import moment from "moment";
 import Pagination from "@/components/Pagination/Pagination";
-import { MathJaxProvider, Tex2SVG } from "react-hook-mathjax";
+// import { MathJaxProvider, Tex2SVG } from "react-hook-mathjax";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
 
 const cx = classNames.bind(styles);
 const mathJaxOptions = {
@@ -88,9 +89,10 @@ const SelftrainingCard = ({ onlyAssignment }) => {
 
   return (
     <Section>
-      <MathJaxProvider options={mathJaxOptions}>
+      <MathJaxContext>
         <div className={cx("contaiberQuiz")}>
           <table className={cx("list-table")}>
+            <thead>
             <tr className={cx("list-head")}>
               <th className={cx("question")}>
                 <i className="fa fa-paper-plane"></i>
@@ -121,16 +123,21 @@ const SelftrainingCard = ({ onlyAssignment }) => {
                 Thao tác
               </th>
             </tr>
+            </thead>
             {quiz?.Object?.Data.map((item, index) => {
               return (
-                <tr className={cx("item")} key={index}>
+                <tbody key={index}>
+                  <tr className={cx("item")} >
                   <td className={cx("question")}>
                     <h4>
                       {textFomart(item.Content).map((element, index) => {
-                        if (index % 2 === 0) {
-                          return <span key={-index}>{element}</span>;
-                        } else
-                          return <Tex2SVG display="inline" latex={element} />;
+                        console.log(element)
+                        return <MathJax key={index}>{element}</MathJax>
+                          // return <span key={-index}>{element}</span>;
+                        // if (index % 2 === 0) {
+                        //   return <span key={-index}>{element}</span>;
+                        // } else
+                        //   return <MathJax>{element}</MathJax>;
                       })}
                     </h4>
                   </td>
@@ -138,7 +145,7 @@ const SelftrainingCard = ({ onlyAssignment }) => {
                   <td className={cx("lession")}>
                     Bài 6 : Đơn chất và hợp chất - Phân
                   </td>
-                  <td clasName={cx("price")}>
+                  <td className={cx("price")}>
                     {item.Price === 0
                       ? item.Price + " [" + " Được chia sẻ " + "]"
                       : item.Price + " Coin"}
@@ -159,19 +166,20 @@ const SelftrainingCard = ({ onlyAssignment }) => {
                     {item.Level === null ? "0" : item.Level}
                   </td>
                   <td className={cx("actions")}>
-                    <span clasNames={cx("download")}>
+                    <span className={cx("download")}>
                       <i className="fa-solid fa-cloud-arrow-down"></i>
                     </span>
-                    <span clasNames={cx("thumbtack")}>
+                    <span className={cx("thumbtack")}>
                       <i className="fa-solid fa-thumbtack"></i>
                     </span>
                   </td>
                 </tr>
+                </tbody>
               );
             })}
           </table>
         </div>
-      </MathJaxProvider>
+      </MathJaxContext>
       {/* <Pagination total={onlyAssignment ? data?.countAssignment : data?.countSharing} handleQueryPage={handleQueryPage} current={query.pageNum} /> */}
     </Section>
   );
