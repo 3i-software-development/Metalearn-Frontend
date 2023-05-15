@@ -3,30 +3,15 @@ import {
   SettingOutlined,
   AppstoreOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Menu } from "antd";
+import { Menu } from "antd";
 import { useState } from "react";
-import classNames from "classnames/bind";
-import styles from "./style.module.scss";
-const cx = classNames.bind(styles);
 import { useGetListScheduleQuery } from "@/lib/Midleware/ScheduleQuery";
-import PractiseCard from "../Card/PractiseCard/PractiseCard";
-import SelftrainingCard from "../Card/SelftrainingCard/SelftrainingCard";
-import CourseCard from "../Card/CourseCard/CourseCard";
 import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 import { useGetTotalPractiveQuery } from "@/lib/Midleware/PractiveQuery";
-import ClassCard from "../Card/ClassCard/ClassCard";
 import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
-import Document_Cart from "../Card/SubjectCard";
-import ChartSubject from "../Chart/ChartSubject";
-import ExamCard from "../Card/ExamCard";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
-import { AiOutlineSearch } from "react-icons/ai";
 import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
-import SearchAndAddSubjects from "../SearchAndAddSubjects";
-import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
-import { AbumCart } from "../Card/AbumCard/AbumCard";
-import TeachingResults from "../Chart/TeachingResults";
 import {
   useGetCountExamStudentQuery,
   useGetCountFileStudentQuery,
@@ -41,7 +26,10 @@ import {
   useGetTotalTeacherQuery,
 } from "@/lib/Midleware/ChartQuery";
 import { useGetCountQuizBodyQuery } from "@/lib/Midleware/QuizQuery";
-import CircleChart from "../Chart/CircleChart/CircleChart";
+import { useRouter } from 'next/router';
+import classNames from "classnames/bind";
+import styles from "./style.module.scss";
+const cx = classNames.bind(styles);
 
 const SliderBar = () => {
   const { data: practiveQuery } = useGetTotalPractiveQuery({
@@ -176,7 +164,8 @@ const SliderBar = () => {
     type: "FileStudent",
   });
 
-  const [openKeys, setOpenKeys] = useState("sub1");
+  const router = useRouter();
+  const [openKeys, setOpenKeys] = useState(`${router.query.key}`);
 
   const getItem = (label, key, icon, children, type) => {
     return {
@@ -187,10 +176,11 @@ const SliderBar = () => {
       type,
     };
   };
+
   const items = [
     getItem(
       `Rèn luyện [ ${practiveQuery?.Object?.cardSum.toLocaleString()} | ${practiveQuery?.Object?.cardExpire.toLocaleString()} | ${practiveQuery?.Object?.cardDone.toLocaleString()} ]`,
-      "sub1",
+      "practive",
       <MailOutlined />
     ),
 
@@ -432,116 +422,10 @@ const SliderBar = () => {
 
     getItem("Bộ sưu tập", "sub11", <SettingOutlined />),
   ];
+
   const onOpenChange = (keys) => {
     setOpenKeys(keys.key);
-  };
-
-  const displayContent = () => {
-    switch (openKeys) {
-      case "sub1":
-        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
-      case "sub2":
-        return <ClassCard role={"lesson"} data={scheduleQuery} />;
-      case "sub3":
-        return <ClassCard />;
-      case "sub4-1":
-        return <ExamCard onlyAssignment={true} />;
-      case "sub4-2":
-        return <ExamCard onlyAssignment={false} />;
-      case "sub5-1":
-        return <SelftrainingCard onlyAssignment={true} />;
-      case "sub5-2":
-        return <SelftrainingCard onlyAssignment={false} />;
-      case "sub6":
-        return <Document_Cart total={fileCwQuery} />;
-      case "sub7":
-        return <CourseCard />;
-      case "sub8":
-        return <PractiseCard total={practiveQuery?.Object?.cardSum} />;
-      case "sub9-1":
-        return (
-          <TeachingResults
-            type={"QuizVoluntary"}
-            value={countQuizVoluntary.QuizVoluntary}
-          />
-        );
-      case "sub9-2":
-        return (
-          <CircleChart
-            role={"QuizAssignment"}
-            value={countQuizAssignment.QuizAssignment}
-          />
-        );
-      case "sub9-3":
-        return (
-          <TeachingResults
-            role={"LectureVoluntary"}
-            value={countLectureVoluntary.LectureVoluntary}
-          />
-        );
-      case "sub9-4":
-        return (
-          <CircleChart
-            role={"LectureAssignment"}
-            value={countLectureAssignment.LectureAssignment}
-          />
-        );
-      case "sub9-5":
-        return (
-          <TeachingResults
-            role={"hoctap"}
-            dataCountQuizAssignment={countQuizAssignment}
-          />
-        );
-      case "sub9-6":
-        return (
-          <CircleChart
-            role={"TestAssignment"}
-            value={countTestAssignment.TestAssignment}
-          />
-        );
-      case "sub9-7":
-        return (
-          <TeachingResults
-            role={"hoctap"}
-            dataCountQuizAssignment={countQuizAssignment}
-          />
-        );
-      case "sub9-8":
-        return (
-          <CircleChart
-            role={"TutorStudent"}
-            value={countTutorStudent.TutorStudent}
-          />
-        );
-      case "sub9-9":
-        return (
-          <TeachingResults
-            role={"hoctap"}
-            dataCountQuizAssignment={countQuizAssignment}
-          />
-        );
-      case "sub10-1":
-        return <TeachingResults value={chartTeacherQuery} type="question" />;
-      case "sub10-2":
-        return <TeachingResults value={chartTeacherQuery} type="lecture" />;
-      case "sub10-3":
-        return <TeachingResults value={chartTeacherQuery} type="test" />;
-      case "sub10-4":
-        return <TeachingResults value={chartTeacherQuery} type="exam" />;
-      case "sub10-5":
-        return <TeachingResults value={chartTeacherQuery} type="class" />;
-      case "sub10-6":
-        return <TeachingResults value={chartTeacherQuery} type="subject" />;
-      case "sub10-7":
-        return <TeachingResults value={chartTeacherQuery} type="student" />;
-      case "sub10-8":
-        return <TeachingResults value={chartTeacherQuery} type="task" />;
-      case "sub10-9":
-        return <TeachingResults value={chartTeacherQuery} type="file" />;
-      case "sub11":
-        return <AbumCart />;
-    }
+    router.push(`/personalized?key=${keys.key}`);
   };
 
   const [openNav, setOpenNav] = useState(false);
@@ -557,16 +441,8 @@ const SliderBar = () => {
           </span>
           <Menu
             mode="inline"
-            defaultSelectedKeys="sub1"
+            defaultSelectedKeys={openKeys}
             onClick={onOpenChange}
-            style={
-              {
-                width: '100%'
-                // width: 300,
-                // backgroundColor: "",
-                // position: "fixed",
-              }
-            }
             items={items}
           />
         </div>
