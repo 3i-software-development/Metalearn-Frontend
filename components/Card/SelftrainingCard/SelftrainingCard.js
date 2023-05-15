@@ -9,6 +9,7 @@ import Pagination from "@/components/Pagination/Pagination";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 
 const cx = classNames.bind(styles);
+const format = /[`!@#$%^&*()_+\-=\[\]{};':"\\|.<>\/~]/;
 const mathJaxOptions = {
   svg: {
     scale: 1, // global scaling factor for all expressions
@@ -87,9 +88,26 @@ const SelftrainingCard = ({ onlyAssignment }) => {
     return arrStr;
   };
 
+  const config = {
+    "fast-preview": {
+      disabled: true
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"]
+      ]
+    },
+    messageStyle: "none"
+  };
+
   return (
     <Section>
-      <MathJaxContext>
+      <MathJaxContext config={config}>
         <div className={cx("contaiberQuiz")}>
           <table className={cx("list-table")}>
             <thead>
@@ -131,13 +149,14 @@ const SelftrainingCard = ({ onlyAssignment }) => {
                   <td className={cx("question")}>
                     <h4>
                       {textFomart(item.Content).map((element, index) => {
-                        console.log(element)
-                        return <MathJax key={index}>{element}</MathJax>
-                          // return <span key={-index}>{element}</span>;
+                        if (format.test(element))
+                          return <MathJax key={index}>{`$$${element}$$`}</MathJax>
+                        else return <span key={index}>{element}</span>
+
                         // if (index % 2 === 0) {
                         //   return <span key={-index}>{element}</span>;
                         // } else
-                        //   return <MathJax>{element}</MathJax>;
+                        //   // return <MathJax key={index}>{element}</MathJax>
                       })}
                     </h4>
                   </td>
