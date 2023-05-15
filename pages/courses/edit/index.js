@@ -20,7 +20,7 @@ const CourseEdit = () => {
   const router = useRouter();
   const { RangePicker } = DatePicker;
   
-  const { data: courseQuery } = useStartCourseUpdateQuery({Id: router.query.id});
+  const { data: courseQuery } = useStartCourseUpdateQuery({Id: router.query.Id | router.query.id});
   const courseItem = courseQuery?.Object;
   const [updateCourse, setUpdateCourse] = useState(initialCourseItem);
 
@@ -36,15 +36,18 @@ const CourseEdit = () => {
     })
   }
 
-  const onChangeDateStart = (date, dateStringStart) => { 
-    console.log(date, dateStringStart)
+  const onChangeDateStart = (date, dateStringStart) => {
+    console.log("start: ", date, dateStringStart);
+    setUpdateCourse({
+      StartTime: dateStringStart
+    })
   };
 
   const onChangeDateEnd = (date, dateStringEnd) => {
-    console.log("end: ", dateStringEnd)
-    // setUpdateCourse({
-    //   EndTime: dateStringEnd
-    // })
+    console.log("end: ", date, dateStringStart);
+    setUpdateCourse({
+      EndTime: dateStringEnd
+    })
   };
 
   const handleActionRouter = (action) => {
@@ -58,8 +61,10 @@ const CourseEdit = () => {
   }
 
   function handleSubmitUpdateCourse() {
-      console.log("update data: ", updateCourse);
+    console.log("update data: ", updateCourse);
   }
+
+  console.log('updateCourse: ', updateCourse)
   
   return (
     <Section>
@@ -113,11 +118,19 @@ const CourseEdit = () => {
               <div className={cx("group-time")}>
                 <div className={cx("form-group")}>
                   <h2 className={cx("form-group-title")}>Thời gian:</h2>
-                  <RangePicker
-                      value={[dayjs(`${updateCourse?.StartTime}`, 'DD/MM/YYYY'), dayjs(`${updateCourse?.EndTime}`, 'DD/MM/YYYY')]}
-                      format={'DD/MM/YYYY'}
-                      style={{ width: '100%',  minHeight: "44px", borderRadius: "var(--button-radius)" }}
+                  <div className={cx("course-start-time")}>
+                    <label className={cx("form-label")}>Ngày bắt đầu</label>
+                    <DatePicker value={dayjs(`${updateCourse?.StartTime}`, 'DD/MM/YYYY')} format={'DD/MM/YYYY'} onchange={onChangeDateStart}
+                      style={{ width: '100%', minHeight: "44px", borderRadius: "var(--button-radius)" }}
                     />
+                  </div>
+
+                  <div className={cx("course-end-time")}>
+                    <label className={cx("form-label")}>Ngày kết thúc</label>
+                    <DatePicker value={dayjs(`${updateCourse?.EndTime}`, 'DD/MM/YYYY')} format={'DD/MM/YYYY'} onchange={onChangeDateEnd}
+                      style={{ width: '100%', minHeight: "44px", borderRadius: "var(--button-radius)" }}
+                    />
+                  </div>
                 </div>
               </div>
 

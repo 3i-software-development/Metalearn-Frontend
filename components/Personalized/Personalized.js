@@ -254,13 +254,13 @@ const Personalized = () => {
       ]
     ),
     getItem(
-      `Tài liệu [ ${fileCwQuery?.Object.count.toLocaleString()} ]`,
+      `Tài liệu [ ${fileCwQuery?.Object?.count.toLocaleString()} ]`,
       "sub6",
       <SettingOutlined />
     ),
 
     getItem(
-      `Khóa học [ ${lectureQuery?.Object.length.toLocaleString()} ]`,
+      `Khóa học [ ${lectureQuery?.Object?.length.toLocaleString()} ]`,
       "courses",
       <SettingOutlined />
     ),

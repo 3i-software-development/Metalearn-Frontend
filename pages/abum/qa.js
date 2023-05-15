@@ -5,7 +5,7 @@ import React from "react";
 const qa = () => {
   return (
     <Section>
-      <SelftrainingCard /> //
+      {/* <SelftrainingCard /> */}
     </Section>
   );
 };

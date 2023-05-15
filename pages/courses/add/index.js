@@ -140,8 +140,8 @@ const Add = () => {
                 </ul>
               </div>
               <div className={cx("actions")}>
-                <button type="submit" className={cx("btn-primary")} onClick={() => handleSubmitUpdateCourse()}>Create</button>
-                <button className={cx("btn-cancel")} onClick={() => handleCancelEditCourse()}>Cancel</button>
+                <button type="submit" className={cx("btn-primary")} onClick={() => handleSubmitUpdateCourse()}>Tạo</button>
+                <button className={cx("btn-cancel")} onClick={() => handleCancelEditCourse()}>Huỷ</button>
               </div>
             </form>
         </div>

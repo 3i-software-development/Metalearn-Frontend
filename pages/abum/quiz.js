@@ -5,7 +5,7 @@ import React from "react";
 const quiz = () => {
   return (
     <Section>
-      <SelftrainingCard />
+      {/* <SelftrainingCard /> */}
     </Section>
   );
 };
