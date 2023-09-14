@@ -1,11 +1,10 @@
-/* Các kiểu chung */
 .course-tab {
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px; /* Thêm padding để tạo khoảng cách xung quanh nội dung */
+    padding: 20px;
 }
 
 .course-list {
@@ -16,7 +15,7 @@
 }
 
 .course-item {
-    width: calc(25% - 20px); /* Tính toán chiều rộng của một khóa học */
+    width: calc(25% - 20px);
     margin-bottom: 20px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -28,15 +27,14 @@
     margin-right: 5px;
 }
 
-/* Thêm kiểu cho thanh trạng thái */
 .progress-bar {
     width: 100%;
-    height: 20px; /* Tăng chiều cao của thanh trạng thái */
+    height: 20px;
     background-color: #f0f0f0;
     border-radius: 5px;
     margin-top: 10px;
     display: flex;
-    align-items: center; /* Căn giữa theo chiều dọc */
+    align-items: center;
 }
 
 .progress {
@@ -45,8 +43,8 @@
     border-radius: 5px;
     transition: width 0.3s ease;
     display: flex;
-    justify-content: center; /* Căn giữa theo chiều ngang */
-    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center;
+    align-items: center;
     position: relative;
 }
 
@@ -63,3 +61,7 @@
     display: flex;
     justify-content: center; /* Căn giữa theo chiều ngang */
 }
+.center-text {
+    text-align: center;
+  }
+  

@@ -21,7 +21,9 @@ const CourseItem = ({ data }) => {
                 <p><i className="fa-solid fa-book"></i>Môn học: {data.subject}</p>
                 <div className={cx('progress-bar')}>
                     <div className={cx('progress')} style={{ width: `${data.completion}%` }}>
-                    <span className={cx('completion')}>{completionPercentage}</span>
+                    <div className={cx('progress-text')}>
+                        <span>{completionPercentage}</span>
+                    </div>
                     </div>
                 </div>
             </div>
