@@ -1,11 +1,10 @@
 import React from "react";
-import Tutorial from "../../components/Tutorial/Tutorial";
-import TutorialList from "@/components/Tutorial/TutorialBarList";
+import Tutorial from "@/components/Tutorial/Tutorial";
 
 export default function Index() {
     return (
         <div>
-            <TutorialList />
+            <Tutorial />
         </div>
     )
 }

@@ -5,11 +5,15 @@
     grid-gap: 20px;
 }
 
+.tutorial-list {
+    margin-left: 40px;
+}
 
 .tutorial-bar-item {
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border: 1px solid #e0e0e0;
 
     &:hover {
         background-color: #e0e0e0;

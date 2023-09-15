@@ -1,3 +1,4 @@
+// TutorialList.js
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
@@ -9,22 +10,8 @@ const cx = classNames.bind(styles);
 const Tutorial = () => {
     const fakeData = [
         {
-            list_name: 'React PDF Viewer',
-            data: [
-                {
-                    id: 1,
-                    title: 'Documentation',
-                    content: 'Welcome to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
-                },
-                {
-                    id: 2,
-                    title: 'Getting started',
-                    content: "React PDF Viewer is powered by React hooks completely. So it requires React 16.8 or later. If you are using TypeScript, then it requires TypeScript 3.8 or later",
-                }
-            ]
-        },
-        {
-            list_name: 'React Viewer',
+            id: 1,
+            list_name: 'Documentation',
             data: [
                 {
                     id: 1,
@@ -41,10 +28,16 @@ const Tutorial = () => {
                     title: 'Basic usage',
                     content: 'The following code snippet shows how to use the React PDF viewer component in your React application.',
                 },
+                {
+                    id: 4,
+                    title: 'Customize toolbar',
+                    content: 'The toolbar of the React PDF viewer component is customizable. You can add your own button to the toolbar, or remove the existing buttons.',
+                }
             ]
         },
         {
-            list_name: 'React PDF Viewerzzz',
+            id: 2,
+            list_name: 'Getting started',
             data: [
                 {
                     id: 1,
@@ -55,52 +48,66 @@ const Tutorial = () => {
                     id: 2,
                     title: 'Getting started',
                     content: "React PDF Viewer is powered by React hooks completely. So it requires React 16.8 or later. If you are using TypeScript, then it requires TypeScript 3.8 or later",
+                },
+                {
+                    id: 3,
+                    title: 'Basic usage',
+                    content: 'The following code snippet shows how to use the React PDF viewer component in your React application.',
+                }
+            ]
+        },
+        {
+            id: 2,
+            list_name: 'Getting started',
+            data: [
+                {
+                    id: 1,
+                    title: 'Documentation',
+                    content: 'Welcome to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
+                },
+                {
+                    id: 2,
+                    title: 'Getting started',
+                    content: "React PDF Viewer is powered by React hooks completely. So it requires React 16.8 or later. If you are using TypeScript, then it requires TypeScript 3.8 or later",
+                },
+                {
+                    id: 3,
+                    title: 'Basic usage',
+                    content: 'The following code snippet shows how to use the React PDF viewer component in your React application.',
                 }
             ]
         },
     ];
 
-    // Trạng thái của mục được chọn và danh sách mở / đóng
-    const [selectedBarItem, setSelectedBarItem] = useState(fakeData[0]);
-    const [openList, setOpenList] = useState(-1); // Sử dụng -1 để chỉ hiện danh sách khi đã nhấp vào nút "toggle"
+    const [selectedBarItem, setSelectedBarItem] = useState(fakeData[0].data[0]);
 
-    // Xử lý khi chọn một mục
     const handleSelectBarItem = (item) => {
+        console.log(item);
+
         setSelectedBarItem(item);
     };
 
-    // Xử lý khi nhấp vào nút "toggle-button" để mở / đóng danh sách
-    const toggleList = (listIndex) => {
-        setOpenList(openList === listIndex ? -1 : listIndex); // Đặt -1 để đóng danh sách nếu đã mở hoặc mở danh sách nếu đã đóng
-    };
-
     return (
-        <div>
-            <div className={cx('tutorial-container')}>
-                <div className={cx('tutorial-sidebar')}>
-                    {fakeData.map((list, listIndex) => (
-                        <div key={listIndex}>
-                            <button className={cx('toggle-button')} onClick={() => toggleList(listIndex)}>
-                                <h3>{list.list_name}</h3>
-                            </button>
-                            {openList === listIndex && ( // Chỉ hiển thị danh sách nếu openList === listIndex
-                                <div className={cx('tutorial-bar')}>
-                                    {list.data.map((item) => (
-                                        <TutorialBarItem
-                                            key={item.id}
-                                            title={item.title}
-                                            item={item}
-                                            isSelected={item === selectedBarItem}
-                                            handleSelectBarItem={handleSelectBarItem}
-                                        />
-                                    ))}
-                                </div>
-                            )}
+        <div className={cx('tutorial-container')}>
+            <div className={cx('tutorial-bar-list')}>
+                {fakeData.map((list) => (
+                    <div key={list.id} className={cx('tutorial-list')}>
+                        <h1 className={cx('list-name')}>{list.list_name}</h1>
+                        <div className={cx('tutorial-bar')}>
+                            {list.data.map((item) => (
+                                <TutorialBarItem
+                                    key={item.id}
+                                    title={item.title}
+                                    item={item}
+                                    isSelected={item === selectedBarItem}
+                                    handleSelectBarItem={handleSelectBarItem}
+                                />
+                            ))}
                         </div>
-                    ))}
-                </div>
-                <TutorialContent content={selectedBarItem.content} />
+                    </div>
+                ))}
             </div>
+            <TutorialContent content={selectedBarItem.content} item={selectedBarItem}/>
         </div>
     );
 };
