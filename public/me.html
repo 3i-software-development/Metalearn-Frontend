@@ -124,7 +124,8 @@
     const func = url.searchParams.get("func");
     const pin = url.searchParams.get("pin");
     const id = url.searchParams.get("id");
-    var protoUrl = `metalearn://metalearn.vn/me?func=${func}&pin=${pin}&id=${id}`;
+    const param = url.searchParams.get("param");
+    var protoUrl = `metalearn://metalearn.vn/me?func=${func}&pin=${pin}&id=${id}&param=${param}`;
     if (false) {
       var iframeContEl = document.getElementById('tgme_frame_cont') || document.body;
       var iframeEl = document.createElement('iframe');
@@ -180,7 +181,8 @@
       const func = url.searchParams.get("func");
       const pin = url.searchParams.get("pin");
       const id = url.searchParams.get("id");
-      window.open(`metalearn://metalearn.vn/me?func=${func}&pin=${pin}&id=${id}`);
+      const param = url.searchParams.get("param");
+      window.open(`metalearn://metalearn.vn/me?func=${func}&pin=${pin}&id=${id}&param=${param}`);
     }
     function downloadApp() {
       const os = getMobileOperatingSystem();
