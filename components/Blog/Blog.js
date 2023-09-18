@@ -1,4 +1,3 @@
-// TutorialList.js
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
@@ -6,6 +5,26 @@ import BlogBarItem from './BlogBarItem';
 import BlogContent from './BlogContent';
 
 const cx = classNames.bind(styles);
+
+const TreeNode = ({ label, children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNode = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className={cx('tree-node')}>
+      <div onClick={toggleNode} className={cx('tree-node-label')}>
+        {label}
+        <span className={cx('tree-node-icon', isOpen ? 'open' : 'closed')}>
+          {isOpen ? '-' : '+'}
+        </span>
+      </div>
+      {isOpen && <div className={cx('tree-node-children')}>{children}</div>}
+    </div>
+  );
+};
 
 const Blog = () => {
     const fakeData = [
@@ -82,34 +101,29 @@ const Blog = () => {
     const [selectedBarItem, setSelectedBarItem] = useState(fakeData[0].data[0]);
 
     const handleSelectBarItem = (item) => {
-        console.log(item);
-
         setSelectedBarItem(item);
     };
 
     return (
         <div className={cx('blog-container')}>
-            <div className={cx('blog-bar-list')}>
-                {fakeData.map((list) => (
-                    <div key={list.id} className={cx('blog-list')}>
-                        <h1 className={cx('list-name')}>{list.list_name}</h1>
-                        <div className={cx('blog-bar')}>
-                            {list.data.map((item) => (
-                                <BlogBarItem
-                                    key={item.id}
-                                    title={item.title}
-                                    item={item}
-                                    isSelected={item === selectedBarItem}
-                                    handleSelectBarItem={handleSelectBarItem}
-                                />
-                            ))}
-                        </div>
-                    </div>
+          <div className={cx('blog-bar-list')}>
+            {fakeData.map((list) => (
+              <TreeNode key={list.id} label={list.list_name}>
+                {list.data.map((item) => (
+                  <BlogBarItem
+                    key={item.id}
+                    title={item.title}
+                    item={item}
+                    isSelected={item === selectedBarItem}
+                    handleSelectBarItem={handleSelectBarItem}
+                  />
                 ))}
-            </div>
-            <BlogContent content={selectedBarItem.content} item={selectedBarItem}/>
+              </TreeNode>
+            ))}
+          </div>
+          <BlogContent content={selectedBarItem.content} item={selectedBarItem} />
         </div>
-    );
-};
-
-export default Blog;
+      );
+    };
+    
+    export default Blog;
