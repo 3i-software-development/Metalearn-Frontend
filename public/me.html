@@ -126,7 +126,9 @@
     const id = url.searchParams.get("id");
     const param = url.searchParams.get("param");
     const param2 = url.searchParams.get("param2");
-    var protoUrl = `metalearn://metalearn.vn/me?func=${func}&pin=${pin}&id=${id}&param=${param}&param2=${param2}`;
+    const param3 = url.searchParams.get("param3");
+    const param4 = url.searchParams.get("param4");
+    var protoUrl = `metalearn://metalearn.vn/me?func=${func}&pin=${pin}&id=${id}&param=${param}&param2=${param2}&param3=${param3}&param4=${param4}`;
     if (false) {
       var iframeContEl = document.getElementById('tgme_frame_cont') || document.body;
       var iframeEl = document.createElement('iframe');
@@ -184,7 +186,9 @@
       const id = url.searchParams.get("id");
       const param = url.searchParams.get("param");
       const param2 = url.searchParams.get("param2");
-      window.open(`metalearn://metalearn.vn/me?func=${func}&pin=${pin}&id=${id}&param=${param}&param2=${param2}`);
+      const param3 = url.searchParams.get("param3");
+      const param4 = url.searchParams.get("param4");
+      window.open(`metalearn://metalearn.vn/me?func=${func}&pin=${pin}&id=${id}&param=${param}&param2=${param2}&param3=${param3}&param4=${param4}`);
     }
     function downloadApp() {
       const os = getMobileOperatingSystem();
