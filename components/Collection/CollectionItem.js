@@ -10,28 +10,28 @@ const CollectionItem = ({ data }) => {
         <div style={{marginBottom: '10px'}}>
             <div style={{marginLeft: '10px'}}>
                 <div style={{display: 'flex'}}>
-                    <p><i class="fa-solid fa-thumbtack"></i></p>
+                    <p><i className="fa-solid fa-thumbtack"></i></p>
                     <p style={{marginLeft: '5px'}}>Câu hỏi Quiz [{data.total_quiz}]</p>
                 </div>
                 <div><Image src={data.image} alt="quiz image" width={400} height={200} /></div>
             </div>
             <div style={{marginLeft: '10px'}}>
                 <div style={{display: 'flex'}}>
-                    <p><i class="fa-solid fa-thumbtack"></i></p>
+                    <p><i className="fa-solid fa-thumbtack"></i></p>
                     <p style={{marginLeft: '5px'}}>Đề thi [{data.total_exam}]</p>
                 </div>
                 <div><Image src={data.image} alt="quiz image" width={400} height={200} /></div>
             </div>
             <div style={{marginLeft: '10px'}}>
                 <div style={{display: 'flex'}}>
-                    <p><i class="fa-solid fa-thumbtack"></i></p>
+                    <p><i className="fa-solid fa-thumbtack"></i></p>
                     <p style={{marginLeft: '5px'}}>Câu hỏi và câu trả lời [{data.total_question}]</p>
                 </div>
                 <div><Image src={data.image} alt="quiz image" width={400} height={200} /></div>
             </div>
             <div style={{marginLeft: '10px'}}>
                 <div style={{display: 'flex'}}>
-                    <p><i class="fa-solid fa-thumbtack"></i></p>
+                    <p><i className="fa-solid fa-thumbtack"></i></p>
                     <p style={{marginLeft: '5px'}}>File [{data.total_file}]</p>
                 </div>
                 <div><Image src={data.image} alt="quiz image" width={400} height={200} /></div>
