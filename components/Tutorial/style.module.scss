@@ -1,0 +1,47 @@
+/* style.module.scss */
+.tutorial-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 20px;
+}
+
+.tutorial-list {
+    margin-left: 40px;
+}
+
+.tutorial-bar-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 1px solid #e0e0e0;
+
+    &:hover {
+        background-color: #e0e0e0;
+    }
+
+    &.selected {
+        background-color: #007bff;
+        color: #fff;
+    }
+}
+
+/* TutorialContent.module.css (hoặc bạn có thể sử dụng SCSS) */
+
+.tutorial-content {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.tutorial-content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.tutorial-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+}

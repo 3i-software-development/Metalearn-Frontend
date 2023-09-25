@@ -40,7 +40,7 @@ const ListCourse = () => {
           <ListCourses data={ListClass.data.query} clas />
         )}
         {btnact === 2 && ListDoc.data && (
-          <ListCourses data={ListDoc.data.Object.data1} doc />
+          <ListCourses data={ListDoc.data?.Object?.data1} doc />
         )}
       </div>
     </div>
