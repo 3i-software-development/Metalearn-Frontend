@@ -6,7 +6,10 @@ import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Avatar, Dropdown, Space } from "antd";
+import { Avatar, Button, Dropdown, Space } from "antd";
+import NotificationPopup from "@/components/Notification/NotificationPopup";
+
+import { FaBell } from "react-icons/fa"; // Import the notification icon
 
 import {
   Box,
@@ -25,6 +28,7 @@ const cx = classNames.bind(styles);
 
 const Header = () => {
   const [showMobile, setShowmobile] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
   const state = useAuth();
 
   const items = [
@@ -134,6 +138,9 @@ const Header = () => {
   };
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+  const toggleNotification = () => {
+    setShowNotification(!showNotification);
   };
 
   const user = useSelector((state) => state.login);
@@ -286,6 +293,14 @@ const Header = () => {
           </Menu>
         </Box>
       )}
+
+      
+      {/* Notification button */}
+      <div className={cx("notification-icon")} onClick={toggleNotification}>
+        <FaBell />
+      </div>
+      {/* Notification Popup */}
+      {showNotification && <NotificationPopup />}
 
       {!state && (
         <div className={cx("user")}>
