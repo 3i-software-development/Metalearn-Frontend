@@ -1,0 +1,16 @@
+.button-container {
+    width: 40%;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 24px;
+    padding: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 4px 1px gainsboro;
+}
+
+.ebank-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
