@@ -340,7 +340,7 @@ const MenuMobile = () => {
           Lớp học trực tuyến
         </Link>
         <Link href="/documents" className={cx("mb-link")}>
-          Tài liệ
+          Tài liệu
         </Link>
         <Link href="/exam" className={cx("mb-link")}>
           Đề thi
