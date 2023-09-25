@@ -1,0 +1,39 @@
+.content-layout {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ul {
+    width: 100%;
+  }
+}
+
+.menu{
+  width: 100%;
+  margin-top: 30px;
+}
+.menu .item{
+  position: relative;
+  cursor: pointer;
+}
+.menu .item a{
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  display: block;
+  padding: 5px 30px;
+  line-height: 60px;
+}
+.menu .item a:hover{
+ background: #33363a;
+ transition: 0.3s ease;
+}
+.menu .item i{
+ margin-right: 15px;
+}
+
+.menu-layout {
+  display: flex;
+  flex-direction: row;
+  
+}

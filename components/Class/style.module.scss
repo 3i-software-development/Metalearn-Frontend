@@ -107,6 +107,7 @@
   }
   .title {
     padding: 5px;
+    margin-left: 5px;
     display: flex;
     align-items: center;
     .name {
@@ -140,13 +141,17 @@
   .footer-card {
     padding: 5px;
     margin-top: 5px;
+    margin-left: 4px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     i {
-      font-size: 25px;
-      color: black;
+      font-size: 20px;
+      color:rgba(0, 0, 0, 0.55);
       cursor: pointer;
+      &:hover {
+        color:rgba(0, 0, 0, 0.7);
+      }
     }
   }
 }

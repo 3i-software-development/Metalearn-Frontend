@@ -30,76 +30,94 @@ const ClassCard = ({ role }) => {
     return doc.documentElement.innerText;
   }
   const arr = role ? Lesson : LmsClass.query;
+
   return (
     <Section>
       <div className={cx("class")}>
         {arr?.map((element) => {
           return (
-            <div key={element.Id} className={cx("card")}>
-              <Image
-                src={
-                  role
-                    ? `${element.Image}`
-                    : "https://cdn.shopify.com/s/files/1/0879/0542/products/pc6741.jpg?v=1569974144"
-                }
-                alt="document"
-                width={150}
-                height="180"
-                className={cx("image")}
-              />
-              <div className={cx("card-body")}>
-                <div>
-                  <div className={cx("title")}>
-                    <h3>
-                      <i
-                        className="fa-solid fa-diamond"
-                        style={{ color: "orange" }}
-                      ></i>
-                      {/* [{element.ClassCode}]  */}
-                      &nbsp;{" "}
-                      {role
-                        ? `${element.Name} `
-                        : "[ " + `${element.ClassCode}` + " ]"}
-                    </h3>
+            <div key={element.Id} className={cx("item")}>
+              <div className={cx("inner-item")}>
+                <div className={cx("item-media")}>
+                  <Image
+                    src={
+                      role
+                        ? `${element.Image}`
+                        : "https://cdn.shopify.com/s/files/1/0879/0542/products/pc6741.jpg?v=1569974144"
+                    }
+                    alt="document"
+                    width={180}
+                    height="150"
+                    className={cx("image")}
+                  />
+
+                  <div className={cx("actions")}>
+                    {role ? (
+                      <>
+                        <span className={cx("mobie")}>
+                          <i className="fa-solid fa-mobile-screen-button"></i>
+                        </span>
+                        <span className={cx("file")}>
+                          <i className="fa-solid fa-file-video"></i>
+                        </span>
+                        <span className={cx("video")}>
+                          <i className="fa-solid fa-video"></i>
+                        </span>
+                      </>
+                    ) : (
+                      <span className={cx("edit")}>
+                        <i className="fa-regular fa-pen-to-square"></i>
+                      </span>
+                    )}
                   </div>
-                  <br />
-                  <div className={cx("title")}>
+                </div>
+                <div className={cx("item-detail")}>
+                  <h3 className={cx("title")}>
                     <i
                       className="fa-solid fa-diamond"
                       style={{ color: "orange" }}
                     ></i>
-                    <strong>
-                      &nbsp;{" "}
+                    &nbsp; <span className={cx("label")}>{"Lớp: "}</span>
+                    &nbsp;{" "}
+                    <span className={cx("value")}>
                       {role
                         ? "Số đề thi " + `${element.CountExam}`
                         : element.ClassName}
-                    </strong>
-                  </div>
+                    </span>
+                  </h3>
+
                   <div className={cx("title")}>
                     <i
                       className="fa-solid fa-diamond"
                       style={{ color: "orange" }}
                     ></i>
+                    &nbsp; <span className={cx("label")}>{"Mã đề: "}</span>
+                    &nbsp;{" "}
+                    <span className={cx("value")}>
+                      {role
+                        ? `${element.Name} `
+                        : `${element.ClassCode.toLocaleString()}`}
+                    </span>
+                  </div>
+
+                  <div className={cx("description")}>
+                    <i
+                      className="fa-solid fa-diamond"
+                      style={{ color: "orange" }}
+                    ></i>
+                    &nbsp;
                     {role ? (
                       "Mô tả : " + htmlDecode(`${element.Description}`)
                     ) : (
                       <>
-                        <span>&nbsp; Số học sinh:</span>
-                        <span>&nbsp; {element.CountStudent}</span>
+                        <span className={cx("label")}>{"Số học sinh:"}</span>
+                        &nbsp;{" "}
+                        <span className={cx("value")}>
+                          {element.CountStudent}
+                        </span>
                       </>
                     )}
                   </div>
-                </div>
-                <div className={cx("card-footer")}>
-                  {role ? (
-                    <>
-                      <i className="fa-solid fa-mobile-screen-button"></i>
-                      <i className="fa-solid fa-file-video"></i>
-                      <i className="fa-solid fa-video"></i>
-                    </>
-                  ) : (
-                    <i className="fa-regular fa-pen-to-square"></i>
-                  )}
                 </div>
               </div>
             </div>

@@ -2,33 +2,29 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
     margin: 50px 0;
-    // min-height: 555px
-}
-
-.navbar {
-    // position: relative;
+    column-gap: 2%;
 }
 
 .content {
     min-height: 555px;
-    // margin-left: 70px;
 }
 
 .SearchAndAddSubjects_ItemAll {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 10px 0;
     font-size: 30px;
     align-items: baseline;
+}
 
-    i {
-        font-size: 20px;
-        margin-left: 20px;
-        cursor: pointer;
 
-        :hover {
-            color: greenyellow;
+@media screen and (max-width: 767px){
+    .person{
+        display: block;
+
+        ul{
+            display: none;
         }
     }
-
 }

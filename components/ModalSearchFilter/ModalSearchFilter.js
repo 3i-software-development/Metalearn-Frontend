@@ -21,12 +21,12 @@ const ModalSearchFilter = () => {
   };
 
   const marks = {
-    0: '0',
-    20: '1',
-    40: '2',
-    60: '3',
-    80: '4',
-    100: '5',
+    0: "0",
+    20: "1",
+    40: "2",
+    60: "3",
+    80: "4",
+    100: "5",
   };
 
   const options = [
@@ -67,14 +67,16 @@ const ModalSearchFilter = () => {
 
   return (
     <>
-      <i className="fa-solid fa-magnifying-glass" onClick={showModal}></i>
+      <span className="tool-item tool-search">
+        <i className="fa-solid fa-magnifying-glass" onClick={showModal}></i>
+      </span>
       <Modal
         open={open}
         title="Search - Filter"
         onCancel={handleCancel}
         centered
       >
-        <div className={cx("modal-body")} >
+        <div className={cx("modal-body")}>
           <div className={cx("search-container")}>
             <input
               type="text"

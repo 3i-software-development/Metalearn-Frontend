@@ -80,3 +80,20 @@ export const ListIntro = [
 ];
 
 export const ListSubject = ["Đề thi", "Lớp học", "Tài liệu"];
+
+export const Course = [
+  {
+    CourseName: "Khóa học tiếng Anh giao tiếp Mrs Thao",
+    ImageCover: Img,
+    LectCode: "ACB123",
+    SubjectName: "Tiếng anh giao tiếp",
+    Price: 2000000,
+    Teacher: "Mrs Thao",
+    Rating: "",
+    VideoPresent: "https://www.youtube.com/embed/P9mqCv1yhBE",
+    Unit: "MINUTE",
+    Status: "AVAILABLE",
+    Duration: 10,
+    TryTime: 10
+  }
+]

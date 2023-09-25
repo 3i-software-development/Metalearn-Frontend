@@ -83,6 +83,7 @@
     }
 }
 
+
 .listIcon {
     display: flex;
     justify-content: center;
@@ -99,5 +100,39 @@
     i {
         color: gray;
         font-size: 16px;
+    }
+}
+
+.card-listIcon:first-child {
+    margin-left: 0;
+}
+
+@media screen and (max-width: 1920px){
+    .titleCard {
+        max-width: 180px;
+    }
+    .card-actions {
+        min-width: 120px;
+    }
+}
+
+@media screen and (max-width: 1479px){
+    .titleCard {
+        max-width: 350px;
+    }
+    .card-actions {
+        min-width: 180px;
+    }
+    .card-time {
+        min-width: 210px;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .titleCard {
+        max-width: 180px;
+    }
+    .card-actions {
+        min-width: 120px;
     }
 }
