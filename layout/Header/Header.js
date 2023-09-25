@@ -180,7 +180,7 @@ const Header = () => {
 
       <Link href="/news" className={cx("head-link")}>
         Tin tức
-      </Link>
+      </Link>``
       <Link href="/my-class" className={cx("head-link")}>
         Lớp học trực tuyến
       </Link>
@@ -340,7 +340,7 @@ const MenuMobile = () => {
           Lớp học trực tuyến
         </Link>
         <Link href="/documents" className={cx("mb-link")}>
-          Tài liệu
+          Tài liệ
         </Link>
         <Link href="/exam" className={cx("mb-link")}>
           Đề thi
