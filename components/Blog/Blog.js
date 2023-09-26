@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './style.module.scss';
 import BlogBarItem from './BlogBarItem';
 import BlogContent from './BlogContent';
+import TreeViewComponent from './TreeViewComponent';
 
 const cx = classNames.bind(styles);
 
@@ -27,78 +28,50 @@ const TreeNode = ({ label, children }) => {
 };
 
 const Blog = () => {
-    const fakeData = [
+  const treeData = [
+    {
+      nodeId: "1",
+      label: "Applications",
+      children: [
         {
-            id: 1,
-            list_name: 'ten ten',
-            data: [
-                {
-                    id: 1,
-                    title: 'Documentation',
-                    content: 'Welcome to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
-                },
-                {
-                    id: 2,
-                    title: 'Getting started',
-                    content: "React PDF Viewer is powered by React hooks completely. So it requires React 16.8 or later. If you are using TypeScript, then it requires TypeScript 3.8 or later",
-                },
-                {
-                    id: 3,
-                    title: 'Basic usage',
-                    content: 'The following code snippet shows how to use the React PDF viewer component in your React application.',
-                },
-                {
-                    id: 4,
-                    title: 'Customize toolbar',
-                    content: 'The toolbar of the React PDF viewer component is customizable. You can add your own button to the toolbar, or remove the existing buttons.',
-                }
-            ]
+          nodeId: "2",
+          label: "Calendar",
+          date: "Mar 23, 2019",
+          author: "John Doe",
+          content: 'Welcome to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
         },
         {
-            id: 2,
-            list_name: 'Bài văn mẫu',
-            data: [
-                {
-                    id: 1,
-                    title: 'Documentation',
-                    content: 'Welcome to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
-                },
-                {
-                    id: 2,
-                    title: 'Getting started',
-                    content: "React PDF Viewer is powered by React hooks completely. So it requires React 16.8 or later. If you are using TypeScript, then it requires TypeScript 3.8 or later",
-                },
-                {
-                    id: 3,
-                    title: 'Basic usage',
-                    content: 'The following code snippet shows how to use the React PDF viewer component in your React application.',
-                }
-            ]
+          nodeId: "3",
+          label: "Contacts",
+          date: "Mar 23, 2019",
+          author: "John Doe",
+          content: "React PDF Viewer is powered by React hooks completely. So it requires React 16.8 or later. If you are using TypeScript, then it requires TypeScript 3.8 or later",
+        },
+      ],
+    },
+    {
+      nodeId: "4",
+      label: "Documents",
+      children: [
+        {
+          nodeId: "5",
+          label: "Notes",
+          date: "Mar 23, 2019",
+          author: "John Doe",
+          content: 'Welcome to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
         },
         {
-            id: 2,
-            list_name: 'May tinh',
-            data: [
-                {
-                    id: 1,
-                    title: 'Documentation',
-                    content: 'Welcome to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
-                },
-                {
-                    id: 2,
-                    title: 'Getting started',
-                    content: "React PDF Viewer is powered by React hooks completely. So it requires React 16.8 or later. If you are using TypeScript, then it requires TypeScript 3.8 or later",
-                },
-                {
-                    id: 3,
-                    title: 'Basic usage',
-                    content: 'The following code snippet shows how to use the React PDF viewer component in your React application.',
-                }
-            ]
+          nodeId: "6",
+          label: "Presentations",
+          date: "Mar 23, 2019",
+          author: "John Doe",
+          content: 'to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
         },
-    ];
+      ],
+    },
+  ];
 
-    const [selectedBarItem, setSelectedBarItem] = useState(fakeData[0].data[0]);
+    const [selectedBarItem, setSelectedBarItem] = useState(treeData[0].children[0]);
 
     const handleSelectBarItem = (item) => {
         setSelectedBarItem(item);
@@ -106,21 +79,7 @@ const Blog = () => {
 
     return (
         <div className={cx('blog-container')}>
-          <div className={cx('blog-bar-list')}>
-            {fakeData.map((list) => (
-              <TreeNode key={list.id} label={list.list_name}>
-                {list.data.map((item) => (
-                  <BlogBarItem
-                    key={item.id}
-                    title={item.title}
-                    item={item}
-                    isSelected={item === selectedBarItem}
-                    handleSelectBarItem={handleSelectBarItem}
-                  />
-                ))}
-              </TreeNode>
-            ))}
-          </div>
+          <TreeViewComponent treeData={treeData} handleSelectBarItem={handleSelectBarItem}/>
           <BlogContent content={selectedBarItem.content} item={selectedBarItem} />
         </div>
       );

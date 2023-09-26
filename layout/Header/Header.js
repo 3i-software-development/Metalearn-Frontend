@@ -195,17 +195,16 @@ const Header = () => {
       </Link>
       <div className={cx("icon-ss")}>
         <BsSearch className={cx("icon-search-mobile")} />
-        <TiShoppingCart
-          className={cx("icon")}
-          onClick={() => router.push("/payment")}
-        />
-              {/* Notification button */}
-      <div className={cx("notification-icon")} onClick={toggleNotification}>
-        <FaBell />
+        <Link href="/payment">
+          <TiShoppingCart className={cx("icon")} />
+        </Link>
+        <div className={cx("notification-icon")} onClick={toggleNotification}>
+          <FaBell />
+        </div>
+        {/* Notification Popup */}
+        {showNotification && <NotificationPopup />}
       </div>
-      {/* Notification Popup */}
-      {showNotification && <NotificationPopup />}
-      </div>
+      {/* Notification button */}
 
       {/*
       <div className={cx("change-language")}>
