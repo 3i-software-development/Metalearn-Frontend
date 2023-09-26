@@ -31,16 +31,20 @@ const Footer = () => {
             <Link className={cx("link-group-item")} href="/">Search</Link>
           </div>
         </div>
-        
+
         <div className={cx("language-select", "footer-item")}>
-        <div id="google_translate_element">
-          </div>
-          {/* <Link href="/">
+          {/*<Link href="/">
             <BsGlobe />
             <span>Ngôn ngữ</span>
+            <div id="google_translate_element">
+          </div>
           </Link> */}
-          
-          
+            <BsGlobe />
+            <span>Ngôn ngữ</span>
+            <div id="google_translate_element">
+          </div>
+
+
         </div>
         <div className={cx("icon", "footer-item")}>
           <p>MetaLearn</p>
