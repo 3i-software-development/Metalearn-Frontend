@@ -1,49 +1,53 @@
 /* style.module.scss */
+
 .blog-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-gap: 20px;
     height: 100vh;
 }
+
 .tree-view-list {
     display: flex;
     flex-direction: column;
     padding: 20px;
+    background-color: #f0f0f0; /* Đặt màu nền cho TreeView list */
 }
 
 .blog-content {
     /* CSS cho container chứa nội dung blog */
     margin: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .blog-title {
     /* CSS cho tiêu đề blog */
-    font-size: 24px;
+    font-size: 28px;
     color: #333;
 }
 
 .blog-date {
     /* CSS cho ngày đăng */
-    font-size: 14px;
-    color: #777;
+    font-size: 16px;
+    color: #555;
 }
 
 .blog-text {
     /* CSS cho nội dung blog */
-    font-size: 16px;
-    line-height: 1.4;
-    margin-top: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-top: 15px;
+    color: #444;
 }
 
 .blog-author {
     /* CSS cho tên tác giả */
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
-    color: #555;
-    float: right; /* Đặt tác giả sang bên phải */
-    clear: both; /* Đảm bảo không có phần nào bị lấn áp bởi float */
+    color: #666;
+    float: right;
+    clear: both;
 }

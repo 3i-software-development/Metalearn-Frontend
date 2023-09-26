@@ -4,11 +4,11 @@ import styles from './style.module.scss';
 
 const cx = classNames.bind(styles);
 
-const TutorialContent = ({ content, item }) => {
+const TutorialContent = ({ item }) => {
     return (
         <div className={cx('tutorial-content')}>
-            <h1>{item.title}</h1>
-            <p>{content}</p>
+            <h1 className={cx('tutorial-title')}>{item.label}</h1>
+            <p className={cx('tutorial-text')}>{item.content}</p>
         </div>
     )
 }
