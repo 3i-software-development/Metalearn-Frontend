@@ -1,39 +1,105 @@
-//count-teacher page
-import React from "react";
+import React, { useState } from "react";
 import styles from './style.module.scss'; // Import SCSS styles for classNames
 import classNames from 'classnames/bind';
+import { Bar } from 'react-chartjs-2';
+ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
+import {
+    Chart as ChartJS,
+    BarElement,
+    CategoryScale,
+    Tooltip,
+    Legend,
+    registerables,
+  } from "chart.js";
+
 const cx = classNames.bind(styles);
 
 const CountTeacher = () => {
-    //number of teacher data
-    const fakeData = {
-        countQuestion: 100,
-        countLeature: 100,
-        countStudent: 100,
-        countClass: 100,
-    }
+    // Number of teacher data
+    const fakeData = [
+        {
+            type: "Câu hỏi tự luyện",
+            data: {
+                Total: 100,
+                Done: 50,
+                Right: 30,
+                Wrong: 20,
+                Hours: 10,
+            },
+        },
+        {
+            type: 'Câu hỏi được giao',
+            data: {
+                Total: 200,
+                Done: 50,
+                Right: 20,
+                Wrong: 30,
+                Hours: 15,
+            },
+        },
+        {
+            type: 'Câu hỏi được giao',
+            data: {
+                Total: 100,
+                Done: 50,
+                Right: 30,
+                Wrong: 40,
+                Hours: 5,
+            },
+        },
+    ];
+
+    // State to track the selected item index
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    // State to track the selected item data
+    const handleClick = (item) => {
+        setSelectedItem(item);
+    };
+
+    // Define data for the linear chart
+    const lineChartData = {
+        labels: Object.keys(selectedItem?.data || {}), // Assumes selectedItem.data exists
+        datasets: [
+            {
+                label: selectedItem?.type || '',
+                data: Object.values(selectedItem?.data || {}),
+                fill: false,
+                borderColor: 'rgba(75, 192, 192, 1)', // Adjust the color as needed
+                borderWidth: 2,
+            },
+        ],
+    };
+
+    // Define options for the linear chart
+    const lineChartOptions = {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    };
+
     return (
-        <div className={cx("count-teacher")}>
-            <div className={cx("count-teacher__title")}>
-                <h1>Count Teacher</h1>
+        <div className={cx('count-teacher-container')}>
+            <div className={cx('count-teacher')}>
+                {fakeData.map((item, index) => (
+                    <div
+                        className={cx('count-teacher-item', {
+                            'count-teacher-item--selected': selectedItem === item,
+                        })}
+                        onClick={() => handleClick(item)}
+                    >
+                        <p className={cx('count-teacher-item__type')}>{item.type}</p>
+                    </div>
+                ))}
             </div>
-            <div className={cx("count-teacher__content")}>
-                <div className={cx("count-teacher__content__item")}>
-                    <h2>Number of Question</h2>
-                    <p>{fakeData.countQuestion}</p>
-                </div>
-                <div className={cx("count-teacher__content__item")}>
-                    <h2>Number of Leature</h2>
-                    <p>{fakeData.countLeature}</p>
-                </div>
-                <div className={cx("count-teacher__content__item")}>
-                    <h2>Number of Student</h2>
-                    <p>{fakeData.countStudent}</p>
-                </div>
-                <div className={cx("count-teacher__content__item")}>
-                    <h2>Number of Class</h2>
-                    <p>{fakeData.countClass}</p>
-                </div>
+            <div className={cx('chart')}>
+                {selectedItem !== null && (
+                    <div>
+                        <Bar data={lineChartData} options={lineChartOptions} />
+                    </div>
+                )}
             </div>
         </div>
     );
