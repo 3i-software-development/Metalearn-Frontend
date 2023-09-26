@@ -5,44 +5,45 @@
     grid-gap: 20px;
     height: 100vh;
 }
-
-.blog-list {
-    margin-left: 40px;
+.tree-view-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
-
-.blog-bar-item {
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border: 1px solid #e0e0e0;
-
-    &:hover {
-        background-color: #e0e0e0;
-    }
-
-    &.selected {
-        background-color: #007bff;
-        color: #fff;
-    }
-}
-
-/* TutorialContent.module.css (hoặc bạn có thể sử dụng SCSS) */
 
 .blog-content {
-    background-color: #f5f5f5;
+    /* CSS cho container chứa nội dung blog */
+    margin: 20px;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.blog-content h1 {
+.blog-title {
+    /* CSS cho tiêu đề blog */
     font-size: 24px;
-    margin-bottom: 10px;
     color: #333;
 }
 
-.blog-content p {
+.blog-date {
+    /* CSS cho ngày đăng */
+    font-size: 14px;
+    color: #777;
+}
+
+.blog-text {
+    /* CSS cho nội dung blog */
     font-size: 16px;
-    line-height: 1.5;
-    color: #666;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+.blog-author {
+    /* CSS cho tên tác giả */
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    float: right; /* Đặt tác giả sang bên phải */
+    clear: both; /* Đảm bảo không có phần nào bị lấn áp bởi float */
 }
