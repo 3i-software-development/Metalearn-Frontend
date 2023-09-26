@@ -199,15 +199,23 @@ const Header = () => {
           className={cx("icon")}
           onClick={() => router.push("/payment")}
         />
+              {/* Notification button */}
+      <div className={cx("notification-icon")} onClick={toggleNotification}>
+        <FaBell />
       </div>
+      {/* Notification Popup */}
+      {showNotification && <NotificationPopup />}
+      </div>
+
+      {/*
       <div className={cx("change-language")}>
+ 
         <BiWorld className={cx("icon")} onClick={() => setShow(!show)} />
         {show && (
           <div id="google_translate_element">
-            {/* Add your language switcher or translation widget here */}
           </div>
-        )}
       </div>
+              */}
 
       {state && (
         <Box sx={{ flexGrow: 0 }}>
@@ -306,12 +314,7 @@ const Header = () => {
       )}
 
 
-      {/* Notification button */}
-      <div className={cx("notification-icon")} onClick={toggleNotification}>
-        <FaBell />
-      </div>
-      {/* Notification Popup */}
-      {showNotification && <NotificationPopup />}
+
 
       {!state && (
         <div className={cx("user")}>

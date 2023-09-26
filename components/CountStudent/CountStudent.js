@@ -10,7 +10,7 @@ import {
     Tooltip,
     Legend,
     registerables,
-  } from "chart.js";
+} from "chart.js";
 
 const cx = classNames.bind(styles);
 
@@ -52,6 +52,25 @@ const CountStudent = () => {
     // State to track the selected item index
     const [selectedItem, setSelectedItem] = useState(null);
 
+    const TreeNode = ({ label, children }) => {
+        const [isOpen, setIsOpen] = useState(false);
+      
+        const toggleNode = () => {
+          setIsOpen(!isOpen);
+        };
+      
+        return (
+          <div className={cx('tree-node')}>
+            <div onClick={toggleNode} className={cx('tree-node-label')}>
+              {label}
+              <span className={cx('tree-node-icon', isOpen ? 'open' : 'closed')}>
+                {isOpen ? '-' : '+'}
+              </span>
+            </div>
+            {isOpen && <div className={cx('tree-node-children')}>{children}</div>}
+          </div>
+        );
+      };
     // State to track the selected item data
     const handleClick = (item) => {
         setSelectedItem(item);
@@ -91,8 +110,9 @@ const CountStudent = () => {
                         onClick={() => handleClick(item)}
                     >
                         <p className={cx('count-student-item__type')}>{item.type}</p>
+
                     </div>
-                ))}
+                    ))}
             </div>
             <div className={cx('chart')}>
                 {selectedItem !== null && (
