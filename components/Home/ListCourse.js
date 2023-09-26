@@ -131,7 +131,12 @@ const ListCourse = () => {
           {btnact === 1 && <h3>Danh sách Ngân Hàng Đề Thi</h3>}
           {btnact === 2 && <h3>Danh sách Tài Liệu</h3>}
           {btnact === 3 && <h3>Danh sách Lớp Học</h3>}
-          {btnact === 4 && <h3>Danh sách Buổi Học Trực Tuyến</h3>}
+          {/* {btnact === 4 && <h3>Danh sách Buổi Học Trực Tuyến</h3>} */}
+          {btnact === 4 &&   <Link href="/BankDT" className={cx("mb-login")}>
+          <h3>Danh sách Buổi Học Trực Tuyến</h3>
+        </Link>}
+
+        
           {btnact === 5 && <h3>Danh sách Thi Online</h3>}
 
 
@@ -253,7 +258,7 @@ const ListCourse = () => {
           </div>
           )}
           
-          {btnact === 4 && ListDoc.data && (
+          {/* {btnact === 4 && ListDoc.data && (
             // <ListCourses data={ListDoc.data.query} doc />
 
             <div>
@@ -305,7 +310,7 @@ const ListCourse = () => {
             </div>
 
             
-          )}
+          )} */}
           {btnact === 5 && ListDoc.data && (
             <ListCourses data={ListDoc.data.query} doc />
           )}
