@@ -10,6 +10,7 @@ import { Avatar, Button, Dropdown, Space } from "antd";
 import NotificationPopup from "@/components/Notification/NotificationPopup";
 
 import { FaBell } from "react-icons/fa"; // Import the notification icon
+import { useRouter } from "next/router"; // Import the useRouter hook
 
 import {
   Box,
@@ -27,6 +28,8 @@ import Image from "next/image";
 const cx = classNames.bind(styles);
 
 const Header = () => {
+  const router = useRouter();
+
   const [showMobile, setShowmobile] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const state = useAuth();
@@ -180,7 +183,7 @@ const Header = () => {
 
       <Link href="/news" className={cx("head-link")}>
         Tin tức
-      </Link>``
+      </Link>
       <Link href="/my-class" className={cx("head-link")}>
         Lớp học trực tuyến
       </Link>
@@ -192,12 +195,28 @@ const Header = () => {
       </Link>
       <div className={cx("icon-ss")}>
         <BsSearch className={cx("icon-search-mobile")} />
-        <TiShoppingCart className={cx("icon")} />
+        <TiShoppingCart
+          className={cx("icon")}
+          onClick={() => router.push("/payment")}
+        />
+              {/* Notification button */}
+      <div className={cx("notification-icon")} onClick={toggleNotification}>
+        <FaBell />
       </div>
+      {/* Notification Popup */}
+      {showNotification && <NotificationPopup />}
+      </div>
+
+      {/*
       <div className={cx("change-language")}>
+ 
         <BiWorld className={cx("icon")} onClick={() => setShow(!show)} />
-        {show && <div id="google_translate_element"></div>}
+        {show && (
+          <div id="google_translate_element">
+          </div>
       </div>
+              */}
+
       {state && (
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
@@ -294,13 +313,8 @@ const Header = () => {
         </Box>
       )}
 
-      
-      {/* Notification button */}
-      <div className={cx("notification-icon")} onClick={toggleNotification}>
-        <FaBell />
-      </div>
-      {/* Notification Popup */}
-      {showNotification && <NotificationPopup />}
+
+
 
       {!state && (
         <div className={cx("user")}>
