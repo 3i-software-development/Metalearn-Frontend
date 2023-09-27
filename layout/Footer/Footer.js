@@ -50,7 +50,7 @@ const Footer = () => {
           <p>MetaLearn</p>
         </div>
         <div className={cx("copyright", "footer-item")}>
-          <p>© 2023 MetaLearn, Inc.</p>
+          <p className={cx("h36")}>© 2023 MetaLearn, Inc.</p>
         </div>
       </div>
     </div>

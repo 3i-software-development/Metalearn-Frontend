@@ -135,22 +135,19 @@ const ListCourse = () => {
           {btnact === 4 &&   <Link href="/BankDT" className={cx("mb-login")}>
           <h3>Lick vào đây để Xem Danh sách Buổi Học Trực Tuyến</h3>
         </Link>}
-
-        
+   
           {/* {btnact === 5 && <h3>Danh sách Thi Online</h3>} */}
 
           {btnact === 5 && <Link href="/BankDT02" className={cx("mb-login")}>
           <h3>Lích vào đây để xem lịch thi</h3>
         </Link>}
 
+          {/* {btnact === 6 && <h3>Danh sách Thông Tin Giáo Viên</h3>} */}
 
-
-          
-          
-       
-          {btnact === 6 && <h3>Danh sách Thông Tin Giáo Viên</h3>}
-
-          
+          {btnact === 6 && <Link href="/Teacher" className={cx("mb-login")}>
+          <h3>Danh sách Thông Tin Giáo Viên</h3>
+        </Link>}
+           
           {btnact === 0 && ListExam.data && (
             <ListCourses data={ListExam.data.query} exam />
           )}
@@ -162,98 +159,100 @@ const ListCourse = () => {
           )}
           
           {btnact === 3 && (
-          <div style={{ display: "flex" }}>
+            <h2></h2>
+
+        //   <div style={{ display: "flex" }}>
            
-            <ul>
-              {listCourse.map((course, index) => (
-                <li className={cx("List-Course-Class")} key={index}
-                onClick={() => setSelectedCourseTitle(course.title)}
-                >
-                  <i style={{color: "rgb(186, 186, 14)"}} class="fa-solid fa-star"></i> <strong>Title:</strong> {course.title}<br />
-                  <i style={{color: "rgb(186, 186, 14)"}} class="fa-solid fa-star"></i> <strong><i class="fa-regular fa-clock"></i>:</strong> {course.day}<br />
-                  <i style={{color: "rgb(186, 186, 14)"}} class="fa-solid fa-star"></i> <strong>Count Students:</strong> {course.countStudent}<br />
-                  <i style={{color: "rgb(186, 186, 14)"}} class="fa-solid fa-star"></i> <strong>Teacher:</strong> {course.teacher}<br />
-                  <i style={{color: "rgb(186, 186, 14)"}} class="fa-solid fa-star"></i> <strong>Status:</strong> {course.status}<br />
-                </li>
+        //     <ul>
+        //       {listCourse.map((course, index) => (
+        //         <li className={cx("List-Course-Class")} key={index}
+        //         onClick={() => setSelectedCourseTitle(course.title)}
+        //         >
+        //           <i style={{color: "rgb(186, 186, 14)"}} class="fa-solid fa-star"></i> <strong>Title:</strong> {course.title}<br />
+        //           <i style={{color: "rgb(186, 186, 14)"}} class="fa-solid fa-star"></i> <strong><i class="fa-regular fa-clock"></i>:</strong> {course.day}<br />
+        //           <i style={{color: "rgb(186, 186, 14)"}} class="fa-solid fa-star"></i> <strong>Count Students:</strong> {course.countStudent}<br />
+        //           <i style={{color: "rgb(186, 186, 14)"}} class="fa-solid fa-star"></i> <strong>Teacher:</strong> {course.teacher}<br />
+        //           <i style={{color: "rgb(186, 186, 14)"}} class="fa-solid fa-star"></i> <strong>Status:</strong> {course.status}<br />
+        //         </li>
                
                 
-              ))}
-            </ul>
-            <div className={cx("List-Course-Class-Description")}>
-                <div>
+        //       ))}
+        //     </ul>
+        //     <div className={cx("List-Course-Class-Description")}>
+        //         <div>
 
-                  {selectedCourseTitle && (<h1 style={{ textAlign: "center" }}>{selectedCourseTitle}</h1>)}
-                  <div style={{backgroundColor: "#337ab7", height: "40px", margin: "0 60px", borderRadius: "10px", display: "flex", justifyContent: "space-between"}}>
+        //           {selectedCourseTitle && (<h1 style={{ textAlign: "center" }}>{selectedCourseTitle}</h1>)}
+        //           <div style={{backgroundColor: "#337ab7", height: "40px", margin: "0 60px", borderRadius: "10px", display: "flex", justifyContent: "space-between"}}>
                     
-                    <div style={{marginLeft: "25px", fontSize: "25px"}}>
-                      <i style={{marginLeft: "30px"}} class="fa-solid fa-pen"></i>
-                      <i style={{marginLeft: "30px"}} class="fa-solid fa-video"></i>
-                      <i style={{marginLeft: "30px"}} class="fa-solid fa-message"></i>
-                      <i style={{marginLeft: "30px"}} class="fa-solid fa-file-signature"></i>
-                    </div>
+        //             <div style={{marginLeft: "25px", fontSize: "25px"}}>
+        //               <i style={{marginLeft: "30px"}} class="fa-solid fa-pen"></i>
+        //               <i style={{marginLeft: "30px"}} class="fa-solid fa-video"></i>
+        //               <i style={{marginLeft: "30px"}} class="fa-solid fa-message"></i>
+        //               <i style={{marginLeft: "30px"}} class="fa-solid fa-file-signature"></i>
+        //             </div>
 
-                    <div style={{fontSize: "25px", marginRight: "25px"}}>
-                    <i style={{marginRight: "20px"}} class="fa-solid fa-users"></i>
-                    </div>
-                  </div>
+        //             <div style={{fontSize: "25px", marginRight: "25px"}}>
+        //             <i style={{marginRight: "20px"}} class="fa-solid fa-users"></i>
+        //             </div>
+        //           </div>
 
-                  <div style={{ display: "flex" }}>
-                      {/* <h2>{selectedCourseTitle}</h2> */}
+        //           <div style={{ display: "flex" }}>
+        //               {/* <h2>{selectedCourseTitle}</h2> */}
 
-                      <div>
-                        <img style={{ borderRadius: "50%", height: "60px", width: "60px", margin: "50px" }} src="https://upload.wikimedia.org/wikipedia/vi/5/5a/Batman-Arkham-Origins-Logo.jpg" alt="Teacher Avatar"
-                        />
-                      </div>
+        //               <div>
+        //                 <img style={{ borderRadius: "50%", height: "60px", width: "60px", margin: "50px" }} src="https://upload.wikimedia.org/wikipedia/vi/5/5a/Batman-Arkham-Origins-Logo.jpg" alt="Teacher Avatar"
+        //                 />
+        //               </div>
 
-                      <div>
-                        <input placeholder="Thêm bình luận" style={{margin: "50px", width: "290%", height: "60px", borderRadius: "10px"}} type="search" />
-                      </div>
-                  </div>
+        //               <div>
+        //                 <input placeholder="Thêm bình luận" style={{margin: "50px", width: "290%", height: "60px", borderRadius: "10px"}} type="search" />
+        //               </div>
+        //           </div>
 
-        <div style={{ backgroundColor: "white", borderRadius: "10px", marginLeft: "20px", marginRight: "80px", display: "inline-block", marginTop: "10px" }}>
-          <div style={{ display: "flex", width: "100%", height: "150px", textAlign: "center" }}>
-            <div style={{ width: "30%" }}>
-              <img style={{ borderRadius: "50%", height: "30px", width: "30px", margin: "10px auto" }} src="https://upload.wikimedia.org/wikipedia/vi/5/5a/Batman-Arkham-Origins-Logo.jpg" alt="Teacher Avatar" />
-              <h6 style={{ display: "block", textAlign: "center" }}>Học sinh số 45</h6>
-            </div>
+        // <div style={{ backgroundColor: "white", borderRadius: "10px", marginLeft: "20px", marginRight: "80px", display: "inline-block", marginTop: "10px" }}>
+        //   <div style={{ display: "flex", width: "100%", height: "150px", textAlign: "center" }}>
+        //     <div style={{ width: "30%" }}>
+        //       <img style={{ borderRadius: "50%", height: "30px", width: "30px", margin: "10px auto" }} src="https://upload.wikimedia.org/wikipedia/vi/5/5a/Batman-Arkham-Origins-Logo.jpg" alt="Teacher Avatar" />
+        //       <h6 style={{ display: "block", textAlign: "center" }}>Học sinh số 45</h6>
+        //     </div>
 
-            <div style={{ margin: "50px", width: "auto", height: "60px", borderRadius: "10px", textAlign: "left", alignContent: "center", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <p style={{ margin: 0 }}>Quý vị đang xem nội dung tin rao Nhà ở xã hội RichHome 3 - Kim Oanh - Bến Cát -Bình Dương - LH: 0968 289 - Mã tin 21680928. Mọi thông tin, nội dung liên quan tới tin rao này là do người đăng tin đăng tải và chịu trách nhiệm.</p>
-              <div style={{ justifyContent: "space-around", display: "flex", marginTop: "10px" }}>
-                <i style={{ color: "red" }} class="fa-solid fa-heart">Like</i>
-                <i class="fa-solid fa-comment">Comment</i>
-                <i class="fa-solid fa-share">Share</i>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div style={{ backgroundColor: "white", borderRadius: "10px", marginLeft: "20px", marginRight: "80px", display: "inline-block", marginTop: "10px" }}>
-          <div style={{ display: "flex", width: "100%", height: "150px", textAlign: "center" }}>
-            <div style={{ width: "30%" }}>
-              <img style={{ borderRadius: "50%", height: "30px", width: "30px", margin: "10px auto" }} src="https://haycafe.vn/wp-content/uploads/2022/02/Gai-xinh-cute-anh-dai-dien-dep-cho-nu.jpg" />
-              <h6 style={{ display: "block", textAlign: "center" }}>Học sinh số 09</h6>
-            </div>
-
-            <div style={{ margin: "50px", width: "auto", height: "60px", borderRadius: "10px", textAlign: "left", alignContent: "center", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <p style={{ margin: 0 }}>Quý vị đang xem nội dung tin rao Nhà ở xã hội RichHome 3 - Kim Oanh - Bến Cát -Bình Dương - LH: 0968 289 - Mã tin 21680928. Mọi thông tin, nội dung liên quan tới tin rao này là do người đăng tin đăng tải và chịu trách nhiệm.</p>
-              <div style={{ justifyContent: "space-around", display: "flex", marginTop: "10px" }}>
-                <i style={{ color: "red" }} class="fa-solid fa-heart">Like</i>
-                <i class="fa-solid fa-comment">Comment</i>
-                <i class="fa-solid fa-share">Share</i>
-              </div>
-            </div>
-          </div>
-        </div>
+        //     <div style={{ margin: "50px", width: "auto", height: "60px", borderRadius: "10px", textAlign: "left", alignContent: "center", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        //       <p style={{ margin: 0 }}>Quý vị đang xem nội dung tin rao Nhà ở xã hội RichHome 3 - Kim Oanh - Bến Cát -Bình Dương - LH: 0968 289 - Mã tin 21680928. Mọi thông tin, nội dung liên quan tới tin rao này là do người đăng tin đăng tải và chịu trách nhiệm.</p>
+        //       <div style={{ justifyContent: "space-around", display: "flex", marginTop: "10px" }}>
+        //         <i style={{ color: "red" }} class="fa-solid fa-heart">Like</i>
+        //         <i class="fa-solid fa-comment">Comment</i>
+        //         <i class="fa-solid fa-share">Share</i>
+        //       </div>
+        //     </div>
+        //   </div>
+        // </div>
 
 
-                </div>
-            </div>
+        // <div style={{ backgroundColor: "white", borderRadius: "10px", marginLeft: "20px", marginRight: "80px", display: "inline-block", marginTop: "10px" }}>
+        //   <div style={{ display: "flex", width: "100%", height: "150px", textAlign: "center" }}>
+        //     <div style={{ width: "30%" }}>
+        //       <img style={{ borderRadius: "50%", height: "30px", width: "30px", margin: "10px auto" }} src="https://haycafe.vn/wp-content/uploads/2022/02/Gai-xinh-cute-anh-dai-dien-dep-cho-nu.jpg" />
+        //       <h6 style={{ display: "block", textAlign: "center" }}>Học sinh số 09</h6>
+        //     </div>
+
+        //     <div style={{ margin: "50px", width: "auto", height: "60px", borderRadius: "10px", textAlign: "left", alignContent: "center", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        //       <p style={{ margin: 0 }}>Quý vị đang xem nội dung tin rao Nhà ở xã hội RichHome 3 - Kim Oanh - Bến Cát -Bình Dương - LH: 0968 289 - Mã tin 21680928. Mọi thông tin, nội dung liên quan tới tin rao này là do người đăng tin đăng tải và chịu trách nhiệm.</p>
+        //       <div style={{ justifyContent: "space-around", display: "flex", marginTop: "10px" }}>
+        //         <i style={{ color: "red" }} class="fa-solid fa-heart">Like</i>
+        //         <i class="fa-solid fa-comment">Comment</i>
+        //         <i class="fa-solid fa-share">Share</i>
+        //       </div>
+        //     </div>
+        //   </div>
+        // </div>
+
+
+        //         </div>
+        //     </div>
 
             
 
-          </div>
+        //   </div>
           )}
           
           {btnact === 5 && ListDoc.data && (
