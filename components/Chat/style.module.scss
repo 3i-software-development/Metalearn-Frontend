@@ -1,0 +1,168 @@
+/* Set the container height and grid layout */
+.chat-container {
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+
+    .right-chat-container {
+        height: 90vh;
+        display: grid;
+        grid-template-rows: 4fr 1fr;
+    }
+
+    /* Style the message container */
+    .message-container {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        margin: 0 auto;
+        overflow-y: scroll;
+        /* Hide vertical scrollbar */
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+        /* Hides scrollbar in Firefox */
+    }
+}
+
+.message-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+  }
+  
+  .message-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  .send-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Hiệu ứng màu nền mượt mà */
+  }
+    .send-button:hover {
+    background-color: #0056b3;
+  }
+  
+
+
+.contact {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Style the selected contact */
+.selected-contact {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    border-left: 4px solid #0056b3;
+    padding: 10px;
+}
+
+
+/* Hide the scrollbar in Webkit browsers (Chrome, Safari) */
+.message-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Customize the scrollbar track in Webkit browsers */
+.message-container::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* Change to your desired color */
+}
+
+/* Customize the scrollbar thumb in Webkit browsers */
+.message-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    /* Change to your desired color */
+    border-radius: 4px;
+}
+
+/* Hide the scrollbar in Firefox */
+.message-container scrollbar {
+    width: 8px;
+}
+
+/* Customize the scrollbar thumb in Firefox */
+.message-container scrollbar thumb {
+    background-color: #ccc;
+    /* Change to your desired color */
+    border-radius: 4px;
+}
+
+/* Style the scrollbar corner in Firefox */
+.message-container scrollbar corner {
+    background-color: transparent;
+    /* Change to your desired color */
+}
+
+/* Style individual messages */
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Style the message name */
+.message-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+    /* Change to the desired color for message name */
+}
+
+/* Style the message content */
+.message-content {
+    color: #333;
+    /* Change to the desired color for message content */
+}
+
+.contact-list {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    overflow-y: scroll;
+    /* Hide vertical scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    /* Hides scrollbar in Firefox */
+}
+
+/* Hide the scrollbar in Webkit browsers (Chrome, Safari) */
+.contact-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Customize the scrollbar track in Webkit browsers */
+.contact-list::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* Change to your desired color */
+}
+
+/* Customize the scrollbar thumb in Webkit browsers */
+.contact-list::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    /* Change to your desired color */
+    border-radius: 4px;
+}

@@ -8,14 +8,29 @@
 }
 .list-btn {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  gap: 3%;
+  
   button {
-    font-weight: bolder;
-    color: gray;
-    white-space: nowrap;
-    font-size: 20px;
+    // font-weight: bolder;
+    // color: gray;
+    // white-space: nowrap;
+    // font-size: 20px;
+
+    background-color: rgb(165, 168, 165);
+    width: 350px;
+    height: 420px;
+    margin-top: 50px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  button:hover {
+    border: 1px solid red;
   }
   .active {
     color: black;
@@ -37,7 +52,7 @@
   .explore {
     display: block;
     padding: 10px 20px;
-    border: 1px solid black;
+    border: 5px solid black;
     width: fit-content;
     font-weight: bolder;
   }
@@ -92,3 +107,73 @@
     width: 48% !important;
   }
 }
+
+.ListCourse-Item {
+  background-color: rgb(233, 244, 233);
+  width: 350px;
+  height: 420px;
+  margin-top: 50px;
+  border-radius: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.ListCourse-Item:hover {
+  border: 1px solid red;
+
+}
+
+
+.ListCourse-Title {
+  transition: transform 0.2s ease-in-out;
+  margin-top: 130px;
+  font-size: 25px;
+}
+.ListCourse-Title:hover {
+  transform: translateY(-5px);
+  color: red;
+
+}
+
+
+// .ListCourse-Icon {
+//   font-size: 100px;
+//   margin-top: 70px;
+// }
+
+.ListCourse-In-Course {
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+.List-Course-Class {
+  background-color: rgb(234, 240, 240);
+  margin: 10px;
+  width: 90%;
+  border-radius: 5px;
+  list-style: none;
+  cursor: pointer;
+
+  box-shadow: inset 0px 0px 5px 1px #888888;
+}
+
+
+.openStatus {
+  color: green; /* Màu xanh cho trạng thái Open */
+}
+
+.closedStatus {
+  color: red; /* Màu đỏ cho các trạng thái khác */
+}
+
+.List-Course-Class-Description {
+  flex: 1;
+  background-color: #cdc8c8;
+  border-radius: 15px;
+  
+}
+
+//Dạ chắc cũng còn nhiều ạ, như là khi có user đăng nhập thì cần thêm các chức năng của user khi đã login trên Metalearn web 

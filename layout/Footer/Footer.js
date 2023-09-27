@@ -13,29 +13,38 @@ const Footer = () => {
       <div className={cx("footer")}>
         <div className={cx("links", "footer-item")}>
           <div className={cx("link-group")}>
-            <Link href="/">Môn học của tôi</Link>
-            <Link href="/my-class">Lớp của tôi</Link>
-            <Link href="/">Rèn luyện</Link>
-            <Link href="/">Quản lý kết nối</Link>
+            <Link className={cx("link-group-item")} href="/">Môn học của tôi</Link>
+            <Link className={cx("link-group-item")} href="/my-class">Lớp của tôi</Link>
+            <Link className={cx("link-group-item")} href="/">Rèn luyện</Link>
+            <Link className={cx("link-group-item")} href="/">Quản lý kết nối</Link>
           </div>
           <div className={cx("link-group")}>
-            <Link href="/">Ngân hàng đề thi</Link>
-            <Link href="/">Ngân hàng câu hỏi</Link>
-            <Link href="/">Học liệu</Link>
-            <Link href="/">Dạy trực tuyến</Link>
+            <Link className={cx("link-group-item")} href="/">Ngân hàng đề thi</Link>
+            <Link className={cx("link-group-item")} href="/">Ngân hàng câu hỏi</Link>
+            <Link className={cx("link-group-item")} href="/">Học liệu</Link>
+            <Link className={cx("link-group-item")} href="/">Dạy trực tuyến</Link>
           </div>
           <div className={cx("link-group")}>
-            <Link href="/">Thi trực tuyến</Link>
-            <Link href="/">Khóa học</Link>
-            <Link href="/">Thống kê</Link>
-            <Link href="/">Search</Link>
+            <Link className={cx("link-group-item")} href="/">Thi trực tuyến</Link>
+            <Link className={cx("link-group-item")} href="/">Khóa học</Link>
+            <Link className={cx("link-group-item")} href="/">Thống kê</Link>
+            <Link className={cx("link-group-item")} href="/">Search</Link>
           </div>
         </div>
+
         <div className={cx("language-select", "footer-item")}>
-          <Link href="/">
+          {/*<Link href="/">
             <BsGlobe />
             <span>Ngôn ngữ</span>
-          </Link>
+            <div id="google_translate_element">
+          </div>
+          </Link> */}
+            <BsGlobe />
+            <span>Ngôn ngữ</span>
+            <div id="google_translate_element">
+          </div>
+
+
         </div>
         <div className={cx("icon", "footer-item")}>
           <p>MetaLearn</p>

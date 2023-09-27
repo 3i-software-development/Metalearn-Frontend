@@ -1,15 +1,13 @@
 // để tạm
-import SearchBar from "@/components/SubjectList/SearchBar";
-import SubjectList from "@/components/SubjectList/SubjectList";
 import React from "react";
+import Subject from "@/components/Subject/Subject";
 
-const Topic = () => {
+const index = () => {
   return (
     <div>
-      <SearchBar />
-      <SubjectList />
+      <Subject />
     </div>
   );
 };
 
-export default Topic;
+export default index;
