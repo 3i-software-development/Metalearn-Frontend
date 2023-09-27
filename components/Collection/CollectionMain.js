@@ -18,11 +18,7 @@ const CollectionMain = () => {
     ];
 
     return (
-        <div className={cx('main-section')}>
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-                <p style={{marginTop: '7px', marginRight: '5px'}}><i class="fa-solid fa-thumbtack"></i></p>
-                <h2>Ghim dữ liệu</h2>
-            </div>
+        <div style={{marginTop: '20px'}}>
             <div className={cx("main-list")}>
                 {mainData.map((item) => (
                     <CollectionItem key={item.id} data={item} />
