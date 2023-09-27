@@ -1,31 +1,10 @@
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
-import BlogBarItem from './BlogBarItem';
 import BlogContent from './BlogContent';
 import TreeViewComponent from './TreeViewComponent';
 
 const cx = classNames.bind(styles);
-
-const TreeNode = ({ label, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleNode = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <div className={cx('tree-node')}>
-      <div onClick={toggleNode} className={cx('tree-node-label')}>
-        {label}
-        <span className={cx('tree-node-icon', isOpen ? 'open' : 'closed')}>
-          {isOpen ? '-' : '+'}
-        </span>
-      </div>
-      {isOpen && <div className={cx('tree-node-children')}>{children}</div>}
-    </div>
-  );
-};
 
 const Blog = () => {
   const treeData = [
