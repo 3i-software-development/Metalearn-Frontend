@@ -125,3 +125,11 @@
 .link-group-item:hover {
     color: red;
 }
+
+.h36 {
+    cursor: pointer;
+    &:hover {
+        color: red;
+        
+    }
+}
