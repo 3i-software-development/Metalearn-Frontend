@@ -14,8 +14,8 @@ function BankDT03() {
         <i class="fa-solid fa-file-pen"></i>
         <i style={{fontSize: "50px", }} class="fa-solid fa-bell"></i>
     </div>
-    <h4>Chấm ORM</h4>
-    <p>Quét đáp án</p>
+    <h4>Chấm ORM 3999</h4>
+    <p>Quét đáp án 3999</p>
    </div>
 
   )
