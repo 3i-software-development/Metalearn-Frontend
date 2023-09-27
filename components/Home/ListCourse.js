@@ -133,11 +133,16 @@ const ListCourse = () => {
           {btnact === 3 && <h3>Danh sách Lớp Học</h3>}
           {/* {btnact === 4 && <h3>Danh sách Buổi Học Trực Tuyến</h3>} */}
           {btnact === 4 &&   <Link href="/BankDT" className={cx("mb-login")}>
-          <h3>Danh sách Buổi Học Trực Tuyến</h3>
+          <h3>Lick vào đây để Xem Danh sách Buổi Học Trực Tuyến</h3>
         </Link>}
 
         
-          {btnact === 5 && <h3>Danh sách Thi Online</h3>}
+          {/* {btnact === 5 && <h3>Danh sách Thi Online</h3>} */}
+
+          {btnact === 5 && <Link href="/BankDT02" className={cx("mb-login")}>
+          <h3>Lích vào đây để xem lịch thi</h3>
+        </Link>}
+
 
 
           
@@ -243,13 +248,6 @@ const ListCourse = () => {
         </div>
 
 
-
-
-
-
-                  
-
-
                 </div>
             </div>
 
@@ -258,59 +256,6 @@ const ListCourse = () => {
           </div>
           )}
           
-          {/* {btnact === 4 && ListDoc.data && (
-            // <ListCourses data={ListDoc.data.query} doc />
-
-            <div>
-
-              <div style={{marginTop: "20px", width: "50%", backgroundColor: "rgb(165, 168, 165)", borderRadius: "5px", paddingBottom: "10px", paddingTop: "10px"}}>
-                <div style={{paddingLeft: "12px"}}>
-                  <h3>Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                  <h4>Môn học: Lập trình</h4>
-                  <h5>Bắt đầu ngày 18/04/2023 11:00</h5>
-                </div>
-
-                <div style={{display: "flex", justifyContent: "space-between", marginLeft: "10px", marginRight: "10px"}}>
-                <i class="fa-solid fa-mobile"></i>
-                <i class="fa-solid fa-floppy-disk"></i>
-                <i class="fa-solid fa-video"></i>
-                </div>
-              </div>
-
-
-              <div style={{marginTop: "20px", width: "50%", backgroundColor: "rgb(165, 168, 165)", borderRadius: "5px", paddingBottom: "10px", paddingTop: "10px"}}>
-                <div style={{paddingLeft: "12px"}}>
-                  <h3>Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                  <h4>Môn học: Lập trình</h4>
-                  <h5>Bắt đầu ngày 18/04/2023 11:00</h5>
-                </div>
-
-                <div style={{display: "flex", justifyContent: "space-between", marginLeft: "10px", marginRight: "10px"}}>
-                <i class="fa-solid fa-mobile"></i>
-                <i class="fa-solid fa-floppy-disk"></i>
-                <i class="fa-solid fa-video"></i>
-                </div>
-              </div>
-
-              <div style={{marginTop: "20px", width: "50%", backgroundColor: "rgb(165, 168, 165)", borderRadius: "5px", paddingBottom: "10px", paddingTop: "10px"}}>
-                <div style={{paddingLeft: "12px"}}>
-                  <h3>Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                  <h4>Môn học: Lập trình</h4>
-                  <h5>Bắt đầu ngày 18/04/2023 11:00</h5>
-                </div>
-
-                <div style={{display: "flex", justifyContent: "space-between", marginLeft: "10px", marginRight: "10px"}}>
-                <i class="fa-solid fa-mobile"></i>
-                <i class="fa-solid fa-floppy-disk"></i>
-                <i class="fa-solid fa-video"></i>
-                </div>
-              </div>
-
-              
-            </div>
-
-            
-          )} */}
           {btnact === 5 && ListDoc.data && (
             <ListCourses data={ListDoc.data.query} doc />
           )}

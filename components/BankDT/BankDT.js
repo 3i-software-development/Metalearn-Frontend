@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faMobile, faFloppyDisk, faVideo, faPersonChalkboard } from "@fortawesome/free-solid-svg-icons"; // Import biểu tượng
+import { faPersonChalkboard } from "@fortawesome/free-solid-svg-icons"; // Import biểu tượng
 
 import styles from "./BankDT.module.scss"
 

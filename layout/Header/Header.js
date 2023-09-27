@@ -173,7 +173,7 @@ const Header = () => {
 
       <Link href="/news" className={cx("head-link")}>
         Tin tức
-      </Link>``
+      </Link>
       <Link href="/my-class" className={cx("head-link")}>
         Lớp học trực tuyến
       </Link>
