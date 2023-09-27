@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 
 const cx = classNames.bind(styles);
 
-const DocumentCard = ({ data, isSelected, handleSelectDoc }) => {
-
+const DocumentCard = ({ data, handleSelectDoc }) => {
     const getFileName = (data) => {
         const fileArray = data.split("/");
         const tempFile = fileArray[fileArray.length - 1];
@@ -37,20 +36,19 @@ const DocumentCard = ({ data, isSelected, handleSelectDoc }) => {
         return <i className="fa-regular fa-file"></i>
     }
     return (
-        <div
-            className={cx('document-container', { 'selected': isSelected })}
-            onClick={() => handleSelectDoc(data)}
-        >
-            <div className={cx('document-icon')}>{displayIcon()}</div>
-            <div className={cx('document-content')}>
+        <div className={cx("document-container")} onClick={() => handleSelectDoc(data)}>
+            <div className={cx("document-icon")}>
+                {displayIcon()}
+            </div>
+            <div className={cx("document-content")}>
                 <h4>{getFileName(data.src)}</h4>
-                <div className={cx('document-detail')}>
+                <div className={cx("document-detail")}>
                     <p>1.5Mb</p>
                     <p>1/2/2022</p>
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default DocumentCard

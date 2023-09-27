@@ -1,61 +1,3 @@
-.document-layout {
-  display: grid;
-  grid-template-columns: 1fr 7fr; /* Adjust the column sizes as needed */
-  gap: 20px; /* Adjust the gap between columns */
-}
-
-
-.document-type {
-  display: flex;
-  justify-content: space-between;
-  background-color: #f0f0f0; /* Màu nền của danh sách các mục */
-  padding: 10px; /* Khoảng cách nội dung và biên ngoài */
-}
-
-.document-category-name-list {
-  width: 90%;
-  max-height: 650px;
-  padding: 2% 0;
-  overflow-y: auto;
-  border: 1px solid #e3e3e3;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-/* Style for unselected categories */
-.document-category-name {
-  cursor: pointer;
-  padding: 10px;
-  margin: 5px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #f0f0f0;
-  }
-}
-
-/* Style for selected category */
-.document-category-name.selected {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.document-content {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  padding: 2% 0;
-
-  .document-search-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  }
-}
-
-.title {
-  margin-top: 10px;
-}
 .list-course-container {
   width: 100%;
   padding: 2% 0;
@@ -82,7 +24,7 @@
     width: 100%;
     margin: 0px;
     border: none;
-    box-shadow: none;
+    box-shadow: none
   }
 }
 
@@ -182,7 +124,7 @@
   font-size: 20px;
 }
 
-.document-content-file {
+.document-content {
   width: 100%;
   height: 100%;
 
@@ -207,18 +149,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: 89%;
     overflow: auto;
   }
-}
-
-.document-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 @media only screen and (max-width: 600px) {

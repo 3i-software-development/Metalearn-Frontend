@@ -6,11 +6,7 @@ import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
 import { TiShoppingCart } from "react-icons/ti";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Avatar, Button, Dropdown, Space } from "antd";
-import NotificationPopup from "@/components/Notification/NotificationPopup";
-
-import { FaBell } from "react-icons/fa"; // Import the notification icon
-import { useRouter } from "next/router"; // Import the useRouter hook
+import { Avatar, Dropdown, Space } from "antd";
 
 import {
   Box,
@@ -28,10 +24,7 @@ import Image from "next/image";
 const cx = classNames.bind(styles);
 
 const Header = () => {
-  const router = useRouter();
-
   const [showMobile, setShowmobile] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
   const state = useAuth();
 
   const items = [
@@ -142,9 +135,6 @@ const Header = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const toggleNotification = () => {
-    setShowNotification(!showNotification);
-  };
 
   const user = useSelector((state) => state.login);
 
@@ -195,27 +185,12 @@ const Header = () => {
       </Link>
       <div className={cx("icon-ss")}>
         <BsSearch className={cx("icon-search-mobile")} />
-        <Link href="/payment">
-          <TiShoppingCart className={cx("icon")} />
-        </Link>
-        <div className={cx("notification-icon")} onClick={toggleNotification}>
-          <FaBell />
-        </div>
-        {/* Notification Popup */}
-        {showNotification && <NotificationPopup />}
+        <TiShoppingCart className={cx("icon")} />
       </div>
-      {/* Notification button */}
-
-      {/*
       <div className={cx("change-language")}>
- 
         <BiWorld className={cx("icon")} onClick={() => setShow(!show)} />
-        {show && (
-          <div id="google_translate_element">
-          </div>
+        {show && <div id="google_translate_element"></div>}
       </div>
-              */}
-
       {state && (
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
@@ -311,9 +286,6 @@ const Header = () => {
           </Menu>
         </Box>
       )}
-
-
-
 
       {!state && (
         <div className={cx("user")}>

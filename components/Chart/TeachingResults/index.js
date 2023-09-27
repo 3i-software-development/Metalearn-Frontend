@@ -89,7 +89,6 @@ export default function TeachingResults({ value, type }) {
         borderWidth: 1,
       },
     ],
-  
   };
 
   const dataQuestion = {

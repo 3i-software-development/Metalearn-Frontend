@@ -22,8 +22,7 @@ export const GetListDoc = () => {
   return useQuery(["getlistdoc"], async () => {
     const response = await axios.post(
       `https://admin.metalearn.vn/MobileLogin/GetListFileCw?CatCode=COURSEWARE&SubjectCode=&ObjectType=&ObjectCode=&FromDate=&ToDate=&FileName=&FileType=&Content=&UserUpload=&KeySearch=&Count=&CurrentPageView=1&Length=6`
-    
-      );
+    );
     return response.data;
   });
 };

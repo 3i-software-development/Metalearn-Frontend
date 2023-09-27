@@ -6,7 +6,6 @@ import DocumentCard from './DocumentCard';
 const cx = classNames.bind(styles);
 
 const DocumentList = ({ listDoc, handleSelectDoc }) => {
-    
     return (
         <div className={cx("list-doc-container")}>
             <div className={cx("sort-container")}>
@@ -18,4 +17,4 @@ const DocumentList = ({ listDoc, handleSelectDoc }) => {
     )
 }
 
-export default DocumentList 
+export default DocumentList
