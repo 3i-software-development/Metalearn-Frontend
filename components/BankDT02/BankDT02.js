@@ -111,7 +111,7 @@ function BankDT02({ month, year }) {
                       <span style={{ marginLeft: "20px", fontSize: "25px", color: "black" }}>Ngày {selectedDay}/02/2021</span>
                     </h6>
                     <h6>
-                      Môn Vật Lý
+                      Môn Vật Lý Lớp 9
                       <span style={{ marginLeft: "20px", fontSize: "25px", color: "black" }}>Ngày {selectedDay}/02/2021</span>
                     </h6>
                 </div>
