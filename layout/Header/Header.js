@@ -32,7 +32,7 @@ const Header = () => {
 
   const [showMobile, setShowmobile] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
-  const state = useAuth();
+  const { isAuthenticated, logout } = useAuth();
 
   const items = [
     {
@@ -157,7 +157,7 @@ const Header = () => {
       />
       {showMobile && <MenuMobile />}
       <Link
-        href={state ? "/personalized" : "/"}
+        href={isAuthenticated ? "/personalized" : "/"}
         className={cx("logo-container")}
       >
         Meta<span>Learn</span>
@@ -215,8 +215,15 @@ const Header = () => {
           </div>
       </div>
               */}
+      {
+        isAuthenticated && (
+          <Button onClick={() => logout()}>
+             Đăng xuất
+          </Button>
+        )
+      }
 
-      {state && (
+      {isAuthenticated && (
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ padding: "10px" }}>
@@ -315,7 +322,7 @@ const Header = () => {
 
 
 
-      {!state && (
+      {!isAuthenticated && (
         <div className={cx("user")}>
           <Link href="/auth/login" className={cx("login-btn")}>
             Đăng nhập
