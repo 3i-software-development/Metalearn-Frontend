@@ -10,6 +10,7 @@ import { useLoginMutation } from "@/lib/Midleware/AuthQuery";
 import Link from "next/link";
 import $ from 'jquery';
 import axios from "axios";
+import { useAuthContext } from "@/hooks/authContext";
 
 const cx = classNames.bind(styles);
 
@@ -19,6 +20,8 @@ export default function Login() {
   const key = "updatable";
   const [coords, setCoords] = useState({});
   const [login, { data, isSuccess }] = useLoginMutation();
+
+  const { isAuthenticated, loginState } = useAuthContext();
 
   const {
     register,
@@ -75,6 +78,7 @@ export default function Login() {
       if (typeof window !== "undefined") {
         sessionStorage.setItem("user", data?.Object.UserName);
         sessionStorage.setItem("userId", data?.Object.UserName);
+        loginState();
         router.push("/personalized");
       }
     }

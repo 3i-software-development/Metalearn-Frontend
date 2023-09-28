@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "@/lib/Redux/store";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { AuthProvider } from "@/hooks/authContext";
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }) {
@@ -63,9 +64,11 @@ export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
+      <AuthProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
+      </AuthProvider>
       </QueryClientProvider>
     </Provider>
   );
