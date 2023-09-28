@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import styles from './style.module.scss'; // Import SCSS styles for classNames
-import classNames from 'classnames/bind';
-import { Bar } from 'react-chartjs-2';
-ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
+import styles from "./style.module.scss";
+import classNames from "classnames/bind";
+import { Bar } from "react-chartjs-2";
 import {
     Chart as ChartJS,
     BarElement,
@@ -12,11 +11,17 @@ import {
     registerables,
 } from "chart.js";
 
+// Register Chart.js components
+ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
+
 const cx = classNames.bind(styles);
 
 const CountTeacher = () => {
-    const [itemStates, setItemStates] = useState({});
+    // State to track the selected item index
+    const [selectedItem, setSelectedItem] = useState(null);
 
+    // State to track the selected item data
+    const [itemStates, setItemStates] = useState({});
 
     // Number of teacher data
     const fakeData = [
@@ -31,7 +36,7 @@ const CountTeacher = () => {
             },
         },
         {
-            type: 'Câu hỏi được giao3',
+            type: "Câu hỏi được giao3",
             data: {
                 Total: 200,
                 Done: 50,
@@ -41,7 +46,7 @@ const CountTeacher = () => {
             },
         },
         {
-            type: 'Câu hỏi được giao',
+            type: "Câu hỏi được giao",
             data: {
                 Total: 100,
                 Done: 50,
@@ -51,7 +56,7 @@ const CountTeacher = () => {
             },
         },
         {
-            type: 'Câu hỏi được giao1',
+            type: "Câu hỏi được giao1",
             data: {
                 Total: 100,
                 Done: 50,
@@ -61,7 +66,7 @@ const CountTeacher = () => {
             },
         },
         {
-            type: 'Câu hỏi được giao2',
+            type: "Câu hỏi được giao2",
             data: {
                 Total: 100,
                 Done: 50,
@@ -72,10 +77,7 @@ const CountTeacher = () => {
         },
     ];
 
-    // State to track the selected item index
-    const [selectedItem, setSelectedItem] = useState(null);
-
-    // State to track the selected item data
+    // Handle item click
     const handleClick = (item) => {
         setSelectedItem(item);
         setItemStates({
@@ -86,13 +88,13 @@ const CountTeacher = () => {
 
     // Define data for the linear chart
     const lineChartData = {
-        labels: Object.keys(selectedItem?.data || {}), // Assumes selectedItem.data exists
+        labels: Object.keys(selectedItem?.data || {}),
         datasets: [
             {
-                label: selectedItem?.type || '',
+                label: selectedItem?.type || "",
                 data: Object.values(selectedItem?.data || {}),
                 fill: false,
-                borderColor: 'rgba(75, 192, 192, 1)', // Adjust the color as needed
+                borderColor: "rgba(75, 192, 192, 1)",
                 borderWidth: 2,
             },
         ],
@@ -108,22 +110,21 @@ const CountTeacher = () => {
     };
 
     return (
-        // Inside your React component
-        <div className={cx('count-teacher-container')}>
-            <div className={cx('count-teacher')}>
+        <div className={cx("count-teacher-container")}>
+            <div className={cx("count-teacher")}>
                 {fakeData.map((item, index) => (
-                    <div key={index}>
+                    <div key={index} className={cx("count-teacher-item-container")}>
                         <div
-                            className={cx('count-teacher-item', {
-                                'count-teacher-item--selected': selectedItem === item,
+                            className={cx("count-teacher-item", {
+                                "count-teacher-item--selected": selectedItem === item,
                             })}
                             onClick={() => handleClick(item)}
                         >
-                            <p className={cx('count-teacher-item__type')}>{item.type}</p>
+                            <div className={cx("count-teacher-item__type")}>{item.type}</div>
                         </div>
-                        <div className={cx('type-info')}>
+                        <div className={cx("type-info")}>
                             {itemStates[item.type] && (
-                                <div style={{ marginTop: '17px' }}>
+                                <div>
                                     <h4>Tổng số: {item.data.Total}</h4>
                                     <h4>Đã làm: {item.data.Done}</h4>
                                     <h4>Số câu đúng {item.data.Right}: 60</h4>
@@ -135,7 +136,7 @@ const CountTeacher = () => {
                     </div>
                 ))}
             </div>
-            <div className={cx('chart')}>
+            <div className={cx("chart")}>
                 {selectedItem !== null && (
                     <div>
                         <Bar data={lineChartData} options={lineChartOptions} />
@@ -143,8 +144,7 @@ const CountTeacher = () => {
                 )}
             </div>
         </div>
-
     );
-}
+};
 
 export default CountTeacher;
