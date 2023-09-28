@@ -1,6 +1,4 @@
-
 import ConfigZoom from "@/components/ConfigZoom/ConfigZoom";
-import React, { useState } from "react";
 
 const Index = () => {
   return (
