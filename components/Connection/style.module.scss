@@ -47,6 +47,7 @@
   
   /* User item styles */
   .user-item {
+    cursor: pointer;
     flex-basis: calc(25% - 20px); /* 4 columns per row with spacing */
     margin-bottom: 20px; /* Adjust spacing between rows */
     padding: 10px;

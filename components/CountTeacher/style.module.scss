@@ -1,7 +1,6 @@
 .count-teacher-container {
   width: 100%;
-  height: 500px;
-  margin: 0 auto;
+  height: 100vh;
 }
 
 .count-teacher {
@@ -53,4 +52,15 @@
   color: white;
   font-size: 12px;
   padding: 5px;
+}
+/* style.module.scss */
+.type-info {
+  /* Define your CSS styles here */
+  margin-top: 17px;
+
+  h4 {
+    /* Style for h4 elements within type-info */
+    margin-bottom: 5px;
+    /* Add other styles as needed */
+  }
 }
