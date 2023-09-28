@@ -10,11 +10,14 @@ import {
     Tooltip,
     Legend,
     registerables,
-  } from "chart.js";
+} from "chart.js";
 
 const cx = classNames.bind(styles);
 
 const CountTeacher = () => {
+    const [itemStates, setItemStates] = useState({});
+
+
     // Number of teacher data
     const fakeData = [
         {
@@ -28,7 +31,7 @@ const CountTeacher = () => {
             },
         },
         {
-            type: 'Câu hỏi được giao',
+            type: 'Câu hỏi được giao3',
             data: {
                 Total: 200,
                 Done: 50,
@@ -47,6 +50,26 @@ const CountTeacher = () => {
                 Hours: 5,
             },
         },
+        {
+            type: 'Câu hỏi được giao1',
+            data: {
+                Total: 100,
+                Done: 50,
+                Right: 30,
+                Wrong: 40,
+                Hours: 5,
+            },
+        },
+        {
+            type: 'Câu hỏi được giao2',
+            data: {
+                Total: 100,
+                Done: 50,
+                Right: 30,
+                Wrong: 40,
+                Hours: 5,
+            },
+        },
     ];
 
     // State to track the selected item index
@@ -55,6 +78,10 @@ const CountTeacher = () => {
     // State to track the selected item data
     const handleClick = (item) => {
         setSelectedItem(item);
+        setItemStates({
+            ...itemStates,
+            [item.type]: !itemStates[item.type],
+        });
     };
 
     // Define data for the linear chart
@@ -81,16 +108,30 @@ const CountTeacher = () => {
     };
 
     return (
+        // Inside your React component
         <div className={cx('count-teacher-container')}>
             <div className={cx('count-teacher')}>
                 {fakeData.map((item, index) => (
-                    <div
-                        className={cx('count-teacher-item', {
-                            'count-teacher-item--selected': selectedItem === item,
-                        })}
-                        onClick={() => handleClick(item)}
-                    >
-                        <p className={cx('count-teacher-item__type')}>{item.type}</p>
+                    <div key={index}>
+                        <div
+                            className={cx('count-teacher-item', {
+                                'count-teacher-item--selected': selectedItem === item,
+                            })}
+                            onClick={() => handleClick(item)}
+                        >
+                            <p className={cx('count-teacher-item__type')}>{item.type}</p>
+                        </div>
+                        <div className={cx('type-info')}>
+                            {itemStates[item.type] && (
+                                <div style={{ marginTop: '17px' }}>
+                                    <h4>Tổng số: {item.data.Total}</h4>
+                                    <h4>Đã làm: {item.data.Done}</h4>
+                                    <h4>Số câu đúng {item.data.Right}: 60</h4>
+                                    <h4>Số câu sai: {item.data.Wrong}</h4>
+                                    <h4>Tổng số giờ làm: {item.data.Hours}</h4>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 ))}
             </div>
@@ -102,6 +143,7 @@ const CountTeacher = () => {
                 )}
             </div>
         </div>
+
     );
 }
 
