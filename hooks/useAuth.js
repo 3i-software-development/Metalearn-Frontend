@@ -26,7 +26,12 @@ function useAuth() {
     router.push("/auth/login"); // Chuyển hướng đến trang đăng nhập sau khi đăng xuất
   }
 
-  return { isAuthenticated, logout };
+  function loginState() {
+    setIsAuthenticated(true);
+    console.log("loginState", isAuthenticated);
+  }
+
+  return { isAuthenticated, logout, loginState };
 }
 
 export default useAuth;

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import Link from "next/link";
@@ -20,7 +20,8 @@ import {
   Menu,
   Tooltip,
 } from "@mui/material";
-import useAuth from "@/hooks/useAuth";
+import { useAuthContext } from "@/hooks/authContext";
+
 import { useSelector } from "react-redux";
 import { BiWorld } from "react-icons/bi";
 import Image from "next/image";
@@ -32,7 +33,12 @@ const Header = () => {
 
   const [showMobile, setShowmobile] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, loginState, logout } = useAuthContext();
+
+  useEffect(() => {
+    // Thực hiện các hành động cần thiết khi isAuthenticated thay đổi
+    // Ví dụ: refresh header, đóng dropdown, vv.
+  }, [isAuthenticated]);
 
   const items = [
     {
@@ -218,7 +224,7 @@ const Header = () => {
       {
         isAuthenticated && (
           <Button onClick={() => logout()}>
-             Đăng xuất
+            Đăng xuất
           </Button>
         )
       }
@@ -318,9 +324,6 @@ const Header = () => {
           </Menu>
         </Box>
       )}
-
-
-
 
       {!isAuthenticated && (
         <div className={cx("user")}>
