@@ -1,8 +1,7 @@
-    
 import React, { useState } from "react";
 import classNames from "classnames/bind";
-import styles from "./BankDT03.module.scss";
-import { PlaceholderWithRef } from "@devexpress/dx-react-core";
+import styles from "./ConfigZoom.module.scss";
+
 
 const cx = classNames.bind(styles);
 
@@ -34,7 +33,7 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Dịch vụ API</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}>
+                <input className={cx("configZoom_input_Styles")}>
                   
                 </input>
                 <i className={`fa-solid ${itemStates.question1 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "40px", marginTop: "12px" }}
@@ -57,7 +56,7 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Mã tài khoản</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
             <li>
@@ -66,7 +65,7 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Tên tài khoản</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
             <li>
@@ -75,17 +74,32 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Thư điện tử</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
             <li>
-              <div className={cx("flex-item")}>
-                <i class="fa-solid fa-circle-half-stroke"></i>
-                <h3 style={{marginLeft: "12px"}}>Loại</h3>
+            <div className={cx("flex-item")}>
+                <i className="fa-solid fa-circle-half-stroke"></i>
+                <h3 style={{ marginLeft: "12px" }}>Loại</h3>
               </div>
-              <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}></input>
+
+              <label style={{ display: 'flex', alignItems: 'center' }}>
+                  <input className={cx("configZoom_input_Styles")}
+                  />
+                 <i className={`fa-solid ${itemStates.question2 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "40px", marginTop: "12px" }}
+                    onClick={() => handleItemClick("question2")}></i>
               </label>
+                  {itemStates.question2 && (
+                    <div style={{ marginTop: "17px", marginLeft: "50px" }}>
+                      <ul style={{listStyle: "none"}}>
+                        <li><input type="radio" /> Lịch hợp</li>
+                        <li><input type="radio" /> Nhóm chát</li>
+                        <li><input type="radio" /> Toán</li>
+                        <li><input type="radio" /> Lưu trữ</li>
+                        <li><input type="radio" /> Tài khoản FPT.AI</li>
+                      </ul>      
+                    </div>
+                  )}
             </li>
             <li>
               <div className={cx("flex-item")}>
@@ -93,7 +107,7 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Số tài khoản</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
             <li>
@@ -102,7 +116,7 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Mã khóa API (Web)</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
             <li>
@@ -111,7 +125,7 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Mã bí mật API (web)</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
             <li>
@@ -120,7 +134,7 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Mã khóa API (App)</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
             <li>
@@ -129,7 +143,7 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Mã bí mật API (Web)</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
             <li>
@@ -138,27 +152,33 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Mã host</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px",width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
+            
+
             <li>
               <div className={cx("flex-item")}>
                 <i class="fa-solid fa-circle-half-stroke"></i>
                 <h3 style={{marginLeft: "12px"}}>Mã token (Web)</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px", width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
+
             <li>
               <div className={cx("flex-item")}>
                 <i class="fa-solid fa-circle-half-stroke"></i>
                 <h3 style={{marginLeft: "12px"}}>Mã tự làm mới</h3>
               </div>
               <label>
-                <input style={{marginLeft: "7px", width: "98%", borderRadius: "5px", height: "40px"}}></input>
+                <input className={cx("configZoom_input_Styles")}></input>
               </label>
             </li>
+
+            
+         
           </ul>
         </div>
 
@@ -196,5 +216,7 @@ const handleItemClick = (itemName) => {
 }
 
 export default ConfigZoom;
+
+
 
 
