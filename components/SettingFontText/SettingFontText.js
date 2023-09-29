@@ -90,6 +90,7 @@ function SettingFontText() {
     const saveSetting = localStorage.getItem("saveSetting");
     if (saveSetting) {
       setSaveSetting(JSON.parse(saveSetting));
+      console.log(saveSetting)
     }
   }, []);
 
@@ -137,6 +138,7 @@ function SettingFontText() {
   const handleSave = () => {
     // Lưu setting vào localStorage
     localStorage.setItem("saveSetting", JSON.stringify(saveSetting));
+    console.log(saveSetting);
   };
 
 

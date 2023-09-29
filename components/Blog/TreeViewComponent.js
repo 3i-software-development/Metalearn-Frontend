@@ -2,11 +2,19 @@ import React from "react";
 import { TreeView, TreeItem } from "@mui/x-tree-view";
 import styles from './style.module.scss';
 import classNames from 'classnames/bind';
+import { useAuth } from '@/hooks/authContext';
+
 const cx = classNames.bind(styles);
 
 const TreeViewComponent = ({ treeData, handleSelectBarItem }) => {
+  const { saveSetting } = useAuth();
   const handleClick = (childItem) => {
     handleSelectBarItem(childItem);
+  };
+  const divStyleLeft = {
+    fontSize: saveSetting["Menu trái"].size + "px",
+    color: saveSetting["Menu trái"].color,
+    fontFamily: saveSetting["Menu trái"].style,
   };
 
   return (
@@ -15,11 +23,11 @@ const TreeViewComponent = ({ treeData, handleSelectBarItem }) => {
         sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: "auto" }}
       >
         {treeData.map((item) => (
-          <TreeItem key={item.nodeId} nodeId={item.nodeId} label={item.label}>
+          <TreeItem key={item.nodeId} nodeId={item.nodeId} label={item.label} style={divStyleLeft}>
             {item.children && (
               <>
                 {item.children.map((childItem) => (
-                  <TreeItem
+                  <TreeItem style={divStyleLeft}
                     key={childItem.nodeId}
                     nodeId={childItem.nodeId}
                     label={childItem.label}
