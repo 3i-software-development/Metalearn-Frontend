@@ -8,6 +8,48 @@ export function AuthProvider({ children }) {
   const router = useRouter();
 
   const [user, setUser] = useState(null);
+  const [saveSetting, setSaveSetting] = useState({
+    "Menu trái": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Tiêu đề": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Thông báo": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Điều khiển": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Nội dung chữ": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Nội dung control": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Nội dung kiểu cây": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Giao diện bài viết": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    }
+  });
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -21,6 +63,10 @@ export function AuthProvider({ children }) {
       setUser(null);
       setIsAuthenticated(false);
       router.push("/auth/login");
+    }
+    const saveSetting = localStorage.getItem("saveSetting");
+    if (saveSetting) {
+      setSaveSetting(JSON.parse(saveSetting));
     }
   }, []);
 
@@ -38,7 +84,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, loginState, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, loginState, logout, saveSetting }}>
       {children}
     </AuthContext.Provider>
   );

@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "@/lib/Redux/store";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { AuthProvider, useAuthContext } from "@/hooks/authContext";
+import { AuthProvider, useAuth } from "@/hooks/authContext";
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }) {
