@@ -1,12 +1,12 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
+import { set } from "react-hook-form";
 
 const cx = classNames.bind(styles);
 
 
-const NotificationPopup = () => {
-    // Add your notification content and styling here
+const NotificationPopup = () => {    // Add your notification content and styling here
     const fakeNotification = [
       {
         id: 1,

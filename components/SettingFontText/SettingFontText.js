@@ -1,401 +1,217 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./SettingFontText.module.scss"
-
 const cx = classNames.bind(styles);
 function SettingFontText() {
 
-  const [font, setFont] = useState('default');
-    const [itemStates, setItemStates] = useState({
-        question1: false,
-        question2: false,
-        question3: false,
-        question4: false,
-        question5: false,
-        question6: false,
-        question7: false,
-        question8: false,
-    })
-    const handleItemClick = (itemName) => {
-      // Khi nhấp vào một phần tử, chỉ cập nhật trạng thái của phần tử đó
-      setItemStates({
-          ...itemStates,
-          [itemName]: !itemStates[itemName],
-      });
-    };
+  const pages = [
+    {
+      name: "Menu trái",
+    },
+    {
+      name: "Tiêu đề",
+    },
+    {
+      name: "Thông báo",
+    },
+    {
+      name: "Điều khiển",
+    },
+    {
+      name: "Nội dung chữ",
+    },
+    {
+      name: "Nội dung control",
+    },
+    {
+      name: "Nội dung kiểu cây",
+    },
+    {
+      name: "Giao diện bài viết",
+    }
+  ];
 
-  const handleFontChange = (event) => {
-    setFont(event.target.value); // Cập nhật giá trị font khi người dùng chọn
+  const [saveSetting, setSaveSetting] = useState({
+    "Menu trái": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Tiêu đề": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Thông báo": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Điều khiển": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Nội dung chữ": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Nội dung control": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Nội dung kiểu cây": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    },
+    "Giao diện bài viết": {
+      style: "default",
+      size: "17",
+      color: "#000000"
+    }
+  });
+
+  const [itemStates, setItemStates] = useState({
+    "Menu trái": false,
+    "Tiêu đề": false,
+    "Thông báo": false,
+    "Điều khiển": false,
+    "Nội dung chữ": false,
+    "Nội dung control": false,
+    "Nội dung kiểu cây": false,
+    "Giao diện bài viết": false,
+  });
+
+  useEffect(() => {
+    // Load the settings from local storage
+    const saveSetting = localStorage.getItem("saveSetting");
+    if (saveSetting) {
+      setSaveSetting(JSON.parse(saveSetting));
+    }
+  }, []);
+
+  const handleItemClick = (itemName) => {
+    // Khi nhấp vào một phần tử, chỉ cập nhật trạng thái của phần tử đó
+    setItemStates({
+      ...itemStates,
+      [itemName]: !itemStates[itemName],
+    });
   };
 
-   
-    return (  
+  const handleFontChange = (event, itemName) => {
+    const newFont = event.target.value;
+    setSaveSetting((prevSaveSetting) => ({
+      ...prevSaveSetting,
+      [itemName]: {
+        ...prevSaveSetting[itemName],
+        style: newFont,
+      },
+    }));
+  };
 
-        <div>
-            <h1>Setting Font Text</h1>
+  const handleFontSizeChange = (event, itemName) => {
+    const newSize = event.target.value;
+    setSaveSetting((prevSaveSetting) => ({
+      ...prevSaveSetting,
+      [itemName]: {
+        ...prevSaveSetting[itemName],
+        size: newSize,
+      },
+    }));
+  };
 
-            <div style={{display: "flex", alignItems: "center", position: "relative"}}>
-                <i class="fa-solid fa-folder"></i>
-                <h2 style={{marginLeft: "20px", marginRight: "20px"}}>Menu trái</h2>
-                <i className={`fa-solid ${itemStates.question1 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
-                    onClick={() => handleItemClick("question1")}>        
-                </i>     
-            </div>
+  const handleColorChange = (event, itemName) => {
+    const newColor = event.target.value;
+    setSaveSetting((prevSaveSetting) => ({
+      ...prevSaveSetting,
+      [itemName]: {
+        ...prevSaveSetting[itemName],
+        color: newColor,
+      },
+    }));
+  };
 
-            {itemStates.question1 && (
-              <div style={{ marginTop: "17px", marginLeft: "50px" }}>
-                <ul style={{listStyle: "none"}}>
-                  <li>
-                    <div style={{display: "flex"}}>
+  const handleSave = () => {
+    // Lưu setting vào localStorage
+    localStorage.setItem("saveSetting", JSON.stringify(saveSetting));
+  };
 
-                      <div style={{display: "flex", alignItems: "center"}}>
-                        <h4>Kiểu phông</h4>
-                        <div style={{ marginTop: '17px', marginLeft: '50px' }}>
-                          <select value={font} onChange={handleFontChange} style={{marginBottom: "15px"}}>
-                            <option value="default">Mặc định</option>
-                            <option value="timesNewRoman">Times New Roman</option>
-                            <option value="quicksand">Quicksand</option>
-                            <option value="vt323">VT323</option>
-                            <option value="incionsolate">Incionsolate</option>
-                            <option value="paccico">Paccico</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
 
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <h4>Kích thước phong chữ</h4>
-                      <input style={{marginLeft: "12px", borderRadius: "5px"}} placeholder="17"></input>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <h4>Màu phông chữ</h4>
-                      <input type="color"></input>
-                    </div>
-                  </li>
-                </ul>      
-              </div>
-              )}
 
-            <div style={{display: "flex", alignItems: "center", position: "relative"}}>
+
+  return (
+
+    <div>
+      <h1>Setting Font Text</h1>
+
+      {
+        pages.map((page) => (
+          <div>
+            <div style={{ display: "flex", alignItems: "center", position: "relative" }}>
               <i class="fa-solid fa-folder"></i>
-              <h2 style={{marginLeft: "20px", marginRight: "20px"}}>Tiêu để</h2>
-              <i className={`fa-solid ${itemStates.question2 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
-                onClick={() => handleItemClick("question2")}>        
-              </i>     
+              <h2 style={{ marginLeft: "20px", marginRight: "20px" }}>{page.name}</h2>
+              <i className={`fa-solid ${itemStates.question1 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
+                onClick={() => handleItemClick(page.name)}>
+              </i>
             </div>
-            
-            {itemStates.question2 && (
-              <div style={{ marginTop: "17px", marginLeft: "50px" }}>
-                <ul style={{listStyle: "none"}}>
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <div style={{display: "flex", alignItems: "center"}}>
-                        <h4>Kiểu phông</h4>
-                        <div style={{ marginTop: '17px', marginLeft: '50px' }}>
-                          <select value={font} onChange={handleFontChange} style={{marginBottom: "15px"}}>
-                            <option value="default">Mặc định</option>
-                            <option value="timesNewRoman">Times New Roman</option>
-                            <option value="quicksand">Quicksand</option>
-                            <option value="vt323">VT323</option>
-                            <option value="incionsolate">Incionsolate</option>
-                            <option value="paccico">Paccico</option>
-                          </select>
+            {
+              itemStates[page.name] && (
+                <div style={{ marginTop: "17px", marginLeft: "50px" }}>
+                  <ul style={{ listStyle: "none" }}>
+                    <li>
+                      <div style={{ display: "flex" }}>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <h4>Kiểu phông</h4>
+                          <div style={{ marginTop: '17px', marginLeft: '50px' }}>
+                            <select value={saveSetting[page.name].style} onChange={(event) => handleFontChange(event, page.name)} style={{ marginBottom: "15px" }}>
+                              <option value="default">Mặc định</option>
+                              <option value="timesNewRoman">Times New Roman</option>
+                              <option value="quicksand">Quicksand</option>
+                              <option value="vt323">VT323</option>
+                              <option value="incionsolate">Incionsolate</option>
+                              <option value="paccico">Paccico</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </li>
+                    </li>
 
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <h4>Kích thước phong chữ</h4>
-                      <input style={{marginLeft: "12px", borderRadius: "5px"}} placeholder="17"></input>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <h4>Màu phông chữ</h4>
-                      <input type="color"></input>
-                    </div>
-                  </li>
-                </ul>      
-              </div>
-            )}
-            <div style={{display: "flex", alignItems: "center", position: "relative"}}>
-              <i class="fa-solid fa-folder"></i>
-              <h2 style={{marginLeft: "20px", marginRight: "20px"}}>Tho6gn báo</h2>
-              <i className={`fa-solid ${itemStates.question3 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
-                  onClick={() => handleItemClick("question3")}>        
-              </i>     
-            </div>
-            
-            {itemStates.question3 && (
-              <div style={{ marginTop: "17px", marginLeft: "50px" }}>
-                <ul style={{listStyle: "none"}}>
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <div style={{display: "flex", alignItems: "center"}}>
-                        <h4>Kiểu phông</h4>
-                        <div style={{ marginTop: '17px', marginLeft: '50px' }}>
-                          <select value={font} onChange={handleFontChange} style={{marginBottom: "15px"}}>
-                            <option value="default">Mặc định</option>
-                            <option value="timesNewRoman">Times New Roman</option>
-                            <option value="quicksand">Quicksand</option>
-                            <option value="vt323">VT323</option>
-                            <option value="incionsolate">Incionsolate</option>
-                            <option value="paccico">Paccico</option>
-                          </select>
-                        </div>
+                    <li>
+                      <div style={{ display: "flex" }}>
+                        <h4>Kích thước phong chữ</h4>
+                        <input
+                          className={cx('font-size-change')}
+                          style={{ marginLeft: "12px", borderRadius: "5px" }}
+                          placeholder="17"
+                          value={saveSetting[page.name].size}
+                          onChange={(event) => handleFontSizeChange(event, page.name)}
+                        ></input>
                       </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <h4>Kích thước phong chữ</h4>
-                      <input style={{marginLeft: "12px", borderRadius: "5px"}} placeholder="17"></input>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <h4>Màu phông chữ</h4>
-                      <input type="color"></input>
-                    </div>
-                  </li>
-                </ul>      
-              </div>
-              )}
-
-            <div style={{display: "flex", alignItems: "center", position: "relative"}}>
-              <i class="fa-solid fa-folder"></i>
-              <h2 style={{marginLeft: "20px", marginRight: "20px"}}>Điều khiển</h2>
-              <i className={`fa-solid ${itemStates.question4 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
-                  onClick={() => handleItemClick("question4")}>        
-              </i>     
-            </div>
-            
-            {itemStates.question4 && (
-              <div style={{ marginTop: "17px", marginLeft: "50px" }}>
-                <ul style={{listStyle: "none"}}>
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <div style={{display: "flex", alignItems: "center"}}>
-                        <h4>Kiểu phông</h4>
-                        <div style={{ marginTop: '17px', marginLeft: '50px' }}>
-                          <select value={font} onChange={handleFontChange} style={{marginBottom: "15px"}}>
-                            <option value="default">Mặc định</option>
-                            <option value="timesNewRoman">Times New Roman</option>
-                            <option value="quicksand">Quicksand</option>
-                            <option value="vt323">VT323</option>
-                            <option value="incionsolate">Incionsolate</option>
-                            <option value="paccico">Paccico</option>
-                          </select>
-                        </div>
+                    </li>
+                    <li>
+                      <div>
+                        <h4>Màu phông chữ</h4>
+                        <input
+                          className={cx('color-font-change')}
+                          type="color"
+                          value={saveSetting[page.name].color}
+                          onChange={(event) => handleColorChange(event, page.name)}
+                        ></input>
                       </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <h4>Kích thước phong chữ</h4>
-                      <input style={{marginLeft: "12px", borderRadius: "5px"}} placeholder="17"></input>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <h4>Màu phông chữ</h4>
-                      <input type="color"></input>
-                    </div>
-                  </li>
-                </ul>      
-              </div>
-              )}
-
-            <div style={{display: "flex", alignItems: "center", position: "relative"}}>
-              <i class="fa-solid fa-folder"></i>
-              <h2 style={{marginLeft: "20px", marginRight: "20px"}}>Nội dung chữ</h2>
-              <i className={`fa-solid ${itemStates.question5 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
-                  onClick={() => handleItemClick("question5")}>        
-              </i>     
-            </div>
-            
-            {itemStates.question5 && (
-              <div style={{ marginTop: "17px", marginLeft: "50px" }}>
-                <ul style={{listStyle: "none"}}>
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <div style={{display: "flex", alignItems: "center"}}>
-                        <h4>Kiểu phông</h4>
-                        <div style={{ marginTop: '17px', marginLeft: '50px' }}>
-                          <select value={font} onChange={handleFontChange} style={{marginBottom: "15px"}}>
-                            <option value="default">Mặc định</option>
-                            <option value="timesNewRoman">Times New Roman</option>
-                            <option value="quicksand">Quicksand</option>
-                            <option value="vt323">VT323</option>
-                            <option value="incionsolate">Incionsolate</option>
-                            <option value="paccico">Paccico</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <h4>Kích thước phong chữ</h4>
-                      <input style={{marginLeft: "12px", borderRadius: "5px"}} placeholder="17"></input>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <h4>Màu phông chữ</h4>
-                      <input type="color"></input>
-                    </div>
-                  </li>
-                </ul>      
-              </div>
-            )}
-
-            <div style={{display: "flex", alignItems: "center", position: "relative"}}>
-              <i class="fa-solid fa-folder"></i>
-              <h2 style={{marginLeft: "20px", marginRight: "20px"}}>Nội dung control</h2>
-              <i className={`fa-solid ${itemStates.question6 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
-                  onClick={() => handleItemClick("question6")}>        
-              </i>     
-            </div>
-            
-            {itemStates.question6 && (
-              <div style={{ marginTop: "17px", marginLeft: "50px" }}>
-                <ul style={{listStyle: "none"}}>
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <div style={{display: "flex", alignItems: "center"}}>
-                        <h4>Kiểu phông</h4>
-                        <div style={{ marginTop: '17px', marginLeft: '50px' }}>
-                          <select value={font} onChange={handleFontChange} style={{marginBottom: "15px"}}>
-                            <option value="default">Mặc định</option>
-                            <option value="timesNewRoman">Times New Roman</option>
-                            <option value="quicksand">Quicksand</option>
-                            <option value="vt323">VT323</option>
-                            <option value="incionsolate">Incionsolate</option>
-                            <option value="paccico">Paccico</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <h4>Kích thước phong chữ</h4>
-                      <input style={{marginLeft: "12px", borderRadius: "5px"}} placeholder="17"></input>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <h4>Màu phông chữ</h4>
-                      <input type="color"></input>
-                    </div>
-                  </li>
-                </ul>      
-              </div>
-            )}
-
-            <div style={{display: "flex", alignItems: "center", position: "relative"}}>
-              <i class="fa-solid fa-folder"></i>
-              <h2 style={{marginLeft: "20px", marginRight: "20px"}}>Nội dung kiểu cây</h2>
-              <i className={`fa-solid ${itemStates.question7 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
-                  onClick={() => handleItemClick("question7")}>        
-              </i>     
-            </div>
-            
-            {itemStates.question7 && (
-              <div style={{ marginTop: "17px", marginLeft: "50px" }}>
-                <ul style={{listStyle: "none"}}>
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <div style={{display: "flex", alignItems: "center"}}>
-                        <h4>Kiểu phông</h4>
-                        <div style={{ marginTop: '17px', marginLeft: '50px' }}>
-                          <select value={font} onChange={handleFontChange} style={{marginBottom: "15px"}}>
-                            <option value="default">Mặc định</option>
-                            <option value="timesNewRoman">Times New Roman</option>
-                            <option value="quicksand">Quicksand</option>
-                            <option value="vt323">VT323</option>
-                            <option value="incionsolate">Incionsolate</option>
-                            <option value="paccico">Paccico</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <h4>Kích thước phong chữ</h4>
-                      <input style={{marginLeft: "12px", borderRadius: "5px"}} placeholder="17"></input>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <h4>Màu phông chữ</h4>
-                      <input type="color"></input>
-                    </div>
-                  </li>
-                </ul>      
-              </div>
-              )}
-
-            <div style={{display: "flex", alignItems: "center", position: "relative"}}>
-              <i class="fa-solid fa-folder"></i>
-              <h2 style={{marginLeft: "20px", marginRight: "20px"}}>Giao diện bài viết</h2>
-              <i className={`fa-solid ${itemStates.question8 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
-                  onClick={() => handleItemClick("question8")}>        
-              </i>     
-            </div>
-            
-            {itemStates.question8 && (
-              <div style={{ marginTop: "17px", marginLeft: "50px" }}>
-                <ul style={{listStyle: "none"}}>
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <div style={{display: "flex", alignItems: "center"}}>
-                        <h4>Kiểu phông</h4>
-                        <div style={{ marginTop: '17px', marginLeft: '50px' }}>
-                          <select value={font} onChange={handleFontChange} style={{marginBottom: "15px"}}>
-                            <option value="default">Mặc định</option>
-                            <option value="timesNewRoman">Times New Roman</option>
-                            <option value="quicksand">Quicksand</option>
-                            <option value="vt323">VT323</option>
-                            <option value="incionsolate">Incionsolate</option>
-                            <option value="paccico">Paccico</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div style={{display: "flex"}}>
-                      <h4>Kích thước phong chữ</h4>
-                      <input style={{marginLeft: "12px", borderRadius: "5px"}} placeholder="17"></input>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <h4>Màu phông chữ</h4>
-                      <input type="color"></input>
-                    </div>
-                  </li>
-                </ul>      
-              </div>
-            )}
-  
-        </div>
-    );
+                    </li>
+                  </ul>
+                </div>
+              )
+            }
+          </div>
+        ))
+      }
+      <button onClick={() => handleSave()}>Save</button>
+    </div>
+  );
 }
 
 export default SettingFontText;
