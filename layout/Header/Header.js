@@ -20,7 +20,7 @@ import {
   Menu,
   Tooltip,
 } from "@mui/material";
-import { useAuthContext } from "@/hooks/authContext";
+import { useAuth } from "@/hooks/authContext";
 
 import { useSelector } from "react-redux";
 import { BiWorld } from "react-icons/bi";
@@ -33,7 +33,7 @@ const Header = () => {
 
   const [showMobile, setShowmobile] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
-  const { isAuthenticated, loginState, logout } = useAuthContext();
+  const { isAuthenticated, loginState, logout } = useAuth();
 
   useEffect(() => {
     // Thực hiện các hành động cần thiết khi isAuthenticated thay đổi
