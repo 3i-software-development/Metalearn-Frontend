@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './style.module.scss';
 import QRCode from 'qrcode.react';
-import TopTopic from '../Home/TopTopic';
 
 const cx = classNames.bind(styles);
 
