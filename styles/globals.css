@@ -383,6 +383,9 @@ img {
   font-size: 1rem;
 }
 
+
+
+
 @media screen and (max-width: 930px) {
   .sidebar-right {
     display: none;

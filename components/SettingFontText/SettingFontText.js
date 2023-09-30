@@ -170,9 +170,9 @@ function SettingFontText() {
                           <div style={{ marginTop: '17px', marginLeft: '50px' }}>
                             <select value={saveSetting[page.name].style} onChange={(event) => handleFontChange(event, page.name)} style={{ marginBottom: "15px" }}>
                               <option value="default">Mặc định</option>
-                              <option value="timesNewRoman">Times New Roman</option>
-                              <option value="quicksand">Quicksand</option>
-                              <option value="vt323">VT323</option>
+                              <option value="Times New Roman">Times New Roman</option>
+                              <option value='Quicksand'>Quicksand</option>
+                              <option value='VT323'>VT323</option>
                               <option value="incionsolate">Incionsolate</option>
                               <option value="paccico">Paccico</option>
                             </select>
