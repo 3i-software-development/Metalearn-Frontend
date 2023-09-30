@@ -211,7 +211,8 @@ function SettingFontText() {
           </div>
         ))
       }
-      <button onClick={() => handleSave()}>Save</button>
+      
+      <button style={{width: "100px", height: "40px" , backgroundColor: "black", marginTop: "50px", borderRadius: "10px", marginLeft: "50px", color: "white"}} onClick={() => handleSave()}>Save</button>
     </div>
   );
 }
