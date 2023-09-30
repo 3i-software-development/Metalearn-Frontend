@@ -271,11 +271,11 @@ function CountStudent() {
             {itemStates.question11 && (
                 <div style={{ marginTop: "17px", marginLeft: "40px" }}>
                     
-                    <h3 className={cx("hover-item")}>Câu 6: Đối vs ren nhìn thấy dùng nét liền đậm vẽ:</h3>
-                    <p className={cx("hover-item")}>1. Đường đính ren</p>
-                    <p className={cx("hover-item")}>2. Đường giớn hạn ren </p>
-                    <p className={cx("hover-item")}>3. Cả $A$ và $B$ điều dùng</p>
-                    <p className={cx("hover-item")}>4. Đáp án khác</p>
+                    <h3 className={cx("hover-item2")}>Câu 6: Đối vs ren nhìn thấy dùng nét liền đậm vẽ:</h3>
+                    <p className={cx("hover-item2")}>1. Đường đính ren</p>
+                    <p className={cx("hover-item2")}>2. Đường giớn hạn ren </p>
+                    <p className={cx("hover-item2")}>3. Cả $A$ và $B$ điều dùng</p>
+                    <p className={cx("hover-item2")}>4. Đáp án khác</p>
                 </div>
             )}
 
