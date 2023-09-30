@@ -51,3 +51,11 @@
     float: right;
     clear: both;
 }
+
+/* style.module.scss */
+
+/* Define a CSS rule to change the font size for the TreeView component */
+.MuiTreeView-root {
+    font-size: 40; /* Adjust the desired font size here */
+  }
+  
