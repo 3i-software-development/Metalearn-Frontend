@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     // Kiểm tra JWT trong local storage hoặc cookie khi ứng dụng tải lại
-    const user = sessionStorage.getItem("user");
+    const user = localStorage.getItem("user");
     if (user) {
       setUser(user);
       setIsAuthenticated(true);
@@ -78,7 +78,9 @@ export function AuthProvider({ children }) {
 
   const logout = () => {
     // Xóa JWT khỏi local storage hoặc cookie
-    sessionStorage.removeItem("user");
+    //sessionStorage.removeItem("user");
+    localStorage.removeItem("user");
+    localStorage.removeItem("userId");
     setUser(null);
     setIsAuthenticated(false);
   };
