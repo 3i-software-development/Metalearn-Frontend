@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./BankDT02.module.scss";
+import styles from "./ViewExamSchedule.module.scss";
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +17,7 @@ function MonthCell({ day, onClick, isSelected, onDayClick }) {
   );
 }
 
-function BankDT02({ month, year }) {
+function ViewExamSchedule({ month, year }) {
   const daysInMonth = new Date(year, month, 0).getDate();
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
 
@@ -58,10 +58,8 @@ function BankDT02({ month, year }) {
                 <th colSpan="1">Chủ Nhật</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                {/* Thêm một hàng trống ở đây nếu cần */}
-              </tr>
+
+            <tbody> 
               {rows.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {row.map((day, columnIndex) => (
@@ -128,4 +126,4 @@ function BankDT02({ month, year }) {
   );
 }
 
-export default BankDT02;
+export default ViewExamSchedule;

@@ -22,7 +22,7 @@ const handleItemClick = (itemName) => {
 };
   return (
     <div>
-      <h2 style={{textAlign: "center"}}>Cấu Hình Google</h2>
+      <h2 style={{textAlign: "center"}}>Cấu Hình Mathpix</h2>
       <div style={{display: "flex", justifyContent: "space-between"}}>
         <div>
           

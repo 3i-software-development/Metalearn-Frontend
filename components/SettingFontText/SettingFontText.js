@@ -148,13 +148,12 @@ function SettingFontText() {
 
     <div>
       <h1>Setting Font Text</h1>
-
       {
         pages.map((page) => (
           <div>
             <div style={{ display: "flex", alignItems: "center", position: "relative" }}>
               <i class="fa-solid fa-folder"></i>
-              <h2 style={{ marginLeft: "20px", marginRight: "20px" }}>{page.name}</h2>
+              <h2 className={cx("hover-item")} style={{ marginLeft: "20px", marginRight: "20px" }}>{page.name}</h2>
               <i className={`fa-solid ${itemStates.question1 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
                 onClick={() => handleItemClick(page.name)}>
               </i>
@@ -163,13 +162,14 @@ function SettingFontText() {
               itemStates[page.name] && (
                 <div style={{ marginTop: "17px", marginLeft: "50px" }}>
                   <ul style={{ listStyle: "none" }}>
+                    
                     <li>
                       <div style={{ display: "flex" }}>
                         <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4>Kiểu phông</h4>
+                          <h4 className={cx("hover-item")}>Kiểu phông</h4>
                           <div style={{ marginTop: '17px', marginLeft: '50px' }}>
                             <select value={saveSetting[page.name].style} onChange={(event) => handleFontChange(event, page.name)} style={{ marginBottom: "15px" }}>
-                              <option value="default">Mặc định</option>
+                              <option value="default ">Mặc định</option>
                               <option value="Times New Roman">Times New Roman</option>
                               <option value='Quicksand'>Quicksand</option>
                               <option value='VT323'>VT323</option>
@@ -183,7 +183,7 @@ function SettingFontText() {
 
                     <li>
                       <div style={{ display: "flex" }}>
-                        <h4>Kích thước phong chữ</h4>
+                        <h4 className={cx("hover-item")}>Kích thước phong chữ</h4>
                         <input
                           className={cx('font-size-change')}
                           style={{ marginLeft: "12px", borderRadius: "5px" }}
@@ -206,7 +206,7 @@ function SettingFontText() {
 
                     <li>
                       <div>
-                        <h4>Màu phông chữ</h4>
+                        <h4 className={cx("hover-item")}>Màu phông chữ</h4>
                         <input
                           className={cx('color-font-change')}
                           type="color"
@@ -215,6 +215,7 @@ function SettingFontText() {
                         ></input>
                       </div>
                     </li>
+
                   </ul>
                 </div>
               )
@@ -223,7 +224,11 @@ function SettingFontText() {
         ))
       }
 
-      <button style={{ width: "100px", height: "40px", backgroundColor: "black", marginTop: "50px", borderRadius: "10px", marginLeft: "50px", color: "white" }} onClick={() => handleSave()}>Save</button>
+      
+      <button className={cx("button-item-save")} onClick={() => handleSave()}>Save</button>
+
+
+
     </div>
   );
 }
