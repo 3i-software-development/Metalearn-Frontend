@@ -187,12 +187,23 @@ function SettingFontText() {
                         <input
                           className={cx('font-size-change')}
                           style={{ marginLeft: "12px", borderRadius: "5px" }}
+                          type="number"
                           placeholder="17"
                           value={saveSetting[page.name].size}
-                          onChange={(event) => handleFontSizeChange(event, page.name)}
-                        ></input>
+                          onChange={(event) => {
+                            const newSize = Math.min(Math.max(event.target.value, 5), 60);
+                            setSaveSetting((prevSaveSetting) => ({
+                              ...prevSaveSetting,
+                              [page.name]: {
+                                ...prevSaveSetting[page.name],
+                                size: newSize,
+                              },
+                            }));
+                          }}
+                        />
                       </div>
                     </li>
+
                     <li>
                       <div>
                         <h4>Màu phông chữ</h4>
@@ -211,8 +222,8 @@ function SettingFontText() {
           </div>
         ))
       }
-      
-      <button style={{width: "100px", height: "40px" , backgroundColor: "black", marginTop: "50px", borderRadius: "10px", marginLeft: "50px", color: "white"}} onClick={() => handleSave()}>Save</button>
+
+      <button style={{ width: "100px", height: "40px", backgroundColor: "black", marginTop: "50px", borderRadius: "10px", marginLeft: "50px", color: "white" }} onClick={() => handleSave()}>Save</button>
     </div>
   );
 }
