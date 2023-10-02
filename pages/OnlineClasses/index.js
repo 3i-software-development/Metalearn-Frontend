@@ -1,12 +1,12 @@
-import BankDT from "@/components/BankDT/BankDT";
+import OnlineClasses from "@/components/OnlineClasses/OnlineClasses";
 import React from "react";
 
 const Index = () => {
   return (
     <div>
-      <BankDT />
+      <OnlineClasses />
     </div>
-  );
-};
+  )
+}
 
 export default Index;

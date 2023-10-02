@@ -1,0 +1,18 @@
+.hover-item:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.button-item-save {
+    width: 7%;
+    background-color: black;
+    color: white;
+    height: 40px;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-top: 50px;
+    &:hover{
+        color: red;
+        cursor: pointer;
+    }
+}
