@@ -19,18 +19,16 @@
   }
 }
 
-.first-step{
+.first-step {
   width: 35%;
 }
-.second-step{
+
+.second-step {
   width: 35%;
 }
 
 .image-qr {
   margin: 0 auto;
-}
-
-.image-qr {
   width: 256px;
   height: 256px;
 }
@@ -46,7 +44,18 @@
 }
 
 @media (max-width: 500px) {
-  .google-authenticator {
+  .google-authenticator-page {
+    /* Điều chỉnh các thuộc tính cho màn hình nhỏ hơn hoặc bằng 500px */
+    height: auto;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .first-step,
+  .second-step,
+  .verify {
     width: 100%;
   }
 }
