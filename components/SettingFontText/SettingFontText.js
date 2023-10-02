@@ -187,10 +187,20 @@ function SettingFontText() {
                         <input
                           className={cx('font-size-change')}
                           style={{ marginLeft: "12px", borderRadius: "5px" }}
+                          type="number"
                           placeholder="17"
                           value={saveSetting[page.name].size}
-                          onChange={(event) => handleFontSizeChange(event, page.name)}
-                        ></input>
+                          onChange={(event) => {
+                            const newSize = Math.min(Math.max(event.target.value, 5), 60);
+                            setSaveSetting((prevSaveSetting) => ({
+                              ...prevSaveSetting,
+                              [page.name]: {
+                                ...prevSaveSetting[page.name],
+                                size: newSize,
+                              },
+                            }));
+                          }}
+                        />
                       </div>
                     </li>
 
@@ -213,8 +223,12 @@ function SettingFontText() {
           </div>
         ))
       }
+
       
       <button className={cx("button-item-save")} onClick={() => handleSave()}>Save</button>
+
+
+
     </div>
   );
 }

@@ -1,0 +1,52 @@
+.google-authenticator-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  text {
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+  }
+}
+
+.first-step{
+  width: 35%;
+}
+.second-step{
+  width: 35%;
+}
+
+.image-qr {
+  margin: 0 auto;
+}
+
+.image-qr {
+  width: 256px;
+  height: 256px;
+}
+
+.verify {
+  margin-top: 16px;
+  width: 20%;
+  background-color: aqua;
+  text-align: center;
+  button {
+    background-color: aqua;
+  }
+}
+
+@media (max-width: 500px) {
+  .google-authenticator {
+    width: 100%;
+  }
+}
