@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 const GoogleAuthenticator = () => {
     const [qrCodeImage, setQrCodeImage] = useState(null); // Initialize the state with null
 
-    const string = 'Y56995948AJSJFJDHFAKGHSW27AH3ALLVJVSAKJ';
+    const string = 'Y56995948AJSJFJDHFAKGHSW27AH3A';
     const generateQRCode = () => {
         setQrCodeImage(<QRCode value={string} size={256} />);
     };
@@ -31,11 +31,14 @@ const GoogleAuthenticator = () => {
             </div>
             <div className={cx('second-step')}>
                 <h2>Bước 2</h2>
-                <div>
+                <text>
                     Hoặc bạn có thể nhập mã bên dưới vào ứng dụng xác thực của bạn
-                </div>
+                </text>
                 <div>
-                    {string}
+                    <text>
+                        {string}
+                    </text>
+
                 </div>
             </div>
             <div className={cx('verify')}>
