@@ -34,11 +34,12 @@
 }
 
 .chart {
-  margin: 20px;
   display: flex;
-  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 50px;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  width: 100%;
 }
 
 .chart canvas {
@@ -78,4 +79,35 @@
 .type-info h4 {
   margin-bottom: 5px;
   /* Add other styles for h4 elements as needed check */
+}
+
+/* CountTeacher.css */
+
+/* Styles cho màn hình lớn (width > 768px) */
+@media (min-width: 769px) {
+  .count-teacher-container {
+    grid-template-columns: 1fr 3fr;
+  }
+  
+  .count-teacher-item-container {
+    flex-direction: column;
+  }
+
+  .count-teacher {
+    margin-top: 50px;
+  }
+
+  .chart {
+    margin-top: 50px;
+    margin-left: 50px;
+    flex-direction: column;
+  }
+}
+
+/* Styles cho màn hình nhỏ (width <= 768px) */
+@media (max-width: 768px) {
+  .count-teacher-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
