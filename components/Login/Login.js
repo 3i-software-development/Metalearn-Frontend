@@ -76,8 +76,10 @@ export default function Login() {
     if (ipAddress) {
       temp();
       if (typeof window !== "undefined") {
-        sessionStorage.setItem("user", data?.Object.UserName);
-        sessionStorage.setItem("userId", data?.Object.UserName);
+        //sessionStorage.setItem("user", data?.Object.UserName);
+        //sessionStorage.setItem("userId", data?.Object.UserName);
+        localStorage.setItem("user", data?.Object.UserName);
+        localStorage.setItem("userId", data?.Object.UserName);
         loginState();
         router.push("/personalized");
       }
