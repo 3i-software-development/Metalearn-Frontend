@@ -44,8 +44,9 @@ function ViewExamSchedule({ month, year }) {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <div style={{}}>
+    <div className={cx("ViewExamSchedule-All")}>
+
+      <div style={{width: "50%"}}>
           <table className={cx("excel-style-table")}>
             <thead>
               <tr>
@@ -80,41 +81,39 @@ function ViewExamSchedule({ month, year }) {
 
         
         {selectedDay && ( // Only render the section if selectedDay is not null
-          <div style={{marginLeft: "40px", width: "70%", border: "7px solid black", backgroundColor: "rgb(194, 240, 240)", borderRadius: "10px" }}>
+          <div className={cx("ViewExamSchedule-Show")}>
             <h1 style={{ textAlign: "center" }}>
               <div style={{display: "flex"}}>
-                  <h5>Lịch Thi Trong Ngày: <span style={{color: "red", fontSize: "25px", fontWeight: "700"}}>{selectedDay}</span></h5>
-                  <button style={{fontSize: "25px", marginLeft: "330px", backgroundColor: "rgb(194, 240, 240)", marginTop: "0"}} onClick={hideInfo}><i class="fa-solid fa-circle-xmark"></i></button>
+                  <h5>Lịch Thi Trong Ngày: <span className={cx("ViewExamSchedule-Show-Title")}>{selectedDay}</span></h5>
+                  <button className={cx("ViewExamSchedule-Show-Button-Close")} onClick={hideInfo}><i class="fa-solid fa-circle-xmark"></i></button>
               </div>
 
             </h1>
             
-            <div style={{ color: "red", fontSize: "25px", marginLeft: "25px" }}>
-              <div style={{display: "flex", justifyContent: "space-evenly"}}>
-
-                <div>
-                    <i style={{fontSize: "50px", marginTop: "40px"}} class="fa-solid fa-calendar-days"></i>
-                </div>
-
+            <div className={cx("ViewExamSchedule-Show-div02")}>
+              <div style={{display: "flex", justifyContent: "space-evenly"}}>      
+                  <i className={cx("ViewExamSchedule-Show-Icon")} class="fa-solid fa-calendar-days"></i>       
                 <div>
                     <h6>
                       Môn Toán
-                      <span style={{ marginLeft: "20px", fontSize: "25px", color: "black" }}>Ngày {selectedDay}/02/2021</span>
+                      <span className={cx("ViewExamSchedule-Show-Subject")}>Ngày {selectedDay}/02/2021</span>
                     </h6>
+
                     <h6>
                       Môn Sinh
-                      <span style={{ marginLeft: "20px", fontSize: "25px", color: "black" }}>Ngày {selectedDay}/02/2021</span>
+                      <span className={cx("ViewExamSchedule-Show-Subject")}>Ngày {selectedDay}/02/2021</span>
                     </h6>
+
                     <h6>
                       Môn Hóa
-                      <span style={{ marginLeft: "20px", fontSize: "25px", color: "black" }}>Ngày {selectedDay}/02/2021</span>
+                      <span className={cx("ViewExamSchedule-Show-Subject")}>Ngày {selectedDay}/02/2021</span>
                     </h6>
+
                     <h6>
                       Môn Vật Lý
-                      <span style={{ marginLeft: "20px", fontSize: "25px", color: "black" }}>Ngày {selectedDay}/02/2021</span>
+                      <span className={cx("ViewExamSchedule-Show-Subject")}>Ngày {selectedDay}/02/2021</span>
                     </h6>
                 </div>
-
 
               </div>
               
@@ -122,6 +121,7 @@ function ViewExamSchedule({ month, year }) {
           </div>
         )}
       </div>
+
     </div>
   );
 }
