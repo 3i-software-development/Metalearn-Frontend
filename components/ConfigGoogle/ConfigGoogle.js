@@ -21,22 +21,25 @@ const handleItemClick = (itemName) => {
   });
 };
   return (
-    <div>
-      <h2 style={{textAlign: "center"}}>Cấu Hình Google</h2>
-      <div style={{display: "flex", justifyContent: "space-between"}}>
-        <div>
+    <div className={cx("")}>
+      <h2 className={cx("ConfigGoogle-Title")}>Cấu Hình Google</h2>
+      <div className={cx("ConfigGoogle")}>
+
+        <div className={cx("ConfigGoogle-01")}>
           
-          <ul style={{listStyle: "none", border: "2px solid black", width: "300%", borderRadius: "5px", marginLeft: "22px", paddingBottom: "10px", position: "relative"}}>
+          <ul className={cx("ConfigGoogle-Ul")}>
             <li>
               <div className={cx("flex-item")}> 
                 <i class="fa-solid fa-circle-half-stroke"></i>
-                <h3 style={{marginLeft: "12px"}}>Dịch vụ API</h3>
+                <h3 >Dịch vụ API</h3>
               </div>
               <label>
                 <input className={cx("configZoom_input_Styles")}>
                   
                 </input>
-                <i className={`fa-solid ${itemStates.question1 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "40px", marginTop: "12px", cursor: "pointer" }}
+                
+                <i className={`ConfigGoogle-Icon fa-solid ${itemStates.question1 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
+                style={{ position: "absolute", right: "40px", marginTop: "12px", cursor: "pointer" }}
                     onClick={() => handleItemClick("question1")}></i>
               </label>
 
@@ -58,8 +61,6 @@ const handleItemClick = (itemName) => {
                       paddingLeft: "25px", // Để tạo khoảng trống giữa biểu tượng và văn bản
                     }}
                   />
-                  
-                  
                   </li>
                   <li><input type="radio" />Tài khoản Google</li>
                   <li><input type="radio" />Tài khoản Mathpix</li>
@@ -72,7 +73,7 @@ const handleItemClick = (itemName) => {
             <li>
               <div className={cx("flex-item")}>
                 <i class="fa-solid fa-circle-half-stroke"></i>
-                <h3 style={{marginLeft: "12px"}}>Mã tài khoản</h3>
+                <h3 >Mã tài khoản</h3>
               </div>
               <label>
                 <input className={cx("configZoom_input_Styles")}></input>
@@ -81,7 +82,7 @@ const handleItemClick = (itemName) => {
             <li>
               <div className={cx("flex-item")}>
                 <i class="fa-solid fa-circle-half-stroke"></i>
-                <h3 style={{marginLeft: "12px"}}>Tên tài khoản</h3>
+                <h3 >Tên tài khoản</h3>
               </div>
               <label>
                 <input className={cx("configZoom_input_Styles")}></input>
@@ -90,7 +91,7 @@ const handleItemClick = (itemName) => {
             <li>
               <div className={cx("flex-item")}>
                 <i class="fa-solid fa-circle-half-stroke"></i>
-                <h3 style={{marginLeft: "12px"}}>Thư điện tử</h3>
+                <h3 >Thư điện tử</h3>
               </div>
               <label>
                 <input className={cx("configZoom_input_Styles")}></input>
@@ -99,7 +100,7 @@ const handleItemClick = (itemName) => {
             <li>
             <div className={cx("flex-item")}>
                 <i className="fa-solid fa-circle-half-stroke"></i>
-                <h3 style={{ marginLeft: "12px" }}>Loại</h3>
+                <h3 >Loại</h3>
               </div>
 
               <label>
@@ -144,7 +145,9 @@ const handleItemClick = (itemName) => {
           </ul>
         </div>
 
-        <div style={{backgroundColor: "rgb(247, 245, 245)", width: "40%", borderRadius: "20px"}}>
+
+
+        <div className={cx("ConfigGoogle-02")}>
           <div className={cx("configZoom_Item")}>
           <i class="fa-brands fa-google"></i>
           <div>
@@ -190,6 +193,8 @@ const handleItemClick = (itemName) => {
             <i class="fa-solid fa-trash-can"></i>
           </div>
         </div>
+
+
           
       </div>
     </div>

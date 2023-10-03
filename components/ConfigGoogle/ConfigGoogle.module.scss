@@ -1,6 +1,6 @@
 .excel-style-table {
     border-collapse: collapse;
-    width: 170%;
+    width: 100%;
     cursor: pointer;
   }
 
@@ -28,7 +28,7 @@
 
   .configZoom_input_Styles {
     margin-left: 7px;
-    width: 98%;
+    width: 90%;
     border-radius: 5px;
     height: 40px;
   }
@@ -41,7 +41,87 @@
   margin-bottom: 20px;
   border-bottom: 2px solid black;
   align-content: center;
-  width: 700px;
+  
+}
+
+.ConfigGoogle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ConfigGoogle-Title {
+  align-items: center;
+}
+
+.ConfigGoogle-01{
+  width: 48%;
+}
+
+
+.ConfigGoogle-02 {
+  background-color: rgb(97, 96, 96);
+  border-radius: 10px;
+  width: 48%;
+}
+
+.ConfigGoogle-Icon{
+  //style={{ position: "absolute", right: "40px", marginTop: "12px", cursor: "pointer" }}
+  position: absolute;
+  right: 40px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+
+.ConfigGoogle-Ul {
+  list-style: none;
+  border: 2px solid black;
+  // width: 100%;
+  border-radius: 5px;
+  margin-left: 22px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+@media only screen and (max-width: 768px) {
+
+  // .ConfigGoogle-Parent{
+  //   width: 100%;
+  // }
+
+
+  .ConfigGoogle-Title {
+    // width: 200%;
+    text-align: center;
+    color: red;
+    margin-bottom: 20px;
+  }
+
+  .ConfigGoogle {
+    display: block;
+    width: 100%;
+  }
+
+  .ConfigGoogle-01{
+    width: 90%;
+    margin-left: 9px;
+    // align-items: center;
+    align-content: center;
+    
+  }
+
+  
+  .ConfigGoogle-02 {
+    width: 100%;
+    margin-top: 25px;
+    // background-color: aqua;
+    text-align: center;
+  }
+
+  .ConfigGoogle-Ul {
+    background-color:  rgb(97, 96, 96);
+    align-items: center;
+  }
 }
 
 
