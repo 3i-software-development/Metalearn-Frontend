@@ -22,7 +22,7 @@ const handleItemClick = (itemName) => {
 };
   return (
     <div>
-      <h2 style={{textAlign: "center"}}>Cấu Hình Zoom</h2>
+      <h2 className={cx("ConfigZoomTitle")}>Cấu Hình Zoom</h2>
       <div style={{display: "flex", justifyContent: "space-between"}}>
         <div>
           
@@ -183,25 +183,25 @@ const handleItemClick = (itemName) => {
         </div>
 
         <div style={{backgroundColor: "rgb(247, 245, 245)", width: "40%", borderRadius: "20px"}}>
-          <div style={{display: "flex", alignItems: "center", justifyContent: "space-evenly", marginBottom: "20px"}}>
+          <div style={{display: "flex", alignItems: "center", marginBottom: "20px"}}>
             <h2>Z</h2>
             <h4>1. Tài khoản phụ 03</h4>
             <i class="fa-solid fa-trash-can"></i>
           </div>
 
-          <div style={{display: "flex", alignItems: "center", justifyContent: "space-evenly", marginBottom: "20px"}}>
+          <div style={{display: "flex", alignItems: "center", marginBottom: "20px"}}>
             <h2>Z</h2>
             <h4>1. Tài khoản phụ 02</h4>
             <i class="fa-solid fa-trash-can"></i>
           </div>
 
-          <div style={{display: "flex", alignItems: "center", justifyContent: "space-evenly", marginBottom: "20px"}}>
+          <div style={{display: "flex", alignItems: "center", marginBottom: "20px"}}>
             <h2>Z</h2>
             <h4>1. Tài khoản phụ 05</h4>
             <i class="fa-solid fa-trash-can"></i>
           </div>
 
-          <div style={{display: "flex", alignItems: "center", justifyContent: "space-evenly", marginBottom: "20px"}}>
+          <div style={{display: "flex", alignItems: "center", marginBottom: "20px"}}>
             <h2>Z</h2>
             <h4>1. Tài khoản phụ 01</h4>
             <i class="fa-solid fa-trash-can"></i>
