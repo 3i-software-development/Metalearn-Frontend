@@ -44,7 +44,6 @@ const Subject = () => {
     const handleSelect = (item) => {
         setSelected(item);
     }
-
     return (
         <div className={cx("subject")}>
             <div className={cx("subject-list")}>

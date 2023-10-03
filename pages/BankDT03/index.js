@@ -6,10 +6,8 @@ import React, { useState } from "react";
 const Index = () => {
  
   return (
-    <div>
-      
-      <BankDT03 />
-             
+    <div>     
+      <BankDT03 />    
     </div>
   );
 };
