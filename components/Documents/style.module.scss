@@ -263,3 +263,10 @@
   height: 100%;
   object-fit: cover;
 }
+
+@media (max-width: 768px) {
+  .document-layout {
+    display: flex;
+    flex-direction: column;
+  }
+}
