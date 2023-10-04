@@ -75,6 +75,10 @@
   cursor: pointer;
 }
 
+.ConfigGoogle-Label {
+
+}
+
 .ConfigGoogle-Ul {
   list-style: none;
   border: 2px solid black;
@@ -133,6 +137,10 @@
 
   .flex-item {
     margin-left: 5px;
+  }
+
+  .ConfigGoogle-Label {
+    display: none;
   }
 }
 

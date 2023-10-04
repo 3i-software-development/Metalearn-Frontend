@@ -31,7 +31,7 @@ const handleItemClick = (itemName) => {
                       <i class="fa-solid fa-circle-half-stroke"></i>
                       <h3 style={{marginLeft: "12px"}} onClick={() => handleItemClick("question1")}>Dịch vụ API</h3>
                 </div>
-              <label>
+              <label className={cx("ConfigZoom-Label")}>
                     <input className={cx("configZoom_input_Styles")}></input>
                     <i className={`fa-solid ${itemStates.question1 ? 'fa-arrow-down ' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "40px", marginTop: "12px" }}
                         onClick={() => handleItemClick("question1")}>
@@ -89,7 +89,7 @@ const handleItemClick = (itemName) => {
                     <h3 style={{ marginLeft: "12px" }} onClick={() => handleItemClick("question2")}>Loại</h3>
                 </div>
 
-                <label style={{ display: 'flex', alignItems: 'center' }}>
+                <label className={cx("ConfigZoom-Label")}>
                     <input className={cx("configZoom_input_Styles")}/>
                     <i className={`fa-solid ${itemStates.question2 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "40px", marginTop: "4px" }}
                         onClick={() => handleItemClick("question2")}>

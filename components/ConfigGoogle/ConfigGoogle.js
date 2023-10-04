@@ -37,7 +37,7 @@ const handleItemClick = (itemName) => {
                   <h3 onClick={() => handleItemClick("question1")}>Dịch vụ API</h3>
               </div>
 
-              <label>
+              <label className={cx("ConfigGoogle-Label")}>
                 <input className={cx("ConfigGoogle_Input_Styles")}></input>
                 
                 <i className={`ConfigGoogle-Icon fa-solid ${itemStates.question1 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
@@ -113,8 +113,7 @@ const handleItemClick = (itemName) => {
                     <i className="fa-solid fa-circle-half-stroke"></i>
                     <h3 onClick={() => handleItemClick("question2")}>Loại</h3>
                 </div>
-
-              <label>
+              <label className={cx("ConfigGoogle-Label")}>
                   <input className={cx("ConfigGoogle_Input_Styles")}/>
 
                   <i className={`fa-solid ${itemStates.question2 ? 'fa-arrow-down' : 'fa-arrow-right'}`}
