@@ -31,12 +31,12 @@ function CountStudent() {
     return (
         <div style={{ width: "50%", marginTop: "50px" }}>
 
-            <h1 className={cx("hover-item")} style={{ marginBottom: "40px", zIndex: 1 }}>Tính Chuyên Cần Học Viên</h1>
+            <h1 className={cx("CountStudent-Title")}>Tính Chuyên Cần Học Viên</h1>
            
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative"}}>
                 <i class="fa-solid fa-puzzle-piece"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Câu hỏi tự luyện[01]</h2>
-                <i className={`fa-solid ${itemStates.question1 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question1")}>Câu hỏi tự luyện[01]</h2>
+                <i className={`fa-solid ${itemStates.question1 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question1")}></i>
             </div>
             {itemStates.question1 && (
@@ -67,8 +67,8 @@ function CountStudent() {
 
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative" }}>
                 <i class="fa-solid fa-puzzle-piece"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Câu hỏi được giao[02]</h2>
-                <i className={`fa-solid ${itemStates.question2 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question1")}>Câu hỏi được giao[02]</h2>
+                <i className={`fa-solid ${itemStates.question2 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question2")}></i>
             </div>
             {itemStates.question2 && (
@@ -100,8 +100,8 @@ function CountStudent() {
 
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative" }}>
                 <i class="fa-solid fa-chalkboard-user"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Bài giảng tự luyện[03]</h2>
-                    <i className={`fa-solid ${itemStates.question3 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question3")}>Bài giảng tự luyện[03]</h2>
+                    <i className={`fa-solid ${itemStates.question3 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question3")}></i>
             </div>
             {itemStates.question3 && (
@@ -120,8 +120,8 @@ function CountStudent() {
 
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative" }}>
                 <i class="fa-solid fa-chalkboard-user"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Bài giảng được giao[04]</h2>
-                <i className={`fa-solid ${itemStates.question4 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question4")}>Bài giảng được giao[04]</h2>
+                <i className={`fa-solid ${itemStates.question4 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question4")}></i>
             </div>
             {itemStates.question4 && (
@@ -144,8 +144,8 @@ function CountStudent() {
 
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative" }}>
                 <i class="fa-solid fa-file-circle-question"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Đề thi tữ luyện[05]</h2>
-                <i className={`fa-solid ${itemStates.question5 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question5")}>Đề thi tữ luyện[05]</h2>
+                <i className={`fa-solid ${itemStates.question5 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question5")}></i>
             </div>
             {itemStates.question5 && (
@@ -172,8 +172,8 @@ function CountStudent() {
 
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative" }}>
                 <i class="fa-solid fa-file-circle-question"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Đề thi được giao[06]</h2>
-                <i className={`fa-solid ${itemStates.question6 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question6")}>Đề thi được giao[06]</h2>
+                <i className={`fa-solid ${itemStates.question6 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question6")}></i>
             </div>
             {itemStates.question6 && (
@@ -196,8 +196,8 @@ function CountStudent() {
 
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative" }}>
                 <i class="fa-solid fa-file-lines"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Kỳ thi tham dự[07]</h2>
-                <i className={`fa-solid ${itemStates.question7 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question7")}>Kỳ thi tham dự[07]</h2>
+                <i className={`fa-solid ${itemStates.question7 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question7")}></i>
             </div>
             {itemStates.question7 && (
@@ -224,48 +224,65 @@ function CountStudent() {
 
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative" }}>
                 <i class="fa-solid fa-laptop-file"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Học online[08]</h2>
-                    <i className={`fa-solid ${itemStates.question8 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question8")}>Học online[08]</h2>
+                    <i className={`fa-solid ${itemStates.question8 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question8")}></i>
             </div>
             {itemStates.question8 && (
                 <div style={{ marginTop: "17px", marginLeft: "40px" }}>
-                    <h4 className={cx("hover-item")}>Số lớp học tham gia: 15</h4>
-                    <h4 className={cx("hover-item")}>Số thời gian học: 64115 giờ</h4>
+
+                    <div className={cx("hover-item")} style={{display: "flex", alignItems: "center"}}>
+                        <i class="fa-solid fa-minus"></i>
+                        <h4 className={cx("hover-item")}>Số lớp học tham gia: 15</h4>
+                    </div> 
+
+                     <div className={cx("hover-item")} style={{display: "flex", alignItems: "center"}}>
+                        <i class="fa-solid fa-minus"></i>
+                        <h4 className={cx("hover-item")}>Số thời gian học: 64115 giờ</h4>
+                    </div>   
+                    
                 </div>
             )}
 
 
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative" }}>
                 <i class="fa-solid fa-shapes"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Số môn học[09]</h2>
-                    <i className={`fa-solid ${itemStates.question9 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question9")}>Số môn học[09]</h2>
+                    <i className={`fa-solid ${itemStates.question9 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question9")}></i>
             </div>
             {itemStates.question9 && (
                 <div style={{ marginTop: "17px", marginLeft: "40px" }}>
-                    <h4 className={cx("hover-item")} >Số môn học tham gia: 46</h4>
+
+                    <div className={cx("hover-item")} style={{display: "flex", alignItems: "center"}}>
+                        <i class="fa-solid fa-minus"></i>
+                        <h4 className={cx("hover-item")} >Số môn học tham gia: 46</h4>
+                    </div> 
                 </div>
             )}
 
 
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative" }}>
                 <i class="fa-solid fa-file-lines"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Số tài liệu xem[10]</h2>
-                    <i className={`fa-solid ${itemStates.question10 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question10")}>Số tài liệu xem[10]</h2>
+                    <i className={`fa-solid ${itemStates.question10 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question10")}></i>
             </div>
             {itemStates.question10 && (
                 <div style={{ marginTop: "17px", marginLeft: "40px" }}>
-                    <h4 className={cx("hover-item")}>Số tài liệu đã xem: 8</h4>
+
+                <div className={cx("hover-item")} style={{display: "flex", alignItems: "center"}}>
+                        <i class="fa-solid fa-minus"></i>
+                        <h4 className={cx("hover-item")}>Số tài liệu đã xem: 8</h4>
+                    </div> 
                 </div>
             )}
 
 
             <div style={{display: "flex", alignItems: "center", marginTop: "17px", position: "relative" }}>
                 <i class="fa-solid fa-file-lines"></i>
-                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}}>Bài tập khóa học[11]</h2>
-                    <i className={`fa-solid ${itemStates.question11 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "380px" }}
+                    <h2 className={cx("hover-item")} style={{marginLeft: "10px"}} onClick={() => handleItemClick("question11")}>Bài tập khóa học[11]</h2>
+                    <i className={`CountStudent-CurSor fa-solid ${itemStates.question11 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "280px" }}
                     onClick={() => handleItemClick("question11")}></i>
             </div>
             {itemStates.question11 && (

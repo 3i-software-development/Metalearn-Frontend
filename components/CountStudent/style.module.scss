@@ -77,3 +77,30 @@
   color: green;
 }
 
+.CountStudent-Title {
+  font-size: 45px;
+  margin-bottom: 25px;
+  &:hover {
+    color: red;
+  }
+}
+
+.CountStudent-CurSor {
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .CountStudent-Title {
+    font-size: 22px;
+    // margin-top: 20px;
+    margin-bottom: 25px;
+    width: 200%;
+  }
+  .hover-item{
+    cursor: pointer;
+    font-size: 12px;
+  }
+}
+

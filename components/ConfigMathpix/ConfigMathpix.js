@@ -33,7 +33,7 @@ const handleItemClick = (itemName) => {
                 <h3 style={{marginLeft: "12px"}}>Dịch vụ API</h3>
               </div>
               <label>
-                <input className={cx("configZoom_input_Styles")}>
+                <input className={cx("ConfigZoom_input_Styles")}>
                   
                 </input>
                 <i className={`fa-solid ${itemStates.question1 ? 'fa-arrow-down' : 'fa-arrow-right'}`} style={{ position: "absolute", right: "40px", marginTop: "12px", cursor: "pointer" }}
