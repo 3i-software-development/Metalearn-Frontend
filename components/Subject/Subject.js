@@ -1,11 +1,34 @@
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import styles from './style.module.scss'; // Import SCSS styles for classNames
 import classNames from 'classnames/bind';
+import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
+import {
+    SettingOutlined,
+} from "@ant-design/icons";
+
 const cx = classNames.bind(styles);
 
 const Subject = () => {
+    const [listSubject, setListSubject] = useState([]);
+
+    const { data: subjectQuery } = useGetListSubjectQuery({
+        username: "admin",
+        isTutor888: false,
+    });
+
+    useEffect(() => {
+        if (subjectQuery) {
+            setListSubject(subjectQuery);
+        }
+    }, [subjectQuery]);
+
+
+    console.log("listSubject", listSubject)
+
     const [selected, setSelected] = useState(null);
     const [searchInput, setSearchInput] = useState("");
+
+
     const fakeData = [
         {
             id: 1,
@@ -37,13 +60,14 @@ const Subject = () => {
         },
     ];
 
-    const filteredSubjects = fakeData.filter(item =>
-        item.name.toLowerCase().includes(searchInput.toLowerCase())
+    const filteredSubjects = listSubject.filter(item =>
+        item.Name.toLowerCase().includes(searchInput.toLowerCase())
     );
 
     const handleSelect = (item) => {
         setSelected(item);
     }
+
     return (
         <div className={cx("subject")}>
             <div className={cx("subject-list")}>
@@ -64,7 +88,7 @@ const Subject = () => {
                             onClick={() => handleSelect(item)}
                             className={cx("subject-item", { "selected": selected === item })}
                         >
-                            <h2>{item.name}</h2>
+                            <h2>{item.Name}</h2>
                         </div>
                     ))}
                 </div>
@@ -76,7 +100,7 @@ const Subject = () => {
                         <div className={cx("question-list")}>
                             {selected.questions.map((item, index) => (
                                 <div key={index} className={cx("question-item")}>
-                                    <p>{item.content}</p>
+                                    <p>{item.Code}</p>
                                 </div>
                             ))}
                         </div>
