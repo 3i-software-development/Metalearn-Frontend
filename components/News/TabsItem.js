@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import NewsItem from "./NewsItem";
 import { useState } from "react";
 import { useEffect } from "react";
+import { GetListNews} from "@/pages/api/CallAPI";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,10 +43,20 @@ function a11yProps(index) {
 
 export default function TabItem() {
   const [value, setValue] = React.useState(0);
+  const [listNews, setListNews] = useState([]);
+
+  useEffect(() => {
+    GetListNews().then((res) => {
+      setListNews(res.Object);
+    });
+  }
+    , []);
+  console.log("listNews", listNews);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   const [isSSR, setIsSSR] = useState(true);
   useEffect(() => {
     setIsSSR(false);
@@ -78,15 +89,25 @@ export default function TabItem() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Tin nổi bật" {...a11yProps(0)} />
-          <Tab label="Sự kiện nóng" {...a11yProps(1)} />
-          <Tab label="Kinh doanh" {...a11yProps(2)} />
-          <Tab label="Sản xuất" {...a11yProps(3)} />
-          <Tab label="Dự án & Đấu thầu" {...a11yProps(4)} />
-          <Tab label="Tin tổng hợp" {...a11yProps(5)} />
+          {
+            listNews.map((item, index) => {
+              return (
+                <Tab key={index} label={item.name} {...a11yProps(index)} />
+              )
+            })
+          }
         </Tabs>
       </Box>
-
+      {
+        listNews.map((item, index) => {
+          return (
+            <TabPanel key={index} value={value} index={index}>
+              <NewsItem item={item}/>
+            </TabPanel>
+          )
+        })
+      }
+      {/*
       <TabPanel value={value} index={0}>
         <NewsItem />
       </TabPanel>
@@ -105,6 +126,7 @@ export default function TabItem() {
       <TabPanel value={value} index={5}>
         <NewsItem />
       </TabPanel>
+        */}
     </Box>
   );
 }

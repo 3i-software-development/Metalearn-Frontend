@@ -221,108 +221,106 @@ const Header = () => {
           </div>
       </div>
               */}
-      {
-        isAuthenticated && (
-          <Button onClick={() => logout()}>
-            Đăng xuất
-          </Button>
-        )
-      }
 
       {isAuthenticated && (
-        <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ padding: "10px" }}>
-              <Image
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png "
-                width={20}
-                height={20}
-                alt=""
-              />
-            </IconButton>
-          </Tooltip>
-          <Menu
-            sx={{ mt: "45px" }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
-          >
-            {/* <MenuItem onClick={handleCloseUserMenu}> */}
-            <ListItemButton component="a" className={cx("listSettingss")}>
-              <div className={cx("listSettings")}>
-                <div>
-                  <Image
-                    src="https://usehooks.com/images/bytes-logo.png"
-                    width={20}
-                    height={20}
-                    alt=""
-                  />
+        <div className={cx("authenticated_div")}>
+          <Button className={cx('logout-button')} onClick={() => logout()}>
+            Đăng xuất
+          </Button>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ padding: "10px" }}>
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png "
+                  width={20}
+                  height={20}
+                  alt=""
+                />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {/* <MenuItem onClick={handleCloseUserMenu}> */}
+              <ListItemButton component="a" className={cx("listSettingss")}>
+                <div className={cx("listSettings")}>
+                  <div>
+                    <Image
+                      src="https://usehooks.com/images/bytes-logo.png"
+                      width={20}
+                      height={20}
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <ListItemText primary="Spam" />
+                  </div>
                 </div>
-                <div>
-                  <ListItemText primary="Spam" />
+              </ListItemButton>
+              <ListItemButton component="a" className={cx("listSettingss")}>
+                <div className={cx("listSettings")}>
+                  <div>
+                    <Image
+                      src="https://usehooks.com/images/bytes-logo.png"
+                      width={20}
+                      height={20}
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <ListItemText primary="Spam" />
+                  </div>
                 </div>
-              </div>
-            </ListItemButton>
-            <ListItemButton component="a" className={cx("listSettingss")}>
-              <div className={cx("listSettings")}>
-                <div>
-                  <Image
-                    src="https://usehooks.com/images/bytes-logo.png"
-                    width={20}
-                    height={20}
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <ListItemText primary="Spam" />
-                </div>
-              </div>
-            </ListItemButton>
+              </ListItemButton>
 
-            <ListItemButton component="a" className={cx("listSettingss")}>
-              <div className={cx("listSettings")}>
-                <div>
-                  <Image
-                    src="https://usehooks.com/images/bytes-logo.png"
-                    width={20}
-                    height={20}
-                    alt=""
-                  />
+              <ListItemButton component="a" className={cx("listSettingss")}>
+                <div className={cx("listSettings")}>
+                  <div>
+                    <Image
+                      src="https://usehooks.com/images/bytes-logo.png"
+                      width={20}
+                      height={20}
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <ListItemText primary="Spam" />
+                  </div>
                 </div>
-                <div>
-                  <ListItemText primary="Spam" />
+              </ListItemButton>
+              <ListItemButton component="a" className={cx("listSettingss")}>
+                <div className={cx("listSettings")}>
+                  <div>
+                    <Image
+                      src="https://usehooks.com/images/bytes-logo.png"
+                      width={20}
+                      height={20}
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <ListItemText primary="Spam" />
+                  </div>
                 </div>
-              </div>
-            </ListItemButton>
-            <ListItemButton component="a" className={cx("listSettingss")}>
-              <div className={cx("listSettings")}>
-                <div>
-                  <Image
-                    src="https://usehooks.com/images/bytes-logo.png"
-                    width={20}
-                    height={20}
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <ListItemText primary="Spam" />
-                </div>
-              </div>
-            </ListItemButton>
+              </ListItemButton>
 
-            {/* </MenuItem> */}
-          </Menu>
-        </Box>
+              {/* </MenuItem> */}
+            </Menu>
+          </Box>
+        </div>
       )}
 
       {!isAuthenticated && (
