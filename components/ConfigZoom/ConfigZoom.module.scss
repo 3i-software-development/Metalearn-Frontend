@@ -78,6 +78,10 @@
   position: relative;
 }
 
+.ConfigZoom-Label {
+
+}
+
   @media only screen and (max-width: 768px) {
     .ConfigZoom-Title {
       margin-top: 15px;
@@ -117,6 +121,10 @@
 
     .configZoom_input_Styles {
       display: none;
+    }
+
+    .ConfigZoom-Label {
+        display: none;
     }
 
   }

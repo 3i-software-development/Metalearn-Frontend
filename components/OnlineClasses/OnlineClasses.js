@@ -11,15 +11,15 @@ function OnlineClasses() {
     return (
         <div>
             <h1 className={cx("OnlineClasses")} >Online Class</h1>
-            <div style={{display: "flex", width: "100%", marginTop: "25px"}}>
+            <div className={cx("OnlineClasses-All")}>
 
-                    <div style={{width: "50%"}}>
+                    <div className={cx("OnlineClasses-01")}>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -30,10 +30,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -44,10 +44,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -58,10 +58,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -72,10 +72,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -86,10 +86,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -100,10 +100,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -114,10 +114,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -128,10 +128,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -143,12 +143,15 @@ function OnlineClasses() {
 
                     </div>
 
-                    <div style={{width: "50%"}}>
+
+
+
+                    <div className={cx("OnlineClasses-02")}>
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -159,10 +162,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -173,10 +176,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -187,10 +190,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -201,10 +204,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
@@ -215,10 +218,10 @@ function OnlineClasses() {
                         </div>
 
                         <div className={cx("course-item")}>
-                            <div style={{paddingLeft: "12px"}}>
-                                <h3 style={{color: "green"}} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
-                                <h4>Môn học: <span>Lập trình <i class="fa-solid fa-code"></i> </span> </h4>
-                                <h5>Bắt đầu ngày: <span style={{color: "red"}}>18/04/2023 11:00</span> </h5>
+                            <div className={cx("Course-item-text")}>
+                                <h3 className={cx("OnlineClasses-Title")} >Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]</h3>
+                                <h4 className={cx("OnlineClasses-Subject")}>Môn học: Lập trình <i class="fa-solid fa-code"></i></h4>
+                                <h5 className={cx("OnlineClasses-Day")}>Bắt đầu ngày: 18/04/2023 11:00 </h5>
                             </div>
 
                             <div className={cx("course-item-icons")}>
