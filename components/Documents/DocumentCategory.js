@@ -24,25 +24,10 @@ const DocumentCategory = () => {
     { id: 2, name: 'Lý', exams: 10, questions: 100, data: fakedata1 },
     { id: 3, name: 'Hóa', exams: 10, questions: 100, data: fakedata2 },
     { id: 4, name: 'Sinh', exams: 10, questions: 100, data: fakedata },
-    { id: 5, name: 'Văn', exams: 10, questions: 100, data: fakedata1 },
-    { id: 6, name: 'Anh', exams: 10, questions: 100, data: fakedata2 },
-    { id: 7, name: 'Sử', exams: 10, questions: 100, data: fakedata },
-    { id: 8, name: 'Địa', exams: 10, questions: 100, data: fakedata1 },
-    { id: 9, name: 'GDCD', exams: 10, questions: 100, data: fakedata2 },
-    { id: 10, name: 'Công nghệ', exams: 10, questions: 100, data: fakedata },
-    { id: 11, name: 'Tin học', exams: 10, questions: 100, data: fakedata1 },
   ];
   const Read = [
-    { id: 6, name: 'Anh', exams: 10, questions: 100, data: fakedata2 },
-    { id: 7, name: 'Sử', exams: 10, questions: 100, data: fakedata },
-    { id: 8, name: 'Địa', exams: 10, questions: 100, data: fakedata1 },
-    { id: 9, name: 'GDCD', exams: 10, questions: 100, data: fakedata2 },
     { id: 10, name: 'Công nghệ', exams: 10, questions: 100, data: fakedata },
     { id: 11, name: 'Tin học', exams: 10, questions: 100, data: fakedata1 },
-    { id: 1, name: 'Toán', exams: 10, questions: 100, data: fakedata },
-    { id: 2, name: 'Lý', exams: 10, questions: 100, data: fakedata1 },
-    { id: 3, name: 'Hóa', exams: 10, questions: 100, data: fakedata2 },
-    { id: 4, name: 'Sinh', exams: 10, questions: 100, data: fakedata },
     { id: 5, name: 'Văn', exams: 10, questions: 100, data: fakedata1 },
   ];
 
