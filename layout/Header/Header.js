@@ -9,8 +9,8 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar, Button, Dropdown, Space } from "antd";
 import NotificationPopup from "@/components/Notification/NotificationPopup";
 
-import { FaBell } from "react-icons/fa"; // Import the notification icon
-import { useRouter } from "next/router"; // Import the useRouter hook
+import { FaBell } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 import {
   Box,
@@ -36,8 +36,6 @@ const Header = () => {
   const { isAuthenticated, loginState, logout } = useAuth();
 
   useEffect(() => {
-    // Thực hiện các hành động cần thiết khi isAuthenticated thay đổi
-    // Ví dụ: refresh header, đóng dropdown, vv.
   }, [isAuthenticated]);
 
   const items = [
