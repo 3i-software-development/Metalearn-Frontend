@@ -88,14 +88,14 @@ const Subject = () => {
                             onClick={() => handleSelect(item)}
                             className={cx("subject-item", { "selected": selected === item })}
                         >
-                            <h2>{item.Name}</h2>
+                            <h4>{item.Name}</h4>
                         </div>
                     ))}
                 </div>
             </div>
             {selected && (
                 <div className={cx("subject-content__detail")}>
-                    <h2>{selected.name}</h2>
+                    <h4>{selected.name}</h4>
                     <div className={cx("subject-questions")}>
                         <div className={cx("question-list")}>
                             {selected.questions.map((item, index) => (
