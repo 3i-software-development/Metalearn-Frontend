@@ -21,8 +21,8 @@ const CourseList = () => {
         <div className={cx('course-tab')}>
             <div>Danh sách khóa học</div>
             <div className={cx('course-list')}>
-                {courseData.map((course) => (
-                    <CourseItem data={course} />
+                {courseData.map((course, index) => (
+                    <CourseItem data={course} key={index}/>
                 ))}
             </div>
         </div>

@@ -149,8 +149,8 @@ function SettingFontText() {
     <div>
       <h1>Setting Font Text</h1>
       {
-        pages.map((page) => (
-          <div>
+        pages.map((page, index) => (
+          <div key={index}>
             <div style={{ display: "flex", alignItems: "center", position: "relative" }}>
               <i class="fa-solid fa-folder"></i>
               <h2 className={cx("hover-item")} style={{ marginLeft: "20px", marginRight: "20px" }}>{page.name}</h2>
