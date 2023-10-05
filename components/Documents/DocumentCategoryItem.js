@@ -12,9 +12,6 @@ import DocumentUpload from '@/components/Documents/DocumentUpload';
 const cx = classNames.bind(styles);
 
 const CategoryItem = ({name, data}) => {
-  //const imgDoc3 = { ...imgDoc2, src: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", height: null, width: null }
-  //const imgDoc4 = { ...imgDoc2, src: "https://file-examples.com/storage/fec36b918d65009119ed030/2017/02/file-sample_100kB.doc", height: null, width: null}
-  //const data = [imgDoc4, imgDoc2, imgDoc3, imgDoc, imgDoc2, imgDoc3, imgDoc, imgDoc2, imgDoc3, imgDoc, imgDoc2, imgDoc3, imgDoc4]
 
   const [valueDoc, setValueDoc] = useState(imgDoc);
 
@@ -23,7 +20,6 @@ const CategoryItem = ({name, data}) => {
   }
   return (
     <Section>
-      {/* <DocumentUpload /> */}
       <h1 className={cx("title")}>{name}</h1>
       <hr />
       <div className={cx("document-content")}>

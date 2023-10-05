@@ -13,8 +13,8 @@ const DocumentCategory = () => {
 
   const imgDoc3 = { ...imgDoc2, src: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", height: null, width: null }
   const imgDoc4 = { ...imgDoc2, src: "https://file-examples.com/storage/fec36b918d65009119ed030/2017/02/file-sample_100kB.doc", height: null, width: null }
-  const fakedata = [imgDoc4, imgDoc2, imgDoc3, imgDoc, imgDoc2, imgDoc3, imgDoc, imgDoc2, imgDoc3, imgDoc, imgDoc2, imgDoc3, imgDoc4]
-  const fakedata1 = [imgDoc2, imgDoc3, imgDoc, imgDoc2, imgDoc3, imgDoc4]
+  const fakedata = [imgDoc4, imgDoc2, imgDoc3, imgDoc]
+  const fakedata1 = [imgDoc2, imgDoc3, imgDoc]
   const fakedata2 = [imgDoc2, imgDoc3, imgDoc]
 
   const Receive = [
