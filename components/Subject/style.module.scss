@@ -78,22 +78,32 @@
 @media (max-width: 768px) {
   .subject {
     display: flex;
-    flex-direction: column; /* Chuyển sang hiển thị theo chiều dọc cho màn hình nhỏ hơn */
+    flex-direction: column;
+    /* Chuyển sang hiển thị theo chiều dọc cho màn hình nhỏ hơn */
   }
 
   .subject-title {
-    font-size: 20px; /* Giảm kích thước font cho màn hình nhỏ hơn */
+    font-size: 20px;
+    /* Giảm kích thước font cho màn hình nhỏ hơn */
   }
 
   .search-bar {
-    margin-bottom: 10px; /* Giảm margin cho màn hình nhỏ hơn */
+    margin-bottom: 10px;
+    /* Giảm margin cho màn hình nhỏ hơn */
   }
 
   .search-input {
-    padding: 5px; /* Giảm padding cho màn hình nhỏ hơn */
+    padding: 5px;
+    /* Giảm padding cho màn hình nhỏ hơn */
   }
 
   .subject-items {
-    flex-direction: row; /* Chuyển sang hiển thị theo chiều ngang cho màn hình nhỏ hơn */
+    flex-direction: row;
+    /* Chuyển sang hiển thị theo chiều ngang cho màn hình nhỏ hơn */
+    flex-wrap: wrap;
+
+    .subject-item h4 {
+      font-size: 9px;
+    }
   }
 }
