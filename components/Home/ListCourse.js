@@ -58,7 +58,6 @@ const ListCourse = () => {
   //const listSubject = ["Đề thi", "Lớp học", "Tài liệu"]
   const listSubject2 = ["Ngân Hàng Quiz", "Ngân Hàng Đề Thi", "Tài Liệu", "Lớp Học", "Buổi Học Trực Tuyến", "Thi Online", "Thông Tin Giáo Viên"]
 
-
   const listCourseDescription = [
     {
 
@@ -67,9 +66,6 @@ const ListCourse = () => {
 
     }
   ]
-
-
-  
 
   return (
     <div>
@@ -115,8 +111,8 @@ const ListCourse = () => {
               key={index}
               onClick={() => setBtnact(index)} 
             >
-            <div>
-              <i style={{fontSize: "100px", marginTop: "70px"}} class="fa-solid fa-building-columns"></i>
+            <div className={cx("List_Course-Icon")}>
+              <i class="fa-solid fa-building-columns"></i>
             </div>
             <p className={cx("ListCourse-In-Course")}>[123]</p>   
               <h5 className={cx("ListCourse-Title")}>{item}</h5>   
