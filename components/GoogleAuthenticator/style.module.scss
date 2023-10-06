@@ -1,3 +1,5 @@
+/* Điều chỉnh các đơn vị đo lường linh hoạt và sử dụng Flexbox */
+
 .google-authenticator-page {
   display: flex;
   flex-direction: column;
@@ -8,22 +10,13 @@
 
 .title {
   text-align: center;
-  font-size: 24px;
+  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 16px;
-  margin-top: 16px;
-  text {
-    font-size: 24px;
-    font-weight: bold;
-    color: red;
-  }
+  margin: 16px 0;
+  color: red;
 }
 
-.first-step {
-  width: 35%;
-}
-
-.second-step {
+.first-step, .second-step, .verify {
   width: 35%;
 }
 
@@ -38,24 +31,27 @@
   width: 20%;
   background-color: aqua;
   text-align: center;
-  button {
-    background-color: aqua;
-  }
 }
 
 @media (max-width: 500px) {
+  /* Điều chỉnh cho màn hình nhỏ hơn hoặc bằng 500px */
   .google-authenticator-page {
-    /* Điều chỉnh các thuộc tính cho màn hình nhỏ hơn hoặc bằng 500px */
     height: auto;
   }
-
+  
   .title {
-    font-size: 20px;
+    font-size: 1.5rem;
   }
 
-  .first-step,
-  .second-step,
-  .verify {
+  .first-step, .second-step, .verify {
     width: 100%;
+  }
+  
+  .image-qr {
+    display: flex; /* Sử dụng Flexbox để căn giữa */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    width: 256px;
+    height: 256px;
   }
 }
