@@ -122,7 +122,6 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    height: 50vh;
     
     .mb-user {
         display: flex;
@@ -136,6 +135,22 @@
         flex-direction: column;
         padding: 2.5%;
     }
+
+    .mb-link {
+        margin-lef: 10px;
+        display: block;
+        margin: 10px 0;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        border: solid 1px red;
+        padding: 5px;
+        cursor: pointer; /* Add cursor pointer on links */
+      }
+      
+      .mb-link:hover {
+        color: #007bff;
+      }
 }
 
   
