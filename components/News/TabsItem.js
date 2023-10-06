@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import NewsItem from "./NewsItem";
 import { useState } from "react";
 import { useEffect } from "react";
-import { GetListNews} from "@/pages/api/CallAPI";
+import { GetListNews } from "@/pages/api/CallAPI";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,9 +49,7 @@ export default function TabItem() {
     GetListNews().then((res) => {
       setListNews(res.Object);
     });
-  }
-    , []);
-  console.log("listNews", listNews);
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -61,72 +59,51 @@ export default function TabItem() {
   useEffect(() => {
     setIsSSR(false);
   }, []);
+
   return (
     <Box
       sx={{
-        padding: " 0px 24px",
-        "& .MuiTabs-flexContainer": {
-          marginTop: "20px",
-          borderBottom: "2px solid #ff9500",
-          color: "#333 !important",
-        },
-        "& .MuiTabs-scroller": {
-          padding: "0 20px",
-        },
-        "& .MuiButtonBase-root": {
-          fontWeight: "bold",
-          color: "#333 !important",
-        },
-        "& .css-1aquho2-MuiTabs-indicator": {
-          backgroundColor: "#ff9500",
-          height: "5px",
-        },
+        padding: "0px 24px",
       }}
     >
-      <Box sx={{}}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          {
-            listNews.map((item, index) => {
-              return (
-                <Tab key={index} label={item.name} {...a11yProps(index)} />
-              )
-            })
-          }
-        </Tabs>
-      </Box>
-      {
-        listNews.map((item, index) => {
+      <Tabs
+        TabIndicatorProps={{
+          sx: {
+            display: "block", // Initially show the indicator
+          },
+        }}
+        sx={{
+          "& .MuiTabs-flexContainer": {
+            flexWrap: "wrap",
+          },
+          // Media query for smaller screens
+          "@media (max-width: 768px)": {
+            "& .MuiTabs-flexContainer": {
+              flexWrap: "wrap",
+            },
+            "& .MuiTabs-indicator": {
+              display: "none", // Hide the indicator on smaller screens
+            },
+          },
+        }}
+        value={value}
+        onChange={handleChange}
+        aria-label="basic tabs example"
+      >
+        {listNews.map((item, index) => {
           return (
-            <TabPanel key={index} value={value} index={index}>
-              <NewsItem item={item}/>
-            </TabPanel>
-          )
-        })
-      }
-      {/*
-      <TabPanel value={value} index={0}>
-        <NewsItem />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <NewsItem />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <NewsItem />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <NewsItem />
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        <NewsItem />
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        <NewsItem />
-      </TabPanel>
-        */}
+            <Tab key={index} label={item.name} {...a11yProps(index)} />
+          );
+        })}
+      </Tabs>
+
+      {listNews.map((item, index) => {
+        return (
+          <TabPanel key={index} value={value} index={index}>
+            <NewsItem item={item} />
+          </TabPanel>
+        );
+      })}
     </Box>
   );
 }

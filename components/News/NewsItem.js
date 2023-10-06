@@ -77,12 +77,6 @@ const NewsItem = () => {
       userNew: "Admintrator"
     },
   ];
-
-  useEffect(() => {
-    GetListCmsItem().then((res) => {
-      setListNews(res.Object);
-    });
-  }, []);
   console.log("listNews", listNews);
 
 
@@ -98,13 +92,15 @@ const NewsItem = () => {
             </div>
             <div className={cx("content-news")}>
               <div className={cx("content")}>
-                <h4>{item.title}</h4>
+                <text>{item.title}</text>
               </div>
               <div className={cx("content")}>
                 <div>
                   <i className="fa-solid fa-clock"></i><span className={cx("dateTime")}> {item.date}</span>
                 </div>
-                <div><p className={cx("userNew")}>Người tạo : <strong>{item.userNew}</strong></p></div>
+                <div>
+                  <p className={cx("userNew")}>Người tạo : <strong>{item.userNew}</strong></p>
+                </div>
               </div>
             </div>
           </div>
