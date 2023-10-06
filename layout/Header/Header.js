@@ -366,7 +366,7 @@ const MenuMobile = ({isAuthenticated}) => {
         <Link href="/exam" className={cx("mb-link")}>
           Đề thi
         </Link>
-        <Link href="/Teacher" className={cx("mb-link")} >
+        <Link href="/teachers" className={cx("mb-link")} >
           Teacher
         </Link>
       </div>
