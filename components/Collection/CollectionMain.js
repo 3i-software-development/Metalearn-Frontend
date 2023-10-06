@@ -15,7 +15,7 @@ const CollectionMain = () => {
     const fakeData = [
         {
             name: 'Questions',
-            type: 'và trả lời',
+            type: 'Câu hỏi và trả lời',
             total: 1,
             image: 'https://c.files.bbci.co.uk/18145/production/_113692689_quiz_1.png',
         },
