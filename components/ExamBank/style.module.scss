@@ -4,7 +4,7 @@
     border: 1px solid grey;
     border-radius: 24px;
     padding: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     box-shadow: 0 4px 4px 1px gainsboro;
 }
 
@@ -13,4 +13,16 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .ebank-tap {
+        width: 100%;
+        display: block;
+    }
+
+    .button-container {
+        width: 90%;
+        font-size: 16px;
+    }
 }
