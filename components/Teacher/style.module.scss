@@ -34,7 +34,7 @@
 
 .search-container {
     width: 90%;
-    margin-top: 70px;
+    margin-top: 35px;
     margin-left: 5%;
     position: relative;
     flex: 1;
@@ -89,3 +89,43 @@
       }
     }
   }
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+    .form-filter {
+        width: 100%;  
+        font-size: 13px;
+
+        .sort-container {
+            margin-top: 25px;
+        }
+    }
+
+    .teachers-tab {
+      display: block;
+      
+    }
+
+    .teachersList-secion {
+        width: 100%;
+    }
+
+    .teacher-title {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .teacher-item {
+        width: 90%;
+        margin-bottom: 30px;
+        font-size: 16px;
+
+        div .image {
+            width: 100%;
+        }
+
+        div i {
+            margin-top: 10px;
+        }
+    }
+}

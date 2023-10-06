@@ -8,7 +8,7 @@ const cx = classNames.bind(style);
 const TeacherItem = ({data}) => {
     return (
         <div className={cx('teacher-item')}>
-            <div><Image src={data.avatar} alt="teacher avatar" width={300} height={300}/></div>
+            <div><Image className={cx('image')} src={data.avatar} alt="teacher avatar" width={300} height={300}/></div>
             <div>
                 <h2>{data.name}</h2>
                 <p><i class="fa-solid fa-phone"></i>{data.phoneNumber}</p>
