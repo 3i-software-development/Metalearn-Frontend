@@ -63,8 +63,9 @@ export default function AddForm() {
                       <span>Question</span>. {index + 1}
                     </p>
                   </div>
+                  
                   <div className={cx("quizz-left")}>
-                    <h3>{htmlDecode(`${value.Content}`)}</h3>
+                    <h3 className={cx("quizz-questions")}>{htmlDecode(`${value.Content}`)}</h3>
                     {JSON.parse(value.JsonData).map((item, i) => {
                       return (
                         <div key={i} className={cx("checkBox")}>
@@ -73,15 +74,15 @@ export default function AddForm() {
                         </div>
                       );
                     })}
-                    <div className={cx("recommend")}>
-                      <a>
-                        <i className="fa-brands fa-react fa-beat"></i>
-                      </a>
-                      <button>Kiểm tra</button>
-                      <a>
-                        <i className="fa-solid fa-flower"></i>GPT
-                      </a>
-                    </div>
+                      <div className={cx("recommend")}>
+                        <a>
+                          <i className="fa-brands fa-react fa-beat"></i>
+                        </a>
+                        <button>Kiểm tra</button>
+                        <a>
+                          <i className="fa-solid fa-flower"></i>GPT
+                        </a>
+                      </div>
                   </div>
                 </div>
               </>

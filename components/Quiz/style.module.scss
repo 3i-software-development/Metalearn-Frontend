@@ -129,6 +129,7 @@
 .quiz-detail {
 
     border-bottom: 1px solid #d9534f;
+    // background-color: red;
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
@@ -262,4 +263,33 @@
 }
 .done{
     background-color: rgb(71, 224, 71) !important;
+}
+
+.quizz-questions {
+
+}
+
+
+@media only screen and (max-width: 768px) {
+    .quiz-detail {
+        width: 100%;
+    }
+
+    .quizz-questions {
+        font-size: 15px;
+        width: 70%;  
+    }
+
+    .recommend {
+        display: none;
+    }
+
+    .numOf {
+        width: 100%;
+    }
+    .quizz-left {
+        width: 100%;
+        background-color: blue;
+    }
+
 }
