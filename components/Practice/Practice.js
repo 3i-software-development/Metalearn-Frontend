@@ -2,10 +2,8 @@ import React from "react";
 import PracticeItem from "./PracticeItem";
 import style from "./style.module.scss";
 import classNames from "classnames/bind";
-import { BsSearch } from "react-icons/bs";
 
 const cx = classNames.bind(style);
-
 const Practice = () => {
     const practiceData = [
         {
@@ -76,9 +74,10 @@ const Practice = () => {
                 <div className={cx('practice-header')}>
                     <p></p>
                     <h1>Rèn luyện</h1>
-                    <div style={{ display: "flex" }}>
+
+                    <div className={cx("flex-item")}>
                         <p><i class="fa-solid fa-magnifying-glass fa-2xl"></i></p>
-                        <p style={{ marginLeft: '30px' }}><i class="fa-regular fa-square-plus fa-2xl"></i></p>
+                        <p className={cx("item-p")}><i class="fa-regular fa-square-plus fa-2xl"></i></p>
                     </div>
                 </div>
                 <div className={cx("practice-list")}>
