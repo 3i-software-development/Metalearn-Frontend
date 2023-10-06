@@ -159,7 +159,7 @@ const Header = () => {
         className={cx("icon-mobile")}
         onClick={() => setShowmobile(!showMobile)}
       />
-      {showMobile && <MenuMobile />}
+      {showMobile && <MenuMobile isAuthenticated={isAuthenticated} />}
       <Link
         href={isAuthenticated ? "/personalized" : "/"}
         className={cx("logo-container")}
@@ -337,17 +337,19 @@ const Header = () => {
 
 export default Header;
 
-const MenuMobile = () => {
+const MenuMobile = ({isAuthenticated}) => {
   return (
     <div className={cx("menu-mobile")}>
-      <div className={cx("mb-user")}>
-        <Link href="/auth/login" className={cx("mb-login")}>
-          Đăng nhập
-        </Link>
-        <Link href="/auth/signup" className={cx("mb-signup")}>
-          Đăng kí
-        </Link>
-      </div>
+      {!isAuthenticated && (
+        <div className={cx("mb-user")}>
+          <Link href="/auth/login" className={cx("mb-login")}>
+            Đăng nhập
+          </Link>
+          <Link href="/auth/signup" className={cx("mb-signup")}>
+            Đăng kí
+          </Link>
+        </div>
+      )}
       <div className={cx("mb-list")}>
         <Link href="/subjects" className={cx("mb-link")}>
           Subject

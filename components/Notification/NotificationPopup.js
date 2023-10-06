@@ -11,42 +11,42 @@ const NotificationPopup = () => {    // Add your notification content and stylin
   const [saveSetting, setSaveSetting] = useState({
     "Menu trái": {
       style: "default",
-      size: "17",
+      size: "14",
       color: "#000000"
     },
     "Tiêu đề": {
       style: "default",
-      size: "17",
+      size: "14",
       color: "#000000"
     },
     "Thông báo": {
       style: "default",
-      size: "17",
+      size: "14",
       color: "#000000"
     },
     "Điều khiển": {
       style: "default",
-      size: "17",
+      size: "14",
       color: "#000000"
     },
     "Nội dung chữ": {
       style: "default",
-      size: "17",
+      size: "14",
       color: "#000000"
     },
     "Nội dung control": {
       style: "default",
-      size: "17",
+      size: "14",
       color: "#000000"
     },
     "Nội dung kiểu cây": {
       style: "default",
-      size: "17",
+      size: "14",
       color: "#000000"
     },
     "Giao diện bài viết": {
       style: "default",
-      size: "17",
+      size: "14",
       color: "#000000"
     }
   });
