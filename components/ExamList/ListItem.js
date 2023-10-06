@@ -24,9 +24,10 @@ const ListItem = ({ data }) => {
           </div>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between',
+       marginLeft: '35px', marginRight:'35px' }}>
         <p style={{ fontSize: '16px' }}>Tác giả: {data.author}</p>
-        <p></p>
+        
         <p></p>
         <p style={{ fontSize: '16px' }}>{data.number_questions}</p>
       </div>
@@ -44,7 +45,8 @@ const ListItem = ({ data }) => {
         fontSize: '16px', color: 'purple',
         marginLeft: '35px'
       }}>Môn học: {data.subject}</p>
-      <div style={{justifyContent: 'space-around', display: 'flex', marginTop: '10px'}}>
+      <div style={{justifyContent: 'space-around', display: 'flex',
+       marginTop: '10px', marginBottom:'10px'}}>
         <p><i class="fa-solid fa-circle-question fa-xl"></i></p>
         <p><i class="fa-solid fa-thumbtack fa-xl"></i></p>
         <p><i class="fa-solid fa-download fa-xl"></i></p>

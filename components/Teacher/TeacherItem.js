@@ -1,39 +1,27 @@
-import React, { useEffect, useState } from "react";
-import styles from './style.module.scss'
+import Image from "next/image";
+import React from "react";
+import classNames from "classnames/bind";
+import style from "./style.module.scss";
+
+const cx = classNames.bind(style);
 
 const TeacherItem = ({data}) => {
     return (
-
-        <div style={{backgroundColor: "green", width: "300px", marginTop: "10px", marginLeft: "20px", borderRadius: "5px"}}>
-            <div style={{display: "flex", justifyContent: "center", alignItems: "center", }}>
-                    <img style={{width: "100%", height: "100%"}} src = "http://localhost:3007/_next/image?url=https%3A%2F%2Fdieuhanh.vatco.vn%2F%2Fuploads%2Frepository%2FSUBJECT%2Fdownload5.jpg&w=1080&q=75"></img>
+        <div className={cx('teacher-item')}>
+            <div><Image className={cx('image')} src={data.avatar} alt="teacher avatar" width={300} height={300}/></div>
+            <div>
+                <h2>{data.name}</h2>
+                <p><i class="fa-solid fa-phone"></i>{data.phoneNumber}</p>
             </div>
-        <div>
-           <div style={{display: "flex"}}>
-
-                <div>
-                    <p style={{fontWeight: "600"}}>Name:</p>
-                    <p style={{fontWeight: "600"}}>Phone:</p>
-                    <p><i style={{color: "yellow"}} class="fa-solid fa-star"></i></p>
-                </div>
-                
-                <div style={{marginLeft: "50px"}}>
-                    <p>{data.name}</p>
-                    <p>{data.phone}</p>
-                    <p>Preview</p>
-
-                </div>
-
-           </div>
-
-           <div style={{display: "flex", justifyContent: "space-evenly"}}>
-                <i style={{color: "red"}} class="fa-solid fa-heart"></i>
-                <i class="fa-regular fa-user"></i>
-                <i class="fa-regular fa-message"></i>
-           </div>
-           
+            <div className={cx('teacher-interactive')}>
+                <p><i class="fa-solid fa-heart"></i>{data.likes} Likes</p>
+                <p><i class="fa-regular fa-comments"></i>{data.reviews} Reviews</p>
+                <p><i class="fa-regular fa-user"></i>{data.follows} Follows</p>
+            </div>
+            <div><i class="fa-solid fa-location-dot" style={{color: 'green'}}></i>{data.address}</div>
+            <div><i class="fa-solid fa-book" style={{color: '#f5a142'}}></i>{data.subjects.join(", ")}</div>
         </div>
-        </div>
-    );
-    }
+    )
+}
+
 export default TeacherItem;

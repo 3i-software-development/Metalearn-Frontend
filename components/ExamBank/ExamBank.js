@@ -84,7 +84,7 @@ const ExamBank = () => {
 
     return (
         <div className={cx('ebank-tab')}>
-            <div style={{ textAlign: 'center', margin: '20px' }}>
+            <div style={{ textAlign: 'center', margin: '30px' }}>
                 <h2>Ngân hàng đề thi</h2>
             </div>
             <div className={cx("ebank-list")}>
