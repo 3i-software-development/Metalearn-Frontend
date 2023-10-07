@@ -203,7 +203,7 @@ const SelftrainingCard = ({ onlyAssignment }) => {
           <div className={cx('on-mobile')}>
             <div>
               {quiz?.Object?.Data.map((item, index) => (
-                <div className={cx("item")} >
+                <div className={cx("item")} key={index}>
                   <div className={cx("question")}>
                     <h4>
                       {textFomart(item.Content).map((element, index) => {
