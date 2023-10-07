@@ -121,6 +121,12 @@
 color: red;
 }
 @media screen and (max-width:930px) {
+    .background{
+        background: -webkit-linear-gradient(-140deg,#c850c0,#4158d0);
+        color: white;
+        min-height: 100vh;
+        padding: 10%;
+    }
     .login {
         width: 100%;
         padding: 10% 2%;

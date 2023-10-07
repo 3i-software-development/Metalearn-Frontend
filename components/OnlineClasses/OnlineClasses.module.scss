@@ -1,0 +1,61 @@
+/* OnlineClasses.module.css */
+
+.Online-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  .OnlineClasses {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .OnlineClasses-All {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .OnlineClasses-01 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .course-item {
+    flex: 0 0 calc(50% - 10px); /* Set each item to occupy 50% width with some spacing */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+
+  .OnlineClasses-Title {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .OnlineClasses-Subject {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .OnlineClasses-Day {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  .course-item-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .course-item-icons i {
+    font-size: 20px;
+    color: #555;
+  }
+  
