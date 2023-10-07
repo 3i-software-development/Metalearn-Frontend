@@ -37,80 +37,134 @@ const PractiseCard = ({ total }) => {
   return (
     <Section>
       <div className={cx("practice")}>
-        <table className={cx("application-list")}>
-          <thead className={cx("table-head")}>
-            <tr>
-              <th className={cx("titleCard")}>
-                <i className="fa fa-paper-plane"></i>
-                Tên thẻ
-              </th>
-              <th className={cx("card-status")}>
-                <i className="fa fa-newspaper"></i>
-                Trạng thái
-              </th>
-              <th className={cx("card-time")}>
-                <i className="fa fa-calendar"></i>
-                Thời gian
-              </th>
-              <th className={cx("card-actions")}>
-                <i className="fa fa-recycle"></i>
-                Thao tác
-              </th>
-            </tr>
-          </thead>
-          <tbody className={cx("table-body")}>
-            {practiveQuery?.Object?.data.map((element) => {
-              return (
-                <tr key={element.LmsTaskCode} className={cx("card")}>
-                  <td className={cx("titleCard")}>
-                    <h4>
-                      #{element.LmsTaskCode} : {element.LmsTaskName}
-                    </h4>
-                  </td>
-                  <td className={cx("card-status")}>
-                    <div className={cx("status")}>
-                      <span className={cx("label")}>{element.Status}</span>
-                      <span>
-                        {diffMoment(element.BeginTime, element.EndTime)}
-                      </span>
-                    </div>
-                  </td>
-                  <td className={cx("card-time")}>
-                    <div className={cx("timeStart")}>
-                      <span>
-                        [{moment(element.BeginTime).format("DD : MM : YYYY")}]
-                      </span>
-                      {element.EndTime && (
+        <div className={cx('on-pc')}>
+          <table className={cx("application-list")}>
+            <thead className={cx("table-head")}>
+              <tr>
+                <th className={cx("titleCard")}>
+                  <i className="fa fa-paper-plane"></i>
+                  Tên thẻ
+                </th>
+                <th className={cx("card-status")}>
+                  <i className="fa fa-newspaper"></i>
+                  Trạng thái
+                </th>
+                <th className={cx("card-time")}>
+                  <i className="fa fa-calendar"></i>
+                  Thời gian
+                </th>
+                <th className={cx("card-actions")}>
+                  <i className="fa fa-recycle"></i>
+                  Thao tác
+                </th>
+              </tr>
+            </thead>
+            <tbody className={cx("table-body")}>
+              {practiveQuery?.Object?.data.map((element) => {
+                return (
+                  <tr key={element.LmsTaskCode} className={cx("card")}>
+                    <td className={cx("titleCard")}>
+                      <h4>
+                        #{element.LmsTaskCode} : {element.LmsTaskName}
+                      </h4>
+                    </td>
+                    <td className={cx("card-status")}>
+                      <div className={cx("status")}>
+                        <span className={cx("label")}>{element.Status}</span>
                         <span>
-                          [{moment(element.EndTime).format("DD : MM : YYYY")}]
+                          {diffMoment(element.BeginTime, element.EndTime)}
                         </span>
-                      )}
+                      </div>
+                    </td>
+                    <td className={cx("card-time")}>
+                      <div className={cx("timeStart")}>
+                        <span>
+                          [{moment(element.BeginTime).format("DD : MM : YYYY")}]
+                        </span>
+                        {element.EndTime && (
+                          <span>
+                            [{moment(element.EndTime).format("DD : MM : YYYY")}]
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td className={cx("card-actions")}>
+                      <div className={cx("listIcon")}>
+                        <span title="Sửa">
+                          <i className="fa-solid fa-pen"></i>
+                        </span>
+                        <span title="Căn chỉnh">
+                          <i className="fa-solid fa-align-center"></i>
+                        </span>
+                        <span title="Trò chuyện">
+                          <i className="fa-solid fa-comment-dots"></i>
+                        </span>
+                        <span title="Thông báo">
+                          <i className="fa-solid fa-bell"></i>
+                        </span>
+                        <span title="File">
+                          <i className="fa-solid fa-file"></i>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <div className={cx('on-mobile')}>
+        {practiveQuery?.Object?.data.map((element) => {
+                return (
+                  <div key={element.LmsTaskCode} className={cx("card")}>
+                    <div className={cx("titleCard")}>
+                      <h4>
+                        #{element.LmsTaskCode} : {element.LmsTaskName}
+                      </h4>
                     </div>
-                  </td>
-                  <td className={cx("card-actions")}>
-                    <div className={cx("listIcon")}>
-                      <span title="Sửa">
-                        <i className="fa-solid fa-pen"></i>
-                      </span>
-                      <span title="Căn chỉnh">
-                        <i className="fa-solid fa-align-center"></i>
-                      </span>
-                      <span title="Trò chuyện">
-                        <i className="fa-solid fa-comment-dots"></i>
-                      </span>
-                      <span title="Thông báo">
-                        <i className="fa-solid fa-bell"></i>
-                      </span>
-                      <span title="File">
-                        <i className="fa-solid fa-file"></i>
-                      </span>
+                    <div className={cx("card-status")}>
+                      <div className={cx("status")}>
+                        <span className={cx("label")}>{element.Status}</span>
+                        <span>
+                          {diffMoment(element.BeginTime, element.EndTime)}
+                        </span>
+                      </div>
                     </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    <div className={cx("card-time")}>
+                      <div className={cx("timeStart")}>
+                        <span>
+                          [{moment(element.BeginTime).format("DD : MM : YYYY")}]
+                        </span>
+                        {element.EndTime && (
+                          <span>
+                            [{moment(element.EndTime).format("DD : MM : YYYY")}]
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className={cx("card-actions")}>
+                      <div className={cx("listIcon")}>
+                        <span title="Sửa">
+                          <i className="fa-solid fa-pen"></i>
+                        </span>
+                        <span title="Căn chỉnh">
+                          <i className="fa-solid fa-align-center"></i>
+                        </span>
+                        <span title="Trò chuyện">
+                          <i className="fa-solid fa-comment-dots"></i>
+                        </span>
+                        <span title="Thông báo">
+                          <i className="fa-solid fa-bell"></i>
+                        </span>
+                        <span title="File">
+                          <i className="fa-solid fa-file"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+        </div>
       </div>
       <Pagination
         total={total}

@@ -203,41 +203,54 @@ const SelftrainingCard = ({ onlyAssignment }) => {
           <div className={cx('on-mobile')}>
             <div>
               {quiz?.Object?.Data.map((item, index) => (
-                <div key={index} className={cx('item-mobile')}>
-                  <h4>
-                    {textFomart(item.Content).map((element, index) => {
-                      if (format.test(element))
-                        return <MathJax key={index}>{`$$${element}$$`}</MathJax>
-                      else return <span key={index}>{element}</span>
+                <div className={cx("item")} >
+                  <div className={cx("question")}>
+                    <h4>
+                      {textFomart(item.Content).map((element, index) => {
+                        if (format.test(element))
+                          //return <MathJax key={index}>{`$$${element}$$`}</MathJax>
+                          return <span key={index}>{element}</span>
+                        else return <span key={index}>{element}</span>
 
-                      // if (index % 2 === 0) {
-                      //   return <span key={-index}>{element}</span>;
-                      // } else
-                      //   // return <MathJax key={index}>{element}</MathJax>
-                    })}
-                  </h4>
-                  <p>{item.SubjectName}</p>
-                  <div>
-                    <text>Tác giả{item.CreatedBy}</text>
-                    <text>{item.CreatedTime}</text>
+                        // if (index % 2 === 0) {
+                        //   return <span key={-index}>{element}</span>;
+                        // } else
+                        //   // return <MathJax key={index}>{element}</MathJax>
+                      })}
+                    </h4>
                   </div>
-                  <div>
-                    <text>Thời gian {item.DurationMinute}</text>
-                    <text>Độ khó {item.Level}</text>
+                  <div className={cx("subject")}>{item.SubjectName}</div>
+                  <div className={cx("lession")}>
+                    Bài 6 : Đơn chất và hợp chất - Phân
                   </div>
-
-                  <p>Giá {item.Price}</p>
-                  <div className={cx('action-mobile')}>
-                    <div>
-                      <span className={cx("download")}>
-                        <i className="fa-solid fa-cloud-arrow-down"></i>
-                      </span>
-                      <span className={cx("thumbtack")}>
-                        <i className="fa-solid fa-thumbtack"></i>
-                      </span>
-                    </div>
+                  <div className={cx("price")}>
+                    {item.Price === 0
+                      ? item.Price + " [" + " Được chia sẻ " + "]"
+                      : item.Price + " Coin"}
                   </div>
-
+                  <div className={cx("author")}>
+                    <p>
+                      <i className="fa-solid fa-code-branch"></i>{" "}
+                      <span>{item.CreatedBy}</span>{" "}
+                    </p>
+                    <p>{moment(item.CreatedTime).format("DD : MM : YYYY")}</p>
+                    <i>
+                      {item.DurationMinute === 0
+                        ? ""
+                        : item.DurationMinute + " phút"}
+                    </i>
+                  </div>
+                  <div className={cx("time")}>
+                    {item.Level === null ? "0" : item.Level}
+                  </div>
+                  <div className={cx("actions")}>
+                    <span className={cx("download")}>
+                      <i className="fa-solid fa-cloud-arrow-down"></i>
+                    </span>
+                    <span className={cx("thumbtack")}>
+                      <i className="fa-solid fa-thumbtack"></i>
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
