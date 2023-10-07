@@ -19,7 +19,7 @@ const CourseList = () => {
     ]
     return (
         <div className={cx('course-tab')}>
-            <div>Danh sách khóa học</div>
+            <div className={cx("CourseItem-Title")}>Danh sách khóa học</div>
             <div className={cx('course-list')}>
                 {courseData.map((course, index) => (
                     <CourseItem data={course} key={index}/>
