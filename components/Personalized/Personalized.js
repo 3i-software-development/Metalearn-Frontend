@@ -43,6 +43,7 @@ import {
 } from "@/lib/Midleware/ChartQuery";
 import { useGetCountQuizBodyQuery } from "@/lib/Midleware/QuizQuery";
 import CircleChart from "../Chart/CircleChart/CircleChart";
+import MobileNavBar from "./MobileNavBar";
 
 const Personalized = () => {
   const { data: practiveQuery } = useGetTotalPractiveQuery({
@@ -557,7 +558,8 @@ const Personalized = () => {
   return (
     <>
       <div className={cx("person")}>
-        <div className={cx("navbar")}>
+        
+        <div className={cx("nav-bar")}>
           <span className="hidden nav-toggle">
             <i className="fa fa-bars" aria-hidden="true"></i>&nbsp; Navigation
           </span>
@@ -574,6 +576,9 @@ const Personalized = () => {
             }
             items={items}
           />
+        </div>
+        <div className={cx('nav-bar-mobile')}>
+          <MobileNavBar />
         </div>
         <div className={cx("content")}>
           <div className={cx("SearchAndAddSubjects_ItemAll")}>
