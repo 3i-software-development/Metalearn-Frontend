@@ -50,8 +50,13 @@ const Tutorial = () => {
 
     return (
         <div className={cx('tutorial-container')}>
-          <TreeViewComponent treeData={treeData} handleSelectBarItem={handleSelectBarItem}/>
-          <TutorialContent content={selectedBarItem.content} item={selectedBarItem} />
+          <div className={cx('tutorial-container-1')}>
+              <TreeViewComponent treeData={treeData} handleSelectBarItem={handleSelectBarItem}/>
+          </div>
+
+          <div className={cx('tutorial-container-2')}>
+              <TutorialContent content={selectedBarItem.content} item={selectedBarItem} />
+          </div>
         </div>
       );
     };
