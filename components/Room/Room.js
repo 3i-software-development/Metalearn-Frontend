@@ -8,12 +8,6 @@ const cx = classNames.bind(styles);
 
 const Room = () => {
     const [selectedRoom, setSelectedRoom] = useState(null);
-    const a = {
-        id: 2,
-        title: "Yesterday Once more",
-        time: "25-7-2019",
-        author: "The Carpenters",
-    }
 
     const JoinList = [
         {
@@ -48,8 +42,28 @@ const Room = () => {
             title: "offline",
             time: "25-7-2019",
             content: "We've combined the power of the Following feed with the For you feed so there’s one"
-
-        }
+        },
+        {
+            id: 3,
+            author: "Jane Doe",
+            title: "offline",
+            time: "25-7-2019",
+            content: "We've combined the power of the Following feed with the For you feed so there’s one"
+        },
+        {
+            id: 4,
+            author: "Jane Doe",
+            title: "offline",
+            time: "25-7-2019",
+            content: "We've combined the power of the Following feed with the For you feed so there’s one"
+        },
+        {
+            id: 4,
+            author: "Jane Doe",
+            title: "offline",
+            time: "25-7-2019",
+            content: "We've combined the power of the Following feed with the For you feed so there’s one"
+        },
         // Add more users as needed
     ]
 
@@ -62,10 +76,10 @@ const Room = () => {
     return (
         <div className={cx('Room-page')}>
 
-            <div>
+            <div className="Room">
                 <RoomList JoinList={JoinList} ManageList={ManageList} handleRoomSelect={handleRoomSelect} />
             </div>
-            <div>
+            <div className="Room-content">
                 <Content item={selectedRoom} />
             </div>
         </div>

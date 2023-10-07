@@ -4,7 +4,7 @@
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 1fr;
   grid-template-areas: "sidebar main";
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .connection {
@@ -194,4 +194,20 @@
 
 .comment-button:hover {
   background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .Room-page {
+    display: flex;
+    flex-direction: column;
+  }
+  .connection {
+    min-height: 20vh;
+    max-height: 35vh;
+
+    .tab-content {
+      max-height: 30vh;
+      overflow-y: auto;
+    }
+  }
 }
