@@ -59,3 +59,25 @@
     font-size: 40; /* Adjust the desired font size here */
   }
   
+
+  @media only screen and (max-width: 768px) {
+    .blog-container {
+        
+        display: flex;
+        background-color: blue;
+        flex-direction: column;
+        height: 100vh; /* Chiều cao 100% của viewport */
+        width: 100%; /* Chiều rộng 100% của parent container (có thể không cần thiết nếu parent container cũng chiếm 100% width của viewport) */
+    }
+
+
+    .blog-container-1,
+    .blog-container-2 {
+    // background-color: red;
+    margin-top: 5px;
+    // width: 100%; /* Chiều rộng 100% của parent container (.tutorial-container) */
+    height: 100%; /* Chiều cao 100% của viewport */
+}
+    
+   
+}
