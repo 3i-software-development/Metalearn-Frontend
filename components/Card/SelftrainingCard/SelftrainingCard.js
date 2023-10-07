@@ -109,94 +109,140 @@ const SelftrainingCard = ({ onlyAssignment }) => {
     <Section>
       <MathJaxContext config={config}>
         <div className={cx("contaiberQuiz")}>
-          <table className={cx("list-table")}>
-            <thead>
-            <tr className={cx("list-head")}>
-              <th className={cx("question")}>
-                <i className="fa fa-paper-plane"></i>
-                Câu hỏi
-              </th>
-              <th className={cx("subject")}>
-                <i className="fa-solid fa-person-chalkboard"></i>
-                Môn học
-              </th>
-              <th className={cx("lession")}>
-                <i className="fa fa-newspaper"></i>
-                Bài giảng
-              </th>
-              <th className={cx("price")}>
-                <i className="fa-solid fa-tag"></i>
-                Giá
-              </th>
-              <th className={cx("author")}>
-                <i className="fa-solid fa-user"></i>
-                Tác giả
-              </th>
-              <th className={cx("time")}>
-                <i className="fa-solid fa-clock"></i>
-                Thời lượng
-              </th>
-              <th className={cx("actions")}>
-                <i className="fa fa-recycle"></i>
-                Thao tác
-              </th>
-            </tr>
-            </thead>
-            {quiz?.Object?.Data.map((item, index) => {
-              return (
-                <tbody key={index}>
-                  <tr className={cx("item")} >
-                  <td className={cx("question")}>
-                    <h4>
-                      {textFomart(item.Content).map((element, index) => {
-                        if (format.test(element))
-                          return <MathJax key={index}>{`$$${element}$$`}</MathJax>
-                        else return <span key={index}>{element}</span>
-
-                        // if (index % 2 === 0) {
-                        //   return <span key={-index}>{element}</span>;
-                        // } else
-                        //   // return <MathJax key={index}>{element}</MathJax>
-                      })}
-                    </h4>
-                  </td>
-                  <td className={cx("subject")}>{item.SubjectName}</td>
-                  <td className={cx("lession")}>
-                    Bài 6 : Đơn chất và hợp chất - Phân
-                  </td>
-                  <td className={cx("price")}>
-                    {item.Price === 0
-                      ? item.Price + " [" + " Được chia sẻ " + "]"
-                      : item.Price + " Coin"}
-                  </td>
-                  <td className={cx("author")}>
-                    <p>
-                      <i className="fa-solid fa-code-branch"></i>{" "}
-                      <span>{item.CreatedBy}</span>{" "}
-                    </p>
-                    <p>{moment(item.CreatedTime).format("DD : MM : YYYY")}</p>
-                    <i>
-                      {item.DurationMinute === 0
-                        ? ""
-                        : item.DurationMinute + " phút"}
-                    </i>
-                  </td>
-                  <td className={cx("time")}>
-                    {item.Level === null ? "0" : item.Level}
-                  </td>
-                  <td className={cx("actions")}>
-                    <span className={cx("download")}>
-                      <i className="fa-solid fa-cloud-arrow-down"></i>
-                    </span>
-                    <span className={cx("thumbtack")}>
-                      <i className="fa-solid fa-thumbtack"></i>
-                    </span>
-                  </td>
+          <div className={cx('on-pc')}>
+            <table className={cx("list-table")}>
+              <thead>
+                <tr className={cx("list-head")}>
+                  <th className={cx("question")}>
+                    <i className="fa fa-paper-plane"></i>
+                    Câu hỏi
+                  </th>
+                  <th className={cx("subject")}>
+                    <i className="fa-solid fa-person-chalkboard"></i>
+                    Môn học
+                  </th>
+                  <th className={cx("lession")}>
+                    <i className="fa fa-newspaper"></i>
+                    Bài giảng
+                  </th>
+                  <th className={cx("price")}>
+                    <i className="fa-solid fa-tag"></i>
+                    Giá
+                  </th>
+                  <th className={cx("author")}>
+                    <i className="fa-solid fa-user"></i>
+                    Tác giả
+                  </th>
+                  <th className={cx("time")}>
+                    <i className="fa-solid fa-clock"></i>
+                    Thời lượng
+                  </th>
+                  <th className={cx("actions")}>
+                    <i className="fa fa-recycle"></i>
+                    Thao tác
+                  </th>
                 </tr>
-                </tbody>
-              );
-            })}
-          </table>
+              </thead>
+              {quiz?.Object?.Data.map((item, index) => {
+                return (
+                  <tbody key={index}>
+                    <tr className={cx("item")} >
+                      <td className={cx("question")}>
+                        <h4>
+                          {textFomart(item.Content).map((element, index) => {
+                            if (format.test(element))
+                              //return <MathJax key={index}>{`$$${element}$$`}</MathJax>
+                              return <span key={index}>{element}</span>
+                            else return <span key={index}>{element}</span>
+
+                            // if (index % 2 === 0) {
+                            //   return <span key={-index}>{element}</span>;
+                            // } else
+                            //   // return <MathJax key={index}>{element}</MathJax>
+                          })}
+                        </h4>
+                      </td>
+                      <td className={cx("subject")}>{item.SubjectName}</td>
+                      <td className={cx("lession")}>
+                        Bài 6 : Đơn chất và hợp chất - Phân
+                      </td>
+                      <td className={cx("price")}>
+                        {item.Price === 0
+                          ? item.Price + " [" + " Được chia sẻ " + "]"
+                          : item.Price + " Coin"}
+                      </td>
+                      <td className={cx("author")}>
+                        <p>
+                          <i className="fa-solid fa-code-branch"></i>{" "}
+                          <span>{item.CreatedBy}</span>{" "}
+                        </p>
+                        <p>{moment(item.CreatedTime).format("DD : MM : YYYY")}</p>
+                        <i>
+                          {item.DurationMinute === 0
+                            ? ""
+                            : item.DurationMinute + " phút"}
+                        </i>
+                      </td>
+                      <td className={cx("time")}>
+                        {item.Level === null ? "0" : item.Level}
+                      </td>
+                      <td className={cx("actions")}>
+                        <span className={cx("download")}>
+                          <i className="fa-solid fa-cloud-arrow-down"></i>
+                        </span>
+                        <span className={cx("thumbtack")}>
+                          <i className="fa-solid fa-thumbtack"></i>
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                );
+              })}
+            </table>
+          </div>
+          <div className={cx('on-mobile')}>
+            <div>
+              {quiz?.Object?.Data.map((item, index) => (
+                <div key={index} className={cx('item-mobile')}>
+                  <h4>
+                    {textFomart(item.Content).map((element, index) => {
+                      if (format.test(element))
+                        return <MathJax key={index}>{`$$${element}$$`}</MathJax>
+                      else return <span key={index}>{element}</span>
+
+                      // if (index % 2 === 0) {
+                      //   return <span key={-index}>{element}</span>;
+                      // } else
+                      //   // return <MathJax key={index}>{element}</MathJax>
+                    })}
+                  </h4>
+                  <p>{item.SubjectName}</p>
+                  <div>
+                    <text>Tác giả{item.CreatedBy}</text>
+                    <text>{item.CreatedTime}</text>
+                  </div>
+                  <div>
+                    <text>Thời gian {item.DurationMinute}</text>
+                    <text>Độ khó {item.Level}</text>
+                  </div>
+
+                  <p>Giá {item.Price}</p>
+                  <div className={cx('action-mobile')}>
+                    <div>
+                      <span className={cx("download")}>
+                        <i className="fa-solid fa-cloud-arrow-down"></i>
+                      </span>
+                      <span className={cx("thumbtack")}>
+                        <i className="fa-solid fa-thumbtack"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </MathJaxContext>
       {/* <Pagination total={onlyAssignment ? data?.countAssignment : data?.countSharing} handleQueryPage={handleQueryPage} current={query.pageNum} /> */}

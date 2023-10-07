@@ -1,67 +1,104 @@
-.list-table{
+.list-table {
     border-spacing: 0 5px;
 
-    .question{
+    .question {
         max-width: 500px;
     }
 
-    th, 
-    td{
+    th,
+    td {
         text-align: initial;
         min-width: 150px;
 
         &.price,
         &.author,
         &.time,
-        &.actions{
+        &.actions {
             text-align: center;
         }
     }
 
-    i{
+    i {
         color: gray;
     }
 
-    .actions{
-        span{
+    .actions {
+        span {
             margin-right: 20px;
             cursor: pointer;
-            
-            &:last-child{
+
+            &:last-child {
                 margin-right: 0;
             }
         }
     }
 }
 
-.list-head{
-    th{
+.list-head {
+    th {
         font-size: 14px;
         font-weight: 600;
         text-decoration: underline;
         padding: 10px 10px 30px;
 
-        i{
+        i {
             margin-right: 5px;
         }
     }
 }
 
-.item{
-    td{
+.item {
+    td {
         border-width: 1px 0 0;
         border-style: solid;
         border-color: #e7ecf1;
         padding: 8px 10px;
 
-        &.question{
-            span{
+        &.question {
+            span {
                 font-weight: 600;
             }
         }
     }
 
-    &:hover{
+    &:hover {
         background-color: #f3f4f6;
     }
+}
+
+.on-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .on-pc {
+        display: none;
+    }
+
+    .on-mobile {
+        display: block;
+    }
+    .item-mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: solid 1px black;
+        background-color: aqua;
+    }
+
+    /* Style for the 'action-mobile' div within each item */
+    .action-mobile {
+        margin-top: 10px;
+        /* Adjust margin as needed */
+    }
+
+    /* Style for the download and thumbtack icons */
+    .action-mobile .download,
+    .action-mobile .thumbtack {
+        font-size: 20px;
+        /* Adjust icon size as needed */
+        margin-right: 10px;
+        /* Add margin as needed */
+    }
+
 }
