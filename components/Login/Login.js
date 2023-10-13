@@ -81,7 +81,7 @@ export default function Login() {
         localStorage.setItem("user", data?.Object.UserName);
         localStorage.setItem("userId", data?.Object.UserName);
         loginState();
-        router.push("/personalized");
+        router.push('/personalized');
       }
     }
   }
