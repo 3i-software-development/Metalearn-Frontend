@@ -55,6 +55,10 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     // Kiểm tra JWT trong local storage hoặc cookie khi ứng dụng tải lại
     const user = localStorage.getItem("user");
+    const saveSetting = localStorage.getItem("saveSetting");
+    if (saveSetting) {
+      setSaveSetting(JSON.parse(saveSetting));
+    }
     if (user) {
       setUser(user);
       setIsAuthenticated(true);
@@ -62,13 +66,9 @@ export function AuthProvider({ children }) {
     else {
       setUser(null);
       setIsAuthenticated(false);
-      router.push("/auth/login");
     }
-    const saveSetting = localStorage.getItem("saveSetting");
-    if (saveSetting) {
-      setSaveSetting(JSON.parse(saveSetting));
-    }
-  }, []);
+
+  }, [user][saveSetting]);
 
   const loginState = () => {
     // Thực hiện xác thực ở đây và nhận thông tin người dùng
@@ -83,6 +83,7 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("userId");
     setUser(null);
     setIsAuthenticated(false);
+    router.push('/auth/login');
   };
 
   return (

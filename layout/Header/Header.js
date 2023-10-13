@@ -185,29 +185,50 @@ const Header = () => {
         <BsSearch />
       </div>
 
-      <Link href="/news" className={cx("head-link")}>
-        Tin tức
-      </Link>
-      <Link href="/my-class" className={cx("head-link")}>
-        Lớp học trực tuyến
-      </Link>
-      <Link href="/documents" className={cx("head-link")}>
-        Tài liệu
-      </Link>
-      <Link href="/exam" className={cx("head-link")}>
-        Đề thi
-      </Link>
-      <div className={cx("icon-ss")}>
-        <BsSearch className={cx("icon-search-mobile")} />
-        <Link href="/payment">
-          <TiShoppingCart className={cx("icon")} />
-        </Link>
-        <div className={cx("notification-icon")} onClick={toggleNotification}>
-          <FaBell />
-        </div>
-        {/* Notification Popup */}
-        {showNotification && <NotificationPopup />}
-      </div>
+      {
+        isAuthenticated && (
+          <div>
+
+          </div>
+        )
+      }
+
+      {
+        isAuthenticated && (
+          <div className="header-links">
+            <Link href="/news" className={cx("head-link")}>
+              Tin tức
+            </Link>
+            <Link href="/my-class" className={cx("head-link")}>
+              Lớp học trực tuyến
+            </Link>
+            <Link href="/documents" className={cx("head-link")}>
+              Tài liệu
+            </Link>
+            <Link href="/exam" className={cx("head-link")}>
+              Đề thi
+            </Link>
+          </div>
+
+        )
+      }
+
+      {
+        isAuthenticated && (
+          <div className={cx("icon-ss")}>
+            <BsSearch className={cx("icon-search-mobile")} />
+            <Link href="/payment">
+              <TiShoppingCart className={cx("icon")} />
+            </Link>
+            <div className={cx("notification-icon")} onClick={toggleNotification}>
+              <FaBell />
+            </div>
+            {/* Notification Popup */}
+            {showNotification && <NotificationPopup />}
+          </div>
+        )
+      }
+
       {/* Notification button */}
 
       {/*
@@ -337,7 +358,7 @@ const Header = () => {
 
 export default Header;
 
-const MenuMobile = ({isAuthenticated}) => {
+const MenuMobile = ({ isAuthenticated }) => {
   return (
     <div className={cx("menu-mobile")}>
       {!isAuthenticated && (
