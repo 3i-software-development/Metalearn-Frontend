@@ -7,4 +7,5 @@ const Index = () => {
   )
 }
 
+Index.requiresAuth = false
 export default Index
