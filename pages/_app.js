@@ -6,6 +6,8 @@ import { store } from "@/lib/Redux/store";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { AuthProvider, useAuth } from "@/hooks/authContext";
+import { withAuth } from "@/hooks/withAuth";
+import Home from "./index";
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }) {
@@ -61,12 +63,17 @@ export default function App({ Component, pageProps }) {
     };
   }, []);
 
+  if (Component === Home) {
+    Component.requiresAuth = false;
+  }
+
+
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Layout>
-          <Component {...pageProps} />
+          {Component.requiresAuth !== false ? withAuth(Component) : <Component {...pageProps} />}
         </Layout>
       </AuthProvider>
       </QueryClientProvider>
