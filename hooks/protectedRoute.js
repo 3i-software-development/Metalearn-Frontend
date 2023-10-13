@@ -16,8 +16,11 @@ const ProtectedRoute = ({ children }) => {
         else {
             setIsAuthenticated(false);
         }
-        if (!isAuthenticated) {
-            if (router.pathname !== '/auth/login' && router.pathname !== '/auth/signup' && router.pathname !== '/') {
+        if ((router.pathname === '/auth/login' || router.pathname === '/auth/signup') && isAuthenticated) {
+            router.push('/');
+        }
+        else {
+            if (!isAuthenticated) {
                 router.push('/auth/login');
             }
         }
