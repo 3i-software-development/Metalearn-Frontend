@@ -2,6 +2,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import { set } from 'react-hook-form';
+import Login from "@/pages/auth/login";
 
 const AuthContext = createContext();
 
@@ -69,15 +70,12 @@ export function AuthProvider({ children }) {
       setIsAuthenticated(false);  
     }
 
-  }, []);
+  });
 
 
   const loginState = () => {
     // Thực hiện xác thực ở đây và nhận thông tin người dùng
     // Lưu JWT vào local storage hoặc cookie
-    if (user) {
-      setIsAuthenticated(true);
-    }
     setIsAuthenticated(true);
   };
 
@@ -90,6 +88,7 @@ export function AuthProvider({ children }) {
     setIsAuthenticated(false);
     router.push('/auth/login');
   };
+
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, loginState, logout, saveSetting }}>
