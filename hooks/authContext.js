@@ -53,9 +53,11 @@ export function AuthProvider({ children }) {
     }
   });
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Kiểm tra JWT trong local storage hoặc cookie khi ứng dụng tải lại
+
     const user = localStorage.getItem("user");
     const saveSetting = localStorage.getItem("saveSetting");
     if (saveSetting) {
@@ -69,6 +71,7 @@ export function AuthProvider({ children }) {
       setUser(null);
       setIsAuthenticated(false);  
     }
+    setLoading(false);
 
   });
 
@@ -91,7 +94,7 @@ export function AuthProvider({ children }) {
 
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, loginState, logout, saveSetting }}>
+    <AuthContext.Provider value={{ isAuthenticated, loginState, logout, saveSetting, loading }}>
       {children}
     </AuthContext.Provider>
   );
