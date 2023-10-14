@@ -191,7 +191,7 @@ function SettingFontText() {
                           placeholder="17"
                           value={saveSetting[page.name].size}
                           onChange={(event) => {
-                            const newSize = Math.min(Math.max(event.target.value, 5), 60);
+                            const newSize = Math.min(Math.max(event.target.value, 1), 60);
                             setSaveSetting((prevSaveSetting) => ({
                               ...prevSaveSetting,
                               [page.name]: {
