@@ -73,7 +73,7 @@ export function AuthProvider({ children }) {
     }
     setLoading(false);
 
-  });
+  }, []);
 
 
   const loginState = () => {
