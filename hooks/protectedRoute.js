@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children }) => {
             </div>
         )
         }
-    if (!isAuthenticated && router.pathname !== "/auth/signup") {
+    if (!isAuthenticated && (router.pathname !== "/auth/signup" && router.pathname !== "/")) {
         return (
             <Login />
         )
