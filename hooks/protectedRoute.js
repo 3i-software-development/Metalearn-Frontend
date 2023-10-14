@@ -3,20 +3,30 @@ import { useAuth } from "@/hooks/authContext";
 import Login from "@/pages/auth/login";
 import Personalized from "@/components/Personalized/Personalized";
 import { Layout } from "antd";
+import Loading from "@/pages/auth/pageLoader";
 
 const ProtectedRoute = ({ children }) => {
   const router = useRouter();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
+    if (loading) {
+        return (
+            <div>
+                <Loading />
+            </div>
+        )
+        }
+    if (!isAuthenticated && router.pathname !== "/auth/signup") {
+        return (
+            <Login />
+        )
+    }
+    if (isAuthenticated && (router.pathname === "/auth/signup" || router.pathname === "/auth/login")) {
+        return (
+            <Personalized />
+        )
+    }
+    return children
 
-  if (isAuthenticated && (router.pathname === "/auth/signup" || router.pathname === "/auth/login")) {
-    return <Personalized />;
-  } else if (!isAuthenticated && (router.pathname !== "/auth/signup" && router.pathname !== "/auth/login")) {
-    return <Login />;
-  } else {
-    // If none of the conditions match, you might want to return a "Not Found" page or something else.
-    // For simplicity, I'm returning an empty component in this example.
-    return children;
-  }
 };
 
 export default ProtectedRoute;
