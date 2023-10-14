@@ -68,11 +68,11 @@ export default function App({ Component, pageProps }) {
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <ProtectedRoute>
-            <Layout>
+          <Layout>
+            <ProtectedRoute>
               <Component {...pageProps} />
-            </Layout>
-          </ProtectedRoute>
+            </ProtectedRoute>
+          </Layout>
         </AuthProvider>
       </QueryClientProvider>
     </Provider>

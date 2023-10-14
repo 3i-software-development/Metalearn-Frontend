@@ -1,30 +1,22 @@
-// pages/protectedRoute.js
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useRouter } from "next/router";
+import { useAuth } from "@/hooks/authContext";
+import Login from "@/pages/auth/login";
+import Personalized from "@/components/Personalized/Personalized";
+import { Layout } from "antd";
 
 const ProtectedRoute = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(null);
-    const router = useRouter();
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
 
-    useEffect(() => {
-        // Kiểm tra JWT trong local storage hoặc cookie khi ứng dụng tải lại
-        const user = localStorage.getItem("user");
-        if (user) {
-            setIsAuthenticated(true);
-        }
-        else {
-            setIsAuthenticated(false);
-        }
-        if ((router.pathname === '/auth/login' || router.pathname === '/auth/signup') && isAuthenticated) {
-            router.push('/');
-        }
-        if ((router.pathname !== '/auth/login' && router.pathname && '/auth/signup' && router.pathname !== '/') && !isAuthenticated) {
-            router.push('/auth/login');
-        }
-    }, [router.pathname]);
-
-return children;
+  if (isAuthenticated && (router.pathname === "/auth/signup" || router.pathname === "/auth/login")) {
+    return <Personalized />;
+  } else if (!isAuthenticated && (router.pathname !== "/auth/signup" && router.pathname !== "/auth/login")) {
+    return <Login />;
+  } else {
+    // If none of the conditions match, you might want to return a "Not Found" page or something else.
+    // For simplicity, I'm returning an empty component in this example.
+    return children;
+  }
 };
 
 export default ProtectedRoute;
