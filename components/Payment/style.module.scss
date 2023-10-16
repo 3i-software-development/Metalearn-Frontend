@@ -64,3 +64,77 @@
       font-size: 14px;
   }
 }
+
+/* style.module.scss */
+
+.pay-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bank-selection {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.bank-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.bank-selection label {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+
+.bank-selection img {
+  width: 100px;
+  height: 100px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.bank-selection img:hover {
+  border-color: #007BFF; /* Change to your desired hover color */
+}
+
+.payment-method-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-method-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.payment-method-container input[type="radio"] {
+  margin-right: 10px;
+}
+
+.pay-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF; /* Change to your desired button background color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #0056b3; /* Change to your desired hover background color */
+}
+
