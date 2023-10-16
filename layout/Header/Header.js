@@ -174,9 +174,13 @@ const Header = () => {
             items,
           }}
         >
-          <Space className={cx("head-link")}>Môn học 3999</Space>
+          <Space className={cx("head-link")} >Môn học </Space>
         </Dropdown>
       </Link> */}
+
+      <div>
+        <h2 style={{marginLeft: "100px"}}></h2>
+      </div>
 
       <div className={cx("search-container")}>
           <input type="text" placeholder="Tìm kiếm" className={cx("search-input")} />
