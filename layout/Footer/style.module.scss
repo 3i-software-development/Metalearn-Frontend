@@ -5,6 +5,7 @@
 
 .footer {
     width: 100%;
+    position: relative;
     background-color: black;
     display: flex;
     flex-direction: row;
@@ -38,8 +39,14 @@
     }
 
     .language-select {
-        position: relative;
-
+        position: absolute;
+        // padding-top: 20px;
+        bottom: 90px;
+        right: 0;
+        width: 10%;
+        height: 10%;
+        margin-right: 10px; /* Khoảng cách từ mép phải và mép dưới của trình duyệt */
+        // background-color: aqua; /* Màu nền của phần tử */
         a {
             width: fit-content;
             float: right;
