@@ -5,7 +5,7 @@ import ListCourses from "../ListCourse/ListCourses";
 import { GetListExam, GetListClass, GetListDoc } from "@/pages/api/CallAPI";
 import AddForm from "../Quiz/AddForm";
 import Link from "next/link";
-
+import { useAuth } from "@/hooks/authContext";
 const cx = classNames.bind(styles);
 
 const ListCourse = () => {
@@ -14,6 +14,18 @@ const ListCourse = () => {
   const ListDoc = GetListDoc();
 
   const [btnact, setBtnact] = useState(0);
+
+  const [showMobile, setShowmobile] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+  const { isAuthenticated, loginState, logout } = useAuth();
+
+  useEffect(() => {
+  }, [isAuthenticated]);
+
+  const toggleNotification = () => {
+    setShowNotification(!showNotification);
+  };
+
 
   const [selectedCourseTitle, setSelectedCourseTitle] = useState("Select a course");
 
@@ -102,6 +114,8 @@ const ListCourse = () => {
 
 
 
+
+      { isAuthenticated && (
       <div className={cx("list-course-container")}>
        
         <div className={cx("list-btn")}>
@@ -169,7 +183,9 @@ const ListCourse = () => {
         </div>   
       </div>
 
-    
+
+      )
+      }
 
     </div>
   );

@@ -182,13 +182,16 @@ const Header = () => {
         <h2 style={{marginLeft: "100px"}}></h2>
       </div>
 
-      <div className={cx("search-container")}>
+      <div style={{display: "none"}} className={cx("search-container")}>
           <input type="text" placeholder="Tìm kiếm" className={cx("search-input")} />
           <BsSearch />
       </div>
 
       { isAuthenticated && (
-          <div></div>
+           <div className={cx("search-container")}>
+              <input type="text" placeholder="Tìm kiếm" className={cx("search-input")} />
+              <BsSearch />
+            </div>
         )
       }
 
