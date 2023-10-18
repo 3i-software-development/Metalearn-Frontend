@@ -33,7 +33,7 @@ const Footer = () => {
               <Link className={cx("link-group-item")} href="/">Search</Link>
             </div>
           </div>
-        ) : null}
+        ) : <div></div>}
 
         <div className={cx("language-select", "footer-item")}>
           {/*<Link href="/">
