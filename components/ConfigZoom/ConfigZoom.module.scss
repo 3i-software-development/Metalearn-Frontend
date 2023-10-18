@@ -78,6 +78,8 @@
   position: relative;
 }
 
+
+
 .ConfigZoom-Label {
 
 }
@@ -98,6 +100,7 @@
       width: 100%;
     }
 
+
     .flex-item {
       margin-left: 10px;
     }
@@ -108,14 +111,18 @@
       align-content: center;
     }
 
+
     .ConfigZoom-02 {
       width: 100%;
       margin-top: 25px;
       text-align: center;
     }
+
+    .display-flex {
+      display: none;
+    }
   
     .ConfigZoom-Ul {
-      background-color: rgb(211, 207, 207);
       align-items: center;
     }
 
@@ -125,6 +132,27 @@
 
     .ConfigZoom-Label {
         display: none;
+    }
+
+    .ConfigZoom-Ul {
+      font-size: 9px;
+      border: none;
+      margin-left: 0;
+    }
+
+    
+    .ConfigZoom-02 {
+      background-color: white;
+      font-size: 12px;
+
+    }
+
+    .ConfigZoom_Item {
+      margin-left: 10px;
+      border: none;
+      width: 50%;
+      margin-bottom: 10px;
+      border-bottom: 1px solid black;
     }
 
   }

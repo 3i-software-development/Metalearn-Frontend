@@ -27,11 +27,11 @@
   }
 
   button:hover {
-    border: 1px solid red;
+    // border: 1px solid red;
   }
   .active {
     color: black;
-    border-bottom: 3px solid black;
+    border-bottom: 5px solid black;
   }
   i {
     color: green;
@@ -105,15 +105,16 @@
 }
 
 .ListCourse-Item:hover {
-  border: 1px solid red;
+  // border: 1px solid red;
 
 }
 
 
 .ListCourse-Title {
   transition: transform 0.2s ease-in-out;
-  margin-top: 130px;
+  margin-top: 120px;
   font-size: 25px;
+
 }
 .ListCourse-Title:hover {
   transform: translateY(-5px);
@@ -154,52 +155,61 @@
   
 }
 
-@media only screen and (max-width: 768px) {
-.list-btn {
-display: flex;
-justify-content: space-evenly;
-flex-wrap: wrap;
-
-button {
-  width: 100%;
-  height: 30px;
-}
-button:hover {
-  border: 1px solid red;
-}
-.active {
-  color: red;
-}
-i {
-  color: green;
-  margin-right: 5px;
-}
-
-}
-
-.ListCourse-Title {
-  margin-top: 0;
-  font-size: 18px;
-  display: flex;
-  
-}
-
-.ListCourse-In-Course {
-  display: none;
-}
-
-.list-course-container {
-  width: 100%;
-  height: 10%;
-}
-
-.List_Course-Icon {
-  display: none;
-}
-
-}
-
 .List_Course-Icon {
   font-size: 100px;
   margin-top: 70px; 
 }
+
+@media only screen and (max-width: 768px) {
+  .list-btn {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+
+            button {
+              width: 100%;
+              height: 30px;
+              margin-top: 2px;
+              margin-left: 20px;
+              background-color: transparent;
+              
+            }
+
+            .active {
+              border: none;
+            }
+
+            i{
+              color: green;
+              margin-right: 5px;
+            }
+  }
+
+      .ListCourse-Title {
+        margin-top: 0;
+        font-size: 18px;
+        display: flex;
+        
+      }
+
+      .ListCourse-In-Course {
+        display: none;
+      }
+
+      .list-course-container {
+        width: 100%;
+        height: 10%;
+      }
+
+      .List_Course-Icon {
+        display: none;
+      }
+
+     
+
+}
+
+
+
+
