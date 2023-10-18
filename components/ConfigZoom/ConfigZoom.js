@@ -28,7 +28,10 @@ const handleItemClick = (itemName) => {
           <ul className={cx("ConfigZoom-Ul")}>
             <li>
                 <div className={cx("flex-item")}> 
-                      <i class="fa-solid fa-circle-half-stroke"></i>
+                <div className={cx("display-flex")}>
+
+                              <i class="fa-solid fa-circle-half-stroke"></i>
+                </div>
                       <h3 style={{marginLeft: "12px"}} onClick={() => handleItemClick("question1")}>Dịch vụ API</h3>
                 </div>
               <label className={cx("ConfigZoom-Label")}>
@@ -55,7 +58,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Mã tài khoản</h3>
                 </div>
                 <label>
@@ -65,7 +71,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Tên tài khoản</h3>
                 </div>
                 <label>
@@ -75,7 +84,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Thư điện tử</h3>
                 </div>
                 <label>
@@ -85,7 +97,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i className="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i className="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{ marginLeft: "12px" }} onClick={() => handleItemClick("question2")}>Loại</h3>
                 </div>
 
@@ -111,7 +126,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Số tài khoản</h3>
                 </div>
                 <label>
@@ -121,7 +139,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Mã khóa API (Web)</h3>
                 </div>
                 <label>
@@ -131,7 +152,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Mã bí mật API (web)</h3>
                 </div>
                 <label>
@@ -141,7 +165,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Mã khóa API (App)</h3>
                 </div>
                 <label>
@@ -151,7 +178,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Mã bí mật API (Web)</h3>
                 </div>
                 <label>
@@ -161,7 +191,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Mã host</h3>
                 </div>
                 <label>
@@ -171,7 +204,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Mã token (Web)</h3>
                 </div>
                 <label>
@@ -181,7 +217,10 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <div className={cx("display-flex")}>
+
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                    </div>
                     <h3 style={{marginLeft: "12px"}}>Mã tự làm mới</h3>
                 </div>
                 <label>

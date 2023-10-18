@@ -295,3 +295,50 @@
     color: purple;
   }
 }
+
+
+.display-None {
+
+}
+
+.Display-flex {
+
+}
+
+.Display-title {
+
+  }
+
+
+@media only screen and (max-width: 768px) {
+  .item-slide {
+    // display: none;
+  }
+
+  .Display-title {
+    margin-left: 20px;
+  }
+
+  .full-width-grid {
+    width: 100% !important;
+  }
+
+  .Display-flex {
+    display: flex;
+  }
+  
+  
+  .display-None {
+    display: none;
+  }
+
+  .banner1 {
+    .circular {
+      display: none;
+    }
+}
+
+
+
+
+}

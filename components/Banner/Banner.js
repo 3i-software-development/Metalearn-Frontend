@@ -110,16 +110,15 @@ const Banner = () => {
               rowSpacing={1}
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
-              <Grid item xs={4}>
-                <CountUp
-                  start={0}
-                  end={549811}
-                  duration={2.5}
-                  className={styles.banner1H1}
-                />
-                <h4>Tổng câu hỏi</h4>
-              </Grid>
-              <Grid item xs={4}>
+                  <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
+                      <div className={cx("Display-flex")}>
+                          <CountUp start={0} end={549811} duration={2.5} className={cx("banner1H1")} />
+                          <h4 className={cx("Display-title")}>Tổng câu hỏi</h4>
+                      </div>
+                  </Grid>
+
+
+              <Grid item xs={4} className={cx("")}>
                 <CircularProgress
                   sx={{
                     "--CircularProgress-size": `145px`,
@@ -139,7 +138,7 @@ const Banner = () => {
                   </div>
                 </CircularProgress>
               </Grid>
-              <Grid item xs={4} className="">
+              <Grid item xs={4} className={cx("display-None")}>
                 <div className={styles.div1}>
                   <h1 className={styles.h11}>
                     0 <br /> <span>Đã làm</span>
@@ -149,11 +148,15 @@ const Banner = () => {
                   </h1>
                 </div>
               </Grid>
-              <Grid item xs={4}>
-                <CountUp start={0} end={20528} className={styles.banner1H12} />
-                <h4>Tổng đề thi</h4>
+      
+              <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
+                <div className={cx("Display-flex")}>
+                  <CountUp start={0} end={20528} className={cx("banner1H12")} />
+                  <h4 className={cx("Display-title")}>Tổng đề thi</h4>
+                </div>
               </Grid>
-              <Grid item xs={4}>
+
+              <Grid item xs={4} className={cx("")}>
                 <CircularProgress
                   sx={{
                     "--CircularProgress-size": "145px",
@@ -173,7 +176,7 @@ const Banner = () => {
                   </div>
                 </CircularProgress>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={4} className={cx("display-None")}>
                 <div className={styles.div1}>
                   <h1 className={styles.h11}>
                     0 <br /> <span>Đã làm</span>
@@ -186,21 +189,32 @@ const Banner = () => {
             </Grid>
           </div>
         </SwiperSlide>
+
+
         <SwiperSlide className={cx("item-slide")}>
           <div className={cx("banner", "banner2")}>
             <Line data={data} options={options} />
             <h2>Theo dõi và nắm bắt sự tiến bộ của bản thân</h2>
           </div>
         </SwiperSlide>
+
+
+
       </Swiper>
-      <IoMdArrowDropleftCircle
-        className={cx("prev-button", "btn-nav")}
-        onClick={handlePrev}
-      />
-      <IoMdArrowDroprightCircle
-        className={cx("next-button", "btn-nav")}
-        onClick={handleNext}
-      />
+      <div className={cx("display-None")}>
+          <IoMdArrowDropleftCircle
+            className={cx("prev-button", "btn-nav")}
+            onClick={handlePrev}
+          />
+      </div>
+
+      <div className={cx("display-None")}>
+          <IoMdArrowDroprightCircle
+            className={cx("next-button", "btn-nav")}
+            onClick={handleNext}
+          />
+      </div>
+
     </div>
   );
 };
