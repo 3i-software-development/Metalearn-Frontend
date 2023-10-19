@@ -11,7 +11,8 @@
     padding: 10px 20px;
     background-color: black;
     color: #fff;
-    z-index: 100; /* Add a z-index to ensure the header stays on top */
+    z-index: 100;
+    /* Add a z-index to ensure the header stays on top */
 }
 
 
@@ -23,16 +24,17 @@
 .icon-ss {
     display: flex;
     align-items: center;
+
     .authenticated_div {
         display: flex;
         justify-content: space-around;
         align-items: center;
-      }
-      
-      .icon-container {
+    }
+
+    .icon-container {
         margin-right: 10px;
-      }
-      
+    }
+
 }
 
 /* Logo styling */
@@ -150,40 +152,46 @@
 
     /* MenuMobile.css */
 
-.mb-list {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
+    .mb-list {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
 
-.mb-link {
-    text-decoration: none;
-    color: #333; /* Change the link color */
-    font-size: 1.5rem;
-    display: block;
-    margin: 10px 0;
-    transition: color 0.3s; /* Add a smooth color transition */
-}
+    .mb-link {
+        text-decoration: none;
+        color: #333;
+        /* Change the link color */
+        font-size: 1.5rem;
+        display: block;
+        margin: 10px 0;
+        transition: color 0.3s;
+        /* Add a smooth color transition */
+    }
 
-.mb-link:hover {
-    color: #007ACC; /* Change link color on hover */
-}
+    .mb-link:hover {
+        color: #007ACC;
+        /* Change link color on hover */
+    }
 
-.logout-button-mobile {
-    background-color: #007ACC; /* Change the background color to a pleasant blue */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    margin-top: 20px;
-    transition: background-color 0.3s; /* Add smooth background color transition */
-}
+    .logout-button-mobile {
+        background-color: #007ACC;
+        /* Change the background color to a pleasant blue */
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+        /* Add smooth background color transition */
+    }
 
-.logout-button-mobile:hover {
-    background-color: #005E9E; /* Slightly darker blue on hover */
-}
+    .logout-button-mobile:hover {
+        background-color: #005E9E;
+        /* Slightly darker blue on hover */
+    }
 
 
     /* Add more CSS classes and styles as needed */
@@ -203,13 +211,10 @@
         display: none;
     }
 
-    .user {
-        display: none;
-    }
-
     .search-container {
         display: none;
     }
+
     .search-input {
         display: none;
     }
@@ -239,12 +244,6 @@
         margin-right: 10px;
     }
 
-    /* User login/signup buttons styling on mobile */
-    .user {
-        display: none;
-        /* Hide user login/signup buttons on mobile */
-    }
-
     .menu-mobile {
         background-color: #333;
         color: #fff;
@@ -253,9 +252,34 @@
         left: 0;
         top: 50px;
         width: 100%;
-        height: calc(100vh - 300px);
+        height: calc(100vh - 50px);
         transition: all 0.3s ease-in;
         overflow: hidden;
     }
 
+    /* styles.css */
+    .mb-link {
+        margin-left: 20px;
+        /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+    
+    }
+    .sub-menu {
+        list-style-type: none; /* Remove bullet points */
+        margin-left: 80px;
+        /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+    }
+    .logout-button-mobile {
+        margin-left: 20px;
+        margin-top: 20px;
+        /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+    }
+    .mb-list li {
+        margin-top: 20px;
+        border-bottom: 1px solid #fff; /* Tạo đường viền màu trắng dưới mỗi liên kết */
+        padding: 8px 0;
+        /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+    }
+    .mb-list li:last-child {
+        border-bottom: none; /* Loại bỏ đường viền ở li cuối cùng */
+      }
 }

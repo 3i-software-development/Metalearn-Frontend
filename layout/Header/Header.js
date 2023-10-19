@@ -159,13 +159,16 @@ const Header = () => {
   const user = useSelector((state) => state.login);
 
   const [show, setShow] = useState(false);
+
+  
+
   return (
     <div className={cx("header")}>
 
       {isAuthenticated && (
         <AiOutlineMenu className={cx("icon-mobile")} onClick={() => toggleMenu()} />
       )}
-      {toggle && <MenuMobile />}
+      {toggle && <MenuMobile items={items} setToggle={setToggle}/>}
 
       <Link href={isAuthenticated ? "/personalized" : "/"} className={cx("logo-container")}>Meta<span>Learn</span></Link>
       {/* <Link href="/subjects" className={cx("head-link")}>
@@ -330,31 +333,62 @@ const Header = () => {
 export default Header;
 
 
-const MenuMobile = () => {
+const MenuMobile = ({ items, setToggle }) => {
   const { isAuthenticated, loginState, logout } = useAuth();
+  const [expandedItems, setExpandedItems] = useState([]);
+  const closeMenu = () => {
+    // Đóng menu bằng cách xóa các mục đã mở
+    setToggle(false);
+  };
+  const handleItemClick = (item) => {
+    if (expandedItems.includes(item)) {
+      setExpandedItems(expandedItems.filter((i) => i !== item));
+    } else {
+      setExpandedItems([...expandedItems, item]);
+    }
+  };
   return (
     <div className={cx("menu-mobile")}>
       {isAuthenticated && (
         <ul className={cx("mb-list")}>
           <li>
-            <Link href="/subjects" className={cx("mb-link")}>Subject</Link>
+            <span
+              className={cx("mb-link", expandedItems.includes("my-class") ? "expanded" : "")}
+              onClick={() => handleItemClick("my-class")}
+            >
+              Lớp học trực tuyến
+            </span>
+            {expandedItems.includes("my-class") && (
+              <ul className={cx("sub-menu")}>
+                {/* Add sub-menu items for "Lớp học trực tuyến" */}
+                <li>
+                  <Link href="/my-class/item1" className={cx("mb-link-sub")} onClick={() =>{closeMenu()}}>Item 1</Link>
+                </li>
+                <li>
+                  <Link href="/my-class/item2" className={cx("mb-link-sub")} onClick={() =>{closeMenu()}}>Item 2</Link>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
-            <Link href="/news" className={cx("mb-link")}>Tin tức</Link>
+            <Link href="/subjects" className={cx("mb-link")} onClick={() =>{closeMenu()}}>Subject</Link>
           </li>
           <li>
-            <Link href="/my-class" className={cx("mb-link")}>Lớp học trực tuyến</Link>
+            <Link href="/news" className={cx("mb-link")} onClick={() =>{closeMenu()}}>Tin tức</Link>
           </li>
           <li>
-            <Link href="/documents" className={cx("mb-link")}>Tài liệu</Link>
+            <Link href="/my-class" className={cx("mb-link")} onClick={() =>{closeMenu()}}>Lớp học trực tuyến</Link>
           </li>
           <li>
-            <Link href="/exam" className={cx("mb-link")}>Đề thi</Link>
+            <Link href="/documents" className={cx("mb-link")} onClick={() =>{closeMenu()}}>Tài liệu</Link>
           </li>
           <li>
-            <Link href="/teachers" className={cx("mb-link")}>Teacher</Link>
+            <Link href="/exam" className={cx("mb-link")} onClick={() =>{closeMenu()}}>Đề thi</Link>
           </li>
-          <Button className={cx('logout-button-mobile')} onClick={() => logout()}>Đăng xuất</Button>
+          <li>
+            <Link href="/teachers" className={cx("mb-link")} onClick={() =>{closeMenu()}}>Teacher</Link>
+          </li>
+          <Button className={cx('logout-button-mobile')} onClick={() =>{ logout(); closeMenu()}}>Đăng xuất</Button>
         </ul>
       )}
     </div>
