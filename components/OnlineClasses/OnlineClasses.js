@@ -11,32 +11,32 @@ function OnlineClasses() {
     const fakeData = [
         {
             id: 1,
-            title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
+            title: "Buổi học ngày 17/04 [LN1904][Trang ptt 87 (HS)]",
             subject: "Lập trình",
             data: "18/04/2023 11:00",
         },
         {
             id: 2,
             title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình",
+            subject: "Xác xuất thông kê",
             data: "18/04/2023 11:00",
         },
         {
             id: 3,
             title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình",
+            subject: "Lập trình hướng đối tượng",
             data: "18/04/2023 11:00",
         },
         {
             id: 4,
             title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình",
+            subject: "Tiếng anh 2",
             data: "18/04/2023 11:00",
         },
         {
             id: 1,
             title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình",
+            subject: "Lập trình web",
             data: "18/04/2023 11:00",
         },
         {
@@ -54,7 +54,7 @@ function OnlineClasses() {
         {
             id: 4,
             title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình",
+            subject: "Lập trình abc",
             data: "18/04/2023 11:00",
         },
 
