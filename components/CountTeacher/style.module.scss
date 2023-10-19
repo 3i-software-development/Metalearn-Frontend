@@ -36,7 +36,6 @@
 .chart {
   display: flex;
   margin-top: 50px;
-  margin-left: 50px;
   flex-direction: row;
   justify-content: center;
   width: 100%;
@@ -100,8 +99,11 @@
   .chart {
     // margin-top: 50px;
     // margin-left: 50px;
-    width: 50%;
+    max-width: 100wh;
     // flex-direction: column;
+  }
+  .chart-image {
+    margin: 0 auto;
   }
 }
 
