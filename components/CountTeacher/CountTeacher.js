@@ -288,7 +288,7 @@ const CountTeacher = () => {
             </div>
             <div className={cx("chart")}>
                 {selectedItem && (
-                    <div>
+                    <div className={cx("chart-image")}>
                         <Bar data={lineChartData} options={lineChartOptions} />
                     </div>
                 )}
