@@ -13,6 +13,7 @@
   
   .OnlineClasses-All {
     display: flex;
+    margin-top: 20px;
     flex-direction: column;
   }
   
@@ -24,19 +25,28 @@
   
   .course-item {
     flex: 0 0 calc(50% - 10px); /* Set each item to occupy 50% width with some spacing */
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     padding: 10px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(9, 9, 9, 0.75);
     box-sizing: border-box; /* Ensure padding is included in the width */
+
+    &:hover {
+      background-color: #f9f8f8;
+    }
   }
 
   .OnlineClasses-Title {
     font-size: 18px;
     margin: 0;
+    &:hover {
+      color: red;
+    }
   }
   
   .OnlineClasses-Subject {
@@ -59,3 +69,27 @@
     color: #555;
   }
   
+
+@media only screen and (max-width: 768px) {
+  .course-item {
+    // background-color: red;
+    width: 200px; /* Kích thước chiều rộng cố định */
+    height: 115px;
+  }
+
+  .OnlineClasses-Title {
+    font-size: 12px;
+  }
+
+  .OnlineClasses-Subject {
+    font-size: 10px;
+  }
+
+  .OnlineClasses-Day {
+    font-size: 8px;
+  }
+
+  .course-item-icons {
+    display: none;
+  }
+}
