@@ -97,10 +97,12 @@
         }
     }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 768px) {
         .links {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
             flex-direction: column;
-            align-items: center;
+            // align-items: center;
 
             a {
                 text-align: center;
