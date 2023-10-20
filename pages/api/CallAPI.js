@@ -9,12 +9,37 @@ export const GetListNews = async () => {
   return response.data;
 };
 
-export const GetListCmsItem = async() => {
+//export const GetListCmsItem = async() => {
+//const response = await axios.post(
+//`https://admin.metalearn.vn/MobileLogin/GetListCmsItem`
+//);
+//return response.data;
+//};
+
+export const GetListCmsItem = async (cat_id) => {
+  // Define the data you want to send in the request body
+  const formData = new FormData();
+  formData.append('cat_id', cat_id);
+
+  try {
     const response = await axios.post(
-      `https://admin.metalearn.vn/MobileLogin/GetListCmsItem`
+      'https://admin.metalearn.vn/MobileLogin/GetListCmsItem',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
     );
+
     return response.data;
+  } catch (error) {
+    // Handle errors here
+    console.error('Error:', error);
+    throw error; // You can handle the error as per your application's requirements
+  }
 };
+
 
 export const GetListExam = () => {
   return useQuery(["getmenuexam"], async () => {
@@ -84,4 +109,30 @@ export const GetListMySubject = () => {
     });
     return response.data
   });
+};
+
+export const GetListMyClass = async () => {
+  // Define the data you want to send in the request body
+  const requestData = new FormData();
+  requestData.append('userName', 'admin');
+  requestData.append('fromDate', '');
+  requestData.append("toDate", "");
+  requestData.append('pageLength', '31');
+  requestData.append('pageNum', '1');
+  try {
+    const response = await axios.post(
+      'https://admin.metalearn.vn/MobileLogin/GetListMyClass',
+      requestData,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    // Handle errors here
+    console.error('Error:', error);
+    throw error; // You can handle the error as per your application's requirements
+  }
 };

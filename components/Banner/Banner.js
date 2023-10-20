@@ -110,12 +110,12 @@ const Banner = () => {
               rowSpacing={1}
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
-                  <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
-                      <div className={cx("Display-flex")}>
-                          <CountUp start={0} end={549811} duration={2.5} className={cx("banner1H1")} />
-                          <h4 className={cx("Display-title")}>Tổng câu hỏi</h4>
-                      </div>
-                  </Grid>
+              <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
+                <div className={cx("Display-flex")}>
+                  <CountUp start={0} end={549811} duration={2.5} className={cx("banner1H1")} />
+                  <h4 className={cx("Display-title")}>Tổng câu hỏi</h4>
+                </div>
+              </Grid>
 
 
               <Grid item xs={4} className={cx("")}>
@@ -138,17 +138,20 @@ const Banner = () => {
                   </div>
                 </CircularProgress>
               </Grid>
-              <Grid item xs={4} className={cx("display-None")}>
-                <div className={styles.div1}>
-                  <h1 className={styles.h11}>
-                    0 <br /> <span>Đã làm</span>
-                  </h1>
-                  <h1 className={styles.h12}>
-                    0 <br /> <span>Tổng số giờ làm</span>
-                  </h1>
+
+              <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
+                <div className={cx("Display-flex")}>
+                  <div className={cx("Display-left")}>
+                    <CountUp start={0} end={12} duration={2.5} className={cx("banner1H1")} />
+                    <h4 className={cx("Display-title")}>Đã làm</h4>
+                  </div>
+                  <div className={cx("Display-right")}>
+                    <CountUp start={0} end={120} duration={2.5} className={cx("banner1H12")} />
+                    <h4 className={cx("Display-title")}>Thời gian (giờ)</h4>
+                  </div>
                 </div>
               </Grid>
-      
+
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
                 <div className={cx("Display-flex")}>
                   <CountUp start={0} end={20528} className={cx("banner1H12")} />
@@ -176,14 +179,16 @@ const Banner = () => {
                   </div>
                 </CircularProgress>
               </Grid>
-              <Grid item xs={4} className={cx("display-None")}>
-                <div className={styles.div1}>
-                  <h1 className={styles.h11}>
-                    0 <br /> <span>Đã làm</span>
-                  </h1>
-                  <h1 className={styles.h12}>
-                    0 <br /> <span>Thời gian(giờ)</span>
-                  </h1>
+              <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
+                <div className={cx("Display-flex")}>
+                  <div className={cx("Display-left")}>
+                    <CountUp start={0} end={12} duration={2.5} className={cx("banner1H1")} />
+                    <h4 className={cx("Display-title")}>Đã làm</h4>
+                  </div>
+                  <div className={cx("Display-right")}>
+                    <CountUp start={0} end={120} duration={2.5} className={cx("banner1H12")} />
+                    <h4 className={cx("Display-title")}>Tổng số giờ làm</h4>
+                  </div>
                 </div>
               </Grid>
             </Grid>
@@ -202,17 +207,17 @@ const Banner = () => {
 
       </Swiper>
       <div className={cx("display-None")}>
-          <IoMdArrowDropleftCircle
-            className={cx("prev-button", "btn-nav")}
-            onClick={handlePrev}
-          />
+        <IoMdArrowDropleftCircle
+          className={cx("prev-button", "btn-nav")}
+          onClick={handlePrev}
+        />
       </div>
 
       <div className={cx("display-None")}>
-          <IoMdArrowDroprightCircle
-            className={cx("next-button", "btn-nav")}
-            onClick={handleNext}
-          />
+        <IoMdArrowDroprightCircle
+          className={cx("next-button", "btn-nav")}
+          onClick={handleNext}
+        />
       </div>
 
     </div>

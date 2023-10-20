@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import NewsItem from "./NewsItem";
 import { useState } from "react";
 import { useEffect } from "react";
-import { GetListNews } from "@/pages/api/CallAPI";
+import { GetListNews, GetListCmsItem } from "@/pages/api/CallAPI";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,6 +49,7 @@ export default function TabItem() {
     GetListNews().then((res) => {
       setListNews(res.Object);
     });
+
   }, []);
 
   const handleChange = (event, newValue) => {
@@ -100,7 +101,7 @@ export default function TabItem() {
       {listNews.map((item, index) => {
         return (
           <TabPanel key={index} value={value} index={index}>
-            <NewsItem item={item} />
+            <NewsItem item={item} cat_id={item.cat_id}/>
           </TabPanel>
         );
       })}
