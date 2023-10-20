@@ -1,90 +1,25 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
+import { GetListCmsItem } from "@/pages/api/CallAPI";
 import {
   SettingOutlined,
 } from "@ant-design/icons";
-import { GetListCmsItem } from "@/pages/api/CallAPI";
 
 
 const cx = classNames.bind(styles);
-const NewsItem = () => {
+const NewsItem = ({cat_id}) => {
   const [listNews, setListNews] = useState([]);
   useEffect(() => {
-    GetListCmsItem().then((res) => {
+    GetListCmsItem(cat_id).then((res) => {
       setListNews(res.Object);
     });
   }, []);
-  const list = [
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-    {
-      title: "Nội quy & các thức làm việc",
-      date: "12/3/2021",
-      userNew: "Admintrator"
-    },
-  ];
-  console.log("listNews", listNews);
-
-
 
 
   return (
     <div className={cx("item")}>
-      {list.map((item, index) => {
+      {listNews.map((item, index) => {
         return (
           <div className={cx("news-item")} key={index}>
             <div className={cx("icon-news")}>
@@ -96,10 +31,10 @@ const NewsItem = () => {
               </div>
               <div className={cx("content")}>
                 <div>
-                  <i className="fa-solid fa-clock"></i><span className={cx("dateTime")}> {item.date}</span>
+                  <i className="fa-solid fa-clock"></i><span className={cx("dateTime")}> {item.date_post}</span>
                 </div>
                 <div>
-                  <p className={cx("userNew")}>Người tạo : <strong>{item.userNew}</strong></p>
+                  <p className={cx("userNew")}>Người tạo : <strong>{item.createBy}</strong></p>
                 </div>
               </div>
             </div>
