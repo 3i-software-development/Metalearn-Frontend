@@ -4,90 +4,81 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPersonChalkboard } from "@fortawesome/free-solid-svg-icons"; // Import biểu tượng
 import styles from "./OnlineClasses.module.scss"
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { Tab } from "@mui/material";
+import TabItem from "./TabItem";
+import { GetListMyTutorSchedule } from "@/pages/api/CallAPI"
+import { set } from "react-hook-form";
 
 const cx = classNames.bind(styles);
 
 function OnlineClasses() {
-    const fakeData = [
-        {
-            id: 1,
-            title: "Buổi học ngày 17/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình",
-            data: "18/04/2023 11:00",
-        },
-        {
-            id: 2,
-            title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Xác xuất thông kê",
-            data: "18/04/2023 11:00",
-        },
-        {
-            id: 3,
-            title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình hướng đối tượng",
-            data: "18/04/2023 11:00",
-        },
-        {
-            id: 4,
-            title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Tiếng anh 2",
-            data: "18/04/2023 11:00",
-        },
-        {
-            id: 1,
-            title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình web",
-            data: "18/04/2023 11:00",
-        },
-        {
-            id: 2,
-            title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình",
-            data: "18/04/2023 11:00",
-        },
-        {
-            id: 3,
-            title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình",
-            data: "18/04/2023 11:00",
-        },
-        {
-            id: 4,
-            title: "Buổi học ngày 19/04 [LN1904][Trang ptt 87 (HS)]",
-            subject: "Lập trình abc",
-            data: "18/04/2023 11:00",
-        },
+    const [activeTab, setActiveTab] = useState('join');
+    const [teacher, setTeacher] = useState('');
+    const [student, setStudent] = useState('admin');
 
-    ]
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+        if (tab === 'join' && tab !== activeTab) {
+            setTeacher('admin');
+            setStudent('');
+            fetchData()
+        } else if (tab === 'manage' && tab !== activeTab) {
+            setTeacher('');
+            setStudent('admin');
+            fetchData()
+        }
+    }
+    const [listMyTutorSchedule, setListMyTutorSchedule] = useState([]);
+
+    async function fetchData() {
+        try {
+            const res = await GetListMyTutorSchedule(teacher, student);
+            setListMyTutorSchedule(res.Object);
+        } catch (error) {
+            // Handle any errors here
+        }
+    }
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    console.log(listMyTutorSchedule);
+
     return (
-        <div className={cx("Online-page")}>
-            <h1 className={cx("OnlineClasses")}>Online Class</h1>
-            <div className={cx("OnlineClasses-All")}>
-                <div className={cx("OnlineClasses-01")}>
-                    {fakeData.map((item, index) => {
-                        return (
-                            <div className={cx("course-item")} key={index}>
-                                <div className={cx("Course-item-text")}>
-                                    <h3 className={cx("OnlineClasses-Title")}>{item.title}</h3>
-                                    <h4 className={cx("OnlineClasses-Subject")}>
-                                        Môn học: {item.subject} <FontAwesomeIcon icon={faGraduationCap} />
-                                    </h4>
-                                    <h5 className={cx("OnlineClasses-Day")}>
-                                        Bắt đầu ngày: {item.data}
-                                    </h5>
-                                </div>
+            <div className={cx('document-page')}>
+                <div className={cx('document-layout')}>
 
-                                <div className={cx("course-item-icons")}>
-                                    <i className="fa-solid fa-mobile"></i>
-                                    <i className="fa-solid fa-floppy-disk"></i>
-                                    <i className="fa-solid fa-video"></i>
+                    <div className={cx('document-category-name-list')}>
+                        <div className={cx('tab-bar')}>
+                            <button
+                                className={cx('tab-button', { active: activeTab === 'join' })}
+                                onClick={() => handleTabChange('join')}
+                            >
+                                Tham gia {listMyTutorSchedule.CountStudent}
+                            </button>
+                            <button
+                                className={cx('tab-button', { active: activeTab === 'manage' })}
+                                onClick={() => handleTabChange('manage')}
+                            >
+                                Quản lý {listMyTutorSchedule.CountTeacher}
+                            </button>
+                        </div>
+                        <div className={cx('tab-content')}>
+                            {activeTab === 'join' && (
+                                <div className={cx('manage')}>
+                                    <TabItem list={listMyTutorSchedule.List} />
                                 </div>
-                            </div>
-                        );
-                    })}
+                            )}
+
+                            {activeTab === 'manage' && (
+                                <div className={cx('user-list')}>
+                                    <TabItem list={listMyTutorSchedule.List} />
+                                </div>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
     );
 }
 
