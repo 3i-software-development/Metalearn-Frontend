@@ -45,7 +45,7 @@ function OnlineClasses() {
     console.log(listMyTutorSchedule);
 
     return (
-            <div className={cx('document-page')}>
+            <div className={cx('Online-page')}>
                 <div className={cx('document-layout')}>
 
                     <div className={cx('document-category-name-list')}>
