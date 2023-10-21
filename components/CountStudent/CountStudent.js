@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from './style.module.scss'; // Import SCSS styles for classNames
 import classNames from 'classnames/bind';
+import { GetApiLmsCountStudent } from "@/pages/api/CallAPI"
 
 const cx = classNames.bind(styles);
 
@@ -27,6 +28,22 @@ function CountStudent() {
             [itemName]: !itemStates[itemName],
         });
     };
+
+    const [data, setData] = useState([]);
+
+    async function fetchData() {
+        try {
+            const res = await GetApiLmsCountStudent();
+            setData(res.Object);
+        } catch (error) {
+            // Handle any errors here
+        }
+    }
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    console.log(data);
 
     return (
         <div style={{ width: "50%", marginTop: "50px" }}>
