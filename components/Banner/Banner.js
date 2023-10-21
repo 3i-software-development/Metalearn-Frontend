@@ -151,7 +151,7 @@ const Banner = () => {
                   </div>
                   <div className={cx("Display-right")}>
                     <div className={cx("Display-flex-web-screen")}>
-                        <h4 className={cx("Display-title")}>Thời gian (giờ):</h4>
+                        <h4 className={cx("Display-title")}>Thời gian (giờ): </h4>
                         <CountUp start={0} end={120} duration={2.5} className={cx("banner1H12")} />
                     </div>
                   </div>
@@ -160,7 +160,7 @@ const Banner = () => {
 
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
                 <div className={cx("Display-flex-web-screen")}>
-                <h4 className={cx("Display-title")}>Tổng đề thi:</h4>
+                <h4 className={cx("Display-title")}>Tổng đề thi: </h4>
                   <CountUp start={0} end={20528} className={cx("banner1H12")} />
                 </div>
               </Grid>
@@ -190,13 +190,13 @@ const Banner = () => {
                 <div className={cx("Display-flex")}>
                   <div className={cx("Display-flex-web-screen")}>
 
-                    <h4 className={cx("Display-title")}>Đã làm:</h4>
+                    <h4 className={cx("Display-title")}>Đã làm: </h4>
                     <CountUp start={0} end={12} duration={2.5} className={cx("banner1H1")} />
 
                   </div>
                   <div className={cx("Display-right")}>
                     <div className={cx("Display-flex-web-screen")}>
-                      <h4 className={cx("Display-title")}>Tổng số giờ làm:</h4>
+                      <h4 className={cx("Display-title")}>Tổng số giờ làm: </h4>
                       <CountUp start={0} end={120} duration={2.5} className={cx("banner1H12")} />
                     </div>
 
