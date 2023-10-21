@@ -3,7 +3,6 @@ import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import ListCourses from "../ListCourse/ListCourses";
 import { GetListExam, GetListClass, GetListDoc } from "@/pages/api/CallAPI";
-import AddForm from "../Quiz/AddForm";
 import Link from "next/link";
 import { useAuth } from "@/hooks/authContext";
 const cx = classNames.bind(styles);
@@ -69,90 +68,36 @@ const ListCourse = () => {
 
   //const listSubject = ["Đề thi", "Lớp học", "Tài liệu"]
   const listSubject2 = ["Ngân Hàng Quiz", "Ngân Hàng Đề Thi", "Tài Liệu", "Lớp Học", "Buổi Học Trực Tuyến", "Thi Online", "Thông Tin Giáo Viên"]
-
-  const listCourseDescription = [
-    {
-
-    },
-    {
-
-    }
-  ]
-
   return (
     <div>
-    {/* 
-      <div className={cx("list-course-container")}>
-        <div className={cx("list-btn")}>
-          {listSubject.map((item, index) => (
-            <button
-              className={cx(btnact == index && "active")}
-              key={index}
-              onClick={() => setBtnact(index)}
-            >
-              <i className="fa-solid fa-bookmark"></i>
-              {item}
-            </button>
-          ))}
-        </div>
-        <div className={cx("list-main")}>
-          {btnact === 0 && <h3>Danh sách đề thi</h3>}
-          {btnact === 1 && <h3>Danh sách lớp học</h3>}
-          {btnact === 2 && <h3>Danh sách tài liệu</h3>}
-          
-          {btnact === 0 && ListExam.data && (
-            <ListCourses data={ListExam.data.query} exam />
-          )}
-          {btnact === 1 && ListClass.data && (
-            <ListCourses data={ListClass.data.query} clas />
-          )}
-          {btnact === 2 && ListDoc.data && (
-            <ListCourses data={ListDoc.data.query} doc />
-          )}
-        </div>   
-      </div> */}
-
-
-
-
       { isAuthenticated && (
       <div className={cx("list-course-container")}>
-       
         <div className={cx("list-btn")}>
+      
+
           {listSubject2.map((item, index) => (
+            
             <button     
               className={cx(btnact == index && "active")}
               key={index}
               onClick={() => setBtnact(index)} 
             >
-            <div className={cx("List_Course-Icon")}>
-              <i class="fa-solid fa-building-columns"></i>
-            </div>
-            <p className={cx("ListCourse-In-Course")}>[123]</p>   
+            {/* <p className={cx("ListCourse-In-Course")}>[123]</p>    */}
               <h5 className={cx("ListCourse-Title")}>{item}</h5>   
+             
           </button>
 
           ))}
         </div>
         <div className={cx("list-main")}>
 
-          
-          {btnact === 0 && <h3>Danh sách Ngân Hàng Quiz</h3>}
-          {btnact === 1 && <h3>Danh sách Ngân Hàng Đề Thi</h3>}
-          {btnact === 2 && <h3>Danh sách Tài Liệu</h3>}
-          {btnact === 3 && <h3>Danh sách Lớp Học</h3>}
-          {/* {btnact === 4 && <h3>Danh sách Buổi Học Trực Tuyến</h3>} */}
           {btnact === 4 &&   <Link href="/OnlineClasses" className={cx("mb-login")}>
           <h3>Lick vào đây để Xem Danh sách Buổi Học Trực Tuyến</h3>
         </Link>}
-   
-          {/* {btnact === 5 && <h3>Danh sách Thi Online</h3>} */}
 
           {btnact === 5 && <Link href="/ViewExamSchedule" className={cx("mb-login")}>
-          <h3>Lích vào đây để xem lịch thi</h3>
+          <h3>Líck vào đây để xem lịch thi</h3>
         </Link>}
-
-          {/* {btnact === 6 && <h3>Danh sách Thông Tin Giáo Viên</h3>} */}
 
           {btnact === 6 && <Link href="/Teacher" className={cx("mb-login")}>
           <h3>Danh sách Thông Tin Giáo Viên</h3>
@@ -167,12 +112,7 @@ const ListCourse = () => {
           {btnact === 2 && ListDoc.data && (
             <ListCourses data={ListDoc.data.query} doc />
           )}
-          
-          {btnact === 3 && (
-            <h2></h2>
-
     
-          )}
           
           {btnact === 5 && ListDoc.data && (
             <ListCourses data={ListDoc.data.query} doc />
@@ -182,7 +122,6 @@ const ListCourse = () => {
           )}
         </div>   
       </div>
-
 
       )
       }

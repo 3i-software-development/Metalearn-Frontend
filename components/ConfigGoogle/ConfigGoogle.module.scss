@@ -40,6 +40,8 @@
   margin-bottom: 20px;
   border-bottom: 2px solid black;
   align-content: center;
+  // background-color: red;
+
 }
 
 .ConfigGoogle {
@@ -53,6 +55,7 @@
   margin-bottom: 25px;
   text-align: center;
   color: black;
+  
   &:hover {
     color: red;
   }
@@ -63,9 +66,11 @@
 }
 
 .ConfigGoogle-02 {
-  background-color: rgb(97, 96, 96);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  // background-color: rgb(97, 96, 96);
   border-radius: 10px;
   width: 48%;
+  
 }
 
 .ConfigGoogle-Icon{
@@ -82,6 +87,7 @@
 .ConfigGoogle-Ul {
   list-style: none;
   border: 2px solid black;
+  
 
   border-radius: 5px;
   margin-left: 22px;
@@ -116,8 +122,10 @@
   }
 
   .ConfigGoogle-Ul {
-    background-color:  rgb(175, 172, 172);
+    // background-color:  rgb(175, 172, 172);
     align-items: center;
+    border: none;
+
   }
 
   .ConfigGoogle_Input_Styles {
@@ -130,13 +138,22 @@
     font-size: 25px;
     margin-bottom: 15px;
     color: #000;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     &:hover {
       color: red;
     }
   }
 
-  .flex-item {
-    margin-left: 5px;
+.ConfigGoogle_Item {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 12px;
+  
+}
+
+  .ConfigGoogle-Title-one{
+    font-size: 15px;
+    margin-top: 1px;
   }
 
   .ConfigGoogle-Label {

@@ -111,9 +111,9 @@ const Banner = () => {
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
-                <div className={cx("Display-flex")}>
+                <div className={cx("Display-flex-web-screen")}>
+                  <h4 className={cx("Display-title")}>Tổng câu hỏi:</h4>
                   <CountUp start={0} end={549811} duration={2.5} className={cx("banner1H1")} />
-                  <h4 className={cx("Display-title")}>Tổng câu hỏi</h4>
                 </div>
               </Grid>
 
@@ -142,20 +142,26 @@ const Banner = () => {
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
                 <div className={cx("Display-flex")}>
                   <div className={cx("Display-left")}>
-                    <CountUp start={0} end={12} duration={2.5} className={cx("banner1H1")} />
-                    <h4 className={cx("Display-title")}>Đã làm</h4>
+
+                    <div className={cx("Display-flex-web-screen")}>
+                      <h4 className={cx("Display-title")}>Đã làm:</h4>
+                      <CountUp start={0} end={12} duration={2.5} className={cx("banner1H1")} />
+                    </div>
+
                   </div>
                   <div className={cx("Display-right")}>
-                    <CountUp start={0} end={120} duration={2.5} className={cx("banner1H12")} />
-                    <h4 className={cx("Display-title")}>Thời gian (giờ)</h4>
+                    <div className={cx("Display-flex-web-screen")}>
+                        <h4 className={cx("Display-title")}>Thời gian (giờ): </h4>
+                        <CountUp start={0} end={120} duration={2.5} className={cx("banner1H12")} />
+                    </div>
                   </div>
                 </div>
               </Grid>
 
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
-                <div className={cx("Display-flex")}>
+                <div className={cx("Display-flex-web-screen")}>
+                <h4 className={cx("Display-title")}>Tổng đề thi: </h4>
                   <CountUp start={0} end={20528} className={cx("banner1H12")} />
-                  <h4 className={cx("Display-title")}>Tổng đề thi</h4>
                 </div>
               </Grid>
 
@@ -179,22 +185,27 @@ const Banner = () => {
                   </div>
                 </CircularProgress>
               </Grid>
+
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
                 <div className={cx("Display-flex")}>
-                  <div className={cx("Display-left")}>
+                  <div className={cx("Display-flex-web-screen")}>
+
+                    <h4 className={cx("Display-title")}>Đã làm: </h4>
                     <CountUp start={0} end={12} duration={2.5} className={cx("banner1H1")} />
-                    <h4 className={cx("Display-title")}>Đã làm</h4>
+
                   </div>
                   <div className={cx("Display-right")}>
-                    <CountUp start={0} end={120} duration={2.5} className={cx("banner1H12")} />
-                    <h4 className={cx("Display-title")}>Tổng số giờ làm</h4>
+                    <div className={cx("Display-flex-web-screen")}>
+                      <h4 className={cx("Display-title")}>Tổng số giờ làm: </h4>
+                      <CountUp start={0} end={120} duration={2.5} className={cx("banner1H12")} />
+                    </div>
+
                   </div>
                 </div>
               </Grid>
             </Grid>
           </div>
         </SwiperSlide>
-
 
         <SwiperSlide className={cx("item-slide")}>
           <div className={cx("banner", "banner2")}>
