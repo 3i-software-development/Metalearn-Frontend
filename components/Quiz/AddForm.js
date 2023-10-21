@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import styles from "./style.module.scss";
 import classNames from "classnames/bind";
 import { useGetListQuizQuery } from "@/lib/Midleware/QuizQuery";

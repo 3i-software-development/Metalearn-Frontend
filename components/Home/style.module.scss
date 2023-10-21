@@ -1,4 +1,3 @@
-//list coursse
 .list-course-container {
   width: 100%;
   height: auto;
@@ -12,23 +11,7 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  
-  button {
-    background-color: rgb(165, 168, 165);
-    width: 350px;
-    height: 420px;
-    margin-top: 50px;
-    border-radius: 10px;
-    text-align: center;
-    box-sizing: border-box;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: border-color 0.3s;
-  }
 
-  button:hover {
-    // border: 1px solid red;
-  }
   .active {
     color: black;
     border-bottom: 5px solid black;
@@ -91,35 +74,15 @@
   }
 }
 
-.ListCourse-Item {
-  background-color: rgb(233, 244, 233);
-  width: 350px;
-  height: 420px;
-  margin-top: 50px;
-  border-radius: 10px;
-  text-align: center;
-  box-sizing: border-box;
-  cursor: pointer;
-  border: 1px solid transparent;
-  transition: border-color 0.3s;
-}
-
-.ListCourse-Item:hover {
-  // border: 1px solid red;
-
-}
-
-
 .ListCourse-Title {
   transition: transform 0.2s ease-in-out;
-  margin-top: 120px;
+  
+  // margin-top: 120px;
   font-size: 25px;
-
 }
 .ListCourse-Title:hover {
   transform: translateY(-5px);
   color: red;
-
 }
 
 
@@ -135,10 +98,8 @@
   border-radius: 5px;
   list-style: none;
   cursor: pointer;
-
   box-shadow: inset 0px 0px 5px 1px #888888;
 }
-
 
 .openStatus {
   color: green; /* Màu xanh cho trạng thái Open */
@@ -152,45 +113,43 @@
   flex: 1;
   background-color: #cdc8c8;
   border-radius: 15px;
-  
 }
 
-.List_Course-Icon {
-  font-size: 100px;
-  margin-top: 70px; 
-}
 
 @media only screen and (max-width: 768px) {
+
   .list-btn {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+    border: 2px solid black;
+    box-shadow: 3px 2px 7px 1px rgba(9, 9, 9, 0.75);
+    border-radius: 10px;
 
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
-            button {
-              width: 100%;
-              height: 30px;
-              margin-top: 2px;
-              margin-left: 20px;
-              background-color: transparent;
-              
-            }
+        button {
+          width: 100%;
+          height: 30px;
+          margin-top: 2px;
+          margin-left: 20px;
+          background-color: transparent;
+          
+        }
 
-            .active {
-              border: none;
-            }
+        .active {
+          border: none;
+        }
 
-            i{
-              color: green;
-              margin-right: 5px;
-            }
+        i{
+          color: green;
+          margin-right: 5px;
+        }
   }
 
       .ListCourse-Title {
         margin-top: 0;
         font-size: 18px;
         display: flex;
-        
       }
 
       .ListCourse-In-Course {
@@ -201,12 +160,6 @@
         width: 100%;
         height: 10%;
       }
-
-      .List_Course-Icon {
-        display: none;
-      }
-
-     
 
 }
 

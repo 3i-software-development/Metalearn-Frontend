@@ -33,8 +33,8 @@ const handleItemClick = (itemName) => {
             <li>
 
               <div className={cx("flex-item")}> 
-                  <i class="fa-solid fa-circle-half-stroke"></i>
-                  <h3 onClick={() => handleItemClick("question1")}>Dịch vụ API</h3>
+                  {/* <i class="fa-solid fa-circle-half-stroke"></i> */}
+                  <h3 className={cx("ConfigGoogle-Title-one")} onClick={() => handleItemClick("question1")}>Dịch vụ API</h3>
               </div>
 
               <label className={cx("ConfigGoogle-Label")}>
@@ -79,8 +79,8 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                  <i class="fa-solid fa-circle-half-stroke"></i>
-                  <h3 >Mã tài khoản</h3>
+                  {/* <i class="fa-solid fa-circle-half-stroke"></i> */}
+                  <h3 className={cx("ConfigGoogle-Title-one")} >Mã tài khoản</h3>
                 </div>
                 <label>
                   <input className={cx("ConfigGoogle_Input_Styles")}></input>
@@ -89,8 +89,8 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
-                    <h3 >Tên tài khoản</h3>
+                    {/* <i class="fa-solid fa-circle-half-stroke"></i> */}
+                    <h3 className={cx("ConfigGoogle-Title-one")} >Tên tài khoản</h3>
                 </div>
                 <label>
                     <input className={cx("ConfigGoogle_Input_Styles")}></input>
@@ -99,8 +99,8 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i class="fa-solid fa-circle-half-stroke"></i>
-                    <h3 >Thư điện tử</h3>
+                    {/* <i class="fa-solid fa-circle-half-stroke"></i> */}
+                    <h3 className={cx("ConfigGoogle-Title-one")} >Thư điện tử</h3>
                 </div>
 
                 <label>
@@ -110,8 +110,8 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    <i className="fa-solid fa-circle-half-stroke"></i>
-                    <h3 onClick={() => handleItemClick("question2")}>Loại</h3>
+                    {/* <i className="fa-solid fa-circle-half-stroke"></i> */}
+                    <h3 className={cx("ConfigGoogle-Title-one")} onClick={() => handleItemClick("question2")}>Loại</h3>
                 </div>
               <label className={cx("ConfigGoogle-Label")}>
                   <input className={cx("ConfigGoogle_Input_Styles")}/>
@@ -166,36 +166,36 @@ const handleItemClick = (itemName) => {
               </div>
 
               <div className={cx("ConfigGoogle_Item")}>
-                  <i class="fa-brands fa-google"></i>
+                  <i style={{color: "green"}} class="fa-brands fa-google"></i>
                   <div>
-                        <h4>3. III.Erldarus.com</h4>
+                        <h4 style={{color: "green"}}>3. III.Erldarus.com</h4>
                         <p>Chọn mặc định     22/07/2022</p>
                   </div>
                   <i class="fa-solid fa-trash-can"></i>
               </div>
 
               <div className={cx("ConfigGoogle_Item")}>
-                  <i class="fa-brands fa-google"></i>
+                  <i style={{color: "red"}} class="fa-brands fa-google"></i>
                   <div>
-                        <h4>3. III.Lepus.com</h4>
+                        <h4 style={{color: "red"}}>3. III.Lepus.com</h4>
                         <p>Chọn mặc định     22/07/2022</p>
                   </div>
                     <i class="fa-solid fa-trash-can"></i>
               </div>
 
               <div className={cx("ConfigGoogle_Item")}>
-                  <i class="fa-brands fa-google"></i>
+                  <i style={{color: "blue"}} class="fa-brands fa-google"></i>
                   <div>
-                        <h4>3. III.Sagittarius.com</h4>
+                        <h4 style={{color: "blue"}}>3. III.Sagittarius.com</h4>
                         <p>Chọn mặc định     22/07/2022</p>
                   </div>
                     <i class="fa-solid fa-trash-can"></i>
               </div>
 
               <div className={cx("ConfigGoogle_Item")}>
-                  <i class="fa-brands fa-google"></i>
+                  <i style={{color: "pink"}} class="fa-brands fa-google"></i>
                   <div>
-                      <h4>3. III.Phuongtest.com</h4>
+                      <h4 style={{color: "pink"}}>3. III.Phuongtest.com</h4>
                       <p>Mặc định     22/07/2022</p>
                   </div>
                   <i class="fa-solid fa-trash-can"></i>
