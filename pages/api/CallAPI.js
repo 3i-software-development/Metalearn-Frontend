@@ -136,3 +136,28 @@ export const GetListMyClass = async () => {
     throw error; // You can handle the error as per your application's requirements
   }
 };
+
+export const GetListMyTutorSchedule = async (teacher, student) => {
+  // Define the data you want to send in the request body
+  const requestData = new FormData();
+  requestData.append('userName', 'admin');
+  requestData.append('TimeDay', '');
+  requestData.append("teacher", teacher);
+  requestData.append('student', student);
+  try {
+    const response = await axios.post(
+      'https://admin.metalearn.vn/MobileLogin/GetListMyTutorSchedule',
+      requestData,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    // Handle errors here
+    console.error('Error:', error);
+    throw error; // You can handle the error as per your application's requirements
+  }
+};
