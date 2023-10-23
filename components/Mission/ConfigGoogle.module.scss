@@ -1,0 +1,37 @@
+.Mission_01{
+    background-color: rgb(95, 226, 13);
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.Mission_02{
+    margin-left: 30px;
+    background-color: rgb(228, 232, 10);
+    padding: 4px;
+    border-radius: 10px;
+}
+
+
+.hhh {
+    box-shadow: 5px 5px 5px rgba(9, 9, 9, 0.75);
+    width: 50%;
+    margin-top: 20px;
+    margin-left: 50px;
+
+}
+
+.hhhh {
+    display: flex;
+    // flex-direction: row;
+    justify-content: space-around;
+}
+.lll {
+    display: flex;
+
+
+}
+
+.split-rows {
+    display: flex;
+    flex-direction: column;
+  }

@@ -223,24 +223,6 @@ export const GetListLmsTestBody = async () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const GetListUserSubject = async (teacher, student) => {
 
   const requestData = new FormData();
@@ -294,8 +276,6 @@ export const GetListStatusCardJoB = async (teacher, student) => {
   }
   
 };
-
-
 
 
 
