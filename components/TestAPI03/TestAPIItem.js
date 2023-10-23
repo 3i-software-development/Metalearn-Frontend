@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./TestAPI02.module.scss";
+import styles from "./TestAPI03.module.scss";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
 const cx = classNames.bind(styles);

@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import classNames from "classnames/bind";
-import styles from './TestAPI02.module.scss'
+import styles from './TestAPI03.module.scss'
 import TestAPIItem from "./TestAPIItem";
-// import { GetListStatusCardJoB } from "@/pages/api/CallAPI"
-import { GetListJobCardLms} from "@/pages/api/CallAPI"
-
-
-
+// import { GetListUserSubject } from "@/pages/api/CallAPI"
+import { GetGirdCardBoardLms } from "@/pages/api/CallAPI"
 
 
 
@@ -14,7 +11,7 @@ import { GetListJobCardLms} from "@/pages/api/CallAPI"
 
 const cx = classNames.bind(styles);
 
-function TestAPI02() {
+function TestAPI03() {
     const [activeTab, setActiveTab] = useState('join');
     const [teacher, setTeacher] = useState('');
     const [student, setStudent] = useState('admin');
@@ -32,11 +29,12 @@ function TestAPI02() {
             fetchData()
         }
     }
-    const [listGetStatusCardJob, setListGetStatusCardJob] = useState([]);
+
+    const [listGetListJobCardLms, setListGetListJobCardLms] = useState([]);
 
     async function fetchData() {
         try {
-            const res = await GetListJobCardLms(teacher, student);
+            const res = await GetGirdCardBoardLms();
             setListGetStatusCardJob(res.Object);
         } catch (error) {
             // Handle any errors here
@@ -45,7 +43,7 @@ function TestAPI02() {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(listGetStatusCardJob);
+    console.log(listGetListJobCardLms);
     return (
         <div className={cx('Online-page')}>
                 <div className={cx('document-layout')}>
@@ -68,13 +66,13 @@ function TestAPI02() {
                         <div className={cx('tab-content')}>
                             {activeTab === 'join' && (
                                 <div className={cx('manage')}>
-                                    <TestAPIItem list={listGetStatusCardJob} />
+                                    <TestAPIItem list={listGetListJobCardLms} />
                                 </div>
                             )}
 
                             {activeTab === 'manage' && (
                                 <div className={cx('user-list')}>
-                                    <TestAPIItem list={listGetStatusCardJob} />
+                                    <TestAPIItem list={listGetListJobCardLms} />
                                 </div>
                             )}
                         </div>
@@ -86,4 +84,4 @@ function TestAPI02() {
 
 }
 
-export default TestAPI02;
+export default TestAPI03;
