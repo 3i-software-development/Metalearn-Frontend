@@ -126,70 +126,60 @@ function CountStudent() {
         setIsLoading(false);
     }
 
-    
+
 
     return (
         <div style={{ width: "50%", marginTop: "50px" }}>
-            {/* <button onClick={() => handleClickType('QuizVoluntary')}>Click me</button>
-            {QuizVoluntary && (
-                <div>
-                    <h1>QuizVoluntary</h1>
-                    <h1>{QuizVoluntary.Total}</h1>
-                </div>
-            )} */}
             <div>
-                {
-                    Object.keys(sections).map((sectionKey, index) => {
-                        const section = sections[sectionKey];
-                        const { rows } = section;
-                        return (
-                            <div key={index} className={cx("section")}>
-                                <div className={cx("section-title")}>
-                                    <h1>{section.title}</h1>
-                                </div>
-                                <button onClick={() => handleClickType(section.Api)}>Click me</button>
-                                {
-                                    result[section.Api] ? (
-                                        <div>
-                                            {
-                                                Object.keys(rows).map((rowKey, index) => {
-                                                    const row = rows[rowKey];
-                                                    return (
-                                                        <div key={index}>
-                                                            <text>{rowKey}</text>
-                                                            {row === "Minus" ? (
-                                                                <text>{result[section.Api]["Done"] - result[section.Api]["Correct"]}</text>
-                                                            ) : row === "Percent" ? (
-                                                                <text>{(result[section.Api]["Done"] / result[section.Api]["Total"]) * 100}%</text>
-                                                            ) : (
-                                                                <text>{result[section.Api][row]}</text>
-                                                            )}
-                                                        </div>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                    ) : (
-                                        isLoading ? (
-                                            <h1>Loading...</h1>
-                                        ) : null
-                                    )
-                                }
-                                {/* {
-                                    Object.keys(rows).map((rowKey, index) => {
+                {Object.keys(sections).map((sectionKey, index) => {
+                    const section = sections[sectionKey];
+                    const { rows } = section;
+
+                    // Tạo dữ liệu biểu đồ cho từng section
+                    const lineChartData = {
+                        labels: Object.keys(rows),
+                        datasets: [
+                            {
+                                label: "Dữ liệu biểu đồ",
+                                data: result[section.Api] ? Object.values(rows).map((row) => result[section.Api][row]) : [],
+                                fill: false,
+                                borderColor: "rgba(75, 192, 192, 1)",
+                                borderWidth: 2,
+                            },
+                        ],
+                    };
+
+                    return (
+                        <div key={index} className={cx("section")}>
+                            <div className={cx("section-title")}>
+                                <h1>{section.title}</h1>
+                            </div>
+                            <button onClick={() => handleClickType(section.Api)}>Click me</button>
+                            {result[section.Api] ? (
+                                <div>
+                                    {Object.keys(rows).map((rowKey, rowIndex) => {
                                         const row = rows[rowKey];
                                         return (
-                                            <div key={index}>
+                                            <div key={rowIndex}>
                                                 <text>{rowKey}</text>
-                                                <text>{row}</text>
+                                                {row === "Minus" ? (
+                                                    <text>{result[section.Api]["Done"] - result[section.Api]["Correct"]}</text>
+                                                ) : row === "Percent" ? (
+                                                    <text>{(result[section.Api]["Done"] / result[section.Api]["Total"]) * 100}%</text>
+                                                ) : (
+                                                    <text>{result[section.Api][row]}</text>
+                                                )}
                                             </div>
-                                        )
-                                    })
-                                } */}
-                            </div>
-                        )
-                    })
-                }
+                                        );
+                                    })}
+                                    <Bar data={lineChartData} /> {/* Vẽ biểu đồ cho mỗi section */}
+                                </div>
+                            ) : isLoading ? (
+                                <h1>Loading...</h1>
+                            ) : null}
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
