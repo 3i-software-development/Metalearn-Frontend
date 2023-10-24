@@ -212,17 +212,6 @@ export const GetListLmsTestBody = async () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 export const GetListUserSubject = async (teacher, student) => {
 
   const requestData = new FormData();
@@ -250,7 +239,7 @@ export const GetListUserSubject = async (teacher, student) => {
 };
 
 
-export const GetListStatusCardJoB = async (teacher, student) => {
+export const GetListStatusCardJob = async (teacher, student) => {
 
   const requestData = new FormData();
 
@@ -258,6 +247,7 @@ export const GetListStatusCardJoB = async (teacher, student) => {
   requestData.append('TimeDay', '');
   requestData.append("teacher", teacher);
   requestData.append('student', student);
+  
   try {
     const response = await axios.post(
       'https://admin.metalearn.vn/MobileLogin/GetStatusCardJob',
@@ -278,10 +268,10 @@ export const GetListStatusCardJoB = async (teacher, student) => {
 };
 
 
-
-export const GetListBoardLms= async (teacher, student) => {
-
+//"Bảng Nhiệm Vụ" của Thông Tin Chung của mục Nhiệm Vụ
+export const GetListBoardLms = async (teacher, student) => {
   const requestData = new FormData();
+
   requestData.append('userId', '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06');
   requestData.append('ObjId', '');
   requestData.append("UserType", 10);

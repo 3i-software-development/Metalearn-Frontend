@@ -1,9 +1,8 @@
-//component Mission
-
 import React, { useState, useEffect } from "react";
 import { GetListJobCardLms, GetListStatusCardJoB } from "@/pages/api/CallAPI"
 import styles from "./ConfigGoogle.module.scss";
 import classNames from "classnames/bind";
+import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
@@ -13,16 +12,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 
 
-
-
-
-
-
-
-
-
 const cx = classNames.bind(styles);
-
 
 const IconRender = ({StatusCode}) => {
     switch (StatusCode) {
@@ -45,6 +35,8 @@ const IconRender = ({StatusCode}) => {
 
 const CardStatusJob = () => {
     const [listStatusCardJoB, setListGetStatusCardJob] = useState([]);
+    const [btnact, setBtnact] = useState(0);
+
     const getStatusCardJobData = async () => {
         try {
             const res = await GetListStatusCardJoB();
@@ -98,7 +90,10 @@ const Mission = () => {
                         <div className={cx("hhh", "split-rows")} key={index}>
                             <div>
                                 <h2>
+                                <Link href="/Mission">
                                     {item.LmsTaskCode} : {item.LmsTaskName}
+                                </Link>
+                                    
                                 </h2>
                                 <div style={{display: "flex"}}>
                                     <h3 className={cx("Mission_01")}>Mời tạo</h3>
