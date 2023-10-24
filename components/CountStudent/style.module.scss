@@ -1,106 +1,14 @@
-.count-student-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 500px;
-  margin: 0 auto;
+// CSS module style.module.scss
+
+.section {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  background-color: #f8f8f8;
 }
 
-
-.count-student {
-  width: 20%;
-  float: left;
-  margin: auto;
+.section-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
-
-.count-student-item {
-  width: 100%;
-  height: 50px;
-  border-bottom: 1px solid #ccc;
-  cursor: pointer;
-}
-
-.count-student-item--selected {
-  background-color: #ccc;
-}
-
-.count-student-item__type {
-  text-align: center;
-  font-size: 16px;
-}
-
-.chart {
-  width: 70%;
-  float: right;
-}
-
-.chart canvas {
-  width: 100%;
-  height: 100%;
-}
-
-.chart-title {
-  font-size: 24px;
-  text-align: center;
-}
-
-.chart-axis {
-  font-size: 14px;
-}
-
-.chart-bar {
-  background-color: #007bff;
-}
-
-.chart-tooltip {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 12px;
-  padding: 5px;
-}
-
-.hover-item:hover{
-  color: red;
-}
-
-.hover-item{
-  cursor: pointer;
-}
-
-.marginLeft-Item {
-  margin-left: 25px;
-}
-
-.hover-item:hover{
-  color: green;
-}
-
-.CountStudent-Title {
-  font-size: 45px;
-  margin-bottom: 25px;
-  &:hover {
-    color: red;
-  }
-}
-
-.CountStudent-CurSor {
-  cursor: pointer;
-}
-
-
-@media only screen and (max-width: 768px) {
-
-  .CountStudent-Title {
-    font-size: 22px;
-    // margin-top: 20px;
-    margin-bottom: 25px;
-    width: 200%;
-  }
-  .hover-item{
-    cursor: pointer;
-    font-size: 12px;
-  }
-}
-
