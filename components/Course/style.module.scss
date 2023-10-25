@@ -70,28 +70,37 @@
     display: flex;
     justify-content: center; /* Căn giữa theo chiều ngang */
 }
+
 .center-text {
     text-align: center;
   }
 
+.Course-title-01{
+    font-size: 20px;
+
+}
+
+.Course-title-02{
+    font-size: 15px;
+}
 
 
 
 @media only screen and (max-width: 768px) {
-.image-container {
-    display: none;
-}
+    .image-container {
+        display: none;
+    }
 
-.course-item {
-    width: 100%;
-}
+    .course-item {
+        width: 100%;
+    }
 
-.CourseItem-Title {
-    font-size: 25px;
-    border: 1px solid red;
-    border-radius: 10px;
-    padding: 20px;
-}
+    .CourseItem-Title {
+        font-size: 25px;
+        border: 1px solid red;
+        border-radius: 10px;
+        padding: 20px;
+    }
 
 }
   

@@ -75,4 +75,58 @@ export const GetListShiftLog = async (teacher, student) => {
 
 
 
+//API của Khóa Học.
+  export const GetListCourseWatched = async (teacher, student) => {
+
+    const requestData = new FormData();
+  
+    requestData.append('userName', 'admin');
+    requestData.append('TimeDay', '');
+    requestData.append("teacher", teacher);
+    requestData.append('student', student);
+    try {
+      const response = await axios.post(
+        'https://admin.metalearn.vn/MobileLogin/GetListCourseWatched?userName=admin',
+        requestData,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+  
+      console.error('Error:', error);
+      throw error;
+    }
+  };
+
+
+
+  export const GetDetailLecture = async (teacher, student) => {
+
+    const requestData = new FormData();
+  
+    requestData.append('userName', 'admin');
+    requestData.append('TimeDay', '');
+    requestData.append("teacher", teacher);
+    requestData.append('student', student);
+    try {
+      const response = await axios.post(
+        'https://admin.metalearn.vn/MobileLogin/GetDetailLecture?courseCode=KH_22/6',
+        requestData,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+  
+      console.error('Error:', error);
+      throw error;
+    }
+  };
 
