@@ -449,25 +449,27 @@ export const GetUsers = async () => {
 // kết quả rèn luyện
 
 export const GetApiLmsCountStudent = async (type) => {
-  const requestPayload = {}
   const userId = '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06';
-  axios.post('https://admin.metalearn.vn/MobileLogin/GetApiLmsCountStudent', requestPayload, {
-    params: {
-      userId,
-      type,
-    }
-  })
-    .then(response => {
-      // Xử lý dữ liệu ở đây
-      console.log("get", response);
-      const total = response.data;
-      const quizVoluntary = JSON.parse(response.data.QuizVoluntary); // Chuyển đổi chuỗi JSON thành đối tượng JavaScript
-      console.log("quizVoluntary:", quizVoluntary);
-      return quizVoluntary
-    })
-    .catch(error => {
-      // Xử lý lỗi ở đây
-      console.error(error);
-    });
+  const apiUrl = `https://admin.metalearn.vn/MobileLogin/GetApiLmsCountStudent?userId=${userId}&type=${type}`;
 
+  try {
+      const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+          },
+      });
+
+      if (!response.ok) {
+          throw new Error(`Request failed with status: ${response.status}`);
+      }
+
+      const responseData = await response.json();
+      const data = JSON.parse(responseData[type]);
+
+      return data;
+  } catch (error) {
+      console.error(error);
+      throw error;
+  }
 }
