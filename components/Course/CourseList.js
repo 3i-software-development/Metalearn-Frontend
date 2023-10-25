@@ -1,27 +1,39 @@
 //CourseList.js
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import CourseItem from './CourseItem'
 import style from './style.module.scss'
 import classNames from 'classnames/bind'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { GetListCourseWatched } from '@/pages/api/CallAPI01';
+
+
 
 const cx = classNames.bind(style)
 
 const CourseList = () => {
-    const courseData = [
-        {title: 'test', publisher: 'admin', time: "60 phút", price: 0, owning: "Sở hữu", image: "https://cdn.vietnambiz.vn/2019/10/15/1nvhe7mchqmjbgyvx-uobra-15711056360651103109227.png" , subject: "Toán", completion: 90},
-        {title: 'test', publisher: 'admin', time: "60 phút", price: 0, owning: "Sở hữu", image: "https://cdn.vietnambiz.vn/2019/10/15/1nvhe7mchqmjbgyvx-uobra-15711056360651103109227.png" , subject: "Toán", completion: 90},
-        {title: 'test', publisher: 'admin', time: "60 phút", price: 0, owning: "Sở hữu", image: "https://cdn.vietnambiz.vn/2019/10/15/1nvhe7mchqmjbgyvx-uobra-15711056360651103109227.png" , subject: "Toán", completion: 90},
-        {title: 'test', publisher: 'admin', time: "60 phút", price: 0, owning: "Sở hữu", image: "https://cdn.vietnambiz.vn/2019/10/15/1nvhe7mchqmjbgyvx-uobra-15711056360651103109227.png" , subject: "Toán", completion: 90},
-        {title: 'test', publisher: 'admin', time: "60 phút", price: 0, owning: "Sở hữu", image: "https://cdn.vietnambiz.vn/2019/10/15/1nvhe7mchqmjbgyvx-uobra-15711056360651103109227.png" , subject: "Toán", completion: 0},
-        {title: 'test', publisher: 'admin', time: "60 phút", price: 0, owning: "Sở hữu", image: "https://cdn.vietnambiz.vn/2019/10/15/1nvhe7mchqmjbgyvx-uobra-15711056360651103109227.png" , subject: "Toán", completion: 90},
-        {title: 'test', publisher: 'admin', time: "60 phút", price: 0, owning: "Sở hữu", image: "https://cdn.vietnambiz.vn/2019/10/15/1nvhe7mchqmjbgyvx-uobra-15711056360651103109227.png" , subject: "Toán", completion: 100},
-        {title: 'test', publisher: 'admin', time: "60 phút", price: 0, owning: "Sở hữu", image: "https://cdn.vietnambiz.vn/2019/10/15/1nvhe7mchqmjbgyvx-uobra-15711056360651103109227.png" , subject: "Toán", completion: 0 },
-    ]
+
+
+
+    const [courses, setCourses] = useState([]);
+
+    async function fetchData() {
+        try {
+          const res = await GetListCourseWatched();
+          setCourses(res.Object); // Gán mảng dữ liệu từ API vào state boardData
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }
+      useEffect(() => {
+        fetchData();
+      }, []);
+
+
     return (
         <div className={cx('course-tab')}>
             <div className={cx("CourseItem-Title")}>Danh sách khóa học</div>
             <div className={cx('course-list')}>
-                {courseData.map((course, index) => (
+                {courses.map((course, index) => (
                     <CourseItem data={course} key={index}/>
                 ))}
             </div>
