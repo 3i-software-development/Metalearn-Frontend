@@ -130,3 +130,40 @@ export const GetListShiftLog = async (teacher, student) => {
     }
   };
 
+
+  export const GetListFileCwRead = async () => {
+
+    const formData = new FormData();
+    formData.append('CatCode', '')
+    formData.append('SubjectCode', '')
+    formData.append('ObjectType', 'All')
+    formData.append('ObjectCode', '')
+    formData.append('FromDate', '')
+    formData.append('ToDate', '')
+    formData.append('FileName', '')
+    formData.append('FileType', '')
+    formData.append('Content', '')
+    formData.append('UserUpload', '')
+    formData.append('Username', 'admin')
+    formData.append('KeySearch', '')
+    formData.append('Count', undefined)
+    formData.append('CurrentPageView', '1')
+    formData.append('Length', '15')
+
+    try {
+      const response = await axios.post(
+        '  https://admin.metalearn.vn/MobileLogin/GetListFileCwRead',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+  
+      console.error('Error:', error);
+      throw error;
+    }
+  };

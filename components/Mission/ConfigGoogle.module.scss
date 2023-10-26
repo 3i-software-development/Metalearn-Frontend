@@ -12,19 +12,21 @@
 }
 
 
+
 .hhh {
     box-shadow: 5px 5px 5px rgba(9, 9, 9, 0.75);
-    width: 50%;
+    width: 80%;
     margin-top: 20px;
     margin-left: 50px;
-    // background-color: red;
     border-radius: 20px;
+    // background-color: red;
 }
 
 .hhhh {
     display: flex;
     // flex-direction: row;
     justify-content: space-around;
+    background-color: red;
 }
 .lll {
     display: flex;
@@ -41,6 +43,53 @@
     flex-direction: column;
 }
 
+.ghjk {
+    display: flex;
+}
+
+
+.jjjj{
+    margin-top: 5px;
+    width: 45%;
+    border: 2px solid black;
+    box-shadow: 5px 5px 5px rgba(9, 9, 9, 0.75);
+    border-radius: 20px;
+    height: min-content;
+
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .lkjh{
+
+    }
+
+    .poiu{
+        font-size: 10px;
+        margin-left: 12px;
+    }
+
+    .kkkl4{
+        font-size: 10px;
+        margin-left: 12px;
+    }
+
+    .hhh {
+        display: flex;
+        justify-content: center;
+        width: 70%;
+    }
+    .kkkl5{
+        font-size: 7px;
+        margin-left: 12px;
+    }
+
+    .jjjj{
+        display: none;
+    }
+
+}
 
 
 
