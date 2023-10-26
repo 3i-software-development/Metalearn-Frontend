@@ -3,6 +3,11 @@ import styles from './style.module.scss'; // Import SCSS styles for classNames
 import classNames from 'classnames/bind';
 import { GetApiLmsCountStudent } from "@/pages/api/CallAPI_H"
 import { set } from "react-hook-form";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import { faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faCircleArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 import { Bar, Pie } from "react-chartjs-2";
 import {
@@ -19,6 +24,9 @@ ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
 const cx = classNames.bind(styles);
 
 function CountStudent() {
+
+  
+   
 
     const [isLoading, SetisLoading] = useState({
         // QuizVoluntary: false,
@@ -133,6 +141,19 @@ function CountStudent() {
         },
     }
 
+    const [isRightButtonVisible, setIsRightButtonVisible] = useState(true);
+
+  const handleClick = (api) => {
+    // Thực hiện các hành động khi nút được nhấn
+    console.log(`Button with API ${api} clicked.`);
+
+  };
+
+  const handleToggleButtons = () => {
+    setIsRightButtonVisible(!isRightButtonVisible);
+
+  };
+
 
     const handleClickType = async (type) => {
         SetisLoading({ ...isLoading, [type]: true });
@@ -183,6 +204,7 @@ function CountStudent() {
         setHideExcersise(true);
     }
 
+    
     useEffect(() => {
         console.log("excersise:", excersise);
     }, [excersise])
@@ -262,20 +284,99 @@ function CountStudent() {
                     };
 
                     return (
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <div key={index} className={cx("section")}>
                             <div className={cx("section-title")}>
                                 <h1>{section.title}</h1>
                             </div>
-                            <button onClick={() => handleClickType(section.Api)}>Click me</button>
+                            <button className={cx("CountStudent-icon")} onClick={() => handleClickType(section.Api)}> <FontAwesomeIcon icon={faCircleArrowRight} /> </button>
+
+
+                            {/* <div>
+                                {isRightButtonVisible ? (
+                                    <button className={cx('CountStudent-icon')} onClick={() => {
+                                        handleToggleButtons();
+                                        handleClickType(section.Api)
+                                    }}>
+                                        <FontAwesomeIcon icon={faCircleArrowRight} />
+                                    </button>
+                                ) : (
+                                    <button className={cx('CountStudent-icon')} onClick={() =>
+                                        {handleHideChart(section.Api);
+                                        handleToggleButtons();
+                                        }}>
+                                    <FontAwesomeIcon icon={faCircleArrowDown} />
+                                    </button>
+                                )}
+
+                                
+
+                            </div> */}
+
+                            
                             {result[section.Api] && showChart[section.Api] ? (
-                                <div className={cx("section-render")}>
-                                    <button onClick={() => handleHideChart(section.Api)}>Ẩn biểu đồ</button>
+                                <div>
+
+                                    <button className={cx("CountStudent-icon")} onClick={() => handleHideChart(section.Api)}> <FontAwesomeIcon icon={faCircleArrowDown} /> </button>
+                                    
+
+                                    <div className={cx("section-render")}>
+        
+                                        {/* <div className={cx("data-details")}>
+                                            {Object.keys(rows).map((rowKey, rowIndex) => {
+                                                const row = rows[rowKey];
+                                                return (
+                                                    <div key={rowIndex}>
+                                                        <text>{rowKey}</text>
+                                                        {row === "Minus" ? (
+                                                            <text>{result[section.Api]["Done"] - result[section.Api]["Correct"]}</text>
+                                                        ) : row === "Percent" ? (
+                                                            <text>{(result[section.Api]["Done"] / result[section.Api]["Total"]) * 100}%</text>
+                                                        ) : (
+                                                            <text>{result[section.Api][row]}</text>
+                                                        )}
+                                                    </div>
+                                                );
+                                            })}
+                                        </div> */}
+                                        <div className={cx("chart-image")}>
+                                            {/*{
+                                                section.chart === "Bar" ? (
+                                                    <Bar data={lineChartData} />
+                                                ) : section.chart === "Pie" ? (
+                                                    <Pie data={pieChartData} />
+                                                ) : null
+                                            } */}
+                                        </div>
+                                    </div>
+
+
+
                                     <div className={cx("data-details")}>
                                         {Object.keys(rows).map((rowKey, rowIndex) => {
                                             const row = rows[rowKey];
                                             return (
                                                 <div key={rowIndex}>
-                                                    <text>{rowKey}</text>
+                                                     <FontAwesomeIcon icon={faRightToBracket} />
+                                                    <text style={{marginLeft: "15px"}}>{rowKey}</text>
                                                     {row === "Minus" ? (
                                                         <text>{result[section.Api]["Done"] - result[section.Api]["Correct"]}</text>
                                                     ) : row === "Percent" ? (
@@ -287,28 +388,27 @@ function CountStudent() {
                                             );
                                         })}
                                     </div>
-                                    <div className={cx("chart-image")}>
-                                        {
-                                            section.chart === "Bar" ? (
-                                                <Bar data={lineChartData} />
-                                            ) : section.chart === "Pie" ? (
-                                                <Pie data={pieChartData} />
-                                            ) : null
-                                        }
-                                    </div>
                                 </div>
+
+                                
                             ) : isLoading[section.Api] ? (
                                 <h1>Loading...</h1>
                             ) : null}
                         </div>
                     );
                 })}
+
+
+
+
+
+
                 <div className={cx("section-last")}>
                     <h1>Bài tập khóa học</h1>
-                    <button onClick={handleClickExcersise}>Click me</button>
+                    <button className={cx("CountStudent-icon")} onClick={handleClickExcersise}> <FontAwesomeIcon icon={faCircleArrowRight} /> </button>
                     {
                         hideExcersise === false ? (
-                            <button onClick={handleHideExcersise}>Ẩn bài tập</button>
+                            <button className={cx("CountStudent-icon")} onClick={handleHideExcersise}> <FontAwesomeIcon icon={faCircleArrowDown} /> </button>
                         ) : (
                             null
                         )
@@ -324,8 +424,8 @@ function CountStudent() {
                                             const jsonArray = JSON.parse(itemExam.JsonData);
                                             return (
                                                 <div key={indexExam}>
-                                                    <p>{itemExam.CreatedBy}</p>
-                                                    <p>{itemExam.CreatedTime}</p>
+                                                    <p className={cx("create")}>{itemExam.CreatedBy}</p>
+                                                    <p className={cx("date33")}>{itemExam.CreatedTime}</p>
                                                     <div className={cx("item-exam-content")} dangerouslySetInnerHTML={{ __html: itemExam.Content }} />
                                                     {
                                                         jsonArray.map((itemJson, indexJson) => {

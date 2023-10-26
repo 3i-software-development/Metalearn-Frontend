@@ -33,7 +33,7 @@ const handleItemClick = (itemName) => {
             <li>
 
               <div className={cx("flex-item")}> 
-                  {/* <i class="fa-solid fa-circle-half-stroke"></i> */}
+                  
                   <h3 className={cx("ConfigGoogle-Title-one")} onClick={() => handleItemClick("question1")}>Dịch vụ API</h3>
               </div>
 
@@ -79,7 +79,7 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                  {/* <i class="fa-solid fa-circle-half-stroke"></i> */}
+                  
                   <h3 className={cx("ConfigGoogle-Title-one")} >Mã tài khoản</h3>
                 </div>
                 <label>
@@ -89,7 +89,7 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    {/* <i class="fa-solid fa-circle-half-stroke"></i> */}
+                    
                     <h3 className={cx("ConfigGoogle-Title-one")} >Tên tài khoản</h3>
                 </div>
                 <label>
@@ -99,7 +99,7 @@ const handleItemClick = (itemName) => {
 
             <li>
                 <div className={cx("flex-item")}>
-                    {/* <i class="fa-solid fa-circle-half-stroke"></i> */}
+                    
                     <h3 className={cx("ConfigGoogle-Title-one")} >Thư điện tử</h3>
                 </div>
 
