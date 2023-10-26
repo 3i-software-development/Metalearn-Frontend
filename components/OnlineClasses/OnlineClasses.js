@@ -12,9 +12,9 @@ import { set } from "react-hook-form";
 const cx = classNames.bind(styles);
 
 function OnlineClasses() {
-    const [activeTab, setActiveTab] = useState('join');
     const [teacher, setTeacher] = useState('');
     const [student, setStudent] = useState('admin');
+    const [activeTab, setActiveTab] = useState('join');
 
     const handleTabChange = (tab) => {
         setActiveTab(tab);
@@ -45,40 +45,40 @@ function OnlineClasses() {
     console.log(listMyTutorSchedule);
 
     return (
-            <div className={cx('Online-page')}>
-                <div className={cx('document-layout')}>
+        <div className={cx('Online-page')}>
+            <div className={cx('document-layout')}>
 
-                    <div className={cx('document-category-name-list')}>
-                        <div className={cx('tab-bar')}>
-                            <button
-                                className={cx('tab-button', { active: activeTab === 'join' })}
-                                onClick={() => handleTabChange('join')}
-                            >
-                                Tham gia {listMyTutorSchedule.CountStudent}
-                            </button>
-                            <button
-                                className={cx('tab-button', { active: activeTab === 'manage' })}
-                                onClick={() => handleTabChange('manage')}
-                            >
-                                Quản lý {listMyTutorSchedule.CountTeacher}
-                            </button>
-                        </div>
-                        <div className={cx('tab-content')}>
-                            {activeTab === 'join' && (
-                                <div className={cx('manage')}>
-                                    <TabItem list={listMyTutorSchedule.List} />
-                                </div>
-                            )}
+                <div className={cx('document-category-name-list')}>
+                    <div className={cx('tab-bar')}>
+                        <button
+                            className={cx('tab-button', { active: activeTab === 'join' })}
+                            onClick={() => handleTabChange('join')}
+                        >
+                            Tham gia {listMyTutorSchedule.CountStudent}
+                        </button>
+                        <button
+                            className={cx('tab-button', { active: activeTab === 'manage' })}
+                            onClick={() => handleTabChange('manage')}
+                        >
+                            Quản lý {listMyTutorSchedule.CountTeacher}
+                        </button>
+                    </div>
+                    <div className={cx('tab-content')}>
+                        {activeTab === 'join' && (
+                            <div className={cx('manage')}>
+                                <TabItem list={listMyTutorSchedule.List} />
+                            </div>
+                        )}
 
-                            {activeTab === 'manage' && (
-                                <div className={cx('user-list')}>
-                                    <TabItem list={listMyTutorSchedule.List} />
-                                </div>
-                            )}
-                        </div>
+                        {activeTab === 'manage' && (
+                            <div className={cx('user-list')}>
+                                <TabItem list={listMyTutorSchedule.List} />
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
+        </div>
     );
 }
 

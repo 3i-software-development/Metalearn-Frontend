@@ -3,6 +3,7 @@ import styles from './style.module.scss';
 import classNames from 'classnames/bind';
 import { GetListConnectionWait, GetListConnectionEnabled, GetListConnectionSent, GetUsers } from "@/pages/api/CallAPI_H"
 import { set } from "react-hook-form";
+import { useAuth } from "@/hooks/authContext";
 
 const cx = classNames.bind(styles);
 
@@ -12,46 +13,8 @@ const Connection = () => {
     const [listConnectionEnabled, setListConnectionEnabled] = useState([]);
     const [listConnectionSent, setListConnectionSent] = useState([]);
     const [listUser, setListUser] = useState([]);
-    const a = {
-        id: 2,
-        avatar: "https://media.istockphoto.com/id/1215201838/vector/indian-teacher-with-book-near-blackboard-in-class.jpg?s=612x612&w=0&k=20&c=nbZv2PounwE0inw5tYrHZo_I-t5qWaX5CY1QnxJ0rFw=",
-        name: "Jane Doe",
-        status: "offline"
-    }
 
-    const connectedUserList = [
-        {
-            id: 1,
-            avatar: "https://media.istockphoto.com/id/1215201838/vector/indian-teacher-with-book-near-blackboard-in-class.jpg?s=612x612&w=0&k=20&c=nbZv2PounwE0inw5tYrHZo_I-t5qWaX5CY1QnxJ0rFw=",
-            name: "John Doe",
-            status: "online"
-        },
-        {
-            id: 2,
-            avatar: "https://media.istockphoto.com/id/1215201838/vector/indian-teacher-with-book-near-blackboard-in-class.jpg?s=612x612&w=0&k=20&c=nbZv2PounwE0inw5tYrHZo_I-t5qWaX5CY1QnxJ0rFw=",
-            name: "Jane Doe",
-            status: "offline"
-        }, a, a, a
-        // Add more users as needed
-    ]
-
-    const requestList = [
-        {
-            id: 1,
-            avatar: "https://media.istockphoto.com/id/1215201838/vector/indian-teacher-with-book-near-blackboard-in-class.jpg?s=612x612&w=0&k=20&c=nbZv2PounwE0inw5tYrHZo_I-t5qWaX5CY1QnxJ0rFw=",
-            name: "Johnssssssss Doe",
-            status: "online"
-        },
-        {
-            id: 2,
-            avatar: "https://media.istockphoto.com/id/1215201838/vector/indian-teacher-with-book-near-blackboard-in-class.jpg?s=612x612&w=0&k=20&c=nbZv2PounwE0inw5tYrHZo_I-t5qWaX5CY1QnxJ0rFw=",
-            name: "Jkssss Doe",
-            status: "online"
-        }, a, a, a
-        // Add more users as needed
-    ]
-
-
+    const { userName } = useAuth();
     const handleTabChange = (tab) => {
         setActiveTab(tab);
     }
@@ -63,7 +26,7 @@ const Connection = () => {
 
     async function fetchDataListConnectionEnabled() {
         try {
-            const res = await GetListConnectionEnabled();
+            const res = await GetListConnectionEnabled(userName);
             setListConnectionEnabled(res);
         } catch (error) {
             // Handle any errors here
@@ -72,7 +35,7 @@ const Connection = () => {
 
     async function fetchDataListConnectionWait() {
         try {
-            const res = await GetListConnectionWait();
+            const res = await GetListConnectionWait(userName);
             setListConnectionWait(res);
         } catch (error) {
             // Handle any errors here
@@ -81,7 +44,7 @@ const Connection = () => {
 
     async function fetchDataListConnectionSent() {
         try {
-            const res = await GetListConnectionSent();
+            const res = await GetListConnectionSent(userName);
             setListConnectionSent(res);
         }
         catch (error) {
@@ -103,11 +66,6 @@ const Connection = () => {
         fetchDataListConnectionSent();
         fetchDataListUser();
     }, []);
-
-    console.log("listConnectionEnabled", listConnectionEnabled)
-    console.log('listConnectionWait', listConnectionWait)
-    console.log('listConnectionSent', listConnectionSent)
-    console.log('listUser', listUser)
 
     return (
         <div className={cx('connection')}>

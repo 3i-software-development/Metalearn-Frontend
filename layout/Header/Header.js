@@ -34,7 +34,7 @@ const Header = () => {
 
   const [showMobile, setShowmobile] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
-  const { isAuthenticated, loginState, logout } = useAuth();
+  const { isAuthenticated, userId, loginState, logout } = useAuth();
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
