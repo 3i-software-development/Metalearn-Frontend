@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useMutation, useQuery } from "react-query";
-
-
+import { useAuth } from "@/hooks/authContext";
 export const GetListNews = async () => {
   const response = await axios.post(
     `https://admin.metalearn.vn/MobileLogin/GetListInCategories`
@@ -367,10 +366,10 @@ export const GetGirdCardBoardLms = async () => {
   }
 };
 
-export const GetListConnectionWait = async () => {
+export const GetListConnectionWait = async (userName) => {
   // Define the data you want to send in the request body
   const requestData = new FormData();
-  requestData.append('userName', 'admin');
+  requestData.append('userName', userName);
   try {
     const response = await axios.post(
       'https://admin.metalearn.vn/MobileLogin/GetListConnectionWait',
@@ -389,10 +388,10 @@ export const GetListConnectionWait = async () => {
   }
 };
 
-export const GetListConnectionEnabled = async () => {
+export const GetListConnectionEnabled = async (userName) => {
   // Define the data you want to send in the request body
   const requestData = new FormData();
-  requestData.append('userName', 'admin');
+  requestData.append('userName', userName);
   try {
     const response = await axios.post(
       'https://admin.metalearn.vn/MobileLogin/GetListConnectionEnabled',
@@ -411,10 +410,12 @@ export const GetListConnectionEnabled = async () => {
   }
 };
 
-export const GetListConnectionSent = async () => {
+
+//formData
+export const GetListConnectionSent = async (userName) => {
   // Define the data you want to send in the request body
   const requestData = new FormData();
-  requestData.append('userName', 'admin');
+  requestData.append('userName', userName);
   try {
     const response = await axios.post(
       'https://admin.metalearn.vn/MobileLogin/GetListConnectionSent',
@@ -448,28 +449,97 @@ export const GetUsers = async () => {
 
 // kết quả rèn luyện
 
+//query string parameter
 export const GetApiLmsCountStudent = async (type) => {
   const userId = '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06';
   const apiUrl = `https://admin.metalearn.vn/MobileLogin/GetApiLmsCountStudent?userId=${userId}&type=${type}`;
 
   try {
-      const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-              'Accept': 'application/json',
-          },
-      });
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+      },
+    });
 
-      if (!response.ok) {
-          throw new Error(`Request failed with status: ${response.status}`);
-      }
+    if (!response.ok) {
+      throw new Error(`Request failed with status: ${response.status}`);
+    }
 
-      const responseData = await response.json();
-      const data = JSON.parse(responseData[type]);
+    const responseData = await response.json();
+    const data = JSON.parse(responseData[type]);
 
-      return data;
+    return data;
   } catch (error) {
-      console.error(error);
-      throw error;
+    console.error(error);
+    throw error;
   }
 }
+
+export const GetDetailLecture = async () => {
+  const courseCode = "KH_22/6"
+  const apiUrl = `https://admin.metalearn.vn/MobileLogin/GetDetailLecture?courseCode=${courseCode}`;
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Request failed with status: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+    console.log(responseData);
+
+    return responseData;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export const GetListCourseAssigned = async () => {
+  const username = "admin"
+  const requestData = {}
+  try {
+    const response = await axios.post(
+      `https://admin.metalearn.vn/MobileLogin/GetListCourseAssigned?userName=${username}`,
+      requestData,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+
+    console.error('Error:', error);
+    throw error;
+  }
+};
+
+export const GetLectureQuiz = async () => {
+  const lectureCode ="BG_22/6"
+  const requestData = {}
+  try {
+    const response = await axios.post(
+      `https://admin.metalearn.vn/MobileLogin/GetLectureQuiz?lectureCode=${lectureCode}`,
+      requestData,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+
+    console.error('Error:', error);
+    throw error;
+  }
+};

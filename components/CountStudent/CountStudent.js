@@ -8,8 +8,8 @@ import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 import { faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faCircleArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-
 import { Bar, Pie } from "react-chartjs-2";
+import { useAuth } from "@/hooks/authContext";
 import {
     Chart as ChartJS,
     BarElement,
@@ -21,12 +21,29 @@ import {
 // Register Chart.js components
 ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
 
+import { Collapse } from 'antd';
+const { Panel } = Collapse;
+
 const cx = classNames.bind(styles);
 
-function CountStudent() {
+function MyCollapsePanel() {
+    return (
+        <Collapse>
+            <Panel header="Panel 1" key="1">
+                Content of panel 1
+            </Panel>
+            <Panel header="Panel 2" key="2">
+                Content of panel 2
+            </Panel>
+            <Panel header="Panel 3" key="3">
+                Content of panel 3
+            </Panel>
+        </Collapse>
+    );
+}
 
-  
-   
+function CountStudent() {
+    const { userName } = useAuth();
 
     const [isLoading, SetisLoading] = useState({
         // QuizVoluntary: false,
@@ -143,16 +160,16 @@ function CountStudent() {
 
     const [isRightButtonVisible, setIsRightButtonVisible] = useState(true);
 
-  const handleClick = (api) => {
-    // Thực hiện các hành động khi nút được nhấn
-    console.log(`Button with API ${api} clicked.`);
+    const handleClick = (api) => {
+        // Thực hiện các hành động khi nút được nhấn
+        console.log(`Button with API ${api} clicked.`);
 
-  };
+    };
 
-  const handleToggleButtons = () => {
-    setIsRightButtonVisible(!isRightButtonVisible);
+    const handleToggleButtons = () => {
+        setIsRightButtonVisible(!isRightButtonVisible);
 
-  };
+    };
 
 
     const handleClickType = async (type) => {
@@ -173,8 +190,7 @@ function CountStudent() {
         console.log("showChart:", showChart);
     }
 
-    const GetCountDataExercise = async () => {
-        const userName = 'admin';
+    const GetCountDataExercise = async (userName) => {
         const apiUrl = `https://admin.metalearn.vn/MobileLogin/GetCountDataExercise?userName=${userName}`;
         try {
             const response = await fetch(apiUrl, {
@@ -196,23 +212,19 @@ function CountStudent() {
     }
 
     const handleClickExcersise = async () => {
-        const data = await GetCountDataExercise();
+        const data = await GetCountDataExercise(userName);
         setExcersise(data)
         setHideExcersise(false);
     }
-    const handleHideExcersise = () => {
-        setHideExcersise(true);
-    }
 
-    
     useEffect(() => {
         console.log("excersise:", excersise);
     }, [excersise])
 
 
     return (
-        <div style={{ width: "50%", marginTop: "50px" }}>
-            <div>
+        <div className={cx("count-student-container")} style={{marginTop: "50px" }}>
+            <Collapse>
                 {Object.keys(sections).map((sectionKey, index) => {
                     const section = sections[sectionKey];
                     const { rows, data } = section;
@@ -282,34 +294,8 @@ function CountStudent() {
                             },
                         ],
                     };
-
                     return (
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <div key={index} className={cx("section")}>
-                            <div className={cx("section-title")}>
-                                <h1>{section.title}</h1>
-                            </div>
-                            <button className={cx("CountStudent-icon")} onClick={() => handleClickType(section.Api)}> <FontAwesomeIcon icon={faCircleArrowRight} /> </button>
-
-
+                        <Panel header={section.title} key={index} onClick={() => handleClickType(section.Api)}>
                             {/* <div>
                                 {isRightButtonVisible ? (
                                     <button className={cx('CountStudent-icon')} onClick={() => {
@@ -331,15 +317,10 @@ function CountStudent() {
 
                             </div> */}
 
-                            
+
                             {result[section.Api] && showChart[section.Api] ? (
                                 <div>
-
-                                    <button className={cx("CountStudent-icon")} onClick={() => handleHideChart(section.Api)}> <FontAwesomeIcon icon={faCircleArrowDown} /> </button>
-                                    
-
                                     <div className={cx("section-render")}>
-        
                                         {/* <div className={cx("data-details")}>
                                             {Object.keys(rows).map((rowKey, rowIndex) => {
                                                 const row = rows[rowKey];
@@ -358,13 +339,13 @@ function CountStudent() {
                                             })}
                                         </div> */}
                                         <div className={cx("chart-image")}>
-                                            {/*{
+                                            {
                                                 section.chart === "Bar" ? (
-                                                    <Bar data={lineChartData} />
+                                                    <Bar className={cx("centered-chart")} data={lineChartData} />
                                                 ) : section.chart === "Pie" ? (
-                                                    <Pie data={pieChartData} />
+                                                    <Pie className={cx("centered-chart")} data={pieChartData} />
                                                 ) : null
-                                            } */}
+                                            }
                                         </div>
                                     </div>
 
@@ -375,8 +356,8 @@ function CountStudent() {
                                             const row = rows[rowKey];
                                             return (
                                                 <div key={rowIndex}>
-                                                     <FontAwesomeIcon icon={faRightToBracket} />
-                                                    <text style={{marginLeft: "15px"}}>{rowKey}</text>
+                                                    <FontAwesomeIcon icon={faRightToBracket} />
+                                                    <text style={{padding: "15px", fontWeight: "bold" }}>{rowKey}</text>
                                                     {row === "Minus" ? (
                                                         <text>{result[section.Api]["Done"] - result[section.Api]["Correct"]}</text>
                                                     ) : row === "Percent" ? (
@@ -390,11 +371,11 @@ function CountStudent() {
                                     </div>
                                 </div>
 
-                                
+
                             ) : isLoading[section.Api] ? (
                                 <h1>Loading...</h1>
                             ) : null}
-                        </div>
+                        </Panel>
                     );
                 })}
 
@@ -402,50 +383,40 @@ function CountStudent() {
 
 
 
-
-                <div className={cx("section-last")}>
-                    <h1>Bài tập khóa học</h1>
-                    <button className={cx("CountStudent-icon")} onClick={handleClickExcersise}> <FontAwesomeIcon icon={faCircleArrowRight} /> </button>
-                    {
-                        hideExcersise === false ? (
-                            <button className={cx("CountStudent-icon")} onClick={handleHideExcersise}> <FontAwesomeIcon icon={faCircleArrowDown} /> </button>
-                        ) : (
-                            null
-                        )
-                    }
-                    {
-                        excersise && hideExcersise === false ? excersise.map((item, index) => {
-                            return (
-                                <div key={index}>
-                                    <div className={cx("QuizObjCode")}>{item.QuizObjCode}</div>
-                                    <div className={cx("LectName")}>{item.LectName}</div>
-                                    {
-                                        item.ListDataExam.map((itemExam, indexExam) => {
-                                            const jsonArray = JSON.parse(itemExam.JsonData);
-                                            return (
-                                                <div key={indexExam}>
-                                                    <p className={cx("create")}>{itemExam.CreatedBy}</p>
-                                                    <p className={cx("date33")}>{itemExam.CreatedTime}</p>
-                                                    <div className={cx("item-exam-content")} dangerouslySetInnerHTML={{ __html: itemExam.Content }} />
-                                                    {
-                                                        jsonArray.map((itemJson, indexJson) => {
-                                                            return (
-                                                                <div key={indexJson}>
-                                                                     <span className={cx("itemJson-answer")}  dangerouslySetInnerHTML={{ __html: itemJson.Answer }} />    
-                                                                </div>
-                                                            )
-                                                        })
-                                                    }
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            )
-                        }) : null
-                    }
-                </div>
-            </div>
+                <Panel header="Bài tập khóa học" key="11" onClick={handleClickExcersise}>
+                        {
+                            excersise && hideExcersise === false ? excersise.map((item, index) => {
+                                return (
+                                    <div key={index}>
+                                        <div className={cx("QuizObjCode")}>{item.QuizObjCode}</div>
+                                        <div className={cx("LectName")}>{item.LectName}</div>
+                                        {
+                                            item.ListDataExam.map((itemExam, indexExam) => {
+                                                const jsonArray = JSON.parse(itemExam.JsonData);
+                                                return (
+                                                    <div key={indexExam} className={cx("item-content")}>
+                                                        <p className={cx("create")}>{itemExam.CreatedBy}</p>
+                                                        <p className={cx("date33")}>{itemExam.CreatedTime}</p>
+                                                        <div className={cx("item-exam-question")} dangerouslySetInnerHTML={{ __html: itemExam.Content }} />
+                                                        {
+                                                            jsonArray.map((itemJson, indexJson) => {
+                                                                return (
+                                                                    <div key={indexJson}>
+                                                                        <span className={cx("itemJson-answer")} dangerouslySetInnerHTML={{ __html: itemJson.Answer }} />
+                                                                    </div>
+                                                                )
+                                                            })
+                                                        }
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                )
+                            }) : null
+                        }
+                </Panel>
+            </Collapse>
         </div>
     );
 }
