@@ -7,7 +7,9 @@ import { faPen, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function Mission02() {
+
+
+function Mission02({selected}) {
   const [boardData, setBoardData] = useState([]);
   const [cardJob, setCardJob] = useState([]);
 
@@ -52,14 +54,14 @@ const handleItemClick = (itemName) => {
 
 
   return (
-    <div style={{width: "100%"}}>
+    <div className={cx("divall")}>
       <h1 className={cx("Mission-Title-01")}>Thông Tin Chung</h1>
       <div className={cx("Mission-status")}>
         <h3 className={cx("Mission-status-01")}>Đã xem: 2</h3>
         <h3 className={cx("Mission-status-02")}>Đồng ý: 2</h3>
         <h3 className={cx("Mission-status-03")}>Từ Chối: 0</h3>
       </div>
-      <h3 className={cx("Mission-Title-02")}>#256 Tên nhiệm vụ</h3>
+      {/* <h3 className={cx("Mission-Title-02")}>{selected.LmsTaskName}</h3> */}
       <h5 className={cx("Mission-Title-03")}>Admintrator Đã xem [24/10/2023 14:02:49]</h5>
 
       <div className={cx("Misstion02-Date")}>

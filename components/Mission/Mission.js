@@ -3,13 +3,9 @@ import { GetListJobCardLms, GetListStatusCardJoB } from "@/pages/api/CallAPI"
 import styles from "./ConfigGoogle.module.scss";
 import classNames from "classnames/bind";
 import Link from "next/link";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { faLock } from '@fortawesome/free-solid-svg-icons';
-import { faBan } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+import Missio02 from '../Mission02/Mission02'
+import index from "@/pages/blog";
+
 
 
 const cx = classNames.bind(styles);
@@ -36,7 +32,7 @@ const IconRender = ({StatusCode}) => {
 const CardStatusJob = () => {
     const [listStatusCardJoB, setListGetStatusCardJob] = useState([]);
     const [btnact, setBtnact] = useState(0);
-
+    
     const getStatusCardJobData = async () => {
         try {
             const res = await GetListStatusCardJoB();
@@ -70,10 +66,23 @@ const CardStatusJob = () => {
 const Mission = () => {
 
     const [listGetListJobCardLms, setListGetListJobCardLms] = useState([]);
+    const [selected, setSelected] = useState(listGetListJobCardLms[0]);
+
+
+
+
+
+    const handleItemClick = (itemName) => {
+        setSelected(listGetListJobCardLms[itemName])
+        console.log(itemName)
+      };
+    
+
     async function fetchData() {
         try {
             const res = await GetListJobCardLms();
             setListGetListJobCardLms(res.Object.data);
+            
         } catch (error) {
             // Handle any errors here
         }
@@ -81,40 +90,57 @@ const Mission = () => {
     useEffect(() => {
         fetchData();
     }, []);
+    useEffect(()=> {
+        console.log(listGetListJobCardLms)
+    },[listGetListJobCardLms])
+    useEffect(()=> {
+        console.log(selected)
+    },[selected])
     return (
-        <div>
-            <h1>Mission</h1>
-            {
-                listGetListJobCardLms ? listGetListJobCardLms.map((item, index) => {
-                    return (
-                        <div className={cx("hhh", "split-rows")} key={index}>
-                            <div>
-                                <h2>
-                                <Link href="/Mission">
-                                    {item.LmsTaskCode} : {item.LmsTaskName}
-                                </Link>
-                                    
-                                </h2>
-                                <div style={{display: "flex"}}>
-                                    <h3 className={cx("Mission_01")}>Mời tạo</h3>
-                                    <h3 className={cx("Mission_02")}>Không đặt thời hạn</h3>
+        <div className={cx("ghjk")}>
+            <div className={cx("lkjh")}>
+                <h1>Mission</h1>
+                {
+                    listGetListJobCardLms ? listGetListJobCardLms.map((item, index) => {
+                        return (
+
+                            <div onClick={() => handleItemClick(index)} className={cx("hhh", "split-rows")} key={index}>
+
+
+                                <div className={cx("poiu")}>
+                                    <h2>
+                                        {item.LmsTaskCode} : {item.LmsTaskName}                         
+                                    </h2>
+
+                                    <div style={{display: "flex"}}>
+                                        <h3 className={cx("Mission_01")}>Mời tạo</h3>
+                                        <h3 className={cx("Mission_02")}>Không đặt thời hạn</h3>
+                                    </div>
                                 </div>
+
+                                <div>
+                                    <h4 className={cx("kkkl4")}>
+                                        Người giao : {item.AssignName}
+                                    </h4>
+                                </div>
+
+                                <div>
+                                    <h5 className={cx("kkkl5")}>
+                                        {item.BeginTime}
+                                    </h5>
+                                </div>
+                                <CardStatusJob />
                             </div>
-                            <div>
-                                <h4>
-                                    Người giao : {item.AssignName}
-                                </h4>
-                            </div>
-                            <div>
-                                <h5>
-                                    {item.BeginTime}
-                                </h5>
-                            </div>
-                            <CardStatusJob />
-                        </div>
-                    )
-                }) : null
+                        )
+                    }) : null
             }
+            </div>
+
+            <div className={cx("jjjj")}>
+            {/* <h2 style={{fontSize: "35px"}}>{selected.LmsTaskName}</h2> */}
+                <Missio02 selected={selected} />
+    
+            </div>
         </div>
     )
 }

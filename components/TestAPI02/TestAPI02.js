@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import styles from './TestAPI02.module.scss'
 import TestAPIItem from "./TestAPIItem";
 // import { GetListStatusCardJoB } from "@/pages/api/CallAPI"
-import { GetListShiftLog } from "@/pages/api/CallAPI01"
+import { GetListShiftLog, GetListFileCwRead } from "@/pages/api/CallAPI01"
 
 
 
@@ -27,12 +27,19 @@ function TestAPI02() {
             fetchData()
         }
     }
-    const [listGetListShiftLog, setListGetListShiftLog] = useState([]);
+    // const [listGetListShiftLog, setListGetListShiftLog] = useState([]);
+    const [listGetListFileCwRead, setListGetListFileCwRead] = useState([]);
+
 
     async function fetchData() {
         try {
-            const res = await GetListShiftLog(teacher, student);
-            setListGetStatusCardJob(res.Object);
+            // const res = await GetListShiftLog(teacher, student);
+            const res = await GetListFileCwRead();
+
+           
+            // setListGetStatusCardJob(res.Object);
+            setListGetListFileCwRead(res.Object);
+
         } catch (error) {
             // Handle any errors here
         }
@@ -40,7 +47,7 @@ function TestAPI02() {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(listGetListShiftLog);
+    console.log(listGetListFileCwRead);
     return (
         <div className={cx('Online-page')}>
                 <div className={cx('document-layout')}>
@@ -63,13 +70,13 @@ function TestAPI02() {
                         <div className={cx('tab-content')}>
                             {activeTab === 'join' && (
                                 <div className={cx('manage')}>
-                                    <TestAPIItem list={listGetListShiftLog} />
+                                    {/* <TestAPIItem list={li} /> */}
                                 </div>
                             )}
 
                             {activeTab === 'manage' && (
                                 <div className={cx('user-list')}>
-                                    <TestAPIItem list={listGetListShiftLog} />
+                                    {/* <TestAPIItem list={listGetListShiftLog} /> */}
                                 </div>
                             )}
                         </div>
