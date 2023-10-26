@@ -7,7 +7,6 @@ import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(styles);
 
 function TabItem({ list }) {
-    
     // Check if the list is not empty
     if (list && list.length > 0) {
         return (
@@ -19,10 +18,8 @@ function TabItem({ list }) {
                             return (
                                 <div className={cx("course-item")} key={index}>
                                     <div className={cx("Course-item-text")}>
-
                                         <h2>Code: {item.Code}</h2>
                                         <h2>Value: {item.Name}</h2>
-
                                     </div>
                                 </div>
                             );
