@@ -42,13 +42,18 @@ export default function Login() {
 
   useEffect(() => {
     const temp = async () => {
+      console.log(data);
       if (data && !data?.Error) {
         let ipAddress = "";
+        localStorage.setItem("userName", data?.Object.UserName);
+        localStorage.setItem("userId", data?.Object.Id);
+        loginState();
         await $.getJSON('https://jsonip.com/?callback=?').done(function (data) {
           let ip_address = window.JSON.parse(JSON.stringify(data, null, 2));
           ip_address = ip_address.ip;
           ipAddress = ip_address;
         });
+
         sendRedice(ipAddress);
       }
 
@@ -78,9 +83,9 @@ export default function Login() {
       if (typeof window !== "undefined") {
         //sessionStorage.setItem("user", data?.Object.UserName);
         //sessionStorage.setItem("userId", data?.Object.UserName);
-        localStorage.setItem("userName", data?.Object.UserName);
-        localStorage.setItem("userId", data?.Object.Id);
-        loginState();
+        //localStorage.setItem("userName", data?.Object.UserName);
+        //localStorage.setItem("userId", data?.Object.Id);
+        //loginState();
         router.push('/personalized');
       }
     }
