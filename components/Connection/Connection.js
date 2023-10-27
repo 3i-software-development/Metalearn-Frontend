@@ -96,8 +96,8 @@ const Connection = () => {
                                 </div>
                             </div>
                         ))} */}
-                        {listConnectionEnabled.map((user) => (
-                            <div key={user.id} className={cx('user-item')}>
+                        {listConnectionEnabled.map((user, index) => (
+                            <div key={index} className={cx('user-item')}>
                                 <img  src={`https://admin.metalearn.vn${user.Picture}`} alt={user.UserName} className={cx('user-avatar')} />
                                 <div className={cx('user-info')}>
                                     <div className={cx('user-name')}>{user.UserName}</div>
@@ -131,8 +131,8 @@ const Connection = () => {
                                 </button>
                             </div>
                         ))} */}
-                        {listConnectionWait.map((user) => (
-                            <div key={user.id} className={cx('user-item')}>
+                        {listConnectionWait.map((user, index) => (
+                            <div key={index} className={cx('user-item')}>
                                 <img src={`https://admin.metalearn.vn${user.Picture}`} alt={user.UserName} className={cx('user-avatar')} />
                                 <div className={cx('user-info')}>
                                     <div className={cx('user-name')}>{user.UserName}</div>
