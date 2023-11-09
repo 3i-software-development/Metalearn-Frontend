@@ -1,0 +1,245 @@
+.Misstion02-Date {
+    display: flex;
+    margin-left: 50px;
+    margin-top: 70px;
+}
+
+.Mission-Title-01{
+    font-size: 45px;
+}
+
+.Mission-status {
+    margin-left: 20px;
+    display: flex;
+}
+
+.divall{
+    // background-color: red;
+    width: 100%;
+}
+
+.Mission-status-01 {
+    margin-left: 20px;
+}
+
+.Mission-status-02 {
+    margin-left: 20px;
+    color: green;
+}
+
+.Mission-status-03 {
+    margin-left: 20px;
+    color: red;
+}
+
+.Mission-Title-02{
+    margin-left: 50px;
+    font-size: 35px;
+    margin-top: 25px;
+}
+.Mission-Title-03{
+    margin-left: 80px;
+    margin-top: 25px;
+    font-size: 25px;
+}
+
+
+
+.Misstion02-Date-Start{
+    margin-left: 20px;
+}
+
+.Misstion02-Date-End{
+    margin-left: 20px;
+}
+
+
+
+.Misstion02-Date-02{
+    margin-left: 200px;
+}
+
+.date {
+    background-color: bisque;
+    width: 150%;
+    padding-left: 20px;
+    border-radius: 20px;
+}
+
+.Mission-Item{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    margin-left: 70px;
+}
+
+.Mission-Item-title{
+    margin-left: 10px;
+    font-size: 25px;
+    &:hover {
+        color: red;
+    }
+}
+
+.Mission-Item-list {
+    margin-top: 5px;
+    margin-left: 140px;
+    list-style: none;
+    cursor: pointer;
+    &:hover {
+        color: red;
+    }
+}
+
+.Mission-hhh{
+    display: flex;
+    align-items: center;
+    margin-top: 55px;
+}
+
+.Mission-hhh-01{
+    margin-left: 190px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.Mission-hhh-02{
+    margin-left: 190px;
+}
+
+.Mission-hhh-03{
+    margin-left: 190px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.yes-none{
+    display: flex;
+    margin-left: 190px;
+}
+
+.yes-none-01 {
+    background-color: red;
+    border-radius: 10px;
+    margin-left: 70px;
+    min-width: 120px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+    background-color: rgb(232, 97, 97);
+    }
+}
+
+.yes-none-02 {
+    background-color: green;
+    border-radius: 10px;
+    margin-left: 70px;
+    min-width: 120px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(151, 222, 151);
+
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .Mission-Title-01{
+        font-size: 20px;
+    }
+
+    .Mission-status{
+        font-size: 12px;
+    }
+
+
+    .Mission-Title-03{
+        font-size: 19px;
+    }
+    
+    .divall{
+        width: 100%;
+    }
+
+    .yes-none{
+        display: flex;
+        margin-left: 2px;
+        margin-top: 35px;
+    }
+
+    .yes-none-01 {
+        margin-left: 20px;
+        min-width: 80px;
+        min-height: 20px;
+    }
+
+    .yes-none-02 {
+        margin-left: 20px;
+        min-width: 80px;
+        min-height: 20px;
+    }
+
+    .Misstion02-Date{
+
+    }
+
+
+    .Misstion02-Date-02{
+        margin-left: 10px;
+    }
+
+    .date {
+        background-color: transparent;
+        width: 120px;
+    }
+
+
+    .Mission-hhh{
+        display: flex;
+        align-items: center;
+        
+    }
+
+
+    .Mission-hhh-01{
+        margin-left: 30px;
+        font-size: 20px;
+
+    }
+
+    .Mission-hhh-02{
+        margin-left: 30px;
+        font-size: 15px;
+    }
+
+    .Mission-hhh-03{
+        margin-left: 30px;
+        font-size: 15px;
+    }
+
+
+    .Misstion02-Date {
+        display: flex;
+        margin-left: 20px;
+        margin-top: 30px;
+    }
+
+    .Mission-Item-title{
+        font-size: 19px;
+        // background-color: red;
+    }
+
+    .Mission-Item{
+        margin-left: 20px;
+    }
+    
+}
+
+

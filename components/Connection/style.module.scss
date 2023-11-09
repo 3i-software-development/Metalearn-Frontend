@@ -73,12 +73,13 @@
 }
 
 /* Avatar styles */
+/* Avatar styles */
 .user-avatar {
-  max-width: 80px;
-  /* Adjust the avatar size as needed */
   border-radius: 50%;
-  /* Make the avatar circular */
+  height: 80px;
+  width: 80px;
 }
+
 
 /* User info styles */
 .user-info {

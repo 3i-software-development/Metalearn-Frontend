@@ -3,11 +3,10 @@ import classNames from "classnames/bind";
 import styles from './TestAPI02.module.scss'
 import TestAPIItem from "./TestAPIItem";
 // import { GetListStatusCardJoB } from "@/pages/api/CallAPI"
-import { GetListJobCardLms} from "@/pages/api/CallAPI"
 
+import { GetListShiftLog, GetListFileCwRead } from "@/pages/api/CallAPI01"
 
-
-
+import { GetAllPinComment } from "@/pages/api/CallAPITest"
 
 
 
@@ -20,70 +19,126 @@ function TestAPI02() {
     const [student, setStudent] = useState('admin');
 
 
-    const handleTabChange = (tab) => {
-        setActiveTab(tab);
-        if (tab === 'join' && tab !== activeTab) {
-            setTeacher('admin');
-            setStudent('');
-            fetchData()
-        } else if (tab === 'manage' && tab !== activeTab) {
-            setTeacher('');
-            setStudent('admin');
-            fetchData()
-        }
-    }
-    const [listGetStatusCardJob, setListGetStatusCardJob] = useState([]);
+    // const handleTabChange = (tab) => {
+    //     setActiveTab(tab);
+    //     if (tab === 'join' && tab !== activeTab) {
+    //         setTeacher('admin');
+    //         setStudent('');
+    //         fetchData()
+    //     } else if (tab === 'manage' && tab !== activeTab) {
+    //         setTeacher('');
+    //         setStudent('admin');
+    //         fetchData()
+    //     }
+    // }
 
-    async function fetchData() {
-        try {
-            const res = await GetListJobCardLms(teacher, student);
-            setListGetStatusCardJob(res.Object);
-        } catch (error) {
-            // Handle any errors here
-        }
-    }
-    useEffect(() => {
-        fetchData();
-    }, []);
-    console.log(listGetStatusCardJob);
-    return (
-        <div className={cx('Online-page')}>
-                <div className={cx('document-layout')}>
+    // // const [listGetListShiftLog, setListGetListShiftLog] = useState([]);
+    // const [listGetListFileCwRead, setListGetListFileCwRead] = useState([]);
 
-                    <div className={cx('document-category-name-list')}>
-                        <div className={cx('tab-bar')}>
-                            <button
-                                className={cx('tab-button', { active: activeTab === 'join' })}
-                                onClick={() => handleTabChange('join')}
-                            >
+
+    // async function fetchData() {
+    //     try {
+    //         // const res = await GetListShiftLog(teacher, student);
+    //         const res = await GetListFileCwRead();
+
+           
+    //         // setListGetStatusCardJob(res.Object);
+    //         setListGetListFileCwRead(res.Object);
+
+
+
+    // const [allPinComment, setAllPinComment] = useState();
+
+    // async function fetchData() {
+    //     try {
+    //         const res = await GetAllPinComment();
+    //         setAllPinComment(res); // Gán mảng dữ liệu từ API vào state boardData
+
+    //     } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //     }
+    // }
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
+
+    // console.log(listGetListFileCwRead);
+    // return (
+    //     <div className={cx('Online-page')}>
+    //             <div className={cx('document-layout')}>
+
+    //                 <div className={cx('document-category-name-list')}>
+    //                     <div className={cx('tab-bar')}>
+    //                         <button
+    //                             className={cx('tab-button', { active: activeTab === 'join' })}
+    //                             onClick={() => handleTabChange('join')}
+    //                         >
                              
-                            </button>
-                            <button
-                                className={cx('tab-button', { active: activeTab === 'manage' })}
-                                onClick={() => handleTabChange('manage')}
-                            >
+    //                         </button>
+    //                         <button
+    //                             className={cx('tab-button', { active: activeTab === 'manage' })}
+    //                             onClick={() => handleTabChange('manage')}
+    //                         >
                         
-                            </button>
-                        </div>
-                        <div className={cx('tab-content')}>
-                            {activeTab === 'join' && (
-                                <div className={cx('manage')}>
-                                    <TestAPIItem list={listGetStatusCardJob} />
-                                </div>
-                            )}
+    //                         </button>
+    //                     </div>
+    //                     <div className={cx('tab-content')}>
+    //                         {activeTab === 'join' && (
+    //                             <div className={cx('manage')}>
+    //                                 {/* <TestAPIItem list={li} /> */}
+    //                             </div>
+    //                         )}
 
-                            {activeTab === 'manage' && (
-                                <div className={cx('user-list')}>
-                                    <TestAPIItem list={listGetStatusCardJob} />
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </div>
+    //                         {activeTab === 'manage' && (
+    //                             <div className={cx('user-list')}>
+    //                                 {/* <TestAPIItem list={listGetListShiftLog} /> */}
+    //                             </div>
+    //                         )}
+    //                     </div>
+
+
+    // useEffect(() => {
+    //     console.log(allPinComment);
+    // }, [allPinComment])
+
+    // // console.log(allPinExam);
+    return (
+        // <div className={cx('Online-page')}>
+        //     <div className={cx('document-layout')}>
+        //         <div className={cx('document-category-name-list')}>
+        //             <div className={cx('tab-bar')}>
+        //                 <button
+        //                     className={cx('tab-button', { active: activeTab === 'join' })}
+        //                     onClick={() => handleTabChange('join')}
+        //                 >
+        //                 </button>
+        //                 <button
+        //                     className={cx('tab-button', { active: activeTab === 'manage' })}
+        //                     onClick={() => handleTabChange('manage')}
+        //                 >
+        //                 </button>
+        //             </div>
+        //             <div className={cx('tab-content')}>
+        //                 {activeTab === 'join' && (
+        //                     <div className={cx('manage')}>
+        //                         <TestAPIItem list={allPinComment} />
+        //                     </div>
+        //                 )}
+
+        //                 {activeTab === 'manage' && (
+        //                     <div className={cx('user-list')}>
+        //                         <TestAPIItem list={allPinComment} />
+        //                     </div>
+        //                 )}
+
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
+        <div>
+            <h1>TestAPI02</h1>
+        </div>
     )
-  
-
 }
 
 export default TestAPI02;

@@ -1,50 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from './style.module.scss';
 import classNames from 'classnames/bind';
+import { GetListConnectionWait, GetListConnectionEnabled, GetListConnectionSent, GetUsers } from "@/pages/api/CallAPI_H"
+import { set } from "react-hook-form";
+import { useAuth } from "@/hooks/authContext";
 
 const cx = classNames.bind(styles);
 
 const Connection = () => {
     const [activeTab, setActiveTab] = useState('connected'); // 'connected' or 'requests'
-    const a = {
-        id: 2,
-        avatar: "https://media.istockphoto.com/id/1215201838/vector/indian-teacher-with-book-near-blackboard-in-class.jpg?s=612x612&w=0&k=20&c=nbZv2PounwE0inw5tYrHZo_I-t5qWaX5CY1QnxJ0rFw=",
-        name: "Jane Doe",
-        status: "offline"
-    }
+    const [listConnectionWait, setListConnectionWait] = useState([]);
+    const [listConnectionEnabled, setListConnectionEnabled] = useState([]);
+    const [listConnectionSent, setListConnectionSent] = useState([]);
+    const [listUser, setListUser] = useState([]);
 
-    const connectedUserList = [
-        {
-            id: 1,
-            avatar: "https://media.istockphoto.com/id/1215201838/vector/indian-teacher-with-book-near-blackboard-in-class.jpg?s=612x612&w=0&k=20&c=nbZv2PounwE0inw5tYrHZo_I-t5qWaX5CY1QnxJ0rFw=",
-            name: "John Doe",
-            status: "online"
-        },
-        {
-            id: 2,
-            avatar: "https://media.istockphoto.com/id/1215201838/vector/indian-teacher-with-book-near-blackboard-in-class.jpg?s=612x612&w=0&k=20&c=nbZv2PounwE0inw5tYrHZo_I-t5qWaX5CY1QnxJ0rFw=",
-            name: "Jane Doe",
-            status: "offline"
-        }, a, a, a
-        // Add more users as needed
-    ]
-
-    const requestList = [
-        {
-            id: 1,
-            avatar: "https://media.istockphoto.com/id/1215201838/vector/indian-teacher-with-book-near-blackboard-in-class.jpg?s=612x612&w=0&k=20&c=nbZv2PounwE0inw5tYrHZo_I-t5qWaX5CY1QnxJ0rFw=",
-            name: "Johnssssssss Doe",
-            status: "online"
-        },
-        {
-            id: 2,
-            avatar: "https://media.istockphoto.com/id/1215201838/vector/indian-teacher-with-book-near-blackboard-in-class.jpg?s=612x612&w=0&k=20&c=nbZv2PounwE0inw5tYrHZo_I-t5qWaX5CY1QnxJ0rFw=",
-            name: "Jkssss Doe",
-            status: "online"
-        }, a, a, a
-        // Add more users as needed
-    ]
-
+    const { userName } = useAuth();
     const handleTabChange = (tab) => {
         setActiveTab(tab);
     }
@@ -53,6 +23,49 @@ const Connection = () => {
         // Add your logic to handle declining a request here
         console.log(`Decline user with ID: ${userId}`);
     }
+
+    async function fetchDataListConnectionEnabled() {
+        try {
+            const res = await GetListConnectionEnabled(userName);
+            setListConnectionEnabled(res);
+        } catch (error) {
+            // Handle any errors here
+        }
+    }
+
+    async function fetchDataListConnectionWait() {
+        try {
+            const res = await GetListConnectionWait(userName);
+            setListConnectionWait(res);
+        } catch (error) {
+            // Handle any errors here
+        }
+    }
+
+    async function fetchDataListConnectionSent() {
+        try {
+            const res = await GetListConnectionSent(userName);
+            setListConnectionSent(res);
+        }
+        catch (error) {
+
+        }
+    }
+    async function fetchDataListUser() {
+        try {
+            const res = await GetUsers();
+            setListUser(res.Object);
+        }
+        catch (error) {
+
+        }
+    }
+    useEffect(() => {
+        fetchDataListConnectionEnabled();
+        fetchDataListConnectionWait();
+        fetchDataListConnectionSent();
+        fetchDataListUser();
+    }, []);
 
     return (
         <div className={cx('connection')}>
@@ -74,7 +87,7 @@ const Connection = () => {
             <div className={cx('tab-content')}>
                 {activeTab === 'connected' && (
                     <div className={cx('user-list')}>
-                        {connectedUserList.map((user) => (
+                        {/* {connectedUserList.map((user) => (
                             <div key={user.id} className={cx('user-item')}>
                                 <img src={user.avatar} alt={user.name} className={cx('user-avatar')} />
                                 <div className={cx('user-info')}>
@@ -82,13 +95,28 @@ const Connection = () => {
                                     <div className={cx('user-status')}>{user.status}</div>
                                 </div>
                             </div>
+                        ))} */}
+                        {listConnectionEnabled.map((user, index) => (
+                            <div key={index} className={cx('user-item')}>
+                                <img  src={`https://admin.metalearn.vn${user.Picture}`} alt={user.UserName} className={cx('user-avatar')} />
+                                <div className={cx('user-info')}>
+                                    <div className={cx('user-name')}>{user.UserName}</div>
+                                    <div className={cx('user-full-name')}>{user.FullName}</div>
+                                </div>
+                                <button
+                                    className={cx('decline-button')}
+                                    onClick={() => handleDecline(user.id)}
+                                >
+                                    Decline
+                                </button>
+                            </div>
                         ))}
                     </div>
                 )}
 
                 {activeTab === 'requests' && (
                     <div className={cx('user-list')}>
-                        {requestList.map((user) => (
+                        {/* {requestList.map((user) => (
                             <div key={user.id} className={cx('user-item')}>
                                 <img src={user.avatar} alt={user.name} className={cx('user-avatar')} />
                                 <div className={cx('user-info')}>
@@ -101,6 +129,15 @@ const Connection = () => {
                                 >
                                     Decline
                                 </button>
+                            </div>
+                        ))} */}
+                        {listConnectionWait.map((user, index) => (
+                            <div key={index} className={cx('user-item')}>
+                                <img src={`https://admin.metalearn.vn${user.Picture}`} alt={user.UserName} className={cx('user-avatar')} />
+                                <div className={cx('user-info')}>
+                                    <div className={cx('user-name')}>{user.UserName}</div>
+                                    <div className={cx('user-full-name')}>{user.FullName}</div>
+                                </div>
                             </div>
                         ))}
                     </div>

@@ -10,6 +10,7 @@ export function AuthProvider({ children }) {
   const router = useRouter();
 
   const [user, setUser] = useState(null);
+
   const [saveSetting, setSaveSetting] = useState({
     "Menu trái": {
       style: "default",
@@ -54,21 +55,27 @@ export function AuthProvider({ children }) {
   });
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-
+  const [userName, setUserName] = useState(null);
+  const [userId, setUserId] = useState(null);
   useEffect(() => {
     // Kiểm tra JWT trong local storage hoặc cookie khi ứng dụng tải lại
 
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem("userName");
+    const userId = localStorage.getItem("userId");
     const saveSetting = localStorage.getItem("saveSetting");
     if (saveSetting) {
       setSaveSetting(JSON.parse(saveSetting));
     }
     if (user) {
       setUser(user);
+      setUserName(user);
+      setUserId(userId);
       setIsAuthenticated(true);
     }
     else {
       setUser(null);
+      setUserName(null);
+      setUserId(null);
       setIsAuthenticated(false);  
     }
     setLoading(false);
@@ -85,16 +92,18 @@ export function AuthProvider({ children }) {
   const logout = () => {
     // Xóa JWT khỏi local storage hoặc cookie
     //sessionStorage.removeItem("user");
-    localStorage.removeItem("user");
+    localStorage.removeItem("userName");
     localStorage.removeItem("userId");
     setUser(null);
+    setUserName(null);
+    setUserId(null);
     setIsAuthenticated(false);
     router.push('/auth/login');
   };
 
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, loginState, logout, saveSetting, loading }}>
+    <AuthContext.Provider value={{ isAuthenticated, userName, userId, loginState, logout, saveSetting, loading }}>
       {children}
     </AuthContext.Provider>
   );
