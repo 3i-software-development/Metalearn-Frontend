@@ -21,9 +21,14 @@
 .teacher-item{
     width: 30%;
     margin-left: 20px;
+    // border:rgb(165, 164, 164) solid 1px;
+    // border-radius: 10px;
+    padding: 5px;
+    margin-top: 16px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     i {
         color: red;
-        margin-right: 5px;        
+        margin-right: 5px;     
     }
 }
 

@@ -26,16 +26,16 @@
 .course-item {
   flex: 0 0 calc(24% - 10px);
   /* Set each item to occupy 50% width with some spacing */
-  border: 2px solid #ccc;
+  // border: 2px solid #ccc;
   padding: 10px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   cursor: pointer;
-  box-shadow: 5px 5px 5px rgba(9, 9, 9, 0.75);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   box-sizing: border-box;
+  // background-color: #007bff;
   /* Ensure padding is included in the width */
 
   &:hover {

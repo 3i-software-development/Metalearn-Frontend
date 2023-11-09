@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./OnlineClasses.module.scss";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { Date_Time } from "@/ultils/utils_type";
 
 const cx = classNames.bind(styles);
 
@@ -25,7 +26,7 @@ function TabItem({ list }) {
                                             <FontAwesomeIcon icon={faGraduationCap} />
                                         </h4>
                                         <h5 className={cx("OnlineClasses-Day")}>
-                                            Bắt đầu ngày: {item.StartTime}
+                                            Bắt đầu ngày: {Date_Time(item.StartTime)}
                                         </h5>
                                     </div>
 
