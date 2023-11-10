@@ -63,5 +63,12 @@
     "styled-components": "^5.3.9",
     "swiper": "^9.2.0",
     "tippy.js": "^6.3.7"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "data.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "author": "",
+  "license": "ISC"
 }

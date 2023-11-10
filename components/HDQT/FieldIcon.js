@@ -2,9 +2,9 @@ import React from "react";
 
 const FieldIcons = (props) => {
   return (
-    <div style={{ height: '30px', width: '27%', margin: '1%', backgroundColor: 'white', border: 'solid 1px black'}}>
+    <div className={props.cx("field")}>
       <a href={props.fieldData.aRef} target="_blank">
-        <img style={{ height: '100%', width: '100%' }} src={props.fieldData.imgRef}></img>
+        <img className={props.cx("img")} src={props.fieldData.imgRef}></img>
       </a>
     </div>
   )
