@@ -12,6 +12,7 @@ import TopCategories from "@/components/Home/TopCategories";
 import Intro2 from "@/components/Intro/Intro2";
 import Team from "@/components/Intro/Team";
 import { ListIntro } from "@/public/data";
+import Slider from "@/components/Slider/Slider";
 
 const cx = classNames.bind(styles);
 
@@ -34,6 +35,8 @@ export default function Home() {
         />
       </Head>
       <main>
+        <Slider />
+
         <Section>
           <Banner
             img={Bnimg}

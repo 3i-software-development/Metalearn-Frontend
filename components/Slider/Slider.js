@@ -6,7 +6,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
-const Slider = ({ slides }) => {
+const Slider = () => {
+  const slides = [
+    "https://cdn.brvn.vn/topics/1280px/2022/324462_Cover-1200x630_1649988626.jpg",
+    "https://cdn.brvn.vn/topics/1280px/2022/324462_Cover-1200x630_1649988626.jpg",
+    "https://cdn.brvn.vn/topics/1280px/2022/324462_Cover-1200x630_1649988626.jpg",
+  ];
   return (
     <Swiper
       spaceBetween={20}
@@ -15,7 +20,7 @@ const Slider = ({ slides }) => {
       pagination={{ clickable: true }}
       autoplay={{ delay: 2000 }}
     >
-      {slides.map((slide, index) => (
+      {slides?.map((slide, index) => (
         <SwiperSlide key={index}>
           <Image
             width={2000}
