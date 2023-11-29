@@ -13,11 +13,7 @@ import styles from "./style.module.scss";
 const cx = classNames.bind(styles);
 
 const Slider = () => {
-  const slides = [
-    "/public/image/Slider_1.png",
-    "https://cdn.brvn.vn/topics/1280px/2022/324462_Cover-1200x630_1649988626.jpg",
-    "https://cdn.brvn.vn/topics/1280px/2022/324462_Cover-1200x630_1649988626.jpg",
-  ];
+  const slides = ["/image/Slider_1.png", "/image/slider_2.png"];
 
   // Hàm xử lý sự kiện điều hướng Swiper sang trang trước
   const handlePrev = () => {

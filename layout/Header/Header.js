@@ -161,166 +161,169 @@ const Header = () => {
 
   return (
     <div className={cx("header")}>
-      {isAuthenticated && (
-        <AiOutlineMenu
-          className={cx("icon-mobile")}
-          onClick={() => toggleMenu()}
-        />
-      )}
-      {toggle && <MenuMobile items={items} setToggle={setToggle} />}
+      <div className={cx("header-left")}>
+        {isAuthenticated && (
+          <AiOutlineMenu
+            className={cx("icon-mobile")}
+            onClick={() => toggleMenu()}
+          />
+        )}
+        {toggle && <MenuMobile items={items} setToggle={setToggle} />}
 
-      <Link
-        href={isAuthenticated ? "/personalized" : "/"}
-        className={cx("logo-container")}
-      >
-        Meta<span>Learn</span>
-      </Link>
-
-      <div className={cx("header-links")}>
-        <Link href="/subjects" className={cx("head-link")}>
-          <Dropdown menu={{ items }}>
-            <Space className={cx("head-link")}>Môn học</Space>
-          </Dropdown>
+        <Link
+          href={isAuthenticated ? "/personalized" : "/"}
+          className={cx("logo-container")}
+        >
+          Meta<span>Learn</span>
         </Link>
-        <Link href="/news" className={cx("head-link")}>
-          Tin tức
-        </Link>
-        <Link href="/my-class" className={cx("head-link")}>
-          Lớp học trực tuyến
-        </Link>
-        <Link href="/documents" className={cx("head-link")}>
-          Tài liệu
-        </Link>
-        <Link href="/exam" className={cx("head-link")}>
-          Đề thi
-        </Link>
-      </div>
 
-      <div className={cx("search-container")}>
-        <span className="search-icon">
-          <BsSearch />
-        </span>
-        <input
-          type="text"
-          placeholder="Tìm kiếm"
-          className={cx("search-input")}
-        />
-      </div>
-
-      {isAuthenticated && (
-        <div className={cx("icon-ss")}>
-          <div className={cx("authenticated_div")}>
-            <div className={cx("icon-container")}>
-              <BsSearch className={cx("icon-search-mobile")} />
-            </div>
-            <div className={cx("icon-container")}>
-              <Link href="/payment">
-                <TiShoppingCart className={cx("icon")} />
-              </Link>
-            </div>
-            <div className={cx("icon-container")}>
-              <FaBell onClick={toggleNotification} />
-            </div>
-            <div className={cx("icon-container")}>
-              <BiSolidUser onClick={handleOpenUserMenu} />
-            </div>
-            <Button className={cx("logout-button")} onClick={() => logout()}>
-              Đăng xuất
-            </Button>
-            {/* Notification Popup */}
-            {showNotification && <NotificationPopup />}
-            <Box sx={{ flexGrow: 0 }}>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {/* <MenuItem onClick={handleCloseUserMenu}> */}
-                <ListItemButton component="a" className={cx("listSettingss")}>
-                  <div className={cx("listSettings")}>
-                    <div>
-                      <Image
-                        src="https://usehooks.com/images/bytes-logo.png"
-                        width={20}
-                        height={20}
-                        alt=""
-                      />
-                    </div>
-                    <div>
-                      <ListItemText primary="Spam" />
-                    </div>
-                  </div>
-                </ListItemButton>
-
-                <ListItemButton component="a" className={cx("listSettingss")}>
-                  <div className={cx("listSettings")}>
-                    <div>
-                      <Image
-                        src="https://usehooks.com/images/bytes-logo.png"
-                        width={20}
-                        height={20}
-                        alt=""
-                      />
-                    </div>
-                    <div>
-                      <ListItemText primary="Spam" />
-                    </div>
-                  </div>
-                </ListItemButton>
-
-                <ListItemButton component="a" className={cx("listSettingss")}>
-                  <div className={cx("listSettings")}>
-                    <div>
-                      <Image
-                        src="https://usehooks.com/images/bytes-logo.png"
-                        width={20}
-                        height={20}
-                        alt=""
-                      />
-                    </div>
-                    <div>
-                      <ListItemText primary="Spam" />
-                    </div>
-                  </div>
-                </ListItemButton>
-
-                <ListItemButton component="a" className={cx("listSettingss")}>
-                  <div className={cx("listSettings")}>
-                    <div>
-                      <Image
-                        src="https://usehooks.com/images/bytes-logo.png"
-                        width={20}
-                        height={20}
-                        alt=""
-                      />
-                    </div>
-                    <div>
-                      <ListItemText primary="Spam" />
-                    </div>
-                  </div>
-                </ListItemButton>
-
-                {/* </MenuItem> */}
-              </Menu>
-            </Box>
-          </div>
+        <div className={cx("header-links")}>
+          <Link href="/subjects" className={cx("head-link")}>
+            <Dropdown menu={{ items }}>
+              <Space className={cx("head-link")}>Môn học</Space>
+            </Dropdown>
+          </Link>
+          <Link href="/news" className={cx("head-link")}>
+            Tin tức
+          </Link>
+          <Link href="/my-class" className={cx("head-link")}>
+            Lớp học trực tuyến
+          </Link>
+          <Link href="/documents" className={cx("head-link")}>
+            Tài liệu
+          </Link>
+          <Link href="/exam" className={cx("head-link")}>
+            Đề thi
+          </Link>
         </div>
-      )}
+      </div>
 
-      {/* Notification button */}
+      <div className={cx("header-right")}>
+        <div className={cx("search-container")}>
+          <span className="search-icon">
+            <BsSearch />
+          </span>
+          <input
+            type="text"
+            placeholder="Tìm kiếm"
+            className={cx("search-input")}
+          />
+        </div>
 
-      {/*
+        {isAuthenticated && (
+          <div className={cx("icon-ss")}>
+            <div className={cx("authenticated_div")}>
+              <div className={cx("icon-container")}>
+                <BsSearch className={cx("icon-search-mobile")} />
+              </div>
+              <div className={cx("icon-container")}>
+                <Link href="/payment">
+                  <TiShoppingCart className={cx("icon")} />
+                </Link>
+              </div>
+              <div className={cx("icon-container")}>
+                <FaBell onClick={toggleNotification} />
+              </div>
+              <div className={cx("icon-container")}>
+                <BiSolidUser onClick={handleOpenUserMenu} />
+              </div>
+              <Button className={cx("logout-button")} onClick={() => logout()}>
+                Đăng xuất
+              </Button>
+              {/* Notification Popup */}
+              {showNotification && <NotificationPopup />}
+              <Box sx={{ flexGrow: 0 }}>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {/* <MenuItem onClick={handleCloseUserMenu}> */}
+                  <ListItemButton component="a" className={cx("listSettingss")}>
+                    <div className={cx("listSettings")}>
+                      <div>
+                        <Image
+                          src="https://usehooks.com/images/bytes-logo.png"
+                          width={20}
+                          height={20}
+                          alt=""
+                        />
+                      </div>
+                      <div>
+                        <ListItemText primary="Spam" />
+                      </div>
+                    </div>
+                  </ListItemButton>
+
+                  <ListItemButton component="a" className={cx("listSettingss")}>
+                    <div className={cx("listSettings")}>
+                      <div>
+                        <Image
+                          src="https://usehooks.com/images/bytes-logo.png"
+                          width={20}
+                          height={20}
+                          alt=""
+                        />
+                      </div>
+                      <div>
+                        <ListItemText primary="Spam" />
+                      </div>
+                    </div>
+                  </ListItemButton>
+
+                  <ListItemButton component="a" className={cx("listSettingss")}>
+                    <div className={cx("listSettings")}>
+                      <div>
+                        <Image
+                          src="https://usehooks.com/images/bytes-logo.png"
+                          width={20}
+                          height={20}
+                          alt=""
+                        />
+                      </div>
+                      <div>
+                        <ListItemText primary="Spam" />
+                      </div>
+                    </div>
+                  </ListItemButton>
+
+                  <ListItemButton component="a" className={cx("listSettingss")}>
+                    <div className={cx("listSettings")}>
+                      <div>
+                        <Image
+                          src="https://usehooks.com/images/bytes-logo.png"
+                          width={20}
+                          height={20}
+                          alt=""
+                        />
+                      </div>
+                      <div>
+                        <ListItemText primary="Spam" />
+                      </div>
+                    </div>
+                  </ListItemButton>
+
+                  {/* </MenuItem> */}
+                </Menu>
+              </Box>
+            </div>
+          </div>
+        )}
+
+        {/* Notification button */}
+
+        {/*
       <div className={cx("change-language")}>
  
           <BiWorld className={cx("icon")} onClick={() => setShow(!show)} />
@@ -329,16 +332,17 @@ const Header = () => {
       </div>
       */}
 
-      {!isAuthenticated && (
-        <div className={cx("user")}>
-          <Link href="/auth/login" className={cx("login-btn")}>
-            Đăng nhập
-          </Link>
-          <Link href="/auth/signup" className={cx("signup-btn")}>
-            Đăng kí
-          </Link>
-        </div>
-      )}
+        {!isAuthenticated && (
+          <div className={cx("user")}>
+            <Link href="/auth/login" className={cx("login-btn")}>
+              Đăng nhập
+            </Link>
+            <Link href="/auth/signup" className={cx("signup-btn")}>
+              Đăng kí
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

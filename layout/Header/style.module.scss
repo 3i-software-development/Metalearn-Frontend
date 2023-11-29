@@ -15,6 +15,16 @@
   z-index: 100;
   /* Add a z-index to ensure the header stays on top */
 }
+.header-left {
+  column-gap: 25px;
+  display: flex;
+  align-items: center;
+}
+.header-right {
+  column-gap: 25px;
+  display: flex;
+  align-items: center;
+}
 
 .head-link {
   font-size: 16px;
@@ -63,6 +73,7 @@
 }
 
 .search-container {
+  position: relative;
   .search-icon {
     position: absolute;
     left: 0;
