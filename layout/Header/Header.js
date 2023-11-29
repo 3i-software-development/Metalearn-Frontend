@@ -175,30 +175,8 @@ const Header = () => {
       >
         Meta<span>Learn</span>
       </Link>
-      {/* <Link href="/subjects" className={cx("head-link")}>
-        <Dropdown
-          menu={{
-            items,
-          }}
-        >
-          <Space className={cx("head-link")} >Môn học </Space>
-        </Dropdown>
-      </Link> */}
 
-      <div>
-        <h2 style={{ marginLeft: "100px" }}></h2>
-      </div>
-
-      <div style={{ display: "none" }} className={cx("search-container")}>
-        <input
-          type="text"
-          placeholder="Tìm kiếm"
-          className={cx("search-input")}
-        />
-        <BsSearch />
-      </div>
-
-      <div className="header-links">
+      <div className={cx("header-links")}>
         <Link href="/subjects" className={cx("head-link")}>
           <Dropdown menu={{ items }}>
             <Space className={cx("head-link")}>Môn học</Space>
@@ -219,12 +197,14 @@ const Header = () => {
       </div>
 
       <div className={cx("search-container")}>
+        <span className="search-icon">
+          <BsSearch />
+        </span>
         <input
           type="text"
           placeholder="Tìm kiếm"
           className={cx("search-input")}
         />
-        <BsSearch />
       </div>
 
       {isAuthenticated && (

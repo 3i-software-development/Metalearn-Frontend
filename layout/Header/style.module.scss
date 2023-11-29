@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  height: 80px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,17 +63,18 @@
 }
 
 .search-container {
-  left: 160px;
-
-  position: relative;
-  flex: 1;
+  .search-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 
   input {
     padding: 8px 20px 8px 50px;
     border-radius: 24px;
     border: 1px solid black;
     outline: none;
-    width: 60%;
+    width: 200px;
     color: rgb(165, 164, 164);
     background-color: rgb(244, 247, 247);
   }
@@ -92,8 +93,6 @@
 
 /* Authenticated links styling */
 .header-links {
-  display: flex;
-  gap: 30px;
 }
 
 .head-link {
@@ -126,9 +125,11 @@
 .menu-mobile-btn {
   display: none;
 }
+
 .menu-mobile {
   display: none;
 }
+
 .icon-mobile {
   display: none;
 }
@@ -174,6 +175,7 @@
     color: #007acc;
     /* Change link color on hover */
   }
+
   /* styles.css */
 
   /* Global styles for the header */
@@ -239,7 +241,7 @@
   }
 
   .search-container {
-    left: 160px;
+    // left: 160px;
 
     position: relative;
     flex: 1;
@@ -249,7 +251,6 @@
       border-radius: 24px;
       border: 1px solid black;
       outline: none;
-      width: 60%;
       color: rgb(165, 164, 164);
       background-color: rgb(244, 247, 247);
     }
@@ -269,7 +270,7 @@
   /* Authenticated links styling */
   .header-links {
     display: flex;
-    gap: 30px;
+    // gap: 30px;
   }
 
   .head-link {
@@ -302,9 +303,11 @@
   .menu-mobile-btn {
     display: none;
   }
+
   .menu-mobile {
     display: none;
   }
+
   .icon-mobile {
     display: none;
   }
@@ -350,6 +353,7 @@
       color: #007acc;
       /* Change link color on hover */
     }
+
     .logout-button-mobile {
       background-color: #007acc;
       /* Change the background color to a pleasant blue */
@@ -375,16 +379,12 @@
   }
 
   /* Responsive styling for mobile devices */
-  @media (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     .icon-mobile {
       display: block;
     }
 
     .head-link {
-      display: none;
-    }
-
-    .search-container {
       display: none;
     }
 
@@ -436,24 +436,31 @@
       margin-left: 20px;
       /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
     }
+
     .sub-menu {
-      list-style-type: none; /* Remove bullet points */
+      list-style-type: none;
+      /* Remove bullet points */
       margin-left: 80px;
       /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
     }
+
     .logout-button-mobile {
       margin-left: 20px;
       margin-top: 20px;
       /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
     }
+
     .mb-list li {
       margin-top: 20px;
-      border-bottom: 1px solid #fff; /* Tạo đường viền màu trắng dưới mỗi liên kết */
+      border-bottom: 1px solid #fff;
+      /* Tạo đường viền màu trắng dưới mỗi liên kết */
       padding: 8px 0;
       /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
     }
+
     .mb-list li:last-child {
-      border-bottom: none; /* Loại bỏ đường viền ở li cuối cùng */
+      border-bottom: none;
+      /* Loại bỏ đường viền ở li cuối cùng */
     }
   }
 }
