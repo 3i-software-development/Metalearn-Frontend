@@ -113,10 +113,14 @@ const Banner = () => {
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
                 <div className={cx("Display-flex-web-screen")}>
                   <h4 className={cx("Display-title")}>Tổng câu hỏi:</h4>
-                  <CountUp start={0} end={549811} duration={2.5} className={cx("banner1H1")} />
+                  <CountUp
+                    start={0}
+                    end={549811}
+                    duration={2.5}
+                    className={cx("banner1H1")}
+                  />
                 </div>
               </Grid>
-
 
               <Grid item xs={4} className={cx("")}>
                 <CircularProgress
@@ -142,17 +146,25 @@ const Banner = () => {
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
                 <div className={cx("Display-flex")}>
                   <div className={cx("Display-left")}>
-
                     <div className={cx("Display-flex-web-screen")}>
                       <h4 className={cx("Display-title")}>Đã làm:</h4>
-                      <CountUp start={0} end={12} duration={2.5} className={cx("banner1H1")} />
+                      <CountUp
+                        start={0}
+                        end={12}
+                        duration={2.5}
+                        className={cx("banner1H1")}
+                      />
                     </div>
-
                   </div>
                   <div className={cx("Display-right")}>
                     <div className={cx("Display-flex-web-screen")}>
-                        <h4 className={cx("Display-title")}>Thời gian (giờ): </h4>
-                        <CountUp start={0} end={120} duration={2.5} className={cx("banner1H12")} />
+                      <h4 className={cx("Display-title")}>Thời gian (giờ): </h4>
+                      <CountUp
+                        start={0}
+                        end={120}
+                        duration={2.5}
+                        className={cx("banner1H12")}
+                      />
                     </div>
                   </div>
                 </div>
@@ -160,7 +172,7 @@ const Banner = () => {
 
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
                 <div className={cx("Display-flex-web-screen")}>
-                <h4 className={cx("Display-title")}>Tổng đề thi: </h4>
+                  <h4 className={cx("Display-title")}>Tổng đề thi: </h4>
                   <CountUp start={0} end={20528} className={cx("banner1H12")} />
                 </div>
               </Grid>
@@ -189,17 +201,24 @@ const Banner = () => {
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
                 <div className={cx("Display-flex")}>
                   <div className={cx("Display-flex-web-screen")}>
-
                     <h4 className={cx("Display-title")}>Đã làm: </h4>
-                    <CountUp start={0} end={12} duration={2.5} className={cx("banner1H1")} />
-
+                    <CountUp
+                      start={0}
+                      end={12}
+                      duration={2.5}
+                      className={cx("banner1H1")}
+                    />
                   </div>
                   <div className={cx("Display-right")}>
                     <div className={cx("Display-flex-web-screen")}>
                       <h4 className={cx("Display-title")}>Tổng số giờ làm: </h4>
-                      <CountUp start={0} end={120} duration={2.5} className={cx("banner1H12")} />
+                      <CountUp
+                        start={0}
+                        end={120}
+                        duration={2.5}
+                        className={cx("banner1H12")}
+                      />
                     </div>
-
                   </div>
                 </div>
               </Grid>
@@ -213,10 +232,8 @@ const Banner = () => {
             <h2>Theo dõi và nắm bắt sự tiến bộ của bản thân</h2>
           </div>
         </SwiperSlide>
-
-
-
       </Swiper>
+
       <div className={cx("display-None")}>
         <IoMdArrowDropleftCircle
           className={cx("prev-button", "btn-nav")}
@@ -230,7 +247,6 @@ const Banner = () => {
           onClick={handleNext}
         />
       </div>
-
     </div>
   );
 };
