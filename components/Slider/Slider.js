@@ -13,7 +13,7 @@ import styles from "./style.module.scss";
 const cx = classNames.bind(styles);
 
 const Slider = () => {
-  const slides = ["/image/Slider_1.png", "/image/slider_2.png"];
+  const slides = ["/image/Slider_1.png", "/image/METALEARN.png","/image/1.png","/image/2.png"];
 
   // Hàm xử lý sự kiện điều hướng Swiper sang trang trước
   const handlePrev = () => {
@@ -35,7 +35,7 @@ const Slider = () => {
         slidesPerView={1}
         navigation={{ clickable: true }}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 3500 }}
         modules={[Autoplay, Navigation]}
       >
         {slides?.map((slide, index) => (

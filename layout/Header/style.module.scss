@@ -104,11 +104,18 @@
 
 /* Authenticated links styling */
 .header-links {
+  margin-left: 40px;
+  font-family: 700;
 }
 
 .head-link {
   text-decoration: none;
   color: #fff;
+}
+.head-link:hover{
+
+  color: red;
+
 }
 
 /* User icons and logout button styling */
