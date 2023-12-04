@@ -13,11 +13,7 @@ import styles from "./style.module.scss";
 const cx = classNames.bind(styles);
 
 const Slider = () => {
-  const slides = [
-    "/image/slider-1.png",
-    "/image/slider-2.png",
-    "/image/slider-3.png",
-  ];
+  const slides = ["/image/slider-1.png", "/image/2.png", "/image/3.png"];
 
   // Hàm xử lý sự kiện điều hướng Swiper sang trang trước
   const handlePrev = () => {
