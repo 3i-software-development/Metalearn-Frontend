@@ -192,6 +192,9 @@ const Header = () => {
           <Link href="/documents" className={cx("head-link")}>
             Tài liệu
           </Link>
+          <Link href="/courseware" className={cx("head-link")}>
+            Học liệu
+          </Link>
           <Link href="/exam" className={cx("head-link")}>
             Đề thi
           </Link>
