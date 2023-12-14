@@ -15,7 +15,7 @@
     text-align: initial;
     font-size: 14px;
     text-decoration: underline;
-
+    
     i {
       margin-right: 5px;
       color: gray;
@@ -88,13 +88,13 @@
 
 .listIcon {
   display: flex;
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 .listIcon span {
   display: flex;
   justify-content: center;
-  margin-left: 20px;
+  padding-left: 20px;
   align-items: center;
   cursor: pointer;
 
@@ -108,12 +108,31 @@
   margin-left: 0;
 }
 
+.iconfile{
+  color: #666666ad;
+}
+.iconreload{
+  color: rgb(141, 8, 8);
+}
+.iconcopy{
+  color: rgb(14, 14, 168);
+}
+.icondownload{
+  color: rgb(30, 122, 30);
+}
+.icondelete{
+  color: rgb(173, 54, 54);
+}
 @media screen and (max-width: 1920px) {
   .titleCard {
     max-width: 180px;
   }
+  .card-description {
+    max-width: 80px;
+  }
   .card-actions {
-    min-width: 120px;
+    min-width: 80px;
+    
   }
 }
 

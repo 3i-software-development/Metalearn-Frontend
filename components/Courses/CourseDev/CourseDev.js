@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import ReplayIcon from '@mui/icons-material/Replay';
+import InfoIcon from '@mui/icons-material/Info';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Section from "../../Section/Section";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
@@ -57,7 +60,7 @@ const CourseDev = ({ total }) => {
                 </th>
                 <th className={cx("card-actions")}>
                   <i className="fa fa-recycle"></i>
-                  Thao tác
+                 Thao tác
                 </th>
               </tr>
             </thead>
@@ -87,7 +90,7 @@ const CourseDev = ({ total }) => {
                         )}
                       </div>
                     </td>
-                    <td className={cx("card-actions")}>
+                    <td className={cx("card-description")}>
                       <div className={cx("listIcon")}>
                         {/* <span title="Sửa">
                           <i className="fa-solid fa-pen"></i>
@@ -101,11 +104,25 @@ const CourseDev = ({ total }) => {
                         {/* <span title="Thông báo">
                           <i className="fa-solid fa-bell"></i>
                         </span> */}
-                        <span title="Download file">
-                          <ContentCopyIcon />
+                        <span title=" file">
+                          <InfoIcon className={cx("iconfile")}/>
                         </span>
+                        <span title="Reload file">
+                          <ReplayIcon className={cx("iconreload")}/>
+                        </span>
+                        <span title="Copy file">
+                          <ContentCopyIcon className={cx("iconcopy")}/>
+                        </span>
+                      </div>
+                    </td>
+
+                    <td className={cx("card-actions")}>
+                      <div className={cx("listIcon")}>
                         <span title="Download file">
-                          <FileDownloadIcon />
+                          <FileDownloadIcon className={cx("icondownload")}/>
+                        </span>
+                        <span title="Delete file">
+                          <DeleteOutlineIcon className={cx("icondelete")}/>
                         </span>
                       </div>
                     </td>
