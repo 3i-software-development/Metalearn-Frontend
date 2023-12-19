@@ -308,17 +308,14 @@ const CourseWare = () => {
               <span className={cx("search-icon")}>
                 <ModalSearchFilter />
               </span>
-              {/* <span className="tool-item tool-export">
-                <i className="fa-solid fa-file-export"></i>
-              </span> */}
-              <span className={cx("layout-icon")}>
+              {/* <span className={cx("layout-icon")}>
                 <span className={cx("border-icon-layout")}>
                   <DehazeIcon />
                 </span>
                 <span className={cx("border-icon-layout")}>
                   <AppsIcon />
                 </span>
-              </span>
+              </span> */}
             </div>
           </div>
           {displayContent()}

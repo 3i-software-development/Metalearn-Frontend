@@ -193,7 +193,7 @@ const Header = () => {
             Tài liệu
           </Link>
           <Link href="/courseware" className={cx("head-link")}>
-            Học liệu
+            Khóa học
           </Link>
           <Link href="/exam" className={cx("head-link")}>
             Đề thi
@@ -202,7 +202,7 @@ const Header = () => {
       </div>
 
       <div className={cx("header-right")}>
-        <div className={cx("search-container")}>
+        {/* <div className={cx("search-container")}>
           <span className="search-icon">
             <BsSearch />
           </span>
@@ -211,7 +211,7 @@ const Header = () => {
             placeholder="Tìm kiếm"
             className={cx("search-input")}
           />
-        </div>
+        </div> */}
 
         {isAuthenticated && (
           <div className={cx("icon-ss")}>

@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import ReplayIcon from '@mui/icons-material/Replay';
-import InfoIcon from '@mui/icons-material/Info';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Section from "../../Section/Section";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { useGetListPractiveQuery } from "@/lib/Midleware/PractiveQuery";
 import moment from "moment";
+import Link from "next/link";
 import Pagination from "@/components/Pagination/Pagination";
+import { useGetListCourseMobileQuery } from "@/lib/Midleware/CourseQuery";
+import AvatarC from "@/components/Avatar/Avatar";
+import ProgressC from "@/components/Progress/Progress";
+import InfoIcon from "@mui/icons-material/Info";
+import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+import ScreenShareOutlinedIcon from "@mui/icons-material/ScreenShareOutlined";
+
 const cx = classNames.bind(styles);
 const CourseDev = ({ total }) => {
   const [query, setQuery] = useState({
@@ -27,6 +30,12 @@ const CourseDev = ({ total }) => {
 
   const { data: practiveQuery } = useGetListPractiveQuery(query);
 
+  const { data: courseMobileQuery } = useGetListCourseMobileQuery({
+    userName: "admin",
+    isPublic: true,
+  });
+  console.log(courseMobileQuery);
+
   const diffMoment = (startDate, endDate) => {
     if (!endDate) return "Không giới hạn thời gian";
     const start = moment(startDate);
@@ -43,87 +52,59 @@ const CourseDev = ({ total }) => {
     <Section>
       <div className={cx("practice")}>
         <div className={cx("on-pc")}>
-          <table className={cx("application-list")}>
-            <thead className={cx("table-head")}>
+          <table>
+            <thead>
               <tr>
-                <th className={cx("titleCard")}>
-                  <i className="fa fa-paper-plane"></i>
-                  Tên khóa học
-                </th>
-                <th className={cx("card-status")}>
-                  <i className="fa fa-newspaper"></i>
-                  Mô tả
-                </th>
-                <th className={cx("card-time")}>
-                  <i className="fa fa-calendar"></i>
-                  Thời gian
-                </th>
-                <th className={cx("card-actions")}>
+                <th>Ảnh</th>
+                <th>Tên khóa học</th>
+                <th>Môn học</th>
+                <th>Người tạo</th>
+                <th>Thời lượng</th>
+                <th>Giá</th>
+                <th className={cx("card-time")}>Tiến độ</th>
+                <th>
                   <i className="fa fa-recycle"></i>
-                 Thao tác
+                  Thao tác
                 </th>
               </tr>
             </thead>
-            <tbody className={cx("table-body")}>
-              {practiveQuery?.Object?.data.map((element) => {
+            <tbody>
+              {courseMobileQuery?.Object?.map((element) => {
                 return (
-                  <tr key={element.LmsTaskCode} className={cx("card")}>
-                    <td className={cx("titleCard")}>
+                  <tr key={element.LmsTaskCode}>
+                    <Link href={`/lecture?courseCode=${element?.CourseCode}`}>
+                      <AvatarC imageUrl={element?.ImgCover} />
+                    </Link>
+                    <td className={cx("label")}>
                       <h4>
-                        #{element.LmsTaskCode} : {element.LmsTaskName}
+                        #{element?.CourseName} : [{element?.CourseCode}]
                       </h4>
                     </td>
-                    <td className={cx("card-status")}>
-                      <div className={cx("status")}>
-                        <p className={cx("label")}>Mô tả....</p>
-                      </div>
+                    <td className={cx("label")}>
+                      <p>{element?.SubjectName}</p>
                     </td>
-                    <td className={cx("card-time")}>
-                      <div className={cx("timeStart")}>
-                        <span>
-                          [{moment(element.BeginTime).format("DD : MM : YYYY")}]
+                    <td className={cx("label")}>{element?.CreatedBy}</td>
+                    <td className={cx("label")}>
+                      {element?.Duration}
+                      {element?.Unit}
+                    </td>
+                    <td className={cx("label")}>{element?.Price}Coin</td>
+                    <td className={cx("label")}>
+                      <ProgressC percent={element?.Percent} />
+                    </td>
+                    <td>
+                      <div className={cx("list-icon")}>
+                        <span title="file">
+                          <InfoIcon />
                         </span>
-                        {element.EndTime && (
-                          <span>
-                            [{moment(element.EndTime).format("DD : MM : YYYY")}]
+                        <span title="file">
+                          <ScreenShareOutlinedIcon />
+                        </span>
+                        <Link href={"/shareCourse"}>
+                          <span title="file">
+                            <ShareOutlinedIcon />
                           </span>
-                        )}
-                      </div>
-                    </td>
-                    <td className={cx("card-description")}>
-                      <div className={cx("listIcon")}>
-                        {/* <span title="Sửa">
-                          <i className="fa-solid fa-pen"></i>
-                        </span> */}
-                        {/* <span title="Căn chỉnh">
-                          <i className="fa-solid fa-align-center"></i>
-                        </span>
-                        <span title="Trò chuyện">
-                          <i className="fa-solid fa-comment-dots"></i>
-                        </span> */}
-                        {/* <span title="Thông báo">
-                          <i className="fa-solid fa-bell"></i>
-                        </span> */}
-                        <span title=" file">
-                          <InfoIcon className={cx("iconfile")}/>
-                        </span>
-                        <span title="Reload file">
-                          <ReplayIcon className={cx("iconreload")}/>
-                        </span>
-                        <span title="Copy file">
-                          <ContentCopyIcon className={cx("iconcopy")}/>
-                        </span>
-                      </div>
-                    </td>
-
-                    <td className={cx("card-actions")}>
-                      <div className={cx("listIcon")}>
-                        <span title="Download file">
-                          <FileDownloadIcon className={cx("icondownload")}/>
-                        </span>
-                        <span title="Delete file">
-                          <DeleteOutlineIcon className={cx("icondelete")}/>
-                        </span>
+                        </Link>
                       </div>
                     </td>
                   </tr>
@@ -136,7 +117,7 @@ const CourseDev = ({ total }) => {
           {practiveQuery?.Object?.data.map((element) => {
             return (
               <div key={element.LmsTaskCode} className={cx("card")}>
-                <div className={cx("titleCard")}>
+                <div>
                   <h4>
                     #{element.LmsTaskCode} : {element.LmsTaskName}
                   </h4>
