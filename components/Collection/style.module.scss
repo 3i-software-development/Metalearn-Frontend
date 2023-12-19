@@ -1,0 +1,27 @@
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+@media only screen and (max-width: 768px) {
+    .main-section {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            padding-right: 10px;
+            margin-top: 20px;
+        }
+
+        .main-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .content {
+            margin-right: 10px;
+        }
+    }
+}

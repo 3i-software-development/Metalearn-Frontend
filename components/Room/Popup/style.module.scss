@@ -1,0 +1,11 @@
+.user-popup {
+  position: absolute;
+  right: 0;
+  left: auto; /* Add this line to make it right-aligned */
+  width: 400px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 999; /* Ensure the popup appears above other content */
+  height: 100px;
+}

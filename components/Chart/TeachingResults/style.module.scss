@@ -1,0 +1,48 @@
+.TeachingResults_wrapper {
+  width: 100%;
+}
+
+.TeachingResults_all {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .TeachingResults_Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    svg {
+      color: #ff7f00;
+    }
+  }
+}
+
+.Icon_Remove {
+  font-size: 30px;
+}
+
+.TeachingResults_all_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content_all {
+  width: 95%;
+  margin: auto;
+}
+
+.content_item {
+  display: flex;
+  align-items: center;
+
+  svg {
+    color: #ff7f00;
+  }
+}
+
+.content_item_chart {
+  width: 100% !important;
+  margin: auto;
+}

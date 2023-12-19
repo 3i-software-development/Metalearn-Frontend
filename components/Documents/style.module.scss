@@ -1,0 +1,300 @@
+.Online-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #f0f0f0; /* Change to your preferred page background color */
+}
+.document-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Adjust the column sizes as needed */
+  gap: 20px; /* Adjust the gap between columns */
+}
+
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  background-color: #007bff; /* Change to your preferred tab bar background color */
+  padding: 10px;
+}
+
+.tab-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  color: white; /* Tab button text color */
+  outline: none;
+  transition: color 0.3s ease;
+}
+
+.tab-button.active {
+  color: #007bff; /* Active tab text color */
+  font-weight: bold;
+  background-color: white; /* Active tab background color */
+  border-radius: 5px; /* Rounded corners for the active tab */
+}
+
+/* Tab content styles */
+.tab-content {
+  padding: 20px;
+}
+
+/* User list styles */
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Bắt đầu từ trái */
+  gap: 20px; /* Khoảng cách giữa các mục người dùng */
+  max-height: 90vh; /* Đặt chiều cao tối đa cho khung danh sách người dùng */
+}
+
+
+.document-type {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0; /* Màu nền của danh sách các mục */
+  padding: 10px; /* Khoảng cách nội dung và biên ngoài */
+}
+
+.document-category-name-list {
+  width: 90%;
+  min-height: 100vh;
+  padding: 2% 0;
+  overflow-y: auto;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+/* Style for unselected categories */
+.document-category-name {
+  cursor: pointer;
+  flex-basis: calc(50% - 10px); /* 2 columns per row with spacing */
+  margin-bottom: 20px; /* Adjust spacing between rows */
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff; /* Background color for user items */
+  border-radius: 5px; /* Rounded corners for user items */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for user items */
+  text-align: center;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+/* Style for selected category */
+.document-category-name.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.document-content {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding: 2% 0;
+
+  .document-search-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+}
+
+.title {
+  margin-top: 10px;
+}
+.list-course-container {
+  width: 100%;
+  padding: 2% 0;
+
+  .text-p {
+    padding: 15px 0;
+  }
+}
+
+.list-doc-container {
+  width: 100%;
+  max-height: 650px;
+  padding: 2% 0;
+  overflow-y: auto;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .text-p {
+    padding: 15px 0;
+  }
+
+  .sort-container {
+    width: 100%;
+    margin: 0px;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.search-container {
+  width: 90%;
+  margin-top: 10px;
+  margin-left: 5%;
+  position: relative;
+  flex: 1;
+
+  input {
+    padding: 15px 20px 15px 50px;
+    border-radius: 24px;
+    border: 1px solid black;
+    outline: none;
+    width: 100%;
+    height: 20px;
+    color: rgb(165, 164, 164);
+    background-color: white;
+  }
+
+  .search-input::placeholder {
+    color: rgb(170, 169, 169);
+  }
+
+  svg {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    color: gray;
+  }
+}
+
+.sort-container {
+  width: 90%;
+  margin-top: 10px;
+  margin-left: 5%;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .title-sort-container {
+    padding: 5px 5px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .content-sort-container {
+    width: 100%;
+    border-top: 1px solid #eee;
+    padding: 4px 6px 6px 6px;
+
+    .select-container {
+      width: 100%;
+    }
+  }
+
+  .document-container {
+    padding: 10px 10px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: black 1px solid;
+    cursor: pointer;
+
+    .document-icon {
+      width: 20%;
+      margin-left: 5px;
+      i {
+        font-size: 38px;
+      }
+    }
+
+    .document-content {
+      width: 80%;
+
+      .document-detail {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        margin-right: 2px;
+      }
+    }
+  }
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.document-content-file {
+  width: 100%;
+  height: 100%;
+
+  .document-infor {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    p {
+      font-size: 11px;
+    }
+
+    svg {
+      font-size: 20px;
+      margin: 5px;
+    }
+  }
+
+  .document-iframe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+.document-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .document-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  .document-category-name-list {
+    width: 100%;
+    min-height: 20vh;
+    padding: 2% 0;
+    overflow-y: auto;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    .list-doc-container {
+      width: 100%;
+      max-height: 20vh;
+      padding: 2% 0;
+      overflow-y: auto;
+      border: 1px solid #e3e3e3;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

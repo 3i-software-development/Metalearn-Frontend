@@ -1,0 +1,459 @@
+.item-slide1 {
+  position: relative;
+}
+
+.banner1H1 {
+  font-size: 50px;
+  color: green;
+}
+
+.banner1H12 {
+  font-size: 50px;
+  color: orange;
+}
+
+
+.banner1 {
+  position: relative;
+  top: 8rem;
+  text-align: center;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  // box-shadow: blue 0px 0px 0px 1px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px;
+  // box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  
+
+  
+
+  // .banner1H1 {
+  //   font-size: 50px;
+  //   color: green;
+  // }
+  
+
+  // .banner1H12 {
+  //   font-size: 50px;
+  //   color: orange;
+  // }
+
+  .circular {
+    font-size: 20px;
+  }
+
+  //dashboard
+  .div1 {
+    width: 200px;
+    height: 200px;
+    position: relative;
+
+    .h11 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 20px;
+      color: rgb(104, 33, 9);
+      font-size: 30px;
+
+      span {
+        color: rgb(80, 83, 235);
+      }
+    }
+
+    .h12 {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 20px;
+      font-size: 30px;
+      color: rgb(20, 20, 47);
+
+      span {
+        color: rgb(80, 83, 235);
+      }
+    }
+  }
+
+  .div1:after {
+    content: "";
+    background-color: black;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: rotate(-45deg);
+    z-index: 0;
+  }
+}
+
+//responsive banner1/(slide1)
+
+
+.Display-flex-web-screen {
+
+  // box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+
+}
+
+
+/////////////
+.banner {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  background-color: white;
+
+  .banner-img {
+    width: auto !important;
+    height: 30vw !important;
+    max-height: 400px;
+    min-height: 250px;
+    object-fit: cover;
+  }
+
+  .text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5%;
+    width: 50%;
+    padding: 2%;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    h2 {
+      color: purple;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width:930px) {
+.Display-flex-web-screen {
+  display: flex;
+  align-items: center;
+}
+  .banner1 {
+    top: 6.5rem;
+    margin-left: 20px;
+
+    .banner1H1 {
+      font-size: 15px !important;
+      color: green;
+    }
+
+    .banner1H12 {
+      font-size: 15px !important;
+      color: orange;
+    }
+
+    .circular {
+      font-size: 5px !important;
+      --CircularProgress-size: 50px !important;
+      --CircularProgress-trackThickness: 8px !important;
+      --CircularProgress-progressThickness: 8px !important;
+    }
+
+    .div1 {
+      width: 65px !important;
+      height: 65px !important;
+
+      .h11 {
+        color: rgb(104, 33, 9);
+        font-size: 5px !important;
+
+        span {
+          font-size: 2px !important;
+          color: rgb(80, 83, 235);
+        }
+      }
+
+      .h12 {
+        font-size: 5px !important;
+        color: rgb(20, 20, 47);
+
+        span {
+          font-size: 2px !important;
+          color: rgb(80, 3, 235);
+        }
+      }
+
+      .div1:after {
+        content: "";
+        background-color: black;
+        position: absolute;
+        height: 1px !important;
+        width: 80%;
+        top: 50%;
+        left: 0;
+        transform: rotate(-45deg);
+        z-index: 0;
+      }
+    }
+  }
+
+}
+
+@media only screen and (max-width: 1300px) {
+  .banner1 {
+    .banner1H1 {
+      font-size: 30px;
+      color: green;
+    }
+
+    .banner1H12 {
+      font-size: 30px;
+      color: orange;
+    }
+
+    .circular {
+      font-size: 10px;
+      --CircularProgress-size: 100px;
+      --CircularProgress-trackThickness: 19px;
+      --CircularProgress-progressThickness: 19px;
+    }
+
+    .div1 {
+      width: 130px;
+      height: 130px;
+
+      .h11 {
+        top: 0;
+        left: 0;
+
+        color: rgb(104, 33, 9);
+        font-size: 15px;
+
+        span {
+          font-size: 8px;
+          color: rgb(80, 83, 235);
+        }
+      }
+
+      .h12 {
+        bottom: 0;
+        right: 0;
+
+        font-size: 15px;
+        color: rgb(20, 20, 47);
+
+        span {
+          font-size: 8px;
+          color: rgb(80, 83, 235);
+        }
+      }
+    }
+  }
+}
+
+//diagram
+.banner-slide {
+  position: relative;
+}
+
+.text-dia {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5%;
+  width: fit-content;
+  padding: 2%;
+  padding-right: 70px;
+  background-color: white;
+  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  flex-direction: column;
+  min-width: 370px;
+  gap: 40px;
+}
+
+.num-quest {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.hr {
+  height: 2px;
+  width: 50px;
+  margin: 0;
+  background-color: black;
+  transform: rotate(-45deg);
+}
+
+
+.did {
+  display: flex;
+  align-items: center;
+}
+
+.did-item {
+  position: relative;
+  width: fit-content;
+
+  p {
+    position: absolute;
+    white-space: nowrap;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: small;
+  }
+}
+
+.did-item:first-child {
+  top: -30px;
+  left: 10px;
+}
+
+.did-item:last-child {
+  top: 15px;
+  left: -10px;
+}
+
+.diagram {
+  position: relative;
+
+  span {
+    position: absolute;
+    font-size: smaller;
+    white-space: nowrap;
+  }
+
+  .sp1 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .sp2 {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+//button
+.btn-nav {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.prev-button {
+  left: 0;
+}
+
+.next-button {
+  right: 0;
+}
+
+// .item-slide{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100%;
+// }
+.banner2 {
+  justify-content: center !important;
+  padding: 2%;
+  flex-direction: column !important;
+
+  h2 {
+    text-align: center;
+    color: purple;
+  }
+}
+
+
+.display-None {}
+
+.Display-flex {}
+
+.Display-title {
+  font-size: 25px;
+}
+
+/* styles.css */
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-text {
+  display: inline-block;
+  font-size: 24px;
+  animation: rotate 2s linear infinite; /* 2s là thời gian của mỗi chu kỳ, linear là loại animation, infinite là để nó chạy liên tục */
+}
+
+@media only screen and (max-width: 768px) {
+
+  .display-flex-web-screen h4 {
+    font-size: 16px; /* Độ lớn của font chữ cho h4 */
+  }
+  
+  .display-flex-web-screen h3 {
+    font-size: 18px; /* Độ lớn của font chữ cho h3 */
+  }
+  .banner1H1 {
+    background-color: rgb(232, 233, 232);
+    border-radius: 50px;
+    width: 50px;
+    margin-left: 20px;
+  }
+  
+  .banner1H12 {
+    background-color: rgb(232, 233, 232);
+    border-radius: 15px;
+    margin-left: 20px;
+
+  }
+  
+  .Display-title {
+    font-size: 15px;
+  }
+  .item-slide {
+    // display: none;
+  }
+
+  .Display-title {
+    margin-left: 20px;
+  }
+
+  .full-width-grid {
+    width: 100% !important;
+  }
+
+  .Display-flex {
+    display: flex;
+  }
+
+
+  .display-None {
+    display: none;
+  }
+
+  .banner1 {
+    .circular {
+      display: none;
+    }
+  }
+
+
+  /* styles.css */
+  
+
+
+
+
+}

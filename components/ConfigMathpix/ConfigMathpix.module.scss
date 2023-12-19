@@ -1,0 +1,95 @@
+.excel-style-table {
+    border-collapse: collapse;
+    width: 170%;
+    cursor: pointer;
+  }
+
+  .excel-style-table th{
+        background-color: rgb(194, 240, 240);
+  }
+  
+  .excel-style-table th,
+  .excel-style-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+    &:hover{
+        color: red;
+        background-color: #000;
+        cursor: pointer;
+    }
+  }
+
+  .flex-item {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .ConfigMathpix_input_Styles {
+    margin-left: 7px;
+    width: 98%;
+    border-radius: 5px;
+    height: 40px;
+  }
+
+.ConfigMathpix-Title {
+  font-size: 45px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: black;
+  &:hover {
+    color: red;
+  }
+}
+
+.ConfigMathpix {
+  width: 50%;
+}
+
+.ConfigMath-Label {
+
+}
+
+.ConfigMathpix-Ul {
+
+  list-style: none;
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 5px;
+  margin-left: 22px;
+  padding-left: 10px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .ConfigMathpix-Title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+  .ConfigMathpix {
+    width: 90%;
+  }
+
+  .ConfigMathpix-Ul {
+    margin-left: 18px;
+    padding-left: 5px;
+  }
+
+  .ConfigMathpix_input_Styles {
+    display: none;
+  }
+
+  .ConfigMath-Label {
+    display: none;
+  }
+  
+}
+
+
+  

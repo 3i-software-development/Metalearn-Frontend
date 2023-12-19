@@ -1,0 +1,165 @@
+.excel-style-table {
+    border-collapse: collapse;
+    width: 100%;
+    cursor: pointer;
+  }
+
+.excel-style-table th{
+  background-color: rgb(194, 240, 240);
+}
+
+.excel-style-table th,
+.excel-style-table td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: center;
+  &:hover{
+      color: red;
+      background-color: #000;
+      cursor: pointer;
+  }
+}
+
+.flex-item {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.ConfigGoogle_Input_Styles {
+  margin-left: 7px;
+  width: 90%;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.ConfigGoogle_Item {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  border-bottom: 2px solid black;
+  align-content: center;
+  // background-color: red;
+
+}
+
+.ConfigGoogle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ConfigGoogle-Title {
+  font-size: 45px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: black;
+  
+  &:hover {
+    color: red;
+  }
+}
+
+.ConfigGoogle-01{
+  width: 48%;
+}
+
+.ConfigGoogle-02 {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  // background-color: rgb(97, 96, 96);
+  border-radius: 10px;
+  width: 48%;
+  
+}
+
+.ConfigGoogle-Icon{
+  position: absolute;
+  right: 40px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.ConfigGoogle-Label {
+
+}
+
+.ConfigGoogle-Ul {
+  list-style: none;
+  border: 2px solid black;
+  
+
+  border-radius: 5px;
+  margin-left: 22px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .ConfigGoogle-Title {
+    text-align: center;
+    color: red;
+    margin-bottom: 20px;
+  }
+
+  .ConfigGoogle {
+    display: block;
+    width: 100%;
+  }
+
+  .ConfigGoogle-01{
+    width: 90%;
+    margin-left: 9px;
+    align-content: center;
+  }
+
+  .ConfigGoogle-02 {
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+  }
+
+  .ConfigGoogle-Ul {
+    // background-color:  rgb(175, 172, 172);
+    align-items: center;
+    border: none;
+
+  }
+
+  .ConfigGoogle_Input_Styles {
+    display: none;
+  }
+
+  .ConfigGoogle-Title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+    color: #000;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    &:hover {
+      color: red;
+    }
+  }
+
+.ConfigGoogle_Item {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 12px;
+  
+}
+
+  .ConfigGoogle-Title-one{
+    font-size: 15px;
+    margin-top: 1px;
+  }
+
+  .ConfigGoogle-Label {
+    display: none;
+  }
+}
+
+
+  

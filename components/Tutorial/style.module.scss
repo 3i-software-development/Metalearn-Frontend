@@ -1,0 +1,88 @@
+/* style.module.scss */
+
+.tutorial-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 20px;
+    height: 100vh;
+    position: relative; /* Đặt thành phần container làm đối tượng chứa */
+}
+
+/* Thêm border-line giữa các thành phần */
+.tutorial-container::before {
+    content: "";
+    position: absolute;
+    left: calc(1fr + 10px); /* Tùy chỉnh khoảng cách từ cạnh trái của thành phần thứ nhất */
+    top: 0;
+    bottom: 0;
+    width: 1px; /* Độ rộng của border-line */
+    background-color: #ccc; /* Màu sắc của border-line */
+}
+
+/* CSS cho thành phần bên phải */
+.tutorial-content {
+    /* CSS cho container chứa nội dung blog */
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial-title {
+    /* CSS cho tiêu đề blog */
+    font-size: 24px;
+    color: #333;
+}
+
+.tutorial-date {
+    /* CSS cho ngày đăng */
+    font-size: 14px;
+    color: #777;
+}
+
+.tutorial-text {
+    /* CSS cho nội dung blog */
+    font-size: 16px;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+.tutorial-author {
+    /* CSS cho tên tác giả */
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    float: right;
+    clear: both;
+}
+
+/* CSS cho thành phần bên trái */
+.tree-view-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .tutorial-container {
+        
+        display: flex;
+        background-color: blue;
+        flex-direction: column;
+        height: 100vh; /* Chiều cao 100% của viewport */
+        width: 100%; /* Chiều rộng 100% của parent container (có thể không cần thiết nếu parent container cũng chiếm 100% width của viewport) */
+    }
+
+
+    .tutorial-container-1,
+    .tutorial-container-2 {
+    // background-color: red;
+    margin-top: 5px;
+    // width: 100%; /* Chiều rộng 100% của parent container (.tutorial-container) */
+    height: 100%; /* Chiều cao 100% của viewport */
+}
+    
+   
+}

@@ -1,0 +1,117 @@
+/* style.module.scss */
+.connection {
+  height: 100vh;
+}
+
+/* Tab bar styles */
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  background-color: #007bff;
+  /* Change to your preferred tab bar background color */
+  padding: 10px;
+}
+
+.tab-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  color: white;
+  /* Tab button text color */
+  outline: none;
+  transition: color 0.3s ease;
+}
+
+.tab-button.active {
+  color: #007bff;
+  /* Active tab text color */
+  font-weight: bold;
+  background-color: white;
+  /* Active tab background color */
+  border-radius: 5px;
+  /* Rounded corners for the active tab */
+}
+
+/* Tab content styles */
+.tab-content {
+  padding: 20px;
+}
+
+/* User list styles */
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* Start from the left */
+  gap: 20px;
+  /* Adjust the spacing between user items */
+  max-height: 90vh;
+  /* Set a maximum height for the user list container */
+  overflow-y: auto;
+  /* Add a vertical scroll bar when content exceeds the maximum height */
+}
+
+/* User item styles */
+.user-item {
+  cursor: pointer;
+  flex-basis: calc(25% - 20px);
+  /* 4 columns per row with spacing */
+  margin-bottom: 20px;
+  /* Adjust spacing between rows */
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  /* Background color for user items */
+  border-radius: 5px;
+  /* Rounded corners for user items */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Box shadow for user items */
+  text-align: center;
+}
+
+/* Avatar styles */
+/* Avatar styles */
+.user-avatar {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+
+/* User info styles */
+.user-info {
+  margin-top: 10px;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.user-status {
+  color: #007bff;
+  /* User status color */
+}
+
+/* Decline button styles */
+.decline-button {
+  background-color: #ff3333;
+  /* Red color for the decline button */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .user-item {
+    flex-basis: calc(50% - 20px);
+    /* 2 columns per row with spacing */
+  }
+}
+
+/* You can add more styles as needed */

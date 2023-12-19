@@ -1,0 +1,106 @@
+/* MonthTable.css */
+
+/* Define a local class for the table */
+.month-table {
+  width: 100%;
+  margin: 0 auto;
+  max-width: fit-content;
+}
+
+.select-month {
+  width: 100%;
+  max-width: 500px; /* Adjust the width as needed */
+  margin: 0 auto;
+  padding: 20px;
+  select {
+    padding: 8px;
+    font-size: 16px;
+    margin: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
+
+/* Use the local class as a prefix for your table selector */
+.month-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Use the local class as a prefix for th and td selectors */
+.month-table th,
+.month-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+/* Use the local class as a prefix for th selector */
+.month-table th {
+  background-color: #f2f2f2;
+}
+
+/* Use the local class as a prefix for td.selected selector */
+.month-table td.selected {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Use the local class as a prefix for td.selected:hover selector */
+.month-table td.selected:hover {
+  background-color: #0056b3;
+}
+
+.selected {
+  background-color: #007bff; /* Choose the background color you prefer */
+  color: #fff; /* Text color for selected cell */
+}
+
+/* DayInfo.module.scss */
+
+.day-info {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 20px;
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  p {
+    margin: 5px 0;
+  }
+}
+
+.exam-item {
+  margin-top: 10px;
+  border: 1px solid brown; /* Add a border */
+  background-color: lightsalmon; /* Add a background color */
+  padding: 10px; /* Add padding for spacing */
+}
+
+@media (max-width: 768px) {
+  .month-table {
+    font-size: 9px;
+  }
+
+  .month-table th,
+  .month-table td {
+    padding: 8px;
+  }
+  .day-info {
+    width: 90%;
+    font-size: 12px;
+  }
+}

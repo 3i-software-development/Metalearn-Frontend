@@ -1,0 +1,16 @@
+.prev-button {
+  left: 0;
+}
+
+//button
+.btn-nav {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.next-button {
+  right: 0;
+}

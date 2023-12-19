@@ -1,0 +1,117 @@
+/* CountTeacher.css */
+.count-teacher-container {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.count-teacher-item-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.count-teacher {
+  margin-top: 50px;
+}
+
+.count-teacher-item {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.count-teacher-item--selected {
+  background-color: #ccc;
+}
+
+.count-teacher-item__type {
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  background-color: beige
+}
+
+.chart {
+  display: flex;
+  margin-top: 50px;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.chart canvas {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.chart-title {
+  font-size: 24px;
+  text-align: center;
+}
+
+.chart-axis {
+  font-size: 14px;
+}
+
+.chart-bar {
+  background-color: #007bff;
+}
+
+.chart-tooltip {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 12px;
+  padding: 5px;
+}
+
+/* Add your styling for .type-info here */
+.type-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+
+.type-info h4 {
+  margin-bottom: 5px;
+  /* Add other styles for h4 elements as needed check */
+}
+
+/* CountTeacher.css */
+
+/* Styles cho màn hình lớn (width > 768px) */
+@media (min-width: 769px) {
+  .count-teacher-container {
+    grid-template-columns: 1fr 3fr;
+  }
+  
+  .count-teacher-item-container {
+    flex-direction: column;
+  }
+
+  .count-teacher {
+    margin-top: 50px;
+  }
+
+  .chart {
+    // margin-top: 50px;
+    // margin-left: 50px;
+    max-width: 100wh;
+    // flex-direction: column;
+  }
+  .chart-image {
+    margin: 0 auto;
+  }
+}
+
+/* Styles cho màn hình nhỏ (width <= 768px) */
+@media (max-width: 768px) {
+  .count-teacher-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

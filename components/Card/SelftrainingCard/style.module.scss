@@ -1,0 +1,148 @@
+.list-table {
+    border-spacing: 0 5px;
+
+    .question {
+        max-width: 500px;
+    }
+
+    th,
+    td {
+        text-align: initial;
+        min-width: 150px;
+
+        &.price,
+        &.author,
+        &.time,
+        &.actions {
+            text-align: center;
+        }
+    }
+
+    i {
+        color: gray;
+    }
+
+    .actions {
+        span {
+            margin-right: 20px;
+            cursor: pointer;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.list-head {
+    th {
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: underline;
+        padding: 10px 10px 30px;
+
+        i {
+            margin-right: 5px;
+        }
+    }
+}
+
+.item {
+    td {
+        border-width: 1px 0 0;
+        border-style: solid;
+        border-color: #e7ecf1;
+        padding: 8px 10px;
+
+        &.question {
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &:hover {
+        background-color: #f3f4f6;
+    }
+}
+
+.on-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .on-pc {
+        display: none;
+    }
+
+    .on-mobile {
+        display: block;
+    }
+
+    /* MobileNavBar.module.scss */
+
+.on-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center; // Can be adjusted as needed
+    justify-content: center; // Can be adjusted as needed
+  
+    .item {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      margin: 10px;
+      padding: 20px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      width: 100%; // Adjust the width as needed
+      max-width: 400px; // Adjust the maximum width as needed
+      text-align: left;
+  
+      h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+  
+      .subject {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+  
+      .lession {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+  
+      .price {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+  
+      .author {
+        font-size: 14px;
+        margin-bottom: 5px;
+  
+        i {
+          font-style: italic;
+        }
+      }
+  
+      .time {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+  
+      .actions {
+        display: flex;
+        justify-content: space-between;
+  
+        .download,
+        .thumbtack {
+          font-size: 18px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  
+
+}

@@ -1,0 +1,35 @@
+.tab-title-text {
+  line-height: 2;
+  color: var(--body-color);
+  font-size: 1rem;
+  margin: 4px 0;
+}
+
+.tab-title-text:last-child hr {
+  display: none;
+}
+
+.tab-text-exercise {
+  padding: 4px;
+  font-size: 1.4rem;
+}
+
+
+.tab-text-extend {
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+
+}
+
+.hr {
+  color: var(--body-color);
+  height: 0.4px;
+}
+
+@media screen and (max-width: 880px) {
+  .tab-title-text {
+    font-size: 1rem;
+    padding: 0 4px;
+  }
+}

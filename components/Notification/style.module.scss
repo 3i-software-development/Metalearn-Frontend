@@ -1,0 +1,42 @@
+.notification-icon {
+    cursor: pointer;
+    // Add styling for your notification button icon here
+  }
+  
+  .notification-popup {
+    position: absolute;
+    top: 100%; // Position the popup below the notification button
+    right: 0;
+    width: 400px; // Adjust the width as needed
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 999; // Ensure the popup appears above other content
+  }
+  
+  .notification-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  .notification-list {
+    padding: 10px;
+    // Add styling for your notification list here
+  }
+
+  .notification-item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    // Add styling for each notification item here
+  }
+
+  .notification-item-title {
+    font-weight: bold;
+    // Add styling for the title here
+  }
+  

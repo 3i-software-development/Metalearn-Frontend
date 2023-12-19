@@ -1,0 +1,109 @@
+/* style.module.scss */
+
+.subject {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 1rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  height: 100vh;
+}
+
+.subject-title {
+  font-size: 24px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.subject-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subject-item {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.subject-item.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.subject-content__detail {
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.subject-questions {
+  margin-top: 20px;
+}
+
+.question-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.question-item {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.question-item p {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .subject {
+    display: flex;
+    flex-direction: column;
+    /* Chuyển sang hiển thị theo chiều dọc cho màn hình nhỏ hơn */
+  }
+
+  .subject-title {
+    font-size: 20px;
+    /* Giảm kích thước font cho màn hình nhỏ hơn */
+  }
+
+  .search-bar {
+    margin-bottom: 10px;
+    /* Giảm margin cho màn hình nhỏ hơn */
+  }
+
+  .search-input {
+    padding: 5px;
+    /* Giảm padding cho màn hình nhỏ hơn */
+  }
+
+  .subject-items {
+    flex-direction: row;
+    /* Chuyển sang hiển thị theo chiều ngang cho màn hình nhỏ hơn */
+    flex-wrap: wrap;
+
+    .subject-item h4 {
+      font-size: 9px;
+    }
+  }
+}

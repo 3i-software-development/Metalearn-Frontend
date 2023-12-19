@@ -1,0 +1,58 @@
+.person {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin: 50px 0;
+    column-gap: 2%;
+}
+
+.nav-bar-mobile {
+    display: none;
+}
+
+.content {
+    min-height: 555px;
+}
+
+.SearchAndAddSubjects_ItemAll {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 30px;
+    align-items: baseline;
+}
+
+
+@media screen and (max-width: 767px) {
+    @media screen and (max-width: 767px) {
+        .person {
+            display: block;
+        }
+
+        .nav-bar {
+            display: none;
+        }
+
+        .nav-toggle {
+            cursor: pointer;
+        }
+
+        .nav-bar-mobile {
+            display: block;
+        }
+
+        .nav-bar-mobile ul {
+            display: none;
+        }
+
+        .nav-bar-mobile ul.visible {
+            display: block;
+        }
+
+        .nav-bar-mobile li {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    }
+}

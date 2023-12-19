@@ -1,0 +1,17 @@
+.video-wrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.tab-label {
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 930px) {
+  .video-wrapper {
+    height: 15rem;
+  }
+  .tab-label {
+    font-size: 1rem;
+  }
+}

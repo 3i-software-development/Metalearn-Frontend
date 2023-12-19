@@ -1,0 +1,57 @@
+/* Điều chỉnh các đơn vị đo lường linh hoạt và sử dụng Flexbox */
+
+.google-authenticator-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 16px 0;
+  color: red;
+}
+
+.first-step, .second-step, .verify {
+  width: 35%;
+}
+
+.image-qr {
+  margin: 0 auto;
+  width: 256px;
+  height: 256px;
+}
+
+.verify {
+  margin-top: 16px;
+  width: 20%;
+  background-color: aqua;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  /* Điều chỉnh cho màn hình nhỏ hơn hoặc bằng 500px */
+  .google-authenticator-page {
+    height: auto;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .first-step, .second-step, .verify {
+    width: 100%;
+  }
+  
+  .image-qr {
+    display: flex; /* Sử dụng Flexbox để căn giữa */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    width: 256px;
+    height: 256px;
+  }
+}

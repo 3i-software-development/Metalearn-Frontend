@@ -1,0 +1,48 @@
+.SearchAndAddSubjects_wrapper {
+  width: 100%;
+
+  .SearchAndAddSubjects_all {
+    width: 100%;
+
+    .SearchAndAddSubjects_Search {
+      display: flex;
+      align-items: center;
+
+      .SearchAndAddSubjects_Search_icon {
+        width: 10%;
+        font-size: 35px;
+        color: #ffa500;
+      }
+
+      .SearchAndAddSubjects_inputAll {
+        width: 90%;
+        border-radius: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border: 1px solid #808080;
+
+        .SearchAndAddSubjects_Search_input {
+          border: none;
+          outline: none;
+          width: 90%;
+        }
+      }
+    }
+  }
+
+  .Item_Cart_subject {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.SearchAndAddSubjects_ItemAll {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around
+}

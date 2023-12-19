@@ -1,0 +1,145 @@
+.footer-container {
+    width: 100wh;
+    margin-top: 50px;
+}
+
+.footer {
+    width: 100%;
+    position: relative;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0.7rem 2rem;
+    color: white;
+    justify-content: space-between;
+    // height: auto;
+
+    .footer-item {
+        width: 46%;
+        // flex: 1 0 51%;
+        margin: 1rem;
+        height: 100%;
+        color: white;
+        line-height: 2rem;
+    }
+
+    .links {
+        display: flex;
+        justify-content: space-between;
+
+        .link-group {
+            display: flex;
+            flex-direction: column;
+
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .language-select {
+        position: absolute;
+        // padding-top: 20px;
+        bottom: 90px;
+        right: 0;
+        width: 10%;
+        height: 10%;
+        margin-right: 10px; /* Khoảng cách từ mép phải và mép dưới của trình duyệt */
+        // background-color: aqua; /* Màu nền của phần tử */
+        a {
+            width: fit-content;
+            float: right;
+            border: 1px solid white;
+            padding: 3px 7px;
+            display: flex;
+
+            :first-child {
+                margin: auto 5px;
+            }
+
+        }
+    }
+
+    .icon {
+        margin-top: 3rem;
+    }
+
+    .copyright {
+        margin-top: 3rem;
+
+        p {
+            float: right;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .footer-item {
+            width: 100%;
+            margin: 15px auto;
+        }
+
+        .language-select {
+            width: 30%;
+
+            a:first-child {
+                float: none;
+            }
+        }
+
+        .icon,
+        .copyright {
+            width: 30%;
+        }
+
+        .icon p {
+            float: right;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .links {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            flex-direction: column;
+            // align-items: center;
+
+            a {
+                text-align: center;
+            }
+        }
+
+        .language-select,
+        .icon,
+        .copyright {
+            width: 100%;
+        }
+
+        .language-select a {
+            margin: 0 auto;
+        }
+
+        .language-select a:first-child,
+        .icon p,
+        .copyright p {
+            float: none;
+            text-align: center;
+        }
+    }
+
+}
+
+.link-group-item {}
+
+.link-group-item:hover {
+    color: red;
+}
+
+.h36 {
+    cursor: pointer;
+
+    &:hover {
+        color: red;
+
+    }
+}

@@ -1,0 +1,85 @@
+.practice {
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+  }
+}
+
+.on-mobile {
+  display: none;
+}
+
+.iconfile{
+  color: #666666ad;
+}
+
+.list-icon {
+  display: flex; column-gap: 10px;
+  span{
+    cursor: pointer;
+  }
+}
+
+.label{
+  text-align: center;
+  font-size: 14px;
+  padding: 0 20px;
+  h4{
+    text-align: left;
+  }
+  p{
+    text-align: left;
+    min-width: 150px;
+  }
+}
+
+
+@media screen and (max-width: 1920px) {
+  .titleCard {
+    max-width: 180px;
+  }
+  .card-description {
+    max-width: 80px;
+  }
+  .card-actions {
+    min-width: 80px;
+    
+  }
+}
+
+@media screen and (max-width: 1479px) {
+  .titleCard {
+    max-width: 350px;
+  }
+  .card-actions {
+    min-width: 180px;
+  }
+  .card-time {
+    min-width: 210px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .titleCard {
+    max-width: 180px;
+  }
+  .card-actions {
+    min-width: 120px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .on-pc {
+    display: none;
+  }
+  .on-mobile {
+    display: block;
+  }
+  .titleCard {
+    max-width: 100%;
+  }
+  .card-status {
+    max-width: 100%;
+  }
+}

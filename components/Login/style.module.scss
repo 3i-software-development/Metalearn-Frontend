@@ -1,0 +1,157 @@
+.background{
+    background: -webkit-linear-gradient(-140deg,#c850c0,#4158d0);
+    color: white;
+    height: 100vh;
+    padding: 10%;
+}
+.login{
+    background-color: white;
+    color: black;
+    padding: 10% 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 20px;
+    position: relative;
+}
+.qr-code{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.qr-code img{
+    width: 300px;
+    height: 300px;
+}
+.mem-log{
+    // background-color: red;
+    width: 100%;
+    text-align: center;
+
+}
+.mem-log input{
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+.mem-log form p{
+    text-align: left;
+    margin-bottom: 5px;
+    color: red;
+}
+.mem-log form div{
+    border: 1px solid;
+    width: 70%;
+    margin-bottom: 10px;
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;    
+}
+
+.mem-log form div i{
+    width: 33.33%;
+
+}
+.mem-log form div:nth-child(2){
+    position: relative !important;
+    // background-color: red;
+}
+.fa-eye {
+    position: absolute;
+    
+}
+.logins{
+    border: none !important;
+    width: 100%;
+}
+.remember{
+    border: unset !important;
+    width: 100%;
+    text-align: center;
+    display: flex !important;
+    justify-content: center !important;
+}
+.remember input{
+    margin-right: 10px;
+}
+.mem-log form button{
+    background-color: green;
+    width: 100%;
+    border:none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: white;
+}
+.forgot-pw{
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+.option-login{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.option-login a{
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    text-align: center;
+    padding: 6px 12px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+.option-login a i{
+    margin-right: 10px;
+}
+.option-login a:first-child{
+    background-color: #4158d0;
+}
+.option-login a:nth-child(2){
+    background-color: black;
+}
+.option-login a:last-child{
+    background-color: red;
+}
+.messageErrors p{
+color: red;
+}
+@media screen and (max-width:930px) {
+    .background{
+        background: -webkit-linear-gradient(-140deg,#c850c0,#4158d0);
+        color: white;
+        min-height: 100vh;
+        padding: 10%;
+    }
+    .login {
+        width: 100%;
+        padding: 10% 2%;
+        margin: unset;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .qr-code{
+        width: 100%;
+        text-align: left;
+        display: flex;
+        justify-content: center;
+    }
+    .login form div, .login form button ,.remember , .option-login ,.forgot-pw {
+        width: 100%;
+        margin-left:  unset !important;
+        margin-bottom: 10px;
+       
+    }
+    .option-login a{
+        padding: 6px 12px;
+        font-size: 10px;
+        background-color: red;
+    }
+}

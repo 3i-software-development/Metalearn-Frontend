@@ -1,0 +1,12 @@
+.class-content {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-top: 10px;
+}
+
+/* Responsive styles for screens narrower than a certain width (adjust as needed) */
+@media (max-width: 768px) {
+    .class-content {
+        grid-template-columns: 1fr; /* Change to a single column layout on smaller screens */
+    }
+}

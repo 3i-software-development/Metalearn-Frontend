@@ -1,0 +1,128 @@
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  > * {
+    width: calc(100% / 3 - 20px);
+  }
+}
+
+.group-time,
+.group-media {
+  .form-group {
+    > * {
+      width: calc(50% - 20px);
+    }
+  }
+}
+
+.form-group-title {
+  font-weight: 600;
+  font-size: 18px;
+  width: 100% !important;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.form-label {
+  color: var(--label-color);
+}
+
+.actions {
+  button {
+    font-size: 14px;
+    padding: 10px 30px;
+    background-color: var(--button-background);
+    color: var(--button-color);
+    margin-right: 15px;
+    border-radius: var(--button-radius);
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: var(--button-hover-background);
+      color: var(--button-hover-color);
+    }
+  }
+}
+
+.course-items {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.course-image {
+  margin-bottom: 20px;
+
+  .avatar-label {
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e7ecf1;
+    border-radius: 3px;
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.course-list-lesson {
+  .form-group-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .action {
+    color: var(--hover-color);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.choose-video-label {
+  color: var(--hover-color);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .form-group-title {
+    margin-top: 20px;
+  }
+
+  .form-group {
+    > * {
+      width: calc(50% - 20px);
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .form-group {
+    > * {
+      width: 100%;
+    }
+  }
+
+  .group-time,
+  .group-media {
+    .form-group {
+      > * {
+        width: 100%;
+      }
+    }
+  }
+}

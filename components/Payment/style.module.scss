@@ -1,0 +1,140 @@
+/* Default styles */
+.payment {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+}
+
+.payment__title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.payment__history {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.payment__history__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment__history__table th,
+.payment__history__table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.payment__history__table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.payment__history__table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.payment__history__table tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsive styles for screens narrower than a certain width (adjust as needed) */
+@media (max-width: 768px) {
+  .payment {
+      padding: 10px;
+  }
+
+  .payment__title {
+      font-size: 20px;
+  }
+
+  .payment__history {
+      padding: 10px;
+  }
+
+  .payment__history__table th,
+  .payment__history__table td {
+      padding: 5px;
+      font-size: 14px;
+  }
+}
+
+/* style.module.scss */
+
+.pay-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bank-selection {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.bank-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.bank-selection label {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+
+.bank-selection img {
+  width: 100px;
+  height: 100px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.bank-selection img:hover {
+  border-color: #007BFF; /* Change to your desired hover color */
+}
+
+.payment-method-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-method-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.payment-method-container input[type="radio"] {
+  margin-right: 10px;
+}
+
+.pay-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007BFF; /* Change to your desired button background color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #0056b3; /* Change to your desired hover background color */
+}
+

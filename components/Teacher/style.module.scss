@@ -1,0 +1,136 @@
+.teachers-tab{
+    width: 100vw;
+    display: flex;
+}
+.form-filter{
+    width: 35%;
+}
+
+.teachersList-secion{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teachersList{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.teacher-item{
+    width: 30%;
+    margin-left: 20px;
+    // border:rgb(165, 164, 164) solid 1px;
+    // border-radius: 10px;
+    padding: 5px;
+    margin-top: 16px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    i {
+        color: red;
+        margin-right: 5px;     
+    }
+}
+
+.teacher-interactive {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-container {
+    width: 90%;
+    margin-top: 35px;
+    margin-left: 5%;
+    position: relative;
+    flex: 1;
+  
+    input {
+        padding: 15px 20px 15px 50px;
+        border-radius: 24px;
+        border: 1px solid black;
+        outline: none;
+        width: 100%;
+        color: rgb(165, 164, 164);
+        background-color: white;
+    }
+  
+    .search-input::placeholder {
+        color: rgb(170, 169, 169);
+    }
+  
+    svg {
+        position: absolute;
+        top: 18px;
+        left: 16px;
+        color: gray;
+    }
+  }
+  
+  .sort-container{
+    width: 90%;
+    margin-top: 40px;
+    margin-left: 5%;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .title-sort-container{
+      padding: 14px 16px;
+      width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .content-sort-container{
+      width: 100%;
+      border-top: 1px solid #eee;
+      padding: 14px 16px 16px 16px;
+      .select-container{
+        width: 100%;
+      }
+    }
+  }
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+    .form-filter {
+        width: 100%;  
+        font-size: 13px;
+
+        .sort-container {
+            margin-top: 25px;
+        }
+    }
+
+    .teachers-tab {
+      display: block;
+      
+    }
+
+    .teachersList-secion {
+        width: 100%;
+    }
+
+    .teacher-title {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .teacher-item {
+        width: 90%;
+        margin-bottom: 30px;
+        font-size: 16px;
+
+        div .image {
+            width: 100%;
+        }
+
+        div i {
+            margin-top: 10px;
+        }
+    }
+}

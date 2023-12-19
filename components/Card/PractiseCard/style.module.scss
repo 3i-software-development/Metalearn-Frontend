@@ -1,0 +1,158 @@
+.practice {
+    table{
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 5px;
+    }
+}
+
+.on-mobile {
+    display: none;
+}
+
+.table-head{
+    th{
+        text-align: initial;
+        font-size: 14px;
+        text-decoration: underline;
+
+        i{
+            margin-right: 5px;
+            color: gray;
+        }
+    }
+}
+
+.card {
+    width: 100%;
+    // box-shadow: 0 3px 3px #bebeea;
+    // background-color: #ebebef;
+    
+    td{
+        border-width: 1px 0 0;
+        border-style: solid;
+        border-color: #e7ecf1;
+        padding: 8px 10px;
+    }
+
+    &:hover{
+        background-color: #f3f4f6;
+    }
+}
+
+.titleCard {
+    vertical-align: middle;
+    background-color: white;
+
+    i {
+        font-weight: bold;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    h4{
+        font-size: 14px;
+    }
+}
+
+.card-status {
+    .status {
+        display: flex;
+
+        span {
+            color: white;
+            background-color: #ff6b81;
+            padding: 3px 6px;
+            margin-right: 5px;
+            border-radius: 3px;
+            font-size: 10px;
+            box-shadow: rgba(135, 135, 138, 0.2) 0px 7px 29px 0px;
+            
+            &.label{
+                background-color: #61bd4f;
+            }
+
+        }
+    }
+}
+
+.card-time {
+    .timeStart {
+        display: flex;
+        color: rgb(3, 140, 140);
+        font-weight: bold;
+
+        span {
+            font-size: 14px;
+        }
+    }
+}
+
+
+.listIcon {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.listIcon span {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    cursor: pointer;
+
+    i {
+        color: gray;
+        font-size: 16px;
+    }
+}
+
+.card-listIcon:first-child {
+    margin-left: 0;
+}
+
+@media screen and (max-width: 1920px){
+    .titleCard {
+        max-width: 180px;
+    }
+    .card-actions {
+        min-width: 120px;
+    }
+}
+
+@media screen and (max-width: 1479px){
+    .titleCard {
+        max-width: 350px;
+    }
+    .card-actions {
+        min-width: 180px;
+    }
+    .card-time {
+        min-width: 210px;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .titleCard {
+        max-width: 180px;
+    }
+    .card-actions {
+        min-width: 120px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .on-pc {
+        display: none;
+    }
+    .on-mobile {
+        display: block;
+    }
+    .titleCard {
+        max-width: 100%;
+    }
+    .card-status {
+        max-width: 100%;
+    }
+    
+}

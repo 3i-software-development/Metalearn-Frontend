@@ -1,0 +1,482 @@
+/* styles.css */
+
+/* Global styles for the header */
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: black;
+  color: #fff;
+  z-index: 100;
+  /* Add a z-index to ensure the header stays on top */
+}
+.header-left {
+  column-gap: 25px;
+  display: flex;
+  align-items: center;
+}
+.header-right {
+  column-gap: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.head-link {
+  font-size: 16px;
+  margin-right: 15px;
+}
+
+.icon-ss {
+  display: flex;
+  align-items: center;
+
+  .authenticated_div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .icon-container {
+    margin-right: 10px;
+  }
+}
+
+/* Logo styling */
+.logo-container {
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+.listSettingss {
+  border-bottom: 1px solid rgb(220, 220, 220);
+  padding: 5px 0;
+}
+
+.listSettings {
+  display: flex;
+  width: 100%;
+  padding: 0 10px;
+  justify-content: space-between;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.search-container {
+  position: relative;
+  .search-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  input {
+    padding: 8px 20px 8px 50px;
+    border-radius: 24px;
+    border: 1px solid black;
+    outline: none;
+    width: 200px;
+    color: rgb(165, 164, 164);
+    background-color: rgb(244, 247, 247);
+  }
+
+  .search-input::placeholder {
+    color: rgb(170, 169, 169);
+  }
+
+  svg {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: gray;
+  }
+}
+
+/* Authenticated links styling */
+.header-links {
+  margin-left: 40px;
+  font-family: 700;
+}
+
+.head-link {
+  text-decoration: none;
+  color: #fff;
+}
+.head-link:hover {
+  color: red;
+}
+
+/* User icons and logout button styling */
+
+.icon-container {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* User login/signup buttons styling */
+.user {
+  display: flex;
+  gap: 10px;
+}
+
+.login-btn,
+.signup-btn {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 10px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+}
+
+.menu-mobile-btn {
+  display: none;
+}
+
+.menu-mobile {
+  display: none;
+}
+
+.icon-mobile {
+  display: none;
+}
+
+.icon-ss {
+  display: flex;
+  align-items: center;
+
+  .authenticated_div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .icon-container {
+    margin-right: 20px;
+  }
+
+  /* MenuMobile.css */
+
+  /* MenuMobile.css */
+
+  /* MenuMobile.css */
+}
+
+.mb-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.mb-link {
+  text-decoration: none;
+  color: #333;
+  /* Change the link color */
+  font-size: 1.5rem;
+  display: block;
+  margin: 10px 0;
+  transition: color 0.3s;
+  /* Add a smooth color transition */
+}
+
+.mb-link:hover {
+  color: #007acc;
+  /* Change link color on hover */
+}
+
+/* styles.css */
+
+/* Global styles for the header */
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: black;
+  color: #fff;
+  z-index: 100;
+  /* Add a z-index to ensure the header stays on top */
+}
+
+.head-link {
+  font-size: 16px;
+  margin-right: 15px;
+}
+
+.icon-ss {
+  display: flex;
+  align-items: center;
+
+  .authenticated_div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .icon-container {
+    margin-right: 10px;
+  }
+}
+
+/* Logo styling */
+.logo-container {
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+.listSettingss {
+  border-bottom: 1px solid rgb(220, 220, 220);
+  padding: 5px 0;
+}
+
+.listSettings {
+  display: flex;
+  width: 100%;
+  padding: 0 10px;
+  justify-content: space-between;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.search-container {
+  // left: 160px;
+
+  position: relative;
+  flex: 1;
+
+  input {
+    padding: 8px 20px 8px 50px;
+    border-radius: 24px;
+    border: 1px solid black;
+    outline: none;
+    color: rgb(165, 164, 164);
+    background-color: rgb(244, 247, 247);
+  }
+
+  .search-input::placeholder {
+    color: rgb(170, 169, 169);
+  }
+
+  svg {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: gray;
+  }
+}
+
+/* Authenticated links styling */
+.header-links {
+  display: flex;
+  // gap: 30px;
+}
+
+.head-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* User icons and logout button styling */
+
+.icon-container {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* User login/signup buttons styling */
+.user {
+  display: flex;
+  gap: 10px;
+}
+
+.login-btn,
+.signup-btn {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 10px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+}
+
+.menu-mobile-btn {
+  display: none;
+}
+
+.menu-mobile {
+  display: none;
+}
+
+.icon-mobile {
+  display: none;
+}
+
+.icon-ss {
+  display: flex;
+  align-items: center;
+
+  .authenticated_div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .icon-container {
+    margin-right: 20px;
+  }
+
+  /* MenuMobile.css */
+
+  /* MenuMobile.css */
+
+  /* MenuMobile.css */
+
+  .mb-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+
+  .mb-link {
+    text-decoration: none;
+    color: #333;
+    /* Change the link color */
+    font-size: 1.5rem;
+    display: block;
+    margin: 10px 0;
+    transition: color 0.3s;
+    /* Add a smooth color transition */
+  }
+
+  .mb-link:hover {
+    color: #007acc;
+    /* Change link color on hover */
+  }
+
+  .logout-button-mobile {
+    background-color: #007acc;
+    /* Change the background color to a pleasant blue */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    /* Add smooth background color transition */
+  }
+
+  .logout-button-mobile:hover {
+    background-color: #005e9e;
+    /* Slightly darker blue on hover */
+  }
+
+  /* Add more CSS classes and styles as needed */
+
+  /* Add more CSS classes and styles as needed */
+}
+
+/* Responsive styling for mobile devices */
+@media screen and (max-width: 768px) {
+  .icon-mobile {
+    display: block;
+  }
+
+  .head-link {
+    display: none;
+  }
+
+  .search-input {
+    display: none;
+    padding-left: 200px;
+  }
+
+  .header-links {
+    display: none;
+    /* Hide authenticated links on mobile */
+  }
+
+  .logout-button {
+    display: none;
+  }
+
+  .search-container {
+    display: none;
+    /* Hide the search input on mobile */
+  }
+
+  /* Mobile menu button styling */
+  .icon-mobile {
+    display: block;
+    cursor: pointer;
+  }
+
+  /* Authenticated user icons styling */
+  .icon-ss .icon-container {
+    margin-right: 10px;
+  }
+
+  .menu-mobile {
+    background-color: #333;
+    color: #fff;
+    display: block;
+    position: absolute !important;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    height: calc(100vh - 50px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+
+  /* styles.css */
+  .mb-link {
+    margin-left: 20px;
+    /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+  }
+
+  .sub-menu {
+    list-style-type: none;
+    /* Remove bullet points */
+    margin-left: 80px;
+    /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+  }
+
+  .logout-button-mobile {
+    margin-left: 20px;
+    margin-top: 20px;
+    /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+  }
+
+  .mb-list li {
+    margin-top: 20px;
+    border-bottom: 1px solid #fff;
+    /* Tạo đường viền màu trắng dưới mỗi liên kết */
+    padding: 8px 0;
+    /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+  }
+
+  .mb-list li:last-child {
+    border-bottom: none;
+    /* Loại bỏ đường viền ở li cuối cùng */
+  }
+}

@@ -1,0 +1,192 @@
+/* OnlineClasses.module.css */
+
+.Online-page {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.OnlineClasses {
+  font-size: 24px;
+  color: #333;
+}
+
+.OnlineClasses-All {
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.OnlineClasses-01 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.course-item {
+  flex: 0 0 calc(24% - 10px);
+  /* Set each item to occupy 50% width with some spacing */
+  // border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-sizing: border-box;
+  // background-color: #007bff;
+  /* Ensure padding is included in the width */
+
+  &:hover {
+    background-color: #f9f8f8;
+  }
+}
+
+.OnlineClasses-Title {
+  font-size: 18px;
+  margin: 0;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.OnlineClasses-Subject {
+  font-size: 16px;
+  margin: 0;
+}
+
+.OnlineClasses-Day {
+  font-size: 14px;
+  margin: 0;
+}
+
+.course-item-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.course-item-icons i {
+  font-size: 20px;
+  color: #555;
+}
+
+.document-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  /* Change to your preferred page background color */
+}
+
+.document-layout {
+  /* Adjust the column sizes as needed */
+  gap: 20px;
+  /* Adjust the gap between columns */
+  width: 100vw;
+}
+
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  background-color: #007bff;
+  /* Change to your preferred tab bar background color */
+  padding: 10px;
+}
+
+.tab-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  color: white;
+  /* Tab button text color */
+  outline: none;
+  transition: color 0.3s ease;
+}
+
+.tab-button.active {
+  color: #007bff;
+  /* Active tab text color */
+  font-weight: bold;
+  background-color: white;
+  /* Active tab background color */
+  border-radius: 5px;
+  /* Rounded corners for the active tab */
+}
+
+/* Tab content styles */
+.tab-content {
+  padding: 20px;
+}
+
+/* User list styles */
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* Bắt đầu từ trái */
+  gap: 20px;
+  /* Khoảng cách giữa các mục người dùng */
+  max-height: 90vh;
+  /* Đặt chiều cao tối đa cho khung danh sách người dùng */
+}
+
+
+@media only screen and (max-width: 768px) {
+  .document-layout {
+    /* Adjust the column sizes as needed */
+    gap: 20px;
+    /* Adjust the gap between columns */
+    width: 100vw;
+  }
+
+  .course-item {
+    flex: 0 0 calc(50% - 10px);
+    /* Set each item to occupy 50% width with some spacing */
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(9, 9, 9, 0.75);
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+  
+    &:hover {
+      background-color: #f9f8f8;
+    }
+  }
+  .course-item {
+    // background-color: red;
+    width: 200px;
+    /* Kích thước chiều rộng cố định */
+    height: 115px;
+  }
+
+  .OnlineClasses-Title {
+    font-size: 12px;
+  }
+
+  .OnlineClasses-Subject {
+    font-size: 10px;
+  }
+
+  .OnlineClasses-Day {
+    font-size: 8px;
+  }
+
+  .course-item-icons {
+    display: none;
+  }
+}

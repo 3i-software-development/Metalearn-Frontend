@@ -1,0 +1,83 @@
+/* style.module.scss */
+
+.blog-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 20px;
+    height: 100vh;
+}
+
+.tree-view-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f0f0f0; /* Đặt màu nền cho TreeView list */
+}
+
+.blog-content {
+    /* CSS cho container chứa nội dung blog */
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-title {
+    /* CSS cho tiêu đề blog */
+    font-size: 28px;
+    color: #333;
+}
+
+.blog-date {
+    /* CSS cho ngày đăng */
+    font-size: 16px;
+    color: #555;
+}
+
+.blog-text {
+    /* CSS cho nội dung blog */
+    font-size: 18px;
+    line-height: 1.6;
+    margin-top: 15px;
+    color: #444;
+}
+
+.blog-author {
+    /* CSS cho tên tác giả */
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    float: right;
+    clear: both;
+}
+
+/* style.module.scss */
+
+/* Define a CSS rule to change the font size for the TreeView component */
+.MuiTreeView-root {
+    font-size: 40; /* Adjust the desired font size here */
+  }
+  
+
+  @media only screen and (max-width: 768px) {
+    .blog-container {
+        
+        display: flex;
+        background-color: blue;
+        flex-direction: column;
+        height: 100vh; /* Chiều cao 100% của viewport */
+        width: 100%; /* Chiều rộng 100% của parent container (có thể không cần thiết nếu parent container cũng chiếm 100% width của viewport) */
+    }
+
+
+    .blog-container-1,
+    .blog-container-2 {
+    // background-color: red;
+    margin-top: 5px;
+    // width: 100%; /* Chiều rộng 100% của parent container (.tutorial-container) */
+    height: 100%; /* Chiều cao 100% của viewport */
+}
+    
+   
+}

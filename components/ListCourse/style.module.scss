@@ -1,0 +1,255 @@
+//list
+.list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+  justify-content: center;
+}
+.card {
+  width: 210px !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+}
+.course-card {
+  height: 100%;
+  width: 100%;
+  .titleDoc {
+    text-align: center;
+    margin-top: 20px !important;
+    margin-bottom: 50px !important;
+  }
+  .title {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    .name {
+      color: rgb(233, 185, 11);
+    }
+    .sub {
+      color: red;
+    }
+    .brown {
+      color: brown;
+    }
+  }
+
+  img {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 5px;
+    margin: 0;
+    padding: 0;
+  }
+  span {
+    color: gray;
+    text-align: center;
+  }
+  i {
+    font-size: 12px;
+  }
+
+  .footer-card {
+    padding: 5px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    i {
+      font-size: 25px;
+      color: gray;
+    }
+    .arrow-icon {
+      display: flex;
+      .arrow-right {
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid green;
+      }
+      .rectangle {
+        width: 100px;
+        height: 28px;
+        background: green;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid white;
+        span:first-child {
+          position: relative;
+          top: -20px;
+          padding: 0;
+          margin-left: 20px;
+          font-size: 10px;
+          color: white;
+        }
+        span:last-child {
+          position: relative;
+          top: -33px;
+          padding: 0;
+          margin-left: 23px;
+          font-size: 10px;
+          color: white;
+        }
+      }
+    }
+  }
+  .rate {
+    color: orangered;
+    display: flex;
+    align-items: center;
+    span {
+      margin-left: 10px;
+    }
+  }
+  .price {
+    font-weight: bolder;
+    display: flex;
+    span {
+      margin: 0 5px;
+      text-decoration: line-through;
+    }
+  }
+  .best {
+    padding: 5px 10px;
+    background-color: rgb(126, 161, 64);
+    color: white;
+    width: fit-content;
+  }
+}
+
+.btn-nav {
+  font-size: 50px;
+  z-index: 2;
+  position: absolute;
+  top: 45%;
+}
+.prev-button {
+  left: -25px;
+}
+.next-button {
+  right: -25px;
+}
+
+@media only screen and (max-width: 930px) {
+  .card {
+    width: 150px !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+  }
+  .course-card {
+    height: 100%;
+    width: 100%;
+    font-size: 12px;
+    .titleDoc {
+      margin-top: 20px !important;
+      font-size: 12px !important;
+    }
+    .title {
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      .name {
+        color: rgb(233, 185, 11);
+      }
+      .sub {
+        color: red;
+      }
+      .brown {
+        color: brown;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+
+    img {
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      width: 100%;
+      height: 40px;
+      object-fit: cover;
+      margin-bottom: 5px;
+      margin: 0;
+      padding: 0;
+    }
+    span {
+      color: gray;
+      text-align: center;
+    }
+    i {
+      font-size: 12px;
+    }
+
+    .footer-card {
+      padding: 5px;
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      i {
+        font-size: 25px;
+        color: gray;
+      }
+      .arrow-icon {
+        display: flex;
+        .arrow-right {
+          width: 0;
+          height: 0;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid green;
+        }
+        .rectangle {
+          width: 100px;
+          height: 28px;
+          background: green;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid white;
+          font-weight: 500;
+          span:first-child {
+            color: white;
+            position: relative;
+            top: -13px;
+            padding: 0;
+            margin-left: 20px;
+            font-size: 10px;
+          }
+          span:last-child {
+            color: white;
+            position: relative;
+            top: -20px;
+            padding: 0;
+            margin-left: 23px;
+            font-size: 10px;
+          }
+        }
+      }
+    }
+    .rate {
+      color: orangered;
+      display: flex;
+      align-items: center;
+      span {
+        margin-left: 10px;
+      }
+    }
+    .price {
+      font-weight: bolder;
+      display: flex;
+      span {
+        margin: 0 5px;
+        text-decoration: line-through;
+      }
+    }
+    .best {
+      padding: 5px 10px;
+      background-color: rgb(126, 161, 64);
+      color: white;
+      width: fit-content;
+    }
+  }
+}
