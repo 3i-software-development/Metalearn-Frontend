@@ -1,0 +1,26 @@
+.list-student{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    gap: 20px;
+    li{
+        display: flex;
+        border: 1px solid #ccc;
+        padding: 20px;
+        img{
+            min-width: 80px;
+        }
+    }
+    .user-info{
+        padding: 10px;
+        span{
+            font-size: 12px;
+        }
+    }
+}
+
+div{
+    .lms-title{
+        margin-bottom: 20px;
+    }
+}

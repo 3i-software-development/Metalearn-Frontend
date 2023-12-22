@@ -48,7 +48,7 @@ import {
 import { useGetCountQuizBodyQuery } from "@/lib/Midleware/QuizQuery";
 import CircleChart from "../Chart/CircleChart/CircleChart";
 import MobileNavBar from "./MobileNavBar";
-import CourseWareMath from "../CourseWareMath/CourseWareMath";
+import CourseWareMath from "../Courses/CourseWareMath/CourseWareMath";
 import CourseDev from "../Courses/CourseDev/CourseDev";
 
 const CourseWare = () => {
@@ -188,7 +188,7 @@ const CourseWare = () => {
   const [openKeys, setOpenKeys] = useState(
     `${router.query.key ? router.query.key : "practive"}`
   );
-
+  
   useEffect(() => {
     if (router.query.key) {
       setOpenKeys(router.query.key);

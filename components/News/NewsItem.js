@@ -5,6 +5,7 @@ import { GetListCmsItem } from "@/pages/api/CallAPI";
 import {
   SettingOutlined,
 } from "@ant-design/icons";
+import Image from "next/image";
 
 
 const cx = classNames.bind(styles);
@@ -15,7 +16,7 @@ const NewsItem = ({cat_id}) => {
       setListNews(res.Object);
     });
   }, []);
-
+  console.log(listNews);
 
   return (
     <div className={cx("item")}>
@@ -23,11 +24,12 @@ const NewsItem = ({cat_id}) => {
         return (
           <div className={cx("news-item")} key={index}>
             <div className={cx("icon-news")}>
-              <i className="fa-sharp fa-solid fa-table-list" style={{ fontSize: "40px" }}></i>
+              {/* <i className="fa-sharp fa-solid fa-table-list" style={{ fontSize: "40px" }}></i> */}
+              <Image width={200} style={{objectFit: 'cover'}} height={10} src={'https://img.lovepik.com/free-png/20210926/lovepik-newspaper-news-icon-free-vector-illustration-png-image_401498948_wh1200.png'}/>
             </div>
             <div className={cx("content-news")}>
               <div className={cx("content")}>
-                <text>{item.title}</text>
+                <text>{item.title || item?.alias}</text>
               </div>
               <div className={cx("content")}>
                 <div>

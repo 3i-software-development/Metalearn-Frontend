@@ -101,7 +101,7 @@ export default function TabItem() {
       {listNews.map((item, index) => {
         return (
           <TabPanel key={index} value={value} index={index}>
-            <NewsItem item={item} cat_id={item.cat_id}/>
+            <NewsItem item={item} cat_id={item.cat_id} />
           </TabPanel>
         );
       })}

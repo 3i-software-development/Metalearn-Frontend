@@ -69,9 +69,9 @@ const CourseDev = ({ total }) => {
               </tr>
             </thead>
             <tbody>
-              {courseMobileQuery?.Object?.map((element) => {
+              {courseMobileQuery?.Object?.map((element, i) => {
                 return (
-                  <tr key={element.LmsTaskCode}>
+                  <tr key={i}>
                     <Link href={`/lecture?courseCode=${element?.CourseCode}`}>
                       <AvatarC imageUrl={element?.ImgCover} />
                     </Link>
@@ -94,15 +94,17 @@ const CourseDev = ({ total }) => {
                     </td>
                     <td>
                       <div className={cx("list-icon")}>
-                        <span title="file">
-                          <InfoIcon />
+                        <span title="info">
+                          <InfoIcon className={cx("icon-info")} />
                         </span>
-                        <span title="file">
-                          <ScreenShareOutlinedIcon />
-                        </span>
+                        <Link href={"/shareResult"}>
+                          <span title="Chia sẻ kết quả rèn luyện">
+                            <ScreenShareOutlinedIcon className={cx("icon-info")} />
+                          </span>
+                        </Link>
                         <Link href={"/shareCourse"}>
-                          <span title="file">
-                            <ShareOutlinedIcon />
+                          <span title="Chia sẻ khóa học">
+                            <ShareOutlinedIcon className={cx("icon-info")} />
                           </span>
                         </Link>
                       </div>

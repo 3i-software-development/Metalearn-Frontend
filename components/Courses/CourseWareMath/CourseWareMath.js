@@ -29,7 +29,7 @@ const CourseWareMath = ({ role }) => {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.innerText;
   }
-  const arr = role ? Lesson : LmsClass.query;
+  const arr = role ? Lesson : LmsClass?.query;
 
   return (
     <Section>
