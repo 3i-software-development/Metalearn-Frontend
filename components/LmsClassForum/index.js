@@ -13,7 +13,7 @@ import SubjectIcon from "@mui/icons-material/Subject";
 import { Input, Modal } from "antd";
 import Bulletinboard from "../Class/Bulletinboard";
 import { useGetCmsItemClassQuery } from "@/lib/Midleware/CmsClassQuery";
-// import { useInsertQuizRefJsonMutation } from "@/lib/Midleware/QuizQuery";
+import { useInsertQuizRefJsonMutation } from "@/lib/Midleware/QuizQuery";
 
 const { TextArea } = Input;
 
@@ -23,39 +23,31 @@ const LmsClassForum = () => {
   const [textAreaValue, setTextAreaValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
-  console.log();
-  // const [insertQuizRefJson, { isLoading, isError, data: dataQ }] = useInsertQuizRefJsonMutation();
-  const { data: ItemClass } = useGetCmsItemClassQuery({
+
+  const [insertQuizRefJson, result] = useInsertQuizRefJsonMutation({ fixedCacheKey: 'shared-update-post', });
+
+  const [query, setQuery] = useState({
     classCode: "4u7",
     userName: "admin",
-  });
+  })
+  const { data: ItemClass } = useGetCmsItemClassQuery(query);
 
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = async () => {
     try {
-      const res = await fetch(
-        "https://admin.metalearn.vn/MobileLogin/insertQuizRefJson",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            classCode: "4u7",
-            CreatedBy: "admin",
-            isNews: true,
-            RefContent: textAreaValue,
-            UserCreateRef: "admin",
-          }),
-        }
-      );
-      const data = await res.json();
-      alert(data?.Title);
-      // window.location.reload()
+      await insertQuizRefJson({
+        "classCode": "4u7",
+        "CreatedBy": "admin",
+        "IsNews": true,
+        "refContent": textAreaValue,
+        "UserCreateRef": "admin"
+      })
+      alert('Thêm tin tức thành công!')
     } catch (error) {
-      console.log(error);
+      alert('Thêm tin tức thất bại')
+      console.log(error)
     }
     setIsModalOpen(false);
   };
@@ -97,6 +89,12 @@ const LmsClassForum = () => {
       icon: <SubjectIcon className={cx("icon")} />,
     },
   ];
+  const pubData = (value) => {
+    setQuery({
+      classCode: "4u7",
+      userName: "admin",
+    })
+  }
 
   return (
     <Section>
@@ -126,7 +124,7 @@ const LmsClassForum = () => {
       </div>
       <div className={cx("buletinClass")}>
         <h4>Bảng tin lớp học</h4>
-        <Bulletinboard data={ItemClass} />
+        <Bulletinboard pubData={pubData} data={ItemClass} />
       </div>
 
       <Modal
