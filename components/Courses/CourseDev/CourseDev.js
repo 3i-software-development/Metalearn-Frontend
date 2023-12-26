@@ -34,7 +34,6 @@ const CourseDev = ({ total }) => {
     userName: "admin",
     isPublic: true,
   });
-  console.log(courseMobileQuery);
 
   const diffMoment = (startDate, endDate) => {
     if (!endDate) return "Không giới hạn thời gian";
