@@ -22,9 +22,20 @@ const ListClass = () => {
   const [initLoading, setInitLoading] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const viewMore = () => {
+    setQuery({
+      FromDate: "",
+      ToDate: "",
+      Teacher: "zeta7",
+      Student: "",
+      pageSize: "17",
+      pageNo: "1",
+    })
+  }
+
   const loadMore = () =>
     !initLoading && !loading ? (
-      <div className={cx("load-more")}>
+      <div onClick={() => viewMore()} className={cx("load-more")}>
         <p>Xem thêm</p>
       </div>
     ) : null;

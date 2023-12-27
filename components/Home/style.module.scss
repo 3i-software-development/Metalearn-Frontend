@@ -24,7 +24,8 @@
 
 
 .list-main {
-  border: 1px solid rgb(201, 201, 201);
+  // border: 1px solid rgb(201, 201, 201);
+  cursor: pointer;
   padding: 2%;
   margin: 2% 0;
   p {
@@ -48,6 +49,7 @@
 //top
 .top-category {
   padding: 5% 0;
+  cursor: pointer;
   .list-top-cate {
     display: flex;
     flex-wrap: wrap;
@@ -56,6 +58,7 @@
     .item-top-cate {
       width: 23%;
       margin-bottom: 20px;
+      text-align: center;
 
       img {
         width: 100% !important;
