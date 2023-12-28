@@ -133,7 +133,7 @@ const CourseDev = ({ total }) => {
                 </div>
                 <div className={cx("card-time")}>
                   <div className={cx("timeStart")}>
-                    <span>
+                    <span className={cx("timestarts")}>
                       [{moment(element.BeginTime).format("DD : MM : YYYY")}]
                     </span>
                     {element.EndTime && (
@@ -144,20 +144,20 @@ const CourseDev = ({ total }) => {
                   </div>
                 </div>
                 <div className={cx("card-actions")}>
-                  <div className={cx("listIcon")}>
-                    <span title="Sửa">
+                  <div className={cx("listIcons")}>
+                    <span title="Sửa"  className={cx("listIcons")}>
                       <i className="fa-solid fa-pen"></i>
                     </span>
-                    <span title="Căn chỉnh">
+                    <span title="Căn chỉnh"  className={cx("listIcons")}>
                       <i className="fa-solid fa-align-center"></i>
                     </span>
-                    <span title="Trò chuyện">
+                    <span title="Trò chuyện"  className={cx("listIcons")}>
                       <i className="fa-solid fa-comment-dots"></i>
                     </span>
-                    <span title="Thông báo">
+                    <span title="Thông báo"  className={cx("listIcons")}>
                       <i className="fa-solid fa-bell"></i>
                     </span>
-                    <span title="File">
+                    <span title="File"  className={cx("listIcons")}>
                       <i className="fa-solid fa-file"></i>
                     </span>
                   </div>

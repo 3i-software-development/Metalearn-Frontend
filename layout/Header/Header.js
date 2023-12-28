@@ -39,106 +39,106 @@ const Header = () => {
 
   useEffect(() => { }, [isAuthenticated]);
 
-  // const items = [
-  //   {
-  //     key: "1",
-  //     label: "Lập trình",
-  //   },
-  //   {
-  //     key: "2",
-  //     label: "Toán",
-  //     children: [
-  //       {
-  //         key: "2-1",
-  //         label: "Toán 10",
-  //       },
-  //       {
-  //         key: "2-2",
-  //         label: "Toán 11",
-  //         children: [
-  //           {
-  //             key: "2-2-1",
-  //             label: "Toán hình 11",
-  //           },
-  //           {
-  //             key: "2-2-2",
-  //             label: "Đại số 11",
-  //           },
-  //         ],
-  //       },
-  //       {
-  //         key: "2-3",
-  //         label: "Toán Cao Cấp",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     key: "3",
-  //     label: "Văn học",
-  //   },
-  //   {
-  //     key: "4",
-  //     label: "Địa lý",
-  //     children: [
-  //       {
-  //         key: "2-1",
-  //         label: "Địa lý 10",
-  //       },
-  //       {
-  //         key: "2-2",
-  //         label: "Địa lý 11",
-  //       },
-  //       {
-  //         key: "2-3",
-  //         label: "Địa lý 12",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     key: "5",
-  //     label: "Ngoại ngữ",
-  //     children: [
-  //       {
-  //         key: "5-1",
-  //         label: "tiếng Anh",
-  //       },
-  //       {
-  //         key: "5-2",
-  //         label: "tiếng Pháp",
-  //       },
-  //       {
-  //         key: "5-3",
-  //         label: "tiếng Đức",
-  //       },
-  //       {
-  //         key: "5-5",
-  //         label: "tiếng Nhật",
-  //       },
-  //       {
-  //         key: "5-4",
-  //         label: "tiếng Hàn",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     key: "6",
-  //     label: "Lịch sử",
-  //     children: [
-  //       {
-  //         key: "6-1",
-  //         label: "Lịch sử 10",
-  //       },
-  //       {
-  //         key: "6-2",
-  //         label: "Lịch sử 11",
-  //       },
-  //       {
-  //         key: "6-3",
-  //         label: "Lịch sử 12",
-  //       },
-  //     ],
-  //   },
-  // ];
+  const items = [
+    {
+      key: "1",
+      label: "Lập trình",
+    },
+    {
+      key: "2",
+      label: "Toán",
+      children: [
+        {
+          key: "2-1",
+          label: "Toán 10",
+        },
+        {
+          key: "2-2",
+          label: "Toán 11",
+          children: [
+            {
+              key: "2-2-1",
+              label: "Toán hình 11",
+            },
+            {
+              key: "2-2-2",
+              label: "Đại số 11",
+            },
+          ],
+        },
+        {
+          key: "2-3",
+          label: "Toán Cao Cấp",
+        },
+      ],
+    },
+    {
+      key: "3",
+      label: "Văn học",
+    },
+    {
+      key: "4",
+      label: "Địa lý",
+      children: [
+        {
+          key: "2-1",
+          label: "Địa lý 10",
+        },
+        {
+          key: "2-2",
+          label: "Địa lý 11",
+        },
+        {
+          key: "2-3",
+          label: "Địa lý 12",
+        },
+      ],
+    },
+    {
+      key: "5",
+      label: "Ngoại ngữ",
+      children: [
+        {
+          key: "5-1",
+          label: "tiếng Anh",
+        },
+        {
+          key: "5-2",
+          label: "tiếng Pháp",
+        },
+        {
+          key: "5-3",
+          label: "tiếng Đức",
+        },
+        {
+          key: "5-5",
+          label: "tiếng Nhật",
+        },
+        {
+          key: "5-4",
+          label: "tiếng Hàn",
+        },
+      ],
+    },
+    {
+      key: "6",
+      label: "Lịch sử",
+      children: [
+        {
+          key: "6-1",
+          label: "Lịch sử 10",
+        },
+        {
+          key: "6-2",
+          label: "Lịch sử 11",
+        },
+        {
+          key: "6-3",
+          label: "Lịch sử 12",
+        },
+      ],
+    },
+  ];
 
   const [anchorElUser, setAnchorElUser] = useState(null);
   const handleOpenUserMenu = (event) => {

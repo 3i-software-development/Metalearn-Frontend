@@ -15,11 +15,13 @@
   z-index: 100;
   /* Add a z-index to ensure the header stays on top */
 }
+
 .header-left {
   column-gap: 25px;
   display: flex;
   align-items: center;
 }
+
 .header-right {
   column-gap: 25px;
   display: flex;
@@ -74,6 +76,7 @@
 
 .search-container {
   position: relative;
+
   .search-icon {
     position: absolute;
     left: 0;
@@ -104,6 +107,7 @@
 
 /* Authenticated links styling */
 .header-links {
+  margin-left: 50px;
   margin-left: 40px;
   font-family: 700;
 }
@@ -113,6 +117,7 @@
   color: #fff;
   margin-left: 25px;
 }
+
 .head-link:hover {
   color: red;
 }
@@ -182,7 +187,7 @@
   text-decoration: none;
   color: #333;
   /* Change the link color */
-  font-size: 1.5rem;
+  font-size: 18px;
   display: block;
   margin: 10px 0;
   transition: color 0.3s;
@@ -191,6 +196,8 @@
 
 .mb-link:hover {
   color: #007acc;
+  font-weight: 600;
+  // background: #007acc;
   /* Change link color on hover */
 }
 
@@ -358,7 +365,7 @@
 
   .mb-link {
     text-decoration: none;
-    color: #333;
+    // color: #333;
     /* Change the link color */
     font-size: 1.5rem;
     display: block;
@@ -371,7 +378,14 @@
     color: #007acc;
     /* Change link color on hover */
   }
-
+.logout-button{
+  background: #007acc;
+  color: #fff;
+  border: 1px solid #007acc;
+}
+.logout-button:hover{
+  background: white;
+}
   .logout-button-mobile {
     background-color: #007acc;
     /* Change the background color to a pleasant blue */
@@ -380,7 +394,7 @@
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-top: 20px;
     transition: background-color 0.3s;
     /* Add smooth background color transition */
@@ -399,7 +413,7 @@
 /* Responsive styling for mobile devices */
 @media screen and (max-width: 768px) {
   .icon-mobile {
-    display: block;
+    display: none;
   }
 
   .head-link {
@@ -437,14 +451,14 @@
   }
 
   .menu-mobile {
-    background-color: #333;
+    background-color: white;
     color: #fff;
     display: block;
     position: absolute !important;
     left: 0;
-    top: 50px;
+    top: 80px;
     width: 100%;
-    height: calc(100vh - 50px);
+    // height: calc(100vh - 50px);
     transition: all 0.3s ease-in;
     overflow: hidden;
   }
@@ -452,6 +466,7 @@
   /* styles.css */
   .mb-link {
     margin-left: 20px;
+    // background: #000;
     /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
   }
 
@@ -469,10 +484,10 @@
   }
 
   .mb-list li {
-    margin-top: 20px;
+    // margin-top: 1px;
     border-bottom: 1px solid #fff;
     /* Tạo đường viền màu trắng dưới mỗi liên kết */
-    padding: 8px 0;
+    // padding: 8px 0;
     /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
   }
 
