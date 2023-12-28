@@ -37,7 +37,7 @@ const Header = () => {
   const { isAuthenticated, userId, loginState, logout } = useAuth();
   const [toggle, setToggle] = useState(false);
 
-  useEffect(() => {}, [isAuthenticated]);
+  useEffect(() => { }, [isAuthenticated]);
 
   const items = [
     {
@@ -178,28 +178,34 @@ const Header = () => {
         </Link>
 
         <div className={cx("header-links")}>
-          <Link href="/subjects" className={cx("head-link")}>
+          {/* <Link href="/subjects" className={cx("head-link")}>
             <Dropdown menu={{ items }}>
               <Space className={cx("head-link")}>Môn học</Space>
             </Dropdown>
-          </Link>
+          </Link> */}
           <Link href="/news" className={cx("head-link")}>
             Tin tức
           </Link>
           <Link href="/my-class" className={cx("head-link")}>
-            Lớp học trực tuyến
+            Lớp học
           </Link>
           <Link href="/documents" className={cx("head-link")}>
             Tài liệu
           </Link>
+          <Link href="/courseware" className={cx("head-link")}>
+            Khóa học
+          </Link>
           <Link href="/exam" className={cx("head-link")}>
             Đề thi
+          </Link>
+          <Link href="/blog" className={cx("head-link")}>
+            Blog kiến thức
           </Link>
         </div>
       </div>
 
       <div className={cx("header-right")}>
-        <div className={cx("search-container")}>
+        {/* <div className={cx("search-container")}>
           <span className="search-icon">
             <BsSearch />
           </span>
@@ -208,7 +214,7 @@ const Header = () => {
             placeholder="Tìm kiếm"
             className={cx("search-input")}
           />
-        </div>
+        </div> */}
 
         {isAuthenticated && (
           <div className={cx("icon-ss")}>

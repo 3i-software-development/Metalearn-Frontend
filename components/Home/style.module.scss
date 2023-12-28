@@ -2,7 +2,6 @@
   width: 100%;
   height: auto;
   padding: 2% 0;
-  box-shadow: 20px;
 
   .text-p {
     padding: 15px 0;
@@ -13,13 +12,23 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  box-shadow: 20px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-radius: 20px;
+  padding-bottom: 8px;
+  // height: 70px;
+  // border: 1px solid #000;
+  // background: red;
 
   .active {
-    color: black;
-    border-bottom: 5px solid black;
-    box-shadow: 20px;
+    color: rgb(30, 30, 155);
+    // border-bottom: 5px solid black;
+    border-radius: 20px;
+    background: #79cce617;
+    height: 42px;
+    // margin-top: 8px;
+    // width: 250px;
   }
+
   i {
     color: green;
     margin-right: 5px;
@@ -29,18 +38,21 @@
 
 .list-main {
   // border: 1px solid rgb(201, 201, 201);
+  cursor: pointer;
   padding: 2%;
   margin: 2% 0;
+
   p {
     width: 100%;
     max-width: 800px;
   }
+
   .explore {
     display: block;
     padding: 10px 20px;
     border: 5px solid black;
     width: fit-content;
-    font-weight: bolder;
+    font-weight: bold;
   }
 }
 
@@ -52,6 +64,8 @@
 //top
 .top-category {
   padding: 5% 0;
+  cursor: pointer;
+
   .list-top-cate {
     display: flex;
     flex-wrap: wrap;
@@ -60,16 +74,19 @@
     .item-top-cate {
       width: 23%;
       margin-bottom: 20px;
+      text-align: center;
 
       img {
         width: 100% !important;
         height: auto !important;
         transition: 0.4s;
       }
+
       p {
         font-weight: 700;
       }
     }
+
     .item-top-cate:hover {
       img {
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -80,15 +97,18 @@
 
 .ListCourse-Title {
   transition: transform 0.2s ease-in-out;
-  font-size: 25px;
+  font-size: 20px;
+  // margin-left: 7px;
   // border: 1px solid red;
-  
+  padding-left: 15px;
+  padding-right: 15px;
 }
-.ListCourse-Title:hover {
-  transform: translateY(-5px);
-  color: red;
-  
-}
+
+// .ListCourse-Title:hover {
+//   // transform: translateY(-5px);
+//   // color: red;
+//   // background: #534f4f17;
+// }
 
 
 .ListCourse-In-Course {
@@ -107,11 +127,13 @@
 }
 
 .openStatus {
-  color: green; /* Màu xanh cho trạng thái Open */
+  color: green;
+  /* Màu xanh cho trạng thái Open */
 }
 
 .closedStatus {
-  color: red; /* Màu đỏ cho các trạng thái khác */
+  color: red;
+  /* Màu đỏ cho các trạng thái khác */
 }
 
 .List-Course-Class-Description {
@@ -132,43 +154,39 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 
-        button {
-          width: 100%;
-          height: 30px;
-          margin-top: 2px;
-          margin-left: 20px;
-          background-color: transparent;
-          
-        }
+    button {
+      width: 100%;
+      height: 30px;
+      margin-top: 2px;
+      margin-left: 20px;
+      background-color: transparent;
 
-        .active {
-          border: none;
-        }
+    }
 
-        i{
-          color: green;
-          margin-right: 5px;
-        }
+    .active {
+      border: none;
+    }
+
+    i {
+      color: green;
+      margin-right: 5px;
+    }
   }
 
-      .ListCourse-Title {
-        margin-top: 0;
-        font-size: 18px;
-        display: flex;
-      }
+  .ListCourse-Title {
+    margin-top: 0;
+    font-size: 18px;
+    display: flex;
+  }
 
-      .ListCourse-In-Course {
-        display: none;
-      }
+  .ListCourse-In-Course {
+    display: none;
+  }
 
-      .list-course-container {
-        width: 100%;
-        height: 10%;
-        
-      }
+  .list-course-container {
+    width: 100%;
+    height: 10%;
+
+  }
 
 }
-
-
-
-

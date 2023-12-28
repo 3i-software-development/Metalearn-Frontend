@@ -33,6 +33,11 @@ export default function Home() {
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        {/* Search Google Console */}
+        <meta
+          name="google-site-verification"
+          content="ZkY-Qa3xcsH3pG0b5MruOBHn8Qf71SJ5tHnyif136xs"
+        />
       </Head>
       <main>
         <Slider />

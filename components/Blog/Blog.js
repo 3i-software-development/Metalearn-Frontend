@@ -1,75 +1,125 @@
-import React, { useState } from 'react';
-import classNames from 'classnames/bind';
-import styles from './style.module.scss';
-import BlogContent from './BlogContent';
-import TreeViewComponent from './TreeViewComponent';
-
+import { SettingOutlined } from "@ant-design/icons";
+import { Breadcrumb, Menu } from "antd";
+import { useState, useEffect } from "react";
+import classNames from "classnames/bind";
+import styles from "./style.module.scss";
 const cx = classNames.bind(styles);
+import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
+import { useRouter } from "next/router";
+import MobileNavBar from "./MobileNavBar";
+import { useGetListBlogQuery } from "@/lib/Midleware/BlogQuery";
+import BlogDetail from "./BlogDetail";
+import AddIcon from "@mui/icons-material/Add";
+import Link from "next/link";
 
 const Blog = () => {
-  const treeData = [
-    {
-      nodeId: "1",
-      label: "Applications",
-      children: [
-        {
-          nodeId: "2",
-          label: "Calendar",
-          date: "Mar 23, 2019",
-          author: "John Doe",
-          content: 'Welcome to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
-        },
-        {
-          nodeId: "3",
-          label: "Contacts",
-          date: "Mar 23, 2019",
-          author: "John Doe",
-          content: "React PDF Viewer is powered by React hooks completely. So it requires React 16.8 or later. If you are using TypeScript, then it requires TypeScript 3.8 or later",
-        },
-      ],
-    },
-    {
-      nodeId: "4",
-      label: "Documents",
-      children: [
-        {
-          nodeId: "5",
-          label: "Notes",
-          date: "Mar 23, 2019",
-          author: "John Doe",
-          content: 'Welcome to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
-        },
-        {
-          nodeId: "6",
-          label: "Presentations",
-          date: "Mar 23, 2019",
-          author: "John Doe",
-          content: 'to the React PDF viewer documentation. This page covers everything you need to get started with the React PDF viewer component.',
-        },
-      ],
-    },
-  ];
+  const { data: ListBlog } = useGetListBlogQuery({
+    userName: "admin",
+  });
 
-    const [selectedBarItem, setSelectedBarItem] = useState(treeData[0].children[0]);
+  const router = useRouter();
+  const [openKeys, setOpenKeys] = useState(
+    `${router.query.key ? router.query.key : "practive"}`
+  );
 
-    const handleSelectBarItem = (item) => {
-        setSelectedBarItem(item);
+  // Hàm loại bỏ thẻ p từ chuỗi HTML
+  function removePTags(htmlString) {
+    const doc = new DOMParser().parseFromString(htmlString, "text/html");
+    return doc.body.textContent || "";
+  }
+
+  useEffect(() => {
+    if (router.query.key) {
+      setOpenKeys(router.query.key);
+    }
+  }, [router.query.key]);
+
+  const getItem = (label, key, icon, children, type) => {
+    return {
+      key,
+      icon,
+      children,
+      label,
+      type,
     };
+  };
 
-    return (
-        <div className={cx('blog-container')}>
-            <div className={cx('blog-container-1')}>      
-                <TreeViewComponent treeData={treeData} handleSelectBarItem={handleSelectBarItem}/>
-            </div>
-  
-          <div className={cx('blog-container-2')}>
-              <BlogContent content={selectedBarItem.content} item={selectedBarItem} />
-          </div>
+  const newItem = ListBlog?.Object?.map((item) => {
+    return getItem(
+      removePTags(item?.GroupTitle).slice(0, 22) + "...",
+      `sub4-${item.GroupCode}`,
+      <SettingOutlined />,
+      !item?.NewListBlog || item?.NewListBlog?.length == 0
+        ? null
+        : item?.NewListBlog?.map((e) => {
+          // console.log(e)
+          return getItem(e?.title, e.cat_id, null);
+        })
+    );
+  });
+  // console.log(ListBlog?.Object)
+  console.log(newItem)
 
+  const onOpenChange = (keys) => {
+    setOpenKeys(keys.key);
+    router.push(`${router.pathname}?key=${keys.key}`);
+  };
 
-          
+  const createBlog = () => {
+    setOpenKeys('createBlog')
+  }
+
+  const displayContent = () => {
+    switch (openKeys) {
+      case "1391":
+        return <BlogDetail catId={openKeys} />;
+    }
+  };
+  return (
+    <>
+      <div className={cx("person")}>
+        <div className={cx("nav-bar")}>
+          <span className="hidden nav-toggle">
+            <i className="fa fa-bars" aria-hidden="true"></i>&nbsp; Navigation
+          </span>
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={openKeys}
+            onClick={onOpenChange}
+            items={newItem}
+          />
         </div>
-      );
-    };
-    
-    export default Blog;
+        <div className={cx("nav-bar-mobile")}>
+          <MobileNavBar />
+        </div>
+        <div className={cx("content")}>
+          <div className={cx("SearchAndAddSubjects_ItemAll")}>
+            <div className="tool-items">
+              <span
+                className={cx("search-icon")}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  columnGap: "10px",
+                }}
+              >
+                <ModalSearchFilter />
+                <Link href={'/createBlog'}>
+                  <AddIcon
+                    style={{
+                      fontSize: "30px",
+                      position: "relative",
+                      bottom: 2,
+                    }}
+                  />
+                </Link>
+              </span>
+            </div>
+          </div>
+          {displayContent()}
+        </div>
+      </div>
+    </>
+  );
+};
+export default Blog;

@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 const TopCategories = () => {
   return (
     <div className={cx('top-category')}>
-         <h1 className={cx('h1')}>Chủ đề nổi bật</h1>
+         <h1 className={cx('h1')}></h1>
          <div className={cx('list-top-cate')}>
             
             <div className={cx('item-top-cate')}>

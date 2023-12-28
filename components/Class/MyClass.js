@@ -17,7 +17,7 @@ const MyClass = () => {
     });
   }, []);
 
-  console.log(listClass);
+  // console.log(listClass);
 
   return (
     <div className={cx("list-course-container")}>
