@@ -11,6 +11,8 @@ import { useGetListBlogQuery } from "@/lib/Midleware/BlogQuery";
 import BlogDetail from "./BlogDetail";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
+import ViewBlog from "./ViewBlog";
+import CreateBlog from "./CreateBlog";
 
 const Blog = () => {
   const { data: ListBlog } = useGetListBlogQuery({
@@ -53,26 +55,24 @@ const Blog = () => {
         ? null
         : item?.NewListBlog?.map((e) => {
           // console.log(e)
-          return getItem(e?.title, e.cat_id, null);
+          return getItem(e?.title, e.cat_id, null, null, e.id);
         })
     );
   });
   // console.log(ListBlog?.Object)
-  console.log(newItem)
+  // console.log(newItem)
 
   const onOpenChange = (keys) => {
     setOpenKeys(keys.key);
     router.push(`${router.pathname}?key=${keys.key}`);
   };
 
-  const createBlog = () => {
-    setOpenKeys('createBlog')
-  }
-
   const displayContent = () => {
     switch (openKeys) {
       case "1391":
-        return <BlogDetail catId={openKeys} />;
+        if (router.query.id) return <ViewBlog idB={'7456'} />
+        else if (router.query.page) return <CreateBlog />
+        else return <BlogDetail catId={openKeys} />;
     }
   };
   return (
@@ -104,7 +104,7 @@ const Blog = () => {
                 }}
               >
                 <ModalSearchFilter />
-                <Link href={'/createBlog'}>
+                <Link href={"/blog?key=1391&page=createBlog"}>
                   <AddIcon
                     style={{
                       fontSize: "30px",
