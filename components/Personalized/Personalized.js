@@ -22,7 +22,7 @@ import ChartSubject from "../Chart/ChartSubject";
 import ExamCard from "../Card/ExamCard";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
+import { useGetListUserSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 import SearchAndAddSubjects from "../SearchAndAddSubjects";
 import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
 import { AbumCart } from "../Card/AbumCard/AbumCard";
@@ -128,7 +128,7 @@ const Personalized = () => {
     ratingMax: -1,
   });
 
-  const { data: subjectQuery } = useGetListSubjectQuery({
+  const { data: subjectQuery } = useGetListUserSubjectQuery({
     username: "admin",
     isTutor888: false,
   });

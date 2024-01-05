@@ -1,12 +1,13 @@
 import { useDeleteCmsItemMutation } from "@/lib/Midleware/CmsClassQuery";
 import { useGetFullTextQuery } from "@/lib/Midleware/NewQuery";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-const ViewBlog = ({ idB }) => {
+const ViewBlog = () => {
   const [deleteCmsItem] = useDeleteCmsItemMutation();
   const [query, setQuery] = useState({
-    id: idB,
+    id: 7382,
   });
 
   // Hàm loại bỏ thẻ p từ chuỗi HTML

@@ -70,7 +70,7 @@ const Blog = () => {
   const displayContent = () => {
     switch (openKeys) {
       case "1391":
-        if (router.query.id) return <ViewBlog idB={'7456'} />
+        if (router.query.id) return <ViewBlog />
         else if (router.query.page) return <CreateBlog />
         else return <BlogDetail catId={openKeys} />;
     }

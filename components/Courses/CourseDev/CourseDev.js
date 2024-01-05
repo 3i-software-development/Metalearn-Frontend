@@ -75,9 +75,11 @@ const CourseDev = ({ total }) => {
                       <AvatarC imageUrl={element?.ImgCover} />
                     </Link>
                     <td className={cx("label")}>
-                      <h4>
-                        #{element?.CourseName} : [{element?.CourseCode}]
-                      </h4>
+                      <Link href={`/lecture?courseCode=${element?.CourseCode}`}>
+                        <h4>
+                          #{element?.CourseName} : [{element?.CourseCode}]
+                        </h4>
+                      </Link>
                     </td>
                     <td className={cx("label")}>
                       <p>{element?.SubjectName}</p>
@@ -98,7 +100,9 @@ const CourseDev = ({ total }) => {
                         </span>
                         <Link href={"/shareResult"}>
                           <span title="Chia sẻ kết quả rèn luyện">
-                            <ScreenShareOutlinedIcon className={cx("icon-info")} />
+                            <ScreenShareOutlinedIcon
+                              className={cx("icon-info")}
+                            />
                           </span>
                         </Link>
                         <Link href={"/shareCourse"}>
@@ -145,19 +149,19 @@ const CourseDev = ({ total }) => {
                 </div>
                 <div className={cx("card-actions")}>
                   <div className={cx("listIcons")}>
-                    <span title="Sửa"  className={cx("listIcons")}>
+                    <span title="Sửa" className={cx("listIcons")}>
                       <i className="fa-solid fa-pen"></i>
                     </span>
-                    <span title="Căn chỉnh"  className={cx("listIcons")}>
+                    <span title="Căn chỉnh" className={cx("listIcons")}>
                       <i className="fa-solid fa-align-center"></i>
                     </span>
-                    <span title="Trò chuyện"  className={cx("listIcons")}>
+                    <span title="Trò chuyện" className={cx("listIcons")}>
                       <i className="fa-solid fa-comment-dots"></i>
                     </span>
-                    <span title="Thông báo"  className={cx("listIcons")}>
+                    <span title="Thông báo" className={cx("listIcons")}>
                       <i className="fa-solid fa-bell"></i>
                     </span>
-                    <span title="File"  className={cx("listIcons")}>
+                    <span title="File" className={cx("listIcons")}>
                       <i className="fa-solid fa-file"></i>
                     </span>
                   </div>

@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import style from "./style.module.scss";
 import SimplePagination from "../Pagination/SimplePagination";
 import { DatePicker, Input, Select, Slider } from "antd";
-import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
+import { useGetListUserSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 
 const cx = classNames.bind(style);
 
@@ -46,7 +46,7 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
     },
   ];
 
-  const { data, isFetching, isLoading } = useGetListSubjectQuery()
+  const { data, isFetching, isLoading } = useGetListUserSubjectQuery()
 
   const optionsSubject = [{
     value: "",
@@ -155,7 +155,7 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
                 format={dateFormat}
                 className={cx("select-container")}
                 onChange={(e) => handleChangeStartDate(e)}
-              // placeholder="Ngày bắt đầu"
+              placeholder="Ngày bắt đầu"
               />
             </div>
             <div>
@@ -164,7 +164,7 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
                 format={dateFormat}
                 className={cx("select-container")}
                 onChange={(e) => handleChangeEndDate(e)}
-              // placeholder="Ngày kết thúc"
+              placeholder="Ngày kết thúc"
               />
             </div>
           </div>

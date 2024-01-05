@@ -201,50 +201,6 @@
     transition: 0.25s;
 }
 
-.flex_icon {
-    display: flex;
-
-    .icon {
-        width: 70px !important;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-
-    }
-}
-
-.question {
-    font-style: italic;
-}
-
-.lilist {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-
-    .thumb {
-        flex: 1;
-    }
-
-    .more {
-        display: flex;
-        width: 180px;
-        padding: 0 20px;
-        margin: 0 20px;
-        border-width: 0 1px 0 0;
-        border-style: solid;
-        border-color: #e7ecf1;
-    }
-
-    .down {
-        flex: 1;
-    }
-}
-
-.rating .ant-rate {
-    box-shadow: none !important;
-}
-
 #leaderboards .options .sort .tabContents .tab.active {
     opacity: 1;
     visibility: visible;
@@ -312,62 +268,11 @@
 
 #leaderboards .toplist li .thumb {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px 0px 19px;
     font-weight: bold;
-    color: #000;
-    font-size: 0;
-    line-height: 36px;
-}
-
-#leaderboards .toplist li .thumb span {
-    font-size: 15px;
-}
-
-#leaderboards .toplist li .thumb .img {
-    width: 36px;
-    height: 36px;
-    display: inline-block;
-    background: #eee no-repeat center;
-    background-size: 100% 100%;
-    border-radius: 6px;
-    margin-right: 20px;
-    font-size: 0;
-}
-
-#leaderboards .toplist li .thumb .stat {
-    position: absolute;
-    top: 26px;
-    right: 90px;
-    line-height: 16px;
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 10px;
-
-    :hover {
-        background: #000;
-    }
-}
-
-#leaderboards .toplist li .thumb .stat b {
-    display: block;
-    font-size: 20px;
-    margin: 0;
-}
-
-#leaderboards .pagination {
-    background: white;
-    border-radius: 6px;
-    margin-top: 14px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    color: black;
-    height: 72px;
-    box-sizing: border-box;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #e3e3e3;
+    color: #000000;
 }
 
 

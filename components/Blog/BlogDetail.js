@@ -10,7 +10,7 @@ const BlogDetail = ({ catId }) => {
         userName: "admin",
     });
     const { data: ListCms } = useGetListCmsItemQuery(query);
-    // console.log(ListCms)
+
     const data = ListCms?.Object?.map((e) => {
         return {
             title: e.title,
@@ -18,14 +18,13 @@ const BlogDetail = ({ catId }) => {
             id: e.id,
         };
     });
-    // console.log(data);
     return (
         <div>
             <List
                 itemLayout="horizontal"
                 dataSource={data}
                 renderItem={(item, index) => (
-                    <Link href={`/blog?key=1391&id=7456`}>
+                    <Link href={`/blog?key=1391&id=${item?.id}`}>
                         <List.Item style={{ cursor: 'pointer' }}>
                             <List.Item.Meta
                                 avatar={

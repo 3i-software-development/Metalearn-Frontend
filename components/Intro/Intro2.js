@@ -13,7 +13,7 @@ const Intro2 = ({data,rev}) => {
       <div className={cx('intro-text')}>
         <h2>{data.title}</h2>
         <p>{data.text}</p>
-        <Link href={''} >{data.button}</Link>
+        <Link href={'/'} >{data.button}</Link>
       </div>
     </div>
   )

@@ -11,7 +11,7 @@ import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 import { useGetTotalPractiveQuery } from "@/lib/Midleware/PractiveQuery";
 import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
-import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
+import { useGetListUserSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 import {
   useGetCountExamStudentQuery,
   useGetCountFileStudentQuery,
@@ -114,7 +114,7 @@ const SliderBar = () => {
     ratingMax: -1,
   });
 
-  const { data: subjectQuery } = useGetListSubjectQuery({
+  const { data: subjectQuery } = useGetListUserSubjectQuery({
     username: "admin",
     isTutor888: false,
   });

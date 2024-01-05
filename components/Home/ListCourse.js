@@ -27,7 +27,6 @@ const ListCourse = () => {
 
 
   const [selectedCourseTitle, setSelectedCourseTitle] = useState("Select a course");
-
   const listCourse = [
     {
       title: "Lớp học ngày 27/6 [lop_27_06]",
@@ -66,43 +65,37 @@ const ListCourse = () => {
     },
   ]
 
-  //const listSubject = ["Đề thi", "Lớp học", "Tài liệu"]
   const listSubject2 = ["Ngân Hàng Quiz", "Ngân Hàng Đề Thi", "Tài Liệu", "Lớp Học", "Buổi Học Trực Tuyến", "Thi Online", "Thông Tin Giáo Viên"]
   return (
     <div>
-      { isAuthenticated && (
+      {/* {isAuthenticated && ( */}
       <div className={cx("list-course-container")}>
         <div className={cx("list-btn")}>
-      
-
           {listSubject2.map((item, index) => (
-            
-            <button     
+            <button
               className={cx(btnact == index && "active")}
               key={index}
-              onClick={() => setBtnact(index)} 
+              onClick={() => setBtnact(index)}
             >
-            {/* <p className={cx("ListCourse-In-Course")}>[123]</p>    */}
-              <h5 className={cx("ListCourse-Title")}>{item}</h5>   
-             
-          </button>
-
+              {/* <p className={cx("ListCourse-In-Course")}>[123]</p>    */}
+              <h5 className={cx("ListCourse-Title")}>{item}</h5>
+            </button>
           ))}
         </div>
-        <div className={cx("list-main")}>
 
-          {btnact === 4 &&   <Link href="/OnlineClasses" className={cx("mb-login")}>
-          <h3>Lick vào đây để Xem Danh sách Buổi Học Trực Tuyến</h3>
-        </Link>}
+        <div className={cx("list-main")}>
+          {btnact === 4 && <Link href="/OnlineClasses" className={cx("mb-login")}>
+            <h3>Lick vào đây để Xem Danh sách Buổi Học Trực Tuyến</h3>
+          </Link>}
 
           {btnact === 5 && <Link href="/ViewExamSchedule" className={cx("mb-login")}>
-          <h3>Líck vào đây để xem lịch thi</h3>
-        </Link>}
+            <h3>Líck vào đây để xem lịch thi</h3>
+          </Link>}
 
           {btnact === 6 && <Link href="/Teacher" className={cx("mb-login")}>
-          <h3>Danh sách Thông Tin Giáo Viên</h3>
-        </Link>}
-           
+            <h3>Danh sách Thông Tin Giáo Viên</h3>
+          </Link>}
+
           {btnact === 0 && ListExam.data && (
             <ListCourses data={ListExam.data.query} exam />
           )}
@@ -112,20 +105,15 @@ const ListCourse = () => {
           {btnact === 2 && ListDoc.data && (
             <ListCourses data={ListDoc.data.query} doc />
           )}
-    
-          
           {btnact === 5 && ListDoc.data && (
             <ListCourses data={ListDoc.data.query} doc />
           )}
           {btnact === 6 && ListDoc.data && (
             <ListCourses data={ListDoc.data.query} doc />
           )}
-        </div>   
+        </div>
       </div>
-
-      )
-      }
-
+      {/* )} */}
     </div>
   );
 };

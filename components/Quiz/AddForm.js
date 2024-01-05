@@ -30,6 +30,9 @@ export default function AddForm() {
   const handleNext = () => {
     setTempQuestion(tempQuestion + 1);
   };
+  const handlePrevious = () => {
+    setTempQuestion(tempQuestion - 1);
+  };
 
   const handleSelect = (value) => {
     setTempQuestion(value);
@@ -42,10 +45,13 @@ export default function AddForm() {
   }
 
   const { data } = useGetListQuizQuery(state);
+  console.log(data);
+
   function htmlDecode(input) {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.innerText;
   }
+  
   return (
     <div className={cx("background")}>
       <div className={cx("tittle")}>
@@ -129,10 +135,14 @@ export default function AddForm() {
               })}
             </ul>
           </div>
+          
           <div className={cx("next-questions")}>
-            <a href="#open-modal">Finish</a>
+            <a href="#open-modal" style={{background: '#64fd9f'}}>Finish</a>
+            <a href={`#${tempQuestion}`} onClick={() => handlePrevious()}>
+              Previous
+            </a>
             <a href={`#${tempQuestion}`} onClick={() => handleNext()}>
-              Next questions
+              Next
             </a>
           </div>
         </div>

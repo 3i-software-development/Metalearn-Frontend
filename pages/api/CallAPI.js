@@ -197,7 +197,7 @@ export const GetListLmsTestBody = async () => {
 
     return response.data;
   } catch (error) {
- 
+
     console.error('Error:', error);
     throw error;
   }
@@ -247,7 +247,7 @@ export const GetListStatusCardJob = async (teacher, student) => {
   requestData.append('TimeDay', '');
   requestData.append("teacher", teacher);
   requestData.append('student', student);
-  
+
   try {
     const response = await axios.post(
       'https://admin.metalearn.vn/MobileLogin/GetStatusCardJob',
@@ -264,7 +264,7 @@ export const GetListStatusCardJob = async (teacher, student) => {
     console.error('Error:', error);
     throw error;
   }
-  
+
 };
 
 

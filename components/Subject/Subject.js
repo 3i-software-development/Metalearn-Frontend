@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import styles from './style.module.scss'; // Import SCSS styles for classNames
 import classNames from 'classnames/bind';
-import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
+import { useGetListUserSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 import {
     SettingOutlined,
 } from "@ant-design/icons";
@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 const Subject = () => {
     const [listSubject, setListSubject] = useState([]);
 
-    const { data: subjectQuery } = useGetListSubjectQuery({
+    const { data: subjectQuery } = useGetListUserSubjectQuery({
         username: "admin",
         isTutor888: false,
     });
