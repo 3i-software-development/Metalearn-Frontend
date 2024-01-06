@@ -44,7 +44,6 @@ const CreateBlog = () => {
         created_by_alias: "admin",
         published: true,
       });
-
       alert("Tạo blog thành công!");
     } catch (error) {
       console.log(error);
