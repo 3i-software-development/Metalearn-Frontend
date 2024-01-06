@@ -103,7 +103,7 @@ const Banner = () => {
         ref={swiperRef}
       >
         <SwiperSlide>
-          <div className={cx("")}>
+          <div>
             <Grid
               className={styles.banner1}
               container

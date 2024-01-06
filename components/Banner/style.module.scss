@@ -17,23 +17,6 @@
   position: relative;
   top: 8rem;
   text-align: center;
-  // box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  // box-shadow: blue 0px 0px 0px 1px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px;
-  // box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-
-
-
-
-  // .banner1H1 {
-  //   font-size: 50px;
-  //   color: green;
-  // }
-
-
-  // .banner1H12 {
-  //   font-size: 50px;
-  //   color: orange;
-  // }
 
   .circular {
     font-size: 20px;
@@ -85,17 +68,6 @@
   }
 }
 
-//responsive banner1/(slide1)
-
-
-.Display-flex-web-screen {
-
-  // box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
-
-}
-
-
-/////////////
 .banner {
   width: 100%;
   position: relative;
@@ -131,126 +103,126 @@
   }
 }
 
-@media only screen and (max-width:930px) {
-  .Display-flex-web-screen {
-    display: flex;
-    align-items: center;
-  }
+// @media only screen and (max-width:930px) {
+//   .Display-flex-web-screen {
+//     display: flex;
+//     align-items: center;
+//   }
 
-  .banner1 {
-    top: 6.5rem;
-    margin-left: 20px;
+//   .banner1 {
+//     top: 6.5rem;
+//     margin-left: 20px;
 
-    .banner1H1 {
-      font-size: 15px !important;
-      color: green;
-    }
+//     .banner1H1 {
+//       font-size: 15px !important;
+//       color: green;
+//     }
 
-    .banner1H12 {
-      font-size: 15px !important;
-      color: orange;
-    }
+//     .banner1H12 {
+//       font-size: 15px !important;
+//       color: orange;
+//     }
 
-    .circular {
-      font-size: 5px !important;
-      --CircularProgress-size: 50px !important;
-      --CircularProgress-trackThickness: 8px !important;
-      --CircularProgress-progressThickness: 8px !important;
-    }
+//     .circular {
+//       font-size: 5px !important;
+//       --CircularProgress-size: 50px !important;
+//       --CircularProgress-trackThickness: 8px !important;
+//       --CircularProgress-progressThickness: 8px !important;
+//     }
 
-    .div1 {
-      width: 65px !important;
-      height: 65px !important;
+//     .div1 {
+//       width: 65px !important;
+//       height: 65px !important;
 
-      .h11 {
-        color: rgb(104, 33, 9);
-        font-size: 5px !important;
+//       .h11 {
+//         color: rgb(104, 33, 9);
+//         font-size: 5px !important;
 
-        span {
-          font-size: 2px !important;
-          color: rgb(80, 83, 235);
-        }
-      }
+//         span {
+//           font-size: 2px !important;
+//           color: rgb(80, 83, 235);
+//         }
+//       }
 
-      .h12 {
-        font-size: 5px !important;
-        color: rgb(20, 20, 47);
+//       .h12 {
+//         font-size: 5px !important;
+//         color: rgb(20, 20, 47);
 
-        span {
-          font-size: 2px !important;
-          color: rgb(80, 3, 235);
-        }
-      }
+//         span {
+//           font-size: 2px !important;
+//           color: rgb(80, 3, 235);
+//         }
+//       }
 
-      .div1:after {
-        content: "";
-        background-color: black;
-        position: absolute;
-        height: 1px !important;
-        width: 80%;
-        top: 50%;
-        left: 0;
-        transform: rotate(-45deg);
-        z-index: 0;
-      }
-    }
-  }
+//       .div1:after {
+//         content: "";
+//         background-color: black;
+//         position: absolute;
+//         height: 1px !important;
+//         width: 80%;
+//         top: 50%;
+//         left: 0;
+//         transform: rotate(-45deg);
+//         z-index: 0;
+//       }
+//     }
+//   }
 
-}
+// }
 
-@media only screen and (max-width: 1300px) {
-  .banner1 {
-    .banner1H1 {
-      font-size: 30px;
-      color: green;
-    }
+// @media only screen and (max-width: 1300px) {
+//   .banner1 {
+//     .banner1H1 {
+//       font-size: 30px;
+//       color: green;
+//     }
 
-    .banner1H12 {
-      font-size: 30px;
-      color: orange;
-    }
+//     .banner1H12 {
+//       font-size: 30px;
+//       color: orange;
+//     }
 
-    .circular {
-      font-size: 10px;
-      --CircularProgress-size: 100px;
-      --CircularProgress-trackThickness: 19px;
-      --CircularProgress-progressThickness: 19px;
-    }
+//     .circular {
+//       font-size: 10px;
+//       --CircularProgress-size: 100px;
+//       --CircularProgress-trackThickness: 19px;
+//       --CircularProgress-progressThickness: 19px;
+//     }
 
-    .div1 {
-      width: 130px;
-      height: 130px;
+//     .div1 {
+//       width: 130px;
+//       height: 130px;
 
-      .h11 {
-        top: 0;
-        left: 0;
+//       .h11 {
+//         top: 0;
+//         left: 0;
 
-        color: rgb(104, 33, 9);
-        font-size: 15px;
+//         color: rgb(104, 33, 9);
+//         font-size: 15px;
 
-        span {
-          font-size: 8px;
-          color: rgb(80, 83, 235);
-        }
-      }
+//         span {
+//           font-size: 8px;
+//           color: rgb(80, 83, 235);
+//         }
+//       }
 
-      .h12 {
-        bottom: 0;
-        right: 0;
+//       .h12 {
+//         bottom: 0;
+//         right: 0;
 
-        font-size: 15px;
-        color: rgb(20, 20, 47);
+//         font-size: 15px;
+//         color: rgb(20, 20, 47);
 
-        span {
-          font-size: 8px;
-          color: rgb(80, 83, 235);
-        }
-      }
-    }
-  }
-}
+//         span {
+//           font-size: 8px;
+//           color: rgb(80, 83, 235);
+//         }
+//       }
+//     }
+//   }
+// }
 
-//diagram
+// //diagram
 .banner-slide {
   position: relative;
 }
@@ -264,7 +236,6 @@
   padding: 2%;
   padding-right: 70px;
   background-color: white;
-  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   display: flex;
   flex-direction: column;
   min-width: 370px;
@@ -354,16 +325,13 @@
   right: 0;
 }
 
-// .item-slide{
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100%;
-// }
 .banner2 {
   justify-content: center !important;
-  padding: 2%;
   flex-direction: column !important;
+  padding: 20px 0;
+
+  //Rung màn hình
+  // padding: 2%;
 
   h2 {
     text-align: center;
@@ -371,16 +339,11 @@
   }
 }
 
-
-.display-None {}
-
-.Display-flex {}
-
 .Display-title {
   font-size: 25px;
 }
 
-/* styles.css */
+// /* styles.css */
 
 @keyframes rotate {
   0% {
@@ -455,12 +418,4 @@
       display: none;
     }
   }
-
-
-  /* styles.css */
-
-
-
-
-
 }

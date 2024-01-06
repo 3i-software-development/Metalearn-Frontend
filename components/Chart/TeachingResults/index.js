@@ -40,17 +40,13 @@ export default function TeachingResults({ value, type }) {
 
   const dataQuizAssignMent = {
     labels: [
-      `Đã xong : ${
-        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Done : 0
+      `Đã xong : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Done : 0
       }`,
-      `Tổng : ${
-        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Total : 0
+      `Tổng : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Total : 0
       }`,
-      `Chính xác : ${
-        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Correct : 0
+      `Chính xác : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Correct : 0
       }`,
-      `Tổng số giờ  : ${
-        value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.TotalHour : 0
+      `Tổng số giờ  : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.TotalHour : 0
       }`,
     ],
     datasets: [
@@ -89,7 +85,7 @@ export default function TeachingResults({ value, type }) {
         borderWidth: 1,
       },
     ],
-  
+
   };
 
   const dataQuestion = {
