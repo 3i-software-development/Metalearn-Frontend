@@ -7,6 +7,8 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
 
         .intro-item {
             width: 28%;
@@ -78,6 +80,8 @@
 .team {
     padding: 40px 0;
     text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
 
     p {
         padding: 10px 0;

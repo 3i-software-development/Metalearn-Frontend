@@ -122,7 +122,7 @@ const Banner = () => {
                 </div>
               </Grid>
 
-              <Grid item xs={4} className={cx("")}>
+              <Grid item xs={4} className={cx("item-slide")}>
                 <CircularProgress
                   sx={{
                     "--CircularProgress-size": `145px`,
