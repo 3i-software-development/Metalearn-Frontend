@@ -5,7 +5,7 @@ import styles from "./style.module.scss";
 import Image from "next/image";
 import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import Pagination from "@/components/Pagination/Pagination";
-import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
+import { useGetListUserSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +20,7 @@ const CourseWareMath = ({ role }) => {
   });
 
   const { data: LmsClass } = useGetListLmsClassQuery(query);
-  const { data: Lesson } = useGetListSubjectQuery();
+  const { data: Lesson } = useGetListUserSubjectQuery();
 
   const handleQueryPage = (current, pageSize) => {
     setQuery({ ...query, pageNo: current, pageSize: pageSize });

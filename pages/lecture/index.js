@@ -20,16 +20,22 @@ const Index = () => {
     console.log(key);
   };
 
+  // Hàm loại bỏ thẻ p từ chuỗi HTML
+  function removePTags(htmlString) {
+    const doc = new DOMParser().parseFromString(htmlString, "text/html");
+    return doc.body.textContent || "";
+  }
+
   const items = [
     {
       key: '1',
       label: 'Danh sách',
-      children: 'Content of Tab Pane 1',
+      children: data?.ListLecture[0]?.LectName,
     },
     {
       key: '2',
       label: 'Nội dung',
-      children: data?.ListLecture[0]?.LectDescription,
+      children: removePTags(data?.ListLecture[0]?.LectDescription).slice(0, 555) + '...',
     },
     {
       key: '3',

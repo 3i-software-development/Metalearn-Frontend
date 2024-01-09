@@ -38,28 +38,80 @@ export default function Home() {
           name="google-site-verification"
           content="ZkY-Qa3xcsH3pG0b5MruOBHn8Qf71SJ5tHnyif136xs"
         />
+
+        {/* <script>
+          window.OldFile = File;
+          window.MathJax = {
+            tex: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]],
+          displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+          processEscapes: true,
+          packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+          options: {
+            ignoreHtmlClass: 'tex2jax_ignore',
+          processHtmlClass: 'tex2jax_process'
+      },
+          loader: {load: ['output/svg', '[tex]/noerrors'] },
+          startup: {
+            ready() {
+          //
+          //  Get the MathJax modules that we need.
+          //
+          const {mathjax} = MathJax._.mathjax;
+          const {SVG} = MathJax._.output.svg_ts;
+          //
+          // Do the normal setup
+          //
+          MathJax.startup.defaultReady();
+          //
+          //  Create an SVG output jax and a new MathDocument that uses it.
+          //
+          const svgOutput = new SVG(MathJax.config.svg);
+          const svgDocument = mathjax.document(document, {
+            ...MathJax.config.options,
+            InputJax: MathJax.startup.input,
+          OutputJax: svgOutput
+          });
+          //
+          //  Define the SVG-based conversion methods
+          //
+          MathJax.tex2svg = (math, options = { }) => {
+            options.format = svgDocument.inputJax[0].name;
+          return svgDocument.convert(math, options);
+          };
+          MathJax.tex2svgPromise = (math, options = { }) => {
+            options.format = svgDocument.inputJax[0].name;
+            return mathjax.handleRetriesFor(() => svgDocument.convert(math, options));
+          };
+          MathJax.svgStylesheet = () => svgOutput.styleSheet(svgDocument);
+        }
+      }
+    }
+        </script> */}
+        {/* <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script> */}
       </Head>
       <main>
         <Slider />
 
-        <Section>
+        {/* <Section> */}
           <Banner
             img={Bnimg}
             title="Học trực tuyến một cách tiện lợi và hiệu quả nhất !"
             text="Bắt đầu ngay để nâng cao kiến thức và kỹ năng với hơn 590,000 câu hỏi và 20,500 đề thi."
           />
           <ListCourse />
-        </Section>
+        {/* </Section> */}
         <Intro1 />
-        <Section>
+        {/* <Section> */}
           <TopCategories />
           <Intro2 data={ListIntro[0]} />
-        </Section>
+        {/* </Section> */}
         <Team />
-        <Section>
+        {/* <Section> */}
           <Intro2 data={ListIntro[1]} rev />
           <Intro2 data={ListIntro[2]} />
-        </Section>
+        {/* </Section> */}
       </main>
     </>
   );

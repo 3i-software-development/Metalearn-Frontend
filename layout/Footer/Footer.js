@@ -44,7 +44,7 @@ const Footer = () => {
           </Link> */}
           <BsGlobe />
           <span>Ngôn ngữ</span>
-          <div id="google_translate_element">
+          <div id="google_translate_element" className={cx("language")} >
           </div>
 
 

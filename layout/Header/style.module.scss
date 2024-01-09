@@ -57,23 +57,6 @@
   margin-left: 30px;
 }
 
-.listSettingss {
-  border-bottom: 1px solid rgb(220, 220, 220);
-  padding: 5px 0;
-}
-
-.listSettings {
-  display: flex;
-  width: 100%;
-  padding: 0 10px;
-  justify-content: space-between;
-
-  img {
-    width: 30px;
-    height: 30px;
-  }
-}
-
 .search-container {
   position: relative;
 
@@ -412,6 +395,91 @@
 
 /* Responsive styling for mobile devices */
 @media screen and (max-width: 768px) {
+  .icon-mobile {
+    display: none;
+  }
+
+  .head-link {
+    display: none;
+  }
+
+  .search-input {
+    display: none;
+    padding-left: 200px;
+  }
+
+  .header-links {
+    display: none;
+    /* Hide authenticated links on mobile */
+  }
+
+  .logout-button {
+    display: none;
+  }
+
+  .search-container {
+    display: none;
+    /* Hide the search input on mobile */
+  }
+
+  /* Mobile menu button styling */
+  .icon-mobile {
+    display: block;
+    cursor: pointer;
+  }
+
+  /* Authenticated user icons styling */
+  .icon-ss .icon-container {
+    margin-right: 10px;
+  }
+
+  .menu-mobile {
+    background-color: white;
+    color: #fff;
+    display: block;
+    position: absolute !important;
+    left: 0;
+    top: 80px;
+    width: 100%;
+    // height: calc(100vh - 50px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+
+  /* styles.css */
+  .mb-link {
+    margin-left: 20px;
+    // background: #000;
+    /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+  }
+
+  .sub-menu {
+    list-style-type: none;
+    /* Remove bullet points */
+    margin-left: 80px;
+    /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+  }
+
+  .logout-button-mobile {
+    margin-left: 20px;
+    margin-top: 20px;
+    /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+  }
+
+  .mb-list li {
+    // margin-top: 1px;
+    border-bottom: 1px solid #fff;
+    /* Tạo đường viền màu trắng dưới mỗi liên kết */
+    // padding: 8px 0;
+    /* Điều chỉnh khoảng cách từ lề trái theo nhu cầu của bạn */
+  }
+
+  .mb-list li:last-child {
+    border-bottom: none;
+    /* Loại bỏ đường viền ở li cuối cùng */
+  }
+}
+@media screen and (max-width: 1200px) {
   .icon-mobile {
     display: none;
   }

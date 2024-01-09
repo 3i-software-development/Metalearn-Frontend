@@ -16,7 +16,7 @@
     // height: auto;
 
     .footer-item {
-        width: 46%;
+        width: 43%;
         // flex: 1 0 51%;
         margin: 1rem;
         height: 100%;
@@ -27,11 +27,12 @@
     .links {
         display: flex;
         justify-content: space-between;
-
+        margin-left: 10px;
+        width: 50%;
         .link-group {
             display: flex;
             flex-direction: column;
-
+            margin-left: 20px;
             a:hover {
                 text-decoration: underline;
             }
@@ -43,7 +44,7 @@
         // padding-top: 20px;
         bottom: 90px;
         right: 0;
-        width: 10%;
+        width: 20%;
         height: 10%;
         margin-right: 10px; /* Khoảng cách từ mép phải và mép dưới của trình duyệt */
         // background-color: aqua; /* Màu nền của phần tử */
@@ -59,8 +60,15 @@
             }
 
         }
+        span{
+            margin-left: 10px;
+        }
     }
 
+    .link-group{
+        width: 90%;
+        padding-bottom: 30px;
+    }
     .icon {
         margin-top: 3rem;
     }
@@ -78,10 +86,12 @@
             width: 100%;
             margin: 15px auto;
         }
-
+        .link-group{
+            width: 90%;
+        }
         .language-select {
-            width: 30%;
-
+            // width: 30%;
+            padding-top: 90px;
             a:first-child {
                 float: none;
             }

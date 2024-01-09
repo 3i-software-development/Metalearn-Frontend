@@ -53,8 +53,8 @@ const CreateBlog = () => {
     form.resetFields();
   };
   return (
-    <div style={{ padding: "50px 50px" }}>
-      <AddIcon style={{ display: 'inline' }} />
+    <div style={{ padding: "0  50px 50px 50px" }}>
+      {/* <AddIcon style={{ display: 'inline' }} /> */}
       <h3 style={{ marginBottom: '30px' }}>Tạo blog kiến thức: </h3>
       <Form
         {...layout}

@@ -10,13 +10,12 @@ const ClassCard = ({ data }) => {
   console.log(data);
 
   return (
-    <div>
       <div style={{ cursor: 'pointer' }} className={cx("course-card")}>
-        <Link href={`/my-class?page=lmsClassForum&classCode=${data?.ClassCode}`}>
+        <Link  href={`/my-class?page=lmsClassForum&classCode=${data?.ClassCode}`} >
           {data.ImageCover ? (
-            <Image src={data.ImageCover} alt="class" width="500" height="400" />
+            <Image src={data.ImageCover} alt="class" width="500" height="400"  className={cx("course-card-img")}/>
           ) : (
-            <Image
+            <Image  className={cx("course-card-img")}
               src="https://printgo.vn/uploads/media/763962/dinh-dang-file-thiet-ke-png-1024x1012_1566374045.jpg"
               alt="document"
               width="130"
@@ -66,7 +65,6 @@ const ClassCard = ({ data }) => {
           </p>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -1,10 +1,12 @@
 
 .list-course-container {
   width: 100%;
-  padding: 2% 0;
+  // padding: 2% 0;
+  margin-top: 20px;
   .text-p {
     padding: 15px 0;
   }
+  
 }
 
 .search-container {
@@ -97,7 +99,7 @@
   justify-content: center;
 }
 .card {
-  width: 210px !important;
+  width: 210px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 5px;
 }
@@ -158,7 +160,61 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .list-course-container h1{
+    margin-top: 20px;
+  }
+  .list-course-container hr{
+    width: 50%;
+    margin-left: 120px;
+  }
+  .search-container{
+    width: 97%;
+    margin-top: 70px;
+    margin-left: 1%;
+    position: relative;
+    flex: 1;
+  }
+  .sort-container{
+    width: 95%;
+  margin-top: 20px;
+  margin-left: 2%;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .list{
+    display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: -10px;
+  
+  }
   .item-top-cate {
     width: 48% !important;
   }
+ 
+.course-card{
+  // border: 1px solid blue;
+  // width: 70%;
+  // .title{
+  //   // border: 1px solid red;
+  //   // margin-right: 10px;
+  //   // margin-left: 10px;
+  // }
+}
+.course-card-img{
+  width: 50%;
+  // margin-left: 50px;
+}
+.card{
+  width: 100% !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  // border-radius: 5px;
+  // border: 1px solid green;
+  margin-left: -10px;
+}
+ 
 }

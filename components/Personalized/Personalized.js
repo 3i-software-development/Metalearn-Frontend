@@ -22,7 +22,7 @@ import ChartSubject from "../Chart/ChartSubject";
 import ExamCard from "../Card/ExamCard";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useGetListSubjectQuery } from "@/lib/Midleware/SubjectQuery";
+import { useGetListUserSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 import SearchAndAddSubjects from "../SearchAndAddSubjects";
 import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
 import { AbumCart } from "../Card/AbumCard/AbumCard";
@@ -128,7 +128,7 @@ const Personalized = () => {
     ratingMax: -1,
   });
 
-  const { data: subjectQuery } = useGetListSubjectQuery({
+  const { data: subjectQuery } = useGetListUserSubjectQuery({
     username: "admin",
     isTutor888: false,
   });
@@ -217,10 +217,9 @@ const Personalized = () => {
     ),
 
     getItem(
-      `Đề thi [ ${
-        examQuery?.countAssignment.toLocaleString() +
-        " | " +
-        examQuery?.countSharing.toLocaleString()
+      `Đề thi [ ${examQuery?.countAssignment.toLocaleString() +
+      " | " +
+      examQuery?.countSharing.toLocaleString()
       } ]`,
       `sub4`,
       <SettingOutlined />,
@@ -274,82 +273,73 @@ const Personalized = () => {
 
     getItem("Kết quả học tập", "sub9", <SettingOutlined />, [
       getItem(
-        `Câu hỏi tự luyện [ ${
-          countQuizVoluntary
-            ? JSON.parse(countQuizVoluntary?.QuizVoluntary)?.Total
-            : "0"
+        `Câu hỏi tự luyện [ ${countQuizVoluntary
+          ? JSON.parse(countQuizVoluntary?.QuizVoluntary)?.Total
+          : "0"
         } ]`,
         "sub9-1",
         null
       ),
       getItem(
-        `Câu hỏi được giao [ ${
-          countQuizAssignment
-            ? JSON.parse(countQuizAssignment?.QuizAssignment)?.Total
-            : "0"
+        `Câu hỏi được giao [ ${countQuizAssignment
+          ? JSON.parse(countQuizAssignment?.QuizAssignment)?.Total
+          : "0"
         } ]`,
         "sub9-2",
         null
       ),
       getItem(
-        `Bài giảng tự luyện  [ ${
-          countLectureVoluntary
-            ? JSON.parse(countLectureVoluntary?.LectureVoluntary)?.Total
-            : "0"
+        `Bài giảng tự luyện  [ ${countLectureVoluntary
+          ? JSON.parse(countLectureVoluntary?.LectureVoluntary)?.Total
+          : "0"
         } ]`,
         "sub9-3",
         null
       ),
       getItem(
-        `Bài giảng được giao  [ ${
-          countLectureAssignment
-            ? JSON.parse(countLectureAssignment?.LectureAssignment)?.Total
-            : "0"
+        `Bài giảng được giao  [ ${countLectureAssignment
+          ? JSON.parse(countLectureAssignment?.LectureAssignment)?.Total
+          : "0"
         } ]`,
         "sub9-4",
         null
       ),
       getItem(
-        `Đề thi tự luyện [ ${
-          countTestVoluntary
-            ? JSON.parse(countTestVoluntary?.TestVoluntary)?.Total
-            : "0"
+        `Đề thi tự luyện [ ${countTestVoluntary
+          ? JSON.parse(countTestVoluntary?.TestVoluntary)?.Total
+          : "0"
         } ]`,
         "sub9-5",
         null
       ),
       getItem(
-        `Đề thi được giao [ ${
-          countTestAssignment
-            ? JSON.parse(countTestAssignment?.TestAssignment)?.Total
-            : "0"
+        `Đề thi được giao [ ${countTestAssignment
+          ? JSON.parse(countTestAssignment?.TestAssignment)?.Total
+          : "0"
         } ]`,
         "sub9-6",
         null
       ),
       getItem(
-        `Kỳ thi tham dự [ ${
-          countExamStudent
-            ? JSON.parse(countExamStudent?.ExamStudent)?.Total
-            : "0"
+        `Kỳ thi tham dự [ ${countExamStudent
+          ? JSON.parse(countExamStudent?.ExamStudent)?.Total
+          : "0"
         } ]`,
         "sub9-7",
         null
       ),
       getItem(
-        `Học online [ ${
-          countTutorStudent
-            ? JSON.parse(countTutorStudent?.TutorStudent)?.Total
-            : "0"
+        `Học online [ ${countTutorStudent
+          ? JSON.parse(countTutorStudent?.TutorStudent)?.Total
+          : "0"
         } ]`,
         "sub9-8",
         null
       ),
       getItem(
-        `Số môn học [ ${
-          countSubjectStudent
-            ? JSON.parse(countSubjectStudent?.SubjectStudent)?.Total
-            : "0"
+        `Số môn học [ ${countSubjectStudent
+          ? JSON.parse(countSubjectStudent?.SubjectStudent)?.Total
+          : "0"
         } ]`,
         "sub9-9",
         null
@@ -358,82 +348,73 @@ const Personalized = () => {
 
     getItem("Kết quả giảng dạy", "sub10", <SettingOutlined />, [
       getItem(
-        `Câu hỏi [ ${
-          chartTeacherQuery
-            ? JSON.parse(chartTeacherQuery?.QuizTeacher).Total
-            : "0"
+        `Câu hỏi [ ${chartTeacherQuery
+          ? JSON.parse(chartTeacherQuery?.QuizTeacher).Total
+          : "0"
         } ]`,
         "sub10-1",
         null
       ),
       getItem(
-        `Bài giảng [ ${
-          chartTeacherQuery
-            ? JSON.parse(chartTeacherQuery?.LectureTeacher).Total
-            : "0"
+        `Bài giảng [ ${chartTeacherQuery
+          ? JSON.parse(chartTeacherQuery?.LectureTeacher).Total
+          : "0"
         } ]`,
         "sub10-2",
         null
       ),
       getItem(
-        `Đề luyện thi [ ${
-          chartTeacherQuery
-            ? JSON.parse(chartTeacherQuery?.TestTeacher).Total
-            : "0"
+        `Đề luyện thi [ ${chartTeacherQuery
+          ? JSON.parse(chartTeacherQuery?.TestTeacher).Total
+          : "0"
         } ]`,
         "sub10-3",
         null
       ),
       getItem(
-        `Tổng số đã tạo [ ${
-          chartTeacherQuery
-            ? JSON.parse(chartTeacherQuery?.ExamTeacher).Total
-            : "0"
+        `Tổng số đã tạo [ ${chartTeacherQuery
+          ? JSON.parse(chartTeacherQuery?.ExamTeacher).Total
+          : "0"
         } ]`,
         "sub10-4",
         null
       ),
       getItem(
-        `Số lớp [ ${
-          chartTeacherQuery
-            ? JSON.parse(chartTeacherQuery?.ClassTeacher).Total
-            : "0"
+        `Số lớp [ ${chartTeacherQuery
+          ? JSON.parse(chartTeacherQuery?.ClassTeacher).Total
+          : "0"
         } ]`,
         "sub10-5",
         null
       ),
       getItem(
-        `Số môn học [ ${
-          chartTeacherQuery
-            ? JSON.parse(chartTeacherQuery?.SubjectTeacher).Total
-            : "0"
+        `Số môn học [ ${chartTeacherQuery
+          ? JSON.parse(chartTeacherQuery?.SubjectTeacher).Total
+          : "0"
         } ]`,
         "sub10-6",
         null
       ),
       getItem(
-        `Số học viên [ ${
-          chartTeacherQuery
-            ? JSON.parse(chartTeacherQuery?.StudentTeacher).Total
-            : "0"
+        `Số học viên [ ${chartTeacherQuery
+          ? JSON.parse(chartTeacherQuery?.StudentTeacher).Total
+          : "0"
         } ]`,
         "sub10-7",
         null
       ),
       getItem(
-        `Số việc đã giao [ ${
-          chartTeacherQuery
-            ? JSON.parse(chartTeacherQuery?.TaskTeacher).Total
-            : "0"
+        `Số việc đã giao [ ${chartTeacherQuery
+          ? JSON.parse(chartTeacherQuery?.TaskTeacher).Total
+          : "0"
         } ]`,
         "sub10-8",
         null
       ),
       getItem(
-        `Số tài liệu upload lên [ ${
-          chartTeacherQuery
-            ? JSON.parse(chartTeacherQuery?.FileTeacher).Total
-            : "0"
+        `Số tài liệu upload lên [ ${chartTeacherQuery
+          ? JSON.parse(chartTeacherQuery?.FileTeacher).Total
+          : "0"
         } ]`,
         "sub10-9",
         null
@@ -558,7 +539,7 @@ const Personalized = () => {
   return (
     <>
       <div className={cx("person")}>
-        
+
         <div className={cx("nav-bar")}>
           <span className="hidden nav-toggle">
             <i className="fa fa-bars" aria-hidden="true"></i>&nbsp; Navigation
