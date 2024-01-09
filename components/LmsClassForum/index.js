@@ -27,18 +27,26 @@ const LmsClassForum = () => {
   const [insertQuizRefJson, result] = useInsertQuizRefJsonMutation({ fixedCacheKey: 'shared-update-post', });
 
   const [query, setQuery] = useState({
-    classCode: "4u7",
+    classCode: router.query.classCode,
     userName: "admin",
   })
   const { data: ItemClass } = useGetCmsItemClassQuery(query);
+  // console.log(ItemClass)
 
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = async () => {
     try {
-      await insertQuizRefJson({
-        "classCode": "4u7",
+      // await insertQuizRefJson({
+      //   "classCode": router.query.classCode,
+      //   "CreatedBy": "admin",
+      //   "IsNews": true,
+      //   "refContent": textAreaValue,
+      //   "UserCreateRef": "admin"
+      // })
+      console.log({
+        "classCode": router.query.classCode,
         "CreatedBy": "admin",
         "IsNews": true,
         "refContent": textAreaValue,
@@ -59,6 +67,7 @@ const LmsClassForum = () => {
     {
       label: "Tạo tin tức",
       key: "news",
+      classCode: router.query.classCode,
       icon: <CreateIcon className={cx("icon")} />,
       modal: true,
     },
@@ -89,12 +98,6 @@ const LmsClassForum = () => {
       icon: <SubjectIcon className={cx("icon")} />,
     },
   ];
-  const pubData = (value) => {
-    setQuery({
-      classCode: "4u7",
-      userName: "admin",
-    })
-  }
 
   return (
     <Section>
@@ -124,7 +127,7 @@ const LmsClassForum = () => {
       </div>
       <div className={cx("buletinClass")}>
         <h4>Bảng tin lớp học</h4>
-        <Bulletinboard pubData={pubData} data={ItemClass} />
+        <Bulletinboard data={ItemClass} />
       </div>
 
       <Modal

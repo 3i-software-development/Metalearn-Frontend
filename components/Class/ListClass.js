@@ -12,12 +12,13 @@ const ListClass = () => {
   const [query, setQuery] = useState({
     FromDate: "",
     ToDate: "",
-    Teacher: "zeta7",
+    Teacher: "",
     Student: "",
     pageSize: "8",
     pageNo: "1",
   });
   const { data: LmsClass } = useGetListLmsClassQuery(query);
+  console.log(LmsClass)
 
   const [initLoading, setInitLoading] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -26,9 +27,9 @@ const ListClass = () => {
     setQuery({
       FromDate: "",
       ToDate: "",
-      Teacher: "zeta7",
+      Teacher: "",
       Student: "",
-      pageSize: "17",
+      pageSize: "20",
       pageNo: "1",
     })
   }

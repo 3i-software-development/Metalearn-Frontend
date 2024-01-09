@@ -66,7 +66,7 @@ const Exam = () => {
               return (
                 <>
                   {/* <ExamItem key={item.id} data={item} /> */}
-                  <ExamDetail key={item.id} data={ListUserSubject[i]} />
+                  <ExamDetail key={item.id} data={ListUserSubject[i] ? ListUserSubject[i] : undefined} />
                 </>
               );
             })}

@@ -9,8 +9,6 @@ import LmsClassForum from "@/components/LmsClassForum";
 import LmsListStudent from "@/components/LmsListStudent";
 import LmsCalendar from "@/components/LmsCalendar";
 
-
-
 const cx = classNames.bind(styles);
 
 const Index = () => {
@@ -45,7 +43,6 @@ const Index = () => {
     <Section>
       <div className={cx("class-content")}>
         <SearchForm />
-        {/* <MyClass /> */}
         {displayContent()}
       </div>
     </Section>

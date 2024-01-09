@@ -3,7 +3,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useDeleteQuizRefJsonMutation } from "@/lib/Midleware/QuizQuery";
 const { Meta } = Card;
 
-const Bulletinboard = ({ data, pubData }) => {
+const Bulletinboard = ({ data }) => {
   const [deleteQuizRefJson] = useDeleteQuizRefJsonMutation();
 
   const handleDelete = async (id) => {
@@ -14,10 +14,6 @@ const Bulletinboard = ({ data, pubData }) => {
         userName: "admin",
       });
       alert("Xóa tin tức thành công!");
-      pubData({
-        id,
-        userName: "admin"
-      })
     } catch (error) {
       alert("Xóa tin tức thất bại!");
       console.log(error);
