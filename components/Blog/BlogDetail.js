@@ -10,8 +10,10 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Link from "next/link";
+import { useAuth } from "@/hooks/authContext";
 
 const BlogDetail = ({ load }) => {
+  const { userName } = useAuth();
   // Hàm loại bỏ thẻ p từ chuỗi HTML
   function removePTags(htmlString) {
     const doc = new DOMParser().parseFromString(htmlString, "text/html");
@@ -22,7 +24,7 @@ const BlogDetail = ({ load }) => {
 
   const { data: listCms } = useGetListCmsItemQuery({
     cat_id: "1391",
-    userName: "admin",
+    userName: userName,
     blogSubject: "BLOG_GROUP_fb0fc637-4571-4745-8a23-45e635a00ecf",
   });
   // console.log(listCms?.Object);
