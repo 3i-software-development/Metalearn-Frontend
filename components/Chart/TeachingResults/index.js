@@ -40,22 +40,22 @@ export default function TeachingResults({ value, type }) {
 
   const dataQuizAssignMent = {
     labels: [
-      `Đã xong : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Done : 0
+      `Đã xong : ${value?.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Done : 0
       }`,
-      `Tổng : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Total : 0
+      `Tổng : ${value?.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Total : 0
       }`,
-      `Chính xác : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Correct : 0
+      `Chính xác : ${value?.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Correct : 0
       }`,
-      `Tổng số giờ  : ${value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.TotalHour : 0
+      `Tổng số giờ  : ${value?.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.TotalHour : 0
       }`,
     ],
     datasets: [
       {
         data: [
-          value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Done : 0,
-          value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Total : 0,
-          value.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Correct : 0,
-          value.QuizAssignment
+          value?.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Done : 0,
+          value?.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Total : 0,
+          value?.QuizAssignment ? JSON.parse(value?.QuizAssignment)?.Correct : 0,
+          value?.QuizAssignment
             ? JSON.parse(value?.QuizAssignment)?.TotalHour
             : 0,
         ],
@@ -93,7 +93,7 @@ export default function TeachingResults({ value, type }) {
     datasets: [
       {
         label: "Câu hỏi",
-        data: [value.QuizTeacher ? JSON.parse(value?.QuizTeacher).Total : 0],
+        data: [value?.QuizTeacher ? JSON.parse(value?.QuizTeacher).Total : 0],
         backgroundColor: "aqua",
         borderColor: "black",
         borderWidth: 1,
@@ -101,7 +101,7 @@ export default function TeachingResults({ value, type }) {
       {
         label: "Bài giảng",
         data: [
-          value.LectureTeacher ? JSON.parse(value?.LectureTeacher).Total : 0,
+          value?.LectureTeacher ? JSON.parse(value?.LectureTeacher).Total : 0,
         ],
         backgroundColor: "black",
         borderColor: "black",
@@ -109,14 +109,14 @@ export default function TeachingResults({ value, type }) {
       },
       {
         label: "Đề luyện thi",
-        data: [value.TestTeacher ? JSON.parse(value?.TestTeacher).Total : 0],
+        data: [value?.TestTeacher ? JSON.parse(value?.TestTeacher).Total : 0],
         backgroundColor: "#5fbf00",
         borderColor: "black",
         borderWidth: 1,
       },
       {
         label: "Kỳ thi",
-        data: [value.ExamTeacher ? JSON.parse(value?.ExamTeacher).Total : 0],
+        data: [value?.ExamTeacher ? JSON.parse(value?.ExamTeacher).Total : 0],
         backgroundColor: "yellow",
         borderColor: "black",
         borderWidth: 1,
@@ -129,7 +129,7 @@ export default function TeachingResults({ value, type }) {
     datasets: [
       {
         label: "Số lớp",
-        data: [value.ClassTeacher ? JSON.parse(value?.ClassTeacher).Total : 0],
+        data: [value?.ClassTeacher ? JSON.parse(value?.ClassTeacher).Total : 0],
         backgroundColor: "aqua",
         borderColor: "black",
         borderWidth: 1,
@@ -137,7 +137,7 @@ export default function TeachingResults({ value, type }) {
       {
         label: "Số môn học",
         data: [
-          value.SubjectTeacher ? JSON.parse(value?.SubjectTeacher).Total : 0,
+          value?.SubjectTeacher ? JSON.parse(value?.SubjectTeacher).Total : 0,
         ],
         backgroundColor: "black",
         borderColor: "black",
@@ -146,7 +146,7 @@ export default function TeachingResults({ value, type }) {
       {
         label: "Số học viên",
         data: [
-          value.StudentTeacher ? JSON.parse(value?.StudentTeacher).Total : 0,
+          value?.StudentTeacher ? JSON.parse(value?.StudentTeacher).Total : 0,
         ],
         backgroundColor: "#5fbf00",
         borderColor: "black",
@@ -154,14 +154,14 @@ export default function TeachingResults({ value, type }) {
       },
       {
         label: "Số tài liệu upload lên",
-        data: [value.FileTeacher ? JSON.parse(value?.FileTeacher).Total : 0],
+        data: [value?.FileTeacher ? JSON.parse(value?.FileTeacher).Total : 0],
         backgroundColor: "yellow",
         borderColor: "black",
         borderWidth: 1,
       },
       {
         label: "Số thể việc đã giao",
-        data: [value.TaskTeacher ? JSON.parse(value?.TaskTeacher).Total : 0],
+        data: [value?.TaskTeacher ? JSON.parse(value?.TaskTeacher).Total : 0],
         backgroundColor: "blue",
         borderColor: "black",
         borderWidth: 1,

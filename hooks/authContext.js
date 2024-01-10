@@ -71,6 +71,7 @@ export function AuthProvider({ children }) {
       setUserName(user);
       setUserId(userId);
       setIsAuthenticated(true);
+      console.log(user);
     }
     else {
       setUser(null);
@@ -87,6 +88,10 @@ export function AuthProvider({ children }) {
     // Thực hiện xác thực ở đây và nhận thông tin người dùng
     // Lưu JWT vào local storage hoặc cookie
     setIsAuthenticated(true);
+    const user = localStorage.getItem("userName");
+    const userId = localStorage.getItem("userId");
+    setUserName(user);
+    setUserId(userId);
   };
 
   const logout = () => {

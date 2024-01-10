@@ -15,11 +15,13 @@ import BlogForm from "./BlogForm";
 import { useAuth } from "@/hooks/authContext";
 
 const Blog = () => {
-  const { userName } = useAuth();
+  const { isAuthenticated, userName, userId, loginState, logout } = useAuth();
+  // const userName = "jakehu1608";
+
   const { data: ListBlog, refetch } = useGetListBlogQuery({
     userName: userName,
   });
-
+  
   const load = () => {
     refetch();
   };
@@ -38,6 +40,7 @@ const Blog = () => {
       setOpenKeys(router.query.key);
     }
   }, [router.query.key]);
+
 
   const getItem = (label, key, icon, children, type) => {
     return {
@@ -82,6 +85,10 @@ const Blog = () => {
     if (router.query.page) return <BlogForm />;
     else return <BlogDetail load={load} />;
   };
+
+  useEffect(() => {
+  
+  }, [openKeys]);
 
   return (
     <>
