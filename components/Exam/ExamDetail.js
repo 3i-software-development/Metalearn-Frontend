@@ -13,8 +13,8 @@ const ExamDetail = ({ data, key }) => {
       <Link href={`/exam?page=item&subjectCode=${data?.Code}`}>
         <li key={key}>
           <div className={cx("thumb")}>
-            <p style={{ fontSize: "14px" }}>Tác giả: {data?.Name}</p>
-            <p style={{ fontSize: "11px", color: "#60bcdd" }}>
+            <p style={{ fontSize: "14px" }}>{data?.Name}</p>
+            <p style={{ fontSize: "11px", marginTop: "10px" , color: "#60bcdd" }}>
               [Số đề thi: {data?.CountExam} - Số câu hỏi: {data?.CountQuiz}]
             </p>
           </div>

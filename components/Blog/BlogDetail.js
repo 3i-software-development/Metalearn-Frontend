@@ -47,10 +47,10 @@ const BlogDetail = () => {
             <span>09/05/2023 08:27</span>
           </div>
         </div>
-        <p>{removePTags(data?.full_text)}</p>
+        <p style={{marginLeft:"10px" }}>{removePTags(data?.full_text)}</p>
       </div>
 
-      <div style={{ marginTop: "170px" }}>
+      <div style={{ marginTop: "170px", marginLeft:"10px" }}>
         <h3 style={{ fontSize: '22px'}}>Tin liên quan</h3>
         <ul style={{ listStyle: "none" }}>
           
@@ -61,6 +61,7 @@ const BlogDetail = () => {
                   marginTop: "10px",
                   flexDirection: "column",
                   justifyContent: "center",
+                   marginBottom: "15px"
                 }}
               >
                 <a style={{fontWeight: 'bold', fontSize: '15px'}}>{e?.title}</a>
@@ -71,7 +72,7 @@ const BlogDetail = () => {
                     alignItems: "center",
                   }}
                 >
-                  <AccessAlarmIcon style={{ fontSize: "17px" }} />
+                  <AccessAlarmIcon style={{ fontSize: "17px", marginRight: "10px" }} />
                   {e?.date_post}
                 </span>
               </li>
