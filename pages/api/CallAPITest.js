@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useMutation, useQuery } from "react-query";
-
+import { useAuth } from "@/hooks/authContext";
 // Phần collection
 export const GetAllPinQuiz = async () => {
     const { userName, userId } = useAuth();
