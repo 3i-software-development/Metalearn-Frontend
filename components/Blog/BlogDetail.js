@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useGetFullTextQuery } from "@/lib/Midleware/NewQuery";
 import Image from "next/image";
@@ -13,7 +13,10 @@ import Link from "next/link";
 import { useAuth } from "@/hooks/authContext";
 
 const BlogDetail = ({ load }) => {
-  const { userName } = useAuth();
+  // const { userName } = useAuth();
+  const userName = "admin";
+  useEffect(() => {
+  }, [userName]);
   // Hàm loại bỏ thẻ p từ chuỗi HTML
   function removePTags(htmlString) {
     const doc = new DOMParser().parseFromString(htmlString, "text/html");

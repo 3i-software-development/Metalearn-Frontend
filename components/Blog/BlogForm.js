@@ -29,7 +29,9 @@ const tailLayout = {
 };
 
 const BlogForm = () => {
-  const { userName } = useAuth();
+  // const { userName } = useAuth();
+  const userName = "admin";
+
   const router = useRouter();
   const [form] = Form.useForm();
   const [value, setValue] = useState("");
@@ -86,6 +88,8 @@ const BlogForm = () => {
   const onReset = () => {
     form.resetFields();
   };
+  useEffect(() => {
+  }, [userName]);
   return (
     <div style={{ padding: "0  50px 50px 50px" }}>
       <h3 style={{ marginBottom: "30px" }}>
