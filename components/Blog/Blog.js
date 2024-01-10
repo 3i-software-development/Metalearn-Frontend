@@ -16,6 +16,7 @@ import { useAuth } from "@/hooks/authContext";
 
 const Blog = () => {
   const { isAuthenticated, userName, userId, loginState, logout } = useAuth();
+  console.log(userName)
   // const userName = "jakehu1608";
 
   const { data: ListBlog, refetch } = useGetListBlogQuery({

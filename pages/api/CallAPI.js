@@ -115,8 +115,8 @@ export const GetListMySubject = () => {
 };
 
 export const GetListMyClass = async () => {
+  
   const { userName } = useAuth();
-
   const requestData = new FormData();
 
   requestData.append('userName', userName);

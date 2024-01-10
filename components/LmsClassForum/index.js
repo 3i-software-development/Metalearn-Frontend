@@ -1,5 +1,5 @@
 import Section from "@/components/Section/Section";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import Link from "next/link";
@@ -24,12 +24,14 @@ const LmsClassForum = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
-  const [insertQuizRefJson, result] = useInsertQuizRefJsonMutation({ fixedCacheKey: 'shared-update-post', });
+  const [insertQuizRefJson, result] = useInsertQuizRefJsonMutation({
+    fixedCacheKey: "shared-update-post",
+  });
 
   const [query, setQuery] = useState({
     classCode: router.query.classCode,
     userName: "admin",
-  })
+  });
   const { data: ItemClass } = useGetCmsItemClassQuery(query);
   // console.log(ItemClass)
 
@@ -46,16 +48,16 @@ const LmsClassForum = () => {
       //   "UserCreateRef": "admin"
       // })
       console.log({
-        "classCode": router.query.classCode,
-        "CreatedBy": "admin",
-        "IsNews": true,
-        "refContent": textAreaValue,
-        "UserCreateRef": "admin"
-      })
-      alert('Thêm tin tức thành công!')
+        classCode: router.query.classCode,
+        CreatedBy: "admin",
+        IsNews: true,
+        refContent: textAreaValue,
+        UserCreateRef: "admin",
+      });
+      alert("Thêm tin tức thành công!");
     } catch (error) {
-      alert('Thêm tin tức thất bại')
-      console.log(error)
+      alert("Thêm tin tức thất bại");
+      console.log(error);
     }
     setIsModalOpen(false);
   };
@@ -98,9 +100,11 @@ const LmsClassForum = () => {
       icon: <SubjectIcon className={cx("icon")} />,
     },
   ];
+  const title = useRef(router.query.title)
 
   return (
     <Section>
+      <h3 className={cx('h3')}>{title?.current}</h3>
       <div className={cx("class")}>
         {data?.map((element, i) => {
           return (

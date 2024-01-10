@@ -2,20 +2,22 @@ import React from "react";
 import { Tabs } from "antd";
 import { useRouter } from "next/router";
 import { useGetDetailLectureQuery } from "@/lib/Midleware/LectureQuery";
+import { useAuth } from "@/hooks/authContext";
 
 const Index = () => {
   const router = useRouter();
+  const { userName } = useAuth();
 
   const [query, setQuery] = React.useState({
     courseCode: router.query?.courseCode,
-    userName: "",
+    userName: userName,
   });
 
   const { data } = useGetDetailLectureQuery(query);
   console.log(data);
 
   const onChange = (key) => {
-    console.log(key);
+    // console.log(key);
   };
 
   // Hàm loại bỏ thẻ p từ chuỗi HTML
@@ -28,24 +30,45 @@ const Index = () => {
     {
       key: "1",
       label: "Danh sách",
-      children: data?.ListLecture[0]?.LectName,
+      children: (
+        <p
+          dangerouslySetInnerHTML={{ __html: data?.ListLecture[0]?.LectName }}
+        />
+      ),
     },
     {
       key: "2",
       label: "Nội dung",
-      children:
-        removePTags(data?.ListLecture[0]?.LectDescription).slice(0, 555) +
-        "...",
+      children: (
+        <p
+          dangerouslySetInnerHTML={{
+            __html: data?.ListLecture[0]?.LectDescription,
+          }}
+        />
+      ),
     },
     {
       key: "3",
       label: "Bài tập",
-      children: "Content of Tab Pane 3",
+      children: "Bài tập",
     },
     {
       key: "4",
       label: "Mở rộng",
-      children: data?.ListLecture[0]?.Status,
+      children: (
+        <ul
+          dangerouslySetInnerHTML={{
+            __html: `<li>Giới thiệu khóa học</li>
+            <li>Chứng chỉ khóa học</li>
+            <li>Chia sẻ khóa học</li>
+            <li>
+            Hỏi đáp</li>
+            <li>
+            Hỏi đáp</li>
+            <li>Tài liệu tham khảo</li>`,
+          }}
+        />
+      ),
     },
   ];
 
@@ -65,7 +88,12 @@ const Index = () => {
         allowfullscreen
       ></iframe>
 
-      <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+      <Tabs
+        style={{ marginTop: "20px" }}
+        defaultActiveKey="1"
+        items={items}
+        onChange={onChange}
+      />
     </>
   );
 };

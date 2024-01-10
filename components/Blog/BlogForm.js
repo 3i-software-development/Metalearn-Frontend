@@ -88,8 +88,8 @@ const BlogForm = () => {
   const onReset = () => {
     form.resetFields();
   };
-  useEffect(() => {
-  }, [userName]);
+  // useEffect(() => {
+  // }, [userName]);
   return (
     <div style={{ padding: "0  50px 50px 50px" }}>
       <h3 style={{ marginBottom: "30px" }}>

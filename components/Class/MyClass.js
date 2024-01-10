@@ -8,18 +8,18 @@ import {GetListMyClass} from "@/pages/api/CallAPI";
 const cx = classNames.bind(styles);
 
 const MyClass = () => {
+  // const [listClass, setListClass] = useState([]);
 
-  const [listClass, setListClass] = useState([]);
-
-  useEffect(() => {
-    GetListMyClass().then((res) => {
-      setListClass(res.Object);
-    });
-  }, []);
+  // useEffect(() => {
+  //   GetListMyClass().then((res) => {
+  //     setListClass(res.Object);
+  //   });
+  // }, []);
+  // console.log(listClass)
 
   return (
     <div className={cx("list-course-container")}>
-      <h1>Lớp của tôi</h1>
+      <h1>Danh sách lớp học</h1>
       <hr />
       <ListClass />
     </div>
