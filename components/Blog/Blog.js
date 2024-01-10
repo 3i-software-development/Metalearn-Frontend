@@ -12,10 +12,12 @@ import BlogDetail from "./BlogDetail";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
 import BlogForm from "./BlogForm";
+import { useAuth } from "@/hooks/authContext";
 
 const Blog = () => {
+  const { userName } = useAuth();
   const { data: ListBlog, refetch } = useGetListBlogQuery({
-    userName: "admin",
+    userName: userName,
   });
 
   const load = () => {
