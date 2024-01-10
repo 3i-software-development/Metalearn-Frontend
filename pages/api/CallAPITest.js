@@ -3,6 +3,8 @@ import { useMutation, useQuery } from "react-query";
 
 // Phần collection
 export const GetAllPinQuiz = async () => {
+    const { userName, userId } = useAuth();
+
     const requestPayload = {
         "subjectCode": "",
         "lectureCode": "",
@@ -14,7 +16,7 @@ export const GetAllPinQuiz = async () => {
         "fromDatePara": "",
         "toDatePara": "",
         "createdBy": "",
-        "userName": "admin",
+        "userName": userName,
         "isTutor888": false,
         "groupBySubject": false,
         "onlyAssignment": false,
@@ -79,6 +81,8 @@ export const GetAllPinExam = async () => {
 };
 
 export const GetAllPinFile = async () => {
+    const { userName, userId } = useAuth();
+
     const requestData = new FormData();
     requestData.append('CatCode', '');
     requestData.append('SubjectCode', '');
@@ -89,7 +93,7 @@ export const GetAllPinFile = async () => {
     requestData.append('FileName', '');
     requestData.append('FileType', '');
     requestData.append('Content', '');
-    requestData.append('UserUpload', 'admin');
+    requestData.append('UserUpload', userName);
     requestData.append('KeySearch', '');
     requestData.append('Count', '');
     requestData.append('CurrentPageView', 1);
@@ -115,11 +119,13 @@ export const GetAllPinFile = async () => {
 
 export const CountPinData = async () => {
     const requestData = new FormData();
-    requestData.append('userId', 'admin');
+    const { userName, userId } = useAuth();
+
+    requestData.append('userId', userId);
 
     try {
         const response = await axios.post(
-            'https://admin.metalearn.vn/MobileLogin/CountPinData?userId=admin',
+            `https://admin.metalearn.vn/MobileLogin/CountPinData?userId=${userId}`,
             requestData,
             {
                 headers: {
@@ -137,12 +143,14 @@ export const CountPinData = async () => {
 
 export const GetSingleQuiz = async () => {
     const requestData = new FormData();
+    const { userName, userId } = useAuth();
+
     requestData.append('quizId', '619529');
-    requestData.append('userName', 'admin');
+    requestData.append('userName', userName);
 
     try {
         const response = await axios.post(
-            'https://admin.metalearn.vn/MobileLogin/GetSingleQuiz?quizId=619529&userName=admin',
+            `https://admin.metalearn.vn/MobileLogin/GetSingleQuiz?quizId=619529&userName=${userName}`,
             requestData,
             {
                 headers: {
@@ -160,12 +168,14 @@ export const GetSingleQuiz = async () => {
 
 export const UnPinData = async () => {
     const requestData = new FormData();
+    const { userName, userId } = useAuth();
+
     requestData.append('Id', '1221');
-    requestData.append('userId', 'admin');
+    requestData.append('userId', userName);
 
     try {
         const response = await axios.post(
-            'https://admin.metalearn.vn/MobileLogin/UnPinData?Id=1221&userId=admin',
+            `https://admin.metalearn.vn/MobileLogin/UnPinData?Id=1221&userId=${userName}`,
             requestData,
             {
                 headers: {
@@ -183,7 +193,9 @@ export const UnPinData = async () => {
 
 export const GetListUserConnected = async () => {
     const requestData = new FormData();
-    requestData.append('userName', 'admin');
+    const { userName, userId } = useAuth();
+
+    requestData.append('userName', userName);
 
     try {
         const response = await axios.post(
@@ -226,9 +238,11 @@ export const GetUserShareQuizPermission = async () => {
 };
 
 export const UpdateQuizPermission = async () => {
+    const { userName, userId } = useAuth();
+
     const requestData = new FormData();
     requestData.append('Id', '619532');
-    requestData.append('UpdatedBy', 'admin');
+    requestData.append('UpdatedBy', userName);
     requestData.append('Share', [
         'UserName', 'teamdankia11',
         'GivenName', 'Em  Nguyen HS'
@@ -254,12 +268,14 @@ export const UpdateQuizPermission = async () => {
 
 export const GetTestQuiz = async () => {
     const requestData = new FormData();
+    const { userName, userId } = useAuth();
+
     requestData.append('practiceTestCode', 'fcfe2d82-be69-4aa1-a94e-75fb9b9983e2');
-    requestData.append('userName', 'admin');
+    requestData.append('userName', userName);
 
     try {
         const response = await axios.post(
-            'https://admin.metalearn.vn/MobileLogin/GetTestQuiz?practiceTestCode=fcfe2d82-be69-4aa1-a94e-75fb9b9983e2&userName=admin',
+            `https://admin.metalearn.vn/MobileLogin/GetTestQuiz?practiceTestCode=fcfe2d82-be69-4aa1-a94e-75fb9b9983e2&userName=${userName}`,
             requestData,
             {
                 headers: {
@@ -276,13 +292,16 @@ export const GetTestQuiz = async () => {
 };
 
 export const GetAllPinComment = async () => {
+    const { userName, userId } = useAuth();
+
     const requestData = new FormData();
     requestData.append('pinDataType', 'QA');
-    requestData.append('userId', 'admin');
+    requestData.append('userId', userId);
+    const { userName, userId } = useAuth();
 
     try {
         const response = await axios.post(
-            'https://admin.metalearn.vn/MobileLogin/GetAllPinComment?pinDataType=QA&userId=admin',
+            `https://admin.metalearn.vn/MobileLogin/GetAllPinComment?pinDataType=QA&userId=${userId}`,
             requestData,
             {
                 headers: {
