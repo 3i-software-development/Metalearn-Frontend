@@ -297,7 +297,6 @@ export const GetAllPinComment = async () => {
     const requestData = new FormData();
     requestData.append('pinDataType', 'QA');
     requestData.append('userId', userId);
-    const { userName, userId } = useAuth();
 
     try {
         const response = await axios.post(
