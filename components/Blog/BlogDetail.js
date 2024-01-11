@@ -49,7 +49,7 @@ const BlogDetail = ({ load }) => {
 
   return (
     <>
-      <div style={{ marginTop: "40px" }}>
+      <div>
         <div
           style={{
             display: "flex",
