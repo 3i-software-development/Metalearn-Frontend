@@ -5,10 +5,12 @@ import classNames from "classnames/bind";
 import Image from "next/image";
 import PayPalButton from "./Paypal";
 import axios from "axios";
+import { useAuth } from "@/hooks/authContext";
 
 const cx = classNames.bind(styles);
 
 const Pay = () => {
+  const { userName, userId } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -46,7 +48,6 @@ const Pay = () => {
   // Xử lý sau khi thanh toán thành công
   const handlePaymentSuccess = () => {
     console.log("Payment successful!");
-    // https://admin.metalearn.vn/MobileLogin/VNPayInPut?points=1000&userName=admin&isFrontend=true
   };
 
   const handleCoinChange = (e) => {
@@ -54,9 +55,48 @@ const Pay = () => {
     const realMoneyCaculate = e.target.value * 1000;
     setRealMoney(realMoneyCaculate)
   };
-  const handlePopUpPayMent = (method) => {
-    console.log(method);
-  };
+  const handlePopUpPayMent = async (method) => {
+    switch (method) {
+      case "vnpay":
+        try {
+          // Make the axios request and wait for the response
+          const response = await axios.post(
+            `https://admin.metalearn.vn/MobileLogin/VNPayInPut?points=${coin}&userName=${userName}&isFrontend=true`
+          );
+
+          // Assuming the response contains a property named "paymentUrl"
+          console.log(response.data.Object);
+          const paymentUrl = response.data.Object.paymentUrl;
+
+          // Open a new window with the payment URL
+          window.open(paymentUrl);
+        } catch (error) {
+          // Handle any errors that may occur during the axios request
+          console.error("Error:", error);
+        }
+        break;
+      case "momo":
+        try {
+          // Make the axios request and wait for the response
+          const response = await axios.post(
+            `https://admin.metalearn.vn/MobileLogin/MomoPay?points=${coin}&userName=${userName}&isFrontend=true`
+          );
+          // Assuming the response contains a property named "paymentUrl"
+          console.log(response.data.Object);
+          //parse json
+
+          const paymentUrl = parseJson(response.data.Object);
+          // Open a new window with the payment URL
+          window.open(paymentUrl);
+        }
+        catch (error) {
+          // Handle any errors that may occur during the axios request
+          console.error("Error:", error);
+        }
+        break;
+    }
+  }
+
 
   return (
     <div className={cx("pay-page")}>
