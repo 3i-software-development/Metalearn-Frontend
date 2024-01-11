@@ -64,8 +64,8 @@ const VnpayPaymentCallBackComponent = ({ router }) => {
 const MomoPaymentCallBackComponent = ({ router }) => {
     const { query, query: { paymentProvider } } = router;
     const { amount, message, orderId, orderInfo, partnerCode, payType, responseTime, signature, status, transId } = query;
-    // const formattedAmount = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-    const formattedAmount = amount;
+    const formattedAmount = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+    // const formattedAmount = amount;
     return (
         <div className={cx('container-page')}>
             <div className={cx('container')}>
