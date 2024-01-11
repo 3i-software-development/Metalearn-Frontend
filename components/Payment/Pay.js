@@ -82,12 +82,12 @@ const Pay = () => {
             `https://admin.metalearn.vn/MobileLogin/MomoPay?points=${coin}&userName=${userName}&isFrontend=true`
           );
           // Assuming the response contains a property named "paymentUrl"
-          console.log(response.data.Object);
           //parse json
 
-          const paymentUrl = parseJson(response.data.Object);
+          const JsonObject = JSON.parse(response.data.Object);
           // Open a new window with the payment URL
-          window.open(paymentUrl);
+          console.log(JsonObject);
+          window.open(JsonObject.payUrl);
         }
         catch (error) {
           // Handle any errors that may occur during the axios request
