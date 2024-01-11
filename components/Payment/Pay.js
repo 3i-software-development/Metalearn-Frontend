@@ -4,12 +4,13 @@ import styles from "./style.module.scss"; // Import SCSS styles for classNames
 import classNames from "classnames/bind";
 import Image from "next/image";
 import PayPalButton from "./Paypal";
-import Link from "next/link";
 import axios from "axios";
+import { useAuth } from "@/hooks/authContext";
 
 const cx = classNames.bind(styles);
 
 const Pay = () => {
+  const { userName, userId } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -26,20 +27,74 @@ const Pay = () => {
   const [numberOfCoins, setNumberOfCoins] = useState("");
   const [numberOfInternationalCoins, setNumberOfInternationalCoins] =
     useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const [realMoney, setRealMoney] = useState("")
 
   // Xử lý sau khi thanh toán paypal thành công
   const handlePaymentSuccess = () => {
     console.log("Payment successful!");
   };
 
+  const handleCoinChange = (e) => {
+    setCoin(e.target.value);
+    const realMoneyCaculate = e.target.value * 1000;
+    setRealMoney(realMoneyCaculate)
+  };
+  
+  const handlePopUpPayMent = async (method) => {
+    switch (method) {
+      case "vnpay":
+        try {
+          // Make the axios request and wait for the response
+          const response = await axios.post(
+            `https://admin.metalearn.vn/MobileLogin/VNPayInPut?points=${coin}&userName=${userName}&isFrontend=true`
+          );
+
+          // Assuming the response contains a property named "paymentUrl"
+          console.log(response.data.Object);
+          const paymentUrl = response.data.Object.paymentUrl;
+
+          // Open a new window with the payment URL
+          window.open(paymentUrl);
+        } catch (error) {
+          // Handle any errors that may occur during the axios request
+          console.error("Error:", error);
+        }
+        break;
+      case "momo":
+        try {
+          // Make the axios request and wait for the response
+          const response = await axios.post(
+            `https://admin.metalearn.vn/MobileLogin/MomoPay?points=${coin}&userName=${userName}&isFrontend=true`
+          );
+          // Assuming the response contains a property named "paymentUrl"
+          console.log(response.data.Object);
+          //parse json
+
+          const paymentUrl = parseJson(response.data.Object);
+          // Open a new window with the payment URL
+          window.open(paymentUrl);
+        }
+        catch (error) {
+          // Handle any errors that may occur during the axios request
+          console.error("Error:", error);
+        }
+        break;
+    }
+  }
+
+
   return (
     <div className={cx("pay-page")}>
       <ul>
         <li>
-          <a>Số tiền: 500,000 [VND]</a>
+          {/* <a>Số tiền: 500,000 [VND]</a> */}
+          <a>Nhập số coin bạn muốn mua</a>
+          <input type="text" placeholder="Nhập số tiền" onChange={handleCoinChange} />
         </li>
         <li style={{ marginTop: "20px" }}>
-          <a>Số tiền quốc tế: 20.00 [USD]</a>
+          {/* <a>Số tiền quốc tế: 20.00 [USD]</a> */}
+          <a>Thành tiền: {realMoney} VND</a>
         </li>
       </ul>
 
@@ -48,13 +103,13 @@ const Pay = () => {
           <h3 className={cx("pay-title")}>Thanh toán nội địa</h3>
           <div className={cx("pay-img")}>
             <Image
-              onClick={handleVnPay}
               alt={"img"}
               width={70}
               height={70}
               src={
                 "https://vnpay.vn/s1/statics.vnpay.vn/2023/6/0oxhzjmxbksr1686814746087.png"
               }
+              onClick={() => handlePopUpPayMent("vnpay")}
             />
             <Image
               alt={"img"}
@@ -63,6 +118,7 @@ const Pay = () => {
               src={
                 "https://scontent.fhan5-9.fna.fbcdn.net/v/t1.6435-9/160176169_3784880351567934_8714292608011170377_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=be3454&_nc_eui2=AeGmKhNFy8FzxjETc2sbgRcD1qF-uYeYItnWoX65h5gi2Y6I7RgtUKm_3lDThJrewX0SuAAR3mHYdjA7e7ztpPCA&_nc_ohc=nHeImCO3qwAAX-bmGsc&_nc_ht=scontent.fhan5-9.fna&oh=00_AfD_A8ndG_W5cNH293LuisXiT_qUa-L9DtQKFTUgm0yR8g&oe=65C45BEB"
               }
+              onClick={() => handlePopUpPayMent("momo")}
             />
           </div>
         </div>
