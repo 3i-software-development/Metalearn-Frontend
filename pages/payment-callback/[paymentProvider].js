@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import PaymentCallBackComponent from '@/components/PaymentCallBack/paymentCallBackComponent';
+import PaymentCallBackComponent from '@/components/PaymentCallBack/PaymentCallBackComponent'
 
 export default function Page() {
     const router = useRouter()
