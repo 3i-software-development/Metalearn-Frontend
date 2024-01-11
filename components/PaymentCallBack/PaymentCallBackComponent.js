@@ -30,7 +30,9 @@ export default function PaymentCallBackComponent({ router }) {
 const VnpayPaymentCallBackComponent = ({ router }) => {
     const { query, query: { paymentProvider } } = router;
     const { vnp_Amount, vnp_BankCode, vnp_BankTranNo, vnp_CardType, vnp_OrderInfo, vnp_PayDate, vnp_ResponseCode, vnp_TmnCode, vnp_TransactionNo, vnp_TxnRef, vnp_SecureHash } = query;
-    const formattedAmount = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(vnp_Amount);
+    //remove 2 0 at the end of amount
+    const vnp_Amount_removedZero = vnp_Amount.slice(0, vnp_Amount.length - 2);
+    const formattedAmount = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(vnp_Amount_removedZero);
     return (
         <div className={cx('container-page')}>
             <div className={cx('container')}>
@@ -62,7 +64,8 @@ const VnpayPaymentCallBackComponent = ({ router }) => {
 const MomoPaymentCallBackComponent = ({ router }) => {
     const { query, query: { paymentProvider } } = router;
     const { amount, message, orderId, orderInfo, partnerCode, payType, responseTime, signature, status, transId } = query;
-    const formattedAmount = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+    // const formattedAmount = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+    const formattedAmount = amount;
     return (
         <div className={cx('container-page')}>
             <div className={cx('container')}>
