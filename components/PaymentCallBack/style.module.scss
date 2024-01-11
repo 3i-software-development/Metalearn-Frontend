@@ -2,12 +2,15 @@
 .container-page {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Occupy full viewport height */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-  }
-  
-  .container {
+    height: 100vh;
+    /* Occupy full viewport height */
+    justify-content: center;
+    /* Center vertically */
+    align-items: center;
+    /* Center horizontally */
+}
+
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,8 +21,8 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
-  }
-  
+}
+
 
 /* Common styles for payment information */
 .container div {
@@ -29,6 +32,7 @@
 .vnp_BankCode {
     font-weight: bold;
 }
+
 .vnp_BankTranNo {
     font-weight: bold;
 }
@@ -61,7 +65,12 @@
     margin: 3px 0;
 }
 
+.momo-orderinfo-container {
+    display: flex;
+    flex-direction: column;
+}
+
 /* General styling for other information */
-.container > div > div {
+.container>div>div {
     font-size: 12px;
 }
