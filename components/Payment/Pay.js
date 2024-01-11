@@ -4,6 +4,7 @@ import styles from "./style.module.scss"; // Import SCSS styles for classNames
 import classNames from "classnames/bind";
 import Image from "next/image";
 import PayPalButton from "./Paypal";
+import axios from "axios";
 
 const cx = classNames.bind(styles);
 
@@ -39,20 +40,35 @@ const Pay = () => {
   const [numberOfCoins, setNumberOfCoins] = useState("");
   const [numberOfInternationalCoins, setNumberOfInternationalCoins] =
     useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const [realMoney, setRealMoney] = useState("")
 
   // Xử lý sau khi thanh toán thành công
   const handlePaymentSuccess = () => {
     console.log("Payment successful!");
+    // https://admin.metalearn.vn/MobileLogin/VNPayInPut?points=1000&userName=admin&isFrontend=true
+  };
+
+  const handleCoinChange = (e) => {
+    setCoin(e.target.value);
+    const realMoneyCaculate = e.target.value * 1000;
+    setRealMoney(realMoneyCaculate)
+  };
+  const handlePopUpPayMent = (method) => {
+    console.log(method);
   };
 
   return (
     <div className={cx("pay-page")}>
       <ul>
         <li>
-          <a>Số tiền: 500,000 [VND]</a>
+          {/* <a>Số tiền: 500,000 [VND]</a> */}
+          <a>Nhập số coin bạn muốn mua</a>
+          <input type="text" placeholder="Nhập số tiền" onChange={handleCoinChange} />
         </li>
         <li style={{ marginTop: "20px" }}>
-          <a>Số tiền quốc tế: 20.00 [USD]</a>
+          {/* <a>Số tiền quốc tế: 20.00 [USD]</a> */}
+          <a>Thành tiền: {realMoney} VND</a>
         </li>
       </ul>
 
@@ -67,6 +83,7 @@ const Pay = () => {
               src={
                 "https://vnpay.vn/s1/statics.vnpay.vn/2023/6/0oxhzjmxbksr1686814746087.png"
               }
+              onClick={() => handlePopUpPayMent("vnpay")}
             />
             <Image
               alt={"img"}
@@ -75,6 +92,7 @@ const Pay = () => {
               src={
                 "https://scontent.fhan5-9.fna.fbcdn.net/v/t1.6435-9/160176169_3784880351567934_8714292608011170377_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=be3454&_nc_eui2=AeGmKhNFy8FzxjETc2sbgRcD1qF-uYeYItnWoX65h5gi2Y6I7RgtUKm_3lDThJrewX0SuAAR3mHYdjA7e7ztpPCA&_nc_ohc=nHeImCO3qwAAX-bmGsc&_nc_ht=scontent.fhan5-9.fna&oh=00_AfD_A8ndG_W5cNH293LuisXiT_qUa-L9DtQKFTUgm0yR8g&oe=65C45BEB"
               }
+              onClick={() => handlePopUpPayMent("momo")}
             />
           </div>
         </div>
