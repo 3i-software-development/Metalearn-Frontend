@@ -1,36 +1,36 @@
-import {
-  MailOutlined,
-  SettingOutlined,
-  AppstoreOutlined,
-} from "@ant-design/icons";
+// import {
+//   MailOutlined,
+//   SettingOutlined,
+//   AppstoreOutlined,
+// } from "@ant-design/icons";
 import { Breadcrumb, Menu } from "antd";
 import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
-import DehazeIcon from "@mui/icons-material/Dehaze";
-import ArticleIcon from "@mui/icons-material/Article";
-import AppsIcon from "@mui/icons-material/Apps";
+// import DehazeIcon from "@mui/icons-material/Dehaze";
+// import ArticleIcon from "@mui/icons-material/Article";
+// import AppsIcon from "@mui/icons-material/Apps";
 import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 const cx = classNames.bind(styles);
 import { useGetListScheduleQuery } from "@/lib/Midleware/ScheduleQuery";
-import PractiseCard from "../Card/PractiseCard/PractiseCard";
-import SelftrainingCard from "../Card/SelftrainingCard/SelftrainingCard";
-import CourseCard from "../Card/CourseCard/CourseCard";
+// import PractiseCard from "../Card/PractiseCard/PractiseCard";
+// import SelftrainingCard from "../Card/SelftrainingCard/SelftrainingCard";
+// import CourseCard from "../Card/CourseCard/CourseCard";
 import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import { useGetListExamQuery } from "@/lib/Midleware/ExamQuery";
 import { useGetTotalPractiveQuery } from "@/lib/Midleware/PractiveQuery";
-import ClassCard from "../Card/ClassCard/ClassCard";
+// import ClassCard from "../Card/ClassCard/ClassCard";
 import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
-import Document_Cart from "../Card/SubjectCard";
-import ChartSubject from "../Chart/ChartSubject";
-import ExamCard from "../Card/ExamCard";
+// import Document_Cart from "../Card/SubjectCard";
+// import ChartSubject from "../Chart/ChartSubject";
+// import ExamCard from "../Card/ExamCard";
 import { useGetListLectureQuery } from "@/lib/Midleware/LectureQuery";
-import { AiOutlineSearch } from "react-icons/ai";
+// import { AiOutlineSearch } from "react-icons/ai";
 import { useGetListUserSubjectQuery } from "@/lib/Midleware/SubjectQuery";
-import SearchAndAddSubjects from "../SearchAndAddSubjects";
+// import SearchAndAddSubjects from "../SearchAndAddSubjects";
 import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
-import { AbumCart } from "../Card/AbumCard/AbumCard";
-import TeachingResults from "../Chart/TeachingResults";
+// import { AbumCart } from "../Card/AbumCard/AbumCard";
+// import TeachingResults from "../Chart/TeachingResults";
 import { useRouter } from "next/router";
 import {
   useGetCountExamStudentQuery,
@@ -46,10 +46,10 @@ import {
   useGetTotalTeacherQuery,
 } from "@/lib/Midleware/ChartQuery";
 import { useGetCountQuizBodyQuery } from "@/lib/Midleware/QuizQuery";
-import CircleChart from "../Chart/CircleChart/CircleChart";
+// import CircleChart from "../Chart/CircleChart/CircleChart";
 import MobileNavBar from "./MobileNavBar";
 import CourseWareMath from "../Courses/CourseWareMath/CourseWareMath";
-import CourseDev from "../Courses/CourseDev/CourseDev";
+import CourseList from "../Courses/CourseList/CourseList";
 
 const CourseWare = () => {
   const { data: practiveQuery } = useGetTotalPractiveQuery({
@@ -206,39 +206,8 @@ const CourseWare = () => {
   };
 
   const items = [
-    getItem(`Lập trình`, "practive", <DeveloperModeIcon />),
-
-    getItem(`Toán ôn thi đại học`, "sub3", <ArticleIcon />),
-
-    // getItem(
-    //   `Đề thi [ ${
-    //     examQuery?.countAssignment.toLocaleString() +
-    //     " | " +
-    //     examQuery?.countSharing.toLocaleString()
-    //   } ]`,
-    //   `sub4`,
-    //   <SettingOutlined />,
-    //   [
-    //     getItem(
-    //       `Được giao [ ${examQuery?.countAssignment.toLocaleString()} ]`,
-    //       "sub4-1",
-    //       null
-    //     ),
-    //     getItem(
-    //       `Tự luyện [ ${examQuery?.countSharing.toLocaleString()} ]`,
-    //       "sub4-2",
-    //       null
-    //     ),
-    //   ]
-    // ),
-
-    // getItem(
-    //   `Khóa học [ ${lectureQuery?.Object?.length.toLocaleString()} ]`,
-    //   "courses",
-    //   <SettingOutlined />
-    // ),
-
-    // getItem("Bộ sưu tập", "sub11", <SettingOutlined />),
+    getItem(`Danh sách khóa học [44]`, "practive", <DeveloperModeIcon />),
+    // getItem(`Toán ôn thi đại học`, "sub3", <ArticleIcon />),
   ];
 
   const onOpenChange = (keys) => {
@@ -249,17 +218,9 @@ const CourseWare = () => {
   const displayContent = () => {
     switch (openKeys) {
       case "practive":
-        return <CourseDev total={practiveQuery?.Object?.cardSum} />;
-      case "sub3":
-        return <CourseWareMath />;
-      //   case "sub4-1":
-      //     return <ExamCard onlyAssignment={true} />;
-      //   case "sub4-2":
-      //     return <ExamCard onlyAssignment={false} />;
-      //   case "courses":
-      //     return <CourseCard />;
-      //   case "sub11":
-      //     return <AbumCart />;
+        return <CourseList total={practiveQuery?.Object?.cardSum} />;
+      // case "sub3":
+      //   return <CourseWareMath />;
     }
   };
   return (
@@ -273,13 +234,6 @@ const CourseWare = () => {
             mode="inline"
             defaultSelectedKeys={openKeys}
             onClick={onOpenChange}
-            style={
-              {
-                // width: 300,
-                // backgroundColor: "",
-                // position: "fixed",
-              }
-            }
             items={items}
           />
         </div>
@@ -291,21 +245,15 @@ const CourseWare = () => {
             <Breadcrumb
               items={[
                 {
-                  title: "Home",
+                  title: "Trang chủ",
                 },
                 {
-                  title: <a href="">Application Center</a>,
-                },
-                {
-                  title: <a href="">Application List</a>,
-                },
-                {
-                  title: "An Application",
-                },
+                  title: <a href="">Khóa học</a>,
+                }
               ]}
             />
             <div className="tool-items">
-              <span className={cx("search-icon")}>
+              <span>
                 <ModalSearchFilter />
               </span>
               {/* <span className={cx("layout-icon")}>

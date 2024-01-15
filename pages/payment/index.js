@@ -6,7 +6,7 @@ const index = () => {
   return (
     <Section>
       <Pay />
-      <Payment />
+      {/* <Payment /> */}
     </Section>
   )
 }

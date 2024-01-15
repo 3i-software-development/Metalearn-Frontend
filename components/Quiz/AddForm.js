@@ -74,7 +74,7 @@ export default function AddForm() {
                     {JSON.parse(value.JsonData).map((item, i) => {
                       return (
                         <div key={i} className={cx("checkBox")}>
-                          <input type="radio" name={value.Content} value="pk" onChange={() => handleAnswer(index)} />
+                          <input type="radio" style={{marginRight: "10px"}}  name={value.Content} value="pk" onChange={() => handleAnswer(index)} />
                           {htmlDecode(`${item.Answer}`)}
                         </div>
                       );
@@ -83,10 +83,7 @@ export default function AddForm() {
                         <a>
                           <i className="fa-brands fa-react fa-beat"></i>
                         </a>
-                        <button>Kiểm tra</button>
-                        <a>
-                          <i className="fa-solid fa-flower"></i>GPT
-                        </a>
+                        
                       </div>
                   </div>
                 </div>

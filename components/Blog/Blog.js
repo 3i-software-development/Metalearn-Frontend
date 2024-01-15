@@ -11,16 +11,19 @@ import { useGetListBlogQuery } from "@/lib/Midleware/BlogQuery";
 import BlogDetail from "./BlogDetail";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
-import CreateBlog from "./CreateBlog";
+import BlogForm from "./BlogForm";
 
 const Blog = () => {
-  const { data: ListBlog } = useGetListBlogQuery({
+  const { data: ListBlog, refetch } = useGetListBlogQuery({
     userName: "admin",
   });
 
+  const load = () => {
+    refetch();
+  };
+
   const router = useRouter();
-  const [openKeys, setOpenKeys] = useState(''
-  );
+  const [openKeys, setOpenKeys] = useState("");
 
   // Hàm loại bỏ thẻ p từ chuỗi HTML
   function removePTags(htmlString) {
@@ -46,18 +49,26 @@ const Blog = () => {
 
   const newItem = ListBlog?.Object?.map((item) => {
     return getItem(
-      removePTags(item?.GroupTitle).slice(0, 22) + "...",
+      item?.GroupTitle?.length > 20
+        ? removePTags(item?.GroupTitle).slice(0, 22) + "..."
+        : removePTags(item?.GroupTitle),
       `sub4-${item.GroupCode}`,
       <SettingOutlined />,
       !item?.NewListBlog || item?.NewListBlog?.length == 0
         ? null
         : item?.NewListBlog?.map((e) => {
-          // console.log(e)
-          return getItem(e?.title, e.id, null, null, e.id);
-        })
+            // console.log(e)
+            return getItem(
+              e?.title?.length > 24 ? e?.title?.slice(0, 22) + "..." : e?.title,
+              e.id,
+              null,
+              null,
+              e.id
+            );
+          })
     );
   });
-  // console.log(ListBlog?.Object)
+  // console.log(ListBlog)
   // console.log(newItem)
 
   const onOpenChange = (keys) => {
@@ -66,9 +77,10 @@ const Blog = () => {
   };
 
   const displayContent = () => {
-        if (router.query.page) return <CreateBlog />
-        else return <BlogDetail/>;
+    if (router.query.page) return <BlogForm />;
+    else return <BlogDetail load={load} />;
   };
+
   return (
     <>
       <div className={cx("person")}>

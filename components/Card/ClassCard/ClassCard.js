@@ -29,7 +29,7 @@ const ClassCard = ({ role }) => {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.innerText;
   }
-  const arr = role ? Lesson : LmsClass.query;
+  const arr = role ? Lesson : LmsClass?.query;
 
   return (
     <Section>
@@ -38,39 +38,6 @@ const ClassCard = ({ role }) => {
           return (
             <div key={element.Id} className={cx("item")}>
               <div className={cx("inner-item")}>
-                <div className={cx("item-media")}>
-                  <Image
-                    src={
-                      role
-                        ? `${element.Image}`
-                        : "https://cdn.shopify.com/s/files/1/0879/0542/products/pc6741.jpg?v=1569974144"
-                    }
-                    alt="document"
-                    width={180}
-                    height="150"
-                    className={cx("image")}
-                  />
-
-                  <div className={cx("actions")}>
-                    {role ? (
-                      <>
-                        <span className={cx("mobie")}>
-                          <i className="fa-solid fa-mobile-screen-button"></i>
-                        </span>
-                        <span className={cx("file")}>
-                          <i className="fa-solid fa-file-video"></i>
-                        </span>
-                        <span className={cx("video")}>
-                          <i className="fa-solid fa-video"></i>
-                        </span>
-                      </>
-                    ) : (
-                      <span className={cx("edit")}>
-                        <i className="fa-regular fa-pen-to-square"></i>
-                      </span>
-                    )}
-                  </div>
-                </div>
                 <div className={cx("item-detail")}>
                   <h3 className={cx("title")}>
                     <i
@@ -123,31 +90,6 @@ const ClassCard = ({ role }) => {
             </div>
           );
         })}
-        <table classNames={cx("class-list")}>
-          <thead className={cx("table-head")}>
-            <tr>
-              <th className={cx("titleCard")}>
-                <i className="fa fa-paper-plane"></i>
-                Ảnh lớp học
-              </th>
-              <th className={cx("card-status")}>
-                <i class="fa fa-newspaper"></i>
-                Mã lớp học
-              </th>
-              <th className={cx("card-time")}>
-                <i className="fa fa-calendar"></i>
-                Tên lớp học
-              </th>
-              <th  className={cx("card-actions")}>
-                <i className="fa fa-recycle"></i>
-                Thao tác
-              </th>
-            </tr>
-          </thead>
-          <tbody className={cx("table-body")}>
-            
-          </tbody>
-        </table>
       </div>
       {role ? (
         ""

@@ -68,9 +68,20 @@
 /* style.module.scss */
 
 .pay-page {
+  ul{
+    list-style: none;
+    margin-top: 30px;
+    min-width: 300px;
+    li {
+      a{
+        color: #000;
+        font-weight: bold;
+      }
+    }
+  }
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  column-gap: 320px;
+  padding-top: -30px;
 }
 
 .bank-selection {
@@ -136,5 +147,26 @@
 
 .pay-button:hover {
   background-color: #0056b3; /* Change to your desired hover background color */
+}
+
+//
+.pay-title{
+  margin-bottom: 30px;
+}
+.pay-content{
+  margin-top: 30px;
+}
+.pay-img{
+  display: flex;
+  column-gap: 20px;
+  img{
+    width: 130px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  img:hover{
+    transform: scale(1.01);
+    transition: linear 0.2s;
+  }
 }
 

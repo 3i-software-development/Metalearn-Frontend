@@ -13,15 +13,10 @@
   min-height: 555px;
 }
 
-// .SearchAndAddSubjects_ItemAll {
-//   display: flex;
-//   flex-wrap: wrap;
-//   right: 100px;
-//   justify-content: space-between;
-//   padding: 10px 0;
-//   font-size: 30px;
-//   align-items: baseline;
-// }
+.SearchAndAddSubjects_ItemAll {
+  display: flex;
+  padding-bottom: 30px;
+}
 
 @media screen and (max-width: 767px) {
   @media screen and (max-width: 767px) {
@@ -57,11 +52,6 @@
   }
 }
 
-.search-icon {
-  // margin-right: 10px;
-  margin-left:1050px;
-  
-}
 .layout-icon {
   position: relative;
   top: 4px;
