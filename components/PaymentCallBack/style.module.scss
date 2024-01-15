@@ -1,0 +1,76 @@
+/* Style for the outer container */
+.container-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Occupy full viewport height */
+    justify-content: center;
+    /* Center vertically */
+    align-items: center;
+    /* Center horizontally */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+
+/* Common styles for payment information */
+.container div {
+    margin: 5px 0;
+}
+
+.vnp_BankCode {
+    font-weight: bold;
+}
+
+.vnp_BankTranNo {
+    font-weight: bold;
+}
+
+/* Style for the success message */
+.payment-sucess {
+    color: #28a745;
+    font-size: 18 px;
+    font-weight: bold;
+}
+
+/* Style for payment provider */
+.payment-provider {
+    font-size: 14px;
+}
+
+/* Style for bank information */
+.bank-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.vnp_SecureHash {
+    max-width: 100%;
+    font-size: 10px;
+}
+
+/* Additional styling for bank information items */
+.bank-info div {
+    margin: 3px 0;
+}
+
+.momo-orderinfo-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* General styling for other information */
+.container>div>div {
+    font-size: 12px;
+}

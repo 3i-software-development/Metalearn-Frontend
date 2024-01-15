@@ -40,7 +40,7 @@ const Pay = () => {
     const realMoneyCaculate = e.target.value * 1000;
     setRealMoney(realMoneyCaculate)
   };
-  
+
   const handlePopUpPayMent = async (method) => {
     switch (method) {
       case "vnpay":
@@ -53,9 +53,8 @@ const Pay = () => {
           // Assuming the response contains a property named "paymentUrl"
           console.log(response.data.Object);
           const paymentUrl = response.data.Object.paymentUrl;
-
-          // Open a new window with the payment URL
-          window.open(paymentUrl);
+          //navigate to url
+          window.location.href = paymentUrl;
         } catch (error) {
           // Handle any errors that may occur during the axios request
           console.error("Error:", error);
@@ -73,7 +72,8 @@ const Pay = () => {
           const JsonObject = JSON.parse(response.data.Object);
           // Open a new window with the payment URL
           console.log(JsonObject);
-          window.open(JsonObject.payUrl);
+          //navigate to url
+          window.location.href = JsonObject.payUrl;
         }
         catch (error) {
           // Handle any errors that may occur during the axios request
