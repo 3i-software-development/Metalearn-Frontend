@@ -3,6 +3,9 @@ import { Tabs } from "antd";
 import { useRouter } from "next/router";
 import { useGetDetailLectureQuery } from "@/lib/Midleware/LectureQuery";
 import { useAuth } from "@/hooks/authContext";
+import YoutubeVideo from "@/components/YoutubeVideo/YoutubeVideo";
+import Image from "next/image";
+import Link from "next/link";
 
 const Index = () => {
   const router = useRouter();
@@ -14,27 +17,42 @@ const Index = () => {
   });
 
   const { data } = useGetDetailLectureQuery(query);
-  console.log(data);
+  // console.log(data)
+
+  const listItems = data?.ListLecture?.map((lecture) => (
+    <li
+      key={lecture.Id}
+      style={{ marginTop: "15px", marginLeft: "20px", listStyle: "none" }}
+    >
+      <Link href={`/lecture?courseCode=${lecture?.CourseCode}`}>
+        <div style={{ display: "flex", cursor: 'pointer' }}>
+          <Image
+            src={
+              "https://ionic.metalearn.vn/assets/imgs/image_2023_10_23T12_38_21_667Z.png"
+            }
+            width={100}
+            height={100}
+            alt="Lecture Image"
+          />
+          <span style={{ fontWeight: "bold", marginLeft: "12px" }}>
+            <p>{lecture.LectName}</p>
+            <p>{lecture.CourseCode}</p>
+          </span>
+        </div>
+      </Link>
+    </li>
+  ));
+  console.log(listItems);
 
   const onChange = (key) => {
     // console.log(key);
   };
 
-  // Hàm loại bỏ thẻ p từ chuỗi HTML
-  function removePTags(htmlString) {
-    const doc = new DOMParser().parseFromString(htmlString, "text/html");
-    return doc.body.textContent || "";
-  }
-
   const items = [
     {
       key: "1",
       label: "Danh sách",
-      children: (
-        <p
-          dangerouslySetInnerHTML={{ __html: data?.ListLecture[0]?.LectName }}
-        />
-      ),
+      children: <ul>{listItems}</ul>,
     },
     {
       key: "2",
@@ -57,43 +75,45 @@ const Index = () => {
       label: "Mở rộng",
       children: (
         <ul
+          style={{
+            fontWeight: "bold",
+            display: "flex",
+            flexDirection: "column",
+            rowGap: "10px",
+            marginLeft: "20px",
+            listStyle: "none",
+            cursor: "pointer",
+          }}
           dangerouslySetInnerHTML={{
             __html: `<li>Giới thiệu khóa học</li>
             <li>Chứng chỉ khóa học</li>
             <li>Chia sẻ khóa học</li>
             <li>
             Hỏi đáp</li>
+            <li>Tài liệu tham khảo</li>
             <li>
-            Hỏi đáp</li>
-            <li>Tài liệu tham khảo</li>`,
+            Tương tác</li>`,
           }}
         />
       ),
     },
   ];
 
-  // console.log(router.query?.courseCode);
-
   return (
     <>
-      {/* <video src={data?.ListLecture[0]?.VideoPresent} width="1500" height="500" controls>
-      </video> */}
-      <iframe
-        width="100%"
-        height="700px"
-        src="https://www.youtube.com/embed/wEU25--_mtE?si=rtdZbU8oWOg61iJL"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-
-      <Tabs
-        style={{ marginTop: "20px" }}
-        defaultActiveKey="1"
-        items={items}
-        onChange={onChange}
-      />
+      <div>
+        <YoutubeVideo
+          videoUrl={data?.ListLecture[0]?.VideoPresent}
+          width={"100%"}
+          height={"500px"}
+        />
+        <Tabs
+          style={{ marginTop: "20px", fontWeight: "bold" }}
+          defaultActiveKey="1"
+          items={items}
+          onChange={onChange}
+        />
+      </div>
     </>
   );
 };

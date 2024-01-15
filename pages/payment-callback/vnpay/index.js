@@ -1,9 +1,12 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 
-const index = () => {
+const Index = () => {
+    const router = useRouter()
+    console.log(router.query)
   return (
     <div>VnPay</div>
   )
 }
 
-export default index
+export default Index
