@@ -38,6 +38,29 @@ export default function Home() {
           name="google-site-verification"
           content="ZkY-Qa3xcsH3pG0b5MruOBHn8Qf71SJ5tHnyif136xs"
         />
+      </Head>
+      <main>
+        <Slider />
+
+        {/* <Section> */}
+        <Banner
+          img={Bnimg}
+          title="Học trực tuyến một cách tiện lợi và hiệu quả nhất !"
+          text="Bắt đầu ngay để nâng cao kiến thức và kỹ năng với hơn 590,000 câu hỏi và 20,500 đề thi."
+        />
+        <ListCourse />
+        {/* </Section> */}
+        <Intro1 />
+        {/* <Section> */}
+        <TopCategories />
+        <Intro2 data={ListIntro[0]} />
+        {/* </Section> */}
+        <Team />
+        {/* <Section> */}
+        <Intro2 data={ListIntro[1]} rev />
+        <Intro2 data={ListIntro[2]} />
+        {/* </Section> */}
+
 
         {/* <script>
           window.OldFile = File;
@@ -88,30 +111,9 @@ export default function Home() {
         }
       }
     }
-        </script> */}
-        {/* <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script> */}
-      </Head>
-      <main>
-        <Slider />
+        </script>
 
-        {/* <Section> */}
-          <Banner
-            img={Bnimg}
-            title="Học trực tuyến một cách tiện lợi và hiệu quả nhất !"
-            text="Bắt đầu ngay để nâng cao kiến thức và kỹ năng với hơn 590,000 câu hỏi và 20,500 đề thi."
-          />
-          <ListCourse />
-        {/* </Section> */}
-        <Intro1 />
-        {/* <Section> */}
-          <TopCategories />
-          <Intro2 data={ListIntro[0]} />
-        {/* </Section> */}
-        <Team />
-        {/* <Section> */}
-          <Intro2 data={ListIntro[1]} rev />
-          <Intro2 data={ListIntro[2]} />
-        {/* </Section> */}
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script"></script> */}
       </main>
     </>
   );
