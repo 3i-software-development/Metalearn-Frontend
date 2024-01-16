@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./style.module.scss";
 import classNames from "classnames/bind";
+// import { Link } from 'react-router-dom';
 import { useGetListQuizQuery } from "@/lib/Midleware/QuizQuery";
-
 const cx = classNames.bind(styles);
 
 export default function AddForm() {
@@ -52,7 +52,7 @@ export default function AddForm() {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.innerText;
   }
-  
+
   return (
     <div className={cx("background")}>
       <div className={cx("tittle")}>
@@ -69,7 +69,7 @@ export default function AddForm() {
                       <span>Question</span>. {index + 1}
                     </p>
                   </div>
-                  
+
                   <div className={cx("quizz-left")}>
                     <h3 className={cx("quizz-questions")}>{htmlDecode(`${value.Content}`)}</h3>
                     {JSON.parse(value.JsonData).map((item, i) => {
@@ -80,18 +80,18 @@ export default function AddForm() {
                         </div>
                       );
                     })}
-                      <div className={cx("recommend")}>
-                        <a>
+                    <div className={cx("recommend")}>
+                      {/* <a>
                           <i className="fa-brands fa-react fa-beat"></i>
                         </a>
-                        <button>Kiểm tra</button>
-                        <a>
+                        <button>Next</button> */}
+                      {/* <a>
                           <i className="fa-solid fa-flower"></i>GPT
-                        </a>
-                      </div>
+                        </a> */}
+                    </div>
                   </div>
                 </div>
-              </>
+</>
             ))}
           </div>
         </div>
@@ -136,14 +136,18 @@ export default function AddForm() {
               })}
             </ul>
           </div>
-          
+
           <div className={cx("next-questions")}>
-            <a href="#open-modal" style={{background: '#64fd9f'}}>Finish</a>
+            <a className="" href="#open-modal" style={{ background: '#64fd9f' }}>Finish</a>
             <a href={`#${tempQuestion}`} onClick={() => handlePrevious()}>
               Previous
             </a>
             <a href={`#${tempQuestion}`} onClick={() => handleNext()}>
               Next
+            </a>
+            <a className="mx-10px">
+              {/* <Link to=""></Link> */}
+              <i className="fa-brands fa-react fa-beat"></i>
             </a>
           </div>
         </div>

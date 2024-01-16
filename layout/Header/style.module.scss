@@ -1,4 +1,16 @@
 /* styles.css */
+.form-user{
+  margin-top: 12px;
+  position: relative;
+}
+.form-user-input-item{
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  padding: 4px 12px;
+  margin: 12px 0px;
+  width: 100%;
+  display: flex;
+}
 
 /* Global styles for the header */
 .header {
