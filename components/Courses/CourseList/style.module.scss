@@ -79,26 +79,26 @@
   }
 }
 
-@media screen and (max-width: 991px) {
-  .titleCard {
-    max-width: 180px;
-  }
-  .card-actions {
-    min-width: 120px;
-  }
-}
+// @media screen and (max-width: 991px) {
+//   .titleCard {
+//     max-width: 180px;
+//   }
+//   .card-actions {
+//     min-width: 120px;
+//   }
+// }
 
-@media screen and (max-width: 767px) {
-  .on-pc {
-    display: none;
-  }
-  .on-mobile {
-    display: block;
-  }
-  .titleCard {
-    max-width: 100%;
-  }
-  .card-status {
-    max-width: 100%;
-  }
-}
+// @media screen and (max-width: 767px) {
+//   .on-pc {
+//     display: none;
+//   }
+//   .on-mobile {
+//     display: block;
+//   }
+//   .titleCard {
+//     max-width: 100%;
+//   }
+//   .card-status {
+//     max-width: 100%;
+//   }
+// }

@@ -59,13 +59,12 @@ const Exam = () => {
           totalShared={data?.countSharing}
         />
         {router.query.page == "item" ? (
-          <ExamItem />
+          <ExamItem query={query} />
         ) : (
           <ul className={cx("toplist")}>
             {data?.query?.map((item, i) => {
               return (
                 <>
-                  {/* <ExamItem key={item.id} data={item} /> */}
                   <ExamDetail key={item.id} data={ListUserSubject[i] ? ListUserSubject[i] : undefined} />
                 </>
               );

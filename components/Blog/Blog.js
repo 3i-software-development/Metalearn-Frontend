@@ -12,12 +12,17 @@ import BlogDetail from "./BlogDetail";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
 import BlogForm from "./BlogForm";
+import { useAuth } from "@/hooks/authContext";
 
 const Blog = () => {
-  const { data: ListBlog, refetch } = useGetListBlogQuery({
-    userName: "admin",
-  });
+  const { isAuthenticated, userName, userId, loginState, logout } = useAuth();
+  console.log(userName)
+  // const userName = "jakehu1608";
 
+  const { data: ListBlog, refetch } = useGetListBlogQuery({
+    userName: userName,
+  });
+  
   const load = () => {
     refetch();
   };
@@ -36,6 +41,7 @@ const Blog = () => {
       setOpenKeys(router.query.key);
     }
   }, [router.query.key]);
+
 
   const getItem = (label, key, icon, children, type) => {
     return {
@@ -80,6 +86,10 @@ const Blog = () => {
     if (router.query.page) return <BlogForm />;
     else return <BlogDetail load={load} />;
   };
+
+  useEffect(() => {
+  
+  }, [openKeys]);
 
   return (
     <>

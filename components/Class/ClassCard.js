@@ -7,11 +7,11 @@ import Link from "next/link";
 const cx = classNames.bind(styles);
 
 const ClassCard = ({ data }) => {
-  // console.log(data);
+  console.log(data);
 
   return (
     <div>
-      <Link href={`/my-class?page=lmsClassForum&classCode=${data?.ClassCode}`}>
+      <Link href={`/my-class?page=lmsClassForum&classCode=${data?.ClassCode}&title=${data?.ClassName}`}>
         <div
           style={{ cursor: "pointer", padding: "20px 0" }}
           className={cx("course-card")}

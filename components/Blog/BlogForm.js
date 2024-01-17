@@ -8,6 +8,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/router";
 import { useGetFullTextQuery } from "@/lib/Midleware/NewQuery";
 import { useGetListCmsItemQuery, useUpdateCmsItemMutation } from "@/lib/Midleware/CmsClassQuery";
+import { useAuth } from "@/hooks/authContext";
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -28,6 +29,9 @@ const tailLayout = {
 };
 
 const BlogForm = () => {
+  // const { userName } = useAuth();
+  const userName = "admin";
+
   const router = useRouter();
   const [form] = Form.useForm();
   const [value, setValue] = useState("");
@@ -44,7 +48,7 @@ const BlogForm = () => {
 
   const { data: listCms } = useGetListCmsItemQuery({
     cat_id: "1391",
-    userName: "admin",
+    userName: userName,
     blogSubject: "BLOG_GROUP_fb0fc637-4571-4745-8a23-45e635a00ecf",
   });
   const dataC = listCms?.Object?.find(e => e.id == id)
@@ -62,7 +66,7 @@ const BlogForm = () => {
       if (mode == "add") {
         await insertBlog({
           ...values,
-          created_by_alias: "admin",
+          created_by_alias: userName,
           hash_tag: "[]",
           rate: 1,
         });
@@ -84,6 +88,8 @@ const BlogForm = () => {
   const onReset = () => {
     form.resetFields();
   };
+  // useEffect(() => {
+  // }, [userName]);
   return (
     <div style={{ padding: "0  50px 50px 50px" }}>
       <h3 style={{ marginBottom: "30px" }}>

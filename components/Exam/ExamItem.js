@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import style from "./style.module.scss";
 import { Rate } from "antd";
@@ -10,10 +10,8 @@ import DownloadIcon from "@mui/icons-material/Download";
 
 const cx = classNames.bind(style);
 
-const ExamItem = () => {
-  const router = useRouter();
-  console.log(router.query.subjectCode);
-
+const ExamItem = (props) => {
+  console.log(props);
   const [query, setQuery] = useState({
     testName: "",
     userName: "admin",
@@ -32,8 +30,12 @@ const ExamItem = () => {
     pageNum: 1,
   });
 
+  useEffect(()=> {
+    setQuery(props.query)
+  }, [props.query])
+
   const { data } = useGetListExamQuery(query);
-  console.log(data);
+  // console.log(data);
 
   return (
     <ul className={cx("toplist")}>
@@ -41,15 +43,21 @@ const ExamItem = () => {
         return (
           <>
             <Link href="/quizzes">
-              <li style={{ display: "flex", justifyContent: "space-between", padding: '25px 25px' }}>
+              <li
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "25px 25px",
+                }}
+              >
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
                   <div style={{ display: "flex" }}>
-                    <div style={{paddingRight: '20px'}}>
-                      <LibraryBooksIcon style={{fontSize: '27px'}} />
+                    <div style={{ paddingRight: "20px" }}>
+                      <LibraryBooksIcon style={{ fontSize: "27px" }} />
                     </div>
-                    <div style={{minWidth: '600px'}}>
+                    <div style={{ minWidth: "600px" }}>
                       <span>
                         <h4>{item?.PracticeTestTitle}</h4>
                         <div>

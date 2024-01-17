@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useMutation, useQuery } from "react-query";
-
+import { useAuth } from "@/hooks/authContext";
 
 // Của phần "Kết Quả" nằm trong mục "Nhiệm Vụ"
 export const GetListShiftLog = async (teacher, student) => {
+  const { userName, userId } = useAuth();
+
     const requestData = new FormData();
 
-    requestData.append('userId', '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06');
+    // requestData.append('userId', '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06');
+    requestData.append('userId', userId);
     requestData.append('ObjId', '');
     requestData.append('UserType', 10);
   
@@ -28,8 +31,11 @@ export const GetListShiftLog = async (teacher, student) => {
 
   export const GetListItemChecks = async (teacher, student) => {
     const requestData = new FormData();
+    const { userName, userId } = useAuth();
 
-    requestData.append('userId', '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06');
+
+    // requestData.append('userId', '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06');
+    requestData.append('userId', userId);
     requestData.append('ObjId', '');
     requestData.append('UserType', 10);
   
@@ -52,8 +58,10 @@ export const GetListShiftLog = async (teacher, student) => {
 
   export const GetUsers = async (teacher, student) => {
     const requestData = new FormData();
+    const { userName, userId } = useAuth();
 
-    requestData.append('userId', '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06');
+    // requestData.append('userId', '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06');
+    requestData.append('userId', userId);
     requestData.append('ObjId', '');
     requestData.append('UserType', 10);
   
@@ -77,10 +85,11 @@ export const GetListShiftLog = async (teacher, student) => {
 
 //API của Khóa Học.
   export const GetListCourseWatched = async (teacher, student) => {
+    const { userName, userId } = useAuth();
 
     const requestData = new FormData();
   
-    requestData.append('userName', 'admin');
+    requestData.append('userName', userName);
     requestData.append('TimeDay', '');
     requestData.append("teacher", teacher);
     requestData.append('student', student);
@@ -107,8 +116,9 @@ export const GetListShiftLog = async (teacher, student) => {
   export const GetDetailLecture = async (teacher, student) => {
 
     const requestData = new FormData();
-  
-    requestData.append('userName', 'admin');
+    const { userName, userId } = useAuth();
+
+    requestData.append('userName', userName);
     requestData.append('TimeDay', '');
     requestData.append("teacher", teacher);
     requestData.append('student', student);
@@ -132,6 +142,7 @@ export const GetListShiftLog = async (teacher, student) => {
 
 
   export const GetListFileCwRead = async () => {
+    const { userName, userId } = useAuth();
 
     const formData = new FormData();
     formData.append('CatCode', '')
@@ -144,7 +155,7 @@ export const GetListShiftLog = async (teacher, student) => {
     formData.append('FileType', '')
     formData.append('Content', '')
     formData.append('UserUpload', '')
-    formData.append('Username', 'admin')
+    formData.append('Username', userName)
     formData.append('KeySearch', '')
     formData.append('Count', undefined)
     formData.append('CurrentPageView', '1')

@@ -266,41 +266,6 @@ const Header = () => {
     console.log("Received values of form: ", values);
   };
 
-  const residences = [
-    {
-      value: "zhejiang",
-      label: "Zhejiang",
-      children: [
-        {
-          value: "hangzhou",
-          label: "Hangzhou",
-          children: [
-            {
-              value: "xihu",
-              label: "West Lake",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      value: "jiangsu",
-      label: "Jiangsu",
-      children: [
-        {
-          value: "nanjing",
-          label: "Nanjing",
-          children: [
-            {
-              value: "zhonghuamen",
-              label: "Zhong Hua Men",
-            },
-          ],
-        },
-      ],
-    },
-  ];
-
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -507,7 +472,7 @@ const Header = () => {
           scrollToFirstError
         >
           <Form.Item
-            name="image"
+            name="picture"
             label="Avatar"
           >
             <Upload
@@ -555,21 +520,6 @@ const Header = () => {
             hasFeedback
           >
             <Input.Password />
-          </Form.Item>
-
-          <Form.Item
-            name="name"
-            label="Nickname"
-            tooltip="What do you want others to call you?"
-            rules={[
-              {
-                required: true,
-                message: "Please input your nickname!",
-                whitespace: true,
-              },
-            ]}
-          >
-            <Input />
           </Form.Item>
 
           <Form.Item

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useMutation, useQuery } from "react-query";
+import { useAuth } from "@/hooks/authContext";
 
 
 export const GetListNews = async () => {
@@ -42,9 +43,10 @@ export const GetListCmsItem = async (cat_id) => {
 
 
 export const GetListExam = () => {
+  const { userName } = useAuth();
   return useQuery(["getmenuexam"], async () => {
     const response = await axios.post(
-      `https://admin.metalearn.vn/MobileLogin/GetListLmsLecture?lectureName=&userName=zeta7&isTutor888=false&pageLength=10&pageNum=1`
+      `https://admin.metalearn.vn/MobileLogin/GetListLmsLecture?lectureName=&userName=${userName}&isTutor888=false&pageLength=10&pageNum=1`
     );
     return response.data;
   });
@@ -102,9 +104,10 @@ export const GetListQuizzes = () => {
 }
 
 export const GetListMySubject = () => {
+  const { userName } = useAuth();
   return useQuery(['mySubject'], async () => {
     const response = await axios({
-      url: 'https://admin.metalearn.vn/MobileLogin/GetListUserSubject?userName=admin&isTutor888=false',
+      url: `https://admin.metalearn.vn/MobileLogin/GetListUserSubject?userName=${userName}&isTutor888=false`,
       method: 'POST',
     });
     return response.data
@@ -112,10 +115,11 @@ export const GetListMySubject = () => {
 };
 
 export const GetListMyClass = async () => {
-
+  
+  const { userName } = useAuth();
   const requestData = new FormData();
 
-  requestData.append('userName', 'admin');
+  requestData.append('userName', userName);
   requestData.append('fromDate', '');
   requestData.append("toDate", "");
   requestData.append('pageLength', '31');
@@ -141,8 +145,9 @@ export const GetListMyClass = async () => {
 export const GetListMyTutorSchedule = async (teacher, student) => {
 
   const requestData = new FormData();
+  const { userName } = useAuth();
 
-  requestData.append('userName', 'admin');
+  requestData.append('userName', userName);
   requestData.append('TimeDay', '');
   requestData.append("teacher", teacher);
   requestData.append('student', student);
@@ -166,9 +171,11 @@ export const GetListMyTutorSchedule = async (teacher, student) => {
 
 
 export const GetListLmsTestBody = async () => {
+  const { userName } = useAuth();
+
   const requestPayload = {
     "testName": "",
-    "userName": "admin",
+    "userName": userName,
     "content": "",
     "latex": "",
     "level": "",
@@ -215,14 +222,15 @@ export const GetListLmsTestBody = async () => {
 export const GetListUserSubject = async (teacher, student) => {
 
   const requestData = new FormData();
+  const { userName } = useAuth();
 
-  requestData.append('userName', 'admin');
+  requestData.append('userName', userName);
   requestData.append('TimeDay', '');
   requestData.append("teacher", teacher);
   requestData.append('student', student);
   try {
     const response = await axios.post(
-      'https://admin.metalearn.vn/MobileLogin/GetListUserSubject?userName=admin&isTutor888=false',
+      `https://admin.metalearn.vn/MobileLogin/GetListUserSubject?userName=${userName}&isTutor888=false`,
       requestData,
       {
         headers: {
@@ -240,10 +248,11 @@ export const GetListUserSubject = async (teacher, student) => {
 
 
 export const GetListStatusCardJob = async (teacher, student) => {
+  const { userName } = useAuth();
 
   const requestData = new FormData();
 
-  requestData.append('userName', 'admin');
+  requestData.append('userName', userName);
   requestData.append('TimeDay', '');
   requestData.append("teacher", teacher);
   requestData.append('student', student);
@@ -318,10 +327,11 @@ export const GetListClass = async (userId) => {
 export const GetListJobCardLms = async () => {
 
   const formData = new FormData();
+  const { userName } = useAuth();
 
   formData.append('CurrentPageList', '1');
   formData.append('Length', '10');
-  formData.append('UserName', 'admin');
+  formData.append('UserName', userName);
   formData.append('FromDate', '');
   formData.append('ToDate', '');
   formData.append('UserId', '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06');
@@ -350,9 +360,11 @@ export const GetListJobCardLms = async () => {
 
 export const GetGirdCardBoardLms = async () => {
   // Define the data you want to send in the request body
+  const { userName } = useAuth();
+
   const requestData = new FormData();
   requestData.append('userId', '0d7d1f0c-eec7-42ec-9296-4bfe97c5bc06');
-  requestData.append('userName', 'admin');
+  requestData.append('userName', userName);
   requestData.append("Length", 10);
   requestData.append('CurrentPageList', 1);
   requestData.append('BoardCode', '');

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Section from "../../Section/Section";
 import classNames from "classnames/bind";
@@ -30,12 +31,13 @@ const CourseList = ({ total }) => {
   });
 
   const { data: practiveQuery } = useGetListPractiveQuery(query);
-  
+  console.log(practiveQuery)
+
   const { data: courseMobileQuery } = useGetListCourseMobileQuery({
     userName: "admin",
     isPublic: true,
   });
-  console.log(courseMobileQuery)
+  // console.log(courseMobileQuery)
 
   const diffMoment = (startDate, endDate) => {
     if (!endDate) return "Không giới hạn thời gian";
@@ -120,7 +122,7 @@ const CourseList = ({ total }) => {
             </tbody>
           </table>
         </div>
-        <div className={cx("on-mobile")}>
+        {/* <div className={cx("on-mobile")}>
           {practiveQuery?.Object?.data.map((element) => {
             return (
               <div key={element.LmsTaskCode} className={cx("card")}>
@@ -171,13 +173,13 @@ const CourseList = ({ total }) => {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </div>
-      <Pagination
+      {/* <Pagination
         total={total}
         handleQueryPage={handleQueryPage}
         current={query.CurrentPageList}
-      />
+      /> */}
     </Section>
   );
 };

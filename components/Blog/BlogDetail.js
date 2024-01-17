@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useGetFullTextQuery } from "@/lib/Midleware/NewQuery";
 import Image from "next/image";
@@ -10,8 +10,13 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Link from "next/link";
+import { useAuth } from "@/hooks/authContext";
 
 const BlogDetail = ({ load }) => {
+  // const { userName } = useAuth();
+  const userName = "admin";
+  useEffect(() => {
+  }, [userName]);
   // Hàm loại bỏ thẻ p từ chuỗi HTML
   function removePTags(htmlString) {
     const doc = new DOMParser().parseFromString(htmlString, "text/html");
@@ -22,7 +27,7 @@ const BlogDetail = ({ load }) => {
 
   const { data: listCms } = useGetListCmsItemQuery({
     cat_id: "1391",
-    userName: "admin",
+    userName: userName,
     blogSubject: "BLOG_GROUP_fb0fc637-4571-4745-8a23-45e635a00ecf",
   });
   // console.log(listCms?.Object);
@@ -44,7 +49,7 @@ const BlogDetail = ({ load }) => {
 
   return (
     <>
-      <div style={{ marginTop: "40px" }}>
+      <div>
         <div
           style={{
             display: "flex",
@@ -72,9 +77,9 @@ const BlogDetail = ({ load }) => {
               <span style={{ fontWeight: "bold" }}>Admintrator</span>
               <span>09/05/2023 08:27</span>
             </div>
-            <div>
+            <div style={{paddingRight: "20px", paddingTop: "10px  "}}>
               <Link href={`/blog?page=updateBlog&id=${id}`}>
-                <EditIcon style={{ cursor: "pointer", marginRight: "15px" }} />
+                <EditIcon style={{ cursor: "pointer", marginRight: "20px" }} />
               </Link>
               <DeleteIcon onClick={handleDelete} />
             </div>
@@ -105,7 +110,7 @@ const BlogDetail = ({ load }) => {
                 }}
               >
                 <AccessAlarmIcon style={{ fontSize: "17px" }} />
-                {e?.date_post}
+                <span style={{paddingLeft: "10px"}}>{e?.date_post}</span>
               </span>
             </li>
           ))}
