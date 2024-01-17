@@ -6,6 +6,7 @@ import Image from "next/image";
 import PayPalButton from "./Paypal";
 import axios from "axios";
 import { useAuth } from "@/hooks/authContext";
+import Link from "next/link";
 
 const cx = classNames.bind(styles);
 
@@ -23,12 +24,12 @@ const Pay = () => {
   };
 
   // Define state variables for input values and payment method
-  const [coin, setCoin] = useState("");
+  const [coin, setCoin] = useState(7);
   const [numberOfCoins, setNumberOfCoins] = useState("");
   const [numberOfInternationalCoins, setNumberOfInternationalCoins] =
     useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
-  const [realMoney, setRealMoney] = useState("")
+  const [realMoney, setRealMoney] = useState("");
 
   // Xử lý sau khi thanh toán paypal thành công
   const handlePaymentSuccess = () => {
@@ -36,9 +37,9 @@ const Pay = () => {
   };
 
   const handleCoinChange = (e) => {
-    setCoin(e.target.value);
+    setCoin(Number(e.target.value));
     const realMoneyCaculate = e.target.value * 1000;
-    setRealMoney(realMoneyCaculate)
+    setRealMoney(realMoneyCaculate);
   };
 
   const handlePopUpPayMent = async (method) => {
@@ -74,27 +75,32 @@ const Pay = () => {
           console.log(JsonObject);
           //navigate to url
           window.location.href = JsonObject.payUrl;
-        }
-        catch (error) {
+        } catch (error) {
           // Handle any errors that may occur during the axios request
           console.error("Error:", error);
         }
         break;
     }
-  }
-
+  };
 
   return (
     <div className={cx("pay-page")}>
       <ul>
         <li>
-          {/* <a>Số tiền: 500,000 [VND]</a> */}
           <a>Nhập số coin bạn muốn mua</a>
-          <input type="text" placeholder="Nhập số tiền" onChange={handleCoinChange} />
+          <input
+            type="number"
+            placeholder="Nhập số tiền"
+            onChange={handleCoinChange}
+          />
         </li>
         <li style={{ marginTop: "20px" }}>
-          {/* <a>Số tiền quốc tế: 20.00 [USD]</a> */}
           <a>Thành tiền: {realMoney || 0} VND</a>
+        </li>
+        <li style={{ marginTop: "24px" }}>
+          <Link href={"/payment-history"} style={{ fontWeight: "500" }}>
+            Lịch sử giao dịch
+          </Link>
         </li>
       </ul>
 
@@ -125,8 +131,11 @@ const Pay = () => {
 
         <div className={cx("pay-content")}>
           <h3 className={cx("pay-title")}>Thanh toán quốc tế</h3>
-          <div>
-            <PayPalButton amount={20} onSuccess={handlePaymentSuccess} />
+          <div style={{ zIndex: "-1" }}>
+            <PayPalButton
+              amount={coin}
+              onSuccess={handlePaymentSuccess}
+            />
           </div>
         </div>
 

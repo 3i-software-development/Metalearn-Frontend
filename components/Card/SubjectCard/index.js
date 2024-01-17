@@ -13,25 +13,26 @@ import { Rate } from "antd";
 import { useGetListFileCwQuery } from "@/lib/Midleware/FileCwQuery";
 import Pagination from "@/components/Pagination/Pagination";
 
-export default function Document_Cart(data) {
+export default function Document_Cart() {
   const cx = classNames.bind(styles);
   const [query, setQuery] = useState({
     CatCode: "",
     SubjectCode: "",
-    ObjectType: "",
+    ObjectType: "All",
     ObjectCode: "",
     FromDate: "",
     ToDate: "",
     FileName: "",
     FileType: "",
     Content: "",
-    UserUpload: "admin",
+    UserName: "admin",
     KeySearch: "",
     Count: "",
     CurrentPageView: 1,
-    Length: 10,
+    Length: 15,
   });
   const { data: fileCwQuery } = useGetListFileCwQuery(query);
+  console.log(fileCwQuery);
 
   const handleQueryPage = (current, pageSize) => {
     setQuery({ ...query, CurrentPageView: current, Length: pageSize });
@@ -39,7 +40,7 @@ export default function Document_Cart(data) {
   const total = fileCwQuery?.Object?.count;
   return (
     <div className={cx("Document_Cart_Wrap")}>
-      {fileCwQuery?.Object?.data1.map((item, index) => {
+      {fileCwQuery?.Object?.data1?.map((item, index) => {
         return (
           <div className={cx("Document_Cart_All")} key={index}>
             <div className={cx("Document_Cart_Icon")}>

@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 function ContactList({ contacts, handleContactClick, contactSelected }) {
     return (
         <div className={cx("contact-list")}>
-            {contacts.map((contact) => (
+            {contacts?.map((contact) => (
                 <div
                     key={contact.id}
                     onClick={() => handleContactClick(contact)}

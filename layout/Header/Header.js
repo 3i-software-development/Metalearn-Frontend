@@ -392,23 +392,6 @@ const Header = () => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {/* <MenuItem onClick={handleCloseUserMenu}> */}
-                  {/* <ListItemButton>
-                    <div className={cx("listSettings")}>
-                      <div>
-                        <Image
-                          src="https://usehooks.com/images/bytes-logo.png"
-                          width={20}
-                          height={20}
-                          alt=""
-                        />
-                      </div>
-                      <div>
-                        <ListItemText primary="Spam" />
-                      </div>
-                    </div>
-                  </ListItemButton> */}
-
                   <ListItemButton>
                     <div style={{ display: "flex", columnGap: "10px" }}>
                       <PersonIcon />
@@ -444,16 +427,6 @@ const Header = () => {
         )}
 
         {/* Notification button */}
-
-        {/*
-      <div className={cx("change-language")}>
- 
-          <BiWorld className={cx("icon")} onClick={() => setShow(!show)} />
-          {show && (
-            <div id="google_translate_element"></div>
-      </div>
-      */}
-
         {!isAuthenticated && (
           <div className={cx("user")}>
             <Link href="/auth/login" className={cx("login-btn")}>

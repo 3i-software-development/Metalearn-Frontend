@@ -60,7 +60,7 @@ const PractiseCard = ({ total }) => {
               </tr>
             </thead>
             <tbody className={cx("table-body")}>
-              {practiveQuery?.Object?.data.map((element) => {
+              {practiveQuery?.Object?.data?.map((element) => {
                 return (
                   <tr key={element.LmsTaskCode} className={cx("card")}>
                     <td className={cx("titleCard")}>
@@ -114,7 +114,7 @@ const PractiseCard = ({ total }) => {
           </table>
         </div>
         <div className={cx('on-mobile')}>
-        {practiveQuery?.Object?.data.map((element) => {
+        {practiveQuery?.Object?.data?.map((element) => {
                 return (
                   <div key={element.LmsTaskCode} className={cx("card")}>
                     <div className={cx("titleCard")}>

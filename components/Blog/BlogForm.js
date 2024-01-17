@@ -64,21 +64,21 @@ const BlogForm = () => {
   const onFinish = async (values) => {
     try {
       if (mode == "add") {
-        await insertBlog({
-          ...values,
-          created_by_alias: userName,
-          hash_tag: "[]",
-          rate: 1,
-        });
+        // await insertBlog({
+        //   ...values,
+        //   created_by_alias: userName,
+        //   hash_tag: "[]",
+        //   rate: 1,
+        // });
         alert("Tạo blog thành công!");
       } else {
-        updateCmsItem({
-          ...values,
-          id: Number(id),
-          cat_id: 1391,
-          hash_tag: "[]",
-          rate: 1,
-        });
+        // updateCmsItem({
+        //   ...values,
+        //   id: Number(id),
+        //   cat_id: 1391,
+        //   hash_tag: "[]",
+        //   rate: 1,
+        // });
         alert("Cập nhật blog thành công!");
       }
     } catch (error) {

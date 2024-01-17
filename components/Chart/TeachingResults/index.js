@@ -13,20 +13,21 @@ import {
 } from "chart.js";
 
 ChartJS.register(...registerables, BarElement, CategoryScale, Tooltip, Legend);
+
 export default function TeachingResults({ value, type }) {
   const cx = classNames.bind(styles);
 
   const dataQuizVoluntary = {
     labels: [
-      `Đã xong : ${value ? JSON.parse(value)?.Done : 0}`,
-      `Tổng : ${value ? JSON.parse(value)?.Total : 0}`,
-      `Chính xác : ${value ? JSON.parse(value)?.Correct : 0}`,
-      `Tổng số giờ  : ${value ? JSON.parse(value)?.TotalHour : 0}`,
+      `Đã xong : ${value ? value?.Done : 0}`,
+      `Tổng : ${value ? value?.Total : 0}`,
+      `Chính xác : ${value ? value?.Correct : 0}`,
+      `Tổng số giờ  : ${value ? value?.TotalHour : 0}`,
     ],
     datasets: [
       {
         data: [
-          value ? JSON.parse(value)?.Done : 0,
+          value ? JSON.parse(value)?.Done : 0 ,
           value ? JSON.parse(value)?.Total : 0,
           value ? JSON.parse(value)?.Correct : 0,
           value ? JSON.parse(value)?.TotalHour : 0,

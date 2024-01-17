@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 function MessageContainer({ contact }) {
     return (
         <div className={cx('message-container')}>
-            {contact.messages.map((message) => (
+            {contact.messages?.map((message) => (
                 <div key={message.id} className="message">
                     <div className={cx('message-name')}>{message.name}</div>
                     <div className={cx('message-content')}>{message.content}</div>
