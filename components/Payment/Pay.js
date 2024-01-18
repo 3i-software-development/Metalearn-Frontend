@@ -94,7 +94,7 @@ const Pay = () => {
         </li>
         <li style={{ marginTop: "20px" }}>
           {/* <a>Số tiền quốc tế: 20.00 [USD]</a> */}
-          <a>Thành tiền: {realMoney} VND</a>
+          <a>Thành tiền: {realMoney || 0} VND</a>
         </li>
       </ul>
 

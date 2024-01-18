@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Select, Space, Checkbox } from "antd";
+import { Button, Form, Input, Select, Space, Checkbox ,Rate} from "antd";
 import {
   useGetAllSubjectBlogQuery,
   useInsertBlogMutation,
@@ -53,7 +53,7 @@ const BlogForm = () => {
   });
   const dataC = listCms?.Object?.find(e => e.id == id)
   console.log(dataC);
-  if(dataC) blog = {...blog, title: dataC?.title, ordering: 1, hash_tag: 'hash_tag'};
+  if (dataC) blog = { ...blog, title: dataC?.title, ordering: 1,evaluate:1, hash_tag: 'hash_tag' };
 
   // Hàm loại bỏ thẻ p từ chuỗi HTML
   function removePTags(htmlString) {
@@ -134,7 +134,13 @@ const BlogForm = () => {
         >
           <Input />
         </Form.Item>
-
+        <Form.Item
+          name="evaluate"
+          label="Đánh giá"
+          rules={[{ required: true, message: "Please input your input!" }]}
+        >
+        <Rate />
+        </Form.Item>
         <Form.Item
           name="hash_tag"
           label="Từ khóa tìm kiếm"

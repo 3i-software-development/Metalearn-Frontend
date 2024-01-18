@@ -54,17 +54,17 @@ const NotificationPopup = () => {    // Add your notification content and stylin
     {
       id: 1,
       title: "Notification 1",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      content: "Kỳ thi thi học kỳ 1 lớp 6 môn vật lý 9 sắp diễn ra trong 0 phút nữa .",
     },
     {
       id: 2,
       title: "Notification 2",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      content: " Kỳ thi thi học kỳ 1 lớp 6 môn vật lý 9 sắp diễn ra trong 3 phút nữa.",
     },
     {
       id: 3,
       title: "Notification 3",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      content: " Kỳ thi thi học kỳ 1 lớp 6 môn vật lý 9 sắp diễn ra trong 3 phút nữa.",
     },
   ];
   useEffect(() => {

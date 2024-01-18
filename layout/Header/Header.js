@@ -21,6 +21,17 @@ import {
   Col,
   Row,
 } from "antd";
+import {
+  UserOutlined,
+  PhoneOutlined,
+  MailOutlined,
+  FacebookOutlined,
+  InstagramOutlined,
+  YoutubeOutlined,
+  TwitterOutlined,
+  CaretDownFilled,
+  CaretRightFilled,
+} from '@ant-design/icons';
 import NotificationPopup from "@/components/Notification/NotificationPopup";
 import PersonIcon from "@mui/icons-material/Person";
 import KeyIcon from "@mui/icons-material/Key";
@@ -50,6 +61,7 @@ const Header = () => {
   const router = useRouter();
   const [form] = Form.useForm();
   const [open, setOpen] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   const [showMobile, setShowmobile] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
@@ -177,8 +189,7 @@ const Header = () => {
   const user = useSelector((state) => state.login);
 
   const [show, setShow] = useState(false);
-
-  //
+  {/* //Thông tin cá nhân */ }
   const showDrawer = () => {
     setOpen(true);
     setAnchorElUser(null);
@@ -187,6 +198,29 @@ const Header = () => {
   const onClose = () => {
     setOpen(false);
   };
+  {/* //Quên Mật Khẩu */ }
+  const [showPasswordResetForm, setShowPasswordResetForm] = useState(false);
+
+  const openPasswordResetForm = () => {
+    setShowPasswordResetForm(true);
+    setAnchorElUser(null);
+  };
+
+  const closePasswordResetForm = () => {
+    setShowPasswordResetForm(false);
+  };
+ {/* //Đổi Mật Khẩu */ }
+  const [showPasswordDrawer, setShowPasswordDrawer] = useState(false);
+
+  const handleOpenPasswordDrawer = () => {
+    setShowPasswordDrawer(true);
+  };
+
+  const handleClosePasswordDrawer = () => {
+    setShowPasswordDrawer(false);
+  };
+
+
   const [placement, setPlacement] = useState("left");
 
   //
@@ -278,6 +312,11 @@ const Header = () => {
       </Select>
     </Form.Item>
   );
+
+  const handldeOpenFormUser = () => {
+    setShowInfo(prev => !prev)
+    console.log(showInfo)
+  }
 
   return (
     <div className={cx("header")}>
@@ -392,29 +431,20 @@ const Header = () => {
                     </div>
                   </ListItemButton> */}
 
-                  <ListItemButton>
+                  <ListItemButton onClick={showDrawer}>
                     <div style={{ display: "flex", columnGap: "10px" }}>
                       <PersonIcon />
-                      <div onClick={showDrawer}>
+                      <div>
                         <ListItemText primary="Thông tin cá nhân" />
                       </div>
                     </div>
                   </ListItemButton>
 
-                  <ListItemButton>
+                  <ListItemButton onClick={openPasswordResetForm}>
                     <div style={{ display: "flex", columnGap: "10px" }}>
                       <KeyIcon />
                       <div>
                         <ListItemText primary="Quên mật khẩu" />
-                      </div>
-                    </div>
-                  </ListItemButton>
-
-                  <ListItemButton>
-                    <div style={{ display: "flex", columnGap: "10px" }}>
-                      <HowToRegIcon />
-                      <div>
-                        <ListItemText primary="Đăng xuất" />
                       </div>
                     </div>
                   </ListItemButton>
@@ -471,107 +501,152 @@ const Header = () => {
           style={{ maxWidth: 600 }}
           scrollToFirstError
         >
+          <div style={{ padding: '12px 3px', borderBottom: "1px solid #ccc" }}>
+            <UserOutlined />
+            <span style={{ marginLeft: '6px' }}>Admintrator</span>
+          </div>
+          <div style={{ padding: '12px 3px', borderBottom: "1px solid #ccc" }}>
+            <PhoneOutlined />
+            <span style={{ marginLeft: '6px' }}>0984343197</span>
+          </div>
+          <div style={{ padding: '12px 3px', borderBottom: "1px solid #ccc" }}>
+            <MailOutlined />
+            <span style={{ marginLeft: '6px' }}>vietnamtopapp@gmail.com</span>
+          </div>
+          <div style={{ margin: '12px 0px', display: 'flex', justifyContent: 'space-between' }}>
+            <Button style={{ backgroundColor: "#183153", width: '50%', marginRight: '2px' }} size="large" type="primary">Cập nhật</Button>
+            <Button onClick={handleOpenPasswordDrawer} style={{ backgroundColor: "#183153", width: '50%', marginLeft: '2px' }} size="large" type="primary">Đổi mật khẩu</Button>
+          </div>
+          <Button style={{ width: '100%' }} size="large" danger type="primary">Xoá dữ liệu tài khoản</Button>
+          <div className={cx("form-user")}>
+            <CaretRightFilled onClick={handldeOpenFormUser} style={{ display: showInfo ? "none" : "inline-block", marginRight: '4px' }} />
+            <CaretDownFilled onClick={handldeOpenFormUser} style={{ display: !showInfo ? "none" : "inline-block", marginRight: '4px' }} />
+            <span onClick={handldeOpenFormUser} style={{ fontSize: '17px', fontWeight: 700, cursor: 'pointer' }}>Thông tin liên quan</span>
+            {showInfo &&
+              <div className={cx("form-user-input")}>
+                <div style={{ display: 'flex', margin: '4px 4px', justifyContent: 'space-between' }}>
+                  <p>Trường học</p>
+                  <p style={{ color: 'blue' }}>Cập nhật</p>
+                </div>
+                <div className={cx("form-user-input-item")}>
+                  <input placeholder="Nhập trường học" style={{ border: 'none', width: '100%', padding: '3px 2px', outline: 'none' }} />
+                </div>
+                <div className={cx("form-user-input-item")}>
+                  <FacebookOutlined style={{ background: '#ccc', color: "#fff", borderRadius: '7px', fontSize: '24px', padding: '0px 3px' }} />
+                  <input placeholder="Facebook" style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '20px', width: '100%' }} />
+                </div>
+                <div className={cx("form-user-input-item")}>
+                  <InstagramOutlined style={{ backgroundColor: "#ccc", color: "#fff", borderRadius: '7px', fontSize: '24px', padding: '0px 3px' }} />
+                  <input placeholder="Instagram" style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '20px', width: '100%' }} />
+                </div>
+                <div className={cx("form-user-input-item")}>
+                  <YoutubeOutlined style={{ backgroundColor: "#ccc", color: "#fff", borderRadius: '7px', fontSize: '24px', padding: '0px 3px' }} />
+                  <input placeholder="Youtube" style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '20px', width: '100%' }} />
+                </div>
+                <div className={cx("form-user-input-item")}>
+                  <TwitterOutlined style={{ backgroundColor: "#ccc", color: "#fff", borderRadius: '7px', fontSize: '24px', padding: '0px 3px' }} />
+                  <input placeholder="Twitter" style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '20px', width: '100%' }} />
+                </div>
+              </div>
+
+            }
+
+          </div>
+
+        </Form>
+      </Drawer>
+      {/* Đổi Mật khẩu */}
+      <Drawer
+        title="Đổi mật khẩu"
+        placement={placement}
+        closable={false}
+        onClose={handleClosePasswordDrawer}
+        visible={showPasswordDrawer}
+        style={{ width: '120%' }}
+      >
+        <Form
+          name="changePassword"
+          onFinish={onFinish}
+          scrollToFirstError
+        >
+          {/* Thêm các trường nhập thay đổi mật khẩu vào đây */}
           <Form.Item
-            name="picture"
-            label="Avatar"
-          >
-            <Upload
-              name="avatar"
-              listType="picture-card"
-              className="avatar-uploader"
-              showUploadList={false}
-              action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-              beforeUpload={beforeUpload}
-              onChange={handleChange}
-            >
-              {imageUrl ? (
-                <Image href={imageUrl} alt="avatar" style={{ width: "100%" }} />
-              ) : (
-                uploadButton
-              )}
-            </Upload>
-          </Form.Item>
-          <Form.Item
-            name="email"
-            label="Username"
+            name="oldPassword"
+            label="Mật khẩu cũ"
             rules={[
               {
-                type: "text",
-                message: "The input is not valid E-mail!",
+                required: true,
+                message: 'Vui lòng nhập mật khẩu cũ!',
               },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+          <Form.Item
+            name="oldPassword"
+            label="Mật khẩu mới"
+            rules={[
               {
                 required: true,
-                message: "Please input your E-mail!",
+                message: 'Vui lòng nhập mật khẩu mới!',
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+          <Form.Item
+            name="oldPassword"
+            label="nhập lại mật khẩu"
+            rules={[
+              {
+                required: true,
+                message: 'Vui lòng nhập mật khẩu !',
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+          {/* Thêm các trường nhập khác (mật khẩu mới, xác nhận mật khẩu) cần thiết */}
+
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Đổi mật khẩu
+            </Button>
+          </Form.Item>
+        </Form>
+      </Drawer>
+      {/* //Quên Mật Khẩu */}
+      <Drawer
+        title="Quên mật khẩu"
+        placement="left"
+        closable={true}
+        onClose={closePasswordResetForm}
+        visible={showPasswordResetForm}
+        key="left"
+        style={{ width: "130%" }}
+      >
+         <Form
+          name="changePassword"
+          onFinish={onFinish}
+          scrollToFirstError
+        >
+          {/* Thêm các trường nhập thay đổi mật khẩu vào đây */}
+          <Form.Item
+            name="email"
+            label="Email"
+            rules={[
+              {
+                required: true,
+                message: 'Vui lòng nhập Email!',
               },
             ]}
           >
             <Input />
           </Form.Item>
 
-          <Form.Item
-            name="password"
-            label="Password"
-            rules={[
-              {
-                required: true,
-                message: "Please input your password!",
-              },
-            ]}
-            hasFeedback
-          >
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item
-            name="phone"
-            label="Phone Number"
-            rules={[
-              { required: true, message: "Please input your phone number!" },
-            ]}
-          >
-            <Input addonBefore={prefixSelector} style={{ width: "100%" }} />
-          </Form.Item>
-
-          <Form.Item
-            name="address"
-            label="Address"
-            rules={[{ required: true, message: "Please input address" }]}
-          >
-            <Input.TextArea showCount maxLength={100} />
-          </Form.Item>
-
-          <Form.Item
-            name="gender"
-            label="Gender"
-            rules={[{ required: true, message: "Please select gender!" }]}
-          >
-            <Select placeholder="select your gender">
-              <Option value="male">Male</Option>
-              <Option value="female">Female</Option>
-              <Option value="other">Other</Option>
-            </Select>
-          </Form.Item>
-
-          <Form.Item
-            name="agreement"
-            valuePropName="checked"
-            rules={[
-              {
-                validator: (_, value) =>
-                  value
-                    ? Promise.resolve()
-                    : Promise.reject(new Error("Should accept agreement")),
-              },
-            ]}
-            {...tailFormItemLayout}
-          >
-            <Checkbox>
-              I have read the <a href="">agreement</a>
-            </Checkbox>
-          </Form.Item>
-          <Form.Item {...tailFormItemLayout}>
+          <Form.Item>
             <Button type="primary" htmlType="submit">
-              Cập nhật
+              Gửi
             </Button>
           </Form.Item>
         </Form>

@@ -265,11 +265,7 @@ const Personalized = () => {
       <SettingOutlined />
     ),
 
-    getItem(
-      `Môn học của tôi [ ${subjectQuery?.length.toLocaleString()} ]`,
-      "sub8",
-      <SettingOutlined />
-    ),
+  
 
     getItem("Kết quả học tập", "sub9", <SettingOutlined />, [
       getItem(
