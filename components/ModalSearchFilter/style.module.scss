@@ -3,8 +3,8 @@
     flex: 1;
 
     input {
-        padding: 15px 20px 15px 50px;
-        border-radius: 24px;
+        padding: 15px 20px 15px 24px;
+        border-radius: 5px;
         border: 1px solid black;
         outline: none;
         width: 100%;
@@ -29,7 +29,7 @@
 }
 
 .modal-filter {
-    border-top: 1px dashed gray;
+    // border-top: 1px dashed gray;
     margin-top: 10px;
 
     .content-filter {
@@ -40,7 +40,7 @@
     }
 
     .content_filter {
-        border-top: 1px dashed gray;
+        // border-top: 1px dashed gray;
         padding: 10px 13px;
 
         .timesDate {

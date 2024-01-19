@@ -39,6 +39,7 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import { FaBell } from "react-icons/fa";
 import { BiSolidUser } from "react-icons/bi";
 import { useRouter } from "next/router";
+import axios from 'axios'
 
 import {
   Box,
@@ -61,14 +62,40 @@ const Header = () => {
   const router = useRouter();
   const [form] = Form.useForm();
   const [open, setOpen] = useState(false);
-  const [showInfo, setShowInfo] = useState(false);
+
+  const [telegram ,setTelegram]  = useState();
+  const [facebook ,setFacebook] = useState();
+  const [instagram ,setInstagram] = useState();
+  const [youtube ,setYoutube] = useState();
+  const [twitter ,setTwitter] = useState();
 
   const [showMobile, setShowmobile] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
-  const { isAuthenticated, userId, loginState, logout } = useAuth();
+  const { isAuthenticated, userId, userName, loginState, logout } = useAuth();
   const [toggle, setToggle] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   useEffect(() => { }, [isAuthenticated]);
+
+  const filterProfileData = (arr, name) => {
+    if (Array.isArray(arr)) {
+      let filter = arr.filter(item => item.Name == name);
+      return filter;
+    }
+
+  }
+
+  const getUser = async () => {
+    let req = await axios.get(`https://admin.metalearn.vn/MobileLogin/GetProfile?id=${userId}`);
+    if (req !== undefined && req.data.Object.SocialInfo) {
+      let reqData = await JSON.parse(req.data.Object.SocialInfo);
+      setTelegram(filterProfileData(reqData, 'Telegram'));
+      setFacebook(filterProfileData(reqData, 'Facebook'));
+      setInstagram(filterProfileData(reqData, 'Instagram'));
+      setYoutube(filterProfileData(reqData, 'Youtube'));
+      setTwitter(filterProfileData(reqData, 'Twitter'));
+    }
+  }
 
   const items = [
     {
@@ -191,9 +218,10 @@ const Header = () => {
   const [show, setShow] = useState(false);
 
   //
-  const showDrawer = () => {
+  const showDrawer = async () => {
     setOpen(true);
     setAnchorElUser(null);
+    await getUser()
   };
 
   const onClose = () => {
@@ -443,7 +471,7 @@ const Header = () => {
         key={placement}
         style={{ width: "130%" }}
       >
-          <Form
+        <Form
           {...formItemLayout}
           form={form}
           name="register"
@@ -457,15 +485,15 @@ const Header = () => {
         >
           <div style={{ padding: '12px 3px', borderBottom: "1px solid #ccc" }}>
             <UserOutlined />
-            <span style={{ marginLeft: '6px' }}>Admintrator</span>
+            <input style={{ marginLeft: '6px', border: "none", outline: 'none', width: '80%' }} defaultValue={userName} />
           </div>
           <div style={{ padding: '12px 3px', borderBottom: "1px solid #ccc" }}>
             <PhoneOutlined />
-            <span style={{ marginLeft: '6px' }}>0984343197</span>
+            <input style={{ marginLeft: '6px', border: "none", outline: 'none', width: '80%' }} defaultValue={telegram ? telegram[0]?.Value : ''} />
           </div>
           <div style={{ padding: '12px 3px', borderBottom: "1px solid #ccc" }}>
             <MailOutlined />
-            <span style={{ marginLeft: '6px' }}>vietnamtopapp@gmail.com</span>
+            <input style={{ marginLeft: '6px', border: "none", outline: 'none', width: '80%' }} defaultvalue="vietnamtopapp@gmail.com" />
           </div>
           <div style={{ margin: '12px 0px', display: 'flex', justifyContent: 'space-between' }}>
             <Button style={{ backgroundColor: "#183153", width: '50%', marginRight: '2px' }} size="large" type="primary">Cập nhật</Button>
@@ -473,9 +501,9 @@ const Header = () => {
           </div>
           <Button style={{ width: '100%' }} size="large" danger type="primary">Xoá dữ liệu tài khoản</Button>
           <div className={cx("form-user")}>
-            <CaretRightFilled  onClick={handldeOpenFormUser} style={{display : showInfo ? "none" : "inline-block" ,marginRight:'4px'}} />
-            <CaretDownFilled  onClick={handldeOpenFormUser} style={{display : !showInfo ? "none" : "inline-block" ,marginRight:'4px'}} />
-            <span onClick={handldeOpenFormUser} style={{ fontSize: '17px', fontWeight: 700 , cursor:'pointer' }}>Thông tin liên quan</span>
+            <CaretRightFilled onClick={handldeOpenFormUser} style={{ display: showInfo ? "none" : "inline-block", marginRight: '4px' }} />
+            <CaretDownFilled onClick={handldeOpenFormUser} style={{ display: !showInfo ? "none" : "inline-block", marginRight: '4px' }} />
+            <span onClick={handldeOpenFormUser} style={{ fontSize: '17px', fontWeight: 700, cursor: 'pointer' }}>Thông tin liên quan</span>
             {showInfo &&
               <div className={cx("form-user-input")}>
                 <div style={{ display: 'flex', margin: '4px 4px', justifyContent: 'space-between' }}>
@@ -486,22 +514,23 @@ const Header = () => {
                   <input placeholder="Nhập trường học" style={{ border: 'none', width: '100%', padding: '3px 2px', outline: 'none' }} />
                 </div>
                 <div className={cx("form-user-input-item")}>
-                  <FacebookOutlined style={{ background: '#ccc', color: "#fff",borderRadius:'7px', fontSize: '24px', padding: '0px 3px' }} />
-                  <input placeholder="Facebook" style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '20px', width: '100%' }} />
+                  <FacebookOutlined style={{ background: '#ccc', color: "#fff", borderRadius: '7px', fontSize: '24px', padding: '0px 3px' }} />
+                  <input placeholder="Facebook" defaultValue={facebook ? facebook[0]?.Value : ''} style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '13px', width: '100%' }} />
                 </div>
                 <div className={cx("form-user-input-item")}>
-                  <InstagramOutlined style={{ backgroundColor: "#ccc", color: "#fff",borderRadius:'7px', fontSize: '24px', padding: '0px 3px' }} />
-                  <input placeholder="Instagram" style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '20px', width: '100%' }} />
+                  <InstagramOutlined style={{ backgroundColor: "#ccc", color: "#fff", borderRadius: '7px', fontSize: '24px', padding: '0px 3px' }} />
+                  <input placeholder="Instagram" defaultValue={instagram ? instagram[0]?.Value : ''} style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '13px', width: '100%' }} />
                 </div>
                 <div className={cx("form-user-input-item")}>
-                  <YoutubeOutlined style={{ backgroundColor: "#ccc", color: "#fff",borderRadius:'7px', fontSize: '24px', padding: '0px 3px' }} />
-                  <input placeholder="Youtube" style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '20px', width: '100%' }} />
+                  <YoutubeOutlined style={{ backgroundColor: "#ccc", color: "#fff", borderRadius: '7px', fontSize: '24px', padding: '0px 3px' }} />
+                  <input placeholder="Youtube" defaultValue={youtube ? youtube[0]?.Value : ''} style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '13px', width: '100%' }} />
                 </div>
                 <div className={cx("form-user-input-item")}>
-                  <TwitterOutlined  style={{ backgroundColor: "#ccc", color: "#fff",borderRadius:'7px', fontSize: '24px', padding: '0px 3px' }} />
-                  <input placeholder="Twitter" style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '20px', width: '100%' }} />
+                  <TwitterOutlined style={{ backgroundColor: "#ccc", color: "#fff", borderRadius: '7px', fontSize: '24px', padding: '0px 3px' }} />
+                  <input placeholder="Twitter" defaultValue={twitter ? twitter[0]?.Value : ''} style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '13px', width: '100%' }} />
                 </div>
               </div>
+
             }
 
           </div>

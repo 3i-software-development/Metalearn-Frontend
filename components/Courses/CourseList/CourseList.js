@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Section from "../../Section/Section";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
@@ -12,10 +12,12 @@ import ProgressC from "@/components/Progress/Progress";
 import InfoIcon from "@mui/icons-material/Info";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import ScreenShareOutlinedIcon from "@mui/icons-material/ScreenShareOutlined";
+import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);
 
 const CourseList = ({ total }) => {
+
   const [query, setQuery] = useState({
     CurrentPageList: 1,
     Length: 10,
@@ -28,15 +30,27 @@ const CourseList = ({ total }) => {
     ObjType: "",
     CardName: "",
   });
+  //b phải truyền cái filter này xuống modal kia rồi set cái filter này  from dât hay gì đấy chứ k thể gọi lại xong tìm thế đc đâu 
 
-  const { data: practiveQuery } = useGetListPractiveQuery(query);
-  // console.log(practiveQuery)
+  const [filterData, setFilterData] = useState([]);
+  const init = useSelector(state => state.course.products)
+  // console.log("check innit", init)
+  useEffect(() => {
+    setFilterData(init[0])
+
+  }, [init])
+  // console.log("check datafilter", filterData);
+
+
+
+  const { data: practiveQuery } = useGetListPractiveQuery(query); //d đáy
+  // console.log("check practiveQuery",practiveQuery)
 
   const { data: courseMobileQuery } = useGetListCourseMobileQuery({
     userName: "admin",
     isPublic: true,
   });
-  // console.log(courseMobileQuery)
+  // console.log("check data",courseMobileQuery?.Object)
 
   const diffMoment = (startDate, endDate) => {
     if (!endDate) return "Không giới hạn thời gian";
@@ -47,7 +61,7 @@ const CourseList = ({ total }) => {
   };
 
   const handleQueryPage = (current, pageSize) => {
-    // setQuery({ ...query, CurrentPageList: current, Length: pageSize });
+    setQuery({ ...query, CurrentPageList: current, Length: pageSize });
   };
 
   return (
@@ -71,53 +85,116 @@ const CourseList = ({ total }) => {
               </tr>
             </thead>
             <tbody>
-              {courseMobileQuery?.Object?.map((element, i) => {
-                return (
-                  <tr key={i}>
-                    <Link href={`/lecture?courseCode=${element?.CourseCode}`}>
-                      <AvatarC imageUrl={element?.ImgCover} />
-                    </Link>
-                    <td className={cx("label")}>
-                      <Link href={`/lecture?courseCode=${element?.CourseCode}`}>
-                        <h4>
-                          #{element?.CourseName} : [{element?.CourseCode}]
-                        </h4>
-                      </Link>
-                    </td>
-                    <td className={cx("label")}>
-                      <p>{element?.SubjectName}</p>
-                    </td>
-                    <td className={cx("label")}>{element?.CreatedBy}</td>
-                    <td className={cx("label")}>
-                      {element?.Duration}
-                      {element?.Unit}
-                    </td>
-                    <td className={cx("label")}>{element?.Price}Coin</td>
-                    <td className={cx("label")}>
-                      <ProgressC percent={element?.Percent} />
-                    </td>
-                    <td>
-                      <div className={cx("list-icon")}>
-                        <span title="info">
-                          <InfoIcon className={cx("icon-info")} />
-                        </span>
-                        <Link href={"/shareResult"}>
-                          <span title="Chia sẻ kết quả rèn luyện">
-                            <ScreenShareOutlinedIcon
-                              className={cx("icon-info")}
-                            />
-                          </span>
+              {filterData !== '' ?
+                <>
+                  {filterData?.map((element, i) => {
+                    return (
+                      <tr key={i}>
+                        <Link href={`/lecture?courseCode=${element?.CourseCode}`}>
+                          <AvatarC imageUrl={element?.ImgCover} />
                         </Link>
-                        <Link href={"/shareCourse"}>
-                          <span title="Chia sẻ khóa học">
-                            <ShareOutlinedIcon className={cx("icon-info")} />
-                          </span>
+                        <td className={cx("label")}>
+                          <Link href={`/lecture?courseCode=${element?.CourseCode}`}>
+                            <h4>
+                              #{element?.CourseName} : [{element?.CourseCode}]
+                            </h4>
+                          </Link>
+                        </td>
+                        <td className={cx("label")}>
+                          <p>{element?.SubjectName}</p>
+                        </td>
+                        <td className={cx("label")}>{element?.CreatedBy}</td>
+                        <td className={cx("label")}>
+                          {element?.Duration}
+                          {element?.Unit}
+                        </td>
+                        <td className={cx("label")}>{element?.Price}Coin</td>
+                        <td className={cx("label")}>
+                          <ProgressC percent={element?.Percent} />
+                        </td>
+                        <td>
+                          <div className={cx("list-icon")}>
+                            <span title="info">
+                              <InfoIcon className={cx("icon-info")} />
+                            </span>
+                            <Link href={"/shareResult"}>
+                              <span title="Chia sẻ kết quả rèn luyện">
+                                <ScreenShareOutlinedIcon
+                                  className={cx("icon-info")}
+                                />
+                              </span>
+                            </Link>
+                            <Link href={"/shareCourse"}>
+                              <span title="Chia sẻ khóa học">
+                                <ShareOutlinedIcon className={cx("icon-info")} />
+                              </span>
+                            </Link>
+                          </div>
+                        </td>
+                      </tr>
+
+
+                    )
+                  })}
+                </>
+                : ''
+              }
+              {filterData == '' || filterData == undefined ?
+                <>
+                  {courseMobileQuery?.Object?.map((element, i) => {
+                    return (
+                      <tr key={i}>
+                        <Link href={`/lecture?courseCode=${element?.CourseCode}`}>
+                          <AvatarC imageUrl={element?.ImgCover} />
                         </Link>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
+                        <td className={cx("label")}>
+                          <Link href={`/lecture?courseCode=${element?.CourseCode}`}>
+                            <h4>
+                              #{element?.CourseName} : [{element?.CourseCode}]
+                            </h4>
+                          </Link>
+                        </td>
+                        <td className={cx("label")}>
+                          <p>{element?.SubjectName}</p>
+                        </td>
+                        <td className={cx("label")}>{element?.CreatedBy}</td>
+                        <td className={cx("label")}>
+                          {element?.Duration}
+                          {element?.Unit}
+                        </td>
+                        <td className={cx("label")}>{element?.Price}Coin</td>
+                        <td className={cx("label")}>
+                          <ProgressC percent={element?.Percent} />
+                        </td>
+                        <td>
+                          <div className={cx("list-icon")}>
+                            <span title="info">
+                              <InfoIcon className={cx("icon-info")} />
+                            </span>
+                            <Link href={"/shareResult"}>
+                              <span title="Chia sẻ kết quả rèn luyện">
+                                <ScreenShareOutlinedIcon
+                                  className={cx("icon-info")}
+                                />
+                              </span>
+                            </Link>
+                            <Link href={"/shareCourse"}>
+                              <span title="Chia sẻ khóa học">
+                                <ShareOutlinedIcon className={cx("icon-info")} />
+                              </span>
+                            </Link>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </>
+
+                :
+                ''
+              }
+
+
             </tbody>
           </table>
         </div>
@@ -174,11 +251,11 @@ const CourseList = ({ total }) => {
           })}
         </div> */}
       </div>
-      <Pagination
+      {/* <Pagination
         total={total}
         handleQueryPage={handleQueryPage}
         current={query.CurrentPageList}
-      />
+      /> */}
     </Section>
   );
 };

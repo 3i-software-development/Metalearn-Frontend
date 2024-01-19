@@ -4,11 +4,47 @@ import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { useRouter } from "next/router";
 import { BsSearch } from "react-icons/bs";
+import moment from 'moment';
+import { useGetListCourseMobileQuery } from "@/lib/Midleware/CourseQuery";
+import { crouseFilter } from "../../lib/Redux/Slice/CourseSlice";
+import { useDispatch } from "react-redux";
 
 const cx = classNames.bind(styles);
 
 const ModalSearchFilter = () => {
+  const dispatch = useDispatch()
   const [open, setOpen] = useState(false);
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
+  const [keyWords, setKeyWords] = useState('');
+
+  const { data: courseMobileQuery } = useGetListCourseMobileQuery({
+    userName: "admin",
+    isPublic: true,
+  });
+  let listCourse = courseMobileQuery?.Object;
+  // console.log("check data",listCourse);
+  const handleSearch = () => {
+    let filterListCourse = listCourse.filter((item) => {
+      const checkKeyWords = item.CourseName.toLowerCase().includes(keyWords)
+      const checkDate = moment(item.CreatedTime).format('YYYY-MM-DD') >= moment(startTime).format('YYYY-MM-DD') &&
+        moment(item.CreatedTime).format('YYYY-MM-DD') <= moment(endTime).format('YYYY-MM-DD');
+      return checkKeyWords && checkDate
+
+    });
+    // moment(moment(item.CreatedTime).format('YYYY-MM-DD')).isBetween(startTime, endTime, null, '[]')) ;
+    dispatch(crouseFilter(filterListCourse))
+    handleCancel();
+    setKeyWords('');
+    setStartTime('');
+    setEndTime('');
+
+
+    // console.log("check list",filterListCourse);
+  }
+
+
+
 
   const router = useRouter();
 
@@ -72,9 +108,10 @@ const ModalSearchFilter = () => {
       </span>
       <Modal
         open={open}
-        title="Search - Filter"
+        title="Tìm kiếm khoá học"
         onCancel={handleCancel}
         centered
+        onOk={handleSearch}
       >
         <div className={cx("modal-body")}>
           <div className={cx("search-container")}>
@@ -82,11 +119,13 @@ const ModalSearchFilter = () => {
               type="text"
               placeholder="Search"
               className={cx("search-input")}
+              onChange={(e) => setKeyWords(e.target.value)}
+              value={keyWords}
             />
-            <BsSearch />
+            {/* {/ <BsSearch / > /} */}
           </div>
           <div className={cx("modal-filter")}>
-            <div className={cx("content-filter")}>
+            {/* <div className={cx("content-filter")}>
               <div className={cx("content-sort-container")}>
                 <p>Subject :</p>
                 <Select
@@ -111,34 +150,33 @@ const ModalSearchFilter = () => {
                   options={optionsLevel}
                 />
               </div>
-            </div>
+            </div> */}
 
             <div className={cx("content_filter")}>
-              <p>Time :</p>
               <div className={cx("timesDate")}>
                 <div>
-                  <span>From</span>
-                  <DatePicker
-                    format={dateFormat}
-                    className={cx("select-container")}
-                    placeholder="Ngày bắt đầu"
+                  <span>Từ ngày</span>
+                  <input
+                    type="date"
+                    onChange={(e) => setStartTime(moment(e?.target?.value).format('YYYY-MM-DD'))}
+                    value={startTime}
                   />
                 </div>
                 <div>
-                  <span>To</span>
-                  <DatePicker
-                    format={dateFormat}
-                    className={cx("select-container")}
-                    placeholder="Ngày kết thúc"
+                  <span>Đến</span>
+                  <input
+                    type="date"
+                    onChange={(e) => setEndTime(moment(e?.target?.value).format("YYYY-MM-DD"))}
+                    value={endTime}
                   />
                 </div>
               </div>
             </div>
-
+            {/* 
             <div className={cx("content_filter")}>
               <p>Đánh giá :</p>
               <Slider range marks={marks} step={20} defaultValue={[0, 100]} />
-            </div>
+            </div> */}
           </div>
         </div>
       </Modal>
