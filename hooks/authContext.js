@@ -1,7 +1,7 @@
 // authContext.js
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { set } from 'react-hook-form';
+import { set } from "react-hook-form";
 import Login from "@/pages/auth/login";
 
 const AuthContext = createContext();
@@ -15,43 +15,43 @@ export function AuthProvider({ children }) {
     "Menu trái": {
       style: "default",
       size: "17",
-      color: "#000000"
+      color: "#000000",
     },
     "Tiêu đề": {
       style: "default",
       size: "17",
-      color: "#000000"
+      color: "#000000",
     },
     "Thông báo": {
       style: "default",
       size: "17",
-      color: "#000000"
+      color: "#000000",
     },
     "Điều khiển": {
       style: "default",
       size: "17",
-      color: "#000000"
+      color: "#000000",
     },
     "Nội dung chữ": {
       style: "default",
       size: "17",
-      color: "#000000"
+      color: "#000000",
     },
     "Nội dung control": {
       style: "default",
       size: "17",
-      color: "#000000"
+      color: "#000000",
     },
     "Nội dung kiểu cây": {
       style: "default",
       size: "17",
-      color: "#000000"
+      color: "#000000",
     },
     "Giao diện bài viết": {
       style: "default",
       size: "17",
-      color: "#000000"
-    }
+      color: "#000000",
+    },
   });
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -72,17 +72,14 @@ export function AuthProvider({ children }) {
       setUserId(userId);
       setIsAuthenticated(true);
       console.log(user);
-    }
-    else {
+    } else {
       setUser(null);
       setUserName(null);
       setUserId(null);
-      setIsAuthenticated(false);  
+      setIsAuthenticated(false);
     }
     setLoading(false);
-
   }, []);
-
 
   const loginState = () => {
     // Thực hiện xác thực ở đây và nhận thông tin người dùng
@@ -92,6 +89,9 @@ export function AuthProvider({ children }) {
     const userId = localStorage.getItem("userId");
     setUserName(user);
     setUserId(userId);
+
+    // Chuyển hướng
+    router.push("https://do.metalearn.vn/");
   };
 
   const logout = () => {
@@ -103,12 +103,21 @@ export function AuthProvider({ children }) {
     setUserName(null);
     setUserId(null);
     setIsAuthenticated(false);
-    router.push('/auth/login');
+    router.push("/auth/login");
   };
 
-
   return (
-    <AuthContext.Provider value={{ isAuthenticated, userName, userId, loginState, logout, saveSetting, loading }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        userName,
+        userId,
+        loginState,
+        logout,
+        saveSetting,
+        loading,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
