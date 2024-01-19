@@ -34,7 +34,7 @@ export default function ExamCard({ onlyAssignment }) {
 
   return (
     <div key={onlyAssignment} className={cx("container")}>
-      {data?.query.map((element, index) => {
+      {data?.query?.map((element, index) => {
         return (
           <ExamCardItem key={element.Id} element={element} />
         )

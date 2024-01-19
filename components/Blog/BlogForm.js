@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Select, Space, Checkbox ,Rate} from "antd";
+import { Button, Form, Input, Select, Checkbox, Rate } from "antd";
+import { CaretRightOutlined } from "@ant-design/icons";
+import SearchBlog from "./tt";
 import {
   useGetAllSubjectBlogQuery,
   useInsertBlogMutation,
@@ -29,7 +31,8 @@ const tailLayout = {
 };
 
 const BlogForm = () => {
-  // const { userName } = useAuth();
+  const [isGeneralInfoVisible, setIsGeneralInfoVisible] = useState(false);
+  const [isGeneral, setIsGeneral] = useState(false);
   const userName = "admin";
 
   const router = useRouter();
@@ -51,11 +54,17 @@ const BlogForm = () => {
     userName: userName,
     blogSubject: "BLOG_GROUP_fb0fc637-4571-4745-8a23-45e635a00ecf",
   });
-  const dataC = listCms?.Object?.find(e => e.id == id)
+  const dataC = listCms?.Object?.find((e) => e.id == id);
   console.log(dataC);
-  if (dataC) blog = { ...blog, title: dataC?.title, ordering: 1,evaluate:1, hash_tag: 'hash_tag' };
+  if (dataC)
+    blog = {
+      ...blog,
+      title: dataC?.title,
+      ordering: 1,
+      evaluate: 1,
+      hash_tag: 'hash_tag',
+    };
 
-  // Hàm loại bỏ thẻ p từ chuỗi HTML
   function removePTags(htmlString) {
     const doc = new DOMParser().parseFromString(htmlString, "text/html");
     return doc.body.textContent || "";
@@ -64,123 +73,120 @@ const BlogForm = () => {
   const onFinish = async (values) => {
     try {
       if (mode == "add") {
-        await insertBlog({
-          ...values,
-          created_by_alias: userName,
-          hash_tag: "[]",
-          rate: 1,
-        });
         alert("Tạo blog thành công!");
       } else {
-        updateCmsItem({
-          ...values,
-          id: Number(id),
-          cat_id: 1391,
-          hash_tag: "[]",
-          rate: 1,
-        });
         alert("Cập nhật blog thành công!");
       }
     } catch (error) {
       console.log(error);
     }
   };
+
   const onReset = () => {
     form.resetFields();
   };
-  // useEffect(() => {
-  // }, [userName]);
+
+  const toggleGeneralInfoForm = () => {
+    setIsGeneralInfoVisible(!isGeneralInfoVisible);
+  };
+
+  const toggleGeneral = () => {
+    setIsGeneral(!isGeneral);
+  };
+
   return (
     <div style={{ padding: "0  50px 50px 50px" }}>
-      <h3 style={{ marginBottom: "30px" }}>
-        {mode == "add" ? "Thêm" : "Cập nhật"} blog kiến thức:{" "}
+      <h3 style={{ marginBottom: "15px", marginTop: "10px", textAlign: "center", fontSize: "24px" }}>
+        {mode == "add" ? "Tạo" : "Cập nhật"} bài viết {" "}
       </h3>
-      <Form
-        {...layout}
-        form={form}
-        name="control-hooks"
-        onFinish={onFinish}
-        initialValues={mode === "update" ? blog : {}}
-        style={{
-          maxWidth: 600,
-        }}
-      >
-        <Form.Item
-          name="blog_subject"
-          label="Chủ đề"
-          rules={[{ required: true, message: "Please input your input!" }]}
-        >
-          <Select placeholder="Chọn chủ đề" allowClear>
-            {data?.map((item, index) => {
-              return (
-                <Option key={index} value={item?.CodeSet}>
-                  {removePTags(item?.ValueSet)}
-                </Option>
-              );
-            })}
-          </Select>
-        </Form.Item>
-        <Form.Item
-          name="title"
-          label="Tiêu đề"
-          rules={[{ required: true, message: "Please input your input!" }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="ordering"
-          label="Thứ tự"
-          rules={[{ required: true, message: "Please input your input!" }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="evaluate"
-          label="Đánh giá"
-          rules={[{ required: true, message: "Please input your input!" }]}
-        >
-        <Rate />
-        </Form.Item>
-        <Form.Item
-          name="hash_tag"
-          label="Từ khóa tìm kiếm"
-          rules={[{ required: true, message: "Please input your input!" }]}
-        >
-          <Input />
-        </Form.Item>
+      {/* ... thong tin chung */}
+      <div>
+        <div type="primary" onClick={toggleGeneralInfoForm} style={{ marginBottom: "18px", cursor: "pointer", fontWeight: "800", fontSize: "19px" }}>
+          <CaretRightOutlined />  {isGeneralInfoVisible ? " Thông tin chung" : " Thông tin chung"}
+        </div>
+        {isGeneralInfoVisible && (
+          <Form
+            {...layout}
+            form={form}
+            name="control-hooks"
+            onFinish={onFinish}
+            initialValues={mode === "update" ? blog : {}}
+            style={{
+              maxWidth: 600,
+            }}
+          >
+            <Form.Item
+              name="blog_subject"
+              rules={[{ required: true, message: "Vui lòng nhập thông tin!" }]}
+            >
+              <label style={{ fontSize: "16px", fontWeight: "600" }}>Chủ đề</label>
+              <Select placeholder="Chọn chủ đề" allowClear style={{ fontWeight: "700", width: "1050px", marginTop: "5px" }}>
+                {data?.map((item, index) => (
+                  <Option key={index} value={item?.CodeSet}>
+                    {removePTags(item?.ValueSet)}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item
+              name="title"
+              rules={[{ required: true, message: "Vui lòng nhập thông tin!" }]}
+            >
+              <label style={{ fontSize: "16px", fontWeight: "600" }}>Tiêu đề</label>
+              <Input style={{ fontWeight: "700", width: "1050px", marginTop: "5px" }} />
+            </Form.Item>
+            <div style={{ display: "flex" }}>
+              <Form.Item
+                name="ordering"
+                rules={[{ required: true, message: "Vui lòng nhập thông tin!" }]}
+              >
+                <label style={{ fontSize: "16px", fontWeight: "600" }}>Thứ tự</label>
+                <Input style={{ fontWeight: "500", width: "450px", marginTop: "5px" }} />
+              </Form.Item>
+              <Form.Item
+                name="evaluate"
+                style={{ marginLeft: "200px" }}
+                rules={[{ required: true, message: "Vui lòng nhập thông tin!" }]}
+              >
+                <label style={{ fontSize: "16px", fontWeight: "600" }}>Đánh giá</label>
+                <Rate style={{ width: "250px", fontSize: 25 }} />
+              </Form.Item>
+            </div>
+            <Form.Item
+              name="published"
+              valuePropName="checked"
+              style={{ marginLeft: "0px" }}
+            >
+              <label style={{ fontSize: "16px", fontWeight: "600" }}>Công khai</label>
+              <Checkbox style={{ marginLeft: "100px" }}></Checkbox>
+            </Form.Item>
+            <Form.Item
+              name="hash_tag"
+              rules={[{ required: true, message: "Vui lòng nhập thông tin!" }]}
+            >
+              <label style={{ fontSize: "16px", fontWeight: "600" }}>Từ khóa tìm kiếm</label>
+              <Input style={{ fontWeight: "500", width: "1050px", marginTop: "5px" }} />
+            </Form.Item>
 
-        <Form.Item
-          name="full_text"
-          label="Nội dung"
-          rules={[{ required: true, message: "Please input your input!" }]}
-        >
-          <TextArea
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="Controlled autosize"
-            autoSize={{ minRows: 3, maxRows: 5 }}
-          />
-        </Form.Item>
 
-        <Form.Item
-          name="published"
-          valuePropName="checked"
-          style={{ marginLeft: "140px" }}
-        >
-          <Checkbox>Công khai</Checkbox>
-        </Form.Item>
-
-        <Form.Item {...tailLayout}>
-          <Space>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-            <Button htmlType="button" onClick={onReset}>
-              Reset
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
+            <Form.Item {...tailLayout}>
+              <Button type="primary" htmlType="submit" style={{ marginLeft: "-200px", width: "100px", height: "50px", fontWeight: "800" }}>
+                Tạo
+              </Button>
+            </Form.Item>
+          </Form>
+        )}
+      </div>
+      {/* ... (noi dung) */}
+      <div>
+        <div type="primary" onClick={toggleGeneral} style={{ marginBottom: "16px", cursor: "pointer", fontWeight: "800", fontSize: "18px" }} >
+          <div >   <CaretRightOutlined /> {isGeneralInfoVisible ? " Nội Dung" : " Nội Dung"}  <SearchBlog/></div>
+        </div>
+        {isGeneral && (
+          <div></div>
+        )}
+      </div>
+      
     </div>
   );
 };

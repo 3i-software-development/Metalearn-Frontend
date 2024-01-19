@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import Image from "next/image";
+import ModalSearchFilter from "@/components/ModalSearchFilter/ModalSearchFilter";
 import { useGetListLmsClassQuery } from "@/lib/Midleware/LmsClassQuery";
 import Pagination from "@/components/Pagination/Pagination";
 import { useGetListUserSubjectQuery } from "@/lib/Midleware/SubjectQuery";
@@ -33,6 +34,12 @@ const ClassCard = ({ role }) => {
 
   return (
     <Section>
+    <div className="tool-items">
+    <ModalSearchFilter />
+    <span className="tool-item tool-export">
+        <i className="fa-solid fa-plus"></i>
+    </span>
+</div>
       <div className={cx("class")}>
         {arr?.map((element) => {
           return (

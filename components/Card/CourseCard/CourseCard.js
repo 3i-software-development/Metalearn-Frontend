@@ -63,8 +63,9 @@ const CourseCard = () => {
 
   return (
     <Section>
+    
       <div className={cx("layout")}>
-        {data?.Object.map((item) => {
+        {data?.Object?.map((item) => {
           const durationUnit = item.Unit ? item.Unit : "";
           return (
             <div className={cx("item")} key={item.Id}>
@@ -172,7 +173,7 @@ const CourseCard = () => {
         <div className={cx("modal-body")}>
           <div className={cx("share-for")}>
             <select className={cx("form-select")} value={"1"} >
-              { Users && Users.map((item, index) => {
+              { Users && Users?.map((item, index) => {
                   return (
                       <option key={index} value={item.id}>{item.name}</option>
                   )
