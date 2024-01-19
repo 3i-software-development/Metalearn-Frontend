@@ -24,7 +24,7 @@ const Pay = () => {
   };
 
   // Define state variables for input values and payment method
-  const [coin, setCoin] = useState(7);
+  const [coin, setCoin] = useState("");
   const [numberOfCoins, setNumberOfCoins] = useState("");
   const [numberOfInternationalCoins, setNumberOfInternationalCoins] =
     useState("");

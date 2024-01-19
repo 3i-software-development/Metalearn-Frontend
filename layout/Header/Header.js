@@ -348,17 +348,20 @@ const Header = () => {
           <Link href="/my-class" className={cx("head-link")}>
             Lớp học
           </Link>
-          <Link href="/documents" className={cx("head-link")}>
+          {/* <Link href="/documents" className={cx("head-link")}>
             Tài liệu
-          </Link>
+          </Link> */}
           <Link href="/courseware" className={cx("head-link")}>
             Khóa học
           </Link>
           <Link href="/exam" className={cx("head-link")}>
             Đề thi
           </Link>
+          <Link href="/document-course" className={cx("head-link")}>
+            Học liệu
+          </Link>
           <Link href="/blog" className={cx("head-link")}>
-            Blog
+            Blog kiến thức
           </Link>
         </div>
       </div>
@@ -522,7 +525,6 @@ const Header = () => {
                   <input placeholder="Twitter" style={{ border: "none", outline: "none", marginLeft: "12px", fontSize: '20px', width: '100%' }} />
                 </div>
               </div>
-
             }
 
           </div>

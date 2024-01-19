@@ -31,7 +31,7 @@ const CourseList = ({ total }) => {
   });
 
   const { data: practiveQuery } = useGetListPractiveQuery(query);
-  console.log(practiveQuery)
+  // console.log(practiveQuery)
 
   const { data: courseMobileQuery } = useGetListCourseMobileQuery({
     userName: "admin",
@@ -48,7 +48,7 @@ const CourseList = ({ total }) => {
   };
 
   const handleQueryPage = (current, pageSize) => {
-    setQuery({ ...query, CurrentPageList: current, Length: pageSize });
+    // setQuery({ ...query, CurrentPageList: current, Length: pageSize });
   };
 
   return (
@@ -175,11 +175,11 @@ const CourseList = ({ total }) => {
           })}
         </div> */}
       </div>
-      {/* <Pagination
+      <Pagination
         total={total}
         handleQueryPage={handleQueryPage}
         current={query.CurrentPageList}
-      /> */}
+      />
     </Section>
   );
 };

@@ -87,12 +87,12 @@ const NavbarExam = ({ query, handleQuery, totalAssigment, totalShared }) => {
       <input
         type="text"
         className={cx("search")}
-        placeholder="Search for exam..."
+        placeholder="Tìm kiếm đề thi..."
         onChange={(e) => handleChangeSearch(e)}
       />
       <i></i>
       <div className={cx("sort")}>
-        <h2>Filter Exam</h2>
+        <h2>Lọc đề thi</h2>
         <div className={cx("tabTitles")}>
           {query.onlyAssignment ?
             <span className={cx("bedwars", "active")}>

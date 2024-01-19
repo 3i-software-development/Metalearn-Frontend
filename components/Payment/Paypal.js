@@ -27,13 +27,21 @@ const PayPalButton = ({ amount, onSuccess }) => {
         PaymentAmount: details.purchase_units[0].amount.value,
         PaymentCurrency: details.purchase_units[0].amount.currency_code,
         PaymentLog: JSON.stringify(details),
-        PaymentQuantity: 1,
+        PaymentQuantity: 1000,
         PaymentStatus: details.status,
         PaymentType: "paypal",
         TxnId: details.id,
       };
       console.log("check data: ", datas);
-      console.log("check amount: ", amount)
+      console.log("check amount: ", amount);
+
+      //const formData = new FormData();
+      // for (const key in datas) {
+      //   if (datas.hasOwnProperty(key)) {
+      //     formData.append(key, datas[key]);
+      //   }
+      // }
+      // console.log(formData)
 
       // try {
       //   const res = await axios.post("https://admin.metalearn.vn/MobileLogin/SaveTransactionHistory", datas)

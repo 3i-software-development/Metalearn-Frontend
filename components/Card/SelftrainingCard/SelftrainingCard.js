@@ -49,16 +49,10 @@ const SelftrainingCard = ({ onlyAssignment }) => {
     <Section>
       {quiz?.Object?.Data?.map((item, i) => {
         return (
-          <div key={i} style={{paddingBottom: '20px', borderBottom: '1px solid #ccc'}}>
-            <Image
-              alt="quiz"
-              width={1200}
-              height={250}
-              src={item?.PicDeeplink || ""}
-            ></Image>
+          <div key={i} style={{paddingBottom: '20px', borderBottom: '1px solid #ccc', padding: '15px 0'}}>
 
             <span style={{display: 'block', display: 'flex', alignItems: 'center', columnGap: '10px', marginTop: '5px'}}><b><WorkIcon/> Môn học: {item?.SubjectName}</b></span>
-            <span style={{display: 'block', display: 'flex', alignItems: 'center', columnGap: '10px', marginTop: '5px'}}><PersonIcon/> {item?.CreatedBy}</span>
+            <span style={{display: 'block', display: 'flex', alignItems: 'center', columnGap: '10px', marginTop: '5px'}}><PersonIcon/> {moment(item?.CreatedBy).format('DD/MM/YYYY')}</span>
             <span style={{display: 'block', display: 'flex', alignItems: 'center', columnGap: '10px', marginTop: '5px'}}><AccessTimeIcon/>{item?.CreatedTime}</span>
             <span style={{display: 'block', display: 'flex', alignItems: 'center', columnGap: '10px', marginTop: '5px'}}><DoneIcon/> Trạng thái: Chưa làm</span>
           </div>
