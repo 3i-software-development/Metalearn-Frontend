@@ -71,6 +71,7 @@ export default function Login() {
       }
     }
     temp();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sendMail])
 
   const sendRedice = (ipAddress) => {
