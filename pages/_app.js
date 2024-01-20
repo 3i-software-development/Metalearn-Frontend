@@ -70,7 +70,7 @@ export default function App({ Component, pageProps }) {
         <AuthProvider>
           <Layout>
             {/* private router */}
-            
+
             {/* <ProtectedRoute> */}
               <Component {...pageProps} />
             {/* </ProtectedRoute> */}

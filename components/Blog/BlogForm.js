@@ -65,11 +65,6 @@ const BlogForm = () => {
       hash_tag: 'hash_tag',
     };
 
-  function removePTags(htmlString) {
-    const doc = new DOMParser().parseFromString(htmlString, "text/html");
-    return doc.body.textContent || "";
-  }
-
   const onFinish = async (values) => {
     try {
       if (mode == "add") {
@@ -123,7 +118,7 @@ const BlogForm = () => {
               <Select placeholder="Chọn chủ đề" allowClear style={{ fontWeight: "700", width: "1050px", marginTop: "5px" }}>
                 {data?.map((item, index) => (
                   <Option key={index} value={item?.CodeSet}>
-                    {removePTags(item?.ValueSet)}
+                    {item?.ValueSet}
                   </Option>
                 ))}
               </Select>

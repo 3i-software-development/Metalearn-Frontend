@@ -21,11 +21,6 @@ const BlogDetail = ({ load }) => {
   // const { userName } = useAuth();
   const userName = "admin";
   useEffect(() => { }, [userName]);
-  // Hàm loại bỏ thẻ p từ chuỗi HTML
-  function removePTags(htmlString) {
-    const doc = new DOMParser().parseFromString(htmlString, "text/html");
-    return doc.body.textContent || "";
-  }
 
   const [deleteCmsItem] = useDeleteCmsItemMutation();
 
@@ -101,7 +96,7 @@ const BlogDetail = ({ load }) => {
         </div>
       </div>
 
-      <p>{removePTags(data?.full_text)}</p>
+      <p>{data?.full_text}</p>
 
       <div style={{ marginTop: "50px" }}>
         <h3 style={{ fontSize: "22px" }}>Tin liên quan</h3>

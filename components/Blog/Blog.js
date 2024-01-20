@@ -30,11 +30,6 @@ const Blog = () => {
   const router = useRouter();
   const [openKeys, setOpenKeys] = useState("");
 
-  // Hàm loại bỏ thẻ p từ chuỗi HTML
-  function removePTags(htmlString) {
-    const doc = new DOMParser().parseFromString(htmlString, "text/html");
-    return doc.body.textContent || "";
-  }
 
   useEffect(() => {
     if (router.query.key) {
@@ -56,8 +51,8 @@ const Blog = () => {
   const newItem = ListBlog?.Object?.map((item) => {
     return getItem(
       item?.GroupTitle?.length > 20
-        ? removePTags(item?.GroupTitle).slice(0, 22) + "..."
-        : removePTags(item?.GroupTitle),
+        ?item?.GroupTitle?.slice(0, 22) + "..."
+        : item?.GroupTitle,
       `sub4-${item.GroupCode}`,
       <SnippetFolderIcon style={{color: '#457b9d'}} />,
       !item?.NewListBlog || item?.NewListBlog?.length == 0
