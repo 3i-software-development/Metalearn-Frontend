@@ -84,6 +84,7 @@ export function AuthProvider({ children }) {
   const loginState = () => {
     // Thực hiện xác thực ở đây và nhận thông tin người dùng
     // Lưu JWT vào local storage hoặc cookie
+
     setIsAuthenticated(true);
     const user = localStorage.getItem("userName");
     const userId = localStorage.getItem("userId");
@@ -92,6 +93,15 @@ export function AuthProvider({ children }) {
 
     // Chuyển hướng
     router.push("https://do.metalearn.vn/");
+    
+    // Xóa JWT khỏi local storage hoặc cookie
+    //sessionStorage.removeItem("user");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
+    setUser(null);
+    setUserName(null);
+    setUserId(null);
+    setIsAuthenticated(false);
   };
 
   const logout = () => {
