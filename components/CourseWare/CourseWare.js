@@ -30,7 +30,7 @@ import { useGetListUserSubjectQuery } from "@/lib/Midleware/SubjectQuery";
 // import SearchAndAddSubjects from "../SearchAndAddSubjects";
 import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
 // import { AbumCart } from "../Card/AbumCard/AbumCard";
-// import TeachingResults from "../Chart/TeachingResults";
+import ListIcon from '@mui/icons-material/List';
 import { useRouter } from "next/router";
 import {
   useGetCountExamStudentQuery,
@@ -206,7 +206,7 @@ const CourseWare = () => {
   };
 
   const items = [
-    getItem(`Danh sách khóa học [44]`, "practive", <DeveloperModeIcon />),
+    getItem(`Danh sách khóa học [44]`, "practive", <ListIcon />),
     // getItem(`Toán ôn thi đại học`, "sub3", <ArticleIcon />),
   ];
 

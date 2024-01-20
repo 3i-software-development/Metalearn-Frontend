@@ -75,19 +75,15 @@ export default function AddForm() {
                     {JSON.parse(value.JsonData).map((item, i) => {
                       return (
                         <div key={i} className={cx("checkBox")}>
-                          <input type="radio" name={value.Content} value="pk" onChange={() => handleAnswer(index)} />
+                          <input type="radio" style={{marginRight: "10px"}}  name={value.Content} value="pk" onChange={() => handleAnswer(index)} />
                           {htmlDecode(`${item.Answer}`)}
                         </div>
                       );
                     })}
                     <div className={cx("recommend")}>
-                      {/* <a>
-                          <i className="fa-brands fa-react fa-beat"></i>
-                        </a>
-                        <button>Next</button> */}
-                      {/* <a>
-                          <i className="fa-solid fa-flower"></i>GPT
-                        </a> */}
+       
+                        <button>Next</button> 
+                    
                     </div>
                   </div>
                 </div>

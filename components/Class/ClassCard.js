@@ -13,7 +13,7 @@ const ClassCard = ({ data }) => {
     <div>
       <Link href={`/my-class?page=lmsClassForum&classCode=${data?.ClassCode}&title=${data?.ClassName}`}>
         <div
-          style={{ cursor: "pointer", padding: "20px 0" }}
+          style={{ cursor: "pointer", padding: "10px 0" }}
           className={cx("course-card")}
         >
           <div className={cx("title")}>
@@ -31,7 +31,7 @@ const ClassCard = ({ data }) => {
               <i className="fa-solid fa-book " style={{ color: "grey" }}></i>{" "}
               Giảng viên:
             </span>
-            <span>{data?.TeacherName}</span>
+            <span>{data?.TeacherName.slice(0, 20) + '...'}</span>
           </div>
           <div className={cx("title")}>
             <span>

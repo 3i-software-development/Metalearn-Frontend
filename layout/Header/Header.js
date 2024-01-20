@@ -216,7 +216,6 @@ const Header = () => {
   const user = useSelector((state) => state.login);
 
   const [show, setShow] = useState(false);
-
   //
   const showDrawer = async () => {
     setOpen(true);
@@ -227,6 +226,29 @@ const Header = () => {
   const onClose = () => {
     setOpen(false);
   };
+  {/* //Quên Mật Khẩu */ }
+  const [showPasswordResetForm, setShowPasswordResetForm] = useState(false);
+
+  const openPasswordResetForm = () => {
+    setShowPasswordResetForm(true);
+    setAnchorElUser(null);
+  };
+
+  const closePasswordResetForm = () => {
+    setShowPasswordResetForm(false);
+  };
+ {/* //Đổi Mật Khẩu */ }
+  const [showPasswordDrawer, setShowPasswordDrawer] = useState(false);
+
+  const handleOpenPasswordDrawer = () => {
+    setShowPasswordDrawer(true);
+  };
+
+  const handleClosePasswordDrawer = () => {
+    setShowPasswordDrawer(false);
+  };
+
+
   const [placement, setPlacement] = useState("left");
 
   //
@@ -423,16 +445,17 @@ const Header = () => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  <ListItemButton>
+                  <ListItemButton onClick={showDrawer}>
+
                     <div style={{ display: "flex", columnGap: "10px" }}>
                       <PersonIcon />
-                      <div onClick={showDrawer}>
+                      <div>
                         <ListItemText primary="Thông tin cá nhân" />
                       </div>
                     </div>
                   </ListItemButton>
 
-                  <ListItemButton>
+                  <ListItemButton onClick={openPasswordResetForm}>
                     <div style={{ display: "flex", columnGap: "10px" }}>
                       <KeyIcon />
                       <div>
@@ -497,7 +520,7 @@ const Header = () => {
           </div>
           <div style={{ margin: '12px 0px', display: 'flex', justifyContent: 'space-between' }}>
             <Button style={{ backgroundColor: "#183153", width: '50%', marginRight: '2px' }} size="large" type="primary">Cập nhật</Button>
-            <Button style={{ backgroundColor: "#183153", width: '50%', marginLeft: '2px' }} size="large" type="primary">Đổi mật khẩu</Button>
+            <Button onClick={handleOpenPasswordDrawer} style={{ backgroundColor: "#183153", width: '50%', marginLeft: '2px' }} size="large" type="primary">Đổi mật khẩu</Button>
           </div>
           <Button style={{ width: '100%' }} size="large" danger type="primary">Xoá dữ liệu tài khoản</Button>
           <div className={cx("form-user")}>
@@ -535,6 +558,102 @@ const Header = () => {
 
           </div>
 
+        </Form>
+      </Drawer>
+      {/* Đổi Mật khẩu */}
+      <Drawer
+        title="Đổi mật khẩu"
+        placement={placement}
+        closable={false}
+        onClose={handleClosePasswordDrawer}
+        visible={showPasswordDrawer}
+        style={{ width: '120%' }}
+      >
+        <Form
+          name="changePassword"
+          onFinish={onFinish}
+          scrollToFirstError
+        >
+          {/* Thêm các trường nhập thay đổi mật khẩu vào đây */}
+          <Form.Item
+            name="oldPassword"
+            label="Mật khẩu cũ"
+            rules={[
+              {
+                required: true,
+                message: 'Vui lòng nhập mật khẩu cũ!',
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+          <Form.Item
+            name="oldPassword"
+            label="Mật khẩu mới"
+            rules={[
+              {
+                required: true,
+                message: 'Vui lòng nhập mật khẩu mới!',
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+          <Form.Item
+            name="oldPassword"
+            label="nhập lại mật khẩu"
+            rules={[
+              {
+                required: true,
+                message: 'Vui lòng nhập mật khẩu !',
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+          {/* Thêm các trường nhập khác (mật khẩu mới, xác nhận mật khẩu) cần thiết */}
+
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Đổi mật khẩu
+            </Button>
+          </Form.Item>
+        </Form>
+      </Drawer>
+      {/* //Quên Mật Khẩu */}
+      <Drawer
+        title="Quên mật khẩu"
+        placement="left"
+        closable={true}
+        onClose={closePasswordResetForm}
+        visible={showPasswordResetForm}
+        key="left"
+        style={{ width: "130%" }}
+      >
+         <Form
+          name="changePassword"
+          onFinish={onFinish}
+          scrollToFirstError
+        >
+          {/* Thêm các trường nhập thay đổi mật khẩu vào đây */}
+          <Form.Item
+            name="email"
+            label="Email"
+            rules={[
+              {
+                required: true,
+                message: 'Vui lòng nhập Email!',
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Gửi
+            </Button>
+          </Form.Item>
         </Form>
       </Drawer>
     </div>

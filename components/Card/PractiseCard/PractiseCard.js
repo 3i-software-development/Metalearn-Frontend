@@ -5,6 +5,8 @@ import styles from "./style.module.scss";
 import { useGetListPractiveQuery } from "@/lib/Midleware/PractiveQuery";
 import moment from "moment";
 import Pagination from "@/components/Pagination/Pagination";
+import ModalSearchFilter from "@/components/ModalSearchFilter/ModalSearchFilter";
+
 const cx = classNames.bind(styles);
 const PractiseCard = ({ total }) => {
   const [query, setQuery] = useState({
@@ -36,6 +38,12 @@ const PractiseCard = ({ total }) => {
 
   return (
     <Section>
+    <div className="tool-items">
+              <ModalSearchFilter />
+              <span className="tool-item tool-export">
+              <i className="fa-solid fa-plus"></i>
+              </span>
+            </div>
       <div className={cx("practice")}>
         <div className={cx('on-pc')}>
           <table className={cx("application-list")}>

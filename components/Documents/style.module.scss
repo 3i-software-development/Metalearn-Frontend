@@ -14,11 +14,13 @@
   gap: 20px; /* Adjust the gap between columns */
 }
 
+
 .tab-bar {
   display: flex;
   justify-content: center;
   background-color: #007bff; /* Change to your preferred tab bar background color */
   padding: 10px;
+
 }
 
 .tab-button {
@@ -31,11 +33,14 @@
   color: white; /* Tab button text color */
   outline: none;
   transition: color 0.3s ease;
+  width: 40%;
+  
 }
 
 .tab-button.active {
   color: #007bff; /* Active tab text color */
   font-weight: bold;
+  width: 40%;
   background-color: white; /* Active tab background color */
   border-radius: 5px; /* Rounded corners for the active tab */
 }
@@ -63,10 +68,10 @@
 }
 
 .document-category-name-list {
-  width: 90%;
+  width: 1420px;
   min-height: 100vh;
   // padding: 2% 0;
-  overflow-y: auto;
+  // overflow-y: auto;
   border: 1px solid #e3e3e3;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -281,7 +286,7 @@
   }
   .document-category-name-list {
     width: 100%;
-    min-height: 20vh;
+    min-height: 50vh;
     // padding: 2% 0;
     overflow-y: auto;
     border: 1px solid #e3e3e3;
@@ -289,7 +294,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     .list-doc-container {
       width: 100%;
-      max-height: 20vh;
+      max-height: 50vh;
       // padding: 2% 0;
       overflow-y: auto;
       border: 1px solid #e3e3e3;

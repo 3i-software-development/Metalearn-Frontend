@@ -5,7 +5,7 @@ import imgDoc from '../../public/categori/ct1.jpg';
 import imgDoc2 from '../../public/categori/ct2.jpg';
 import DocumentList from './DocumentList';
 import DocumentView from './DocumentView';
-
+import DocumentSear from './DocumentSear'
 const cx = classNames.bind(styles);
 
 const DocumentCategory = () => {
@@ -18,7 +18,7 @@ const DocumentCategory = () => {
   const imgDoc4 = { ...imgDoc2, src: "https://file-examples.com/storage/fec36b918d65009119ed030/2017/02/file-sample_100kB.doc", height: null, width: null }
 
   const Receive = [
-    imgDoc, imgDoc3, imgDoc4, imgDoc2, imgDoc
+    // imgDoc, imgDoc3, imgDoc4, imgDoc2, imgDoc
   ];
   const Read = [
     imgDoc3, imgDoc4, imgDoc2, imgDoc
@@ -34,10 +34,11 @@ const DocumentCategory = () => {
 
   return (
     <div className={cx('document-page')}>
+    <DocumentSear />
       <div className={cx('document-layout')}>
 
         <div className={cx('document-category-name-list')}>
-          <div className={cx('tab-bar')}>
+         <div className={cx('tab-bar')}>
             <button
               className={cx('tab-button', { active: activeTab === 'connected' })}
               onClick={() => handleTabChange('connected')}
@@ -65,9 +66,7 @@ const DocumentCategory = () => {
             )}
           </div>
         </div>
-        <div className={cx('document-category-item')}>
-          <DocumentView valueDoc={valueDoc} />
-        </div>
+      
       </div>
     </div>
   );

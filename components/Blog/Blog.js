@@ -5,12 +5,12 @@ import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 const cx = classNames.bind(styles);
 import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
+import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/router";
 import MobileNavBar from "./MobileNavBar";
 import { useGetListBlogQuery } from "@/lib/Midleware/BlogQuery";
 import BlogDetail from "./BlogDetail";
-import AddIcon from "@mui/icons-material/Add";
-import Link from "next/link";
+import SnippetFolderIcon from '@mui/icons-material/SnippetFolder';
 import BlogForm from "./BlogForm";
 import { useAuth } from "@/hooks/authContext";
 
@@ -59,7 +59,7 @@ const Blog = () => {
         ? removePTags(item?.GroupTitle).slice(0, 22) + "..."
         : removePTags(item?.GroupTitle),
       `sub4-${item.GroupCode}`,
-      <SettingOutlined />,
+      <SnippetFolderIcon style={{color: '#457b9d'}} />,
       !item?.NewListBlog || item?.NewListBlog?.length == 0
         ? null
         : item?.NewListBlog?.map((e) => {
@@ -109,8 +109,7 @@ const Blog = () => {
           <MobileNavBar />
         </div>
         <div className={cx("content")}>
-          <div className={cx("SearchAndAddSubjects_ItemAll")}>
-            <div className="tool-items">
+            {/* <div className="tool-items">
               <span
                 className={cx("search-icon")}
                 style={{
@@ -121,7 +120,7 @@ const Blog = () => {
               >
                 <ModalSearchFilter />
                 <Link href={"/blog?key=1391&page=createBlog"}>
-                  <AddIcon
+                 <AddIcon
                     style={{
                       fontSize: "30px",
                       position: "relative",
@@ -130,8 +129,7 @@ const Blog = () => {
                   />
                 </Link>
               </span>
-            </div>
-          </div>
+            </div> */}
           {displayContent()}
         </div>
       </div>

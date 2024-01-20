@@ -69,9 +69,11 @@ export default function App({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <Layout>
-            <ProtectedRoute>
+            {/* private router */}
+            
+            {/* <ProtectedRoute> */}
               <Component {...pageProps} />
-            </ProtectedRoute>
+            {/* </ProtectedRoute> */}
           </Layout>
         </AuthProvider>
       </QueryClientProvider>

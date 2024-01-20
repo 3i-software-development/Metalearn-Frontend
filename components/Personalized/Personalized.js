@@ -29,6 +29,7 @@ import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
 import { AbumCart } from "../Card/AbumCard/AbumCard";
 import TeachingResults from "../Chart/TeachingResults";
 import { useRouter } from "next/router";
+import { IdcardOutlined,FileOutlined,FileWordOutlined } from "@ant-design/icons";
 import {
   useGetCountExamStudentQuery,
   useGetCountFileStudentQuery,
@@ -199,18 +200,18 @@ const Personalized = () => {
 
   const items = [
     getItem(
-      `Rèn luyện [ ${practiveQuery?.Object?.cardSum.toLocaleString()} | ${practiveQuery?.Object?.cardExpire.toLocaleString()} | ${practiveQuery?.Object?.cardDone.toLocaleString()} ]`,
+      `Nhiệm Vụ`,
       "practive",
-      <MailOutlined />
+      <IdcardOutlined />
     ),
 
     getItem(
-      `Buổi học [ ${scheduleQuery?.Object?.length.toLocaleString()} ]`,
+      `Học trực tuyến`,
       "sub2",
-      <AppstoreOutlined />
+      <i style={{color: '#495057'}} className="fa-solid fa-video"></i>
     ),
 
-    getItem(`Lớp học của tôi`, "sub3", <SettingOutlined />, [
+    getItem(`Lớp học`, "sub3", <i style={{color: '#495057'}} className="fa-solid fa-users-viewfinder"></i>, [
       getItem(
         `Tham gia [ ${classListStudent?.count.toLocaleString()} ]`,
         "sub3-1",
@@ -224,13 +225,9 @@ const Personalized = () => {
     ]),
 
     getItem(
-      `Đề thi [ ${
-        examQuery?.countAssignment.toLocaleString() +
-        " | " +
-        examQuery?.countSharing.toLocaleString()
-      } ]`,
+      `Đề thi`,
       `sub4`,
-      <SettingOutlined />,
+      <FileOutlined style={{color: '#495057'}}/>,
       [
         getItem(
           `Được giao [ ${examQuery?.countAssignment.toLocaleString()} ]`,
@@ -245,9 +242,9 @@ const Personalized = () => {
       ]
     ),
     getItem(
-      `Quiz [ ${countQuiz?.Object?.countAssignment.toLocaleString()} | ${countQuiz?.Object?.countVoluntary.toLocaleString()} ]`,
+      `Quiz`,
       "sub5",
-      <SettingOutlined />,
+      <i style={{color: '#495057'}} className="fa-brands fa-quinscape"></i>,
       [
         getItem(
           `Được giao [ ${countQuiz?.Object?.countAssignment.toLocaleString()} ]`,
@@ -261,7 +258,7 @@ const Personalized = () => {
         ),
       ]
     ),
-    getItem(`Tài liệu của tôi`, "sub6", <SettingOutlined />, [
+    getItem(`Tài liệu `, "sub6", <FileWordOutlined style={{color: '#495057'}} />, [
       getItem(
         `Được giao [0]`,
         "sub6-1",
@@ -275,18 +272,13 @@ const Personalized = () => {
     ]),
 
     getItem(
-      `Khóa học [ ${lectureQuery?.Object?.length.toLocaleString()} ]`,
+      `Khóa học`,
       "courses",
-      <SettingOutlined />
+      <i style={{color: '#495057'}} className="fa-solid fa-book-open-reader"></i>
     ),
+    getItem("Bộ sưu tập", "sub11", <i style={{color: '#495057'}} className="fa-solid fa-thumbtack"></i>),
 
-    getItem(
-      `Môn học của tôi [ ${subjectQuery?.length.toLocaleString()} ]`,
-      "sub8",
-      <SettingOutlined />
-    ),
-
-    getItem("Kết quả học tập", "sub9", <SettingOutlined />, [
+    getItem("Kết quả rèn luyện", "sub9", <i style={{color: '#495057'}} className="fa-solid fa-trophy"></i>, [
       getItem(
         `Câu hỏi tự luyện [ ${
           countQuizVoluntary
@@ -370,7 +362,7 @@ const Personalized = () => {
       ),
     ]),
 
-    getItem("Kết quả giảng dạy", "sub10", <SettingOutlined />, [
+    getItem("Kết quả giảng dạy", "sub10", <i style={{color: '#495057'}} className="fa-solid fa-medal"></i>, [
       getItem(
         `Câu hỏi [ ${
           chartTeacherQuery
@@ -453,8 +445,44 @@ const Personalized = () => {
         null
       ),
     ]),
-
-    getItem("Bộ sưu tập", "sub11", <SettingOutlined />),
+    getItem("Chia sẻ kết quả", "sub12", <i style={{color: '#495057'}} className="fa-solid fa-share"></i>, [
+      getItem(
+        `Nhiệm vụ [ ${
+          countQuizVoluntary
+            ? JSON.parse(countQuizVoluntary?.QuizVoluntary)?.Total
+            : "0"
+        } ]`,
+        "sub12-1",
+        null
+      ),
+      getItem(
+        `Đề thi [ ${
+          countQuizAssignment
+            ? JSON.parse(countQuizAssignment?.QuizAssignment)?.Total
+            : "0"
+        } ]`,
+        "sub12-2",
+        null
+      ),
+      getItem(
+        `Quiz  [ ${
+          countLectureVoluntary
+            ? JSON.parse(countLectureVoluntary?.LectureVoluntary)?.Total
+            : "0"
+        } ]`,
+        "sub12-3",
+        null
+      ),
+      getItem(
+        ` Khóa học [ ${
+          countLectureAssignment
+            ? JSON.parse(countLectureAssignment?.LectureAssignment)?.Total
+            : "0"
+        } ]`,
+        "sub12-4",
+        null
+      ),
+    ]),
   ];
 
   const onOpenChange = (keys) => {
@@ -587,7 +615,7 @@ const Personalized = () => {
       <div className={cx("person")}>
         <div className={cx("nav-bar")}>
           <span className="hidden nav-toggle">
-            <i className="fa fa-bars" aria-hidden="true"></i>&nbsp; Navigation
+            <i style={{color: '#495057'}} className="fa fa-bars" aria-hidden="true"></i>&nbsp; Navigation
           </span>
           <Menu
             mode="inline"
@@ -608,28 +636,6 @@ const Personalized = () => {
         </div>
         <div className={cx("content")}>
           <div className={cx("SearchAndAddSubjects_ItemAll")}>
-            <Breadcrumb
-              items={[
-                {
-                  title: "Home",
-                },
-                {
-                  title: <a href="">Application Center</a>,
-                },
-                {
-                  title: <a href="">Application List</a>,
-                },
-                {
-                  title: "An Application",
-                },
-              ]}
-            />
-            <div className="tool-items">
-              <ModalSearchFilter />
-              <span className="tool-item tool-export">
-                <i className="fa-solid fa-file-export"></i>
-              </span>
-            </div>
           </div>
           {displayContent()}
         </div>

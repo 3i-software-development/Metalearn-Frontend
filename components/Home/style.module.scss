@@ -1,6 +1,7 @@
 .list-course-container {
   width: 100%;
   height: auto;
+  padding: 2% 0;
   // padding: 2% 0;
 
   .text-p {
@@ -39,7 +40,7 @@
 .list-main {
   // border: 1px solid rgb(201, 201, 201);
   cursor: pointer;
-  // padding: 2%;
+  padding: 2%;
   margin: 2% 0;
 
   p {
@@ -177,6 +178,7 @@
     font-size: 18px;
     display: flex;
   }
+
 
   .ListCourse-In-Course {
     display: none;

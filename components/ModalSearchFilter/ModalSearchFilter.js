@@ -104,7 +104,7 @@ const ModalSearchFilter = () => {
   return (
     <>
       <span className="tool-item tool-search">
-        <i className="fa-solid fa-magnifying-glass" onClick={showModal}></i>
+        <i className="fa-solid fa-magnifying-glass" style={{ fontSize: '19px' }} onClick={showModal}></i>
       </span>
       <Modal
         open={open}

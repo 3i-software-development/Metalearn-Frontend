@@ -63,6 +63,7 @@ const CourseCard = () => {
 
   return (
     <Section>
+    
       <div className={cx("layout")}>
         {data?.Object?.map((item) => {
           const durationUnit = item.Unit ? item.Unit : "";
