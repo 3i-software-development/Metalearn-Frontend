@@ -22,6 +22,11 @@ const BlogDetail = ({ load }) => {
   const userName = "admin";
   useEffect(() => { }, [userName]);
 
+  function htmlDecode(input) {
+    var doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.innerText;
+}
+
   const [deleteCmsItem] = useDeleteCmsItemMutation();
 
   const { data: listCms } = useGetListCmsItemQuery({
@@ -96,7 +101,7 @@ const BlogDetail = ({ load }) => {
         </div>
       </div>
 
-      <p>{data?.full_text}</p>
+      <p>{htmlDecode(data?.full_text)}</p>
 
       <div style={{ marginTop: "50px" }}>
         <h3 style={{ fontSize: "22px" }}>Tin liên quan</h3>

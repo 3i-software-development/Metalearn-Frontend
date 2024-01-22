@@ -41,6 +41,7 @@
     "emailjs": "^4.0.1",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "html-dom-parser": "^5.0.7",
     "jquery": "^3.6.3",
     "mathjax": "^3.2.2",
     "moment": "^2.29.4",

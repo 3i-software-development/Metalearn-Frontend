@@ -1,11 +1,8 @@
-import { SettingOutlined } from "@ant-design/icons";
-import { Breadcrumb, Menu } from "antd";
+import {  Menu } from "antd";
 import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 const cx = classNames.bind(styles);
-import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
-import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/router";
 import MobileNavBar from "./MobileNavBar";
 import { useGetListBlogQuery } from "@/lib/Midleware/BlogQuery";
@@ -20,7 +17,8 @@ const Blog = () => {
   // const userName = "jakehu1608";
 
   const { data: ListBlog, refetch } = useGetListBlogQuery({
-    userName: userName,
+    // userName: userName,
+    userName: 'admin',
   });
   
   const load = () => {
@@ -30,6 +28,10 @@ const Blog = () => {
   const router = useRouter();
   const [openKeys, setOpenKeys] = useState("");
 
+  function htmlDecode(input) {
+    var doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.innerText;
+}
 
   useEffect(() => {
     if (router.query.key) {
@@ -51,8 +53,8 @@ const Blog = () => {
   const newItem = ListBlog?.Object?.map((item) => {
     return getItem(
       item?.GroupTitle?.length > 20
-        ?item?.GroupTitle?.slice(0, 22) + "..."
-        : item?.GroupTitle,
+        ? htmlDecode(item?.GroupTitle)?.slice(0, 22) + "..."
+        :  htmlDecode(item?.GroupTitle),
       `sub4-${item.GroupCode}`,
       <SnippetFolderIcon style={{color: '#457b9d'}} />,
       !item?.NewListBlog || item?.NewListBlog?.length == 0
@@ -60,7 +62,7 @@ const Blog = () => {
         : item?.NewListBlog?.map((e) => {
             // console.log(e)
             return getItem(
-              e?.title?.length > 24 ? e?.title?.slice(0, 22) + "..." : e?.title,
+              e?.title?.length > 24 ? htmlDecode(e?.title)?.slice(0, 22) + "..." : htmlDecode(e?.title),
               e.id,
               null,
               null,
@@ -69,8 +71,8 @@ const Blog = () => {
           })
     );
   });
-  // console.log(ListBlog)
-  // console.log(newItem)
+  console.log(ListBlog)
+  console.log(newItem)
 
   const onOpenChange = (keys) => {
     setOpenKeys(keys.key);
