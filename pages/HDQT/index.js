@@ -47,7 +47,7 @@ const Index = () => {
                             })
                         }
                     </div>
-                    <div className={cx("tags-container")}>
+                    {/* <div className={cx("tags-container")}>
                         {
                             businessTag.map((item, index) => {
                                 return (
@@ -55,7 +55,7 @@ const Index = () => {
                                 )
                             })
                         }
-                    </div>
+                    </div> */}
                     <a className={cx("c-company")} href={companyData.aRef} target="_blank" >
                         <div className={cx("c-company-text")}>© {companyData.name}</div>
                     </a>

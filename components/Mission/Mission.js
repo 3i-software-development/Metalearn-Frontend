@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GetListJobCardLms, GetListStatusCardJoB } from "@/pages/api/CallAPI"
 import styles from "./ConfigGoogle.module.scss";
 import classNames from "classnames/bind";
-import Link from "next/link";
 import Missio02 from '../Mission02/Mission02'
-import index from "@/pages/blog";
 
 
 
