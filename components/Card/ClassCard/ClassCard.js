@@ -34,12 +34,12 @@ const ClassCard = ({ role }) => {
 
   return (
     <Section>
-    <div className="tool-items">
-    <ModalSearchFilter />
-    <span className="tool-item tool-export">
-        <i className="fa-solid fa-plus"></i>
-    </span>
-</div>
+      <div className="tool-items"  style={{display:"flex", marginLeft:"1050px", paddingBottom: "10px"}}>
+        <ModalSearchFilter />
+        <span className="tool-item tool-export">
+        <i className="fa-solid fa-file-video"></i>
+        </span>
+      </div>
       <div className={cx("class")}>
         {arr?.map((element) => {
           return (
