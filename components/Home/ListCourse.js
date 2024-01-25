@@ -65,7 +65,7 @@ const ListCourse = () => {
     },
   ]
 
-  const listSubject2 = ["Ngân Hàng Quiz", "Ngân Hàng Đề Thi", "Tài Liệu", "Lớp Học", "Buổi Học Trực Tuyến", "Thi Online", "Thông Tin Giáo Viên"]
+  const listSubject2 = ["Ngân Hàng Quiz", "Tài Liệu", "Học Với Máy","Quiz Game","Game Giải Trí","Tool Ảnh", "Buổi Học Trực Tuyến", "Thi Online", "Thông Tin Giáo Viên"]
   return (
     <div>
       {/* {isAuthenticated && ( */}
