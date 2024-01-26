@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { SwiperSlide, Swiper } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/scss/navigation";
 import {
@@ -89,7 +89,7 @@ const Banner = () => {
       <Swiper
         // className={cx("hot-slide")}
         modules={[
-          // Autoplay,
+          Autoplay,
           Navigation,
         ]}
         grabCursor={true}
@@ -112,7 +112,7 @@ const Banner = () => {
             >
               <Grid item xs={12} sm={4} className={cx("full-width-grid")}>
                 <div className={cx("Display-flex-web-screen")}>
-                  <h4 className={cx("Display-title")}>Tổng câu hỏi:</h4>
+                  <h4 style={{marginTop: '70px'}} className={cx("Display-title")}>Tổng câu hỏi:</h4>
                   <CountUp
                     start={0}
                     end={549811}

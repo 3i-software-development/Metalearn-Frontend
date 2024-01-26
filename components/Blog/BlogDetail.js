@@ -14,6 +14,7 @@ import { useAuth } from "@/hooks/authContext";
 import ModalSearchFilter from "../ModalSearchFilter/ModalSearchFilter";
 import AddIcon from "@mui/icons-material/Add";
 import classNames from "classnames/bind";
+import cheerio from 'cheerio'
 import styles from "./style.module.scss";
 const cx = classNames.bind(styles);
 
@@ -23,9 +24,18 @@ const BlogDetail = ({ load }) => {
   useEffect(() => { }, [userName]);
 
   function htmlDecode(input) {
-    var doc = new DOMParser().parseFromString(input, "text/html");
-    return doc.documentElement.innerText;
-}
+    // Check if input is a string
+    if (typeof input !== 'string') {
+      // Handle the case where input is not a string, for example, by returning an empty string
+      return '';
+    }
+
+    // Use cheerio to create a virtual DOM structure from the HTML string
+    const $ = cheerio.load(input);
+
+    // Get the text content of the root element in the DOM structure
+    return $.root().text();
+  }
 
   const [deleteCmsItem] = useDeleteCmsItemMutation();
 
@@ -54,7 +64,7 @@ const BlogDetail = ({ load }) => {
   return (
     <>
       <div>
-        <div style={{display: 'flex', justifyContent: 'space-between', paddingRight: '50px', alignItems: 'flex-start'}}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', paddingRight: '50px', alignItems: 'flex-start' }}>
           <div style={{ display: "flex", alignItems: "center", marginBottom: "30px" }}>
             <Image
               width={100}
@@ -86,7 +96,7 @@ const BlogDetail = ({ load }) => {
           </div> */}
 
           <div style={{ display: 'flex', alignItems: 'center', columnGap: '7px' }}>
-            <ModalSearchFilter/>
+            <ModalSearchFilter />
 
             <Link href={"/blog?key=1391&page=createBlog"}>
               <AddIcon

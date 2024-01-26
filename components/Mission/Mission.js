@@ -27,39 +27,39 @@ const IconRender = ({StatusCode}) => {
     }
   };  
 
-const CardStatusJob = () => {
-    const [listStatusCardJoB, setListGetStatusCardJob] = useState([]);
-    const [btnact, setBtnact] = useState(0);
+// const CardStatusJob = () => {
+//     const [listStatusCardJoB, setListGetStatusCardJob] = useState([]);
+//     const [btnact, setBtnact] = useState(0);
     
-    const getStatusCardJobData = async () => {
-        try {
-            const res = await GetListStatusCardJoB();
-            setListGetStatusCardJob(res.Object);
-        } catch (error) {
-            // Handle any errors here
-        }
-    }
-    useEffect(() => {
-        getStatusCardJobData();
-    }, []);
-    const reversedList = listStatusCardJoB.slice().reverse();
-    return (
-        <div className={cx("hhhh")}>
+//     const getStatusCardJobData = async () => {
+//         try {
+//             const res = await GetListStatusCardJoB();
+//             setListGetStatusCardJob(res.Object);
+//         } catch (error) {
+//             // Handle any errors here
+//         }
+//     }
+//     useEffect(() => {
+//         getStatusCardJobData();
+//     }, []);
+//     const reversedList = listStatusCardJoB.slice().reverse();
+//     return (
+//         <div className={cx("hhhh")}>
 
-            {
-                listStatusCardJoB ? listStatusCardJoB.slice().reverse().map((itemStatus, indexStatus) => {
-                    return (
+//             {
+//                 listStatusCardJoB ? listStatusCardJoB.slice().reverse().map((itemStatus, indexStatus) => {
+//                     return (
 
-                        <div key={indexStatus}>
+//                         <div key={indexStatus}>
                             
-                            <IconRender StatusCode = {itemStatus.Code} />
-                        </div>
-                    )
-                }) : null
-            }
-        </div>
-    )
-}
+//                             <IconRender StatusCode = {itemStatus.Code} />
+//                         </div>
+//                     )
+//                 }) : null
+//             }
+//         </div>
+//     )
+// }
 
 const Mission = () => {
 
@@ -127,7 +127,7 @@ const Mission = () => {
                                         {item.BeginTime}
                                     </h5>
                                 </div>
-                                <CardStatusJob />
+                                {/* <CardStatusJob /> */}
                             </div>
                         )
                     }) : null

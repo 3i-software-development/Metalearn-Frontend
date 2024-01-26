@@ -1,4 +1,4 @@
-import {  Menu } from "antd";
+import { Menu } from "antd";
 import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
@@ -10,6 +10,7 @@ import BlogDetail from "./BlogDetail";
 import SnippetFolderIcon from '@mui/icons-material/SnippetFolder';
 import BlogForm from "./BlogForm";
 import { useAuth } from "@/hooks/authContext";
+import cheerio from 'cheerio'
 
 const Blog = () => {
   const { isAuthenticated, userName, userId, loginState, logout } = useAuth();
@@ -20,7 +21,7 @@ const Blog = () => {
     // userName: userName,
     userName: 'admin',
   });
-  
+
   const load = () => {
     refetch();
   };
@@ -29,9 +30,18 @@ const Blog = () => {
   const [openKeys, setOpenKeys] = useState("");
 
   function htmlDecode(input) {
-    var doc = new DOMParser().parseFromString(input, "text/html");
-    return doc.documentElement.innerText;
-}
+    // Check if input is a string
+    if (typeof input !== 'string') {
+      // Handle the case where input is not a string, for example, by returning an empty string
+      return '';
+    }
+
+    // Use cheerio to create a virtual DOM structure from the HTML string
+    const $ = cheerio.load(input);
+
+    // Get the text content of the root element in the DOM structure
+    return $.root().text();
+  }
 
   useEffect(() => {
     if (router.query.key) {
@@ -54,21 +64,21 @@ const Blog = () => {
     return getItem(
       item?.GroupTitle?.length > 20
         ? htmlDecode(item?.GroupTitle)?.slice(0, 22) + "..."
-        :  htmlDecode(item?.GroupTitle),
+        : htmlDecode(item?.GroupTitle),
       `sub4-${item.GroupCode}`,
-      <SnippetFolderIcon style={{color: '#457b9d'}} />,
+      <SnippetFolderIcon style={{ color: '#457b9d' }} />,
       !item?.NewListBlog || item?.NewListBlog?.length == 0
         ? null
         : item?.NewListBlog?.map((e) => {
-            // console.log(e)
-            return getItem(
-              e?.title?.length > 24 ? htmlDecode(e?.title)?.slice(0, 22) + "..." : htmlDecode(e?.title),
-              e.id,
-              null,
-              null,
-              e.id
-            );
-          })
+          // console.log(e)
+          return getItem(
+            e?.title?.length > 24 ? htmlDecode(e?.title)?.slice(0, 22) + "..." : htmlDecode(e?.title),
+            e.id,
+            null,
+            null,
+            e.id
+          );
+        })
     );
   });
   console.log(ListBlog)
@@ -85,7 +95,7 @@ const Blog = () => {
   };
 
   useEffect(() => {
-  
+
   }, [openKeys]);
 
   return (
@@ -106,7 +116,7 @@ const Blog = () => {
           <MobileNavBar />
         </div>
         <div className={cx("content")}>
-            {/* <div className="tool-items">
+          {/* <div className="tool-items">
               <span
                 className={cx("search-icon")}
                 style={{
