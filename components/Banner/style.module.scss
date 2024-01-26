@@ -15,7 +15,7 @@
 
 .banner1 {
   position: relative;
-  top: 8rem;
+  top: 4.5rem;
   text-align: center;
 
   .circular {
@@ -223,10 +223,7 @@
 // }
 
 // //diagram
-.banner-slide {
-  position: relative;
-  
-}
+
 
 .text-dia {
   position: absolute;
@@ -364,7 +361,9 @@
 }
 
 @media only screen and (max-width: 768px) {
-
+// .banner-slide{
+//   background: red;
+// }
   .display-flex-web-screen h4 {
     font-size: 16px;
     /* Độ lớn của font chữ cho h4 */
@@ -394,16 +393,25 @@
     font-size: 15px;
   }
 
+ .banner1{
+  padding: 0 60px 0 0 ;
+  top: 8rem;
+ }
   .item-slide {
     // display: none;
   }
 
+  // .Display-flex-web-screen {
+  //     display: flex;
+  //     justify-content: flex-start;
+  // }
   .Display-title {
     margin-left: 20px;
   }
 
   .full-width-grid {
     width: 100% !important;
+    
   }
 
   .Display-flex {
@@ -421,3 +429,11 @@
     }
   }
 }
+
+@media only screen and (max-width: 375px) {
+ 
+    // .hot-slide{
+    //   // height: 60vh;
+    // }
+    
+  }

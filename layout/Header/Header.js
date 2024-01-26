@@ -361,7 +361,7 @@ const Header = () => {
             Học liệu
           </Link>
           <Link href="/blog" className={cx("head-link")}>
-            Blog kiến thức
+            Blog 
           </Link>
         </div>
       </div>

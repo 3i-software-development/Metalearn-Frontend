@@ -87,7 +87,7 @@ const Banner = () => {
   return (
     <div className={cx("banner-slide")}>
       <Swiper
-        className={cx("hot-slide")}
+        // className={cx("hot-slide")}
         modules={[
           // Autoplay,
           Navigation,
